@@ -53,6 +53,7 @@ class Unit(TimestampMixin, db.Model):
 
     image_path = db.Column(db.String(255), nullable=True)             # 'units/skaven/stormvermin.jpg'
     image_source_url = db.Column(db.String(512), nullable=True)
+    image_search_url = db.Column(db.String(512), nullable=True)       # Google Images search URL fallback
     wahapedia_url = db.Column(db.String(512), nullable=True)
 
     def __repr__(self):

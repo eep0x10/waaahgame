@@ -74,14 +74,34 @@ def create_app(config_name='dev'):
         )
 
     @app.cli.command('scrape-images')
-    @click.option('--faction', default=None, help='Faction slug')
+    @click.option('--faction', default=None, help='Faction slug to scrape')
+    @click.option('--all', 'all_factions', is_flag=True, default=False, help='Scrape all factions')
     @click.option('--force', is_flag=True, default=False, help='Re-download existing images')
-    def scrape_images_cmd(faction, force):
-        """Scrape unit images from Wahapedia."""
+    @click.option(
+        '--source',
+        default='all',
+        type=click.Choice(['fandom', 'lexicanum', 'all']),
+        help='Image source to use (default: all)',
+    )
+    def scrape_images_cmd(faction, all_factions, force, source):
+        """Scrape unit images from community wikis (Fandom + Lexicanum)."""
         import sys
         sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        from scripts.scrape_unit_images import scrape
-        scraped, skipped, failed = scrape(faction=faction, force=force)
+        from scripts.scrape_wiki_images import scrape
+        scraped, skipped, failed = scrape(faction=faction, force=force, source=source)
         click.echo(f'Image scrape complete. Scraped={scraped}, Skipped={skipped}, Failed={failed}')
+
+    @app.cli.command('make-admin')
+    @click.argument('username')
+    def make_admin_cmd(username):
+        """Grant admin privileges to an existing user."""
+        from app.models.user import User
+        user = User.query.filter_by(username=username).first()
+        if not user:
+            click.echo(f'Error: user "{username}" not found.', err=True)
+            return
+        user.is_admin = True
+        db.session.commit()
+        click.echo(f'User "{username}" is now an admin.')
 
     return app

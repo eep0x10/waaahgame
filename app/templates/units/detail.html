@@ -26,6 +26,29 @@
             </div>
           {% endif %}
         </div>
+
+        <!-- Admin: edit banner button -->
+        {% if current_user.is_authenticated and current_user.is_admin %}
+          <p style="text-align:center; margin-top:0.6rem;">
+            <a href="{{ url_for('units.upload_image', unit_slug=unit.slug) }}"
+               style="font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.08em;
+                      color:#1a1108; background:#b8935a; padding:0.3rem 0.9rem;
+                      border-radius:2px; text-decoration:none;">
+              &#9998; EDIT IMAGE
+            </a>
+          </p>
+        {% endif %}
+
+        <!-- Fallback: Google Images search link when no image present -->
+        {% if not unit.image_path and unit.image_search_url %}
+          <p style="text-align:center; margin-top:0.5rem;">
+            <a href="{{ unit.image_search_url }}" target="_blank" rel="noopener noreferrer"
+               style="font-family:'EB Garamond',serif; font-size:0.85rem; color:#b8935a;">
+              Search official photo &rarr;
+            </a>
+          </p>
+        {% endif %}
+
         {% if unit.wahapedia_url %}
           <p class="warscroll-source">
             <a href="{{ unit.wahapedia_url }}" target="_blank" rel="noopener noreferrer" class="warscroll-source-link">

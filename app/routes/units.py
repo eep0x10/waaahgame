@@ -1,10 +1,76 @@
-from flask import Blueprint, render_template
+import os
+import io
+from flask import (
+    Blueprint, render_template, redirect, url_for, flash, request, abort
+)
+from flask_login import login_required, current_user
+from app.extensions import db
 from app.models.game import Unit
 
 units_bp = Blueprint('units', __name__, url_prefix='/units')
+
+ALLOWED_MIME = {'image/jpeg', 'image/png', 'image/webp'}
+STATIC_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    'static',
+)
 
 
 @units_bp.route('/<unit_slug>')
 def detail(unit_slug):
     unit = Unit.query.filter_by(slug=unit_slug).first_or_404()
     return render_template('units/detail.html', unit=unit)
+
+
+@units_bp.route('/<unit_slug>/upload-image', methods=['GET'])
+@login_required
+def upload_image(unit_slug):
+    if not current_user.is_admin:
+        abort(403)
+    unit = Unit.query.filter_by(slug=unit_slug).first_or_404()
+    return render_template('units/upload.html', unit=unit)
+
+
+@units_bp.route('/<unit_slug>/upload-image', methods=['POST'])
+@login_required
+def upload_image_post(unit_slug):
+    if not current_user.is_admin:
+        abort(403)
+    unit = Unit.query.filter_by(slug=unit_slug).first_or_404()
+
+    f = request.files.get('image')
+    if not f or not f.filename:
+        flash('No file selected.', 'error')
+        return redirect(url_for('units.upload_image', unit_slug=unit_slug))
+
+    # Validate MIME type
+    mime = f.mimetype
+    if mime not in ALLOWED_MIME:
+        flash('Invalid file type. Upload a JPEG, PNG, or WebP image.', 'error')
+        return redirect(url_for('units.upload_image', unit_slug=unit_slug))
+
+    try:
+        from PIL import Image
+        img = Image.open(io.BytesIO(f.read())).convert('RGB')
+    except Exception:
+        flash('Could not read image file. Upload a valid JPEG, PNG, or WebP.', 'error')
+        return redirect(url_for('units.upload_image', unit_slug=unit_slug))
+
+    max_w = 600
+    if img.width > max_w:
+        ratio = max_w / img.width
+        img = img.resize((max_w, int(img.height * ratio)), Image.LANCZOS)
+
+    faction_slug = unit.faction.slug
+    dest_rel = 'units/{}/{}.jpg'.format(faction_slug, unit.slug)
+    dest_abs = os.path.join(STATIC_DIR, 'img', 'units', faction_slug, '{}.jpg'.format(unit.slug))
+    os.makedirs(os.path.dirname(dest_abs), exist_ok=True)
+    img.save(dest_abs, 'JPEG', quality=85, optimize=True)
+
+    unit.image_path = dest_rel
+    unit.image_source_url = None
+    unit.image_search_url = None
+    db.session.commit()
+
+    flash('Banner image set for {}.'.format(unit.name), 'success')
+    return redirect(url_for('units.detail', unit_slug=unit_slug))

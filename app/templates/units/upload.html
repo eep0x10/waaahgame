@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Set Banner Image &mdash; {{ unit.name }}{% endblock %}
+
+{% block content %}
+<section class="warscroll-section">
+  <div class="container" style="max-width: 600px; margin: 0 auto;">
+
+    <p class="eyebrow">
+      <a href="{{ url_for('factions.index') }}">Factions</a> &rsaquo;
+      <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}">{{ unit.faction.name }}</a> &rsaquo;
+      <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}">{{ unit.name }}</a> &rsaquo;
+      Set Banner Image
+    </p>
+
+    <h1 class="warscroll-name" style="margin-bottom: 1.5rem;">Set Banner Image</h1>
+    <p style="font-family: 'EB Garamond', serif; color: var(--text-muted, #8a7560); margin-bottom: 2rem;">
+      Uploading for: <strong>{{ unit.name }}</strong> &mdash; {{ unit.faction.name }}
+    </p>
+
+    <!-- Current image or placeholder -->
+    <div class="unit-image-frame warscroll-image-frame" style="max-width: 300px; margin: 0 auto 2rem auto;">
+      {% if unit.image_path %}
+        <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+             alt="{{ unit.name }}"
+             class="warscroll-unit-img"
+             style="max-width: 100%;">
+        <p style="text-align:center; font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted,#8a7560);">
+          Current image
+        </p>
+      {% else %}
+        <div class="warscroll-placeholder">
+          {% set faction_code = unit.faction.code %}
+          {% include '_partials/_shield_placeholder.html' %}
+        </div>
+        <p style="text-align:center; font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted,#8a7560);">
+          No image yet
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Upload form -->
+    <form method="POST"
+          action="{{ url_for('units.upload_image_post', unit_slug=unit.slug) }}"
+          enctype="multipart/form-data"
+          class="upload-form"
+          style="background: var(--card-bg, #2a1f14); border: 1px solid var(--border-gold, #b8935a);
+                 padding: 2rem; border-radius: 4px;">
+
+      <div style="margin-bottom: 1.5rem;">
+        <label for="image"
+               style="display:block; font-family:'Cinzel',serif; font-size:0.85rem;
+                      letter-spacing:0.08em; color:var(--gold,#b8935a); margin-bottom:0.6rem;">
+          CHOOSE IMAGE FILE
+        </label>
+        <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp"
+               style="font-family:'EB Garamond',serif; color:var(--text,#fbf3e3);
+                      background:transparent; border:1px solid var(--border-muted,#5a4a35);
+                      padding:0.5rem; width:100%; box-sizing:border-box;">
+        <p style="font-size:0.8rem; color:var(--text-muted,#8a7560); margin-top:0.4rem;">
+          JPEG / PNG / WebP &mdash; will be resized to 600 px wide, saved as JPEG
+        </p>
+      </div>
+
+      <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+        <button type="submit"
+                style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.1em;
+                       background:var(--gold,#b8935a); color:#1a1108; border:none;
+                       padding:0.6rem 1.6rem; cursor:pointer; border-radius:2px;">
+          FORGE BANNER
+        </button>
+        <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="btn-secondary">
+          Cancel
+        </a>
+      </div>
+    </form>
+
+  </div>
+</section>
+{% endblock %}
