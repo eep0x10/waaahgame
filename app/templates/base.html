@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}waaahgame{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-    <script src="{{ url_for('static', filename='js/htmx.min.js') }}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}waaahgame{% endblock %}</title>
+
+  <!-- Google Fonts: Cinzel + EB Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <script src="{{ url_for('static', filename='js/htmx.min.js') }}" defer></script>
 </head>
 <body>
-    <nav class="nav">
-        <a href="{{ url_for('main.index') }}" class="nav-brand">waaahgame</a>
-    </nav>
 
-    <main class="main-content">
-        {% block content %}{% endblock %}
-    </main>
+  <header class="site-header">
+    <nav class="container">
+      <a class="brand" href="{{ url_for('main.index') }}">
+        <span class="brand-mark">
+          <!-- Sword icon SVG -->
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="11" y1="2" x2="11" y2="16" stroke="#b8935a" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="7" y1="12" x2="15" y2="12" stroke="#b8935a" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9,2 L11,0 L13,2" stroke="#b8935a" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+            <circle cx="11" cy="18" r="2" stroke="#b8935a" stroke-width="1.2" fill="none"/>
+          </svg>
+        </span>
+        <span class="brand-name">WAAAHGAME</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="{{ url_for('main.index') }}">HOME</a></li>
+        <li><a href="#" class="disabled">ARMIES</a></li>
+        <li><a href="#" class="disabled">MATCHES</a></li>
+        <li><a href="#" class="disabled">FRIENDS</a></li>
+      </ul>
+
+      <a class="btn-cta" href="#">BECOME A WARLORD</a>
+    </nav>
+  </header>
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-quote">"Glory to those who march under their own banner."</p>
+      <p class="footer-meta">waaahgame &middot; Phase 0 &middot; 2026</p>
+    </div>
+  </footer>
+
 </body>
 </html>

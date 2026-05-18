@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" width="240" height="40" fill="none">
+  <!-- Left line arm -->
+  <line x1="0" y1="20" x2="72" y2="20" stroke="#b8935a" stroke-width="1" opacity="0.6"/>
+  <!-- Left diamond -->
+  <polygon points="72,20 78,14 84,20 78,26" stroke="#b8935a" stroke-width="1" fill="none" opacity="0.8"/>
+  <!-- Center fleur-de-lis style ornament -->
+  <!-- Central vertical -->
+  <path d="M120,28 L120,16" stroke="#b8935a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Center bulb -->
+  <ellipse cx="120" cy="14" rx="3" ry="4" stroke="#b8935a" stroke-width="1.2" fill="none"/>
+  <!-- Left petal -->
+  <path d="M120,20 C112,20 108,16 110,12 C112,8 118,12 120,16" stroke="#b8935a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <!-- Right petal -->
+  <path d="M120,20 C128,20 132,16 130,12 C128,8 122,12 120,16" stroke="#b8935a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <!-- Base spread -->
+  <path d="M116,28 C118,30 122,30 124,28" stroke="#b8935a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <!-- Base feet -->
+  <path d="M116,28 C114,26 112,27 110,28" stroke="#b8935a" stroke-width="1" fill="none" stroke-linecap="round"/>
+  <path d="M124,28 C126,26 128,27 130,28" stroke="#b8935a" stroke-width="1" fill="none" stroke-linecap="round"/>
+  <!-- Right diamond -->
+  <polygon points="156,20 162,14 168,20 162,26" stroke="#b8935a" stroke-width="1" fill="none" opacity="0.8"/>
+  <!-- Right line arm -->
+  <line x1="168" y1="20" x2="240" y2="20" stroke="#b8935a" stroke-width="1" opacity="0.6"/>
+  <!-- Dot accents flanking center -->
+  <circle cx="96" cy="20" r="2" fill="#b8935a" opacity="0.6"/>
+  <circle cx="144" cy="20" r="2" fill="#b8935a" opacity="0.6"/>
+  <circle cx="104" cy="20" r="1.2" fill="#b8935a" opacity="0.4"/>
+  <circle cx="136" cy="20" r="1.2" fill="#b8935a" opacity="0.4"/>
+</svg>
