@@ -1,0 +1,25 @@
+{
+  "stats": {
+    "control": "scores"
+  },
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDS",
+    "HERO,INFANTRY",
+    "ORDER,SERAPHON,SAURUS",
+    "KEYWORDSHERO",
+    "INFANTRYORDER",
+    "SERAPHON",
+    "SAURUS"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Seraphon– Saurus Astrolith Bearer",
+    "•Bundo Whalebiter",
+    "•Bloodthirsty Shiver",
+    "KEYWORDSHERO,INFANTRYORDER,SERAPHON,SAURUS",
+    "Notes:ThisHEROcan join an eligibleregimentas aFavouredSpawning."
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/seraphon/Saurus-Astrolith-Bearer"
+}

@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% block title %}Army Composition — AoS 4ed Rules{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">On this page</p>
+      <ul>
+        <li><a href="#battlepacks">Battlepacks</a></li>
+        <li><a href="#regiments">Regiments</a></li>
+        <li><a href="#auxiliary">Auxiliary Units</a></li>
+        <li><a href="#surcharge">Cumulative Surcharge</a></li>
+        <li><a href="#reinforcement">Reinforcement</a></li>
+        <li><a href="#enhancements">Enhancements</a></li>
+        <li><a href="#general">The General</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Other Sections</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">AoS Overview</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Turn Structure</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Abilities &amp; Keywords</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Rules Compendium</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Army Composition
+      </p>
+      <h1 class="section-title" id="battlepacks">Army Composition</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; April 2026 Battlescroll Active</p>
+
+      <p>
+        Army composition in AoS 4ed is governed by the <strong>Battlepack</strong> in use and
+        the <strong>Regiment</strong> system. Every list is built from a combination of Regiments
+        and Auxiliary units, with the active Battlepack setting the total points limit and the
+        caps on each.
+      </p>
+
+      <!-- Battlepacks -->
+      <h2 id="battlepacks">Battlepacks</h2>
+      <p>
+        Two standard Battlepacks exist for matched play:
+      </p>
+      <div class="rules-battlepack-grid">
+        <div class="rules-battlepack-card">
+          <h3 class="rules-battlepack-name">Vanguard</h3>
+          <p class="rules-battlepack-pts">1,000 points</p>
+          <ul class="rules-list">
+            <li>1&ndash;2 Regiments</li>
+            <li>0&ndash;1 Auxiliary units</li>
+            <li>Smaller boards, 4 Battle Rounds</li>
+          </ul>
+        </div>
+        <div class="rules-battlepack-card">
+          <h3 class="rules-battlepack-name">Battlehost</h3>
+          <p class="rules-battlepack-pts">2,000 points</p>
+          <ul class="rules-list">
+            <li>2&ndash;4 Regiments</li>
+            <li>0&ndash;2 Auxiliary units (before surcharge)</li>
+            <li>Standard board, 5 Battle Rounds</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Regiments -->
+      <h2 id="regiments">Regiments</h2>
+      <p>
+        A <strong>Regiment</strong> is the fundamental building block of an AoS army list. Each
+        Regiment consists of:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>One Hero leader</strong> — any Hero from your faction&rsquo;s warscroll roster.
+          This Hero leads the Regiment and confers its identity.
+        </li>
+        <li>
+          <strong>Up to three additional units</strong> — chosen from the Hero&rsquo;s
+          <strong>Companion Units</strong> list. Each unit must match at least one of the
+          keyword categories listed as Companions on the Hero&rsquo;s warscroll. If the Hero
+          has no Companion Units listed, they may not take additional units in their Regiment.
+        </li>
+      </ul>
+      <p>
+        There is no minimum unit count per Regiment beyond the one required Hero leader. A
+        Regiment of a single Hero is entirely legal.
+      </p>
+      <div class="rules-callout">
+        <strong>Companion Units are restrictive by design.</strong> Not every Hero can lead every
+        unit. A Skaven Clawlord leads Verminus warriors; a Grey Seer may lead Clanrats or Skaven
+        spellcasters. Check each Hero&rsquo;s warscroll for their specific Companion list.
+      </div>
+
+      <!-- Auxiliary -->
+      <h2 id="auxiliary">Auxiliary Units</h2>
+      <p>
+        <strong>Auxiliary units</strong> are units included in your army that do not belong to
+        any Regiment. They are not led by a Hero and do not need to match any Companion Units
+        list. Auxiliaries are useful for:
+      </p>
+      <ul class="rules-list">
+        <li>Including units whose keywords do not match any available Hero&rsquo;s Companions</li>
+        <li>Adding cheap objective holders or specialist units beyond Regiment slots</li>
+        <li>Accommodating powerful non-Hero Behemoths</li>
+      </ul>
+      <p>
+        The number of Auxiliary slots is limited by the Battlepack: Vanguard allows 0&ndash;1,
+        Battlehost allows 0&ndash;2 (before the Cumulative Surcharge). Additional Auxiliaries
+        beyond these caps are legal but trigger the surcharge (see below).
+      </p>
+
+      <!-- Cumulative Surcharge -->
+      <h2 id="surcharge">Cumulative Surcharge</h2>
+      <p>
+        The <strong>Cumulative Surcharge</strong> was introduced in the <em>April 2026 Battlescroll</em>
+        to discourage auxiliary-heavy &ldquo;castle&rdquo; lists. It works as follows:
+      </p>
+      <p>
+        For each Auxiliary unit taken beyond the first (i.e. the 2nd, 3rd, 4th, etc.), an
+        extra cumulative points cost is added to that unit&rsquo;s base price:
+      </p>
+
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Auxiliary Number</th>
+            <th>Additional Cost</th>
+            <th>Example (100pt unit)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1st Auxiliary</td><td>+0 pts</td><td>100 pts</td></tr>
+          <tr><td>2nd Auxiliary</td><td>+20 pts</td><td>120 pts</td></tr>
+          <tr><td>3rd Auxiliary</td><td>+40 pts</td><td>140 pts</td></tr>
+          <tr><td>4th Auxiliary</td><td>+60 pts</td><td>160 pts</td></tr>
+          <tr><td>5th Auxiliary</td><td>+80 pts</td><td>180 pts</td></tr>
+        </tbody>
+      </table>
+
+      <p>
+        The surcharge stacks cumulatively: your second Auxiliary costs +20, your third costs +40
+        (total +60 across both), and so on. This makes stacking many Auxiliaries significantly
+        more expensive.
+      </p>
+
+      <div class="rules-callout">
+        <strong>Command Point Bonus.</strong> The player who fields <em>fewer</em> Auxiliary units
+        than their opponent gains <strong>+1 Command Point per Battle Round</strong>. This creates
+        a genuine trade-off: more Auxiliaries grant flexibility at the cost of efficiency and
+        points, while leaner lists gain an ongoing resource advantage.
+      </div>
+
+      <!-- Reinforcement -->
+      <h2 id="reinforcement">Reinforcement</h2>
+      <p>
+        A unit may be taken as a <strong>Reinforced</strong> unit, doubling its model count and
+        its points cost. Each warscroll notes whether the unit can be reinforced; units that cannot
+        be reinforced (marked &ldquo;Cannot be Reinforced&rdquo;) must be taken at their base size.
+      </p>
+      <p>
+        A unit may only be reinforced once — you cannot take a triple-size unit. Reinforcement
+        applies to the unit as a whole; you pay double the listed points and field double the
+        listed model count. For example, a unit of 10 Clanrats (110 pts) reinforced becomes
+        20 Clanrats for 220 pts.
+      </p>
+
+      <!-- Enhancements -->
+      <h2 id="enhancements">Enhancements</h2>
+      <p>
+        Each Regiment leader (Hero) may take one set of free Enhancements:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>One Heroic Trait</strong> — a special rule chosen from the faction&rsquo;s
+          Heroic Trait table, granting the Hero a unique bonus ability.
+        </li>
+        <li>
+          <strong>One Artefact of Power</strong> — a magical item chosen from the faction&rsquo;s
+          Artefact table, adding a weapon or defensive enhancement to the Hero.
+        </li>
+      </ul>
+      <p>
+        These Enhancements are free and do not cost additional points. Heroes beyond the first in
+        a list may also take Enhancements, but they cost Command Points or points depending on the
+        active Battlepack rules. Each Enhancement may only be taken once per army.
+      </p>
+
+      <!-- The General -->
+      <h2 id="general">The General</h2>
+      <p>
+        One Hero in your army must be designated as the <strong>General</strong> before the game
+        begins. The General is always the leader of Regiment 1. In addition to their normal
+        warscroll abilities, the General gains access to the faction&rsquo;s General&rsquo;s
+        Handbook Command Traits and may use certain abilities reserved for the General specifically.
+        If your General is slain, some battleplans impose an ongoing penalty; check your active
+        Battlepack for specifics.
+      </p>
+      <p>
+        Only Heroes with the <strong>CAN BE GENERAL</strong> keyword on their warscroll (or all
+        Heroes if no such restriction is listed) may be designated as General.
+      </p>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

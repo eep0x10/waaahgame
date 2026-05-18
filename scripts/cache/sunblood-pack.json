@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "save": "rolls"
+  },
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDS",
+    "HERO,INFANTRY",
+    "ORDER,SERAPHON,SAURUS",
+    "KEYWORDSHERO",
+    "INFANTRYORDER",
+    "SERAPHON",
+    "SAURUS"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Seraphon– Sunblood Pack",
+    "•Bundo Whalebiter",
+    "•Bloodthirsty Shiver",
+    "KEYWORDSHERO,INFANTRYORDER,SERAPHON,SAURUS"
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/seraphon/Sunblood-Pack"
+}

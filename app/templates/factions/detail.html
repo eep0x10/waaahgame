@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{ faction.name }} — Warscroll Roster{% endblock %}
+
+{% block content %}
+<section class="faction-detail-section">
+  <div class="container">
+
+    <!-- Faction header -->
+    <div class="faction-detail-header">
+      <p class="eyebrow">
+        <a href="{{ url_for('factions.index') }}">Factions</a> &rsaquo; {{ faction.game_system.name }}
+      </p>
+      <div class="faction-detail-title-row">
+        {% if faction.grand_alliance %}
+          <span class="alliance-badge alliance-{{ faction.grand_alliance | lower }}">{{ faction.grand_alliance }}</span>
+        {% endif %}
+        <h1 class="section-title">{{ faction.name }}</h1>
+      </div>
+      {% if faction.blurb %}
+        <p class="faction-detail-blurb">{{ faction.blurb }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Filter pills -->
+    <div class="unit-filter-row" id="unit-filters">
+      <button class="filter-pill filter-pill--active" data-filter="all">All ({{ units | length }})</button>
+      {% set roles = units | map(attribute='unit_role') | reject('none') | unique | list | sort %}
+      {% for role in roles %}
+        <button class="filter-pill" data-filter="{{ role | lower }}">{{ role }}</button>
+      {% endfor %}
+    </div>
+
+    <!-- Unit grid -->
+    {% if units %}
+      <div class="unit-grid" id="unit-grid">
+        {% for unit in units %}
+          {% include '_partials/_unit_card.html' %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="faction-empty"><em>No units found for this faction. Run the seed command to populate the roster.</em></p>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var pills = document.querySelectorAll('.filter-pill');
+    var cards = document.querySelectorAll('.unit-card');
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        pills.forEach(function (p) { p.classList.remove('filter-pill--active'); });
+        pill.classList.add('filter-pill--active');
+        var filter = pill.dataset.filter;
+        cards.forEach(function (card) {
+          if (filter === 'all' || card.dataset.role === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }());
+</script>
+{% endblock %}

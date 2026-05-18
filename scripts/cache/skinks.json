@@ -1,0 +1,25 @@
+{
+  "stats": {},
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDS",
+    "INFANTRY,CHAMPION",
+    "ORDER,SERAPHON,SKINK",
+    "KEYWORDSMOVE,RUN",
+    "MOVE,RUN",
+    "KEYWORDSINFANTRY",
+    "CHAMPIONORDER",
+    "SERAPHON",
+    "SKINK",
+    "KEYWORDSMOVE",
+    "RUN"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Seraphon– Skinks",
+    "•Bundo Whalebiter",
+    "•Bloodthirsty Shiver"
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/seraphon/Skinks"
+}

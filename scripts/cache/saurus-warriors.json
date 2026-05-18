@@ -1,0 +1,20 @@
+{
+  "stats": {
+    "save": "rolls",
+    "control": "score"
+  },
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDS",
+    "INFANTRY,CHAMPION,MUSICIAN(1/10),STANDARDBEARER(1/10)",
+    "ORDER,SERAPHON,SAURUS"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Seraphon– Saurus Warriors",
+    "•Bundo Whalebiter",
+    "•Bloodthirsty Shiver"
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/seraphon/Saurus-Warriors"
+}

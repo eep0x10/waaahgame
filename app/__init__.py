@@ -1,4 +1,5 @@
 import os
+import click
 from flask import Flask
 from .config import get_config
 from .extensions import db, migrate, socketio, login_manager
@@ -40,11 +41,47 @@ def create_app(config_name='dev'):
     from .routes.friends import friends_bp
     app.register_blueprint(friends_bp)
 
+    from .routes.rules import rules_bp
+    app.register_blueprint(rules_bp)
+
+    from .routes.factions import factions_bp
+    app.register_blueprint(factions_bp)
+
+    from .routes.units import units_bp
+    app.register_blueprint(units_bp)
+
     # Register sockets
     from .sockets import register_sockets
     register_sockets(socketio)
 
     # Import models so Alembic sees them
     from . import models  # noqa: F401
+
+    # CLI commands
+    @app.cli.command('seed-aos')
+    def seed_aos_cmd():
+        """Seed AoS 4ed game system, Skaven, and Seraphon data."""
+        import sys
+        sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        from scripts.seed_aos import _do_seed
+        from app.extensions import db as _db
+        from app.models.game import GameSystem, Faction, Unit
+        result = _do_seed(_db, GameSystem, Faction, Unit)
+        click.echo(
+            f'Seeded AoS. '
+            f'Skaven: {result["skaven_full"]} full / {result["skaven_stub"]} stub. '
+            f'Seraphon: {result["seraphon_full"]} full / {result["seraphon_stub"]} stub.'
+        )
+
+    @app.cli.command('scrape-images')
+    @click.option('--faction', default=None, help='Faction slug')
+    @click.option('--force', is_flag=True, default=False, help='Re-download existing images')
+    def scrape_images_cmd(faction, force):
+        """Scrape unit images from Wahapedia."""
+        import sys
+        sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        from scripts.scrape_unit_images import scrape
+        scraped, skipped, failed = scrape(faction=faction, force=force)
+        click.echo(f'Image scrape complete. Scraped={scraped}, Skipped={skipped}, Failed={failed}')
 
     return app

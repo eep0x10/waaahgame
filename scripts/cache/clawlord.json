@@ -1,0 +1,25 @@
+{
+  "stats": {},
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDS",
+    "HERO,INFANTRY",
+    "CHAOS,SKAVEN,VERMINUS",
+    "KEYWORDSHERO",
+    "INFANTRYCHAOS",
+    "SKAVEN",
+    "VERMINUS"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Skaven– Clawlord",
+    "•Enforcers of the Tithe",
+    "•Diseased Revellers",
+    "KEYWORDSHERO,INFANTRYCHAOS,SKAVEN,VERMINUS",
+    "Notes:ThisHEROcan join an eligibleregimentas aSkavenOverclaw.",
+    "A unit’s combat range extends 3\" out from every model in that unit.",
+    "If any enemy models are within a unit’s combat range and visible to it, that unit is in combat."
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/skaven/Clawlord"
+}

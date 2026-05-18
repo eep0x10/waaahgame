@@ -1,0 +1,33 @@
+{# Reusable unit card. Variables expected: unit (Unit model), faction_code (str) #}
+{% set faction_code = unit.faction.code %}
+<article class="unit-card" data-role="{{ unit.unit_role | lower if unit.unit_role else 'other' }}">
+  <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="unit-card-link" tabindex="-1" aria-hidden="true">
+    <div class="unit-image-frame">
+      {% if unit.image_path %}
+        <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+             alt="{{ unit.name }}"
+             class="unit-card-img"
+             loading="lazy">
+      {% else %}
+        <div class="unit-card-placeholder">
+          {% set faction_code = unit.faction.code %}
+          {% include '_partials/_shield_placeholder.html' %}
+        </div>
+      {% endif %}
+    </div>
+  </a>
+  <div class="unit-card-body">
+    {% if unit.unit_role %}
+      <span class="role-tag">{{ unit.unit_role }}</span>
+    {% endif %}
+    <h3 class="unit-card-name">
+      <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}">{{ unit.name }}</a>
+    </h3>
+    <div class="unit-card-meta">
+      <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+      {% if unit.model_count > 1 %}
+        <span class="unit-count-tag">{{ unit.model_count }} models</span>
+      {% endif %}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,27 @@
+{
+  "stats": {
+    "move": ""
+  },
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDSRAMPAGE",
+    "KEYWORDS",
+    "RAMPAGE",
+    "HERO,MONSTER,PRIEST(1),WARD(5+)",
+    "CHAOS,SKAVEN,DAEMON,PESTILENS",
+    "KEYWORDSPRAYER,UNLIMITED",
+    "PRAYER,UNLIMITED",
+    "KEYWORDSPRAYER",
+    "PRAYER",
+    "UNLIMITED"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Skaven– Verminlord Corruptor",
+    "•Enforcers of the Tithe",
+    "•Diseased Revellers",
+    "KEYWORDSHERO,MONSTER,PRIEST(1),WARD(5+)CHAOS,SKAVEN,DAEMON,PESTILENS"
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/skaven/Verminlord-Corruptor"
+}

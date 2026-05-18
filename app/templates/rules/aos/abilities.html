@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block title %}Abilities &amp; Keywords — AoS 4ed Rules{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">On this page</p>
+      <ul>
+        <li><a href="#ability-types">Ability Types</a></li>
+        <li><a href="#passive">Passive</a></li>
+        <li><a href="#used">Used</a></li>
+        <li><a href="#reaction">Reaction</a></li>
+        <li><a href="#ward">Ward Saves</a></li>
+        <li><a href="#rend">Rend</a></li>
+        <li><a href="#mortal-wounds">Mortal Wounds</a></li>
+        <li><a href="#companions">Companion Units</a></li>
+        <li><a href="#manifestations">Manifestations</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Other Sections</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">AoS Overview</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Turn Structure</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Army Composition</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Rules Compendium</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Abilities &amp; Keywords
+      </p>
+      <h1 class="section-title" id="ability-types">Abilities &amp; Keywords</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; April 2026 Battlescroll Active</p>
+
+      <p>
+        Every unit in Age of Sigmar has abilities on its warscroll, and every ability carries one
+        or more <strong>type keywords</strong> that govern when and how it can be used. Understanding
+        these types is fundamental to reading warscrolls correctly.
+      </p>
+
+      <h2 id="passive">Passive Abilities</h2>
+      <p>
+        An ability tagged <strong>[Passive]</strong> is always in effect — it does not require
+        activation, spending Command Points, or any deliberate choice to trigger. Passive abilities
+        are simply true whenever their condition is met. Examples include permanent auras that
+        affect nearby friendly units, bonuses that apply during specific phases, and modifiers
+        conditional on unit size or terrain position.
+      </p>
+      <div class="rules-callout">
+        <strong>Example.</strong> &ldquo;While this unit is within 12&rdquo; of a friendly
+        <span class="keyword-inline">HERO</span>, add 1 to the Hit rolls of this unit&rsquo;s
+        attacks.&rdquo; — This is a Passive ability. No activation is required; it simply applies
+        automatically whenever the condition (proximity to a HERO) is met.
+      </div>
+
+      <h2 id="used">Used Abilities</h2>
+      <p>
+        A <strong>[Used]</strong> ability (sometimes called an Active ability) must be deliberately
+        activated during a specific phase of the turn. The warscroll specifies exactly when it can
+        be used — for example, &ldquo;Once Per Battle, in your Hero Phase.&rdquo; Using a Used
+        ability typically does not cost Command Points unless the ability explicitly states it does.
+        Once-per-battle or once-per-round limits are tracked on the warscroll.
+      </p>
+
+      <h2 id="reaction">Reaction Abilities</h2>
+      <p>
+        A <strong>[Reaction]</strong> ability is triggered in direct response to an opponent&rsquo;s
+        action. Reactions are used out of sequence — the opponent takes an action (such as completing
+        a charge or beginning their Hero Phase), and you may then respond by using a qualifying
+        Reaction ability. Reactions cannot be pre-emptively declared; they must respond to a
+        specific, just-occurred trigger. A single trigger can only be responded to once per
+        ability per player.
+      </p>
+
+      <!-- Ward Saves -->
+      <h2 id="ward">Ward Saves</h2>
+      <p>
+        A <strong>Ward save</strong> is an additional defensive roll made <em>after</em> damage has
+        been determined — it is not part of the standard Save roll. The sequence for an attack that
+        inflicts damage is:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>Roll to <strong>Hit</strong> (attacker)</li>
+        <li>Roll to <strong>Wound</strong> (attacker)</li>
+        <li>Roll to <strong>Save</strong> (defender, using Save characteristic &plusmn; Rend)</li>
+        <li>Apply <strong>Damage</strong> to the unit&rsquo;s Health pool</li>
+        <li>Roll <strong>Ward</strong> (defender) — each point of damage may be negated on a
+            successful Ward roll</li>
+      </ol>
+      <p>
+        Ward saves are typically expressed as a target number (e.g. &ldquo;Ward 5+&rdquo; means
+        roll a D6 per point of damage; on a 5 or 6 that damage is negated). Ward saves are
+        <strong>not</strong> the same as the standard Save — they occur afterwards and can
+        protect against damage that already passed the Save. Crucially, Ward saves can also protect
+        against Mortal Wounds that bypassed the Save entirely.
+      </p>
+      <div class="rules-callout">
+        <strong>Important.</strong> Multiple Ward saves do not stack on the same source of damage.
+        If a model would have a 5+ Ward from two different sources, it still only rolls once per
+        damage point. The <em>better</em> Ward (lower target) takes precedence.
+      </div>
+
+      <!-- Rend -->
+      <h2 id="rend">Rend</h2>
+      <p>
+        <strong>Rend</strong> is a weapon characteristic that makes it harder for the target to
+        save against that attack. A weapon&rsquo;s Rend value is subtracted from the target&rsquo;s
+        Save characteristic for that attack.
+      </p>
+      <p>
+        For example: a unit with a Save of 4+ targeted by a weapon with Rend 1 must now roll a
+        <strong>5+</strong> to save. Rend 2 against a 4+ Save requires a <strong>6+</strong>;
+        Rend 3 makes the save impossible (a roll of 7+ is required, which no D6 can achieve —
+        the save automatically fails unless a Ward intervenes).
+      </p>
+      <p>
+        Rend is <em>not</em> a separate &ldquo;armour penetration&rdquo; pool — it is a direct
+        modifier to the opponent&rsquo;s Save roll for that specific attack. Positive modifiers
+        to Save (such as cover bonuses) can offset Rend.
+      </p>
+
+      <!-- Mortal Wounds -->
+      <h2 id="mortal-wounds">Mortal Wounds</h2>
+      <p>
+        <strong>Mortal Wounds</strong> are a special category of damage that bypasses the standard
+        attack sequence entirely. When an ability deals Mortal Wounds, you do not roll to Hit,
+        roll to Wound, or give the target a Save roll. The wounds are applied directly to the
+        target&rsquo;s Health pool — one Mortal Wound equals one point of damage.
+      </p>
+      <p>
+        Mortal Wounds are <strong>not</strong> completely unstoppable, however. Ward saves still
+        apply against Mortal Wounds. A unit with a 5+ Ward can attempt to negate each Mortal Wound
+        dealt to it, regardless of whether it was caused by a normal attack or a Mortal Wound
+        ability.
+      </p>
+      <div class="rules-callout">
+        <strong>Common sources of Mortal Wounds:</strong> spell miscast damage, prayer critical
+        effects, certain weapon critical hit bonuses (on a roll of 6 to Hit/Wound), and dedicated
+        Mortal Wound abilities on warscrolls and faction rules.
+      </div>
+
+      <!-- Companion Units -->
+      <h2 id="companions">Companion Units</h2>
+      <p>
+        The <strong>Companion Units</strong> keyword on a Hero&rsquo;s warscroll lists which unit
+        types may be included in that Hero&rsquo;s Regiment. When building a Regiment (see Army
+        Composition), you select a Hero as the Regiment&rsquo;s leader, then add up to three
+        additional units. Those units <em>must</em> appear on the Hero&rsquo;s Companion Units
+        list — a Hero that lacks a matching keyword for a unit cannot take that unit in their
+        Regiment (though the unit could still appear as an Auxiliary).
+      </p>
+      <p>
+        Companion Units are a deliberate restriction on combined-arms army building: not all Heroes
+        can lead all units, and the faction design guides which archetypes work together within
+        a single Regiment.
+      </p>
+
+      <!-- Manifestations -->
+      <h2 id="manifestations">Manifestations</h2>
+      <p>
+        <strong>Manifestations</strong> are summonable battlefield effects that occupy a physical
+        footprint on the table. They are distinct from both regular units and spells — a
+        Manifestation is not a unit (it cannot be targeted by abilities that affect units unless
+        specifically noted), nor is it simply a spell effect. Manifestations persist on the
+        battlefield until dismissed or destroyed.
+      </p>
+      <p>
+        Manifestations are drawn from <strong>Manifestation Lores</strong>, which each faction
+        accesses through their Wizards or Priests. Each Wizard or Priest may attempt to summon
+        one Manifestation per Hero Phase. Manifestations have their own profiles — including
+        Health — and can be removed by opponent abilities or when the summoning Wizard is
+        destroyed. Only one copy of any given Manifestation may be in play at a time.
+      </p>
+      <div class="rules-callout">
+        <strong>Manifestations vs. Spells.</strong> Summoning a Manifestation follows the spellcasting
+        process (roll 2D6 vs. casting value, can be unbound) but the Manifestation itself is not
+        a spell effect and does not expire at the end of the turn. Think of Manifestations as
+        long-lived conjurations that must be physically dealt with.
+      </div>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Rules Compendium — waaahgame{% endblock %}
+
+{% block content %}
+<section class="rules-hub-section">
+  <div class="container">
+    <div class="rules-hub-header">
+      <p class="eyebrow">The Great Archive</p>
+      <h1 class="section-title">Rules Compendium</h1>
+      <p class="rules-hub-sub">
+        A concise compendium of current rules and errata, drawn from official publications and
+        battlescrolls. All sections reflect the active ruleset used for competitive play.
+      </p>
+    </div>
+
+    <div class="rules-system-grid">
+
+      <!-- Age of Sigmar -->
+      <div class="rules-system-card">
+        <div class="rules-system-header">
+          <h2 class="rules-system-name">Age of Sigmar</h2>
+          <span class="rules-system-edition">4th Edition (Skaventide 2024)</span>
+          <span class="rules-system-ruleset">GHB 2025-26 &middot; April 2026 Battlescroll</span>
+        </div>
+        <ul class="rules-section-list">
+          <li>
+            <a href="{{ url_for('rules.aos_overview') }}" class="rules-section-link">
+              <span class="rules-section-icon">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                  <path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>
+                <span class="rules-section-title">Overview</span>
+                <span class="rules-section-desc">Core concepts, victory conditions, and edition summary</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('rules.aos_turn') }}" class="rules-section-link">
+              <span class="rules-section-icon">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 10h14M13 6l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>
+                <span class="rules-section-title">Turn Structure</span>
+                <span class="rules-section-desc">Battle rounds, phases, alternating activations, and Command Points</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('rules.aos_abilities') }}" class="rules-section-link">
+              <span class="rules-section-icon">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>
+                <span class="rules-section-title">Abilities &amp; Keywords</span>
+                <span class="rules-section-desc">Ward saves, Rend, Mortal Wounds, Manifestations, ability types</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('rules.aos_composition') }}" class="rules-section-link">
+              <span class="rules-section-icon">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.4"/>
+                  <rect x="11" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.4"/>
+                  <rect x="3" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.4"/>
+                  <rect x="11" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.4"/>
+                </svg>
+              </span>
+              <span>
+                <span class="rules-section-title">Army Composition</span>
+                <span class="rules-section-desc">Regiments, Auxiliaries, Battlepack points limits, Cumulative Surcharge</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Warhammer 40,000 — future -->
+      <div class="rules-system-card rules-system-card--stub">
+        <div class="rules-system-header">
+          <h2 class="rules-system-name">Warhammer 40,000</h2>
+          <span class="rules-system-edition">10th Edition</span>
+          <span class="rules-system-ruleset">Coming in Phase 5</span>
+        </div>
+        <p class="rules-stub-notice">
+          The stars are not yet aligned for the 41st Millennium. Content for Warhammer 40,000
+          10th Edition is planned for a future phase of this chronicle.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

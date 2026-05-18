@@ -32,6 +32,8 @@
 
       <ul class="nav-links">
         <li><a href="{{ url_for('main.index') }}">HOME</a></li>
+        <li><a href="{{ url_for('rules.index') }}">RULES</a></li>
+        <li><a href="{{ url_for('factions.index') }}">FACTIONS</a></li>
         <li><a href="#" class="disabled">ARMIES</a></li>
         <li><a href="#" class="disabled">MATCHES</a></li>
         {% if current_user.is_authenticated %}
@@ -64,7 +66,7 @@
   <footer class="site-footer">
     <div class="container">
       <p class="footer-quote">"Glory to those who march under their own banner."</p>
-      <p class="footer-meta">waaahgame &middot; Phase 0 &middot; 2026</p>
+      <p class="footer-meta">waaahgame &middot; Phase 2 &middot; 2026</p>
     </div>
   </footer>
 

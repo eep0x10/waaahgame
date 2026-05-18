@@ -1,0 +1,15 @@
+{% set initials = faction_code[:2].upper() if faction_code else 'WH' %}
+<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="shield-placeholder-svg">
+  <!-- Shield outline -->
+  <path d="M10 10 L90 10 L90 75 Q90 105 50 115 Q10 105 10 75 Z"
+        fill="#fbf3e3" stroke="#b8935a" stroke-width="2.5"/>
+  <!-- Inner border -->
+  <path d="M17 17 L83 17 L83 73 Q83 100 50 109 Q17 100 17 73 Z"
+        fill="none" stroke="rgba(184,147,90,0.4)" stroke-width="1.2"/>
+  <!-- Initials -->
+  <text x="50" y="74" text-anchor="middle" dominant-baseline="middle"
+        font-family="Cinzel, serif" font-size="28" font-weight="600"
+        fill="#b8935a" letter-spacing="4">{{ initials }}</text>
+  <!-- Small decorative diamond -->
+  <polygon points="50,20 55,26 50,32 45,26" fill="#b8935a" opacity="0.6"/>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "stats": {},
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDSCORE,ATTACK,FIGHT",
+    "KEYWORDS",
+    "CORE,ATTACK,FIGHT",
+    "INFANTRY,CHAMPION,WARD(6+)",
+    "CHAOS,SKAVEN,ESHIN",
+    "KEYWORDSCORE,MOVE,CHARGE",
+    "CORE,MOVE,CHARGE",
+    "KEYWORDSCORE",
+    "ATTACK",
+    "FIGHT",
+    "MOVE",
+    "CHARGE"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Skaven– Night Runners",
+    "•Enforcers of the Tithe",
+    "•Diseased Revellers"
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/skaven/Night-Runners"
+}

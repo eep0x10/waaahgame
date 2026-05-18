@@ -1,0 +1,22 @@
+{
+  "stats": {
+    "save": "rolls"
+  },
+  "weapons": [],
+  "abilities": [],
+  "keywords": [
+    "KEYWORDSRAMPAGE",
+    "KEYWORDS",
+    "RAMPAGE",
+    "HERO,MONSTER,WIZARD(1),WARD(5+)",
+    "CHAOS,SKAVEN,DAEMON,VERMINUS"
+  ],
+  "companions": [
+    "© Vyacheslav Maltsev 2013-2026",
+    "Skaven– Verminlord Warbringer",
+    "•Enforcers of the Tithe",
+    "•Diseased Revellers",
+    "KEYWORDSHERO,MONSTER,WIZARD(1),WARD(5+)CHAOS,SKAVEN,DAEMON,VERMINUS"
+  ],
+  "wahapedia_url": "https://wahapedia.ru/aos4/factions/skaven/Verminlord-Warbringer"
+}

@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% block title %}Turn Structure — AoS 4ed Rules{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">On this page</p>
+      <ul>
+        <li><a href="#battle-round">The Battle Round</a></li>
+        <li><a href="#priority">Priority Roll</a></li>
+        <li><a href="#double-turn">Double Turn</a></li>
+        <li><a href="#phases">Player Turn Phases</a></li>
+        <li><a href="#start">Start of Turn</a></li>
+        <li><a href="#hero">Hero Phase</a></li>
+        <li><a href="#movement">Movement Phase</a></li>
+        <li><a href="#shooting">Shooting Phase</a></li>
+        <li><a href="#charge">Charge Phase</a></li>
+        <li><a href="#combat">Combat Phase</a></li>
+        <li><a href="#end">End of Turn</a></li>
+        <li><a href="#command-points">Command Points</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Other Sections</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">AoS Overview</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Abilities &amp; Keywords</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Army Composition</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Rules Compendium</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Turn Structure
+      </p>
+      <h1 class="section-title" id="battle-round">Turn Structure</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; April 2026 Battlescroll Active</p>
+
+      <p>
+        A standard game of Age of Sigmar lasts five <strong>Battle Rounds</strong>. Each Battle Round
+        consists of two <strong>Player Turns</strong> — one for each player — preceded by a Priority Roll
+        that determines who goes first that round.
+      </p>
+
+      <!-- Priority Roll -->
+      <h2 id="priority">The Priority Roll</h2>
+      <p>
+        At the start of each Battle Round, both players simultaneously roll a single D6. The player
+        who rolls higher wins the Priority Roll and may choose whether they or their opponent takes
+        the first Player Turn this round. If the dice are tied, the player who <em>did not</em> have
+        priority in the previous round wins automatically; if it is the very first round, the player
+        who finished deploying their army first wins the tie.
+      </p>
+
+      <!-- Double Turn -->
+      <h2 id="double-turn">The Double Turn</h2>
+      <p>
+        The Priority Roll creates the possibility of a <strong>Double Turn</strong>: a player who
+        took the second Player Turn in round N may choose to take the first Player Turn in round N+1,
+        effectively getting two consecutive turns. Double Turns are one of the game's signature
+        strategic moments — the opportunity to move and attack twice in a row can be devastating, but
+        surrendering the Priority Roll in the next round is a genuine risk. Experienced players
+        often deliberately pass the priority to bait their opponent into a bad double turn.
+      </p>
+
+      <div class="rules-callout">
+        <strong>Strategic note.</strong> Whether to take the Double Turn depends on board state.
+        If your army needs to move into charge range, or if key objectives are contested, the
+        extra turn may be worth it. If your opponent has a shooting-heavy list, giving them the
+        Double Turn may be catastrophic.
+      </div>
+
+      <!-- Player Turn Phases -->
+      <h2 id="phases">Player Turn Phases</h2>
+      <p>
+        Each Player Turn proceeds through the following phases in strict order. The player whose
+        turn it is is called the <strong>Active Player</strong>; their opponent is the
+        <strong>Passive Player</strong>. Both players may respond to some events in each phase
+        via Reaction abilities.
+      </p>
+
+      <!-- Start of Turn -->
+      <h3 id="start">Start of Turn</h3>
+      <p>
+        At the start of their turn, the active player resolves any abilities or effects that
+        trigger at this timing. Persistent effects — such as ongoing spells or prayer blessings
+        from previous turns — are also evaluated here. Some warscroll abilities, enhancements,
+        and battleplan effects are also triggered at the start of the turn.
+      </p>
+
+      <!-- Hero Phase -->
+      <h3 id="hero">Hero Phase</h3>
+      <p>
+        The Hero Phase is the turn's dedicated window for magical and religious power. During
+        this phase the active player may:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Cast Spells</strong> — Wizards may attempt to cast spells from their warscroll
+          and any Spell Lores they know. Each spell has a casting value; the Wizard rolls 2D6
+          and must meet or beat it. A natural double-1 or double-6 triggers a Miscast. The
+          passive player's Wizards may attempt to <strong>unbind</strong> any successful cast
+          (rolling 2D6 and beating the casting roll). Each Wizard may attempt to cast each
+          known spell once per Hero Phase, and each individual spell can only be successfully
+          cast once per Hero Phase across the entire game.
+        </li>
+        <li>
+          <strong>Chant Prayers</strong> — Priests may chant prayers from their warscroll
+          or Prayer Lores. Unlike spells, prayers are not unbound; they succeed on a D6 roll
+          meeting or beating the chanting value. Prayers that have already been answered remain
+          in effect and cannot be chanted again while active.
+        </li>
+        <li>
+          <strong>Use Heroic Abilities</strong> — Heroes may activate a Heroic Ability during
+          this phase. Heroic Abilities are powerful once-per-game (or per-round) effects that
+          require spending Command Points. The active player may use one Heroic Ability per Hero
+          per Hero Phase.
+        </li>
+        <li>
+          <strong>Manifest Manifestations</strong> — Wizards and Priests may also attempt to
+          summon Manifestations (see the Abilities section for details).
+        </li>
+      </ul>
+
+      <!-- Movement Phase -->
+      <h3 id="movement">Movement Phase</h3>
+      <p>
+        During the Movement Phase, the active player may move each of their units in one of
+        three ways:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Normal Move</strong> — The unit moves up to its Move characteristic in inches.
+          A unit that makes a Normal Move may not move within 3&quot; of an enemy unit unless it
+          was already within 3&quot; of that enemy at the start of the phase.
+        </li>
+        <li>
+          <strong>Run</strong> — The unit rolls a D6 and may move up to its Move value plus the
+          roll result in inches. A unit that Runs cannot shoot or charge later in the same turn.
+        </li>
+        <li>
+          <strong>Retreat</strong> — A unit within 3&quot; of an enemy may Retreat: it moves up
+          to its Move value in any direction, including through enemy units and models. A unit that
+          Retreats cannot shoot or charge later in the same turn. Retreating does not trigger
+          free strikes unless a specific ability says so.
+        </li>
+      </ul>
+      <p>
+        Units may not end their move overlapping other models. Terrain pieces affect movement
+        according to their terrain rules; most terrain is passable but slows movement or requires
+        a roll.
+      </p>
+
+      <!-- Shooting Phase -->
+      <h3 id="shooting">Shooting Phase</h3>
+      <p>
+        During the Shooting Phase, each eligible unit may shoot with its ranged weapons. A unit
+        may shoot if it did not Run or Retreat this turn and is not within 3&quot; of an enemy
+        unit (unless it has an ability that permits shooting in combat). Each ranged weapon attack
+        follows the attack sequence: roll to Hit, roll to Wound, opponent rolls to Save, apply
+        Damage.
+      </p>
+
+      <!-- Charge Phase -->
+      <h3 id="charge">Charge Phase</h3>
+      <p>
+        During the Charge Phase, any eligible unit may attempt to charge an enemy unit within
+        12&quot;. The charging player rolls 2D6 — if the result meets or exceeds the distance to
+        the nearest enemy model in the target unit, the charge succeeds and the unit moves up to
+        the rolled distance, ending within 0.5&quot; of the target. A failed charge means the
+        unit does not move. Units that Ran or Retreated this turn cannot charge.
+      </p>
+      <p>
+        A unit that successfully charges may use a <strong>Charge Reaction</strong> ability if it
+        has one. The charged unit (or another nearby unit) may also use a Reaction to this event.
+      </p>
+
+      <!-- Combat Phase -->
+      <h3 id="combat">Combat Phase</h3>
+      <p>
+        The Combat Phase uses <strong>alternating activations</strong>: the active player picks
+        a unit to fight, resolves all its attacks, then the passive player picks a unit to fight,
+        and so on until all eligible units have fought. The active player always chooses first.
+      </p>
+      <p>
+        To be eligible to fight, a unit must either:
+      </p>
+      <ul class="rules-list">
+        <li>Be within 3&quot; of an enemy unit, <em>or</em></li>
+        <li>Have made a successful charge this turn.</li>
+      </ul>
+      <p>
+        When a unit fights, it first <strong>piles in</strong> up to 3&quot; toward the nearest
+        enemy model, then each model in the unit attacks with all its melee weapons against enemy
+        units within reach. The attack sequence is the same as for shooting: Hit, Wound, Save,
+        Damage. Once all of a unit's attacks are resolved, control passes back to the opponent to
+        activate a unit.
+      </p>
+
+      <div class="rules-callout">
+        <strong>Pile-in clarification.</strong> Pile-in moves must end at least as close to the
+        nearest enemy as before the move. Models may pile in even if they are not in base contact,
+        as long as they end within 3&quot; of an enemy. This allows units to wrap around or
+        consolidate after a losing fight.
+      </div>
+
+      <!-- End of Turn -->
+      <h3 id="end">End of Turn</h3>
+      <p>
+        At the end of the active player's turn, any effects that last &ldquo;until the end of your
+        turn&rdquo; expire. Objectives are checked for control if the battleplan specifies it.
+        Some abilities trigger here. After the End of Turn, the other player begins their Player
+        Turn (following the same phase sequence). Once both players have completed their Player
+        Turn, the Battle Round ends and a new one begins with a fresh Priority Roll.
+      </p>
+
+      <!-- Command Points -->
+      <h2 id="command-points">Command Points</h2>
+      <p>
+        Each player receives <strong>4 Command Points at the start of every Battle Round</strong>.
+        Command Points do not carry over between rounds — any unspent points are lost. They are
+        spent to activate Command Abilities, which appear on warscrolls, in rules supplements,
+        and on army enhancements. Common uses include:
+      </p>
+      <ul class="rules-list">
+        <li><strong>All-Out Attack</strong> — Re-roll Hit rolls of 1 for a unit (1 CP).</li>
+        <li><strong>All-Out Defence</strong> — Re-roll Save rolls of 1 for a unit (1 CP).</li>
+        <li><strong>Inspiring Presence</strong> — Ignore Battleshock test for a unit (1 CP).</li>
+        <li>Various warscroll-specific Command Abilities.</li>
+      </ul>
+      <p>
+        Because Command Points reset each round, efficient spending within a single round is
+        critical. Players who control fewer Auxiliary units than their opponent gain a bonus
+        Command Point per round (see Army Composition for details).
+      </p>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

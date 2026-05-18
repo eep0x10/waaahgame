@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}{{ unit.name }} — Warscroll{% endblock %}
+
+{% block content %}
+<section class="warscroll-section">
+  <div class="container">
+    <p class="eyebrow">
+      <a href="{{ url_for('factions.index') }}">Factions</a> &rsaquo;
+      <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}">{{ unit.faction.name }}</a> &rsaquo;
+      {{ unit.name }}
+    </p>
+
+    <div class="warscroll-layout">
+
+      <!-- Left: image -->
+      <div class="warscroll-image-col">
+        <div class="unit-image-frame warscroll-image-frame">
+          {% if unit.image_path %}
+            <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+                 alt="{{ unit.name }}"
+                 class="warscroll-unit-img">
+          {% else %}
+            <div class="warscroll-placeholder">
+              {% set faction_code = unit.faction.code %}
+              {% include '_partials/_shield_placeholder.html' %}
+            </div>
+          {% endif %}
+        </div>
+        {% if unit.wahapedia_url %}
+          <p class="warscroll-source">
+            <a href="{{ unit.wahapedia_url }}" target="_blank" rel="noopener noreferrer" class="warscroll-source-link">
+              View on Wahapedia &rarr;
+            </a>
+          </p>
+        {% endif %}
+      </div>
+
+      <!-- Right: data -->
+      <div class="warscroll-data-col">
+
+        <!-- Name + meta -->
+        <h1 class="warscroll-name">{{ unit.name }}</h1>
+        <div class="warscroll-badges">
+          {% if unit.unit_role %}
+            <span class="role-tag">{{ unit.unit_role }}</span>
+          {% endif %}
+          {% if unit.faction.grand_alliance %}
+            <span class="alliance-badge alliance-{{ unit.faction.grand_alliance | lower }}">{{ unit.faction.grand_alliance }}</span>
+          {% endif %}
+          <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+          {% if unit.model_count > 1 %}
+            <span class="role-tag">{{ unit.model_count }} models</span>
+          {% endif %}
+        </div>
+
+        <!-- Keywords -->
+        {% if unit.keywords_json %}
+          <div class="warscroll-keywords">
+            {% for kw in unit.keywords_json %}
+              <span class="keyword-pill">{{ kw }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Stats -->
+        {% if unit.stats_json %}
+          <div class="warscroll-block">
+            <h2 class="warscroll-block-title">Characteristics</h2>
+            <table class="warscroll-stats">
+              <thead>
+                <tr>
+                  {% for key in unit.stats_json %}
+                    <th>{{ key | title }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  {% for key, val in unit.stats_json.items() %}
+                    <td>{{ val }}</td>
+                  {% endfor %}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        {% endif %}
+
+        <!-- Weapons -->
+        {% if unit.weapons_json %}
+          <div class="warscroll-block">
+            <h2 class="warscroll-block-title">Weapons</h2>
+            <table class="weapons-table">
+              <thead>
+                <tr>
+                  {% for key in unit.weapons_json[0] %}
+                    <th>{{ key }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for weapon in unit.weapons_json %}
+                  <tr>
+                    {% for key, val in weapon.items() %}
+                      <td>{{ val }}</td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% endif %}
+
+        <!-- Abilities -->
+        {% if unit.abilities_json %}
+          <div class="warscroll-block">
+            <h2 class="warscroll-block-title">Abilities</h2>
+            {% for ability in unit.abilities_json %}
+              <div class="ability-card">
+                <p class="ability-name">{{ ability.name }}</p>
+                {% if ability.description %}
+                  <p class="ability-desc">{{ ability.description }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Companions (Heroes only) -->
+        {% if unit.can_be_general and unit.companions_json %}
+          <div class="warscroll-block">
+            <h2 class="warscroll-block-title">Companion Units</h2>
+            <ul class="companions-list">
+              {% for companion in unit.companions_json %}
+                <li>{{ companion }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <!-- Properties -->
+        <div class="warscroll-block">
+          <h2 class="warscroll-block-title">Properties</h2>
+          <dl class="warscroll-props">
+            {% if unit.base_size_mm %}
+              <div class="warscroll-prop-row">
+                <dt>Base Size</dt><dd>{{ unit.base_size_mm }}</dd>
+              </div>
+            {% endif %}
+            <div class="warscroll-prop-row">
+              <dt>Can Be General</dt>
+              <dd>{% if unit.can_be_general %}Yes{% else %}No{% endif %}</dd>
+            </div>
+            <div class="warscroll-prop-row">
+              <dt>Can Be Reinforced</dt>
+              <dd>{% if unit.can_be_reinforced %}Yes{% else %}No{% endif %}</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="warscroll-back">
+      <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}" class="btn-secondary">
+        &larr; Return to {{ unit.faction.name }} Roster
+      </a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
