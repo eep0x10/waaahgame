@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}My Armies — waaahgame{% endblock %}
+
+{% block content %}
+<section class="armies-section">
+  <div class="container">
+
+    <div class="armies-header">
+      <p class="eyebrow">War Host</p>
+      <h1 class="section-title">My Armies</h1>
+    </div>
+
+    <div class="armies-toolbar">
+      <a href="{{ url_for('armies.new') }}" class="btn-primary">+ Raise New Army</a>
+    </div>
+
+    {% if armies %}
+      <div class="army-list">
+        {% for army in armies %}
+          {% set result = results[army.id] %}
+          <div class="army-row">
+            <div class="army-row-main">
+              <div class="army-row-name">
+                <a href="{{ url_for('armies.show', army_id=army.id) }}" class="army-name-link">{{ army.name }}</a>
+              </div>
+              <div class="army-row-meta">
+                <span class="role-tag">{{ army.faction.name }}</span>
+                <span class="role-tag">{{ army.battlepack | capitalize }}</span>
+                <span class="pts-badge">{{ result.points.total }}<span class="pts-label">/{{ result.points.limit }}pts</span></span>
+                {% if result.is_legal %}
+                  <span class="legal-pill legal-pill--legal">LEGAL</span>
+                {% else %}
+                  <span class="legal-pill legal-pill--illegal">ILLEGAL</span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="army-row-actions">
+              <a href="{{ url_for('armies.show', army_id=army.id) }}" class="btn-secondary btn-sm">Edit</a>
+              <form method="POST" action="{{ url_for('armies.delete', army_id=army.id) }}"
+                    onsubmit="return confirm('Delete army {{ army.name | replace("'", "") }}?');"
+                    style="display:inline;">
+                <button type="submit" class="btn-danger btn-sm">Delete</button>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="armies-empty">
+        <p><em>No armies yet. Raise your first war-host above.</em></p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

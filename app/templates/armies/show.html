@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}{{ army.name }} — Army Builder{% endblock %}
+
+{% block content %}
+<section class="armies-builder-section">
+  <div class="container">
+
+    <div class="builder-header">
+      <div class="builder-header-left">
+        <p class="eyebrow"><a href="{{ url_for('armies.index') }}">My Armies</a> &rsaquo; {{ army.faction.name }}</p>
+        <h1 class="section-title">{{ army.name }}</h1>
+        <div class="builder-header-meta">
+          <span class="role-tag">{{ army.faction.name }}</span>
+          <span class="role-tag">{{ army.battlepack | capitalize }}</span>
+          <span class="pts-badge">{{ result.points.total }}<span class="pts-label">/{{ result.points.limit }}pts</span></span>
+        </div>
+      </div>
+      <div class="builder-header-actions">
+        {% if army.public_token %}
+          <a href="{{ url_for('armies.public_view', token=army.public_token) }}" class="btn-secondary btn-sm" target="_blank">View Public</a>
+          <form method="POST" action="{{ url_for('armies.unpublish', army_id=army.id) }}" style="display:inline;">
+            <button type="submit" class="btn-secondary btn-sm">Unpublish</button>
+          </form>
+        {% else %}
+          <form method="POST" action="{{ url_for('armies.publish', army_id=army.id) }}" style="display:inline;">
+            <button type="submit" class="btn-secondary btn-sm">Publish</button>
+          </form>
+        {% endif %}
+
+        <button class="btn-secondary btn-sm"
+                onclick="document.getElementById('edit-modal').style.display='flex'">Edit</button>
+
+        <button class="btn-danger btn-sm"
+                hx-get="{{ url_for('armies.show', army_id=army.id) }}"
+                onclick="document.getElementById('delete-modal-container').innerHTML=''; loadDeleteModal()">Delete</button>
+      </div>
+    </div>
+
+    <div class="builder" id="builder">
+
+      <div class="builder-rail" id="roster-rail">
+        {% include 'armies/_roster_pool.html' %}
+      </div>
+
+      <div class="builder-center">
+        <div id="regiments-aux-container">
+          {% set battlepacks_data = battlepacks %}
+          {% for regiment in army.regiments %}
+            {% include 'armies/_regiment.html' %}
+          {% endfor %}
+
+          {% set bp_data = battlepacks[army.battlepack] %}
+          {% if army.regiments | length < bp_data.regiments[1] %}
+            <form method="POST"
+                  action="{{ url_for('armies.add_regiment', army_id=army.id) }}"
+                  hx-post="{{ url_for('armies.add_regiment', army_id=army.id) }}"
+                  hx-target="#regiments-aux-container"
+                  hx-swap="innerHTML">
+              <button type="submit" class="btn-secondary add-regiment-btn">+ Add Regiment</button>
+            </form>
+          {% endif %}
+
+          {% include 'armies/_auxiliary.html' %}
+        </div>
+      </div>
+
+      <div class="builder-rail builder-rail--right">
+        {% include 'armies/_summary.html' %}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div id="delete-modal-container"></div>
+
+<div class="modal-overlay" id="edit-modal" style="display:none;">
+  <div class="modal-box">
+    <h2 class="modal-title">Edit Army</h2>
+    <form method="POST" action="{{ url_for('armies.edit', army_id=army.id) }}">
+      <div class="form-field">
+        <label for="edit-name">Name</label>
+        <input type="text" id="edit-name" name="name" value="{{ army.name }}" maxlength="96" required>
+      </div>
+      <div class="form-field">
+        <label for="edit-notes">Notes</label>
+        <textarea id="edit-notes" name="notes" rows="4" style="width:100%;font-family:var(--font-body);font-size:1rem;border:1px solid var(--border-gold);padding:0.6rem;background:var(--bg-parchment-card);">{{ army.notes or '' }}</textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Save</button>
+        <button type="button" class="btn-secondary" onclick="document.getElementById('edit-modal').style.display='none'">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function loadDeleteModal() {
+  var cont = document.getElementById('delete-modal-container');
+  cont.innerHTML = `{% include 'armies/_delete_modal.html' %}`;
+}
+</script>
+{% endblock %}

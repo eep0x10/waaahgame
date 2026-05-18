@@ -1,0 +1,37 @@
+{# Auxiliary pool card. Variables: army (Army), aux_units (list[ArmyUnit]), result (ValidationResult) #}
+<div class="aux-card" id="aux-card">
+
+  <div class="aux-card-header">
+    <span class="aux-label">AUXILIARY</span>
+    <span class="aux-count-badge">{{ aux_units | length }}</span>
+  </div>
+
+  <div class="regiment-add-form">
+    <form method="POST"
+          action="{{ url_for('armies.add_unit', army_id=army.id) }}"
+          hx-post="{{ url_for('armies.add_unit', army_id=army.id) }}"
+          hx-target="#aux-card"
+          hx-swap="outerHTML"
+          class="au-add-form">
+      <input type="hidden" name="target" value="aux">
+      <select name="unit_slug" class="au-add-select" required>
+        <option value="">Add unit to auxiliary...</option>
+        {% for unit in army.faction.units | sort(attribute='name') %}
+          <option value="{{ unit.slug }}">{{ unit.name }} ({{ unit.points_cost }}pts)</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn-secondary btn-sm">Add</button>
+    </form>
+  </div>
+
+  {% if aux_units %}
+    <div class="aux-unit-list">
+      {% for au in aux_units %}
+        {% include 'armies/_army_unit_row.html' %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="aux-empty"><em>No auxiliary units. Add standalone heroes or support units here.</em></div>
+  {% endif %}
+
+</div>

@@ -1,0 +1,55 @@
+{# Summary panel — id="army-summary" for OOB HTMX swaps #}
+<div class="summary-panel" id="army-summary" hx-swap-oob="true">
+
+  {% set pts = result.points %}
+  {% set pct = [(pts.total * 100 // pts.limit), 100] | min %}
+  {% set over = pts.over_by > 0 %}
+
+  <div class="legal-banner {% if result.is_legal %}legal-banner--legal{% else %}legal-banner--illegal{% endif %}">
+    {% if result.is_legal %}LEGAL{% else %}ILLEGAL{% endif %}
+  </div>
+
+  <div class="pts-gauge-wrap">
+    <svg class="progress-ring" viewBox="0 0 80 80" aria-label="{{ pts.total }} of {{ pts.limit }} pts">
+      <circle class="progress-ring-bg" cx="40" cy="40" r="34" />
+      <circle class="progress-ring-fill {% if over %}progress-ring-fill--over{% endif %}"
+              cx="40" cy="40" r="34"
+              stroke-dasharray="{{ (pct * 2.136) | round(1) }} 213.6"
+              transform="rotate(-90 40 40)" />
+      <text class="ring-label-pts" x="40" y="37" text-anchor="middle">{{ pts.total }}</text>
+      <text class="ring-label-limit" x="40" y="50" text-anchor="middle">/ {{ pts.limit }}</text>
+    </svg>
+    <div class="pts-gauge-meta">
+      {% if over %}
+        <span class="pts-over-label">+{{ pts.over_by }} over</span>
+      {% else %}
+        <span class="pts-buffer-label">{{ pts.limit - pts.total }} buffer</span>
+      {% endif %}
+      {% if pts.aux_surcharge > 0 %}
+        <span class="pts-surcharge-label">+{{ pts.aux_surcharge }} surcharge</span>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if result.issues %}
+    <div class="issues-list">
+      <div class="issues-list-title">Validation</div>
+      {% for issue in result.issues %}
+        <div class="issue issue-{{ issue.level }}">
+          <span class="issue-bullet">
+            {% if issue.level == 'error' %}&#10007;{% elif issue.level == 'warning' %}&#9888;{% else %}&#8505;{% endif %}
+          </span>
+          <span class="issue-msg">{{ issue.message }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if result.aux_command_bonus %}
+    <div class="aux-cp-bonus">
+      <span class="issue-bullet">&#8505;</span>
+      No auxiliaries — you may gain +1 CP if opponent fields any.
+    </div>
+  {% endif %}
+
+</div>

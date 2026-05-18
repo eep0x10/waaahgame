@@ -1,0 +1,64 @@
+{# Single regiment card. Variables: regiment (Regiment), army (Army), result (ValidationResult) #}
+{% set reg_numerals = ['I','II','III','IV','V'] %}
+{% set reg_num = reg_numerals[regiment.position - 1] if regiment.position <= 5 else regiment.position %}
+{% set has_leader = regiment.leader is not none %}
+{% set companions = regiment.army_units | selectattr('is_leader', 'equalto', false) | list %}
+
+<div class="regiment-card {% if not has_leader %}leader-missing{% endif %}"
+     id="regiment-card-{{ regiment.id }}">
+
+  <div class="regiment-card-header">
+    <span class="regiment-label">REGIMENT {{ reg_num }}</span>
+    <div class="regiment-card-actions">
+      <form method="POST"
+            action="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
+            hx-post="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
+            hx-target="#regiments-aux-container"
+            hx-swap="innerHTML"
+            onsubmit="return confirm('Remove Regiment {{ reg_num }}? Units become auxiliary.');">
+        <button type="submit" class="btn-danger btn-sm">Remove</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="regiment-add-form">
+    <form method="POST"
+          action="{{ url_for('armies.add_unit', army_id=army.id) }}"
+          hx-post="{{ url_for('armies.add_unit', army_id=army.id) }}"
+          hx-target="#regiment-card-{{ regiment.id }}"
+          hx-swap="outerHTML"
+          class="au-add-form">
+      <input type="hidden" name="target" value="reg-{{ regiment.id }}">
+      <select name="unit_slug" class="au-add-select" required>
+        <option value="">Add unit to regiment...</option>
+        {% for unit in army.faction.units | sort(attribute='name') %}
+          <option value="{{ unit.slug }}">{{ unit.name }} ({{ unit.points_cost }}pts)</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn-secondary btn-sm">Add</button>
+    </form>
+  </div>
+
+  {% set leader_au = regiment.leader %}
+  {% if leader_au %}
+    <div class="leader-slot">
+      {% set au = leader_au %}
+      {% include 'armies/_army_unit_row.html' %}
+    </div>
+  {% else %}
+    <div class="leader-empty">
+      <em>No leader — add a Hero to this regiment.</em>
+    </div>
+  {% endif %}
+
+  {% if companions %}
+    <div class="companion-list">
+      {% for au in companions %}
+        {% include 'armies/_army_unit_row.html' %}
+      {% endfor %}
+    </div>
+  {% elif leader_au %}
+    <div class="companions-empty"><em>No companions yet. Add up to 3.</em></div>
+  {% endif %}
+
+</div>

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}{{ army.name }} — Public Army View{% endblock %}
+
+{% block content %}
+<section class="armies-builder-section">
+  <div class="container">
+
+    <div class="builder-header">
+      <div class="builder-header-left">
+        <p class="eyebrow">Public Army View</p>
+        <h1 class="section-title">{{ army.name }}</h1>
+        <div class="builder-header-meta">
+          <span class="role-tag">{{ army.faction.name }}</span>
+          <span class="role-tag">{{ army.battlepack | capitalize }}</span>
+          <span class="pts-badge">{{ result.points.total }}<span class="pts-label">/{{ result.points.limit }}pts</span></span>
+          {% if result.is_legal %}
+            <span class="legal-pill legal-pill--legal">LEGAL</span>
+          {% else %}
+            <span class="legal-pill legal-pill--illegal">ILLEGAL</span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="builder-header-actions">
+        <span class="pub-owner-label">By <strong>{{ army.user.name }}</strong></span>
+      </div>
+    </div>
+
+    <div class="builder builder--readonly" id="builder">
+
+      <div class="builder-center builder-center--full">
+        {% for regiment in army.regiments %}
+          {% set reg_numerals = ['I','II','III','IV','V'] %}
+          {% set reg_num = reg_numerals[regiment.position - 1] if regiment.position <= 5 else regiment.position %}
+          {% set has_leader = regiment.leader is not none %}
+          {% set companions = regiment.army_units | selectattr('is_leader', 'equalto', false) | list %}
+
+          <div class="regiment-card {% if not has_leader %}leader-missing{% endif %}">
+            <div class="regiment-card-header">
+              <span class="regiment-label">REGIMENT {{ reg_num }}</span>
+            </div>
+
+            {% set leader_au = regiment.leader %}
+            {% if leader_au %}
+              <div class="leader-slot">
+                <div class="au-row au-row--readonly">
+                  <span class="au-row-name">
+                    {% if leader_au.is_general %}<span class="au-general-star">&#9733;</span>{% endif %}
+                    <span class="au-leader-crown">&#9812;</span>
+                    {{ leader_au.unit.name }}
+                  </span>
+                  <span class="pts-badge">{{ leader_au.points }}<span class="pts-label">pts</span></span>
+                  {% if leader_au.is_reinforced %}<span class="reinforced-tag">Reinforced</span>{% endif %}
+                </div>
+              </div>
+            {% endif %}
+
+            {% for au in companions %}
+              <div class="au-row au-row--readonly">
+                <span class="au-row-name">{{ au.unit.name }}</span>
+                <span class="pts-badge">{{ au.points }}<span class="pts-label">pts</span></span>
+                {% if au.is_reinforced %}<span class="reinforced-tag">Reinforced</span>{% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+        {% if aux_units %}
+          <div class="aux-card">
+            <div class="aux-card-header"><span class="aux-label">AUXILIARY</span></div>
+            {% for au in aux_units %}
+              <div class="au-row au-row--readonly">
+                <span class="au-row-name">{{ au.unit.name }}</span>
+                <span class="pts-badge">{{ au.points }}<span class="pts-label">pts</span></span>
+                {% if au.is_reinforced %}<span class="reinforced-tag">Reinforced</span>{% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="builder-rail builder-rail--right">
+        {% include 'armies/_summary.html' %}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% endblock %}

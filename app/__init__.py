@@ -50,6 +50,9 @@ def create_app(config_name='dev'):
     from .routes.units import units_bp
     app.register_blueprint(units_bp)
 
+    from .routes.armies import armies_bp
+    app.register_blueprint(armies_bp)
+
     # Register sockets
     from .sockets import register_sockets
     register_sockets(socketio)

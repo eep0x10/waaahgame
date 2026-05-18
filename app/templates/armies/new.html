@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Raise New Army — waaahgame{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+  <div class="card-form" style="max-width:560px;">
+
+    <div class="card-form-header">
+      <p class="eyebrow" style="justify-content:center;">War Host</p>
+      <h1 class="section-title">Raise New Army</h1>
+      <p class="card-form-sub">Choose your faction and battlepack format.</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('armies.new_post') }}">
+
+      <div class="form-field">
+        <label for="name">Army Name</label>
+        <input type="text" id="name" name="name" placeholder="e.g. The Gnaw Eternal" maxlength="96" required>
+      </div>
+
+      <div class="form-field">
+        <label>Faction</label>
+        <div class="faction-radio-group">
+          {% for faction in factions %}
+            <label class="faction-radio-card">
+              <input type="radio" name="faction_id" value="{{ faction.id }}" required>
+              <span class="faction-radio-inner">
+                <span class="faction-radio-name">{{ faction.name }}</span>
+                {% if faction.grand_alliance %}
+                  <span class="alliance-badge alliance-{{ faction.grand_alliance | lower }}">{{ faction.grand_alliance }}</span>
+                {% endif %}
+              </span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Battlepack</label>
+        <div class="battlepack-radio-group">
+          {% for key, bp in battlepacks.items() %}
+            <label class="battlepack-radio-card">
+              <input type="radio" name="battlepack" value="{{ key }}"
+                     {% if key == 'vanguard' %}checked{% endif %}
+                     onchange="document.getElementById('pts-preview').textContent = '{{ bp.pts }} pts limit';">
+              <span class="battlepack-radio-inner">
+                <span class="battlepack-radio-name">{{ bp.label }}</span>
+                <span class="battlepack-radio-pts">{{ bp.pts }} pts</span>
+                <span class="battlepack-radio-detail">
+                  {{ bp.regiments[0] }}-{{ bp.regiments[1] }} regiments,
+                  {{ bp.auxiliary[0] }}-{{ bp.auxiliary[1] }} auxiliary
+                </span>
+              </span>
+            </label>
+          {% endfor %}
+        </div>
+        <p id="pts-preview" class="battlepack-pts-hint">1000 pts limit</p>
+      </div>
+
+      <button type="submit" class="btn-primary btn-full">Raise Army</button>
+    </form>
+
+  </div>
+</section>
+{% endblock %}

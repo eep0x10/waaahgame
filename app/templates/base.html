@@ -34,7 +34,7 @@
         <li><a href="{{ url_for('main.index') }}">HOME</a></li>
         <li><a href="{{ url_for('rules.index') }}">RULES</a></li>
         <li><a href="{{ url_for('factions.index') }}">FACTIONS</a></li>
-        <li><a href="#" class="disabled">ARMIES</a></li>
+        <li><a href="{{ url_for('armies.index') }}">ARMIES</a></li>
         <li><a href="#" class="disabled">MATCHES</a></li>
         {% if current_user.is_authenticated %}
           <li><a href="{{ url_for('friends.index') }}">FRIENDS</a></li>

@@ -1,0 +1,21 @@
+{# Full center column — regiments + auxiliary. Used as HTMX swap target. #}
+{# Variables: army (Army), result (ValidationResult) #}
+{% set aux_units = army.army_units | selectattr('regiment_id', 'none') | list %}
+
+{% for regiment in army.regiments %}
+  {% include 'armies/_regiment.html' %}
+{% endfor %}
+
+{% set bp = battlepacks[army.battlepack] if battlepacks is defined else {'regiments': (1,2)} %}
+{% set reg_max = bp.regiments[1] if bp else 2 %}
+{% if army.regiments | length < reg_max %}
+  <form method="POST"
+        action="{{ url_for('armies.add_regiment', army_id=army.id) }}"
+        hx-post="{{ url_for('armies.add_regiment', army_id=army.id) }}"
+        hx-target="#regiments-aux-container"
+        hx-swap="innerHTML">
+    <button type="submit" class="btn-secondary add-regiment-btn">+ Add Regiment</button>
+  </form>
+{% endif %}
+
+{% include 'armies/_auxiliary.html' %}

@@ -1,0 +1,91 @@
+{# Left rail roster pool. Variables: army (Army), units (list[Unit]) #}
+<div class="builder-rail" id="roster-pool">
+
+  <div class="roster-pool-header">
+    <span class="roster-pool-title">ROSTER POOL</span>
+    <span class="role-tag">{{ army.faction.name }}</span>
+  </div>
+
+  <div class="unit-filter-row" id="roster-filters">
+    <button class="filter-pill filter-pill--active" data-filter="all">All</button>
+    {% set roles = units | map(attribute='unit_role') | reject('none') | unique | list | sort %}
+    {% for role in roles %}
+      <button class="filter-pill" data-filter="{{ role | lower }}">{{ role }}</button>
+    {% endfor %}
+  </div>
+
+  <input type="text" class="roster-search" id="roster-search" placeholder="Search unit...">
+
+  <div class="roster-unit-list" id="roster-unit-list">
+    {% for unit in units %}
+      <div class="roster-unit-item" data-role="{{ unit.unit_role | lower if unit.unit_role else 'other' }}" data-name="{{ unit.name | lower }}">
+        <div class="roster-unit-thumb">
+          {% if unit.image_path %}
+            <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+                 alt="{{ unit.name }}" class="roster-thumb-img">
+          {% else %}
+            <div class="roster-thumb-placeholder">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="2" width="24" height="28" rx="2" stroke="#b8935a" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+        <div class="roster-unit-info">
+          <span class="roster-unit-name">{{ unit.name }}</span>
+          <span class="roster-unit-pts pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+          {% if unit.unit_role %}<span class="role-tag">{{ unit.unit_role }}</span>{% endif %}
+        </div>
+        <div class="roster-unit-add">
+          <form method="POST"
+                action="{{ url_for('armies.add_unit', army_id=army.id) }}"
+                hx-post="{{ url_for('armies.add_unit', army_id=army.id) }}"
+                hx-target="#regiments-aux-container"
+                hx-swap="innerHTML"
+                class="roster-add-form">
+            <input type="hidden" name="unit_slug" value="{{ unit.slug }}">
+            <select name="target" class="roster-add-select" required>
+              <option value="">Add to...</option>
+              {% for reg in army.regiments %}
+                <option value="reg-{{ reg.id }}">Reg {{ loop.index }}</option>
+              {% endfor %}
+              <option value="aux">Auxiliary</option>
+            </select>
+            <button type="submit" class="btn-secondary btn-sm">+</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var pills = document.querySelectorAll('#roster-filters .filter-pill');
+  var items = document.querySelectorAll('#roster-unit-list .roster-unit-item');
+  var search = document.getElementById('roster-search');
+
+  function applyFilters() {
+    var activeFilter = (document.querySelector('#roster-filters .filter-pill--active') || {dataset:{filter:'all'}}).dataset.filter;
+    var q = search ? search.value.toLowerCase() : '';
+    items.forEach(function(item) {
+      var roleOk = activeFilter === 'all' || item.dataset.role === activeFilter;
+      var nameOk = !q || item.dataset.name.indexOf(q) !== -1;
+      item.style.display = (roleOk && nameOk) ? '' : 'none';
+    });
+  }
+
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p) { p.classList.remove('filter-pill--active'); });
+      pill.classList.add('filter-pill--active');
+      applyFilters();
+    });
+  });
+
+  if (search) {
+    search.addEventListener('input', applyFilters);
+  }
+}());
+</script>

@@ -1,0 +1,97 @@
+{# Single army unit row. Variables: au (ArmyUnit), army (Army), result (ValidationResult) #}
+{% set unit = au.unit %}
+<div class="au-row" id="au-row-{{ au.id }}">
+  <div class="au-row-image">
+    {% if unit.image_path %}
+      <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+           alt="{{ unit.name }}" class="au-thumb">
+    {% else %}
+      <div class="au-thumb-placeholder">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="2" width="24" height="28" rx="2" stroke="#b8935a" stroke-width="1.5" fill="none"/>
+          <path d="M16 8 L20 16 H12 Z" stroke="#b8935a" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="au-row-info">
+    <span class="au-row-name">
+      {% if au.is_general %}<span class="au-general-star" title="General">&#9733;</span>{% endif %}
+      {% if au.is_leader %}<span class="au-leader-crown" title="Leader">&#9812;</span>{% endif %}
+      {{ unit.name }}
+    </span>
+    <span class="au-row-meta">
+      {% if unit.unit_role %}<span class="role-tag">{{ unit.unit_role }}</span>{% endif %}
+      <span class="pts-badge">{{ au.points }}<span class="pts-label">pts</span></span>
+      {% if au.is_reinforced %}<span class="reinforced-tag">Reinforced</span>{% endif %}
+    </span>
+  </div>
+
+  <div class="au-row-actions">
+    <details class="au-dropdown">
+      <summary class="au-dropdown-toggle">&#9660;</summary>
+      <div class="au-dropdown-menu">
+        {% if unit.can_be_reinforced %}
+          <form method="POST"
+                action="{{ url_for('armies.reinforce_unit', army_id=army.id, au_id=au.id) }}"
+                hx-post="{{ url_for('armies.reinforce_unit', army_id=army.id, au_id=au.id) }}"
+                hx-target="#au-row-{{ au.id }}"
+                hx-swap="outerHTML">
+            <button type="submit" class="au-action-btn">
+              {% if au.is_reinforced %}Remove Reinforce{% else %}Reinforce{% endif %}
+            </button>
+          </form>
+        {% endif %}
+
+        {% if au.regiment_id and not au.is_leader %}
+          <form method="POST"
+                action="{{ url_for('armies.promote_leader', army_id=army.id, au_id=au.id) }}"
+                hx-post="{{ url_for('armies.promote_leader', army_id=army.id, au_id=au.id) }}"
+                hx-target="#regiment-card-{{ au.regiment_id }}"
+                hx-swap="outerHTML">
+            <button type="submit" class="au-action-btn">Promote to Leader</button>
+          </form>
+        {% endif %}
+
+        {% if not au.is_general %}
+          <form method="POST"
+                action="{{ url_for('armies.set_general', army_id=army.id, au_id=au.id) }}"
+                hx-post="{{ url_for('armies.set_general', army_id=army.id, au_id=au.id) }}"
+                hx-target="#army-summary"
+                hx-swap="outerHTML">
+            <button type="submit" class="au-action-btn">Set as General</button>
+          </form>
+        {% endif %}
+
+        <form method="POST"
+              action="{{ url_for('armies.move_unit', army_id=army.id, au_id=au.id) }}"
+              hx-post="{{ url_for('armies.move_unit', army_id=army.id, au_id=au.id) }}"
+              hx-target="#regiments-aux-container"
+              hx-swap="innerHTML">
+          <label class="au-action-label">Move to:</label>
+          <select name="target" class="au-move-select" onchange="this.form.submit()">
+            <option value="">-- select --</option>
+            {% if au.regiment_id %}
+              <option value="aux">Auxiliary Pool</option>
+            {% endif %}
+            {% for reg in army.regiments %}
+              {% if reg.id != au.regiment_id %}
+                <option value="reg-{{ reg.id }}">Regiment {{ loop.index }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </form>
+
+        <form method="POST"
+              action="{{ url_for('armies.remove_unit', army_id=army.id, au_id=au.id) }}"
+              hx-post="{{ url_for('armies.remove_unit', army_id=army.id, au_id=au.id) }}"
+              hx-target="#regiments-aux-container"
+              hx-swap="innerHTML"
+              onsubmit="return confirm('Remove {{ unit.name }}?');">
+          <button type="submit" class="au-action-btn au-action-btn--danger">Remove</button>
+        </form>
+      </div>
+    </details>
+  </div>
+</div>
