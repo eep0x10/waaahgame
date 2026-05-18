@@ -25,9 +25,11 @@
         </div>
         <div style="display:flex;gap:0.5rem;">
           <form method="POST" action="{{ url_for('matches.accept', match_id=m.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button class="btn-primary btn-sm">Accept</button>
           </form>
           <form method="POST" action="{{ url_for('matches.decline', match_id=m.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button class="btn-danger btn-sm">Decline</button>
           </form>
         </div>

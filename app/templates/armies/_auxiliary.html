@@ -13,6 +13,7 @@
           hx-target="#aux-card"
           hx-swap="outerHTML"
           class="au-add-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="target" value="aux">
       <select name="unit_slug" class="au-add-select" required>
         <option value="">Add unit to auxiliary...</option>

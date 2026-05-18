@@ -1,0 +1,28 @@
+<div id="dice-panel" style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;margin-bottom:0.75rem;">
+  <div class="eyebrow" style="margin-bottom:0.5rem;">Dice Roller</div>
+  <form method="POST" action="{{ url_for('matches.roll', match_id=match.id) }}"
+        hx-post="{{ url_for('matches.roll', match_id=match.id) }}"
+        hx-target="#dice-panel"
+        hx-swap="outerHTML"
+        style="display:flex;gap:0.4rem;align-items:center;margin-bottom:0.5rem;">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="text" name="formula" value="2d6" maxlength="16"
+           placeholder="e.g. 2d6+1"
+           style="width:6rem;padding:0.3rem 0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:0.9rem;">
+    <button type="submit" class="btn-secondary btn-sm">Roll</button>
+  </form>
+  <div style="max-height:160px;overflow-y:auto;font-size:0.8rem;">
+    {% for r in recent_rolls %}
+    <div style="padding:0.2rem 0;border-bottom:1px solid rgba(184,147,90,0.1);display:flex;justify-content:space-between;">
+      <span>
+        <span style="color:var(--gold);font-weight:600;">{{ r.actor.name }}</span>
+        rolled <strong>{{ r.formula }}</strong>
+        &rarr; [{{ r.get_results() | join(', ') }}] = <strong>{{ r.total }}</strong>
+      </span>
+      <span style="opacity:0.5;font-size:0.75rem;">{{ r.created_at.strftime('%H:%M') }}</span>
+    </div>
+    {% else %}
+    <p style="color:var(--text-secondary);font-size:0.8rem;margin:0;">No rolls yet.</p>
+    {% endfor %}
+  </div>
+</div>

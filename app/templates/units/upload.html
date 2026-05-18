@@ -45,6 +45,7 @@
           class="upload-form"
           style="background: var(--card-bg, #2a1f14); border: 1px solid var(--border-gold, #b8935a);
                  padding: 2rem; border-radius: 4px;">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
       <div style="margin-bottom: 1.5rem;">
         <label for="image"

@@ -10,6 +10,7 @@
       <p class="eyebrow">Alliance</p>
       <h2 class="section-title">Dispatch Envoy</h2>
       <form method="POST" action="{{ url_for('friends.send_request') }}" class="friend-request-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-field form-field-inline">
           <input type="text" name="username" placeholder="Enter warrior's username" required>
           <button type="submit" class="btn-primary">DISPATCH ENVOY</button>

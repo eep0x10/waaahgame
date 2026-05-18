@@ -1,4 +1,6 @@
 import json
+import re
+import random
 from datetime import datetime, timezone
 from flask import Blueprint, render_template, redirect, url_for, flash, request, abort
 from flask_login import login_required, current_user
@@ -6,9 +8,14 @@ from app.extensions import db, socketio
 from app.models.match import Match, PHASES, FORMAT_POINTS
 from app.models.match_event import MatchEvent
 from app.models.match_casualty import MatchCasualty
+from app.models.match_dice_roll import MatchDiceRoll
+from app.models.match_message import MatchMessage
 from app.models.friendship import Friendship
 from app.models.army import Army
 from app.models.game import GameSystem
+
+_DICE_RE = re.compile(r'^(\d+)d(\d+)([+-]\d+)?$')
+_RNG = random.SystemRandom()
 
 matches_bp = Blueprint('matches', __name__, url_prefix='/matches')
 
@@ -373,6 +380,100 @@ def state(match_id):
     casualties = {c.army_unit_id: c for c in match.casualties}
     return render_template('matches/_state.html', match=match, scores=scores,
                            recent_events=recent_events, casualties=casualties, PHASES=PHASES)
+
+
+@matches_bp.route('/<int:match_id>/roll', methods=['POST'])
+@login_required
+def roll(match_id):
+    match = _get_match_or_404(match_id)
+    _require_participant(match)
+    if match.status != 'active':
+        abort(403)
+
+    formula = (request.form.get('formula') or '').strip().lower()
+    m = _DICE_RE.match(formula)
+    if not m:
+        abort(400)
+
+    n_dice = int(m.group(1))
+    sides = int(m.group(2))
+    modifier_str = m.group(3) or '+0'
+    modifier = int(modifier_str)
+
+    if n_dice < 1 or n_dice > 50 or sides < 2 or sides > 100:
+        abort(400)
+
+    results = [_RNG.randint(1, sides) for _ in range(n_dice)]
+    total = sum(results) + modifier
+
+    roll_obj = MatchDiceRoll(
+        match_id=match_id,
+        actor_id=current_user.id,
+        round=match.current_round,
+        phase=match.current_phase,
+        formula=formula,
+        results_json=json.dumps(results),
+        total=total,
+    )
+    db.session.add(roll_obj)
+    db.session.commit()
+
+    socketio.emit('dice_rolled', {'roll_id': roll_obj.id}, room=f'match-{match_id}')
+
+    recent_rolls = MatchDiceRoll.query.filter_by(match_id=match_id).order_by(
+        MatchDiceRoll.created_at.desc()).limit(10).all()
+
+    if _is_htmx():
+        return render_template('matches/_dice_panel.html', match=match, recent_rolls=recent_rolls)
+    return redirect(url_for('matches.show', match_id=match_id))
+
+
+@matches_bp.route('/<int:match_id>/message', methods=['POST'])
+@login_required
+def message(match_id):
+    match = _get_match_or_404(match_id)
+    _require_participant(match)
+
+    body = (request.form.get('body') or '').strip()[:500]
+    if not body:
+        abort(400)
+
+    msg = MatchMessage(
+        match_id=match_id,
+        actor_id=current_user.id,
+        body=body,
+    )
+    db.session.add(msg)
+    db.session.commit()
+
+    socketio.emit('message_posted', {'message_id': msg.id}, room=f'match-{match_id}')
+
+    recent_messages = MatchMessage.query.filter_by(match_id=match_id).order_by(
+        MatchMessage.created_at.asc()).all()
+
+    if _is_htmx():
+        return render_template('matches/_chat_panel.html', match=match, messages=recent_messages)
+    return redirect(url_for('matches.show', match_id=match_id))
+
+
+@matches_bp.route('/<int:match_id>/replay')
+@login_required
+def replay(match_id):
+    match = _get_match_or_404(match_id)
+    _require_participant(match)
+    if match.status != 'finished':
+        abort(403)
+    scores = match.get_scores() if match.scores_json else {'host': {'vp': 0, 'cp': 0}, 'opponent': {'vp': 0, 'cp': 0}}
+    return render_template('matches/replay.html', match=match, scores=scores, PHASES=PHASES)
+
+
+@matches_bp.route('/m/<token>/replay')
+def public_replay(token):
+    match = Match.query.filter_by(public_token=token).first_or_404()
+    if match.status != 'finished':
+        abort(403)
+    scores = match.get_scores() if match.scores_json else {'host': {'vp': 0, 'cp': 0}, 'opponent': {'vp': 0, 'cp': 0}}
+    return render_template('matches/replay.html', match=match, scores=scores, PHASES=PHASES)
 
 
 @matches_bp.route('/m/<token>')

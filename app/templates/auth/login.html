@@ -13,6 +13,7 @@
     </div>
 
     <form method="POST" action="{{ url_for('auth.login_post') }}" novalidate>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="next" value="{{ next or '' }}">
       {{ field('identifier', 'Username or Email', value=identifier or '', errors=errors or {}) }}
       {{ field('password', 'Password', type='password', errors=errors or {}) }}

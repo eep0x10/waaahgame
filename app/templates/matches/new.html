@@ -9,6 +9,7 @@
 
     <div class="card-form" style="padding:2rem;">
       <form method="POST" action="{{ url_for('matches.new_post') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
         <div class="form-field">
           <label for="opponent_id">Opponent (accepted friends only)</label>

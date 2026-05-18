@@ -16,6 +16,7 @@
             hx-target="#regiments-aux-container"
             hx-swap="innerHTML"
             onsubmit="return confirm('Remove Regiment {{ reg_num }}? Units become auxiliary.');">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit" class="btn-danger btn-sm">Remove</button>
       </form>
     </div>
@@ -28,6 +29,7 @@
           hx-target="#regiment-card-{{ regiment.id }}"
           hx-swap="outerHTML"
           class="au-add-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="target" value="reg-{{ regiment.id }}">
       <select name="unit_slug" class="au-add-select" required>
         <option value="">Add unit to regiment...</option>

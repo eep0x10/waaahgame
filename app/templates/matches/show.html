@@ -18,19 +18,23 @@
       <div class="builder-header-actions">
         {% if match.status == 'pending' and current_user.id == match.host_id %}
           <form method="POST" action="{{ url_for('matches.cancel', match_id=match.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button class="btn-danger btn-sm">Cancel</button>
           </form>
         {% endif %}
         {% if match.status == 'pending' and current_user.id == match.opponent_id %}
           <form method="POST" action="{{ url_for('matches.accept', match_id=match.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button class="btn-primary btn-sm">Accept</button>
           </form>
           <form method="POST" action="{{ url_for('matches.decline', match_id=match.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button class="btn-danger btn-sm">Decline</button>
           </form>
         {% endif %}
         {% if match.status == 'army_select' and current_user.id == match.host_id %}
           <form method="POST" action="{{ url_for('matches.cancel', match_id=match.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button class="btn-danger btn-sm">Cancel</button>
           </form>
         {% endif %}
@@ -42,6 +46,7 @@
     <div class="card-form" style="padding:1.5rem;margin-bottom:1.5rem;">
       <h3 class="section-title" style="font-size:1.1rem;margin-bottom:0.8rem;">Choose Your Army</h3>
       <form method="POST" action="{{ url_for('matches.choose_army', match_id=match.id) }}" style="display:flex;gap:0.75rem;align-items:flex-end;flex-wrap:wrap;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-field" style="margin:0;flex:1;min-width:200px;">
           <select name="army_opponent_id" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
             <option value="">— Select army —</option>
@@ -59,6 +64,7 @@
     {% if match.status == 'army_select' and current_user.id == match.host_id and match.army_host_id and match.army_opponent_id %}
     <div style="margin-bottom:1.5rem;text-align:center;">
       <form method="POST" action="{{ url_for('matches.start', match_id=match.id) }}" style="display:inline;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button class="btn-primary">Begin Battle</button>
       </form>
     </div>
@@ -86,6 +92,7 @@
             hx-target="#phase-header-wrap"
             hx-swap="innerHTML"
             style="display:inline;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button class="btn-primary">Advance Phase</button>
       </form>
       {% endif %}
@@ -95,12 +102,14 @@
             hx-target="#score-panel"
             hx-swap="outerHTML"
             style="display:inline;display:flex;gap:0.4rem;align-items:center;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="number" name="vp" value="1" min="0" max="20" style="width:3.5rem;padding:0.3rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:0.9rem;text-align:center;">
         <button class="btn-secondary btn-sm">+VP</button>
       </form>
 
       {% if current_user.id == match.host_id or current_user.id == match.active_player_id %}
       <form method="POST" action="{{ url_for('matches.finish', match_id=match.id) }}" style="display:inline;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button class="btn-danger btn-sm">End Match</button>
       </form>
       {% endif %}
@@ -131,13 +140,35 @@
       {% endfor %}
     </div>
 
-    {# Event log #}
-    <div style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;">
-      <div class="eyebrow" style="margin-bottom:0.5rem;">Battle Log</div>
-      <div id="event-log" style="max-height:240px;overflow-y:auto;">
-        {% for ev in recent_events | reverse %}
-          {% include 'matches/_event_row.html' %}
-        {% endfor %}
+    {# Bottom row: event log + dice/chat sidebar #}
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:1.5rem;margin-top:0;">
+      <div>
+        {# Event log #}
+        <div style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;margin-bottom:1rem;">
+          <div class="eyebrow" style="margin-bottom:0.5rem;">Battle Log</div>
+          <div id="event-log" style="max-height:240px;overflow-y:auto;">
+            {% for ev in recent_events | reverse %}
+              {% include 'matches/_event_row.html' %}
+            {% endfor %}
+          </div>
+        </div>
+        {% if match.status == 'finished' %}
+        <div style="text-align:center;">
+          <a href="{{ url_for('matches.replay', match_id=match.id) }}" class="btn-secondary btn-sm">View Replay</a>
+        </div>
+        {% endif %}
+      </div>
+
+      <div>
+        {# Dice roller #}
+        {% if match.status == 'active' %}
+          {% set recent_rolls = match.dice_rolls[-10:] | list | reverse | list %}
+          {% include 'matches/_dice_panel.html' %}
+        {% endif %}
+
+        {# Chat / notes #}
+        {% set messages = match.messages | list %}
+        {% include 'matches/_chat_panel.html' %}
       </div>
     </div>
 
@@ -176,6 +207,13 @@
       socket.on(ev, function() {
         document.body.dispatchEvent(new Event(ev));
       });
+    });
+    socket.on('dice_rolled', function() {
+      htmx.trigger('#dice-panel form', 'htmx:afterOnLoad');
+    });
+    socket.on('message_posted', function() {
+      var msgs = document.getElementById('chat-messages');
+      if (msgs) msgs.scrollTop = msgs.scrollHeight;
     });
   }
 </script>

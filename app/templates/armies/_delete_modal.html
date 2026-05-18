@@ -8,6 +8,7 @@
     </p>
     <div class="modal-actions">
       <form method="POST" action="{{ url_for('armies.delete', army_id=army.id) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit" class="btn-danger">Delete</button>
       </form>
       <button type="button" class="btn-secondary" onclick="document.getElementById('delete-modal').remove()">Cancel</button>

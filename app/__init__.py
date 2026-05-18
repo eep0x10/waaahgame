@@ -2,7 +2,7 @@ import os
 import click
 from flask import Flask
 from .config import get_config
-from .extensions import db, migrate, socketio, login_manager
+from .extensions import db, migrate, socketio, login_manager, csrf
 
 
 def create_app(config_name='dev', test_config=None):
@@ -15,6 +15,7 @@ def create_app(config_name='dev', test_config=None):
         pass
 
     app.config.from_object(get_config(config_name))
+    app.config.setdefault('WTF_CSRF_HEADERS', ['X-CSRFToken'])
 
     # Apply test overrides BEFORE db.init_app so the engine uses the right URI
     if test_config is not None:
@@ -25,6 +26,7 @@ def create_app(config_name='dev', test_config=None):
     migrate.init_app(app, db)
     socketio.init_app(app)
     login_manager.init_app(app)
+    csrf.init_app(app)
 
     login_manager.login_view = 'auth.login'
     login_manager.login_message = 'Sign in to enter the war-host.'

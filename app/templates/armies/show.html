@@ -19,10 +19,12 @@
         {% if army.public_token %}
           <a href="{{ url_for('armies.public_view', token=army.public_token) }}" class="btn-secondary btn-sm" target="_blank">View Public</a>
           <form method="POST" action="{{ url_for('armies.unpublish', army_id=army.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="btn-secondary btn-sm">Unpublish</button>
           </form>
         {% else %}
           <form method="POST" action="{{ url_for('armies.publish', army_id=army.id) }}" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="btn-secondary btn-sm">Publish</button>
           </form>
         {% endif %}
@@ -56,6 +58,7 @@
                   hx-post="{{ url_for('armies.add_regiment', army_id=army.id) }}"
                   hx-target="#regiments-aux-container"
                   hx-swap="innerHTML">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
               <button type="submit" class="btn-secondary add-regiment-btn">+ Add Regiment</button>
             </form>
           {% endif %}
@@ -79,6 +82,7 @@
   <div class="modal-box">
     <h2 class="modal-title">Edit Army</h2>
     <form method="POST" action="{{ url_for('armies.edit', army_id=army.id) }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <div class="form-field">
         <label for="edit-name">Name</label>
         <input type="text" id="edit-name" name="name" value="{{ army.name }}" maxlength="96" required>

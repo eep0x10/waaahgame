@@ -39,6 +39,7 @@
               <form method="POST" action="{{ url_for('armies.delete', army_id=army.id) }}"
                     onsubmit="return confirm('Delete army {{ army.name | replace("'", "") }}?');"
                     style="display:inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button type="submit" class="btn-danger btn-sm">Delete</button>
               </form>
             </div>

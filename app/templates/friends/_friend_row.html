@@ -10,6 +10,7 @@
           hx-post="{{ url_for('friends.accept', friendship_id=friendship.id) }}"
           hx-swap="outerHTML"
           hx-target="#friendship-{{ friendship.id }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <button type="submit" class="btn-primary btn-sm">ACCEPT</button>
     </form>
     <form method="POST" action="{{ url_for('friends.decline', friendship_id=friendship.id) }}"
@@ -17,6 +18,7 @@
           hx-post="{{ url_for('friends.decline', friendship_id=friendship.id) }}"
           hx-swap="outerHTML"
           hx-target="#friendship-{{ friendship.id }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <button type="submit" class="btn-danger btn-sm">DECLINE</button>
     </form>
   </div>
@@ -33,6 +35,7 @@
           hx-post="{{ url_for('friends.remove', friendship_id=friendship.id) }}"
           hx-swap="outerHTML"
           hx-target="#friendship-{{ friendship.id }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <button type="submit" class="btn-secondary btn-sm">WITHDRAW</button>
     </form>
   </div>
@@ -50,6 +53,7 @@
           hx-post="{{ url_for('friends.remove', friendship_id=friendship.id) }}"
           hx-swap="outerHTML"
           hx-target="#friendship-{{ friendship.id }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <button type="submit" class="btn-secondary btn-sm">REMOVE</button>
     </form>
     <form method="POST" action="{{ url_for('friends.block', friendship_id=friendship.id) }}"
@@ -57,6 +61,7 @@
           hx-post="{{ url_for('friends.block', friendship_id=friendship.id) }}"
           hx-swap="outerHTML"
           hx-target="#friendship-{{ friendship.id }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <button type="submit" class="btn-danger btn-sm">BLOCK</button>
     </form>
   </div>

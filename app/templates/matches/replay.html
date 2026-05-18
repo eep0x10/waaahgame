@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Replay — Match #{{ match.id }}{% endblock %}
+
+{% block content %}
+<section class="armies-builder-section">
+  <div class="container">
+
+    <div class="builder-header">
+      <div class="builder-header-left">
+        <p class="eyebrow">
+          <a href="{{ url_for('matches.index') if current_user.is_authenticated else '#' }}">Lobby</a>
+          &rsaquo; <a href="{{ url_for('matches.public_view', token=match.public_token) }}">Match #{{ match.id }}</a>
+          &rsaquo; Replay
+        </p>
+        <h1 class="section-title">Battle Replay</h1>
+      </div>
+    </div>
+
+    {# Summary header #}
+    <div class="card-form" style="padding:1.25rem;margin-bottom:1.5rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:center;">
+      <div>
+        <div class="eyebrow">{{ match.host.name }}</div>
+        <div style="font-family:var(--font-heading);font-size:1.5rem;color:var(--gold);">{{ scores.host.vp }} VP</div>
+      </div>
+      <div style="font-family:var(--font-heading);font-size:1.2rem;opacity:0.5;">vs</div>
+      <div>
+        <div class="eyebrow">{{ match.opponent.name if match.opponent else 'Opponent' }}</div>
+        <div style="font-family:var(--font-heading);font-size:1.5rem;color:var(--gold);">{{ scores.opponent.vp }} VP</div>
+      </div>
+      <div style="margin-left:auto;text-align:right;">
+        <div class="eyebrow">Rounds Played</div>
+        <div style="font-family:var(--font-heading);font-size:1.2rem;">{{ match.current_round }}</div>
+      </div>
+      {% set host_vp = scores.host.vp %}
+      {% set opp_vp = scores.opponent.vp %}
+      {% if host_vp > opp_vp %}
+        <div style="text-align:right;">
+          <div class="eyebrow">Winner</div>
+          <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">{{ match.host.name }}</div>
+        </div>
+      {% elif opp_vp > host_vp %}
+        <div style="text-align:right;">
+          <div class="eyebrow">Winner</div>
+          <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">{{ match.opponent.name if match.opponent else 'Opponent' }}</div>
+        </div>
+      {% else %}
+        <div style="text-align:right;">
+          <div class="eyebrow">Result</div>
+          <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">Draw</div>
+        </div>
+      {% endif %}
+    </div>
+
+    {# Replay viewer #}
+    {% set all_events = match.events %}
+    <div style="margin-bottom:1rem;">
+      <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+        <button class="btn-secondary btn-sm" id="btn-prev" onclick="replayStep(-1)" disabled>&#9664; Back</button>
+        <button class="btn-secondary btn-sm" id="btn-play" onclick="replayPlay()">&#9654; Play</button>
+        <button class="btn-secondary btn-sm" id="btn-next" onclick="replayStep(1)">Next &#9654;</button>
+        <span id="replay-counter" style="font-family:var(--font-heading);font-size:0.85rem;color:var(--text-secondary);margin-left:0.5rem;">
+          Step 0 / {{ all_events | length }}
+        </span>
+      </div>
+
+      <div id="replay-events" style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;max-height:400px;overflow-y:auto;">
+        {% for ev in all_events %}
+        <div class="replay-event" id="replay-ev-{{ loop.index0 }}" style="display:none;">
+          {% include 'matches/_event_row.html' %}
+        </div>
+        {% endfor %}
+        {% if not all_events %}
+        <p style="color:var(--text-secondary);font-size:0.85rem;">No events recorded.</p>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var total = {{ all_events | length }};
+  var current = 0;
+  var playing = false;
+  var playTimer = null;
+
+  function show(idx) {
+    for (var i = 0; i < total; i++) {
+      var el = document.getElementById('replay-ev-' + i);
+      if (el) el.style.display = i <= idx ? '' : 'none';
+    }
+    current = idx;
+    document.getElementById('replay-counter').textContent = 'Step ' + (idx + 1) + ' / ' + total;
+    document.getElementById('btn-prev').disabled = idx <= 0;
+    document.getElementById('btn-next').disabled = idx >= total - 1;
+    var container = document.getElementById('replay-events');
+    var active = document.getElementById('replay-ev-' + idx);
+    if (active && container) active.scrollIntoView({block: 'nearest'});
+  }
+
+  window.replayStep = function(delta) {
+    stopPlay();
+    var next = current + delta;
+    if (next < 0) next = 0;
+    if (next >= total) next = total - 1;
+    if (total > 0) show(next);
+  };
+
+  window.replayPlay = function() {
+    if (playing) { stopPlay(); return; }
+    playing = true;
+    document.getElementById('btn-play').textContent = '⏸ Pause';
+    playTimer = setInterval(function() {
+      if (current >= total - 1) { stopPlay(); return; }
+      show(current + 1);
+    }, 800);
+  };
+
+  function stopPlay() {
+    playing = false;
+    clearInterval(playTimer);
+    document.getElementById('btn-play').textContent = '▶ Play';
+  }
+
+  if (total > 0) show(0);
+}());
+</script>
+{% endblock %}

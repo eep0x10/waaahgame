@@ -386,6 +386,12 @@ def _do_seed(db, GameSystem, Faction, Unit):
             has_data = bool(warscroll.get('stats') or warscroll.get('keywords') or warscroll.get('weapons'))
 
             u = Unit.query.filter_by(slug=unit_slug).first()
+            # SVG placeholder paths for units with no scraped image
+            _svg_placeholders = {
+                'aggradon-lancers': 'units/seraphon/aggradon-lancers.svg',
+                'sunblood-pack': 'units/seraphon/sunblood-pack.svg',
+            }
+
             if not u:
                 u = Unit(
                     faction_id=faction_obj.id,
@@ -402,6 +408,7 @@ def _do_seed(db, GameSystem, Faction, Unit):
                     keywords_json=warscroll.get('keywords', []),
                     companions_json=warscroll.get('companions', []),
                     wahapedia_url=warscroll.get('wahapedia_url', f'{WAHAPEDIA_BASE}/{faction_wahapedia_slug}/{waha_slug}'),
+                    image_path=_svg_placeholders.get(unit_slug),
                 )
                 db.session.add(u)
                 log.info('[+] %s (full=%s)', name, has_data)
@@ -417,6 +424,8 @@ def _do_seed(db, GameSystem, Faction, Unit):
                     u.companions_json = warscroll.get('companions', u.companions_json)
                 if not u.wahapedia_url:
                     u.wahapedia_url = f'{WAHAPEDIA_BASE}/{faction_wahapedia_slug}/{waha_slug}'
+                if not u.image_path and unit_slug in _svg_placeholders:
+                    u.image_path = _svg_placeholders[unit_slug]
                 log.info('[~] %s updated (full=%s)', name, has_data)
 
             if has_data:

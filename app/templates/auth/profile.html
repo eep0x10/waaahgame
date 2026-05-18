@@ -26,6 +26,7 @@
       <a href="{{ url_for('friends.index') }}" class="btn-secondary">VIEW WAR-BROTHERS</a>
 
       <form method="POST" action="{{ url_for('auth.logout') }}" style="display:inline;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit" class="btn-secondary">LEAVE THE HOST</button>
       </form>
     </div>

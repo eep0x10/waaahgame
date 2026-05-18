@@ -43,6 +43,7 @@
                 hx-target="#regiments-aux-container"
                 hx-swap="innerHTML"
                 class="roster-add-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="unit_slug" value="{{ unit.slug }}">
             <select name="target" class="roster-add-select" required>
               <option value="">Add to...</option>

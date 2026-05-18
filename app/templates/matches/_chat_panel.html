@@ -1,0 +1,31 @@
+<div id="chat-panel" style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;">
+  <div class="eyebrow" style="margin-bottom:0.5rem;">Battle Notes</div>
+  <div id="chat-messages" style="max-height:180px;overflow-y:auto;margin-bottom:0.5rem;font-size:0.82rem;">
+    {% for msg in messages %}
+    <div style="padding:0.25rem 0;border-bottom:1px solid rgba(184,147,90,0.1);">
+      <span style="color:var(--gold);font-weight:600;">{{ msg.actor.name }}</span>
+      <span style="float:right;opacity:0.5;font-size:0.75rem;">{{ msg.created_at.strftime('%H:%M') }}</span>
+      <div style="color:var(--text-primary);word-break:break-word;">{{ msg.body }}</div>
+    </div>
+    {% else %}
+    <p style="color:var(--text-secondary);font-size:0.8rem;margin:0;">No notes yet.</p>
+    {% endfor %}
+  </div>
+  <form method="POST" action="{{ url_for('matches.message', match_id=match.id) }}"
+        hx-post="{{ url_for('matches.message', match_id=match.id) }}"
+        hx-target="#chat-panel"
+        hx-swap="outerHTML"
+        style="display:flex;gap:0.4rem;align-items:flex-end;">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <textarea name="body" maxlength="500" rows="2"
+              placeholder="Add a note..."
+              style="flex:1;padding:0.3rem 0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:0.85rem;resize:vertical;"></textarea>
+    <button type="submit" class="btn-secondary btn-sm">Send</button>
+  </form>
+  <script>
+    (function() {
+      var msgs = document.getElementById('chat-messages');
+      if (msgs) msgs.scrollTop = msgs.scrollHeight;
+    })();
+  </script>
+</div>
