@@ -1,6 +1,3 @@
 def register_sockets(socketio):
-    """Register all SocketIO event handlers.
-
-    Phase 0: empty. Handlers will be added in later phases.
-    """
-    pass
+    from .match import register_match_sockets
+    register_match_sockets(socketio)

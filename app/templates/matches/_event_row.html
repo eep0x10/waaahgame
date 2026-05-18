@@ -1,0 +1,6 @@
+<div style="padding:0.3rem 0;border-bottom:1px solid rgba(184,147,90,0.15);font-size:0.82rem;color:var(--text-secondary);">
+  <span style="color:var(--gold);font-weight:600;">R{{ ev.round }}</span>
+  <span style="margin-left:0.4rem;">{{ ev.kind | replace('_', ' ') | title }}</span>
+  {% if ev.actor %}<span style="margin-left:0.4rem;opacity:0.7;">by {{ ev.actor.name }}</span>{% endif %}
+  <span style="float:right;opacity:0.5;font-size:0.75rem;">{{ ev.created_at.strftime('%H:%M') }}</span>
+</div>

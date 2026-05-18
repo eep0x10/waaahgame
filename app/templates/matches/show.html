@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block title %}Match #{{ match.id }}{% endblock %}
+
+{% block content %}
+<section class="armies-builder-section">
+  <div class="container">
+
+    <div class="builder-header">
+      <div class="builder-header-left">
+        <p class="eyebrow"><a href="{{ url_for('matches.index') }}">Lobby</a> &rsaquo; Match #{{ match.id }}</p>
+        <h1 class="section-title">{{ match.host.name }} vs {{ match.opponent.name if match.opponent else '???' }}</h1>
+        <div class="builder-header-meta">
+          <span class="role-tag">{{ match.format | capitalize }}</span>
+          <span class="pts-badge">{{ match.points_limit }}<span class="pts-label">pts</span></span>
+          <span class="role-tag">{{ match.status | replace('_', ' ') | title }}</span>
+        </div>
+      </div>
+      <div class="builder-header-actions">
+        {% if match.status == 'pending' and current_user.id == match.host_id %}
+          <form method="POST" action="{{ url_for('matches.cancel', match_id=match.id) }}" style="display:inline;">
+            <button class="btn-danger btn-sm">Cancel</button>
+          </form>
+        {% endif %}
+        {% if match.status == 'pending' and current_user.id == match.opponent_id %}
+          <form method="POST" action="{{ url_for('matches.accept', match_id=match.id) }}" style="display:inline;">
+            <button class="btn-primary btn-sm">Accept</button>
+          </form>
+          <form method="POST" action="{{ url_for('matches.decline', match_id=match.id) }}" style="display:inline;">
+            <button class="btn-danger btn-sm">Decline</button>
+          </form>
+        {% endif %}
+        {% if match.status == 'army_select' and current_user.id == match.host_id %}
+          <form method="POST" action="{{ url_for('matches.cancel', match_id=match.id) }}" style="display:inline;">
+            <button class="btn-danger btn-sm">Cancel</button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+
+    {# Army select phase — opponent chooses army #}
+    {% if match.status == 'army_select' and current_user.id == match.opponent_id and not match.army_opponent_id %}
+    <div class="card-form" style="padding:1.5rem;margin-bottom:1.5rem;">
+      <h3 class="section-title" style="font-size:1.1rem;margin-bottom:0.8rem;">Choose Your Army</h3>
+      <form method="POST" action="{{ url_for('matches.choose_army', match_id=match.id) }}" style="display:flex;gap:0.75rem;align-items:flex-end;flex-wrap:wrap;">
+        <div class="form-field" style="margin:0;flex:1;min-width:200px;">
+          <select name="army_opponent_id" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
+            <option value="">— Select army —</option>
+            {% for army in current_user.armies %}
+              <option value="{{ army.id }}">{{ army.name }} ({{ army.faction.name }}, {{ army.points_limit }}pts)</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn-primary btn-sm">Confirm Army</button>
+      </form>
+    </div>
+    {% endif %}
+
+    {# Start button for host when both armies selected #}
+    {% if match.status == 'army_select' and current_user.id == match.host_id and match.army_host_id and match.army_opponent_id %}
+    <div style="margin-bottom:1.5rem;text-align:center;">
+      <form method="POST" action="{{ url_for('matches.start', match_id=match.id) }}" style="display:inline;">
+        <button class="btn-primary">Begin Battle</button>
+      </form>
+    </div>
+    {% endif %}
+
+    {# Active match layout #}
+    {% if match.status in ('active', 'finished') %}
+
+    {# Phase header — live updated #}
+    <div id="phase-header-wrap"
+         hx-get="{{ url_for('matches.state', match_id=match.id) }}"
+         hx-trigger="phase_changed from:body, score_updated from:body, casualty_changed from:body, match_finished from:body"
+         hx-target="#match-state">
+      {% include 'matches/_phase_header.html' %}
+    </div>
+
+    {% include 'matches/_score_panel.html' %}
+
+    {# Action bar #}
+    {% if match.status == 'active' %}
+    <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
+      {% if current_user.id == match.active_player_id or current_user.id == match.host_id %}
+      <form method="POST" action="{{ url_for('matches.advance_phase', match_id=match.id) }}"
+            hx-post="{{ url_for('matches.advance_phase', match_id=match.id) }}"
+            hx-target="#phase-header-wrap"
+            hx-swap="innerHTML"
+            style="display:inline;">
+        <button class="btn-primary">Advance Phase</button>
+      </form>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('matches.score', match_id=match.id) }}"
+            hx-post="{{ url_for('matches.score', match_id=match.id) }}"
+            hx-target="#score-panel"
+            hx-swap="outerHTML"
+            style="display:inline;display:flex;gap:0.4rem;align-items:center;">
+        <input type="number" name="vp" value="1" min="0" max="20" style="width:3.5rem;padding:0.3rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:0.9rem;text-align:center;">
+        <button class="btn-secondary btn-sm">+VP</button>
+      </form>
+
+      {% if current_user.id == match.host_id or current_user.id == match.active_player_id %}
+      <form method="POST" action="{{ url_for('matches.finish', match_id=match.id) }}" style="display:inline;">
+        <button class="btn-danger btn-sm">End Match</button>
+      </form>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {# Two-column army panels #}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+      {% set host_army = match.army_host %}
+      {% set opp_army = match.army_opponent %}
+      {% set casualties_map = {} %}
+      {% for c in match.casualties %}
+        {% if casualties_map.update({c.army_unit_id: c}) %}{% endif %}
+      {% endfor %}
+
+      {% for panel_army, panel_label in [(host_army, match.host.name), (opp_army, match.opponent.name if match.opponent else 'Opponent')] %}
+      <div style="background:var(--bg-parchment-card);border:1px solid var(--border-gold);border-radius:4px;padding:1rem;">
+        <div class="eyebrow" style="margin-bottom:0.5rem;">{{ panel_label }}</div>
+        {% if panel_army %}
+          <div style="font-family:var(--font-heading);font-size:1rem;margin-bottom:0.75rem;color:var(--gold);">{{ panel_army.name }}</div>
+          {% for au in panel_army.army_units %}
+            {% include 'matches/_casualty_row.html' %}
+          {% endfor %}
+        {% else %}
+          <p style="color:var(--text-secondary);font-size:0.85rem;">No army selected.</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    {# Event log #}
+    <div style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;">
+      <div class="eyebrow" style="margin-bottom:0.5rem;">Battle Log</div>
+      <div id="event-log" style="max-height:240px;overflow-y:auto;">
+        {% for ev in recent_events | reverse %}
+          {% include 'matches/_event_row.html' %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {# Hidden state div for WS refreshes #}
+    <div id="match-state" style="display:none;"></div>
+
+    {% endif %}{# end active/finished #}
+
+    {# Pending state info #}
+    {% if match.status == 'pending' %}
+    <div class="card-form" style="padding:1.5rem;text-align:center;margin-top:1rem;">
+      <p class="eyebrow">Awaiting {{ match.opponent.name if match.opponent else 'opponent' }}'s response&hellip;</p>
+      {% if match.army_host %}
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.5rem;">Your army: <strong>{{ match.army_host.name }}</strong></p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {# Public spectator link #}
+    <div style="margin-top:1.5rem;text-align:right;">
+      <a href="{{ url_for('matches.public_view', token=match.public_token) }}" class="btn-secondary btn-sm" target="_blank">Spectator Link</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  var matchId = {{ match.id }};
+  var socket = null;
+  if (typeof io !== 'undefined') {
+    socket = io();
+    socket.on('connect', function() {
+      socket.emit('join', {match_id: matchId});
+    });
+    ['phase_changed','score_updated','casualty_changed','match_finished'].forEach(function(ev) {
+      socket.on(ev, function() {
+        document.body.dispatchEvent(new Event(ev));
+      });
+    });
+  }
+</script>
+{% endblock %}

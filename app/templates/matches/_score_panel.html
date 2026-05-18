@@ -1,0 +1,14 @@
+<div id="score-panel" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;">
+  {% set host_score = scores.get('host', {}) %}
+  {% set opp_score = scores.get('opponent', {}) %}
+  <div style="background:var(--bg-parchment-card);border:1px solid var(--border-gold);border-radius:4px;padding:0.8rem 1.2rem;min-width:130px;text-align:center;">
+    <div class="eyebrow" style="margin-bottom:0.3rem;">{{ match.host.name }}</div>
+    <div style="font-family:var(--font-heading);font-size:1.4rem;color:var(--gold);">{{ host_score.get('vp', 0) }} VP</div>
+    <div style="font-size:0.85rem;color:var(--text-secondary);">{{ host_score.get('cp', 0) }} CP</div>
+  </div>
+  <div style="background:var(--bg-parchment-card);border:1px solid var(--border-gold);border-radius:4px;padding:0.8rem 1.2rem;min-width:130px;text-align:center;">
+    <div class="eyebrow" style="margin-bottom:0.3rem;">{{ match.opponent.name if match.opponent else 'Opponent' }}</div>
+    <div style="font-family:var(--font-heading);font-size:1.4rem;color:var(--gold);">{{ opp_score.get('vp', 0) }} VP</div>
+    <div style="font-size:0.85rem;color:var(--text-secondary);">{{ opp_score.get('cp', 0) }} CP</div>
+  </div>
+</div>

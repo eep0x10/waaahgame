@@ -1,0 +1,17 @@
+<div id="casualty-{{ au.id }}" style="display:flex;align-items:center;justify-content:space-between;padding:0.25rem 0;border-bottom:1px solid rgba(184,147,90,0.1);">
+  <span style="font-size:0.85rem;{% if casualties.get(au.id) and casualties[au.id].removed %}text-decoration:line-through;opacity:0.5;{% endif %}">
+    {{ au.unit.name }}
+  </span>
+  {% if match.status == 'active' %}
+  <form method="POST" action="{{ url_for('matches.casualty', match_id=match.id) }}"
+        hx-post="{{ url_for('matches.casualty', match_id=match.id) }}"
+        hx-target="#casualty-{{ au.id }}"
+        hx-swap="outerHTML"
+        style="display:inline;">
+    <input type="hidden" name="army_unit_id" value="{{ au.id }}">
+    <button type="submit" class="btn-secondary btn-sm" style="padding:0.1rem 0.5rem;font-size:0.75rem;">
+      {% if casualties.get(au.id) and casualties[au.id].removed %}Restore{% else %}Remove{% endif %}
+    </button>
+  </form>
+  {% endif %}
+</div>

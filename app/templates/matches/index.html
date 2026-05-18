@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Match Lobby{% endblock %}
+
+{% block content %}
+<section class="armies-builder-section">
+  <div class="container">
+    <div class="builder-header">
+      <div class="builder-header-left">
+        <h1 class="section-title">Match Lobby</h1>
+      </div>
+      <div class="builder-header-actions">
+        <a href="{{ url_for('matches.new') }}" class="btn-primary btn-sm">Issue Challenge</a>
+      </div>
+    </div>
+
+    {% if invites %}
+    <div style="margin-bottom:2rem;">
+      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Incoming Challenges</h2>
+      {% for m in invites %}
+      <div class="card-form" style="padding:1rem;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+        <div>
+          <span class="role-tag">{{ m.host.name }}</span> challenges you &mdash;
+          <span class="role-tag">{{ m.format | capitalize }}</span>
+          <span class="pts-badge">{{ m.points_limit }}<span class="pts-label">pts</span></span>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <form method="POST" action="{{ url_for('matches.accept', match_id=m.id) }}" style="display:inline;">
+            <button class="btn-primary btn-sm">Accept</button>
+          </form>
+          <form method="POST" action="{{ url_for('matches.decline', match_id=m.id) }}" style="display:inline;">
+            <button class="btn-danger btn-sm">Decline</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div style="margin-bottom:2rem;">
+      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Active Battles</h2>
+      {% if active %}
+        {% for m in active %}
+        <a href="{{ url_for('matches.show', match_id=m.id) }}" style="text-decoration:none;display:block;">
+          <div class="card-form" style="padding:1rem;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <span class="role-tag">{{ m.host.name }}</span> vs <span class="role-tag">{{ m.opponent.name if m.opponent else '???' }}</span>
+              &mdash; <span class="role-tag">{{ m.format | capitalize }}</span>
+              <span class="role-tag">{{ m.status | replace('_', ' ') | title }}</span>
+              {% if m.status == 'active' %}
+                <span class="pts-badge">Round {{ m.current_round }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      {% else %}
+        <p class="eyebrow">No active battles. Issue a challenge!</p>
+      {% endif %}
+    </div>
+
+    <div>
+      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Recent Battles</h2>
+      {% if finished %}
+        {% for m in finished %}
+        <a href="{{ url_for('matches.show', match_id=m.id) }}" style="text-decoration:none;display:block;">
+          <div class="card-form" style="padding:0.75rem 1rem;margin-bottom:0.5rem;display:flex;align-items:center;justify-content:space-between;">
+            <span>
+              <span class="role-tag">{{ m.host.name }}</span> vs <span class="role-tag">{{ m.opponent.name if m.opponent else '???' }}</span>
+              &mdash; <span class="role-tag" style="opacity:0.7;">{{ m.status | capitalize }}</span>
+            </span>
+          </div>
+        </a>
+        {% endfor %}
+      {% else %}
+        <p class="eyebrow">No recent battles.</p>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+{% endblock %}

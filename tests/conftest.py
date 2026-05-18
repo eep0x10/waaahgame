@@ -6,13 +6,13 @@ from app.models.user import User
 
 @pytest.fixture(scope='function')
 def app():
-    test_app = create_app('dev')
-    test_app.config.update(
-        TESTING=True,
-        SQLALCHEMY_DATABASE_URI='sqlite:///:memory:',
-        WTF_CSRF_ENABLED=False,
-        SERVER_NAME=None,
-    )
+    test_app = create_app('dev', test_config={
+        'TESTING': True,
+        'SQLALCHEMY_DATABASE_URI': 'sqlite:///:memory:',
+        'SQLALCHEMY_ENGINE_OPTIONS': {'connect_args': {'check_same_thread': False}},
+        'WTF_CSRF_ENABLED': False,
+        'SERVER_NAME': None,
+    })
     with test_app.app_context():
         _db.create_all()
         yield test_app

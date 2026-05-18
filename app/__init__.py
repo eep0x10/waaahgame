@@ -5,7 +5,7 @@ from .config import get_config
 from .extensions import db, migrate, socketio, login_manager
 
 
-def create_app(config_name='dev'):
+def create_app(config_name='dev', test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     # Ensure instance folder exists
@@ -15,6 +15,10 @@ def create_app(config_name='dev'):
         pass
 
     app.config.from_object(get_config(config_name))
+
+    # Apply test overrides BEFORE db.init_app so the engine uses the right URI
+    if test_config is not None:
+        app.config.update(test_config)
 
     # Init extensions
     db.init_app(app)
@@ -52,6 +56,9 @@ def create_app(config_name='dev'):
 
     from .routes.armies import armies_bp
     app.register_blueprint(armies_bp)
+
+    from .routes.matches import matches_bp
+    app.register_blueprint(matches_bp)
 
     # Register sockets
     from .sockets import register_sockets

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Match #{{ match.id }} — Spectating{% endblock %}
+
+{% block content %}
+<section class="armies-builder-section">
+  <div class="container">
+    <h1 class="section-title">{{ match.host.name }} vs {{ match.opponent.name if match.opponent else '???' }}</h1>
+    <div class="builder-header-meta" style="margin-bottom:1.5rem;">
+      <span class="role-tag">{{ match.format | capitalize }}</span>
+      <span class="pts-badge">{{ match.points_limit }}<span class="pts-label">pts</span></span>
+      <span class="role-tag">{{ match.status | replace('_',' ') | title }}</span>
+    </div>
+
+    {% include 'matches/_phase_header.html' %}
+    {% include 'matches/_score_panel.html' %}
+
+    {% if match.status in ('active', 'finished') %}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+      {% set casualties_map = {} %}
+      {% for c in match.casualties %}
+        {% if casualties_map.update({c.army_unit_id: c}) %}{% endif %}
+      {% endfor %}
+      {% for panel_army, panel_label in [(match.army_host, match.host.name), (match.army_opponent, match.opponent.name if match.opponent else 'Opponent')] %}
+      <div style="background:var(--bg-parchment-card);border:1px solid var(--border-gold);border-radius:4px;padding:1rem;">
+        <div class="eyebrow" style="margin-bottom:0.5rem;">{{ panel_label }}</div>
+        {% if panel_army %}
+          <div style="font-family:var(--font-heading);font-size:1rem;margin-bottom:0.75rem;color:var(--gold);">{{ panel_army.name }}</div>
+          {% for au in panel_army.army_units %}
+            <div style="padding:0.25rem 0;font-size:0.85rem;{% if casualties_map.get(au.id) and casualties_map[au.id].removed %}text-decoration:line-through;opacity:0.5;{% endif %}">
+              {{ au.unit.name }}
+            </div>
+          {% endfor %}
+        {% else %}
+          <p style="color:var(--text-secondary);font-size:0.85rem;">No army selected.</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;">
+      <div class="eyebrow" style="margin-bottom:0.5rem;">Battle Log</div>
+      <div style="max-height:240px;overflow-y:auto;">
+        {% for ev in recent_events | reverse %}
+          {% include 'matches/_event_row.html' %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <div style="margin-top:2rem;text-align:center;">
+      <p class="eyebrow">You are spectating this match. <em>Read-only view.</em></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  var matchId = {{ match.id }};
+  var token = '{{ match.public_token }}';
+  if (typeof io !== 'undefined') {
+    var socket = io();
+    socket.on('connect', function() {
+      socket.emit('join', {match_id: matchId, token: token});
+    });
+  }
+</script>
+{% endblock %}
