@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ current_user.name }} &mdash; waaahgame{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+  <div class="card-form card-profile">
+    <div class="card-form-header">
+      <p class="eyebrow">Your Heraldry</p>
+      <h1 class="section-title">{{ current_user.name }}</h1>
+      <p class="profile-handle">@{{ current_user.username }}</p>
+    </div>
+
+    <dl class="profile-details">
+      <div class="profile-row">
+        <dt>Email</dt>
+        <dd>{{ current_user.email }}</dd>
+      </div>
+      <div class="profile-row">
+        <dt>Member Since</dt>
+        <dd>{{ current_user.created_at.strftime('%B %d, %Y') }}</dd>
+      </div>
+    </dl>
+
+    <div class="profile-actions">
+      <a href="{{ url_for('friends.index') }}" class="btn-secondary">VIEW WAR-BROTHERS</a>
+
+      <form method="POST" action="{{ url_for('auth.logout') }}" style="display:inline;">
+        <button type="submit" class="btn-secondary">LEAVE THE HOST</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

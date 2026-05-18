@@ -1,0 +1,15 @@
+{% macro field(name, label, type='text', value='', errors={}) %}
+<div class="form-field">
+  <label for="{{ name }}">{{ label }}</label>
+  <input
+    type="{{ type }}"
+    id="{{ name }}"
+    name="{{ name }}"
+    value="{{ value }}"
+    {% if type == 'password' %}autocomplete="{% if name == 'password' %}current-password{% else %}new-password{% endif %}"{% endif %}
+  >
+  {% if errors.get(name) %}
+    <span class="field-error">{{ errors[name] }}</span>
+  {% endif %}
+</div>
+{% endmacro %}

@@ -21,14 +21,24 @@ def create_app(config_name='dev'):
     socketio.init_app(app)
     login_manager.init_app(app)
 
-    # Stub user_loader — Phase 1 will replace this with a real User query.
+    login_manager.login_view = 'auth.login'
+    login_manager.login_message = 'Sign in to enter the war-host.'
+
+    from .models.user import User
+
     @login_manager.user_loader
-    def _load_user(user_id):  # noqa: F811
-        return None
+    def load_user(user_id):
+        return db.session.get(User, int(user_id))
 
     # Register blueprints
     from .routes.main import main_bp
     app.register_blueprint(main_bp)
+
+    from .routes.auth import auth_bp
+    app.register_blueprint(auth_bp)
+
+    from .routes.friends import friends_bp
+    app.register_blueprint(friends_bp)
 
     # Register sockets
     from .sockets import register_sockets

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}War-Brothers &mdash; waaahgame{% endblock %}
+
+{% block content %}
+<section class="friends-section">
+  <div class="container section-stack">
+
+    <div class="friends-block">
+      <p class="eyebrow">Alliance</p>
+      <h2 class="section-title">Dispatch Envoy</h2>
+      <form method="POST" action="{{ url_for('friends.send_request') }}" class="friend-request-form">
+        <div class="form-field form-field-inline">
+          <input type="text" name="username" placeholder="Enter warrior's username" required>
+          <button type="submit" class="btn-primary">DISPATCH ENVOY</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="friends-block">
+      <p class="eyebrow">Incoming</p>
+      <h2 class="section-title">Calls to Arms</h2>
+      {% if incoming %}
+        <div class="friend-list">
+          {% for fs in incoming %}
+            {% set section = 'incoming' %}
+            {% set friendship = fs %}
+            {% include 'friends/_friend_row.html' with context %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="friends-empty">No incoming pledges at this time.</p>
+      {% endif %}
+    </div>
+
+    <div class="friends-block">
+      <p class="eyebrow">Outgoing</p>
+      <h2 class="section-title">Outgoing Pledges</h2>
+      {% if outgoing %}
+        <div class="friend-list">
+          {% for fs in outgoing %}
+            {% set section = 'outgoing' %}
+            {% set friendship = fs %}
+            {% include 'friends/_friend_row.html' with context %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="friends-empty">No pledges awaiting answer.</p>
+      {% endif %}
+    </div>
+
+    <div class="friends-block">
+      <p class="eyebrow">Fellowship</p>
+      <h2 class="section-title">War-Brothers</h2>
+      {% if accepted %}
+        <div class="friend-list">
+          {% for fs in accepted %}
+            {% set section = 'accepted' %}
+            {% set friendship = fs %}
+            {% include 'friends/_friend_row.html' with context %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="friends-empty">Your war-host has no sworn brothers yet.</p>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+{% endblock %}

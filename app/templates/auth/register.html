@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% from 'auth/_form_macros.html' import field %}
+
+{% block title %}Forge Your Banner &mdash; waaahgame{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+  <div class="card-form">
+    <div class="card-form-header">
+      <p class="eyebrow">New Recruit</p>
+      <h1 class="section-title">Forge Your Banner</h1>
+      <p class="card-form-sub">Claim your name in the realm and join the war-host.</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('auth.register_post') }}" novalidate>
+      {{ field('username', 'Username', value=username or '', errors=errors or {}) }}
+      {{ field('email', 'Email', type='email', value=email or '', errors=errors or {}) }}
+      {{ field('display_name', 'Display Name (optional)', value=display_name or '', errors=errors or {}) }}
+      {{ field('password', 'Password', type='password', errors=errors or {}) }}
+      {{ field('password_confirm', 'Confirm Password', type='password', errors=errors or {}) }}
+
+      <button type="submit" class="btn-primary btn-full">ENLIST</button>
+    </form>
+
+    <p class="card-form-footer">
+      Already sworn an oath?
+      <a href="{{ url_for('auth.login') }}">Sign in</a>
+    </p>
+  </div>
+</section>
+{% endblock %}

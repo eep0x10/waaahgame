@@ -1,0 +1,64 @@
+{% if section == 'incoming' %}
+<div class="friend-row" id="friendship-{{ friendship.id }}">
+  <span class="friend-username">{{ friendship.requester.username }}</span>
+  {% if friendship.requester.display_name %}
+    <span class="friend-displayname">{{ friendship.requester.display_name }}</span>
+  {% endif %}
+  <div class="friend-actions">
+    <form method="POST" action="{{ url_for('friends.accept', friendship_id=friendship.id) }}"
+          style="display:inline;"
+          hx-post="{{ url_for('friends.accept', friendship_id=friendship.id) }}"
+          hx-swap="outerHTML"
+          hx-target="#friendship-{{ friendship.id }}">
+      <button type="submit" class="btn-primary btn-sm">ACCEPT</button>
+    </form>
+    <form method="POST" action="{{ url_for('friends.decline', friendship_id=friendship.id) }}"
+          style="display:inline;"
+          hx-post="{{ url_for('friends.decline', friendship_id=friendship.id) }}"
+          hx-swap="outerHTML"
+          hx-target="#friendship-{{ friendship.id }}">
+      <button type="submit" class="btn-danger btn-sm">DECLINE</button>
+    </form>
+  </div>
+</div>
+{% elif section == 'outgoing' %}
+<div class="friend-row" id="friendship-{{ friendship.id }}">
+  <span class="friend-username">{{ friendship.addressee.username }}</span>
+  {% if friendship.addressee.display_name %}
+    <span class="friend-displayname">{{ friendship.addressee.display_name }}</span>
+  {% endif %}
+  <div class="friend-actions">
+    <form method="POST" action="{{ url_for('friends.remove', friendship_id=friendship.id) }}"
+          style="display:inline;"
+          hx-post="{{ url_for('friends.remove', friendship_id=friendship.id) }}"
+          hx-swap="outerHTML"
+          hx-target="#friendship-{{ friendship.id }}">
+      <button type="submit" class="btn-secondary btn-sm">WITHDRAW</button>
+    </form>
+  </div>
+</div>
+{% elif section == 'accepted' %}
+{% set other = friendship.addressee if friendship.requester_id == current_user.id else friendship.requester %}
+<div class="friend-row" id="friendship-{{ friendship.id }}">
+  <span class="friend-username">{{ other.username }}</span>
+  {% if other.display_name %}
+    <span class="friend-displayname">{{ other.display_name }}</span>
+  {% endif %}
+  <div class="friend-actions">
+    <form method="POST" action="{{ url_for('friends.remove', friendship_id=friendship.id) }}"
+          style="display:inline;"
+          hx-post="{{ url_for('friends.remove', friendship_id=friendship.id) }}"
+          hx-swap="outerHTML"
+          hx-target="#friendship-{{ friendship.id }}">
+      <button type="submit" class="btn-secondary btn-sm">REMOVE</button>
+    </form>
+    <form method="POST" action="{{ url_for('friends.block', friendship_id=friendship.id) }}"
+          style="display:inline;"
+          hx-post="{{ url_for('friends.block', friendship_id=friendship.id) }}"
+          hx-swap="outerHTML"
+          hx-target="#friendship-{{ friendship.id }}">
+      <button type="submit" class="btn-danger btn-sm">BLOCK</button>
+    </form>
+  </div>
+</div>
+{% endif %}

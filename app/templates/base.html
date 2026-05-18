@@ -34,12 +34,30 @@
         <li><a href="{{ url_for('main.index') }}">HOME</a></li>
         <li><a href="#" class="disabled">ARMIES</a></li>
         <li><a href="#" class="disabled">MATCHES</a></li>
-        <li><a href="#" class="disabled">FRIENDS</a></li>
+        {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('friends.index') }}">FRIENDS</a></li>
+        {% else %}
+          <li><a href="#" class="disabled">FRIENDS</a></li>
+        {% endif %}
       </ul>
 
-      <a class="btn-cta" href="#">BECOME A WARLORD</a>
+      {% if current_user.is_authenticated %}
+        <div class="nav-auth">
+          <a class="nav-auth-link" href="{{ url_for('auth.profile') }}">PROFILE</a>
+          <form method="POST" action="{{ url_for('auth.logout') }}" style="display:inline;">
+            <button type="submit" class="nav-auth-link nav-auth-btn">LOGOUT</button>
+          </form>
+        </div>
+      {% else %}
+        <div class="nav-auth">
+          <a class="nav-auth-link" href="{{ url_for('auth.login') }}">SIGN IN</a>
+          <a class="btn-cta" href="{{ url_for('auth.register') }}">ENLIST</a>
+        </div>
+      {% endif %}
     </nav>
   </header>
+
+  {% include '_flash.html' %}
 
   <main>{% block content %}{% endblock %}</main>
 

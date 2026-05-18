@@ -504,6 +504,400 @@ img, svg {
 }
 
 /* ============================================================
+   NAV AUTH AREA
+   ============================================================ */
+.nav-auth {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.nav-auth-link {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(244, 232, 213, 0.65);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  transition: color 0.2s;
+}
+
+.nav-auth-link:hover {
+  color: var(--gold-bright);
+  opacity: 1;
+}
+
+.nav-auth-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ============================================================
+   AUTH FORMS
+   ============================================================ */
+.auth-section {
+  background: var(--bg-parchment);
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.card-form {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-parchment-card);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-warm);
+  padding: 2.5rem 2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.card-form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card-form-header .section-title {
+  font-size: 1.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-form-sub {
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 0.97rem;
+}
+
+.card-form-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.card-form-footer a {
+  color: var(--gold-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-field {
+  margin-bottom: 1.2rem;
+}
+
+.form-field label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 0.35rem;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="password"] {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: var(--bg-parchment-card);
+  border: 1px solid var(--border-gold);
+  color: var(--ink);
+  padding: 0.6rem 0.75rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-field input:focus {
+  border-color: var(--gold-bright);
+}
+
+.field-error {
+  display: block;
+  font-style: italic;
+  font-size: 0.87rem;
+  color: #a0331f;
+  margin-top: 0.3rem;
+}
+
+.form-field-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.check-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.check-label input[type="checkbox"] {
+  accent-color: var(--gold);
+}
+
+.form-field-inline {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.form-field-inline input[type="text"] {
+  flex: 1;
+  border: 1px solid var(--border-gold);
+  background: var(--bg-parchment-card);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  padding: 0.6rem 0.75rem;
+  outline: none;
+}
+
+.form-field-inline input[type="text"]:focus {
+  border-color: var(--gold-bright);
+}
+
+.btn-full {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.9rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  border: none;
+}
+
+/* ============================================================
+   SECONDARY + DANGER BUTTONS
+   ============================================================ */
+.btn-secondary {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  padding: 0.55rem 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--gold);
+  color: var(--bg-dark);
+  opacity: 1;
+}
+
+.btn-danger {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #a0331f;
+  background: transparent;
+  border: 1px solid #a0331f;
+  padding: 0.55rem 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-danger:hover {
+  background: #a0331f;
+  color: #fbf3e3;
+  opacity: 1;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.65rem;
+}
+
+/* ============================================================
+   FLASH MESSAGES
+   ============================================================ */
+.flash-container {
+  width: 100%;
+}
+
+.flash {
+  width: 100%;
+  background: var(--bg-parchment-card);
+  border-left: 4px solid var(--gold);
+  padding: 0.85rem 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.flash .container {
+  padding-left: 1.5rem;
+}
+
+.flash-error {
+  border-left-color: #a0331f;
+  color: #6b1a0e;
+  background: #fdf0ec;
+}
+
+.flash-success {
+  border-left-color: var(--gold-bright);
+}
+
+.flash-info {
+  border-left-color: var(--ink-muted);
+}
+
+/* ============================================================
+   FRIENDS PAGE
+   ============================================================ */
+.friends-section {
+  background: var(--bg-parchment);
+  min-height: calc(100vh - var(--nav-height));
+  padding: 3rem 0 5rem;
+}
+
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.friends-block {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.friends-block:last-child {
+  border-bottom: none;
+}
+
+.friends-block .section-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.friend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.friend-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-parchment-card);
+  border: 1px solid var(--border-gold);
+  padding: 0.8rem 1rem;
+}
+
+.friend-username {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+.friend-displayname {
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+}
+
+.friend-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.friends-empty {
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 0.97rem;
+}
+
+.friend-request-form .form-field-inline {
+  max-width: 440px;
+}
+
+/* ============================================================
+   PROFILE CARD
+   ============================================================ */
+.card-profile {
+  max-width: 560px;
+}
+
+.profile-handle {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  margin-top: 0.25rem;
+}
+
+.profile-details {
+  margin: 1.5rem 0;
+  border-top: 1px solid var(--border-gold);
+  padding-top: 1.2rem;
+}
+
+.profile-row {
+  display: flex;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(184, 147, 90, 0.2);
+}
+
+.profile-row dt {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  min-width: 120px;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+
+.profile-row dd {
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.profile-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* ============================================================
    RESPONSIVE — 768px breakpoint
    ============================================================ */
 @media (max-width: 768px) {
