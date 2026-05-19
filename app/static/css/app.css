@@ -46,7 +46,7 @@ body {
   background: var(--bg-parchment);
   color: var(--ink);
   line-height: 1.7;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 a {
@@ -1963,28 +1963,41 @@ img, svg {
 
 /* ---- New army form ---- */
 .faction-radio-group,
-.battlepack-radio-group {
+.battlepack-radio-group,
+.system-radio-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-top: 0.4rem;
 }
 
+.system-radio-group {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.system-radio-card {
+  flex: 1 1 45%;
+}
+
 .faction-radio-card,
-.battlepack-radio-card {
+.battlepack-radio-card,
+.system-radio-card {
   display: block;
   cursor: pointer;
 }
 
 .faction-radio-card input,
-.battlepack-radio-card input {
+.battlepack-radio-card input,
+.system-radio-card input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
 .faction-radio-inner,
-.battlepack-radio-inner {
+.battlepack-radio-inner,
+.system-radio-inner {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1994,19 +2007,35 @@ img, svg {
   transition: border-color 0.15s, background 0.15s;
 }
 
+.system-radio-inner {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
 .faction-radio-card input:checked ~ .faction-radio-inner,
-.battlepack-radio-card input:checked ~ .battlepack-radio-inner {
+.battlepack-radio-card input:checked ~ .battlepack-radio-inner,
+.system-radio-card input:checked ~ .system-radio-inner {
   border-color: var(--gold);
   background: rgba(184,147,90,0.08);
 }
 
 .faction-radio-name,
-.battlepack-radio-name {
+.battlepack-radio-name,
+.system-radio-name {
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--ink);
   letter-spacing: 0.04em;
+}
+
+.system-radio-code {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .battlepack-radio-pts {

@@ -126,9 +126,10 @@ def from_template(template_id):
 @login_required
 def new():
     factions = Faction.query.order_by(Faction.name).all()
+    systems = GameSystem.query.order_by(GameSystem.name).all()
     battlepacks = BATTLEPACKS
-    return render_template('armies/new.html', factions=factions, battlepacks=battlepacks,
-                           system_formats=SYSTEM_FORMATS)
+    return render_template('armies/new.html', factions=factions, systems=systems,
+                           battlepacks=battlepacks, system_formats=SYSTEM_FORMATS)
 
 
 @armies_bp.route('/new', methods=['POST'])

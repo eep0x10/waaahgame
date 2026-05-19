@@ -8,11 +8,27 @@
     <div class="card-form-header">
       <p class="eyebrow" style="justify-content:center;">Exército de Guerra</p>
       <h1 class="section-title">Criar Novo Exército</h1>
-      <p class="card-form-sub">Escolha sua facção e formato de batalha.</p>
+      <p class="card-form-sub">Escolha o sistema, a facção e o formato.</p>
     </div>
 
     <form method="POST" action="{{ url_for('armies.new_post') }}">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+      <div class="form-field">
+        <label>Sistema de Wargame</label>
+        <div class="system-radio-group">
+          {% for system in systems %}
+            <label class="system-radio-card">
+              <input type="radio" name="system_code" value="{{ system.code }}"
+                     {% if loop.first %}checked{% endif %}>
+              <span class="system-radio-inner">
+                <span class="system-radio-name">{{ system.name }}</span>
+                <span class="system-radio-code">{{ system.code }}</span>
+              </span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
 
       <div class="form-field">
         <label for="name">Nome do Exército</label>
@@ -21,9 +37,10 @@
 
       <div class="form-field">
         <label>Facção</label>
-        <div class="faction-radio-group">
+        <div class="faction-radio-group" id="faction-radio-group">
           {% for faction in factions %}
-            <label class="faction-radio-card">
+            <label class="faction-radio-card"
+                   data-system="{{ faction.game_system.code if faction.game_system else 'aos4' }}">
               <input type="radio" name="faction_id" value="{{ faction.id }}" required>
               <span class="faction-radio-inner">
                 <span class="faction-radio-name">{{ faction.name }}</span>
@@ -39,9 +56,8 @@
       <div class="form-field">
         <label>Battlepack / Formato</label>
         <div id="battlepack-radio-group" class="battlepack-radio-group">
-          {# Rendered by JS based on faction system; fallback static for non-JS #}
           {% for key, bp in battlepacks.items() %}
-            <label class="battlepack-radio-card aos-format" data-system="aos4">
+            <label class="battlepack-radio-card" data-system="aos4">
               <input type="radio" name="battlepack" value="{{ key }}"
                      {% if key == 'vanguard' %}checked{% endif %}>
               <span class="battlepack-radio-inner">
@@ -50,9 +66,8 @@
               </span>
             </label>
           {% endfor %}
-          {# 40k formats (hidden until 40k faction selected) #}
           {% for fmt_key, fmt_pts in system_formats.get('w40k10', {}).items() %}
-            <label class="battlepack-radio-card wh40k-format" data-system="w40k10" style="display:none">
+            <label class="battlepack-radio-card" data-system="w40k10" style="display:none">
               <input type="radio" name="battlepack" value="{{ fmt_key }}">
               <span class="battlepack-radio-inner">
                 <span class="battlepack-radio-name">{{ fmt_key | replace('_',' ') | title }}</span>
@@ -67,50 +82,44 @@
       <script>
       (function() {
         var systemFormats = {{ system_formats | tojson }};
-        // Map faction_id -> system_code
-        var factionSystem = {};
-        {% for faction in factions %}
-        factionSystem["{{ faction.id }}"] = "{{ faction.game_system.code if faction.game_system else 'aos4' }}";
-        {% endfor %}
-
-        var group = document.getElementById('battlepack-radio-group');
+        var factionGroup = document.getElementById('faction-radio-group');
+        var bpGroup = document.getElementById('battlepack-radio-group');
         var preview = document.getElementById('pts-preview');
 
-        function updateBattlepacks(systemCode) {
-          var fmts = systemFormats[systemCode] || systemFormats['aos4'];
-          // Hide all, show relevant
-          var cards = group.querySelectorAll('.battlepack-radio-card');
-          cards.forEach(function(card) {
-            card.style.display = 'none';
-            var inp = card.querySelector('input[type=radio]');
-            if (inp) inp.checked = false;
-          });
-          var matching = group.querySelectorAll('.battlepack-radio-card[data-system="' + systemCode + '"]');
-          var first = true;
-          matching.forEach(function(card) {
-            card.style.display = '';
-            if (first) {
-              var inp = card.querySelector('input[type=radio]');
-              if (inp) {
-                inp.checked = true;
-                var val = inp.value;
-                if (fmts[val]) preview.textContent = fmts[val] + ' pts limite';
-              }
-              first = false;
+        function applySystem(systemCode) {
+          var fcards = factionGroup.querySelectorAll('.faction-radio-card');
+          fcards.forEach(function(c) {
+            var match = c.dataset.system === systemCode;
+            c.style.display = match ? '' : 'none';
+            if (!match) {
+              var inp = c.querySelector('input[type=radio]');
+              if (inp) inp.checked = false;
             }
           });
+
+          var fmts = systemFormats[systemCode] || {};
+          var bcards = bpGroup.querySelectorAll('.battlepack-radio-card');
+          var firstShown = null;
+          bcards.forEach(function(c) {
+            var match = c.dataset.system === systemCode;
+            c.style.display = match ? '' : 'none';
+            var inp = c.querySelector('input[type=radio]');
+            if (!match && inp) inp.checked = false;
+            if (match && !firstShown) firstShown = inp;
+          });
+          if (firstShown) {
+            firstShown.checked = true;
+            var val = firstShown.value;
+            if (fmts[val]) preview.textContent = fmts[val] + ' pts limite';
+          }
         }
 
-        document.querySelectorAll('input[name=faction_id]').forEach(function(radio) {
-          radio.addEventListener('change', function() {
-            var sysCode = factionSystem[this.value] || 'aos4';
-            updateBattlepacks(sysCode);
-          });
+        document.querySelectorAll('input[name=system_code]').forEach(function(r) {
+          r.addEventListener('change', function() { applySystem(this.value); });
         });
 
-        group.addEventListener('change', function(e) {
+        bpGroup.addEventListener('change', function(e) {
           if (e.target.name === 'battlepack') {
-            // find pts from any system format
             var val = e.target.value;
             for (var sc in systemFormats) {
               if (systemFormats[sc][val] !== undefined) {
@@ -120,6 +129,9 @@
             }
           }
         });
+
+        var initial = document.querySelector('input[name=system_code]:checked');
+        if (initial) applySystem(initial.value);
       })();
       </script>
 
