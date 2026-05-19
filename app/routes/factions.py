@@ -21,8 +21,9 @@ def index():
 
     filtered_factions = faction_query.order_by(Faction.name).all()
 
+    template = 'factions/_results.html' if request.headers.get('HX-Request') == 'true' else 'factions/index.html'
     return render_template(
-        'factions/index.html',
+        template,
         systems=systems,
         filtered_factions=filtered_factions,
         system_filter=system_filter,
