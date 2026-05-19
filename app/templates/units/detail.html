@@ -85,26 +85,61 @@
           </div>
         {% endif %}
 
+        <!-- System badge -->
+        {% set sys_code = unit.faction.game_system.code if unit.faction.game_system else 'aos4' %}
+        {% if sys_code == 'w40k10' %}
+          <span class="role-tag" style="background:#1a3a6b;color:#c8a94a;border-color:#1a3a6b;margin-bottom:0.4rem;display:inline-block;">WH40K 10e</span>
+        {% else %}
+          <span class="role-tag" style="background:#2a1a0a;color:#b8935a;border-color:#4a3010;margin-bottom:0.4rem;display:inline-block;">AoS 4e</span>
+        {% endif %}
+
         <!-- Stats -->
         {% if unit.stats_json %}
           <div class="warscroll-block">
             <h2 class="warscroll-block-title">Characteristics</h2>
-            <table class="warscroll-stats">
-              <thead>
-                <tr>
-                  {% for key in unit.stats_json %}
-                    <th>{{ key | title }}</th>
-                  {% endfor %}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  {% for key, val in unit.stats_json.items() %}
-                    <td>{{ val }}</td>
-                  {% endfor %}
-                </tr>
-              </tbody>
-            </table>
+            {% if sys_code == 'w40k10' %}
+              {# 40k stat schema: M / T / Sv / W / Ld / OC #}
+              <table class="warscroll-stats">
+                <thead>
+                  <tr>
+                    <th title="Move">M</th>
+                    <th title="Toughness">T</th>
+                    <th title="Save">Sv</th>
+                    <th title="Wounds">W</th>
+                    <th title="Leadership">Ld</th>
+                    <th title="Objective Control">OC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ unit.stats_json.get('move', '—') }}</td>
+                    <td>{{ unit.stats_json.get('toughness', '—') }}</td>
+                    <td>{{ unit.stats_json.get('save', '—') }}</td>
+                    <td>{{ unit.stats_json.get('wounds', '—') }}</td>
+                    <td>{{ unit.stats_json.get('leadership', '—') }}</td>
+                    <td>{{ unit.stats_json.get('oc', '—') }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            {% else %}
+              {# AoS stat schema: generic key-value render #}
+              <table class="warscroll-stats">
+                <thead>
+                  <tr>
+                    {% for key in unit.stats_json %}
+                      <th>{{ key | title }}</th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% for key, val in unit.stats_json.items() %}
+                      <td>{{ val }}</td>
+                    {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+            {% endif %}
           </div>
         {% endif %}
 

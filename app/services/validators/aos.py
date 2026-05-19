@@ -1,0 +1,227 @@
+"""
+AoS 4e army validator.
+
+validate_aos(army) -> ValidationResult
+"""
+from app.models.army import BATTLEPACKS
+from app.services.companions import is_companion_valid
+from app.services.validators._types import Issue, PointsBreakdown, ValidationResult
+
+
+def _has_keyword(unit, keyword):
+    kws = unit.keywords_json or []
+    return keyword.upper() in {k.upper() for k in kws}
+
+
+def validate_aos(army):
+    issues = []
+    bp = BATTLEPACKS.get(army.battlepack, BATTLEPACKS['vanguard'])
+    limit = army.points_limit
+
+    regiments = army.regiments or []
+    all_aus = army.army_units or []
+    aux_units = [au for au in all_aus if au.regiment_id is None]
+    regiment_aus = [au for au in all_aus if au.regiment_id is not None]
+
+    aux_units_sorted = sorted(aux_units, key=lambda au: au.sort_order)
+    n_aux = len(aux_units_sorted)
+
+    aux_surcharge = 10 * n_aux * (n_aux - 1)
+
+    base_pts = sum(au.points for au in all_aus)
+    total_pts = base_pts + aux_surcharge
+    over_by = max(0, total_pts - limit)
+
+    pts = PointsBreakdown(
+        base=base_pts,
+        aux_surcharge=aux_surcharge,
+        total=total_pts,
+        limit=limit,
+        over_by=over_by,
+    )
+
+    if over_by > 0:
+        issues.append(Issue(
+            level='error',
+            code='pts_over_limit',
+            message=f'Points over limit: {total_pts}/{limit} (+{over_by})',
+        ))
+    else:
+        buffer = limit - total_pts
+        issues.append(Issue(
+            level='info',
+            code='pts_ok',
+            message=f'{total_pts}/{limit} pts — {buffer} pts remaining',
+        ))
+
+    if aux_surcharge > 0:
+        issues.append(Issue(
+            level='info',
+            code='aux_surcharge',
+            message=f'Auxiliary surcharge: +{aux_surcharge} pts ({n_aux} auxiliaries)',
+        ))
+
+    reg_min, reg_max = bp['regiments']
+    aux_min, aux_max = bp['auxiliary']
+
+    n_reg = len(regiments)
+    if not (reg_min <= n_reg <= reg_max):
+        issues.append(Issue(
+            level='error',
+            code='regiment_count',
+            message=f'{army.battlepack.capitalize()} requires {reg_min}-{reg_max} regiments; got {n_reg}',
+        ))
+
+    if not (aux_min <= n_aux <= aux_max):
+        issues.append(Issue(
+            level='error',
+            code='aux_count',
+            message=f'{army.battlepack.capitalize()} allows {aux_min}-{aux_max} auxiliaries; got {n_aux}',
+        ))
+
+    generals = [au for au in all_aus if au.is_general]
+    if len(generals) == 0:
+        issues.append(Issue(
+            level='error',
+            code='no_general',
+            message='No general designated.',
+        ))
+    elif len(generals) > 1:
+        issues.append(Issue(
+            level='error',
+            code='multiple_generals',
+            message=f'{len(generals)} units marked as general; only 1 allowed.',
+        ))
+    else:
+        gen = generals[0]
+        if not _has_keyword(gen.unit, 'HERO'):
+            issues.append(Issue(
+                level='error',
+                code='general_not_hero',
+                message=f'General "{gen.unit.name}" is not a Hero.',
+                target=f'army_unit:{gen.id}',
+            ))
+        reg1_list = [r for r in regiments if r.position == 1]
+        if reg1_list:
+            reg1 = reg1_list[0]
+            leader = reg1.leader
+            if leader is None or leader.id != gen.id:
+                issues.append(Issue(
+                    level='error',
+                    code='general_not_reg1_leader',
+                    message=f'General must be the leader of Regiment 1.',
+                    target=f'army_unit:{gen.id}',
+                ))
+        else:
+            issues.append(Issue(
+                level='error',
+                code='general_not_reg1_leader',
+                message='No Regiment 1 found; general must lead Regiment 1.',
+            ))
+
+    reinforced_unit_ids = set()
+    for au in all_aus:
+        if au.is_reinforced:
+            if not au.unit.can_be_reinforced:
+                issues.append(Issue(
+                    level='error',
+                    code='cannot_reinforce',
+                    message=f'"{au.unit.name}" cannot be reinforced.',
+                    target=f'army_unit:{au.id}',
+                ))
+            else:
+                if au.unit_id in reinforced_unit_ids:
+                    issues.append(Issue(
+                        level='error',
+                        code='reinforcement_duplicate',
+                        message=f'"{au.unit.name}" is already reinforced elsewhere in the army.',
+                        target=f'army_unit:{au.id}',
+                    ))
+                reinforced_unit_ids.add(au.unit_id)
+
+    for regiment in regiments:
+        reg_aus = [au for au in regiment.army_units]
+        leaders = [au for au in reg_aus if au.is_leader]
+        companions = [au for au in reg_aus if not au.is_leader]
+
+        if len(leaders) == 0:
+            issues.append(Issue(
+                level='error',
+                code='regiment_no_leader',
+                message=f'Regiment {regiment.position} has no leader.',
+                target=f'regiment:{regiment.id}',
+            ))
+        elif len(leaders) > 1:
+            issues.append(Issue(
+                level='error',
+                code='regiment_multiple_leaders',
+                message=f'Regiment {regiment.position} has {len(leaders)} leaders; only 1 allowed.',
+                target=f'regiment:{regiment.id}',
+            ))
+        else:
+            leader_au = leaders[0]
+            if not _has_keyword(leader_au.unit, 'HERO'):
+                issues.append(Issue(
+                    level='error',
+                    code='leader_not_hero',
+                    message=f'Regiment {regiment.position} leader "{leader_au.unit.name}" is not a Hero.',
+                    target=f'army_unit:{leader_au.id}',
+                ))
+
+            if len(companions) > 3:
+                issues.append(Issue(
+                    level='error',
+                    code='regiment_too_large',
+                    message=f'Regiment {regiment.position} has {len(companions)} companions; max 3.',
+                    target=f'regiment:{regiment.id}',
+                ))
+
+            companion_units = [au.unit for au in companions]
+
+            for comp_au in companions:
+                if _has_keyword(comp_au.unit, 'HERO'):
+                    leader_specs = leader_au.unit.companions_json or []
+                    hero_allowed = False
+                    from app.services.companions import _matches_spec as _ms
+                    for spec in leader_specs:
+                        if _ms(comp_au.unit, spec):
+                            hero_allowed = True
+                            break
+                    if not hero_allowed:
+                        issues.append(Issue(
+                            level='warning',
+                            code='hero_as_companion_review',
+                            message=(
+                                f'"{comp_au.unit.name}" is a Hero in Regiment {regiment.position}; '
+                                f'verify companion eligibility.'
+                            ),
+                            target=f'army_unit:{comp_au.id}',
+                        ))
+
+                valid, reason = is_companion_valid(
+                    comp_au.unit,
+                    leader_au.unit,
+                    companion_units,
+                )
+                if not valid:
+                    issues.append(Issue(
+                        level='error',
+                        code='companion_invalid',
+                        message=(
+                            f'Regiment {regiment.position}: "{comp_au.unit.name}" is an invalid companion. '
+                            f'{reason or ""}'
+                        ),
+                        target=f'army_unit:{comp_au.id}',
+                    ))
+
+    aux_command_bonus = (n_aux == 0)
+
+    errors = [i for i in issues if i.level == 'error']
+    is_legal = len(errors) == 0
+
+    return ValidationResult(
+        is_legal=is_legal,
+        points=pts,
+        issues=issues,
+        aux_command_bonus=aux_command_bonus,
+    )

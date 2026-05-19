@@ -37,26 +37,91 @@
       </div>
 
       <div class="form-field">
-        <label>Battlepack</label>
-        <div class="battlepack-radio-group">
+        <label>Battlepack / Format</label>
+        <div id="battlepack-radio-group" class="battlepack-radio-group">
+          {# Rendered by JS based on faction system; fallback static for non-JS #}
           {% for key, bp in battlepacks.items() %}
-            <label class="battlepack-radio-card">
+            <label class="battlepack-radio-card aos-format" data-system="aos4">
               <input type="radio" name="battlepack" value="{{ key }}"
-                     {% if key == 'vanguard' %}checked{% endif %}
-                     onchange="document.getElementById('pts-preview').textContent = '{{ bp.pts }} pts limit';">
+                     {% if key == 'vanguard' %}checked{% endif %}>
               <span class="battlepack-radio-inner">
                 <span class="battlepack-radio-name">{{ bp.label }}</span>
                 <span class="battlepack-radio-pts">{{ bp.pts }} pts</span>
-                <span class="battlepack-radio-detail">
-                  {{ bp.regiments[0] }}-{{ bp.regiments[1] }} regiments,
-                  {{ bp.auxiliary[0] }}-{{ bp.auxiliary[1] }} auxiliary
-                </span>
+              </span>
+            </label>
+          {% endfor %}
+          {# 40k formats (hidden until 40k faction selected) #}
+          {% for fmt_key, fmt_pts in system_formats.get('w40k10', {}).items() %}
+            <label class="battlepack-radio-card wh40k-format" data-system="w40k10" style="display:none">
+              <input type="radio" name="battlepack" value="{{ fmt_key }}">
+              <span class="battlepack-radio-inner">
+                <span class="battlepack-radio-name">{{ fmt_key | replace('_',' ') | title }}</span>
+                <span class="battlepack-radio-pts">{{ fmt_pts }} pts</span>
               </span>
             </label>
           {% endfor %}
         </div>
         <p id="pts-preview" class="battlepack-pts-hint">1000 pts limit</p>
       </div>
+
+      <script>
+      (function() {
+        var systemFormats = {{ system_formats | tojson }};
+        // Map faction_id -> system_code
+        var factionSystem = {};
+        {% for faction in factions %}
+        factionSystem["{{ faction.id }}"] = "{{ faction.game_system.code if faction.game_system else 'aos4' }}";
+        {% endfor %}
+
+        var group = document.getElementById('battlepack-radio-group');
+        var preview = document.getElementById('pts-preview');
+
+        function updateBattlepacks(systemCode) {
+          var fmts = systemFormats[systemCode] || systemFormats['aos4'];
+          // Hide all, show relevant
+          var cards = group.querySelectorAll('.battlepack-radio-card');
+          cards.forEach(function(card) {
+            card.style.display = 'none';
+            var inp = card.querySelector('input[type=radio]');
+            if (inp) inp.checked = false;
+          });
+          var matching = group.querySelectorAll('.battlepack-radio-card[data-system="' + systemCode + '"]');
+          var first = true;
+          matching.forEach(function(card) {
+            card.style.display = '';
+            if (first) {
+              var inp = card.querySelector('input[type=radio]');
+              if (inp) {
+                inp.checked = true;
+                var val = inp.value;
+                if (fmts[val]) preview.textContent = fmts[val] + ' pts limit';
+              }
+              first = false;
+            }
+          });
+        }
+
+        document.querySelectorAll('input[name=faction_id]').forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            var sysCode = factionSystem[this.value] || 'aos4';
+            updateBattlepacks(sysCode);
+          });
+        });
+
+        group.addEventListener('change', function(e) {
+          if (e.target.name === 'battlepack') {
+            // find pts from any system format
+            var val = e.target.value;
+            for (var sc in systemFormats) {
+              if (systemFormats[sc][val] !== undefined) {
+                preview.textContent = systemFormats[sc][val] + ' pts limit';
+                break;
+              }
+            }
+          }
+        });
+      })();
+      </script>
 
       <button type="submit" class="btn-primary btn-full">Raise Army</button>
     </form>

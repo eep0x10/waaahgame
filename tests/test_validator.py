@@ -677,3 +677,57 @@ def test_companion_max_spec_enforced():
     result = validate(army)
     codes = {i.code for i in result.issues}
     assert 'companion_invalid' in codes
+
+
+# ===========================================================================
+# REGRESSION: AoS validator still dispatches correctly after package refactor
+# ===========================================================================
+
+class _GameSystemAoS:
+    code = 'aos4'
+
+
+class _FactionWithSystem:
+    game_system = _GameSystemAoS()
+
+
+class ArmyStubWithSystem(ArmyStub):
+    """ArmyStub with faction.game_system to exercise dispatcher routing."""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.faction = _FactionWithSystem()
+
+
+def test_aos_dispatcher_routes_correctly():
+    """Dispatcher sends aos4 army to AoS validator (not 40k validator)."""
+    corruptor = _verminlord_corruptor()
+    au1 = _au(1, corruptor, regiment_id=10, is_leader=True, is_general=True)
+    reg1 = _regiment(10, 1, 1, [au1])
+
+    army = ArmyStubWithSystem(
+        army_id=1, faction_id=1,
+        battlepack='vanguard', pts_limit=1000,
+        regiments=[reg1], army_units=[au1],
+    )
+
+    result = validate(army)
+    # AoS: 280pts < 1000, 1 regiment, 1 general hero -> LEGAL
+    assert result.is_legal is True
+    # AoS field: aux_surcharge=0 for 0 auxiliaries
+    assert result.points.aux_surcharge == 0
+
+
+def test_aos_result_shape_unchanged_after_refactor():
+    """ValidationResult shape is stable after validator package refactor."""
+    corruptor = _verminlord_corruptor()
+    au1 = _au(1, corruptor, regiment_id=10, is_leader=True, is_general=True)
+    reg1 = _regiment(10, 1, 1, [au1])
+    army = _build_vanguard_army([(reg1, [au1])])
+
+    result = validate(army)
+    assert hasattr(result, 'is_legal')
+    assert hasattr(result, 'points')
+    assert hasattr(result, 'issues')
+    assert hasattr(result, 'aux_command_bonus')
+    assert isinstance(result.points.base, int)
+    assert isinstance(result.points.total, int)

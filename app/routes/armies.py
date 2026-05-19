@@ -6,6 +6,7 @@ from app.extensions import db
 from app.models.army import Army, Regiment, ArmyUnit, BATTLEPACKS
 from app.models.game import Faction, Unit
 from app.services.validator import validate
+from app.services.formats import SYSTEM_FORMATS, formats_for_system
 
 armies_bp = Blueprint('armies', __name__, url_prefix='/armies')
 
@@ -39,7 +40,8 @@ def index():
 def new():
     factions = Faction.query.order_by(Faction.name).all()
     battlepacks = BATTLEPACKS
-    return render_template('armies/new.html', factions=factions, battlepacks=battlepacks)
+    return render_template('armies/new.html', factions=factions, battlepacks=battlepacks,
+                           system_formats=SYSTEM_FORMATS)
 
 
 @armies_bp.route('/new', methods=['POST'])
@@ -53,14 +55,21 @@ def new_post():
         flash('Name and faction are required.', 'error')
         return redirect(url_for('armies.new'))
 
-    if battlepack not in BATTLEPACKS:
-        battlepack = 'vanguard'
-
     faction = db.session.get(Faction, faction_id)
     if not faction:
         abort(400)
 
-    pts_limit = BATTLEPACKS[battlepack]['pts']
+    # Determine valid formats for this faction's system
+    system_code = faction.game_system.code if faction.game_system else 'aos4'
+    valid_formats = formats_for_system(system_code)
+
+    if battlepack not in valid_formats and battlepack not in BATTLEPACKS:
+        battlepack = next(iter(valid_formats))
+
+    if battlepack in valid_formats:
+        pts_limit = valid_formats[battlepack]
+    else:
+        pts_limit = BATTLEPACKS.get(battlepack, BATTLEPACKS['vanguard'])['pts']
 
     army = Army(
         user_id=current_user.id,

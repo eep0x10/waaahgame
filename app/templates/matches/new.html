@@ -42,10 +42,51 @@
           <label for="format">Format</label>
           <select id="format" name="format" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
             {% for fmt in formats %}
-              <option value="{{ fmt }}">{{ fmt | capitalize }} ({{ FORMAT_POINTS[fmt] }}pts)</option>
+              <option value="{{ fmt }}">{{ fmt | replace('_',' ') | title }} ({{ FORMAT_POINTS[fmt] }}pts)</option>
             {% endfor %}
           </select>
         </div>
+
+        {# System-to-formats mapping for client-side filtering #}
+        <script>
+        (function() {
+          var systemFormats = {{ system_formats | tojson }};
+          var systemSelect = document.getElementById('system_id');
+          var formatSelect = document.getElementById('format');
+          var allFormats = {{ FORMAT_POINTS | tojson }};
+
+          function buildSystemCodeMap() {
+            // Map system option value (id) -> system code via data attribute
+            var map = {};
+            {% for sys in systems %}
+            map["{{ sys.id }}"] = "{{ sys.code }}";
+            {% endfor %}
+            return map;
+          }
+
+          var sysCodeMap = buildSystemCodeMap();
+
+          function updateFormats() {
+            var sysId = systemSelect.value;
+            var sysCode = sysCodeMap[sysId];
+            var fmts = systemFormats[sysCode] || null;
+            var prev = formatSelect.value;
+            formatSelect.innerHTML = '';
+            var fmtMap = fmts || allFormats;
+            for (var key in fmtMap) {
+              var opt = document.createElement('option');
+              opt.value = key;
+              var label = key.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+              opt.textContent = label + ' (' + fmtMap[key] + 'pts)';
+              if (key === prev) opt.selected = true;
+              formatSelect.appendChild(opt);
+            }
+          }
+
+          systemSelect.addEventListener('change', updateFormats);
+          if (systemSelect.value) updateFormats();
+        })();
+        </script>
 
         <div class="form-field">
           <label for="army_host_id">Your Army</label>

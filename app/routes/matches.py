@@ -6,6 +6,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request,
 from flask_login import login_required, current_user
 from app.extensions import db, socketio
 from app.models.match import Match, PHASES, FORMAT_POINTS
+from app.services.formats import all_formats as _all_formats, SYSTEM_FORMATS
 from app.models.match_event import MatchEvent
 from app.models.match_casualty import MatchCasualty
 from app.models.match_dice_roll import MatchDiceRoll
@@ -80,9 +81,11 @@ def index():
 def new():
     systems = GameSystem.query.order_by(GameSystem.name).all()
     my_armies = Army.query.filter_by(user_id=current_user.id).order_by(Army.name).all()
-    formats = list(FORMAT_POINTS.keys())
+    # Combine all formats for template; system_formats passed for JS filtering
+    combined_format_points = _all_formats()
+    formats = list(combined_format_points.keys())
     return render_template('matches/new.html', systems=systems, my_armies=my_armies, formats=formats,
-                           FORMAT_POINTS=FORMAT_POINTS)
+                           FORMAT_POINTS=combined_format_points, system_formats=SYSTEM_FORMATS)
 
 
 @matches_bp.route('/new', methods=['POST'])
@@ -109,7 +112,9 @@ def new_post():
     if army is None or army.user_id != current_user.id:
         abort(403)
 
-    pts = FORMAT_POINTS.get(fmt)
+    # Accept both AoS and 40k formats
+    combined_fp = _all_formats()
+    pts = combined_fp.get(fmt) or FORMAT_POINTS.get(fmt)
     if pts is None:
         flash('Invalid format.', 'error')
         return redirect(url_for('matches.new'))
