@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    image: waaahgame:latest
+    ports:
+      - "5555:5555"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      SECRET_KEY: ${SECRET_KEY:-dev-change-me}
+      FLASK_ENV: ${FLASK_ENV:-production}
+      WAAAHGAME_INSTANCE_DIR: /app/instance
+    volumes:
+      - waaahgame_data:/app/instance
+    restart: unless-stopped
+
+volumes:
+  waaahgame_data:
