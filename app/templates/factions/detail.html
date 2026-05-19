@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ faction.name }} — Warscroll Roster{% endblock %}
+{% block title %}{{ faction.name }} — Roster Warscroll{% endblock %}
 
 {% block content %}
 <section class="faction-detail-section">
@@ -8,7 +8,7 @@
     <!-- Faction header -->
     <div class="faction-detail-header">
       <p class="eyebrow">
-        <a href="{{ url_for('factions.index') }}">Factions</a> &rsaquo; {{ faction.game_system.name }}
+        <a href="{{ url_for('factions.index') }}">Facções</a> &rsaquo; {{ faction.game_system.name }}
       </p>
       <div class="faction-detail-title-row">
         {% if faction.grand_alliance %}
@@ -23,7 +23,7 @@
 
     <!-- Filter pills -->
     <div class="unit-filter-row" id="unit-filters">
-      <button class="filter-pill filter-pill--active" data-filter="all">All ({{ units | length }})</button>
+      <button class="filter-pill filter-pill--active" data-filter="all">Todos ({{ units | length }})</button>
       {% set roles = units | map(attribute='unit_role') | reject('none') | unique | list | sort %}
       {% for role in roles %}
         <button class="filter-pill" data-filter="{{ role | lower }}">{{ role }}</button>
@@ -38,7 +38,7 @@
         {% endfor %}
       </div>
     {% else %}
-      <p class="faction-empty"><em>No units found for this faction. Run the seed command to populate the roster.</em></p>
+      <p class="faction-empty"><em>Nenhuma unidade encontrada para esta facção. Execute o seed para popular o roster.</em></p>
     {% endif %}
 
   </div>

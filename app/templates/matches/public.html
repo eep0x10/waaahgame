@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Match #{{ match.id }} — Spectating{% endblock %}
+{% block title %}Partida #{{ match.id }} — Espectando{% endblock %}
 
 {% block content %}
 <section class="armies-builder-section">
@@ -20,7 +20,7 @@
       {% for c in match.casualties %}
         {% if casualties_map.update({c.army_unit_id: c}) %}{% endif %}
       {% endfor %}
-      {% for panel_army, panel_label in [(match.army_host, match.host.name), (match.army_opponent, match.opponent.name if match.opponent else 'Opponent')] %}
+      {% for panel_army, panel_label in [(match.army_host, match.host.name), (match.army_opponent, match.opponent.name if match.opponent else 'Oponente')] %}
       <div style="background:var(--bg-parchment-card);border:1px solid var(--border-gold);border-radius:4px;padding:1rem;">
         <div class="eyebrow" style="margin-bottom:0.5rem;">{{ panel_label }}</div>
         {% if panel_army %}
@@ -31,14 +31,14 @@
             </div>
           {% endfor %}
         {% else %}
-          <p style="color:var(--text-secondary);font-size:0.85rem;">No army selected.</p>
+          <p style="color:var(--text-secondary);font-size:0.85rem;">Nenhum exército selecionado.</p>
         {% endif %}
       </div>
       {% endfor %}
     </div>
 
     <div style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;">
-      <div class="eyebrow" style="margin-bottom:0.5rem;">Battle Log</div>
+      <div class="eyebrow" style="margin-bottom:0.5rem;">Log de Batalha</div>
       <div style="max-height:240px;overflow-y:auto;">
         {% for ev in recent_events | reverse %}
           {% include 'matches/_event_row.html' %}
@@ -48,7 +48,7 @@
     {% endif %}
 
     <div style="margin-top:2rem;text-align:center;">
-      <p class="eyebrow">You are spectating this match. <em>Read-only view.</em></p>
+      <p class="eyebrow">Você está espectando esta partida. <em>Visualização somente leitura.</em></p>
     </div>
   </div>
 </section>

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Match #{{ match.id }}{% endblock %}
+{% block title %}Partida #{{ match.id }}{% endblock %}
 
 {% block content %}
 <section class="armies-builder-section">
@@ -7,7 +7,7 @@
 
     <div class="builder-header">
       <div class="builder-header-left">
-        <p class="eyebrow"><a href="{{ url_for('matches.index') }}">Lobby</a> &rsaquo; Match #{{ match.id }}</p>
+        <p class="eyebrow"><a href="{{ url_for('matches.index') }}">Lobby</a> &rsaquo; Partida #{{ match.id }}</p>
         <h1 class="section-title">{{ match.host.name }} vs {{ match.opponent.name if match.opponent else '???' }}</h1>
         <div class="builder-header-meta">
           <span class="role-tag">{{ match.format | capitalize }}</span>
@@ -19,23 +19,23 @@
         {% if match.status == 'pending' and current_user.id == match.host_id %}
           <form method="POST" action="{{ url_for('matches.cancel', match_id=match.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button class="btn-danger btn-sm">Cancel</button>
+            <button class="btn-danger btn-sm">Cancelar</button>
           </form>
         {% endif %}
         {% if match.status == 'pending' and current_user.id == match.opponent_id %}
           <form method="POST" action="{{ url_for('matches.accept', match_id=match.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button class="btn-primary btn-sm">Accept</button>
+            <button class="btn-primary btn-sm">Aceitar</button>
           </form>
           <form method="POST" action="{{ url_for('matches.decline', match_id=match.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button class="btn-danger btn-sm">Decline</button>
+            <button class="btn-danger btn-sm">Recusar</button>
           </form>
         {% endif %}
         {% if match.status == 'army_select' and current_user.id == match.host_id %}
           <form method="POST" action="{{ url_for('matches.cancel', match_id=match.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button class="btn-danger btn-sm">Cancel</button>
+            <button class="btn-danger btn-sm">Cancelar</button>
           </form>
         {% endif %}
       </div>
@@ -45,7 +45,7 @@
     {% if match.battlepack %}
     <div class="card-form" style="padding:1.5rem;margin-bottom:1.5rem;border-left:3px solid #b8935a;">
       <h3 style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.1em;margin-bottom:0.8rem;">
-        MISSION: {{ match.battlepack.name }}
+        MISSÃO: {{ match.battlepack.name }}
         <span class="role-tag" style="font-size:0.75rem;margin-left:0.5rem;">{{ match.battlepack.format | replace('_',' ') | title }}</span>
       </h3>
       {% if match.battlepack.summary %}
@@ -53,13 +53,13 @@
       {% endif %}
       {% if match.battlepack.primary_objective %}
         <div style="margin-bottom:0.6rem;">
-          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">PRIMARY</span>
+          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">PRIMÁRIO</span>
           <p style="font-family:'EB Garamond',serif;font-size:0.9rem;margin:0.2rem 0 0;">{{ match.battlepack.primary_objective }}</p>
         </div>
       {% endif %}
       {% if match.battlepack.secondary_objectives_json %}
         <div style="margin-bottom:0.6rem;">
-          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">SECONDARIES</span>
+          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">SECUNDÁRIOS</span>
           <ul style="margin:0.3rem 0 0;padding-left:1.2rem;">
             {% for sec in match.battlepack.secondary_objectives_json %}
               <li style="font-family:'EB Garamond',serif;font-size:0.88rem;margin-bottom:0.2rem;">{{ sec }}</li>
@@ -69,7 +69,7 @@
       {% endif %}
       {% if match.battlepack.deployment_text %}
         <div>
-          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">DEPLOYMENT</span>
+          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">IMPLANTAÇÃO</span>
           <p style="font-family:'EB Garamond',serif;font-size:0.88rem;margin:0.2rem 0 0;">{{ match.battlepack.deployment_text }}</p>
         </div>
       {% endif %}
@@ -79,18 +79,18 @@
     {# Army select phase — opponent chooses army #}
     {% if match.status == 'army_select' and current_user.id == match.opponent_id and not match.army_opponent_id %}
     <div class="card-form" style="padding:1.5rem;margin-bottom:1.5rem;">
-      <h3 class="section-title" style="font-size:1.1rem;margin-bottom:0.8rem;">Choose Your Army</h3>
+      <h3 class="section-title" style="font-size:1.1rem;margin-bottom:0.8rem;">Escolha Seu Exército</h3>
       <form method="POST" action="{{ url_for('matches.choose_army', match_id=match.id) }}" style="display:flex;gap:0.75rem;align-items:flex-end;flex-wrap:wrap;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-field" style="margin:0;flex:1;min-width:200px;">
           <select name="army_opponent_id" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
-            <option value="">— Select army —</option>
+            <option value="">— Selecionar exército —</option>
             {% for army in current_user.armies %}
               <option value="{{ army.id }}">{{ army.name }} ({{ army.faction.name }}, {{ army.points_limit }}pts)</option>
             {% endfor %}
           </select>
         </div>
-        <button type="submit" class="btn-primary btn-sm">Confirm Army</button>
+        <button type="submit" class="btn-primary btn-sm">Confirmar Exército</button>
       </form>
     </div>
     {% endif %}
@@ -100,7 +100,7 @@
     <div style="margin-bottom:1.5rem;text-align:center;">
       <form method="POST" action="{{ url_for('matches.start', match_id=match.id) }}" style="display:inline;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <button class="btn-primary">Begin Battle</button>
+        <button class="btn-primary">Iniciar Batalha</button>
       </form>
     </div>
     {% endif %}
@@ -128,7 +128,7 @@
             hx-swap="innerHTML"
             style="display:inline;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <button class="btn-primary">Advance Phase</button>
+        <button class="btn-primary">Avançar Fase</button>
       </form>
       {% endif %}
 
@@ -145,7 +145,7 @@
       {% if current_user.id == match.host_id or current_user.id == match.active_player_id %}
       <form method="POST" action="{{ url_for('matches.finish', match_id=match.id) }}" style="display:inline;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <button class="btn-danger btn-sm">End Match</button>
+        <button class="btn-danger btn-sm">Encerrar Partida</button>
       </form>
       {% endif %}
     </div>
@@ -160,7 +160,7 @@
         {% if casualties_map.update({c.army_unit_id: c}) %}{% endif %}
       {% endfor %}
 
-      {% for panel_army, panel_label in [(host_army, match.host.name), (opp_army, match.opponent.name if match.opponent else 'Opponent')] %}
+      {% for panel_army, panel_label in [(host_army, match.host.name), (opp_army, match.opponent.name if match.opponent else 'Oponente')] %}
       <div style="background:var(--bg-parchment-card);border:1px solid var(--border-gold);border-radius:4px;padding:1rem;">
         <div class="eyebrow" style="margin-bottom:0.5rem;">{{ panel_label }}</div>
         {% if panel_army %}
@@ -169,7 +169,7 @@
             {% include 'matches/_casualty_row.html' %}
           {% endfor %}
         {% else %}
-          <p style="color:var(--text-secondary);font-size:0.85rem;">No army selected.</p>
+          <p style="color:var(--text-secondary);font-size:0.85rem;">Nenhum exército selecionado.</p>
         {% endif %}
       </div>
       {% endfor %}
@@ -180,7 +180,7 @@
       <div>
         {# Event log #}
         <div style="background:var(--bg-deep);border:1px solid rgba(184,147,90,0.2);border-radius:4px;padding:0.75rem 1rem;margin-bottom:1rem;">
-          <div class="eyebrow" style="margin-bottom:0.5rem;">Battle Log</div>
+          <div class="eyebrow" style="margin-bottom:0.5rem;">Log de Batalha</div>
           <div id="event-log" style="max-height:240px;overflow-y:auto;">
             {% for ev in recent_events | reverse %}
               {% include 'matches/_event_row.html' %}
@@ -189,7 +189,7 @@
         </div>
         {% if match.status == 'finished' %}
         <div style="text-align:center;">
-          <a href="{{ url_for('matches.replay', match_id=match.id) }}" class="btn-secondary btn-sm">View Replay</a>
+          <a href="{{ url_for('matches.replay', match_id=match.id) }}" class="btn-secondary btn-sm">Ver Replay</a>
         </div>
         {% endif %}
       </div>
@@ -215,16 +215,16 @@
     {# Pending state info #}
     {% if match.status == 'pending' %}
     <div class="card-form" style="padding:1.5rem;text-align:center;margin-top:1rem;">
-      <p class="eyebrow">Awaiting {{ match.opponent.name if match.opponent else 'opponent' }}'s response&hellip;</p>
+      <p class="eyebrow">Aguardando resposta de {{ match.opponent.name if match.opponent else 'oponente' }}&hellip;</p>
       {% if match.army_host %}
-        <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.5rem;">Your army: <strong>{{ match.army_host.name }}</strong></p>
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.5rem;">Seu exército: <strong>{{ match.army_host.name }}</strong></p>
       {% endif %}
     </div>
     {% endif %}
 
     {# Public spectator link #}
     <div style="margin-top:1.5rem;text-align:right;">
-      <a href="{{ url_for('matches.public_view', token=match.public_token) }}" class="btn-secondary btn-sm" target="_blank">Spectator Link</a>
+      <a href="{{ url_for('matches.public_view', token=match.public_token) }}" class="btn-secondary btn-sm" target="_blank">Link de Espectador</a>
     </div>
 
   </div>

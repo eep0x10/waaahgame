@@ -18,13 +18,13 @@
   <div class="au-row-info">
     <span class="au-row-name">
       {% if au.is_general %}<span class="au-general-star" title="General">&#9733;</span>{% endif %}
-      {% if au.is_leader %}<span class="au-leader-crown" title="Leader">&#9812;</span>{% endif %}
+      {% if au.is_leader %}<span class="au-leader-crown" title="Líder">&#9812;</span>{% endif %}
       {{ unit.name }}
     </span>
     <span class="au-row-meta">
       {% if unit.unit_role %}<span class="role-tag">{{ unit.unit_role }}</span>{% endif %}
       <span class="pts-badge">{{ au.points }}<span class="pts-label">pts</span></span>
-      {% if au.is_reinforced %}<span class="reinforced-tag">Reinforced</span>{% endif %}
+      {% if au.is_reinforced %}<span class="reinforced-tag">Reforçado</span>{% endif %}
     </span>
   </div>
 
@@ -40,7 +40,7 @@
                 hx-swap="outerHTML">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="au-action-btn">
-              {% if au.is_reinforced %}Remove Reinforce{% else %}Reinforce{% endif %}
+              {% if au.is_reinforced %}Remover Reforço{% else %}Reforçar{% endif %}
             </button>
           </form>
         {% endif %}
@@ -52,7 +52,7 @@
                 hx-target="#regiment-card-{{ au.regiment_id }}"
                 hx-swap="outerHTML">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="au-action-btn">Promote to Leader</button>
+            <button type="submit" class="au-action-btn">Promover a Líder</button>
           </form>
         {% endif %}
 
@@ -63,7 +63,7 @@
                 hx-target="#army-summary"
                 hx-swap="outerHTML">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="au-action-btn">Set as General</button>
+            <button type="submit" class="au-action-btn">Definir como General</button>
           </form>
         {% endif %}
 
@@ -73,15 +73,15 @@
               hx-target="#regiments-aux-container"
               hx-swap="innerHTML">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-          <label class="au-action-label">Move to:</label>
+          <label class="au-action-label">Mover para:</label>
           <select name="target" class="au-move-select" onchange="this.form.submit()">
-            <option value="">-- select --</option>
+            <option value="">-- selecionar --</option>
             {% if au.regiment_id %}
-              <option value="aux">Auxiliary Pool</option>
+              <option value="aux">Auxiliar</option>
             {% endif %}
             {% for reg in army.regiments %}
               {% if reg.id != au.regiment_id %}
-                <option value="reg-{{ reg.id }}">Regiment {{ loop.index }}</option>
+                <option value="reg-{{ reg.id }}">Regimento {{ loop.index }}</option>
               {% endif %}
             {% endfor %}
           </select>
@@ -92,9 +92,9 @@
               hx-post="{{ url_for('armies.remove_unit', army_id=army.id, au_id=au.id) }}"
               hx-target="#regiments-aux-container"
               hx-swap="innerHTML"
-              onsubmit="return confirm('Remove {{ unit.name }}?');">
+              onsubmit="return confirm('Remover {{ unit.name }}?');">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-          <button type="submit" class="au-action-btn au-action-btn--danger">Remove</button>
+          <button type="submit" class="au-action-btn au-action-btn--danger">Remover</button>
         </form>
       </div>
     </details>

@@ -2,7 +2,7 @@
 <div class="aux-card" id="aux-card">
 
   <div class="aux-card-header">
-    <span class="aux-label">AUXILIARY</span>
+    <span class="aux-label">AUXILIAR</span>
     <span class="aux-count-badge">{{ aux_units | length }}</span>
   </div>
 
@@ -16,12 +16,12 @@
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="target" value="aux">
       <select name="unit_slug" class="au-add-select" required>
-        <option value="">Add unit to auxiliary...</option>
+        <option value="">Adicionar unidade ao auxiliar...</option>
         {% for unit in army.faction.units | sort(attribute='name') %}
           <option value="{{ unit.slug }}">{{ unit.name }} ({{ unit.points_cost }}pts)</option>
         {% endfor %}
       </select>
-      <button type="submit" class="btn-secondary btn-sm">Add</button>
+      <button type="submit" class="btn-secondary btn-sm">Adicionar</button>
     </form>
   </div>
 
@@ -32,7 +32,7 @@
       {% endfor %}
     </div>
   {% else %}
-    <div class="aux-empty"><em>No auxiliary units. Add standalone heroes or support units here.</em></div>
+    <div class="aux-empty"><em>Nenhuma unidade auxiliar. Adicione heróis avulsos ou unidades de suporte aqui.</em></div>
   {% endif %}
 
 </div>

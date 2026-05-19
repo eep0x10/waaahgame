@@ -18,7 +18,7 @@ def test_send_request(client_as_alice, app, two_users):
 def test_request_self(client_as_alice, app, two_users):
     resp = client_as_alice.post('/friends/request', data={'username': 'alice'},
                                 follow_redirects=True)
-    assert b'yourself' in resp.data
+    assert b'si mesmo' in resp.data
     with app.app_context():
         assert Friendship.query.count() == 0
 
@@ -26,7 +26,7 @@ def test_request_self(client_as_alice, app, two_users):
 def test_request_nonexistent_user(client_as_alice, app, two_users):
     resp = client_as_alice.post('/friends/request', data={'username': 'nobody'},
                                 follow_redirects=True)
-    assert b'found' in resp.data.lower()
+    assert b'encontrado' in resp.data
     with app.app_context():
         assert Friendship.query.count() == 0
 
@@ -36,7 +36,7 @@ def test_duplicate_request_rejected(client_as_alice, app, two_users):
     client_as_alice.post('/friends/request', data={'username': 'bob'})
     resp = client_as_alice.post('/friends/request', data={'username': 'bob'},
                                 follow_redirects=True)
-    assert b'pending' in resp.data.lower() or b'already' in resp.data.lower()
+    assert b'pendente' in resp.data
     with app.app_context():
         assert Friendship.query.count() == 1
 

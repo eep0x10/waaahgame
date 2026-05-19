@@ -220,21 +220,21 @@ TYRANIDS_UNITS = [
 ]
 
 SPACE_MARINES_BLURB = (
-    "The Adeptus Astartes — Space Marines — are humanity's greatest warriors, transhuman soldiers "
-    "created from the gene-seed of the Primarchs. Clad in ceramite power armour and wielding the finest "
-    "weapons the Imperium can produce, they stand as the last line of defence against the endless horrors "
-    "that threaten to consume the galaxy. Each Chapter is a brotherhood apart, preserving unique "
-    "battle-doctrines and chapter relics across millennia of warfare against xenos, heretics, and the "
-    "daemonic. When a Space Marine Chapter goes to war, worlds tremble."
+    "Os Adeptus Astartes — Space Marines — são os maiores guerreiros da humanidade, soldados trans-humanos "
+    "criados a partir do gene-seed dos Primarchs. Envolvidos em armadura de ceramite e empunhando as melhores "
+    "armas que o Império pode produzir, eles são a última linha de defesa contra os horrores sem fim "
+    "que ameaçam consumir a galáxia. Cada Capítulo é uma irmandade à parte, preservando doutrinas de batalha "
+    "únicas e relíquias através de milênios de guerra contra xenos, hereges e o daemonico. "
+    "Quando um Capítulo de Space Marines vai à guerra, mundos tremem."
 )
 
 TYRANIDS_BLURB = (
-    "From beyond the rim of the galaxy the Tyranids come — a vast, ravenous hive-mind of bio-engineered "
-    "predators that consumes every living thing in its path. Each Tyranid organism is a weapon perfectly "
-    "adapted for slaughter, shaped by the Hive Mind across aeons to overcome any obstacle, crack any "
-    "defence, and strip a world down to bare rock. The Synapse Creatures form a psychic web that "
-    "coordinates the swarm with terrifying precision, while hulking Carnifexes and soaring Harpy "
-    "bio-titans lead the charge. In the face of the Great Devourer, no world is safe."
+    "De além da orla da galáxia os Tyranids vêm — uma vasta e voraz mente-colmeia de predadores "
+    "bio-engenheirados que consome tudo que está vivo em seu caminho. Cada organismo Tyranid é uma arma "
+    "perfeitamente adaptada para o massacre, moldada pela Mente-Colmeia através de eons para superar "
+    "qualquer obstáculo, romper qualquer defesa e reduzir um mundo à rocha nua. As Criaturas Sinapsia "
+    "formam uma rede psíquica que coordena o enxame com precisão aterrorizante, enquanto Carnifexes "
+    "gigantescos e Harpias voadoras lideram o avanço. Diante do Grande Devorador, nenhum mundo está seguro."
 )
 
 

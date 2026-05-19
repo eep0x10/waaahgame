@@ -6,11 +6,11 @@
   {% set over = pts.over_by > 0 %}
 
   <div class="legal-banner {% if result.is_legal %}legal-banner--legal{% else %}legal-banner--illegal{% endif %}">
-    {% if result.is_legal %}LEGAL{% else %}ILLEGAL{% endif %}
+    {% if result.is_legal %}LEGAL{% else %}ILEGAL{% endif %}
   </div>
 
   <div class="pts-gauge-wrap">
-    <svg class="progress-ring" viewBox="0 0 80 80" aria-label="{{ pts.total }} of {{ pts.limit }} pts">
+    <svg class="progress-ring" viewBox="0 0 80 80" aria-label="{{ pts.total }} de {{ pts.limit }} pts">
       <circle class="progress-ring-bg" cx="40" cy="40" r="34" />
       <circle class="progress-ring-fill {% if over %}progress-ring-fill--over{% endif %}"
               cx="40" cy="40" r="34"
@@ -21,19 +21,19 @@
     </svg>
     <div class="pts-gauge-meta">
       {% if over %}
-        <span class="pts-over-label">+{{ pts.over_by }} over</span>
+        <span class="pts-over-label">+{{ pts.over_by }} acima</span>
       {% else %}
-        <span class="pts-buffer-label">{{ pts.limit - pts.total }} buffer</span>
+        <span class="pts-buffer-label">{{ pts.limit - pts.total }} margem</span>
       {% endif %}
       {% if pts.aux_surcharge > 0 %}
-        <span class="pts-surcharge-label">+{{ pts.aux_surcharge }} surcharge</span>
+        <span class="pts-surcharge-label">+{{ pts.aux_surcharge }} sobretaxa</span>
       {% endif %}
     </div>
   </div>
 
   {% if result.issues %}
     <div class="issues-list">
-      <div class="issues-list-title">Validation</div>
+      <div class="issues-list-title">Validação</div>
       {% for issue in result.issues %}
         <div class="issue issue-{{ issue.level }}">
           <span class="issue-bullet">
@@ -48,7 +48,7 @@
   {% if result.aux_command_bonus %}
     <div class="aux-cp-bonus">
       <span class="issue-bullet">&#8505;</span>
-      No auxiliaries — you may gain +1 CP if opponent fields any.
+      Sem auxiliares — você pode ganhar +1 CP se o oponente tiver algum.
     </div>
   {% endif %}
 

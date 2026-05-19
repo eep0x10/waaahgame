@@ -1,207 +1,208 @@
 {% extends "base.html" %}
-{% block title %}Army Composition — AoS 4ed Rules{% endblock %}
+{% block title %}Composição de Exército — Regras AoS 4ed{% endblock %}
 
 {% block content %}
 <section class="rules-section-page">
   <div class="container rules-layout">
 
     <nav class="rules-toc">
-      <p class="rules-toc-label">On this page</p>
+      <p class="rules-toc-label">Nesta página</p>
       <ul>
         <li><a href="#battlepacks">Battlepacks</a></li>
-        <li><a href="#regiments">Regiments</a></li>
-        <li><a href="#auxiliary">Auxiliary Units</a></li>
+        <li><a href="#regiments">Regimentos</a></li>
+        <li><a href="#auxiliary">Unidades Auxiliares</a></li>
         <li><a href="#surcharge">Cumulative Surcharge</a></li>
-        <li><a href="#reinforcement">Reinforcement</a></li>
-        <li><a href="#enhancements">Enhancements</a></li>
-        <li><a href="#general">The General</a></li>
+        <li><a href="#reinforcement">Reforço</a></li>
+        <li><a href="#enhancements">Aprimoramentos</a></li>
+        <li><a href="#general">O General</a></li>
       </ul>
       <div class="rules-toc-divider"></div>
-      <p class="rules-toc-label">Other Sections</p>
+      <p class="rules-toc-label">Outras Seções</p>
       <ul>
-        <li><a href="{{ url_for('rules.aos_overview') }}">AoS Overview</a></li>
-        <li><a href="{{ url_for('rules.aos_turn') }}">Turn Structure</a></li>
-        <li><a href="{{ url_for('rules.aos_abilities') }}">Abilities &amp; Keywords</a></li>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
       </ul>
     </nav>
 
     <article class="rules-body">
       <p class="eyebrow">
-        <a href="{{ url_for('rules.index') }}">Rules Compendium</a> &rsaquo;
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
         <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
-        Army Composition
+        Composição de Exército
       </p>
-      <h1 class="section-title" id="battlepacks">Army Composition</h1>
-      <p class="rules-ruleset-badge">GHB 2025-26 &middot; April 2026 Battlescroll Active</p>
+      <h1 class="section-title" id="battlepacks">Composição de Exército</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
 
       <p>
-        Army composition in AoS 4ed is governed by the <strong>Battlepack</strong> in use and
-        the <strong>Regiment</strong> system. Every list is built from a combination of Regiments
-        and Auxiliary units, with the active Battlepack setting the total points limit and the
-        caps on each.
+        A composição de exércitos no AoS 4ed é regida pelo <strong>Battlepack</strong> em uso e pelo
+        sistema de <strong>Regimentos</strong>. Cada lista é construída a partir de uma combinação de
+        Regimentos e unidades Auxiliares, com o Battlepack ativo definindo o limite total de pontos
+        e os tetos para cada um.
       </p>
 
       <!-- Battlepacks -->
       <h2 id="battlepacks">Battlepacks</h2>
       <p>
-        Two standard Battlepacks exist for matched play:
+        Dois Battlepacks padrão existem para jogo competitivo:
       </p>
       <div class="rules-battlepack-grid">
         <div class="rules-battlepack-card">
           <h3 class="rules-battlepack-name">Vanguard</h3>
-          <p class="rules-battlepack-pts">1,000 points</p>
+          <p class="rules-battlepack-pts">1.000 pontos</p>
           <ul class="rules-list">
-            <li>1&ndash;2 Regiments</li>
-            <li>0&ndash;1 Auxiliary units</li>
-            <li>Smaller boards, 4 Battle Rounds</li>
+            <li>1&ndash;2 Regimentos</li>
+            <li>0&ndash;1 unidades Auxiliares</li>
+            <li>Tabuleiros menores, 4 Battle Rounds</li>
           </ul>
         </div>
         <div class="rules-battlepack-card">
           <h3 class="rules-battlepack-name">Battlehost</h3>
-          <p class="rules-battlepack-pts">2,000 points</p>
+          <p class="rules-battlepack-pts">2.000 pontos</p>
           <ul class="rules-list">
-            <li>2&ndash;4 Regiments</li>
-            <li>0&ndash;2 Auxiliary units (before surcharge)</li>
-            <li>Standard board, 5 Battle Rounds</li>
+            <li>2&ndash;4 Regimentos</li>
+            <li>0&ndash;2 unidades Auxiliares (antes da sobretaxa)</li>
+            <li>Tabuleiro padrão, 5 Battle Rounds</li>
           </ul>
         </div>
       </div>
 
       <!-- Regiments -->
-      <h2 id="regiments">Regiments</h2>
+      <h2 id="regiments">Regimentos</h2>
       <p>
-        A <strong>Regiment</strong> is the fundamental building block of an AoS army list. Each
-        Regiment consists of:
+        Um <strong>Regimento</strong> é o bloco fundamental de construção de uma lista de exército AoS.
+        Cada Regimento consiste em:
       </p>
       <ul class="rules-list">
         <li>
-          <strong>One Hero leader</strong> — any Hero from your faction&rsquo;s warscroll roster.
-          This Hero leads the Regiment and confers its identity.
+          <strong>Um Herói líder</strong> — qualquer Herói do roster de warscrolls da sua facção.
+          Este Herói lidera o Regimento e confere sua identidade.
         </li>
         <li>
-          <strong>Up to three additional units</strong> — chosen from the Hero&rsquo;s
-          <strong>Companion Units</strong> list. Each unit must match at least one of the
-          keyword categories listed as Companions on the Hero&rsquo;s warscroll. If the Hero
-          has no Companion Units listed, they may not take additional units in their Regiment.
+          <strong>Até três unidades adicionais</strong> — escolhidas da lista de <strong>Companion Units</strong>
+          do Herói. Cada unidade deve corresponder a pelo menos uma das categorias de palavras-chave
+          listadas como Companions no warscroll do Herói. Se o Herói não tiver Companion Units listadas,
+          não pode incluir unidades adicionais em seu Regimento.
         </li>
       </ul>
       <p>
-        There is no minimum unit count per Regiment beyond the one required Hero leader. A
-        Regiment of a single Hero is entirely legal.
+        Não há contagem mínima de unidades por Regimento além do único Herói líder obrigatório. Um
+        Regimento com um único Herói é totalmente válido.
       </p>
       <div class="rules-callout">
-        <strong>Companion Units are restrictive by design.</strong> Not every Hero can lead every
-        unit. A Skaven Clawlord leads Verminus warriors; a Grey Seer may lead Clanrats or Skaven
-        spellcasters. Check each Hero&rsquo;s warscroll for their specific Companion list.
+        <strong>Companion Units são restritivas por design.</strong> Nem todo Herói pode liderar toda
+        unidade. Um Skaven Clawlord lidera guerreiros Verminus; um Grey Seer pode liderar Clanrats ou
+        magos Skaven. Verifique o warscroll de cada Herói para sua lista específica de Companions.
       </div>
 
       <!-- Auxiliary -->
-      <h2 id="auxiliary">Auxiliary Units</h2>
+      <h2 id="auxiliary">Unidades Auxiliares</h2>
       <p>
-        <strong>Auxiliary units</strong> are units included in your army that do not belong to
-        any Regiment. They are not led by a Hero and do not need to match any Companion Units
-        list. Auxiliaries are useful for:
+        <strong>Unidades Auxiliares</strong> são unidades incluídas em seu exército que não pertencem
+        a nenhum Regimento. Não são lideradas por um Herói e não precisam corresponder a nenhuma lista
+        de Companion Units. Auxiliares são úteis para:
       </p>
       <ul class="rules-list">
-        <li>Including units whose keywords do not match any available Hero&rsquo;s Companions</li>
-        <li>Adding cheap objective holders or specialist units beyond Regiment slots</li>
-        <li>Accommodating powerful non-Hero Behemoths</li>
+        <li>Incluir unidades cujas palavras-chave não correspondem aos Companions de nenhum Herói disponível</li>
+        <li>Adicionar controladores baratos de objetivos ou unidades especialistas além dos slots de Regimento</li>
+        <li>Acomodar Behemoths poderosos que não são Heróis</li>
       </ul>
       <p>
-        The number of Auxiliary slots is limited by the Battlepack: Vanguard allows 0&ndash;1,
-        Battlehost allows 0&ndash;2 (before the Cumulative Surcharge). Additional Auxiliaries
-        beyond these caps are legal but trigger the surcharge (see below).
+        O número de slots Auxiliares é limitado pelo Battlepack: Vanguard permite 0&ndash;1,
+        Battlehost permite 0&ndash;2 (antes do Cumulative Surcharge). Auxiliares adicionais além
+        desses tetos são válidos mas acionam a sobretaxa (ver abaixo).
       </p>
 
       <!-- Cumulative Surcharge -->
       <h2 id="surcharge">Cumulative Surcharge</h2>
       <p>
-        The <strong>Cumulative Surcharge</strong> was introduced in the <em>April 2026 Battlescroll</em>
-        to discourage auxiliary-heavy &ldquo;castle&rdquo; lists. It works as follows:
+        O <strong>Cumulative Surcharge</strong> foi introduzido no <em>Battlescroll de Abril 2026</em>
+        para desincentivar listas pesadas em Auxiliares. Funciona da seguinte forma:
       </p>
       <p>
-        For each Auxiliary unit taken beyond the first (i.e. the 2nd, 3rd, 4th, etc.), an
-        extra cumulative points cost is added to that unit&rsquo;s base price:
+        Para cada unidade Auxiliar além da primeira (ou seja, a 2ª, 3ª, 4ª etc.), um custo adicional
+        cumulativo de pontos é adicionado ao preço base daquela unidade:
       </p>
 
       <table class="warscroll-stats">
         <thead>
           <tr>
-            <th>Auxiliary Number</th>
-            <th>Additional Cost</th>
-            <th>Example (100pt unit)</th>
+            <th>Número do Auxiliar</th>
+            <th>Custo Adicional</th>
+            <th>Exemplo (unidade de 100 pts)</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1st Auxiliary</td><td>+0 pts</td><td>100 pts</td></tr>
-          <tr><td>2nd Auxiliary</td><td>+20 pts</td><td>120 pts</td></tr>
-          <tr><td>3rd Auxiliary</td><td>+40 pts</td><td>140 pts</td></tr>
-          <tr><td>4th Auxiliary</td><td>+60 pts</td><td>160 pts</td></tr>
-          <tr><td>5th Auxiliary</td><td>+80 pts</td><td>180 pts</td></tr>
+          <tr><td>1º Auxiliar</td><td>+0 pts</td><td>100 pts</td></tr>
+          <tr><td>2º Auxiliar</td><td>+20 pts</td><td>120 pts</td></tr>
+          <tr><td>3º Auxiliar</td><td>+40 pts</td><td>140 pts</td></tr>
+          <tr><td>4º Auxiliar</td><td>+60 pts</td><td>160 pts</td></tr>
+          <tr><td>5º Auxiliar</td><td>+80 pts</td><td>180 pts</td></tr>
         </tbody>
       </table>
 
       <p>
-        The surcharge stacks cumulatively: your second Auxiliary costs +20, your third costs +40
-        (total +60 across both), and so on. This makes stacking many Auxiliaries significantly
-        more expensive.
+        A sobretaxa se acumula: seu segundo Auxiliar custa +20, seu terceiro custa +40 (total +60
+        nos dois), e assim por diante. Isso torna o empilhamento de muitos Auxiliares significativamente
+        mais caro.
       </p>
 
       <div class="rules-callout">
-        <strong>Command Point Bonus.</strong> The player who fields <em>fewer</em> Auxiliary units
-        than their opponent gains <strong>+1 Command Point per Battle Round</strong>. This creates
-        a genuine trade-off: more Auxiliaries grant flexibility at the cost of efficiency and
-        points, while leaner lists gain an ongoing resource advantage.
+        <strong>Bônus de Command Point.</strong> O jogador que colocar <em>menos</em> unidades Auxiliares
+        do que o oponente ganha <strong>+1 Command Point por Battle Round</strong>. Isso cria uma troca
+        real: mais Auxiliares conferem flexibilidade ao custo de eficiência e pontos, enquanto listas
+        mais enxutas ganham uma vantagem contínua de recursos.
       </div>
 
       <!-- Reinforcement -->
-      <h2 id="reinforcement">Reinforcement</h2>
+      <h2 id="reinforcement">Reforço</h2>
       <p>
-        A unit may be taken as a <strong>Reinforced</strong> unit, doubling its model count and
-        its points cost. Each warscroll notes whether the unit can be reinforced; units that cannot
-        be reinforced (marked &ldquo;Cannot be Reinforced&rdquo;) must be taken at their base size.
+        Uma unidade pode ser incluída como unidade <strong>Reforçada</strong>, dobrando sua contagem
+        de modelos e seu custo em pontos. Cada warscroll indica se a unidade pode ser reforçada;
+        unidades que não podem ser reforçadas (marcadas como &ldquo;Cannot be Reinforced&rdquo;)
+        devem ser incluídas em seu tamanho base.
       </p>
       <p>
-        A unit may only be reinforced once — you cannot take a triple-size unit. Reinforcement
-        applies to the unit as a whole; you pay double the listed points and field double the
-        listed model count. For example, a unit of 10 Clanrats (110 pts) reinforced becomes
-        20 Clanrats for 220 pts.
+        Uma unidade só pode ser reforçada uma vez — não é possível ter uma unidade de tamanho triplo.
+        O Reforço se aplica à unidade como um todo; você paga o dobro dos pontos listados e coloca
+        o dobro dos modelos listados. Por exemplo, uma unidade de 10 Clanrats (110 pts) reforçada
+        se torna 20 Clanrats por 220 pts.
       </p>
 
       <!-- Enhancements -->
-      <h2 id="enhancements">Enhancements</h2>
+      <h2 id="enhancements">Aprimoramentos</h2>
       <p>
-        Each Regiment leader (Hero) may take one set of free Enhancements:
+        Cada líder de Regimento (Herói) pode receber um conjunto de Aprimoramentos gratuitos:
       </p>
       <ul class="rules-list">
         <li>
-          <strong>One Heroic Trait</strong> — a special rule chosen from the faction&rsquo;s
-          Heroic Trait table, granting the Hero a unique bonus ability.
+          <strong>Um Heroic Trait</strong> — uma regra especial escolhida da tabela de Heroic Traits
+          da facção, concedendo ao Herói uma habilidade bônus única.
         </li>
         <li>
-          <strong>One Artefact of Power</strong> — a magical item chosen from the faction&rsquo;s
-          Artefact table, adding a weapon or defensive enhancement to the Hero.
+          <strong>Um Artefact of Power</strong> — um item mágico escolhido da tabela de Artefatos da
+          facção, adicionando um aprimoramento de arma ou defensivo ao Herói.
         </li>
       </ul>
       <p>
-        These Enhancements are free and do not cost additional points. Heroes beyond the first in
-        a list may also take Enhancements, but they cost Command Points or points depending on the
-        active Battlepack rules. Each Enhancement may only be taken once per army.
+        Esses Aprimoramentos são gratuitos e não custam pontos adicionais. Heróis além do primeiro
+        na lista também podem receber Aprimoramentos, mas eles custam Command Points ou pontos
+        dependendo das regras do Battlepack ativo. Cada Aprimoramento só pode ser incluído uma vez
+        por exército.
       </p>
 
       <!-- The General -->
-      <h2 id="general">The General</h2>
+      <h2 id="general">O General</h2>
       <p>
-        One Hero in your army must be designated as the <strong>General</strong> before the game
-        begins. The General is always the leader of Regiment 1. In addition to their normal
-        warscroll abilities, the General gains access to the faction&rsquo;s General&rsquo;s
-        Handbook Command Traits and may use certain abilities reserved for the General specifically.
-        If your General is slain, some battleplans impose an ongoing penalty; check your active
-        Battlepack for specifics.
+        Um Herói em seu exército deve ser designado como <strong>General</strong> antes do início do
+        jogo. O General é sempre o líder do Regimento 1. Além de suas habilidades normais de warscroll,
+        o General ganha acesso aos Command Traits do Generals Handbook da facção e pode usar certas
+        habilidades reservadas especificamente para o General. Se seu General for abatido, alguns
+        battleplans impõem uma penalidade contínua; consulte seu Battlepack ativo para detalhes.
       </p>
       <p>
-        Only Heroes with the <strong>CAN BE GENERAL</strong> keyword on their warscroll (or all
-        Heroes if no such restriction is listed) may be designated as General.
+        Apenas Heróis com a palavra-chave <strong>CAN BE GENERAL</strong> em seu warscroll (ou todos
+        os Heróis se nenhuma restrição desse tipo for listada) podem ser designados como General.
       </p>
 
     </article>

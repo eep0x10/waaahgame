@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="army-row-actions">
-          <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="btn-secondary btn-sm">View &rarr;</a>
+          <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="btn-secondary btn-sm">Ver &rarr;</a>
         </div>
       </div>
     {% endfor %}
@@ -31,19 +31,19 @@
     <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1.5rem;">
       {% if pagination.has_prev %}
         <a href="{{ url_for('units.index', page=pagination.prev_num, system=system_filter, faction=faction_filter, q=q, pts_min=pts_min, pts_max=pts_max) }}"
-           class="btn-secondary btn-sm">&larr; Prev</a>
+           class="btn-secondary btn-sm">&larr; Anterior</a>
       {% endif %}
       <span style="padding:0.4rem 0.8rem;opacity:0.6;font-size:0.85rem;">
-        Page {{ pagination.page }} / {{ pagination.pages }}
-        ({{ pagination.total }} units)
+        Página {{ pagination.page }} / {{ pagination.pages }}
+        ({{ pagination.total }} unidades)
       </span>
       {% if pagination.has_next %}
         <a href="{{ url_for('units.index', page=pagination.next_num, system=system_filter, faction=faction_filter, q=q, pts_min=pts_min, pts_max=pts_max) }}"
-           class="btn-secondary btn-sm">Next &rarr;</a>
+           class="btn-secondary btn-sm">Próxima &rarr;</a>
       {% endif %}
     </div>
   {% endif %}
 
 {% else %}
-  <p class="factions-empty"><em>No units match your filters.</em></p>
+  <p class="factions-empty"><em>Nenhuma unidade corresponde aos seus filtros.</em></p>
 {% endif %}

@@ -37,12 +37,12 @@ def send_request():
     username = request.form.get('username', '').strip()
 
     if username == current_user.username:
-        flash('You cannot dispatch an envoy to yourself.', 'error')
+        flash('Você não pode enviar um convite para si mesmo.', 'error')
         return redirect(url_for('friends.index'))
 
     target = User.query.filter_by(username=username).first()
     if not target:
-        flash(f'No warrior named "{username}" found in the realm.', 'error')
+        flash(f'Nenhum guerreiro com o nome "{username}" encontrado.', 'error')
         return redirect(url_for('friends.index'))
 
     uid = current_user.id
@@ -56,17 +56,17 @@ def send_request():
 
     if existing:
         if existing.status == 'accepted':
-            flash(f'You are already war-brothers with {username}.', 'info')
+            flash(f'Você já é irmão de guerra de {username}.', 'info')
         elif existing.status == 'blocked':
-            flash('Cannot send a request at this time.', 'error')
+            flash('Não é possível enviar um convite no momento.', 'error')
         else:
-            flash(f'A pledge to {username} is already pending.', 'info')
+            flash(f'Já existe um convite pendente para {username}.', 'info')
         return redirect(url_for('friends.index'))
 
     friendship = Friendship(requester_id=uid, addressee_id=tid, status='pending')
     db.session.add(friendship)
     db.session.commit()
-    flash(f'Envoy dispatched to {username}.', 'success')
+    flash(f'Convite enviado para {username}.', 'success')
     return redirect(url_for('friends.index'))
 
 
@@ -82,7 +82,7 @@ def accept(friendship_id):
         return render_template('friends/_friend_row.html',
                                friendship=fs,
                                section='accepted')
-    flash('War-bond accepted.', 'success')
+    flash('Aliança aceita.', 'success')
     return redirect(url_for('friends.index'))
 
 
@@ -96,7 +96,7 @@ def decline(friendship_id):
     db.session.commit()
     if request.headers.get('HX-Request'):
         return '', 200
-    flash('Request declined.', 'info')
+    flash('Convite recusado.', 'info')
     return redirect(url_for('friends.index'))
 
 
@@ -111,7 +111,7 @@ def remove(friendship_id):
     db.session.commit()
     if request.headers.get('HX-Request'):
         return '', 200
-    flash('War-bond dissolved.', 'info')
+    flash('Aliança desfeita.', 'info')
     return redirect(url_for('friends.index'))
 
 
@@ -126,5 +126,5 @@ def block(friendship_id):
     db.session.commit()
     if request.headers.get('HX-Request'):
         return '', 200
-    flash('Warrior has been blocked.', 'info')
+    flash('Guerreiro bloqueado.', 'info')
     return redirect(url_for('friends.index'))

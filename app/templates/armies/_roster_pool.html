@@ -2,19 +2,19 @@
 <div class="builder-rail" id="roster-pool">
 
   <div class="roster-pool-header">
-    <span class="roster-pool-title">ROSTER POOL</span>
+    <span class="roster-pool-title">ROSTER</span>
     <span class="role-tag">{{ army.faction.name }}</span>
   </div>
 
   <div class="unit-filter-row" id="roster-filters">
-    <button class="filter-pill filter-pill--active" data-filter="all">All</button>
+    <button class="filter-pill filter-pill--active" data-filter="all">Todos</button>
     {% set roles = units | map(attribute='unit_role') | reject('none') | unique | list | sort %}
     {% for role in roles %}
       <button class="filter-pill" data-filter="{{ role | lower }}">{{ role }}</button>
     {% endfor %}
   </div>
 
-  <input type="text" class="roster-search" id="roster-search" placeholder="Search unit...">
+  <input type="text" class="roster-search" id="roster-search" placeholder="Buscar unidade...">
 
   <div class="roster-unit-list" id="roster-unit-list">
     {% for unit in units %}
@@ -46,11 +46,11 @@
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="unit_slug" value="{{ unit.slug }}">
             <select name="target" class="roster-add-select" required>
-              <option value="">Add to...</option>
+              <option value="">Adicionar em...</option>
               {% for reg in army.regiments %}
                 <option value="reg-{{ reg.id }}">Reg {{ loop.index }}</option>
               {% endfor %}
-              <option value="aux">Auxiliary</option>
+              <option value="aux">Auxiliar</option>
             </select>
             <button type="submit" class="btn-secondary btn-sm">+</button>
           </form>

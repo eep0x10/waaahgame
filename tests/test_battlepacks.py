@@ -77,8 +77,8 @@ def test_seed_creates_battlepack_rows(app_bp):
     app, gs, *_ = app_bp
     from scripts.seed_battlepacks import _do_seed
     with app.app_context():
-        n = _do_seed(_db, GameSystem, Battlepack)
-        assert n > 0
+        n_created, n_updated = _do_seed(_db, GameSystem, Battlepack)
+        assert n_created + n_updated > 0
         assert Battlepack.query.count() > 0
 
 

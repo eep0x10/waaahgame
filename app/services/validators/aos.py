@@ -44,21 +44,21 @@ def validate_aos(army):
         issues.append(Issue(
             level='error',
             code='pts_over_limit',
-            message=f'Points over limit: {total_pts}/{limit} (+{over_by})',
+            message=f'Pontos acima do limite: {total_pts}/{limit} (+{over_by})',
         ))
     else:
         buffer = limit - total_pts
         issues.append(Issue(
             level='info',
             code='pts_ok',
-            message=f'{total_pts}/{limit} pts — {buffer} pts remaining',
+            message=f'{total_pts}/{limit} pts — {buffer} pts de margem',
         ))
 
     if aux_surcharge > 0:
         issues.append(Issue(
             level='info',
             code='aux_surcharge',
-            message=f'Auxiliary surcharge: +{aux_surcharge} pts ({n_aux} auxiliaries)',
+            message=f'Sobretaxa auxiliar: +{aux_surcharge} pts ({n_aux} auxiliares)',
         ))
 
     reg_min, reg_max = bp['regiments']
@@ -69,14 +69,14 @@ def validate_aos(army):
         issues.append(Issue(
             level='error',
             code='regiment_count',
-            message=f'{army.battlepack.capitalize()} requires {reg_min}-{reg_max} regiments; got {n_reg}',
+            message=f'{army.battlepack.capitalize()} requer {reg_min}-{reg_max} regimentos; encontrado {n_reg}',
         ))
 
     if not (aux_min <= n_aux <= aux_max):
         issues.append(Issue(
             level='error',
             code='aux_count',
-            message=f'{army.battlepack.capitalize()} allows {aux_min}-{aux_max} auxiliaries; got {n_aux}',
+            message=f'{army.battlepack.capitalize()} permite {aux_min}-{aux_max} auxiliares; encontrado {n_aux}',
         ))
 
     generals = [au for au in all_aus if au.is_general]
@@ -84,13 +84,13 @@ def validate_aos(army):
         issues.append(Issue(
             level='error',
             code='no_general',
-            message='No general designated.',
+            message='Nenhum general designado.',
         ))
     elif len(generals) > 1:
         issues.append(Issue(
             level='error',
             code='multiple_generals',
-            message=f'{len(generals)} units marked as general; only 1 allowed.',
+            message=f'{len(generals)} unidades marcadas como general; apenas 1 permitido.',
         ))
     else:
         gen = generals[0]
@@ -98,7 +98,7 @@ def validate_aos(army):
             issues.append(Issue(
                 level='error',
                 code='general_not_hero',
-                message=f'General "{gen.unit.name}" is not a Hero.',
+                message=f'General "{gen.unit.name}" não é um Hero.',
                 target=f'army_unit:{gen.id}',
             ))
         reg1_list = [r for r in regiments if r.position == 1]
@@ -109,14 +109,14 @@ def validate_aos(army):
                 issues.append(Issue(
                     level='error',
                     code='general_not_reg1_leader',
-                    message=f'General must be the leader of Regiment 1.',
+                    message=f'O general deve ser o líder do Regimento 1.',
                     target=f'army_unit:{gen.id}',
                 ))
         else:
             issues.append(Issue(
                 level='error',
                 code='general_not_reg1_leader',
-                message='No Regiment 1 found; general must lead Regiment 1.',
+                message='Regimento 1 não encontrado; o general deve liderar o Regimento 1.',
             ))
 
     reinforced_unit_ids = set()
@@ -126,7 +126,7 @@ def validate_aos(army):
                 issues.append(Issue(
                     level='error',
                     code='cannot_reinforce',
-                    message=f'"{au.unit.name}" cannot be reinforced.',
+                    message=f'"{au.unit.name}" não pode ser reforçada.',
                     target=f'army_unit:{au.id}',
                 ))
             else:
@@ -134,7 +134,7 @@ def validate_aos(army):
                     issues.append(Issue(
                         level='error',
                         code='reinforcement_duplicate',
-                        message=f'"{au.unit.name}" is already reinforced elsewhere in the army.',
+                        message=f'"{au.unit.name}" já está reforçada em outro local do exército.',
                         target=f'army_unit:{au.id}',
                     ))
                 reinforced_unit_ids.add(au.unit_id)
@@ -148,14 +148,14 @@ def validate_aos(army):
             issues.append(Issue(
                 level='error',
                 code='regiment_no_leader',
-                message=f'Regiment {regiment.position} has no leader.',
+                message=f'Regimento {regiment.position} não possui líder.',
                 target=f'regiment:{regiment.id}',
             ))
         elif len(leaders) > 1:
             issues.append(Issue(
                 level='error',
                 code='regiment_multiple_leaders',
-                message=f'Regiment {regiment.position} has {len(leaders)} leaders; only 1 allowed.',
+                message=f'Regimento {regiment.position} tem {len(leaders)} líderes; apenas 1 permitido.',
                 target=f'regiment:{regiment.id}',
             ))
         else:
@@ -164,7 +164,7 @@ def validate_aos(army):
                 issues.append(Issue(
                     level='error',
                     code='leader_not_hero',
-                    message=f'Regiment {regiment.position} leader "{leader_au.unit.name}" is not a Hero.',
+                    message=f'Líder do Regimento {regiment.position} "{leader_au.unit.name}" não é um Hero.',
                     target=f'army_unit:{leader_au.id}',
                 ))
 
@@ -172,7 +172,7 @@ def validate_aos(army):
                 issues.append(Issue(
                     level='error',
                     code='regiment_too_large',
-                    message=f'Regiment {regiment.position} has {len(companions)} companions; max 3.',
+                    message=f'Regimento {regiment.position} tem {len(companions)} companheiros; máximo 3.',
                     target=f'regiment:{regiment.id}',
                 ))
 
@@ -192,8 +192,8 @@ def validate_aos(army):
                             level='warning',
                             code='hero_as_companion_review',
                             message=(
-                                f'"{comp_au.unit.name}" is a Hero in Regiment {regiment.position}; '
-                                f'verify companion eligibility.'
+                                f'"{comp_au.unit.name}" é um Hero no Regimento {regiment.position}; '
+                                f'verifique elegibilidade como companheiro.'
                             ),
                             target=f'army_unit:{comp_au.id}',
                         ))
@@ -208,7 +208,7 @@ def validate_aos(army):
                         level='error',
                         code='companion_invalid',
                         message=(
-                            f'Regiment {regiment.position}: "{comp_au.unit.name}" is an invalid companion. '
+                            f'Regimento {regiment.position}: "{comp_au.unit.name}" é um companheiro inválido. '
                             f'{reason or ""}'
                         ),
                         target=f'army_unit:{comp_au.id}',

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Replay — Match #{{ match.id }}{% endblock %}
+{% block title %}Replay — Partida #{{ match.id }}{% endblock %}
 
 {% block content %}
 <section class="armies-builder-section">
@@ -9,10 +9,10 @@
       <div class="builder-header-left">
         <p class="eyebrow">
           <a href="{{ url_for('matches.index') if current_user.is_authenticated else '#' }}">Lobby</a>
-          &rsaquo; <a href="{{ url_for('matches.public_view', token=match.public_token) }}">Match #{{ match.id }}</a>
+          &rsaquo; <a href="{{ url_for('matches.public_view', token=match.public_token) }}">Partida #{{ match.id }}</a>
           &rsaquo; Replay
         </p>
-        <h1 class="section-title">Battle Replay</h1>
+        <h1 class="section-title">Replay de Batalha</h1>
       </div>
     </div>
 
@@ -24,29 +24,29 @@
       </div>
       <div style="font-family:var(--font-heading);font-size:1.2rem;opacity:0.5;">vs</div>
       <div>
-        <div class="eyebrow">{{ match.opponent.name if match.opponent else 'Opponent' }}</div>
+        <div class="eyebrow">{{ match.opponent.name if match.opponent else 'Oponente' }}</div>
         <div style="font-family:var(--font-heading);font-size:1.5rem;color:var(--gold);">{{ scores.opponent.vp }} VP</div>
       </div>
       <div style="margin-left:auto;text-align:right;">
-        <div class="eyebrow">Rounds Played</div>
+        <div class="eyebrow">Rodadas Jogadas</div>
         <div style="font-family:var(--font-heading);font-size:1.2rem;">{{ match.current_round }}</div>
       </div>
       {% set host_vp = scores.host.vp %}
       {% set opp_vp = scores.opponent.vp %}
       {% if host_vp > opp_vp %}
         <div style="text-align:right;">
-          <div class="eyebrow">Winner</div>
+          <div class="eyebrow">Vencedor</div>
           <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">{{ match.host.name }}</div>
         </div>
       {% elif opp_vp > host_vp %}
         <div style="text-align:right;">
-          <div class="eyebrow">Winner</div>
-          <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">{{ match.opponent.name if match.opponent else 'Opponent' }}</div>
+          <div class="eyebrow">Vencedor</div>
+          <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">{{ match.opponent.name if match.opponent else 'Oponente' }}</div>
         </div>
       {% else %}
         <div style="text-align:right;">
-          <div class="eyebrow">Result</div>
-          <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">Draw</div>
+          <div class="eyebrow">Resultado</div>
+          <div style="font-family:var(--font-heading);font-size:1.1rem;color:var(--gold);">Empate</div>
         </div>
       {% endif %}
     </div>
@@ -55,11 +55,11 @@
     {% set all_events = match.events %}
     <div style="margin-bottom:1rem;">
       <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:1rem;">
-        <button class="btn-secondary btn-sm" id="btn-prev" onclick="replayStep(-1)" disabled>&#9664; Back</button>
-        <button class="btn-secondary btn-sm" id="btn-play" onclick="replayPlay()">&#9654; Play</button>
-        <button class="btn-secondary btn-sm" id="btn-next" onclick="replayStep(1)">Next &#9654;</button>
+        <button class="btn-secondary btn-sm" id="btn-prev" onclick="replayStep(-1)" disabled>&#9664; Voltar</button>
+        <button class="btn-secondary btn-sm" id="btn-play" onclick="replayPlay()">&#9654; Reproduzir</button>
+        <button class="btn-secondary btn-sm" id="btn-next" onclick="replayStep(1)">Próximo &#9654;</button>
         <span id="replay-counter" style="font-family:var(--font-heading);font-size:0.85rem;color:var(--text-secondary);margin-left:0.5rem;">
-          Step 0 / {{ all_events | length }}
+          Passo 0 / {{ all_events | length }}
         </span>
       </div>
 
@@ -70,7 +70,7 @@
         </div>
         {% endfor %}
         {% if not all_events %}
-        <p style="color:var(--text-secondary);font-size:0.85rem;">No events recorded.</p>
+        <p style="color:var(--text-secondary);font-size:0.85rem;">Nenhum evento registrado.</p>
         {% endif %}
       </div>
     </div>
@@ -91,7 +91,7 @@
       if (el) el.style.display = i <= idx ? '' : 'none';
     }
     current = idx;
-    document.getElementById('replay-counter').textContent = 'Step ' + (idx + 1) + ' / ' + total;
+    document.getElementById('replay-counter').textContent = 'Passo ' + (idx + 1) + ' / ' + total;
     document.getElementById('btn-prev').disabled = idx <= 0;
     document.getElementById('btn-next').disabled = idx >= total - 1;
     var container = document.getElementById('replay-events');
@@ -110,7 +110,7 @@
   window.replayPlay = function() {
     if (playing) { stopPlay(); return; }
     playing = true;
-    document.getElementById('btn-play').textContent = '⏸ Pause';
+    document.getElementById('btn-play').textContent = '⏸ Pausar';
     playTimer = setInterval(function() {
       if (current >= total - 1) { stopPlay(); return; }
       show(current + 1);
@@ -120,7 +120,7 @@
   function stopPlay() {
     playing = false;
     clearInterval(playTimer);
-    document.getElementById('btn-play').textContent = '▶ Play';
+    document.getElementById('btn-play').textContent = '▶ Reproduzir';
   }
 
   if (total > 0) show(0);

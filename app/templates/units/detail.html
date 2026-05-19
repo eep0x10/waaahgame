@@ -5,7 +5,7 @@
 <section class="warscroll-section">
   <div class="container">
     <p class="eyebrow">
-      <a href="{{ url_for('factions.index') }}">Factions</a> &rsaquo;
+      <a href="{{ url_for('factions.index') }}">Facções</a> &rsaquo;
       <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}">{{ unit.faction.name }}</a> &rsaquo;
       {{ unit.name }}
     </p>
@@ -34,7 +34,7 @@
                style="font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.08em;
                       color:#1a1108; background:#b8935a; padding:0.3rem 0.9rem;
                       border-radius:2px; text-decoration:none;">
-              &#9998; EDIT IMAGE
+              &#9998; EDITAR IMAGEM
             </a>
           </p>
         {% endif %}
@@ -44,7 +44,7 @@
           <p style="text-align:center; margin-top:0.5rem;">
             <a href="{{ unit.image_search_url }}" target="_blank" rel="noopener noreferrer"
                style="font-family:'EB Garamond',serif; font-size:0.85rem; color:#b8935a;">
-              Search official photo &rarr;
+              Buscar foto oficial &rarr;
             </a>
           </p>
         {% endif %}
@@ -52,7 +52,7 @@
         {% if unit.wahapedia_url %}
           <p class="warscroll-source">
             <a href="{{ unit.wahapedia_url }}" target="_blank" rel="noopener noreferrer" class="warscroll-source-link">
-              View on Wahapedia &rarr;
+              Ver no Wahapedia &rarr;
             </a>
           </p>
         {% endif %}
@@ -72,7 +72,7 @@
           {% endif %}
           <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
           {% if unit.model_count > 1 %}
-            <span class="role-tag">{{ unit.model_count }} models</span>
+            <span class="role-tag">{{ unit.model_count }} modelos</span>
           {% endif %}
         </div>
 
@@ -96,7 +96,7 @@
         <!-- Stats -->
         {% if unit.stats_json %}
           <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Characteristics</h2>
+            <h2 class="warscroll-block-title">Características</h2>
             {% if sys_code == 'w40k10' %}
               {# 40k stat schema: M / T / Sv / W / Ld / OC #}
               <table class="warscroll-stats">
@@ -146,7 +146,7 @@
         <!-- Weapons -->
         {% if unit.weapons_json %}
           <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Weapons</h2>
+            <h2 class="warscroll-block-title">Armas</h2>
             <table class="weapons-table">
               <thead>
                 <tr>
@@ -171,7 +171,7 @@
         <!-- Abilities -->
         {% if unit.abilities_json %}
           <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Abilities</h2>
+            <h2 class="warscroll-block-title">Habilidades</h2>
             {% for ability in unit.abilities_json %}
               <div class="ability-card">
                 <p class="ability-name">{{ ability.name }}</p>
@@ -186,7 +186,7 @@
         <!-- Companions (Heroes only) -->
         {% if unit.can_be_general and unit.companions_json %}
           <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Companion Units</h2>
+            <h2 class="warscroll-block-title">Unidades Companheiras</h2>
             <ul class="companions-list">
               {% for companion in unit.companions_json %}
                 <li>{{ companion }}</li>
@@ -197,20 +197,20 @@
 
         <!-- Properties -->
         <div class="warscroll-block">
-          <h2 class="warscroll-block-title">Properties</h2>
+          <h2 class="warscroll-block-title">Propriedades</h2>
           <dl class="warscroll-props">
             {% if unit.base_size_mm %}
               <div class="warscroll-prop-row">
-                <dt>Base Size</dt><dd>{{ unit.base_size_mm }}</dd>
+                <dt>Tamanho da Base</dt><dd>{{ unit.base_size_mm }}</dd>
               </div>
             {% endif %}
             <div class="warscroll-prop-row">
-              <dt>Can Be General</dt>
-              <dd>{% if unit.can_be_general %}Yes{% else %}No{% endif %}</dd>
+              <dt>Pode Ser General</dt>
+              <dd>{% if unit.can_be_general %}Sim{% else %}Não{% endif %}</dd>
             </div>
             <div class="warscroll-prop-row">
-              <dt>Can Be Reinforced</dt>
-              <dd>{% if unit.can_be_reinforced %}Yes{% else %}No{% endif %}</dd>
+              <dt>Pode Ser Reforçado</dt>
+              <dd>{% if unit.can_be_reinforced %}Sim{% else %}Não{% endif %}</dd>
             </div>
           </dl>
         </div>
@@ -220,7 +220,7 @@
 
     <div class="warscroll-back">
       <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}" class="btn-secondary">
-        &larr; Return to {{ unit.faction.name }} Roster
+        &larr; Voltar ao Roster de {{ unit.faction.name }}
       </a>
     </div>
 

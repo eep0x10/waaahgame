@@ -1,20 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Set Banner Image &mdash; {{ unit.name }}{% endblock %}
+{% block title %}Definir Imagem de Bandeira &mdash; {{ unit.name }}{% endblock %}
 
 {% block content %}
 <section class="warscroll-section">
   <div class="container" style="max-width: 600px; margin: 0 auto;">
 
     <p class="eyebrow">
-      <a href="{{ url_for('factions.index') }}">Factions</a> &rsaquo;
+      <a href="{{ url_for('factions.index') }}">Facções</a> &rsaquo;
       <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}">{{ unit.faction.name }}</a> &rsaquo;
       <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}">{{ unit.name }}</a> &rsaquo;
-      Set Banner Image
+      Definir Imagem
     </p>
 
-    <h1 class="warscroll-name" style="margin-bottom: 1.5rem;">Set Banner Image</h1>
+    <h1 class="warscroll-name" style="margin-bottom: 1.5rem;">Definir Imagem de Bandeira</h1>
     <p style="font-family: 'EB Garamond', serif; color: var(--text-muted, #8a7560); margin-bottom: 2rem;">
-      Uploading for: <strong>{{ unit.name }}</strong> &mdash; {{ unit.faction.name }}
+      Enviando para: <strong>{{ unit.name }}</strong> &mdash; {{ unit.faction.name }}
     </p>
 
     <!-- Current image or placeholder -->
@@ -25,7 +25,7 @@
              class="warscroll-unit-img"
              style="max-width: 100%;">
         <p style="text-align:center; font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted,#8a7560);">
-          Current image
+          Imagem atual
         </p>
       {% else %}
         <div class="warscroll-placeholder">
@@ -33,7 +33,7 @@
           {% include '_partials/_shield_placeholder.html' %}
         </div>
         <p style="text-align:center; font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted,#8a7560);">
-          No image yet
+          Sem imagem ainda
         </p>
       {% endif %}
     </div>
@@ -51,14 +51,14 @@
         <label for="image"
                style="display:block; font-family:'Cinzel',serif; font-size:0.85rem;
                       letter-spacing:0.08em; color:var(--gold,#b8935a); margin-bottom:0.6rem;">
-          CHOOSE IMAGE FILE
+          ESCOLHER ARQUIVO DE IMAGEM
         </label>
         <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp"
                style="font-family:'EB Garamond',serif; color:var(--text,#fbf3e3);
                       background:transparent; border:1px solid var(--border-muted,#5a4a35);
                       padding:0.5rem; width:100%; box-sizing:border-box;">
         <p style="font-size:0.8rem; color:var(--text-muted,#8a7560); margin-top:0.4rem;">
-          JPEG / PNG / WebP &mdash; will be resized to 600 px wide, saved as JPEG
+          JPEG / PNG / WebP &mdash; será redimensionado para 600 px de largura, salvo como JPEG
         </p>
       </div>
 
@@ -67,10 +67,10 @@
                 style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.1em;
                        background:var(--gold,#b8935a); color:#1a1108; border:none;
                        padding:0.6rem 1.6rem; cursor:pointer; border-radius:2px;">
-          FORGE BANNER
+          FORJAR BANDEIRA
         </button>
         <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="btn-secondary">
-          Cancel
+          Cancelar
         </a>
       </div>
     </form>

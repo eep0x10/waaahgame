@@ -55,14 +55,14 @@ def validate_wh40k(army):
         issues.append(Issue(
             level='error',
             code='pts_over_limit',
-            message=f'Points over limit: {base_pts}/{cap} (+{over_by})',
+            message=f'Pontos acima do limite: {base_pts}/{cap} (+{over_by})',
         ))
     else:
         buffer = cap - base_pts
         issues.append(Issue(
             level='info',
             code='pts_ok',
-            message=f'{base_pts}/{cap} pts — {buffer} pts remaining',
+            message=f'{base_pts}/{cap} pts — {buffer} pts de margem',
         ))
 
     # Warlord (general) check
@@ -71,13 +71,13 @@ def validate_wh40k(army):
         issues.append(Issue(
             level='error',
             code='no_general',
-            message='No Warlord designated.',
+            message='Nenhum Warlord designado.',
         ))
     elif len(generals) > 1:
         issues.append(Issue(
             level='error',
             code='multiple_generals',
-            message=f'{len(generals)} units marked as Warlord; only 1 allowed.',
+            message=f'{len(generals)} unidades marcadas como Warlord; apenas 1 permitido.',
         ))
     else:
         gen = generals[0]
@@ -85,7 +85,7 @@ def validate_wh40k(army):
             issues.append(Issue(
                 level='error',
                 code='general_not_character',
-                message=f'Warlord "{gen.unit.name}" does not have the CHARACTER keyword.',
+                message=f'Warlord "{gen.unit.name}" não possui a palavra-chave CHARACTER.',
                 target=f'army_unit:{gen.id}',
             ))
 
@@ -103,8 +103,8 @@ def validate_wh40k(army):
                 level='error',
                 code='unit_max_copies',
                 message=(
-                    f'"{unit.name}" appears {count} times; '
-                    f'max {"6 (BATTLELINE)" if is_battleline else "3"} copies allowed.'
+                    f'"{unit.name}" aparece {count} vezes; '
+                    f'máximo {"6 (BATTLELINE)" if is_battleline else "3"} cópias permitidas.'
                 ),
             ))
 
@@ -117,13 +117,13 @@ def validate_wh40k(army):
             issues.append(Issue(
                 level='error',
                 code='epic_hero_duplicate',
-                message=f'EPIC_HERO "{unit_name}" appears {count} times; max 1 allowed.',
+                message=f'EPIC_HERO "{unit_name}" aparece {count} vezes; máximo 1 permitido.',
             ))
     if len(epic_hero_aus) > 3:
         issues.append(Issue(
             level='error',
             code='epic_hero_limit',
-            message=f'{len(epic_hero_aus)} EPIC_HERO units in army; max 3 allowed.',
+            message=f'{len(epic_hero_aus)} unidades EPIC_HERO no exército; máximo 3 permitido.',
         ))
 
     errors = [i for i in issues if i.level == 'error']

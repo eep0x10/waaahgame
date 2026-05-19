@@ -28,7 +28,7 @@ def test_register_duplicate_username(client, app):
         'password_confirm': 'password123',
     })
     assert resp.status_code == 200
-    assert b'already taken' in resp.data
+    assert b'em uso' in resp.data
 
 
 def test_register_weak_password(client):
@@ -39,7 +39,7 @@ def test_register_weak_password(client):
         'password_confirm': 'short',
     })
     assert resp.status_code == 200
-    assert b'8 characters' in resp.data
+    assert b'8 caracteres' in resp.data
 
 
 def test_login_correct_creds_by_username(client, app):
@@ -79,7 +79,7 @@ def test_login_wrong_password(client, app):
         'password': 'badpassword',
     })
     assert resp.status_code == 200
-    assert b'Invalid credentials' in resp.data
+    assert b'Credenciais' in resp.data
 
 
 def test_logout_while_logged_in(client, app):

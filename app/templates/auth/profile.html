@@ -6,7 +6,7 @@
 <section class="auth-section">
   <div class="card-form card-profile">
     <div class="card-form-header">
-      <p class="eyebrow">Your Heraldry</p>
+      <p class="eyebrow">Sua Heráldica</p>
       <h1 class="section-title">{{ current_user.name }}</h1>
       <p class="profile-handle">@{{ current_user.username }}</p>
     </div>
@@ -17,17 +17,17 @@
         <dd>{{ current_user.email }}</dd>
       </div>
       <div class="profile-row">
-        <dt>Member Since</dt>
-        <dd>{{ current_user.created_at.strftime('%B %d, %Y') }}</dd>
+        <dt>Membro Desde</dt>
+        <dd>{{ current_user.created_at.strftime('%d/%m/%Y') }}</dd>
       </div>
     </dl>
 
     <div class="profile-actions">
-      <a href="{{ url_for('friends.index') }}" class="btn-secondary">VIEW WAR-BROTHERS</a>
+      <a href="{{ url_for('friends.index') }}" class="btn-secondary">VER IRMÃOS DE GUERRA</a>
 
       <form method="POST" action="{{ url_for('auth.logout') }}" style="display:inline;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <button type="submit" class="btn-secondary">LEAVE THE HOST</button>
+        <button type="submit" class="btn-secondary">SAIR DO EXÉRCITO</button>
       </form>
     </div>
   </div>

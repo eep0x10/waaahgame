@@ -1,37 +1,37 @@
 {% extends "base.html" %}
-{% block title %}Match Lobby{% endblock %}
+{% block title %}Lobby de Partidas{% endblock %}
 
 {% block content %}
 <section class="armies-builder-section">
   <div class="container">
     <div class="builder-header">
       <div class="builder-header-left">
-        <h1 class="section-title">Match Lobby</h1>
+        <h1 class="section-title">Lobby de Partidas</h1>
       </div>
       <div class="builder-header-actions">
-        <a href="{{ url_for('matches.history') }}" class="btn-secondary btn-sm">History</a>
-        <a href="{{ url_for('matches.new') }}" class="btn-primary btn-sm">Issue Challenge</a>
+        <a href="{{ url_for('matches.history') }}" class="btn-secondary btn-sm">Histórico</a>
+        <a href="{{ url_for('matches.new') }}" class="btn-primary btn-sm">Desafiar</a>
       </div>
     </div>
 
     {% if invites %}
     <div style="margin-bottom:2rem;">
-      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Incoming Challenges</h2>
+      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Desafios Recebidos</h2>
       {% for m in invites %}
       <div class="card-form" style="padding:1rem;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
         <div>
-          <span class="role-tag">{{ m.host.name }}</span> challenges you &mdash;
+          <span class="role-tag">{{ m.host.name }}</span> desafia você &mdash;
           <span class="role-tag">{{ m.format | capitalize }}</span>
           <span class="pts-badge">{{ m.points_limit }}<span class="pts-label">pts</span></span>
         </div>
         <div style="display:flex;gap:0.5rem;">
           <form method="POST" action="{{ url_for('matches.accept', match_id=m.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button class="btn-primary btn-sm">Accept</button>
+            <button class="btn-primary btn-sm">Aceitar</button>
           </form>
           <form method="POST" action="{{ url_for('matches.decline', match_id=m.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button class="btn-danger btn-sm">Decline</button>
+            <button class="btn-danger btn-sm">Recusar</button>
           </form>
         </div>
       </div>
@@ -40,7 +40,7 @@
     {% endif %}
 
     <div style="margin-bottom:2rem;">
-      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Active Battles</h2>
+      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Batalhas Ativas</h2>
       {% if active %}
         {% for m in active %}
         <a href="{{ url_for('matches.show', match_id=m.id) }}" style="text-decoration:none;display:block;">
@@ -50,19 +50,19 @@
               &mdash; <span class="role-tag">{{ m.format | capitalize }}</span>
               <span class="role-tag">{{ m.status | replace('_', ' ') | title }}</span>
               {% if m.status == 'active' %}
-                <span class="pts-badge">Round {{ m.current_round }}</span>
+                <span class="pts-badge">Rodada {{ m.current_round }}</span>
               {% endif %}
             </div>
           </div>
         </a>
         {% endfor %}
       {% else %}
-        <p class="eyebrow">No active battles. Issue a challenge!</p>
+        <p class="eyebrow">Nenhuma batalha ativa. Envie um desafio!</p>
       {% endif %}
     </div>
 
     <div>
-      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Recent Battles</h2>
+      <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">Batalhas Recentes</h2>
       {% if finished %}
         {% for m in finished %}
         <a href="{{ url_for('matches.show', match_id=m.id) }}" style="text-decoration:none;display:block;">
@@ -75,7 +75,7 @@
         </a>
         {% endfor %}
       {% else %}
-        <p class="eyebrow">No recent battles.</p>
+        <p class="eyebrow">Nenhuma batalha recente.</p>
       {% endif %}
     </div>
 

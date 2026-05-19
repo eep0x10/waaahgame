@@ -1,185 +1,187 @@
 {% extends "base.html" %}
-{% block title %}Abilities &amp; Keywords — AoS 4ed Rules{% endblock %}
+{% block title %}Habilidades &amp; Palavras-Chave — Regras AoS 4ed{% endblock %}
 
 {% block content %}
 <section class="rules-section-page">
   <div class="container rules-layout">
 
     <nav class="rules-toc">
-      <p class="rules-toc-label">On this page</p>
+      <p class="rules-toc-label">Nesta página</p>
       <ul>
-        <li><a href="#ability-types">Ability Types</a></li>
+        <li><a href="#ability-types">Tipos de Habilidade</a></li>
         <li><a href="#passive">Passive</a></li>
         <li><a href="#used">Used</a></li>
         <li><a href="#reaction">Reaction</a></li>
         <li><a href="#ward">Ward Saves</a></li>
         <li><a href="#rend">Rend</a></li>
         <li><a href="#mortal-wounds">Mortal Wounds</a></li>
-        <li><a href="#companions">Companion Units</a></li>
+        <li><a href="#companions">Unidades Companheiras</a></li>
         <li><a href="#manifestations">Manifestations</a></li>
       </ul>
       <div class="rules-toc-divider"></div>
-      <p class="rules-toc-label">Other Sections</p>
+      <p class="rules-toc-label">Outras Seções</p>
       <ul>
-        <li><a href="{{ url_for('rules.aos_overview') }}">AoS Overview</a></li>
-        <li><a href="{{ url_for('rules.aos_turn') }}">Turn Structure</a></li>
-        <li><a href="{{ url_for('rules.aos_composition') }}">Army Composition</a></li>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
       </ul>
     </nav>
 
     <article class="rules-body">
       <p class="eyebrow">
-        <a href="{{ url_for('rules.index') }}">Rules Compendium</a> &rsaquo;
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
         <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
-        Abilities &amp; Keywords
+        Habilidades &amp; Palavras-Chave
       </p>
-      <h1 class="section-title" id="ability-types">Abilities &amp; Keywords</h1>
-      <p class="rules-ruleset-badge">GHB 2025-26 &middot; April 2026 Battlescroll Active</p>
+      <h1 class="section-title" id="ability-types">Habilidades &amp; Palavras-Chave</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
 
       <p>
-        Every unit in Age of Sigmar has abilities on its warscroll, and every ability carries one
-        or more <strong>type keywords</strong> that govern when and how it can be used. Understanding
-        these types is fundamental to reading warscrolls correctly.
+        Toda unidade em Age of Sigmar possui habilidades em seu warscroll, e cada habilidade carrega uma
+        ou mais <strong>palavras-chave de tipo</strong> que governam quando e como pode ser usada.
+        Entender esses tipos é fundamental para ler warscrolls corretamente.
       </p>
 
-      <h2 id="passive">Passive Abilities</h2>
+      <h2 id="passive">Habilidades Passive</h2>
       <p>
-        An ability tagged <strong>[Passive]</strong> is always in effect — it does not require
-        activation, spending Command Points, or any deliberate choice to trigger. Passive abilities
-        are simply true whenever their condition is met. Examples include permanent auras that
-        affect nearby friendly units, bonuses that apply during specific phases, and modifiers
-        conditional on unit size or terrain position.
+        Uma habilidade marcada como <strong>[Passive]</strong> está sempre em efeito — não requer
+        ativação, gasto de Command Points ou qualquer escolha deliberada para ser acionada. Habilidades
+        Passive são simplesmente verdadeiras sempre que sua condição for atendida. Exemplos incluem
+        auras permanentes que afetam unidades amigas próximas, bônus que se aplicam durante fases
+        específicas e modificadores condicionados ao tamanho da unidade ou posição no terreno.
       </p>
       <div class="rules-callout">
-        <strong>Example.</strong> &ldquo;While this unit is within 12&rdquo; of a friendly
-        <span class="keyword-inline">HERO</span>, add 1 to the Hit rolls of this unit&rsquo;s
-        attacks.&rdquo; — This is a Passive ability. No activation is required; it simply applies
-        automatically whenever the condition (proximity to a HERO) is met.
+        <strong>Exemplo.</strong> &ldquo;Enquanto esta unidade estiver a 12&rdquo; de um
+        <span class="keyword-inline">HERO</span> amigo, adicione 1 às rolagens de Acertar dos
+        ataques desta unidade.&rdquo; — Esta é uma habilidade Passive. Nenhuma ativação é necessária;
+        ela simplesmente se aplica automaticamente sempre que a condição (proximidade a um HERO) for
+        atendida.
       </div>
 
-      <h2 id="used">Used Abilities</h2>
+      <h2 id="used">Habilidades Used</h2>
       <p>
-        A <strong>[Used]</strong> ability (sometimes called an Active ability) must be deliberately
-        activated during a specific phase of the turn. The warscroll specifies exactly when it can
-        be used — for example, &ldquo;Once Per Battle, in your Hero Phase.&rdquo; Using a Used
-        ability typically does not cost Command Points unless the ability explicitly states it does.
-        Once-per-battle or once-per-round limits are tracked on the warscroll.
+        Uma habilidade <strong>[Used]</strong> (às vezes chamada de habilidade Ativa) deve ser
+        deliberadamente ativada durante uma fase específica do turno. O warscroll especifica exatamente
+        quando pode ser usada — por exemplo, &ldquo;Uma vez por batalha, na sua Fase de Heróis.&rdquo;
+        Usar uma habilidade Used normalmente não custa Command Points a menos que a habilidade
+        declare explicitamente. Limites de uma vez por batalha ou uma vez por rodada são rastreados
+        no warscroll.
       </p>
 
-      <h2 id="reaction">Reaction Abilities</h2>
+      <h2 id="reaction">Habilidades Reaction</h2>
       <p>
-        A <strong>[Reaction]</strong> ability is triggered in direct response to an opponent&rsquo;s
-        action. Reactions are used out of sequence — the opponent takes an action (such as completing
-        a charge or beginning their Hero Phase), and you may then respond by using a qualifying
-        Reaction ability. Reactions cannot be pre-emptively declared; they must respond to a
-        specific, just-occurred trigger. A single trigger can only be responded to once per
-        ability per player.
+        Uma habilidade <strong>[Reaction]</strong> é acionada em resposta direta a uma ação do oponente.
+        Reactions são usadas fora de sequência — o oponente realiza uma ação (como completar uma carga
+        ou iniciar sua Fase de Heróis), e você pode então responder usando uma habilidade Reaction
+        qualificada. Reactions não podem ser declaradas preventivamente; elas devem responder a um
+        gatilho específico que acabou de ocorrer. Um único gatilho só pode ser respondido uma vez por
+        habilidade por jogador.
       </p>
 
       <!-- Ward Saves -->
       <h2 id="ward">Ward Saves</h2>
       <p>
-        A <strong>Ward save</strong> is an additional defensive roll made <em>after</em> damage has
-        been determined — it is not part of the standard Save roll. The sequence for an attack that
-        inflicts damage is:
+        Um <strong>Ward save</strong> é uma rolagem defensiva adicional feita <em>após</em> o dano ter
+        sido determinado — não faz parte da rolagem de Save padrão. A sequência para um ataque que
+        inflige dano é:
       </p>
       <ol class="rules-list rules-list--ordered">
-        <li>Roll to <strong>Hit</strong> (attacker)</li>
-        <li>Roll to <strong>Wound</strong> (attacker)</li>
-        <li>Roll to <strong>Save</strong> (defender, using Save characteristic &plusmn; Rend)</li>
-        <li>Apply <strong>Damage</strong> to the unit&rsquo;s Health pool</li>
-        <li>Roll <strong>Ward</strong> (defender) — each point of damage may be negated on a
-            successful Ward roll</li>
+        <li>Role para <strong>Acertar</strong> (atacante)</li>
+        <li>Role para <strong>Ferir</strong> (atacante)</li>
+        <li>Role para <strong>Salvar</strong> (defensor, usando a característica Save &plusmn; Rend)</li>
+        <li>Aplique o <strong>Dano</strong> ao pool de saúde da unidade</li>
+        <li>Role o <strong>Ward</strong> (defensor) — cada ponto de dano pode ser negado com uma rolagem
+            de Ward bem-sucedida</li>
       </ol>
       <p>
-        Ward saves are typically expressed as a target number (e.g. &ldquo;Ward 5+&rdquo; means
-        roll a D6 per point of damage; on a 5 or 6 that damage is negated). Ward saves are
-        <strong>not</strong> the same as the standard Save — they occur afterwards and can
-        protect against damage that already passed the Save. Crucially, Ward saves can also protect
-        against Mortal Wounds that bypassed the Save entirely.
+        Ward saves são tipicamente expressos como um número alvo (por exemplo, &ldquo;Ward 5+&rdquo;
+        significa rolar um D6 por ponto de dano; em um 5 ou 6 aquele dano é negado). Ward saves
+        <strong>não</strong> são o mesmo que o Save padrão — ocorrem depois e podem proteger contra
+        dano que já passou pelo Save. Crucialmente, Ward saves também podem proteger contra Mortal
+        Wounds que ignoraram completamente o Save.
       </p>
       <div class="rules-callout">
-        <strong>Important.</strong> Multiple Ward saves do not stack on the same source of damage.
-        If a model would have a 5+ Ward from two different sources, it still only rolls once per
-        damage point. The <em>better</em> Ward (lower target) takes precedence.
+        <strong>Importante.</strong> Múltiplos Ward saves não se acumulam sobre a mesma fonte de dano.
+        Se um modelo teria um Ward 5+ de duas fontes diferentes, ainda assim rola apenas uma vez por
+        ponto de dano. O Ward <em>melhor</em> (alvo mais baixo) tem precedência.
       </div>
 
       <!-- Rend -->
       <h2 id="rend">Rend</h2>
       <p>
-        <strong>Rend</strong> is a weapon characteristic that makes it harder for the target to
-        save against that attack. A weapon&rsquo;s Rend value is subtracted from the target&rsquo;s
-        Save characteristic for that attack.
+        <strong>Rend</strong> é uma característica de arma que torna mais difícil para o alvo salvar
+        contra aquele ataque. O valor de Rend de uma arma é subtraído da característica Save do alvo
+        para aquele ataque.
       </p>
       <p>
-        For example: a unit with a Save of 4+ targeted by a weapon with Rend 1 must now roll a
-        <strong>5+</strong> to save. Rend 2 against a 4+ Save requires a <strong>6+</strong>;
-        Rend 3 makes the save impossible (a roll of 7+ is required, which no D6 can achieve —
-        the save automatically fails unless a Ward intervenes).
+        Por exemplo: uma unidade com Save 4+ alvo de uma arma com Rend 1 deve agora rolar <strong>5+</strong>
+        para salvar. Rend 2 contra um Save 4+ exige <strong>6+</strong>; Rend 3 torna o save impossível
+        (seria necessário um 7+, o que nenhum D6 consegue — o save falha automaticamente a menos que
+        um Ward intervenha).
       </p>
       <p>
-        Rend is <em>not</em> a separate &ldquo;armour penetration&rdquo; pool — it is a direct
-        modifier to the opponent&rsquo;s Save roll for that specific attack. Positive modifiers
-        to Save (such as cover bonuses) can offset Rend.
+        Rend <em>não</em> é um pool separado de &ldquo;penetração de armadura&rdquo; — é um modificador
+        direto na rolagem de Save do oponente para aquele ataque específico. Modificadores positivos
+        ao Save (como bônus de cobertura) podem compensar o Rend.
       </p>
 
       <!-- Mortal Wounds -->
       <h2 id="mortal-wounds">Mortal Wounds</h2>
       <p>
-        <strong>Mortal Wounds</strong> are a special category of damage that bypasses the standard
-        attack sequence entirely. When an ability deals Mortal Wounds, you do not roll to Hit,
-        roll to Wound, or give the target a Save roll. The wounds are applied directly to the
-        target&rsquo;s Health pool — one Mortal Wound equals one point of damage.
+        <strong>Mortal Wounds</strong> são uma categoria especial de dano que ignora completamente a
+        sequência de ataque padrão. Quando uma habilidade causa Mortal Wounds, você não rola para
+        Acertar, não rola para Ferir nem dá ao alvo uma rolagem de Save. Os ferimentos são aplicados
+        diretamente ao pool de saúde do alvo — um Mortal Wound equivale a um ponto de dano.
       </p>
       <p>
-        Mortal Wounds are <strong>not</strong> completely unstoppable, however. Ward saves still
-        apply against Mortal Wounds. A unit with a 5+ Ward can attempt to negate each Mortal Wound
-        dealt to it, regardless of whether it was caused by a normal attack or a Mortal Wound
-        ability.
+        Mortal Wounds <strong>não</strong> são completamente imparáveis, porém. Ward saves ainda se
+        aplicam contra Mortal Wounds. Uma unidade com Ward 5+ pode tentar negar cada Mortal Wound
+        sofrido, independentemente de ter sido causado por um ataque normal ou por uma habilidade de
+        Mortal Wound.
       </p>
       <div class="rules-callout">
-        <strong>Common sources of Mortal Wounds:</strong> spell miscast damage, prayer critical
-        effects, certain weapon critical hit bonuses (on a roll of 6 to Hit/Wound), and dedicated
-        Mortal Wound abilities on warscrolls and faction rules.
+        <strong>Fontes comuns de Mortal Wounds:</strong> dano de miscast de magia, efeitos críticos de
+        preces, certos bônus de acerto crítico de armas (em um 6 para Acertar/Ferir) e habilidades
+        dedicadas de Mortal Wound em warscrolls e regras de facção.
       </div>
 
       <!-- Companion Units -->
-      <h2 id="companions">Companion Units</h2>
+      <h2 id="companions">Unidades Companheiras</h2>
       <p>
-        The <strong>Companion Units</strong> keyword on a Hero&rsquo;s warscroll lists which unit
-        types may be included in that Hero&rsquo;s Regiment. When building a Regiment (see Army
-        Composition), you select a Hero as the Regiment&rsquo;s leader, then add up to three
-        additional units. Those units <em>must</em> appear on the Hero&rsquo;s Companion Units
-        list — a Hero that lacks a matching keyword for a unit cannot take that unit in their
-        Regiment (though the unit could still appear as an Auxiliary).
+        A palavra-chave <strong>Companion Units</strong> no warscroll de um Herói lista quais tipos de
+        unidade podem ser incluídos no Regimento daquele Herói. Ao construir um Regimento (consulte
+        Composição de Exército), você seleciona um Herói como líder do Regimento e adiciona até três
+        unidades adicionais. Essas unidades <em>devem</em> aparecer na lista de Companion Units do
+        Herói — um Herói que não tem a palavra-chave correspondente para uma unidade não pode incluí-la
+        em seu Regimento (embora a unidade ainda possa aparecer como Auxiliar).
       </p>
       <p>
-        Companion Units are a deliberate restriction on combined-arms army building: not all Heroes
-        can lead all units, and the faction design guides which archetypes work together within
-        a single Regiment.
+        Companion Units são uma restrição deliberada na construção de exércitos combinados: nem todos
+        os Heróis podem liderar todas as unidades, e o design de facção orienta quais arquétipos
+        funcionam juntos dentro de um único Regimento.
       </p>
 
       <!-- Manifestations -->
       <h2 id="manifestations">Manifestations</h2>
       <p>
-        <strong>Manifestations</strong> are summonable battlefield effects that occupy a physical
-        footprint on the table. They are distinct from both regular units and spells — a
-        Manifestation is not a unit (it cannot be targeted by abilities that affect units unless
-        specifically noted), nor is it simply a spell effect. Manifestations persist on the
-        battlefield until dismissed or destroyed.
+        <strong>Manifestations</strong> são efeitos de campo de batalha invocáveis que ocupam espaço
+        físico no tabuleiro. São distintas tanto de unidades regulares quanto de magias — uma
+        Manifestation não é uma unidade (não pode ser alvo de habilidades que afetam unidades, a
+        menos que especificado), nem é simplesmente um efeito de magia. Manifestations persistem no
+        campo de batalha até serem dispensadas ou destruídas.
       </p>
       <p>
-        Manifestations are drawn from <strong>Manifestation Lores</strong>, which each faction
-        accesses through their Wizards or Priests. Each Wizard or Priest may attempt to summon
-        one Manifestation per Hero Phase. Manifestations have their own profiles — including
-        Health — and can be removed by opponent abilities or when the summoning Wizard is
-        destroyed. Only one copy of any given Manifestation may be in play at a time.
+        Manifestations são retiradas de <strong>Manifestation Lores</strong>, que cada facção acessa
+        por meio de seus Wizards ou Priests. Cada Wizard ou Priest pode tentar invocar uma Manifestation
+        por Fase de Heróis. Manifestations têm seus próprios perfis — incluindo Saúde — e podem ser
+        removidas por habilidades do oponente ou quando o Wizard que as invocou é destruído. Apenas
+        uma cópia de qualquer Manifestation pode estar em jogo ao mesmo tempo.
       </p>
       <div class="rules-callout">
-        <strong>Manifestations vs. Spells.</strong> Summoning a Manifestation follows the spellcasting
-        process (roll 2D6 vs. casting value, can be unbound) but the Manifestation itself is not
-        a spell effect and does not expire at the end of the turn. Think of Manifestations as
-        long-lived conjurations that must be physically dealt with.
+        <strong>Manifestations vs. Magias.</strong> Invocar uma Manifestation segue o processo de
+        conjuração (role 2D6 vs. valor de conjuração, pode ser anulada) mas a Manifestation em si
+        não é um efeito de magia e não expira no fim do turno. Pense nas Manifestations como
+        conjurações de longa duração que precisam ser fisicamente eliminadas.
       </div>
 
     </article>

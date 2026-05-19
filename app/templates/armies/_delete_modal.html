@@ -1,17 +1,17 @@
 {# Delete confirmation modal. Variable: army (Army) #}
 <div class="modal-overlay" id="delete-modal">
   <div class="modal-box">
-    <h2 class="modal-title">Delete Army</h2>
+    <h2 class="modal-title">Excluir Exército</h2>
     <p class="modal-body">
-      Are you sure you want to permanently delete <strong>{{ army.name }}</strong>?
-      This cannot be undone.
+      Tem certeza de que deseja excluir permanentemente <strong>{{ army.name }}</strong>?
+      Esta ação não pode ser desfeita.
     </p>
     <div class="modal-actions">
       <form method="POST" action="{{ url_for('armies.delete', army_id=army.id) }}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <button type="submit" class="btn-danger">Delete</button>
+        <button type="submit" class="btn-danger">Excluir</button>
       </form>
-      <button type="button" class="btn-secondary" onclick="document.getElementById('delete-modal').remove()">Cancel</button>
+      <button type="button" class="btn-secondary" onclick="document.getElementById('delete-modal').remove()">Cancelar</button>
     </div>
   </div>
 </div>

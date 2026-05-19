@@ -1,87 +1,89 @@
 {% extends "base.html" %}
-{% block title %}Age of Sigmar 4th Edition — Rules Overview{% endblock %}
+{% block title %}Age of Sigmar 4th Edition — Visão Geral das Regras{% endblock %}
 
 {% block content %}
 <section class="rules-section-page">
   <div class="container rules-layout">
 
     <nav class="rules-toc">
-      <p class="rules-toc-label">On this page</p>
+      <p class="rules-toc-label">Nesta página</p>
       <ul>
-        <li><a href="#edition">The Edition</a></li>
-        <li><a href="#core-loop">Core Game Loop</a></li>
-        <li><a href="#dice">Dice &amp; Rolls</a></li>
-        <li><a href="#victory">Victory Conditions</a></li>
-        <li><a href="#sections">Rule Sections</a></li>
+        <li><a href="#edition">A Edição</a></li>
+        <li><a href="#core-loop">Ciclo Principal</a></li>
+        <li><a href="#dice">Dados &amp; Rolagens</a></li>
+        <li><a href="#victory">Condições de Vitória</a></li>
+        <li><a href="#sections">Seções de Regras</a></li>
       </ul>
       <div class="rules-toc-divider"></div>
-      <p class="rules-toc-label">Other Sections</p>
+      <p class="rules-toc-label">Outras Seções</p>
       <ul>
-        <li><a href="{{ url_for('rules.aos_turn') }}">Turn Structure</a></li>
-        <li><a href="{{ url_for('rules.aos_abilities') }}">Abilities &amp; Keywords</a></li>
-        <li><a href="{{ url_for('rules.aos_composition') }}">Army Composition</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
       </ul>
     </nav>
 
     <article class="rules-body">
-      <p class="eyebrow"><a href="{{ url_for('rules.index') }}">Rules Compendium</a> &rsaquo; Age of Sigmar</p>
+      <p class="eyebrow"><a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo; Age of Sigmar</p>
       <h1 class="section-title" id="edition">Age of Sigmar — 4th Edition</h1>
-      <p class="rules-ruleset-badge">GHB 2025-26 &middot; April 2026 Battlescroll Active</p>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
 
       <p>
-        The fourth edition of Warhammer Age of Sigmar launched in July 2024 with the <em>Skaventide</em>
-        starter set, ushering in a thorough redesign of the game's core rules. Nearly every warscroll was
-        rewritten, army-building was restructured around the Regiment system, and the points economy was
-        recalibrated. The <em>Generals Handbook 2025-26</em> established the current matched-play
-        framework, and the <em>April 2026 Battlescroll</em> introduced the Cumulative Surcharge rule
-        to balance Auxiliary unit spam.
+        A quarta edição do Warhammer Age of Sigmar foi lançada em julho de 2024 com o conjunto inicial
+        <em>Skaventide</em>, inaugurando uma reformulação profunda das regras principais. Praticamente
+        todos os warscrolls foram reescritos, a construção de exércitos foi reestruturada em torno do
+        sistema de Regimentos, e a economia de pontos foi recalibrada. O <em>Generals Handbook 2025-26</em>
+        estabeleceu o framework atual de jogo competitivo, e o <em>Battlescroll de Abril 2026</em> introduziu
+        a regra Cumulative Surcharge para equilibrar o spam de unidades Auxiliares.
       </p>
 
-      <h2 id="core-loop">Core Game Loop</h2>
+      <h2 id="core-loop">Ciclo Principal do Jogo</h2>
       <p>
-        Each game of Age of Sigmar is played over five <strong>Battle Rounds</strong>. At the start of each
-        round, both players roll a die — the winner of the <strong>Priority Roll</strong> may choose whether
-        they or their opponent takes the first Player Turn. This creates the risk of a <em>Double Turn</em>:
-        a player who went second last round may go first this round, granting two consecutive turns of
-        movement, shooting, and combat.
+        Cada partida de Age of Sigmar é disputada ao longo de cinco <strong>Battle Rounds</strong>. No início de
+        cada rodada, ambos os jogadores rolam um dado — o vencedor do <strong>Priority Roll</strong> pode escolher
+        se ele ou o oponente toma o primeiro Turno do Jogador. Isso cria o risco de um <em>Double Turn</em>:
+        um jogador que foi segundo na rodada anterior pode ir primeiro nesta, obtendo dois turnos consecutivos
+        de movimento, tiro e combate.
       </p>
       <p>
-        Within each Player Turn, actions are resolved in a fixed sequence of phases: Start of Turn,
-        Hero, Movement, Shooting, Charge, Combat, and End of Turn. Both players participate in most phases,
-        either through reactions or through alternating activations in Combat.
+        Dentro de cada Turno do Jogador, as ações são resolvidas em uma sequência fixa de fases: Início do
+        Turno, Heróis, Movimento, Tiro, Carga, Combate e Fim do Turno. Ambos os jogadores participam da
+        maioria das fases, seja por reações ou por ativações alternadas no Combate.
       </p>
 
       <div class="rules-callout">
-        <strong>Key Design Philosophy.</strong> AoS 4ed leans into decision-making over raw dice volume.
-        Command Points are a fixed resource (4 per round), abilities are typed as Passive, Used, or
-        Reaction, and Combat alternates activations so both armies are engaged throughout the turn.
+        <strong>Filosofia de Design.</strong> AoS 4ed foca em tomada de decisão em vez de volume bruto de
+        dados. Command Points são um recurso fixo (4 por rodada), habilidades são classificadas como
+        Passive, Used ou Reaction, e o Combate alterna ativações para que ambos os exércitos estejam
+        engajados durante todo o turno.
       </div>
 
-      <h2 id="dice">Dice &amp; Rolls</h2>
+      <h2 id="dice">Dados &amp; Rolagens</h2>
       <p>
-        Age of Sigmar uses standard six-sided dice (D6). All rolls are compared against a target number;
-        a result equal to or higher than the target counts as a success. A natural roll of 1 always fails
-        for attack rolls; a natural 6 may trigger critical hit effects depending on the warscroll.
-        Modifiers are applied after rolling: a positive modifier improves the target threshold, a negative
-        modifier worsens it (to a minimum of 2+).
+        Age of Sigmar usa dados de seis faces padrão (D6). Todas as rolagens são comparadas a um número alvo;
+        um resultado igual ou superior ao alvo conta como sucesso. Uma rolagem natural de 1 sempre falha
+        para ataques; uma rolagem natural de 6 pode acionar efeitos de acerto crítico dependendo do warscroll.
+        Modificadores são aplicados após a rolagem: um modificador positivo melhora o limiar alvo, um
+        negativo o piora (com mínimo de 2+).
       </p>
 
-      <h2 id="victory">Victory Conditions</h2>
+      <h2 id="victory">Condições de Vitória</h2>
       <p>
-        Most matched-play battleplans determine the winner through control of <strong>Objectives</strong> —
-        marked points on the battlefield. At the end of each round (and sometimes during it), objectives
-        are scored based on the <em>Control</em> stat of models within range. The player who scored the
-        most points across the five rounds wins; ties go to the player who scored most in the final round.
+        A maioria dos battleplans de jogo competitivo determina o vencedor através do controle de
+        <strong>Objetivos</strong> — pontos marcados no campo de batalha. No final de cada rodada (e às
+        vezes durante ela), os objetivos são pontuados com base na estatística <em>Control</em> dos modelos
+        dentro do alcance. O jogador que acumular mais pontos nas cinco rodadas vence; empates vão para o
+        jogador que pontuou mais na rodada final.
       </p>
 
-      <h2 id="sections">Detailed Rule Sections</h2>
+      <h2 id="sections">Seções Detalhadas de Regras</h2>
       <ul class="rules-nav-list">
-        <li><a href="{{ url_for('rules.aos_turn') }}" class="rules-nav-link">Turn Structure &rarr;</a>
-            <span>Priority rolls, phases, alternating activations, Command Points</span></li>
-        <li><a href="{{ url_for('rules.aos_abilities') }}" class="rules-nav-link">Abilities &amp; Keywords &rarr;</a>
+        <li><a href="{{ url_for('rules.aos_turn') }}" class="rules-nav-link">Estrutura do Turno &rarr;</a>
+            <span>Priority rolls, fases, ativações alternadas, Command Points</span></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}" class="rules-nav-link">Habilidades &amp; Palavras-Chave &rarr;</a>
             <span>Ward saves, Rend, Mortal Wounds, Manifestations</span></li>
-        <li><a href="{{ url_for('rules.aos_composition') }}" class="rules-nav-link">Army Composition &rarr;</a>
-            <span>Regiments, Auxiliaries, Battlepacks, Cumulative Surcharge</span></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}" class="rules-nav-link">Composição de Exército &rarr;</a>
+            <span>Regimentos, Auxiliares, Battlepacks, Cumulative Surcharge</span></li>
       </ul>
 
     </article>

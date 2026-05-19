@@ -1,32 +1,32 @@
 {% extends "base.html" %}
-{% block title %}Army Templates — waaahgame{% endblock %}
+{% block title %}Modelos de Exército — waaahgame{% endblock %}
 
 {% block content %}
 <section class="armies-section">
   <div class="container">
     <div class="armies-header">
-      <p class="eyebrow">Starter Rosters</p>
-      <h1 class="section-title">Army Templates</h1>
+      <p class="eyebrow">Rosters Iniciais</p>
+      <h1 class="section-title">Modelos de Exército</h1>
       <p style="font-family:'EB Garamond',serif;font-size:1.05rem;opacity:0.8;margin-top:0.5rem;">
-        Choose a starter roster to jump straight into battle. You can customise it afterwards.
+        Escolha um roster inicial para entrar em batalha rapidamente. Você pode personalizá-lo depois.
       </p>
     </div>
 
     <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;align-items:flex-end;">
       <form method="GET" action="{{ url_for('armies.templates') }}" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:flex-end;">
         <div>
-          <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">SYSTEM</label>
+          <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">SISTEMA</label>
           <select name="system" class="form-select" style="min-width:130px;" onchange="this.form.submit()">
-            <option value="" {% if not system_filter %}selected{% endif %}>All Systems</option>
+            <option value="" {% if not system_filter %}selected{% endif %}>Todos os Sistemas</option>
             {% for sys in systems %}
               <option value="{{ sys.code }}" {% if system_filter == sys.code %}selected{% endif %}>{{ sys.name }}</option>
             {% endfor %}
           </select>
         </div>
         <div>
-          <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">FACTION</label>
+          <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">FACÇÃO</label>
           <select name="faction" class="form-select" style="min-width:160px;" onchange="this.form.submit()">
-            <option value="" {% if not faction_filter %}selected{% endif %}>All Factions</option>
+            <option value="" {% if not faction_filter %}selected{% endif %}>Todas as Facções</option>
             {% for fac in factions %}
               <option value="{{ fac.slug }}" {% if faction_filter == fac.slug %}selected{% endif %}>{{ fac.name }}</option>
             {% endfor %}
@@ -64,10 +64,10 @@
               {% if current_user.is_authenticated %}
                 <form method="POST" action="{{ url_for('armies.from_template', template_id=tmpl.id) }}" style="display:inline;">
                   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                  <button type="submit" class="btn-primary btn-sm">Use Template</button>
+                  <button type="submit" class="btn-primary btn-sm">Usar Modelo</button>
                 </form>
               {% else %}
-                <a href="{{ url_for('auth.login') }}" class="btn-secondary btn-sm">Sign In to Use</a>
+                <a href="{{ url_for('auth.login') }}" class="btn-secondary btn-sm">Entrar para Usar</a>
               {% endif %}
             </div>
           </div>
@@ -75,13 +75,13 @@
       </div>
     {% else %}
       <div class="armies-empty">
-        <p><em>No templates available yet. Run the seed script to populate them.</em></p>
+        <p><em>Nenhum modelo disponível ainda. Execute o script de seed para populá-los.</em></p>
       </div>
     {% endif %}
 
     <div style="margin-top:2rem;display:flex;gap:1rem;">
-      <a href="{{ url_for('armies.index') }}" class="btn-secondary btn-sm">&larr; My Armies</a>
-      <a href="{{ url_for('armies.new') }}" class="btn-secondary btn-sm">Build Custom Army</a>
+      <a href="{{ url_for('armies.index') }}" class="btn-secondary btn-sm">&larr; Meus Exércitos</a>
+      <a href="{{ url_for('armies.new') }}" class="btn-secondary btn-sm">Criar Exército Personalizado</a>
     </div>
   </div>
 </section>

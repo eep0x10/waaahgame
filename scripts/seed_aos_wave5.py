@@ -513,80 +513,81 @@ GLOOMSPITE_UNITS = [
 # ---------------------------------------------------------------------------
 
 CITIES_BLURB = (
-    "From the great free cities of the Mortal Realms — Hammerhal Aqsha, Anvilgard, Excelsis and more — "
-    "the Cities of Sigmar field a truly diverse host of aelves, duardin and humans united under the "
-    "banner of Sigmar. Disciplined gunlines, armoured cavalry, arcane battlemages and ironclad steam "
-    "engines combine into a formidable combined-arms force defending order's greatest bastions."
+    "Das grandes cidades livres dos Reinos Mortais — Hammerhal Aqsha, Anvilgard, Excelsis e outras — "
+    "as Cities of Sigmar reúnem uma hoste verdadeiramente diversa de aelves, duardin e humanos unidos "
+    "sob o estandarte de Sigmar. Linhas de fogo disciplinadas, cavalaria blindada, battlemages arcanos "
+    "e máquinas a vapor blindadas se combinam numa formidável força de armas combinadas "
+    "defendendo os maiores bastiões da Ordem."
 )
 
 DOK_BLURB = (
-    "The Daughters of Khaine worship Morathi's dark aspect through war and bloodshed. Aelven warriors "
-    "of supernal skill and frightening zeal, they fight in frenzied ecstasy — growing more powerful as "
-    "blood is spilled. Slaughter Queens and Hag Queens lead hosts of Witch Aelves, Melusai shapeshifters "
-    "and winged Khinerai, all driven by the prophetic will of the Shadow Queen herself."
+    "As Daughters of Khaine veneram o aspecto sombrio de Morathi através da guerra e do derramamento de sangue. "
+    "Guerreiras aelvas de habilidade sobrenatural e fervor assustador, lutam em êxtase frenético — tornando-se "
+    "mais poderosas à medida que o sangue é derramado. Slaughter Queens e Hag Queens lideram hostes de "
+    "Witch Aelves, metamorfos Melusai e Khinerai alados, todos guiados pela vontade profética da própria Rainha das Sombras."
 )
 
 KO_BLURB = (
-    "The Kharadron Overlords are sky-duardin mercenaries who sail the aetheric winds in great armoured "
-    "airships, trading and warring in equal measure. Bound by the Kharadron Code — a complex set of "
-    "contracts, rights and obligations — they bring Aethercannons, bombs, and Skyfarer infantry to bear "
-    "with the precision of seasoned sky-engineers."
+    "Os Kharadron Overlords são mercenários sky-duardin que navegam os ventos etéreos em grandes "
+    "dirigíveis blindados, comerciando e guerreando em igual medida. Vinculados pelo Kharadron Code — um complexo "
+    "conjunto de contratos, direitos e obrigações — eles trazem Aethercannons, bombas e infantaria Skyfarer "
+    "com a precisão de experientes engenheiros dos céus."
 )
 
 LUMINETH_BLURB = (
-    "The Lumineth Realm-Lords are aelven scholars and warriors of breathtaking precision, empowered by "
-    "the magic of the Hyshian sun and the elemental spirits of mountain, wind, river and zenith. "
-    "Vanari spear-regiments advance with geometric order while Alarith stoneguard and Hurakan windchargers "
-    "shatter the enemy's flanks, all guided by the sublime intellect of the Scinari mage-caste."
+    "Os Lumineth Realm-Lords são eruditos e guerreiros aelvas de precisão deslumbrante, fortalecidos pela "
+    "magia do sol de Hysh e pelos espíritos elementais da montanha, do vento, do rio e do zênite. "
+    "Regimentos de lanças Vanari avançam com ordem geométrica enquanto stoneguard Alarith e windchargers "
+    "Hurakan destroçam os flancos inimigos, todos guiados pelo intelecto sublime da casta de magos Scinari."
 )
 
 NURGLE_BLURB = (
-    "The Maggotkin of Nurgle are the favoured children of the Plague God, bloated with pestilent gifts "
-    "and filled with a horrible, loving joy. Rotbringers and Plaguebearers advance in a tide of filth, "
-    "spreading Nurgle's bountiful contagions across the Mortal Realms. The more they suffer, the more "
-    "they laugh — for all things return to Grandfather Nurgle in the end."
+    "Os Maggotkin of Nurgle são os filhos prediletos do Deus da Praga, inchados com presentes pestilentes "
+    "e repletos de um amor horrível e alegre. Rotbringers e Plaguebearers avançam numa maré de imundície, "
+    "espalhando as generosas contagiões de Nurgle pelos Reinos Mortais. Quanto mais sofrem, mais "
+    "riem — pois tudo retorna ao Vovô Nurgle no final."
 )
 
 STD_BLURB = (
-    "The Slaves to Darkness are Chaos's mortal vanguard — warriors who have pledged their souls to the "
-    "Dark Gods in exchange for martial power and the promise of ascension. Chaos Warriors in black iron, "
-    "howling Darkoath marauders, and the dread Varanguard ride at the will of Archaon, the Everchosen, "
-    "whose shadow falls across all the Mortal Realms."
+    "Os Slaves to Darkness são a vanguarda mortal do Caos — guerreiros que empenharam suas almas aos "
+    "Deuses Sombrios em troca de poder marcial e a promessa de ascensão. Chaos Warriors em ferro negro, "
+    "marauders Darkoath uivantes e os temidos Varanguard cavalgam à vontade de Archaon, o Everchosen, "
+    "cuja sombra cobre todos os Reinos Mortais."
 )
 
 TZEENTCH_BLURB = (
-    "The Disciples of Tzeentch are agents of change, mutation and arcane scheming. The Changer of Ways "
-    "delights in flux — his daemonic Horrors split and multiply, Tzaangor warbands twist reality with "
-    "aetheric flame, and Arcanite cults manipulate mortal civilisations from within. Every plan within "
-    "a plan ultimately serves the incomprehensible design of the Great Conspirator."
+    "Os Disciples of Tzeentch são agentes da mudança, mutação e maquinações arcanas. O Transformador dos Caminhos "
+    "delicia-se no fluxo — seus Horrors daemônicos se dividem e multiplicam, bandos de Tzaangor torcem a realidade "
+    "com chamas etéreas, e cultos Arcanite manipulam civilizações mortais por dentro. Todo plano dentro de "
+    "um plano serve em última instância ao desígnio incompreensível do Grande Conspirador."
 )
 
 SOULBLIGHT_BLURB = (
-    "The Soulblight Gravelords are undead dynasties of vampiric nobility commanding legions of the "
-    "risen dead. Ancient vampires of terrible power lead Deathrattle skeleton warriors, shambling "
-    "Deadwalker hordes and swift Dire Wolf packs, all answering ultimately to the will of Nagash "
-    "even as they scheme for their own dominion over the Mortal Realms."
+    "Os Soulblight Gravelords são dinastias não-mortas de nobreza vampírica comandando legiões de "
+    "mortos ressuscitados. Vampiros antigos de poder terrível lideram guerreiros Deathrattle, hordas "
+    "cambaleantes Deadwalker e velozes alcatéias de Dire Wolf, todos respondendo em última instância "
+    "à vontade de Nagash mesmo enquanto tramam seu próprio domínio sobre os Reinos Mortais."
 )
 
 OBR_BLURB = (
-    "The Ossiarch Bonereapers are Nagash's elite military force — constructed warriors built from "
-    "harvested bones and imbued with the somatic essences of fallen warriors. Disciplined and merciless, "
-    "Mortek Guard advance in lockstep formations while Liege-Kavalos cavalry thunder forward, and the "
-    "great Gothizzar Harvesters harvest bones from the fallen to replenish their ranks."
+    "Os Ossiarch Bonereapers são a força militar de elite de Nagash — guerreiros construídos a partir de "
+    "ossos colhidos e imbuídos com as essências somáticas de guerreiros caídos. Disciplinados e implacáveis, "
+    "Mortek Guard avançam em formações rígidas enquanto a cavalaria Liege-Kavalos troveja para frente, e os "
+    "grandes Gothizzar Harvesters colhem ossos dos caídos para reabastecer suas fileiras."
 )
 
 ORRUK_BLURB = (
-    "The Orruk Warclans bring together the savage might of three distinct orruk cultures. The heavily "
-    "armoured Ironjawz crash into the enemy like a living avalanche, the cunning and cruel Kruleboyz "
-    "stalk marshlands and ambush their prey, while the Bonesplitterz revel in the primal hunt. "
-    "United or fractious, orruks fight for the sheer joy of battle."
+    "Os Orruk Warclans reúnem o poder selvagem de três culturas orruk distintas. Os Ironjawz fortemente "
+    "blindados se chocam contra o inimigo como uma avalanche viva, os Kruleboyz astutos e cruéis "
+    "espreitam pântanos e emboscam suas presas, enquanto os Bonesplitterz se deleitam na caça primordial. "
+    "Unidos ou discordantes, orruks lutam pela pura alegria da batalha."
 )
 
 GLOOMSPITE_BLURB = (
-    "When the Bad Moon rises, the Gloomspite Gitz pour from tunnels and caves in an endless chittering "
-    "tide. Moonclan Grots, Squig herds, Troggoth monstrosities and Spiderfang arachnid-riders all follow "
-    "the prophetic lunacy of Skragrott, the Loonking. They are individually weak but numberless — "
-    "a gibbering avalanche of teeth, spite, and very large mushrooms."
+    "Quando a Lua Má se ergue, os Gloomspite Gitz jorram de túneis e cavernas numa maré farfalhante sem fim. "
+    "Grots do Clã da Lua, manadas de Squig, monstruosidades Troggoth e cavaleiros de aracnídeos Spiderfang "
+    "seguem a loucura profética de Skragrott, o Loonking. São individualmente fracos mas incontáveis — "
+    "uma avalanche farfalhante de dentes, rancor e cogumelos muito grandes."
 )
 
 ALL_FACTIONS = [

@@ -130,7 +130,7 @@ def test_upload_get_admin_returns_200(client):
     _login(client, 'admin_user', 'adminpass1')
     resp = client.get('/units/stormvermin/upload-image')
     assert resp.status_code == 200
-    assert b'Set Banner Image' in resp.data or b'FORGE BANNER' in resp.data
+    assert b'Definir Imagem de Bandeira' in resp.data or b'FORJAR BANDEIRA' in resp.data
 
 
 def test_upload_post_admin_valid_png_sets_image(client, app_with_data, tmp_static):
@@ -168,7 +168,7 @@ def test_upload_post_admin_txt_rejected(client):
     )
     # Should return form again (redirect back to upload page) with error flash
     assert resp.status_code == 200
-    assert b'Invalid file type' in resp.data or b'Set Banner Image' in resp.data
+    assert b'arquivo' in resp.data or b'Definir Imagem' in resp.data
 
 
 def test_upload_post_non_admin_returns_403(client):

@@ -90,8 +90,10 @@ def test_seed_creates_templates(app_tmpl):
     app, gs, alice, faction, hero, troop = app_tmpl
     from scripts.seed_army_templates import _do_seed
     with app.app_context():
-        n = _do_seed(_db, GameSystem, Faction, Unit, ArmyTemplate)
-        assert isinstance(n, int)
+        result = _do_seed(_db, GameSystem, Faction, Unit, ArmyTemplate)
+        n_created, n_updated = result
+        assert isinstance(n_created, int)
+        assert isinstance(n_updated, int)
 
 
 def test_templates_list(as_alice_tmpl, app_tmpl):

@@ -277,24 +277,24 @@ SERAPHON_UNITS = [
 ]
 
 SKAVEN_BLURB = (
-    "From the writhing dark beneath the Mortal Realms, the Skaven emerge in chittering hordes — "
-    "a seething tide of ratmen bound together by treachery, ambition, and an insatiable hunger to devour "
-    "all that the other races have built. Each of the great Clans brings its own fell gifts to the Skaventide: "
-    "Verminus warriors armed with rusted blades, Pestilens priests spreading divine plague, Skryre engineers "
-    "wielding warpstone-powered armaments, Eshin assassins slipping through shadows, and Moulder flesh-shapers "
-    "unleashing abominations stitched from nightmare and sinew. "
-    "Beneath the banner of the Great Horned Rat, all skaven are united in one sacred purpose: the Great Gnaw, "
-    "the consuming of creation itself."
+    "Das profundezas retorcidas sob os Reinos Mortais, os Skaven emergem em hordas farfalhantes — "
+    "uma maré fervilhante de ratoshumanos unidos pela traição, ambição e uma fome insaciável de devorar "
+    "tudo que as outras raças construíram. Cada um dos grandes Clãs traz seus próprios presentes sombrios ao Skaventide: "
+    "guerreiros Verminus armados com lâminas enferrujadas, sacerdotes Pestilens espalhando praga divina, engenheiros Skryre "
+    "empunhando armamentos movidos a pedra-da-ruína, assassinos Eshin deslizando pelas sombras e modeladores de carne Moulder "
+    "desencadeando abominações costuradas de pesadelo e tendão. "
+    "Sob o estandarte do Grande Rato Cornudo, todos os skaven estão unidos em um único e sagrado propósito: o Grande Roer, "
+    "o consumo da própria criação."
 )
 
 SERAPHON_BLURB = (
-    "Ageless architects of celestial order, the Seraphon descend from the stars upon beams of blazing starlight "
-    "to prosecute the Great Plan — a cosmic design to unmake Chaos and restore the symmetry of creation. "
-    "Ancient Slann Starmasters contemplate the movements of celestial bodies from atop great temple-ships, "
-    "directing their cold-blooded warriors across the Mortal Realms with godlike precision. "
-    "From the armoured ranks of Saurus Warriors to the swift Skink scouts and the thunderous charge of "
-    "Carnosaurs, the Seraphon wage war as a sacred rite — each battle another step in a plan conceived "
-    "before time itself had a name."
+    "Arquitetos imortais da ordem celestial, os Seraphon descem das estrelas sobre feixes de luz estelar flamejante "
+    "para executar o Grande Plano — um desígnio cósmico para desfazer o Caos e restaurar a simetria da criação. "
+    "Antigos Slann Starmasters contemplam os movimentos dos corpos celestes do alto de grandes naves-templo, "
+    "direcionando seus guerreiros de sangue frio pelos Reinos Mortais com precisão divina. "
+    "Das fileiras blindadas de Saurus Warriors aos ágeis batedores Skink e à carga trovejante de "
+    "Carnosaurs, os Seraphon travam guerra como um rito sagrado — cada batalha mais um passo num plano concebido "
+    "antes que o próprio tempo tivesse um nome."
 )
 
 

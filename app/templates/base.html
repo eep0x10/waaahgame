@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,34 +38,34 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="{{ url_for('main.index') }}">HOME</a></li>
-        <li><a href="{{ url_for('rules.index') }}">RULES</a></li>
-        <li><a href="{{ url_for('factions.index') }}">FACTIONS</a></li>
-        <li><a href="{{ url_for('units.index') }}">UNITS</a></li>
-        <li><a href="{{ url_for('armies.index') }}">ARMIES</a></li>
+        <li><a href="{{ url_for('main.index') }}">INÍCIO</a></li>
+        <li><a href="{{ url_for('rules.index') }}">REGRAS</a></li>
+        <li><a href="{{ url_for('factions.index') }}">FACÇÕES</a></li>
+        <li><a href="{{ url_for('units.index') }}">UNIDADES</a></li>
+        <li><a href="{{ url_for('armies.index') }}">EXÉRCITOS</a></li>
         {% if current_user.is_authenticated %}
-          <li><a href="{{ url_for('matches.index') }}">MATCHES</a></li>
-          <li><a href="{{ url_for('matches.history') }}">HISTORY</a></li>
-          <li><a href="{{ url_for('stats.index') }}">STATS</a></li>
-          <li><a href="{{ url_for('friends.index') }}">FRIENDS</a></li>
+          <li><a href="{{ url_for('matches.index') }}">PARTIDAS</a></li>
+          <li><a href="{{ url_for('matches.history') }}">HISTÓRICO</a></li>
+          <li><a href="{{ url_for('stats.index') }}">ESTATÍSTICAS</a></li>
+          <li><a href="{{ url_for('friends.index') }}">AMIGOS</a></li>
         {% else %}
-          <li><a href="#" class="disabled">MATCHES</a></li>
-          <li><a href="#" class="disabled">FRIENDS</a></li>
+          <li><a href="#" class="disabled">PARTIDAS</a></li>
+          <li><a href="#" class="disabled">AMIGOS</a></li>
         {% endif %}
       </ul>
 
       {% if current_user.is_authenticated %}
         <div class="nav-auth">
-          <a class="nav-auth-link" href="{{ url_for('auth.profile') }}">PROFILE</a>
+          <a class="nav-auth-link" href="{{ url_for('auth.profile') }}">PERFIL</a>
           <form method="POST" action="{{ url_for('auth.logout') }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="nav-auth-link nav-auth-btn">LOGOUT</button>
+            <button type="submit" class="nav-auth-link nav-auth-btn">SAIR</button>
           </form>
         </div>
       {% else %}
         <div class="nav-auth">
-          <a class="nav-auth-link" href="{{ url_for('auth.login') }}">SIGN IN</a>
-          <a class="btn-cta" href="{{ url_for('auth.register') }}">ENLIST</a>
+          <a class="nav-auth-link" href="{{ url_for('auth.login') }}">ENTRAR</a>
+          <a class="btn-cta" href="{{ url_for('auth.register') }}">ALISTAR</a>
         </div>
       {% endif %}
     </nav>
@@ -77,7 +77,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-quote">"Glory to those who march under their own banner."</p>
+      <p class="footer-quote">"Glória a quem marcha sob sua própria bandeira."</p>
       <p class="footer-meta">waaahgame &middot; Phase 2 &middot; 2026</p>
     </div>
   </footer>

@@ -26,22 +26,22 @@ def register_post():
     errors = {}
 
     if not _USERNAME_RE.match(username):
-        errors['username'] = 'Username must be 3-32 characters: letters, digits, or underscore.'
+        errors['username'] = 'Nome de usuário deve ter 3-32 caracteres: letras, dígitos ou sublinhado.'
 
     if not _EMAIL_RE.match(email):
-        errors['email'] = 'Enter a valid email address.'
+        errors['email'] = 'Informe um endereço de e-mail válido.'
 
     if len(password) < 8:
-        errors['password'] = 'Password must be at least 8 characters.'
+        errors['password'] = 'A senha deve ter pelo menos 8 caracteres.'
 
     if password != password_confirm:
-        errors['password_confirm'] = 'Passwords do not match.'
+        errors['password_confirm'] = 'As senhas não coincidem.'
 
     if not errors:
         if User.query.filter_by(username=username).first():
-            errors['username'] = 'That username is already taken.'
+            errors['username'] = 'Esse nome de usuário já está em uso.'
         if User.query.filter_by(email=email).first():
-            errors['email'] = 'That email is already registered.'
+            errors['email'] = 'Esse e-mail já está cadastrado.'
 
     if errors:
         return render_template('auth/register.html', errors=errors,
@@ -53,7 +53,7 @@ def register_post():
     db.session.commit()
 
     login_user(user)
-    flash('Your banner has been forged. Welcome to the host!', 'success')
+    flash('Sua bandeira foi forjada. Bem-vindo ao exército!', 'success')
     return redirect(url_for('main.index'))
 
 
@@ -73,9 +73,9 @@ def login_post():
     errors = {}
 
     if not identifier:
-        errors['identifier'] = 'Enter your username or email.'
+        errors['identifier'] = 'Informe seu nome de usuário ou e-mail.'
     if not password:
-        errors['password'] = 'Enter your password.'
+        errors['password'] = 'Informe sua senha.'
 
     user = None
     if not errors:
@@ -85,14 +85,14 @@ def login_post():
             user = User.query.filter_by(username=identifier).first()
 
         if user is None or not user.check_password(password):
-            errors['identifier'] = 'Invalid credentials. Check your username/email and password.'
+            errors['identifier'] = 'Credenciais inválidas. Verifique seu usuário/e-mail e senha.'
 
     if errors:
         return render_template('auth/login.html', errors=errors,
                                identifier=identifier, next=next_url), 200
 
     login_user(user, remember=remember)
-    flash(f'Welcome back, {user.name}.', 'success')
+    flash(f'Bem-vindo de volta, {user.name}.', 'success')
 
     if next_url and next_url.startswith('/'):
         return redirect(next_url)
@@ -103,7 +103,7 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    flash('You have left the war-host. Safe travels.', 'info')
+    flash('Você saiu do exército. Boas batalhas.', 'info')
     return redirect(url_for('main.index'))
 
 

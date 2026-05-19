@@ -1,35 +1,35 @@
 {% extends 'base.html' %}
 {% from 'auth/_form_macros.html' import field %}
 
-{% block title %}Return to the Host &mdash; waaahgame{% endblock %}
+{% block title %}Retornar ao Exército &mdash; waaahgame{% endblock %}
 
 {% block content %}
 <section class="auth-section">
   <div class="card-form">
     <div class="card-form-header">
-      <p class="eyebrow">Returning Warrior</p>
-      <h1 class="section-title">Return to the Host</h1>
-      <p class="card-form-sub">Speak your name and your pass-phrase to re-enter.</p>
+      <p class="eyebrow">Guerreiro Retornando</p>
+      <h1 class="section-title">Retornar ao Exército</h1>
+      <p class="card-form-sub">Diga seu nome e sua senha para reingressar.</p>
     </div>
 
     <form method="POST" action="{{ url_for('auth.login_post') }}" novalidate>
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="next" value="{{ next or '' }}">
-      {{ field('identifier', 'Username or Email', value=identifier or '', errors=errors or {}) }}
-      {{ field('password', 'Password', type='password', errors=errors or {}) }}
+      {{ field('identifier', 'Usuário ou Email', value=identifier or '', errors=errors or {}) }}
+      {{ field('password', 'Senha', type='password', errors=errors or {}) }}
 
       <div class="form-field form-field-check">
         <label class="check-label">
-          <input type="checkbox" name="remember" value="1"> Remember me on this device
+          <input type="checkbox" name="remember" value="1"> Lembrar neste dispositivo
         </label>
       </div>
 
-      <button type="submit" class="btn-primary btn-full">SIGN IN</button>
+      <button type="submit" class="btn-primary btn-full">ENTRAR</button>
     </form>
 
     <p class="card-form-footer">
-      No banner yet?
-      <a href="{{ url_for('auth.register') }}">Forge a new banner</a>
+      Ainda sem bandeira?
+      <a href="{{ url_for('auth.register') }}">Forje uma nova bandeira</a>
     </p>
   </div>
 </section>

@@ -88,20 +88,20 @@ def upload_image_post(unit_slug):
 
     f = request.files.get('image')
     if not f or not f.filename:
-        flash('No file selected.', 'error')
+        flash('Nenhum arquivo selecionado.', 'error')
         return redirect(url_for('units.upload_image', unit_slug=unit_slug))
 
     # Validate MIME type
     mime = f.mimetype
     if mime not in ALLOWED_MIME:
-        flash('Invalid file type. Upload a JPEG, PNG, or WebP image.', 'error')
+        flash('Tipo de arquivo inválido. Envie uma imagem JPEG, PNG ou WebP.', 'error')
         return redirect(url_for('units.upload_image', unit_slug=unit_slug))
 
     try:
         from PIL import Image
         img = Image.open(io.BytesIO(f.read())).convert('RGB')
     except Exception:
-        flash('Could not read image file. Upload a valid JPEG, PNG, or WebP.', 'error')
+        flash('Não foi possível ler o arquivo de imagem. Envie um JPEG, PNG ou WebP válido.', 'error')
         return redirect(url_for('units.upload_image', unit_slug=unit_slug))
 
     max_w = 600
@@ -120,5 +120,5 @@ def upload_image_post(unit_slug):
     unit.image_search_url = None
     db.session.commit()
 
-    flash('Banner image set for {}.'.format(unit.name), 'success')
+    flash('Imagem de bandeira definida para {}.'.format(unit.name), 'success')
     return redirect(url_for('units.detail', unit_slug=unit_slug))

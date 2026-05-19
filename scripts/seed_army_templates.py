@@ -10,7 +10,7 @@ TEMPLATES_DATA = [
         'name': 'Skaven Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'A gnawing tide of Skaven infantry led by a cunning Warlock Engineer. Fast, numerous, and unpredictable.',
+        'summary': 'Uma maré roedora de infantaria Skaven liderada por um astuto Warlock Engineer. Rápida, numerosa e imprevisível.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -31,7 +31,7 @@ TEMPLATES_DATA = [
         'name': 'Seraphon Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Ancient starborn warriors advance under the cold gaze of a Saurus Oldblood. Disciplined, resilient, and deadly.',
+        'summary': 'Guerreiros ancestrais nascidos das estrelas avançam sob o olhar frio de um Saurus Oldblood. Disciplinados, resistentes e letais.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -52,7 +52,7 @@ TEMPLATES_DATA = [
         'name': 'Stormcast Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Sigmar\'s warriors reforged in celestial lightning. A Lord-Celestant leads a strike force of Liberators and Prosecutors.',
+        'summary': 'Os guerreiros de Sigmar reforjados em raios celestiais. Um Lord-Celestant lidera uma força de ataque de Liberators e Prosecutors.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -73,7 +73,7 @@ TEMPLATES_DATA = [
         'name': 'Sylvaneth Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Spirits of the forest given form and fury. A Branchwych guides Dryads and Tree-Revenants through the hidden paths.',
+        'summary': 'Espíritos da floresta dotados de forma e fúria. Uma Branchwych guia Dryads e Tree-Revenants pelos caminhos ocultos.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -94,7 +94,7 @@ TEMPLATES_DATA = [
         'name': 'Nighthaunt Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'A shrieking host of vengeful spirits led by a Knight of Shrouds. They fade through walls and strike before you can react.',
+        'summary': 'Uma horda uivante de espíritos vingadores liderada por um Knight of Shrouds. Atravessam paredes e golpeiam antes que você possa reagir.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -115,7 +115,7 @@ TEMPLATES_DATA = [
         'name': 'Cities of Sigmar Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'A disciplined combined-arms city force. A Freeguild Marshal leads Steelhelms and Cavaliers in defence of order.',
+        'summary': 'Uma força urbana disciplinada com armas combinadas. Um Freeguild Marshal lidera Steelhelms e Cavaliers na defesa da ordem.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -136,7 +136,7 @@ TEMPLATES_DATA = [
         'name': 'Daughters of Khaine Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'A bloodthirsty aelven host in service to Khaine. A Hag Queen drives Witch Aelves into a frenzy.',
+        'summary': 'Uma horda aelven sedenta de sangue a serviço de Khaine. Uma Hag Queen leva as Witch Aelves ao frenesi.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -157,7 +157,7 @@ TEMPLATES_DATA = [
         'name': 'Kharadron Overlords Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Sky-duardin mercenaries descend from the clouds. An Admiral commands Arkanaut Companies and Thunderers.',
+        'summary': 'Mercenários duardin dos céus descem das nuvens. Um Admiral comanda Arkanaut Companies e Thunderers.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -178,7 +178,7 @@ TEMPLATES_DATA = [
         'name': 'Lumineth Realm-Lords Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Aelven scholars march with geometric precision. A Vanari Lord Regent commands Wardens and Sentinels.',
+        'summary': 'Eruditos aelven marcham com precisão geométrica. Um Vanari Lord Regent comanda Wardens e Sentinels.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -199,7 +199,7 @@ TEMPLATES_DATA = [
         'name': 'Maggotkin of Nurgle Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Plague and pestilence made manifest. A Lord of Plagues leads Putrid Blightkings and Plaguebearers.',
+        'summary': 'Praga e pestilência tornadas concretas. Um Lord of Plagues lidera Putrid Blightkings e Plaguebearers.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -220,7 +220,7 @@ TEMPLATES_DATA = [
         'name': 'Slaves to Darkness Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': "Chaos's mortal vanguard advances under dark banners. A Chaos Sorcerer Lord leads Warriors and Knights.",
+        'summary': 'A vanguarda mortal do Caos avança sob estandartes sombrios. Um Chaos Sorcerer Lord lidera Warriors e Knights.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -241,7 +241,7 @@ TEMPLATES_DATA = [
         'name': 'Disciples of Tzeentch Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Reality unravels before the Changer of Ways. A Magister leads Pink Horrors and Tzaangors.',
+        'summary': 'A realidade se desfaz diante do Mutador dos Caminhos. Um Magister lidera Pink Horrors e Tzaangors.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -262,7 +262,7 @@ TEMPLATES_DATA = [
         'name': 'Soulblight Gravelords Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': 'Vampiric nobility commands the risen dead. A Vampire Lord leads Blood Knights and Skeleton Warriors.',
+        'summary': 'Nobreza vampírica comanda os mortos ressurgidos. Um Vampire Lord lidera Blood Knights e Skeleton Warriors.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -283,7 +283,7 @@ TEMPLATES_DATA = [
         'name': 'Ossiarch Bonereapers Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': "Nagash's elite bone constructs advance in perfect formation. A Liege-Kavalos leads Mortek Guard.",
+        'summary': 'As construções de osso de elite de Nagash avançam em formação perfeita. Um Liege-Kavalos lidera a Mortek Guard.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -304,7 +304,7 @@ TEMPLATES_DATA = [
         'name': 'Orruk Warclans Vanguard Starter',
         'format': 'vanguard',
         'points_target': 1000,
-        'summary': "Ironjawz smash everything in their path. An Orruk Warchanter drives Ardboys and Brutes into a frenzy.",
+        'summary': 'Os Ironjawz esmagam tudo em seu caminho. Um Orruk Warchanter leva Ardboys e Brutes ao frenesi.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -325,7 +325,7 @@ TEMPLATES_DATA = [
         'name': 'Space Marines Incursion Starter',
         'format': 'incursion',
         'points_target': 1000,
-        'summary': 'The Adeptus Astartes advance in disciplined squads. A Captain leads Intercessors and Assault Intercessors into the line.',
+        'summary': 'Os Adeptus Astartes avançam em esquadrões disciplinados. Um Captain lidera Intercessors e Assault Intercessors para a linha de frente.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -346,7 +346,7 @@ TEMPLATES_DATA = [
         'name': 'Tyranids Incursion Starter',
         'format': 'incursion',
         'points_target': 1000,
-        'summary': 'The Great Devourer consumes all in its path. A Hive Tyrant directs waves of Termagants and Hormagaunts forward.',
+        'summary': 'O Grande Devorador consome tudo em seu caminho. Um Hive Tyrant direciona ondas de Termagants e Hormagaunts para a frente.',
         'regiments_layout': [
             {
                 'position': 1,
@@ -364,11 +364,8 @@ TEMPLATES_DATA = [
 
 
 def _do_seed(db, GameSystem, Faction, Unit, ArmyTemplate):
-    created = 0
+    created = updated = 0
     for data in TEMPLATES_DATA:
-        if ArmyTemplate.query.filter_by(slug=data['slug']).first():
-            continue
-
         gs = GameSystem.query.filter_by(code=data['system_code']).first()
         faction = Faction.query.filter_by(slug=data['faction_slug']).first()
         if not gs or not faction:
@@ -393,22 +390,32 @@ def _do_seed(db, GameSystem, Faction, Unit, ArmyTemplate):
                         units_seen.append({'slug': comp.slug, 'count': 1})
             regiments_layout.append(reg_entry)
 
-        tmpl = ArmyTemplate(
-            system_id=gs.id,
-            faction_id=faction.id,
-            slug=data['slug'],
-            name=data['name'],
-            format=data['format'],
-            points_target=data['points_target'],
-            units_json=units_seen,
-            regiments_layout_json=regiments_layout,
-            summary=data['summary'],
-        )
-        db.session.add(tmpl)
-        created += 1
+        existing_tmpl = ArmyTemplate.query.filter_by(slug=data['slug']).first()
+        if existing_tmpl:
+            existing_tmpl.name = data['name']
+            existing_tmpl.format = data['format']
+            existing_tmpl.points_target = data['points_target']
+            existing_tmpl.summary = data['summary']
+            existing_tmpl.units_json = units_seen
+            existing_tmpl.regiments_layout_json = regiments_layout
+            updated += 1
+        else:
+            tmpl = ArmyTemplate(
+                system_id=gs.id,
+                faction_id=faction.id,
+                slug=data['slug'],
+                name=data['name'],
+                format=data['format'],
+                points_target=data['points_target'],
+                units_json=units_seen,
+                regiments_layout_json=regiments_layout,
+                summary=data['summary'],
+            )
+            db.session.add(tmpl)
+            created += 1
 
     db.session.commit()
-    return created
+    return created, updated
 
 
 if __name__ == '__main__':
@@ -419,5 +426,5 @@ if __name__ == '__main__':
 
     app = create_app('dev')
     with app.app_context():
-        n = _do_seed(db, GameSystem, Faction, Unit, ArmyTemplate)
-        print(f'Seeded {n} army templates.')
+        n_created, n_updated = _do_seed(db, GameSystem, Faction, Unit, ArmyTemplate)
+        print(f'Army templates: {n_created} criados, {n_updated} atualizados.')

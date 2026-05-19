@@ -110,15 +110,15 @@ def new_post():
     army_host_id = request.form.get('army_host_id', type=int)
 
     if not opponent_id or not system_id or not army_host_id:
-        flash('All fields are required.', 'error')
+        flash('Todos os campos são obrigatórios.', 'error')
         return redirect(url_for('matches.new'))
 
     if opponent_id == current_user.id:
-        flash('You cannot challenge yourself.', 'error')
+        flash('Você não pode desafiar a si mesmo.', 'error')
         return redirect(url_for('matches.new'))
 
     if not _is_accepted_friend(current_user.id, opponent_id):
-        flash('You can only challenge accepted friends.', 'error')
+        flash('Você só pode desafiar amigos aceitos.', 'error')
         return redirect(url_for('matches.new'))
 
     army = db.session.get(Army, army_host_id)
@@ -129,11 +129,11 @@ def new_post():
     combined_fp = _all_formats()
     pts = combined_fp.get(fmt) or FORMAT_POINTS.get(fmt)
     if pts is None:
-        flash('Invalid format.', 'error')
+        flash('Formato inválido.', 'error')
         return redirect(url_for('matches.new'))
 
     if army.points_limit < pts:
-        flash(f'Army points limit ({army.points_limit}) is below format limit ({pts}).', 'error')
+        flash(f'Limite de pontos do exército ({army.points_limit}) é inferior ao limite do formato ({pts}).', 'error')
         return redirect(url_for('matches.new'))
 
     system = db.session.get(GameSystem, system_id)
@@ -168,7 +168,7 @@ def accept(match_id):
         abort(403)
     match.status = 'army_select'
     db.session.commit()
-    flash('Challenge accepted. Choose your army.', 'success')
+    flash('Desafio aceito. Escolha seu exército.', 'success')
     return redirect(url_for('matches.show', match_id=match_id))
 
 
@@ -180,7 +180,7 @@ def decline(match_id):
         abort(403)
     match.status = 'cancelled'
     db.session.commit()
-    flash('Challenge declined.', 'success')
+    flash('Desafio recusado.', 'success')
     return redirect(url_for('matches.index'))
 
 
@@ -192,7 +192,7 @@ def cancel(match_id):
         abort(403)
     match.status = 'cancelled'
     db.session.commit()
-    flash('Match cancelled.', 'success')
+    flash('Partida cancelada.', 'success')
     return redirect(url_for('matches.index'))
 
 
@@ -204,17 +204,17 @@ def choose_army(match_id):
         abort(403)
     army_id = request.form.get('army_opponent_id', type=int)
     if not army_id:
-        flash('Select an army.', 'error')
+        flash('Selecione um exército.', 'error')
         return redirect(url_for('matches.show', match_id=match_id))
     army = db.session.get(Army, army_id)
     if army is None or army.user_id != current_user.id:
         abort(403)
     if army.points_limit < match.points_limit:
-        flash('Army points limit is below match limit.', 'error')
+        flash('Limite de pontos do exército é inferior ao limite da partida.', 'error')
         return redirect(url_for('matches.show', match_id=match_id))
     match.army_opponent_id = army_id
     db.session.commit()
-    flash('Army chosen!', 'success')
+    flash('Exército escolhido!', 'success')
     return redirect(url_for('matches.show', match_id=match_id))
 
 
@@ -225,7 +225,7 @@ def start(match_id):
     if match.host_id != current_user.id or match.status != 'army_select':
         abort(403)
     if not match.army_host_id or not match.army_opponent_id:
-        flash('Both players must choose an army first.', 'error')
+        flash('Ambos os jogadores devem escolher um exército primeiro.', 'error')
         return redirect(url_for('matches.show', match_id=match_id))
     match.status = 'active'
     match.current_round = 1
@@ -390,7 +390,7 @@ def finish(match_id):
     _log_event(match, 'match_finish')
     db.session.commit()
     _emit('match_finished', match.id)
-    flash('Match finished!', 'success')
+    flash('Partida finalizada!', 'success')
     return redirect(url_for('matches.show', match_id=match_id))
 
 

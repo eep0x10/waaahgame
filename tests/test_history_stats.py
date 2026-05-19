@@ -102,7 +102,7 @@ def test_history_shows_only_finished(as_alice_hs, app_hs):
     resp = as_alice_hs.get('/matches/history')
     assert resp.status_code == 200
     html = resp.data.decode()
-    assert 'WIN' in html or 'LOSS' in html or 'DRAW' in html
+    assert 'VITÓRIA' in html or 'DERROTA' in html or 'EMPATE' in html
 
 
 def test_history_empty_state(as_alice_hs, app_hs):
@@ -110,7 +110,7 @@ def test_history_empty_state(as_alice_hs, app_hs):
     resp = as_alice_hs.get('/matches/history')
     assert resp.status_code == 200
     html = resp.data.decode()
-    assert 'No finished matches' in html
+    assert 'Nenhuma partida finalizada' in html
 
 
 def test_stats_counts(app_hs):

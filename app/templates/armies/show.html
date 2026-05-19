@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ army.name }} — Army Builder{% endblock %}
+{% block title %}{{ army.name }} — Construtor de Exércitos{% endblock %}
 
 {% block content %}
 <section class="armies-builder-section">
@@ -7,7 +7,7 @@
 
     <div class="builder-header">
       <div class="builder-header-left">
-        <p class="eyebrow"><a href="{{ url_for('armies.index') }}">My Armies</a> &rsaquo; {{ army.faction.name }}</p>
+        <p class="eyebrow"><a href="{{ url_for('armies.index') }}">Meus Exércitos</a> &rsaquo; {{ army.faction.name }}</p>
         <h1 class="section-title">{{ army.name }}</h1>
         <div class="builder-header-meta">
           <span class="role-tag">{{ army.faction.name }}</span>
@@ -17,24 +17,24 @@
       </div>
       <div class="builder-header-actions">
         {% if army.public_token %}
-          <a href="{{ url_for('armies.public_view', token=army.public_token) }}" class="btn-secondary btn-sm" target="_blank">View Public</a>
+          <a href="{{ url_for('armies.public_view', token=army.public_token) }}" class="btn-secondary btn-sm" target="_blank">Ver Público</a>
           <form method="POST" action="{{ url_for('armies.unpublish', army_id=army.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="btn-secondary btn-sm">Unpublish</button>
+            <button type="submit" class="btn-secondary btn-sm">Despublicar</button>
           </form>
         {% else %}
           <form method="POST" action="{{ url_for('armies.publish', army_id=army.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="btn-secondary btn-sm">Publish</button>
+            <button type="submit" class="btn-secondary btn-sm">Publicar</button>
           </form>
         {% endif %}
 
         <button class="btn-secondary btn-sm"
-                onclick="document.getElementById('edit-modal').style.display='flex'">Edit</button>
+                onclick="document.getElementById('edit-modal').style.display='flex'">Editar</button>
 
         <button class="btn-danger btn-sm"
                 hx-get="{{ url_for('armies.show', army_id=army.id) }}"
-                onclick="document.getElementById('delete-modal-container').innerHTML=''; loadDeleteModal()">Delete</button>
+                onclick="document.getElementById('delete-modal-container').innerHTML=''; loadDeleteModal()">Excluir</button>
       </div>
     </div>
 
@@ -59,7 +59,7 @@
                   hx-target="#regiments-aux-container"
                   hx-swap="innerHTML">
               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-              <button type="submit" class="btn-secondary add-regiment-btn">+ Add Regiment</button>
+              <button type="submit" class="btn-secondary add-regiment-btn">+ Adicionar Regimento</button>
             </form>
           {% endif %}
 
@@ -80,20 +80,20 @@
 
 <div class="modal-overlay" id="edit-modal" style="display:none;">
   <div class="modal-box">
-    <h2 class="modal-title">Edit Army</h2>
+    <h2 class="modal-title">Editar Exército</h2>
     <form method="POST" action="{{ url_for('armies.edit', army_id=army.id) }}">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <div class="form-field">
-        <label for="edit-name">Name</label>
+        <label for="edit-name">Nome</label>
         <input type="text" id="edit-name" name="name" value="{{ army.name }}" maxlength="96" required>
       </div>
       <div class="form-field">
-        <label for="edit-notes">Notes</label>
+        <label for="edit-notes">Notas</label>
         <textarea id="edit-notes" name="notes" rows="4" style="width:100%;font-family:var(--font-body);font-size:1rem;border:1px solid var(--border-gold);padding:0.6rem;background:var(--bg-parchment-card);">{{ army.notes or '' }}</textarea>
       </div>
       <div class="modal-actions">
-        <button type="submit" class="btn-primary">Save</button>
-        <button type="button" class="btn-secondary" onclick="document.getElementById('edit-modal').style.display='none'">Cancel</button>
+        <button type="submit" class="btn-primary">Salvar</button>
+        <button type="button" class="btn-secondary" onclick="document.getElementById('edit-modal').style.display='none'">Cancelar</button>
       </div>
     </form>
   </div>

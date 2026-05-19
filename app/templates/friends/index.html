@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}War-Brothers &mdash; waaahgame{% endblock %}
+{% block title %}Irmãos de Guerra &mdash; waaahgame{% endblock %}
 
 {% block content %}
 <section class="friends-section">
   <div class="container section-stack">
 
     <div class="friends-block">
-      <p class="eyebrow">Alliance</p>
-      <h2 class="section-title">Dispatch Envoy</h2>
+      <p class="eyebrow">Aliança</p>
+      <h2 class="section-title">Enviar Convite</h2>
       <form method="POST" action="{{ url_for('friends.send_request') }}" class="friend-request-form">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-field form-field-inline">
-          <input type="text" name="username" placeholder="Enter warrior's username" required>
-          <button type="submit" class="btn-primary">DISPATCH ENVOY</button>
+          <input type="text" name="username" placeholder="Digite o usuário do guerreiro" required>
+          <button type="submit" class="btn-primary">ENVIAR CONVITE</button>
         </div>
       </form>
     </div>
 
     <div class="friends-block">
-      <p class="eyebrow">Incoming</p>
-      <h2 class="section-title">Calls to Arms</h2>
+      <p class="eyebrow">Recebidos</p>
+      <h2 class="section-title">Chamados às Armas</h2>
       {% if incoming %}
         <div class="friend-list">
           {% for fs in incoming %}
@@ -30,13 +30,13 @@
           {% endfor %}
         </div>
       {% else %}
-        <p class="friends-empty">No incoming pledges at this time.</p>
+        <p class="friends-empty">Nenhum convite recebido no momento.</p>
       {% endif %}
     </div>
 
     <div class="friends-block">
-      <p class="eyebrow">Outgoing</p>
-      <h2 class="section-title">Outgoing Pledges</h2>
+      <p class="eyebrow">Enviados</p>
+      <h2 class="section-title">Convites Pendentes</h2>
       {% if outgoing %}
         <div class="friend-list">
           {% for fs in outgoing %}
@@ -46,13 +46,13 @@
           {% endfor %}
         </div>
       {% else %}
-        <p class="friends-empty">No pledges awaiting answer.</p>
+        <p class="friends-empty">Nenhum convite aguardando resposta.</p>
       {% endif %}
     </div>
 
     <div class="friends-block">
-      <p class="eyebrow">Fellowship</p>
-      <h2 class="section-title">War-Brothers</h2>
+      <p class="eyebrow">Irmandade</p>
+      <h2 class="section-title">Irmãos de Guerra</h2>
       {% if accepted %}
         <div class="friend-list">
           {% for fs in accepted %}
@@ -62,7 +62,7 @@
           {% endfor %}
         </div>
       {% else %}
-        <p class="friends-empty">Your war-host has no sworn brothers yet.</p>
+        <p class="friends-empty">Seu exército ainda não tem irmãos jurados.</p>
       {% endif %}
     </div>
 

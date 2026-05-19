@@ -250,33 +250,33 @@ NIGHTHAUNT_UNITS = [
 ]
 
 STORMCAST_BLURB = (
-    "Forged in Azyr, the God-King Sigmar's heaven realm, the Stormcast Eternals are his immortal "
-    "warriors — human souls chosen for their valour, reforged in the Celestine Vale into warriors "
-    "clad in sigmarite armour and hurled across the Mortal Realms on bolts of holy lightning. "
-    "They are the hammer of the God-King, his answer to the tyranny of Chaos that has plagued "
-    "creation since the Age of Chaos. Organised into Stormhosts and subdivided into chambers, "
-    "each Stormcast Eternal is warrior, scholar, and missionary alike — tasked not just to defeat "
-    "the enemy but to reclaim civilisation for the peoples of the Mortal Realms."
+    "Forjados em Azyr, o reino celestial do Deus-Rei Sigmar, os Stormcast Eternals são seus guerreiros "
+    "imortais — almas humanas escolhidas por sua valentia, reforjadas no Vale Celestino em guerreiros "
+    "envoltos em armadura de sigmarite e lançados pelos Reinos Mortais em raios de luz sagrada. "
+    "Eles são o martelo do Deus-Rei, sua resposta à tirania do Caos que assombra a criação desde "
+    "a Era do Caos. Organizados em Stormhosts e subdivididos em câmaras, "
+    "cada Stormcast Eternal é guerreiro, erudito e missionário ao mesmo tempo — incumbido não apenas "
+    "de derrotar o inimigo, mas de reconquistar a civilização para os povos dos Reinos Mortais."
 )
 
 SYLVANETH_BLURB = (
-    "Children of the goddess Alarielle and the life-magic of the Mortal Realms, the Sylvaneth are "
-    "a race of living wooden beings — graceful yet terrible, ancient yet ever-renewing. Dryads, "
-    "Treelords and Kurnoth Hunters emerge from the sacred Wyldwoods to defend the realmroots and "
-    "punish those who defile the natural order. Each Sylvaneth carries a soul-pod singing with "
-    "memories of past lives, and their groves are places of immense spiritual power. When roused "
-    "to war, the forest itself rises: branches become blades, roots become snares, and the very "
-    "land sings with Alarielle's fury."
+    "Filhos da deusa Alarielle e da magia vital dos Reinos Mortais, os Sylvaneth são "
+    "uma raça de seres vivos de madeira — graciosos mas terríveis, antigos mas sempre renovados. Dryads, "
+    "Treelords e Kurnoth Hunters emergem das sagradas Wyldwoods para defender as raízes dos reinos e "
+    "punir aqueles que profanam a ordem natural. Cada Sylvaneth carrega um casulo de alma entoando "
+    "memórias de vidas passadas, e seus bosques são locais de imenso poder espiritual. Quando chamados "
+    "para a guerra, o próprio bosque se levanta: galhos tornam-se lâminas, raízes tornam-se armadilhas, e a própria "
+    "terra canta com a fúria de Alarielle."
 )
 
 NIGHTHAUNT_BLURB = (
-    "The Nighthaunt are a spectral host of tormented dead, the Undying King Nagash's cruelest "
-    "punishment made manifest — the souls of the wicked and the unrepentant reshaped into "
-    "shrieking, chain-wrapped wraiths. Where they pass, warmth and hope drain away, replaced "
-    "by the cold certainty of death. Chainrasps, Grimghast Reapers and Bladegheist Revenants "
-    "glide across the battlefield with unnatural speed, while their lords — Spirit Torments and "
-    "Guardians of Souls — drive the horde ever onward. No wall can stop them, no fortress contain "
-    "them; the dead do not rest until Nagash wills it."
+    "Os Nighthaunt são uma hoste espectral de mortos atormentados, o castigo mais cruel do Rei Imortal "
+    "Nagash tornado manifesto — almas dos ímpios e dos irredimíveis reconfiguradas em "
+    "espectros uivantes envoltos em correntes. Por onde passam, calor e esperança se esgotam, substituídos "
+    "pela fria certeza da morte. Chainrasps, Grimghast Reapers e Bladegheist Revenants "
+    "deslizam pelo campo de batalha com velocidade sobrenatural, enquanto seus senhores — Spirit Torments e "
+    "Guardians of Souls — impulsionam a horda para sempre adiante. Nenhuma muralha pode detê-los, nenhuma fortaleza os "
+    "conter; os mortos não descansam até que Nagash assim o queira."
 )
 
 

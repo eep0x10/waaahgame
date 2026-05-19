@@ -325,27 +325,28 @@ CHAOS_SM_UNITS = [
 ]
 
 NECRONS_BLURB = (
-    "Undying warriors of cold metal and crackling gauss energy, the Necrons slumbered in their tomb-worlds "
-    "for sixty million years. Now they awaken to reclaim a galaxy they once ruled in fire and silence. "
-    "Led by Overlords and Phaerons of terrible will, their legions march without fear or mercy — each "
-    "fallen warrior reanimating to rise once more. Against the Necrons there is no final victory, only "
-    "the endless grinding advance of an empire that refuses to die."
+    "Guerreiros imortais de metal frio e energia gauss crepitante, os Necrons dormitaram em seus mundos-tumba "
+    "por sessenta milhões de anos. Agora eles acordam para reconquistar uma galáxia que outrora governaram "
+    "em fogo e silêncio. Liderados por Overlords e Phaerons de vontade terrível, suas legiões marcham sem "
+    "medo ou misericórdia — cada guerreiro caído se reanima para erguer-se novamente. Contra os Necrons "
+    "não há vitória final, apenas o avanço contínuo de um império que se recusa a morrer."
 )
 
 AELDARI_BLURB = (
-    "Ancient beyond reckoning, the Aeldari were once masters of a galaxy-spanning empire whose fall tore "
-    "a hole in reality and birthed a god of chaos. Now they cling to survival aboard vast craftworlds, "
-    "their lives following rigid Paths of specialisation to contain the passion that doomed their kin. "
-    "In battle, their warriors are peerless — swift, precise, and guided by Farseers who read the threads "
-    "of fate. Every war is planned centuries in advance, each sacrifice calculated to preserve the species."
+    "Antigos além de qualquer contagem, os Aeldari foram outrora mestres de um império que abrangia a galáxia, "
+    "cuja queda rasgou a realidade e gerou um deus do caos. Agora se agarram à sobrevivência a bordo de "
+    "vastos craftworldes, suas vidas seguindo rígidos Caminhos de especialização para conter a paixão que "
+    "destruiu seus semelhantes. Em batalha, seus guerreiros são incomparáveis — rápidos, precisos e guiados "
+    "por Farseers que lêem os fios do destino. Cada guerra é planejada séculos de antecedência, cada "
+    "sacrifício calculado para preservar a espécie."
 )
 
 CHAOS_SM_BLURB = (
-    "The Chaos Space Marines are the dark mirror of the Adeptus Astartes — traitor legions who turned "
-    "against the Emperor ten thousand years ago and now serve the Ruinous Powers in eternal war. Clad in "
-    "corrupted power armour warped by daemonic influence, they bring hatred and cruelty to every battlefield. "
-    "Where the sons of the Imperium fight with discipline and honour, the Heretic Astartes fight with "
-    "bitter rage and the promise of dark rewards from the gods they serve."
+    "Os Chaos Space Marines são o espelho sombrio dos Adeptus Astartes — legiões traidoras que se voltaram "
+    "contra o Imperador dez mil anos atrás e agora servem às Ruinous Powers em guerra eterna. Envoltos em "
+    "armadura corrompida distorcida por influência daemônica, trazem ódio e crueldade a todo campo de batalha. "
+    "Onde os filhos do Império lutam com disciplina e honra, os Heretic Astartes lutam com "
+    "raiva amarga e a promessa de sombrias recompensas dos deuses que servem."
 )
 
 

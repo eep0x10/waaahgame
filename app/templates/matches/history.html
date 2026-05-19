@@ -1,22 +1,22 @@
 {% extends "base.html" %}
-{% block title %}Match History — waaahgame{% endblock %}
+{% block title %}Histórico de Partidas — waaahgame{% endblock %}
 
 {% block content %}
 <section class="armies-section">
   <div class="container">
     <div class="armies-header">
-      <p class="eyebrow">Battle Record</p>
-      <h1 class="section-title">Match History</h1>
+      <p class="eyebrow">Registro de Batalhas</p>
+      <h1 class="section-title">Histórico de Partidas</h1>
     </div>
 
     {% if pagination.items %}
       <div class="army-list">
         <div class="army-row" style="font-weight:600;font-size:0.8rem;letter-spacing:0.08em;opacity:0.6;border-bottom:1px solid #3a2810;padding-bottom:0.5rem;margin-bottom:0.5rem;">
-          <div style="flex:1;">Opponent</div>
-          <div style="flex:1;">System / Format</div>
-          <div style="flex:1;">Score</div>
-          <div style="width:80px;text-align:center;">Winner</div>
-          <div style="width:110px;text-align:right;">Date</div>
+          <div style="flex:1;">Oponente</div>
+          <div style="flex:1;">Sistema / Formato</div>
+          <div style="flex:1;">Placar</div>
+          <div style="width:80px;text-align:center;">Vencedor</div>
+          <div style="width:110px;text-align:right;">Data</div>
         </div>
         {% for m in pagination.items %}
           {% set scores = m.get_scores() if m.scores_json else {'host': {'vp': 0, 'cp': 0}, 'opponent': {'vp': 0, 'cp': 0}} %}
@@ -41,7 +41,7 @@
           {% elif winner_key == 'opponent' %}
             {% set winner_name = m.opponent.username if m.opponent else '???' %}
           {% else %}
-            {% set winner_name = 'Draw' %}
+            {% set winner_name = 'Empate' %}
           {% endif %}
           {% set opponent = m.opponent if is_host else m.host %}
           <a href="{{ url_for('matches.show', match_id=m.id) }}" style="text-decoration:none;display:block;">
@@ -60,15 +60,15 @@
               </div>
               <div style="width:80px;text-align:center;">
                 {% if winner_key == ('host' if is_host else 'opponent') %}
-                  <span class="legal-pill legal-pill--legal">WIN</span>
+                  <span class="legal-pill legal-pill--legal">VITÓRIA</span>
                 {% elif winner_key == 'draw' %}
-                  <span class="legal-pill" style="background:#3a2810;color:#c8a96a;border-color:#5a4020;">DRAW</span>
+                  <span class="legal-pill" style="background:#3a2810;color:#c8a96a;border-color:#5a4020;">EMPATE</span>
                 {% else %}
-                  <span class="legal-pill legal-pill--illegal">LOSS</span>
+                  <span class="legal-pill legal-pill--illegal">DERROTA</span>
                 {% endif %}
               </div>
               <div style="width:110px;text-align:right;font-size:0.8rem;opacity:0.7;">
-                {{ m.finished_at.strftime('%d %b %Y') if m.finished_at else '—' }}
+                {{ m.finished_at.strftime('%d/%m/%Y') if m.finished_at else '—' }}
               </div>
             </div>
           </a>
@@ -78,25 +78,25 @@
       {% if pagination.pages > 1 %}
         <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:2rem;">
           {% if pagination.has_prev %}
-            <a href="{{ url_for('matches.history', page=pagination.prev_num) }}" class="btn-secondary btn-sm">&larr; Prev</a>
+            <a href="{{ url_for('matches.history', page=pagination.prev_num) }}" class="btn-secondary btn-sm">&larr; Anterior</a>
           {% endif %}
           <span style="padding:0.4rem 0.8rem;opacity:0.6;font-size:0.85rem;">
-            Page {{ pagination.page }} / {{ pagination.pages }}
+            Página {{ pagination.page }} / {{ pagination.pages }}
           </span>
           {% if pagination.has_next %}
-            <a href="{{ url_for('matches.history', page=pagination.next_num) }}" class="btn-secondary btn-sm">Next &rarr;</a>
+            <a href="{{ url_for('matches.history', page=pagination.next_num) }}" class="btn-secondary btn-sm">Próxima &rarr;</a>
           {% endif %}
         </div>
       {% endif %}
 
     {% else %}
       <div class="armies-empty">
-        <p><em>No finished matches yet. Issue a challenge to begin your record.</em></p>
+        <p><em>Nenhuma partida finalizada ainda. Emita um desafio para começar seu registro.</em></p>
       </div>
     {% endif %}
 
     <div style="margin-top:2rem;">
-      <a href="{{ url_for('matches.index') }}" class="btn-secondary btn-sm">&larr; Match Lobby</a>
+      <a href="{{ url_for('matches.index') }}" class="btn-secondary btn-sm">&larr; Lobby de Partidas</a>
     </div>
   </div>
 </section>

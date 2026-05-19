@@ -1,26 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Raise New Army — waaahgame{% endblock %}
+{% block title %}Criar Novo Exército — waaahgame{% endblock %}
 
 {% block content %}
 <section class="auth-section">
   <div class="card-form" style="max-width:560px;">
 
     <div class="card-form-header">
-      <p class="eyebrow" style="justify-content:center;">War Host</p>
-      <h1 class="section-title">Raise New Army</h1>
-      <p class="card-form-sub">Choose your faction and battlepack format.</p>
+      <p class="eyebrow" style="justify-content:center;">Exército de Guerra</p>
+      <h1 class="section-title">Criar Novo Exército</h1>
+      <p class="card-form-sub">Escolha sua facção e formato de batalha.</p>
     </div>
 
     <form method="POST" action="{{ url_for('armies.new_post') }}">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
       <div class="form-field">
-        <label for="name">Army Name</label>
-        <input type="text" id="name" name="name" placeholder="e.g. The Gnaw Eternal" maxlength="96" required>
+        <label for="name">Nome do Exército</label>
+        <input type="text" id="name" name="name" placeholder="ex: O Eterno da Gnawz" maxlength="96" required>
       </div>
 
       <div class="form-field">
-        <label>Faction</label>
+        <label>Facção</label>
         <div class="faction-radio-group">
           {% for faction in factions %}
             <label class="faction-radio-card">
@@ -37,7 +37,7 @@
       </div>
 
       <div class="form-field">
-        <label>Battlepack / Format</label>
+        <label>Battlepack / Formato</label>
         <div id="battlepack-radio-group" class="battlepack-radio-group">
           {# Rendered by JS based on faction system; fallback static for non-JS #}
           {% for key, bp in battlepacks.items() %}
@@ -61,7 +61,7 @@
             </label>
           {% endfor %}
         </div>
-        <p id="pts-preview" class="battlepack-pts-hint">1000 pts limit</p>
+        <p id="pts-preview" class="battlepack-pts-hint">1000 pts limite</p>
       </div>
 
       <script>
@@ -94,7 +94,7 @@
               if (inp) {
                 inp.checked = true;
                 var val = inp.value;
-                if (fmts[val]) preview.textContent = fmts[val] + ' pts limit';
+                if (fmts[val]) preview.textContent = fmts[val] + ' pts limite';
               }
               first = false;
             }
@@ -114,7 +114,7 @@
             var val = e.target.value;
             for (var sc in systemFormats) {
               if (systemFormats[sc][val] !== undefined) {
-                preview.textContent = systemFormats[sc][val] + ' pts limit';
+                preview.textContent = systemFormats[sc][val] + ' pts limite';
                 break;
               }
             }
@@ -123,7 +123,7 @@
       })();
       </script>
 
-      <button type="submit" class="btn-primary btn-full">Raise Army</button>
+      <button type="submit" class="btn-primary btn-full">Criar Exército</button>
     </form>
 
   </div>

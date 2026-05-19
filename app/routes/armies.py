@@ -118,7 +118,7 @@ def from_template(template_id):
             _add_unit(comp_slug)
 
     db.session.commit()
-    flash(f'Army "{army.name}" created from template.', 'success')
+    flash(f'Exército "{army.name}" criado a partir do modelo.', 'success')
     return redirect(url_for('armies.show', army_id=army.id))
 
 
@@ -139,7 +139,7 @@ def new_post():
     battlepack = request.form.get('battlepack', 'vanguard')
 
     if not name or not faction_id:
-        flash('Name and faction are required.', 'error')
+        flash('Nome e facção são obrigatórios.', 'error')
         return redirect(url_for('armies.new'))
 
     faction = db.session.get(Faction, faction_id)
@@ -375,7 +375,7 @@ def add_regiment(army_id):
     _, reg_max = bp['regiments']
 
     if len(army.regiments) >= reg_max:
-        flash(f'Maximum {reg_max} regiments for {army.battlepack.capitalize()}.', 'error')
+        flash(f'Máximo de {reg_max} regimentos para {army.battlepack.capitalize()}.', 'error')
         if _is_htmx():
             result = validate(army)
             return render_template('armies/_regiments_and_aux.html', army=army, result=result)
@@ -425,7 +425,7 @@ def edit(army_id):
         army.name = name
     army.notes = notes or None
     db.session.commit()
-    flash('Army updated.', 'success')
+    flash('Exército atualizado.', 'success')
     return redirect(url_for('armies.show', army_id=army_id))
 
 
@@ -435,7 +435,7 @@ def delete(army_id):
     army = _owned_army_or_404(army_id)
     db.session.delete(army)
     db.session.commit()
-    flash('Army deleted.', 'success')
+    flash('Exército excluído.', 'success')
     return redirect(url_for('armies.index'))
 
 
@@ -446,7 +446,7 @@ def publish(army_id):
     army.ensure_public_token()
     db.session.commit()
     share_url = url_for('armies.public_view', token=army.public_token, _external=True)
-    flash(f'Army published. Share link: {share_url}', 'success')
+    flash(f'Exército publicado. Link para compartilhar: {share_url}', 'success')
     return redirect(url_for('armies.show', army_id=army_id))
 
 
@@ -456,7 +456,7 @@ def unpublish(army_id):
     army = _owned_army_or_404(army_id)
     army.public_token = None
     db.session.commit()
-    flash('Army unpublished.', 'success')
+    flash('Exército despublicado.', 'success')
     return redirect(url_for('armies.show', army_id=army_id))
 
 

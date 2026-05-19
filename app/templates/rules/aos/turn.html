@@ -1,240 +1,242 @@
 {% extends "base.html" %}
-{% block title %}Turn Structure — AoS 4ed Rules{% endblock %}
+{% block title %}Estrutura do Turno — Regras AoS 4ed{% endblock %}
 
 {% block content %}
 <section class="rules-section-page">
   <div class="container rules-layout">
 
     <nav class="rules-toc">
-      <p class="rules-toc-label">On this page</p>
+      <p class="rules-toc-label">Nesta página</p>
       <ul>
-        <li><a href="#battle-round">The Battle Round</a></li>
+        <li><a href="#battle-round">A Battle Round</a></li>
         <li><a href="#priority">Priority Roll</a></li>
         <li><a href="#double-turn">Double Turn</a></li>
-        <li><a href="#phases">Player Turn Phases</a></li>
-        <li><a href="#start">Start of Turn</a></li>
-        <li><a href="#hero">Hero Phase</a></li>
-        <li><a href="#movement">Movement Phase</a></li>
-        <li><a href="#shooting">Shooting Phase</a></li>
-        <li><a href="#charge">Charge Phase</a></li>
-        <li><a href="#combat">Combat Phase</a></li>
-        <li><a href="#end">End of Turn</a></li>
+        <li><a href="#phases">Fases do Turno</a></li>
+        <li><a href="#start">Início do Turno</a></li>
+        <li><a href="#hero">Fase de Heróis</a></li>
+        <li><a href="#movement">Fase de Movimento</a></li>
+        <li><a href="#shooting">Fase de Tiro</a></li>
+        <li><a href="#charge">Fase de Carga</a></li>
+        <li><a href="#combat">Fase de Combate</a></li>
+        <li><a href="#end">Fim do Turno</a></li>
         <li><a href="#command-points">Command Points</a></li>
       </ul>
       <div class="rules-toc-divider"></div>
-      <p class="rules-toc-label">Other Sections</p>
+      <p class="rules-toc-label">Outras Seções</p>
       <ul>
-        <li><a href="{{ url_for('rules.aos_overview') }}">AoS Overview</a></li>
-        <li><a href="{{ url_for('rules.aos_abilities') }}">Abilities &amp; Keywords</a></li>
-        <li><a href="{{ url_for('rules.aos_composition') }}">Army Composition</a></li>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
       </ul>
     </nav>
 
     <article class="rules-body">
       <p class="eyebrow">
-        <a href="{{ url_for('rules.index') }}">Rules Compendium</a> &rsaquo;
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
         <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
-        Turn Structure
+        Estrutura do Turno
       </p>
-      <h1 class="section-title" id="battle-round">Turn Structure</h1>
-      <p class="rules-ruleset-badge">GHB 2025-26 &middot; April 2026 Battlescroll Active</p>
+      <h1 class="section-title" id="battle-round">Estrutura do Turno</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
 
       <p>
-        A standard game of Age of Sigmar lasts five <strong>Battle Rounds</strong>. Each Battle Round
-        consists of two <strong>Player Turns</strong> — one for each player — preceded by a Priority Roll
-        that determines who goes first that round.
+        Uma partida padrão de Age of Sigmar dura cinco <strong>Battle Rounds</strong>. Cada Battle Round
+        consiste em dois <strong>Turnos do Jogador</strong> — um para cada jogador — precedidos por um
+        Priority Roll que determina quem vai primeiro naquela rodada.
       </p>
 
       <!-- Priority Roll -->
-      <h2 id="priority">The Priority Roll</h2>
+      <h2 id="priority">O Priority Roll</h2>
       <p>
-        At the start of each Battle Round, both players simultaneously roll a single D6. The player
-        who rolls higher wins the Priority Roll and may choose whether they or their opponent takes
-        the first Player Turn this round. If the dice are tied, the player who <em>did not</em> have
-        priority in the previous round wins automatically; if it is the very first round, the player
-        who finished deploying their army first wins the tie.
+        No início de cada Battle Round, ambos os jogadores rolam simultaneamente um único D6. O jogador
+        que tirar o valor mais alto vence o Priority Roll e pode escolher se ele ou o oponente toma o
+        primeiro Turno do Jogador nessa rodada. Em caso de empate, o jogador que <em>não</em> teve
+        prioridade na rodada anterior vence automaticamente; se for a primeira rodada, o jogador que
+        terminou de implantar seu exército primeiro vence o empate.
       </p>
 
       <!-- Double Turn -->
-      <h2 id="double-turn">The Double Turn</h2>
+      <h2 id="double-turn">O Double Turn</h2>
       <p>
-        The Priority Roll creates the possibility of a <strong>Double Turn</strong>: a player who
-        took the second Player Turn in round N may choose to take the first Player Turn in round N+1,
-        effectively getting two consecutive turns. Double Turns are one of the game's signature
-        strategic moments — the opportunity to move and attack twice in a row can be devastating, but
-        surrendering the Priority Roll in the next round is a genuine risk. Experienced players
-        often deliberately pass the priority to bait their opponent into a bad double turn.
+        O Priority Roll cria a possibilidade de um <strong>Double Turn</strong>: um jogador que tomou o
+        segundo Turno do Jogador na rodada N pode escolher tomar o primeiro Turno do Jogador na rodada
+        N+1, efetivamente obtendo dois turnos consecutivos. Double Turns são um dos momentos estratégicos
+        mais marcantes do jogo — a oportunidade de mover e atacar duas vezes seguidas pode ser
+        devastadora, mas ceder o Priority Roll na próxima rodada é um risco real. Jogadores experientes
+        frequentemente passam a prioridade deliberadamente para induzir o oponente a um double turn
+        desvantajoso.
       </p>
 
       <div class="rules-callout">
-        <strong>Strategic note.</strong> Whether to take the Double Turn depends on board state.
-        If your army needs to move into charge range, or if key objectives are contested, the
-        extra turn may be worth it. If your opponent has a shooting-heavy list, giving them the
-        Double Turn may be catastrophic.
+        <strong>Nota estratégica.</strong> A decisão de tomar o Double Turn depende do estado do tabuleiro.
+        Se seu exército precisa entrar em alcance de carga, ou se objetivos críticos estão contestados, o
+        turno extra pode valer a pena. Se o oponente tem uma lista com muito tiro, dar a ele o Double Turn
+        pode ser catastrófico.
       </div>
 
       <!-- Player Turn Phases -->
-      <h2 id="phases">Player Turn Phases</h2>
+      <h2 id="phases">Fases do Turno do Jogador</h2>
       <p>
-        Each Player Turn proceeds through the following phases in strict order. The player whose
-        turn it is is called the <strong>Active Player</strong>; their opponent is the
-        <strong>Passive Player</strong>. Both players may respond to some events in each phase
-        via Reaction abilities.
+        Cada Turno do Jogador avança pelas seguintes fases em ordem estrita. O jogador cujo turno é
+        chamado de <strong>Jogador Ativo</strong>; o oponente é o <strong>Jogador Passivo</strong>. Ambos
+        os jogadores podem responder a alguns eventos em cada fase por meio de habilidades de Reação.
       </p>
 
       <!-- Start of Turn -->
-      <h3 id="start">Start of Turn</h3>
+      <h3 id="start">Início do Turno</h3>
       <p>
-        At the start of their turn, the active player resolves any abilities or effects that
-        trigger at this timing. Persistent effects — such as ongoing spells or prayer blessings
-        from previous turns — are also evaluated here. Some warscroll abilities, enhancements,
-        and battleplan effects are also triggered at the start of the turn.
+        No início do turno, o jogador ativo resolve quaisquer habilidades ou efeitos que se ativam nesse
+        momento. Efeitos persistentes — como magias contínuas ou bênçãos de preces de turnos anteriores —
+        também são avaliados aqui. Algumas habilidades de warscroll, aprimoramentos e efeitos de battleplan
+        também são ativados no início do turno.
       </p>
 
       <!-- Hero Phase -->
-      <h3 id="hero">Hero Phase</h3>
+      <h3 id="hero">Fase de Heróis</h3>
       <p>
-        The Hero Phase is the turn's dedicated window for magical and religious power. During
-        this phase the active player may:
+        A Fase de Heróis é a janela dedicada do turno ao poder mágico e religioso. Durante essa fase o
+        jogador ativo pode:
       </p>
       <ul class="rules-list">
         <li>
-          <strong>Cast Spells</strong> — Wizards may attempt to cast spells from their warscroll
-          and any Spell Lores they know. Each spell has a casting value; the Wizard rolls 2D6
-          and must meet or beat it. A natural double-1 or double-6 triggers a Miscast. The
-          passive player's Wizards may attempt to <strong>unbind</strong> any successful cast
-          (rolling 2D6 and beating the casting roll). Each Wizard may attempt to cast each
-          known spell once per Hero Phase, and each individual spell can only be successfully
-          cast once per Hero Phase across the entire game.
+          <strong>Conjurar Magias</strong> — Wizards podem tentar conjurar magias do seu warscroll e
+          quaisquer Spell Lores que conhecem. Cada magia tem um valor de conjuração; o Wizard rola 2D6
+          e deve igualar ou superar esse valor. Uma rolagem natural de duplo-1 ou duplo-6 aciona um
+          Miscast. Os Wizards do jogador passivo podem tentar <strong>anular</strong> qualquer conjuração
+          bem-sucedida (rolando 2D6 e superando a rolagem de conjuração). Cada Wizard pode tentar conjurar
+          cada magia conhecida uma vez por Fase de Heróis, e cada magia individual só pode ser conjurada
+          com sucesso uma vez por Fase de Heróis em todo o jogo.
         </li>
         <li>
-          <strong>Chant Prayers</strong> — Priests may chant prayers from their warscroll
-          or Prayer Lores. Unlike spells, prayers are not unbound; they succeed on a D6 roll
-          meeting or beating the chanting value. Prayers that have already been answered remain
-          in effect and cannot be chanted again while active.
+          <strong>Cantar Preces</strong> — Priests podem cantar preces do seu warscroll ou Prayer Lores.
+          Ao contrário das magias, preces não são anuladas; elas têm sucesso com uma rolagem de D6 que
+          iguale ou supere o valor de canto. Preces que já foram atendidas permanecem em vigor e não
+          podem ser cantadas novamente enquanto ativas.
         </li>
         <li>
-          <strong>Use Heroic Abilities</strong> — Heroes may activate a Heroic Ability during
-          this phase. Heroic Abilities are powerful once-per-game (or per-round) effects that
-          require spending Command Points. The active player may use one Heroic Ability per Hero
-          per Hero Phase.
+          <strong>Usar Habilidades Heroicas</strong> — Heróis podem ativar uma Heroic Ability durante
+          essa fase. Heroic Abilities são efeitos poderosos de uso único por jogo (ou por rodada) que
+          exigem gastar Command Points. O jogador ativo pode usar uma Heroic Ability por Herói por
+          Fase de Heróis.
         </li>
         <li>
-          <strong>Manifest Manifestations</strong> — Wizards and Priests may also attempt to
-          summon Manifestations (see the Abilities section for details).
+          <strong>Manifestar Manifestations</strong> — Wizards e Priests também podem tentar invocar
+          Manifestations (consulte a seção de Habilidades para detalhes).
         </li>
       </ul>
 
       <!-- Movement Phase -->
-      <h3 id="movement">Movement Phase</h3>
+      <h3 id="movement">Fase de Movimento</h3>
       <p>
-        During the Movement Phase, the active player may move each of their units in one of
-        three ways:
+        Durante a Fase de Movimento, o jogador ativo pode mover cada uma de suas unidades de uma
+        das três formas:
       </p>
       <ul class="rules-list">
         <li>
-          <strong>Normal Move</strong> — The unit moves up to its Move characteristic in inches.
-          A unit that makes a Normal Move may not move within 3&quot; of an enemy unit unless it
-          was already within 3&quot; of that enemy at the start of the phase.
+          <strong>Movimento Normal</strong> — A unidade move até a sua característica de Move em polegadas.
+          Uma unidade que faz um Movimento Normal não pode se mover a menos de 3&quot; de uma unidade
+          inimiga, a menos que já estivesse a menos de 3&quot; desse inimigo no início da fase.
         </li>
         <li>
-          <strong>Run</strong> — The unit rolls a D6 and may move up to its Move value plus the
-          roll result in inches. A unit that Runs cannot shoot or charge later in the same turn.
+          <strong>Correr</strong> — A unidade rola um D6 e pode mover até seu valor de Move mais o
+          resultado da rolagem em polegadas. Uma unidade que corre não pode atirar ou carregar
+          posteriormente no mesmo turno.
         </li>
         <li>
-          <strong>Retreat</strong> — A unit within 3&quot; of an enemy may Retreat: it moves up
-          to its Move value in any direction, including through enemy units and models. A unit that
-          Retreats cannot shoot or charge later in the same turn. Retreating does not trigger
-          free strikes unless a specific ability says so.
+          <strong>Recuar</strong> — Uma unidade a 3&quot; de um inimigo pode Recuar: ela move até seu
+          valor de Move em qualquer direção, incluindo através de unidades e modelos inimigos. Uma
+          unidade que Recua não pode atirar ou carregar posteriormente no mesmo turno. Recuar não aciona
+          ataques livres a menos que uma habilidade específica diga isso.
         </li>
       </ul>
       <p>
-        Units may not end their move overlapping other models. Terrain pieces affect movement
-        according to their terrain rules; most terrain is passable but slows movement or requires
-        a roll.
+        Unidades não podem terminar seu movimento sobrepondo outros modelos. Peças de terreno afetam
+        o movimento de acordo com suas regras de terreno; a maioria é passável mas retarda o movimento
+        ou exige uma rolagem.
       </p>
 
       <!-- Shooting Phase -->
-      <h3 id="shooting">Shooting Phase</h3>
+      <h3 id="shooting">Fase de Tiro</h3>
       <p>
-        During the Shooting Phase, each eligible unit may shoot with its ranged weapons. A unit
-        may shoot if it did not Run or Retreat this turn and is not within 3&quot; of an enemy
-        unit (unless it has an ability that permits shooting in combat). Each ranged weapon attack
-        follows the attack sequence: roll to Hit, roll to Wound, opponent rolls to Save, apply
-        Damage.
+        Durante a Fase de Tiro, cada unidade elegível pode atirar com suas armas à distância. Uma
+        unidade pode atirar se não correu ou recuou neste turno e não está a 3&quot; de uma unidade
+        inimiga (a menos que tenha uma habilidade que permita atirar em combate). Cada ataque de arma
+        à distância segue a sequência de ataque: role para Acertar, role para Ferir, oponente rola para
+        Salvar, aplique o Dano.
       </p>
 
       <!-- Charge Phase -->
-      <h3 id="charge">Charge Phase</h3>
+      <h3 id="charge">Fase de Carga</h3>
       <p>
-        During the Charge Phase, any eligible unit may attempt to charge an enemy unit within
-        12&quot;. The charging player rolls 2D6 — if the result meets or exceeds the distance to
-        the nearest enemy model in the target unit, the charge succeeds and the unit moves up to
-        the rolled distance, ending within 0.5&quot; of the target. A failed charge means the
-        unit does not move. Units that Ran or Retreated this turn cannot charge.
+        Durante a Fase de Carga, qualquer unidade elegível pode tentar carregar uma unidade inimiga
+        a até 12&quot;. O jogador que carrega rola 2D6 — se o resultado for igual ou superior à
+        distância até o modelo inimigo mais próximo na unidade alvo, a carga tem sucesso e a unidade
+        move até a distância rolada, terminando a 0,5&quot; do alvo. Uma carga falhada significa que
+        a unidade não se move. Unidades que correram ou recuaram neste turno não podem carregar.
       </p>
       <p>
-        A unit that successfully charges may use a <strong>Charge Reaction</strong> ability if it
-        has one. The charged unit (or another nearby unit) may also use a Reaction to this event.
+        Uma unidade que carrega com sucesso pode usar uma habilidade de <strong>Charge Reaction</strong>
+        se tiver uma. A unidade carregada (ou outra próxima) também pode usar uma Reação a este evento.
       </p>
 
       <!-- Combat Phase -->
-      <h3 id="combat">Combat Phase</h3>
+      <h3 id="combat">Fase de Combate</h3>
       <p>
-        The Combat Phase uses <strong>alternating activations</strong>: the active player picks
-        a unit to fight, resolves all its attacks, then the passive player picks a unit to fight,
-        and so on until all eligible units have fought. The active player always chooses first.
+        A Fase de Combate usa <strong>ativações alternadas</strong>: o jogador ativo escolhe uma unidade
+        para lutar, resolve todos os seus ataques, então o jogador passivo escolhe uma unidade para
+        lutar, e assim por diante até que todas as unidades elegíveis tenham lutado. O jogador ativo
+        sempre escolhe primeiro.
       </p>
       <p>
-        To be eligible to fight, a unit must either:
+        Para ser elegível para lutar, uma unidade deve:
       </p>
       <ul class="rules-list">
-        <li>Be within 3&quot; of an enemy unit, <em>or</em></li>
-        <li>Have made a successful charge this turn.</li>
+        <li>Estar a 3&quot; de uma unidade inimiga, <em>ou</em></li>
+        <li>Ter realizado uma carga bem-sucedida neste turno.</li>
       </ul>
       <p>
-        When a unit fights, it first <strong>piles in</strong> up to 3&quot; toward the nearest
-        enemy model, then each model in the unit attacks with all its melee weapons against enemy
-        units within reach. The attack sequence is the same as for shooting: Hit, Wound, Save,
-        Damage. Once all of a unit's attacks are resolved, control passes back to the opponent to
-        activate a unit.
+        Quando uma unidade luta, ela primeiro <strong>avança</strong> até 3&quot; em direção ao modelo
+        inimigo mais próximo, então cada modelo da unidade ataca com todas as suas armas corpo a corpo
+        contra unidades inimigas ao alcance. A sequência de ataque é a mesma do tiro: Acertar, Ferir,
+        Salvar, Dano. Uma vez que todos os ataques de uma unidade são resolvidos, o controle passa de
+        volta ao oponente para ativar uma unidade.
       </p>
 
       <div class="rules-callout">
-        <strong>Pile-in clarification.</strong> Pile-in moves must end at least as close to the
-        nearest enemy as before the move. Models may pile in even if they are not in base contact,
-        as long as they end within 3&quot; of an enemy. This allows units to wrap around or
-        consolidate after a losing fight.
+        <strong>Esclarecimento de avanço.</strong> Os movimentos de avanço devem terminar pelo menos tão
+        próximos do inimigo mais próximo quanto antes do movimento. Modelos podem avançar mesmo que não
+        estejam em contato de base, desde que terminem a 3&quot; de um inimigo. Isso permite que unidades
+        se envolvam ou se reorganizem após um combate perdido.
       </div>
 
       <!-- End of Turn -->
-      <h3 id="end">End of Turn</h3>
+      <h3 id="end">Fim do Turno</h3>
       <p>
-        At the end of the active player's turn, any effects that last &ldquo;until the end of your
-        turn&rdquo; expire. Objectives are checked for control if the battleplan specifies it.
-        Some abilities trigger here. After the End of Turn, the other player begins their Player
-        Turn (following the same phase sequence). Once both players have completed their Player
-        Turn, the Battle Round ends and a new one begins with a fresh Priority Roll.
+        No fim do turno do jogador ativo, quaisquer efeitos que durem &ldquo;até o fim do seu turno&rdquo;
+        expiram. Os objetivos são verificados para controle se o battleplan especificar. Algumas habilidades
+        se ativam aqui. Após o Fim do Turno, o outro jogador começa seu Turno do Jogador (seguindo a mesma
+        sequência de fases). Uma vez que ambos os jogadores concluíram seu Turno do Jogador, a Battle Round
+        termina e uma nova começa com um novo Priority Roll.
       </p>
 
       <!-- Command Points -->
       <h2 id="command-points">Command Points</h2>
       <p>
-        Each player receives <strong>4 Command Points at the start of every Battle Round</strong>.
-        Command Points do not carry over between rounds — any unspent points are lost. They are
-        spent to activate Command Abilities, which appear on warscrolls, in rules supplements,
-        and on army enhancements. Common uses include:
+        Cada jogador recebe <strong>4 Command Points no início de cada Battle Round</strong>.
+        Command Points não acumulam entre rodadas — quaisquer pontos não gastos são perdidos. Eles são
+        gastos para ativar Command Abilities, que aparecem em warscrolls, suplementos de regras e
+        aprimoramentos de exército. Usos comuns incluem:
       </p>
       <ul class="rules-list">
-        <li><strong>All-Out Attack</strong> — Re-roll Hit rolls of 1 for a unit (1 CP).</li>
-        <li><strong>All-Out Defence</strong> — Re-roll Save rolls of 1 for a unit (1 CP).</li>
-        <li><strong>Inspiring Presence</strong> — Ignore Battleshock test for a unit (1 CP).</li>
-        <li>Various warscroll-specific Command Abilities.</li>
+        <li><strong>All-Out Attack</strong> — Rerole resultados de 1 em rolagens de Acertar para uma unidade (1 CP).</li>
+        <li><strong>All-Out Defence</strong> — Rerole resultados de 1 em rolagens de Salvar para uma unidade (1 CP).</li>
+        <li><strong>Inspiring Presence</strong> — Ignore o teste de Battleshock para uma unidade (1 CP).</li>
+        <li>Várias Command Abilities específicas de warscroll.</li>
       </ul>
       <p>
-        Because Command Points reset each round, efficient spending within a single round is
-        critical. Players who control fewer Auxiliary units than their opponent gain a bonus
-        Command Point per round (see Army Composition for details).
+        Como os Command Points são redefinidos a cada rodada, gastá-los de forma eficiente dentro de uma
+        única rodada é fundamental. Jogadores que controlam menos unidades Auxiliares do que o oponente
+        ganham um Command Point bônus por rodada (consulte Composição de Exército para detalhes).
       </p>
 
     </article>

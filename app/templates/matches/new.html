@@ -1,20 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Issue Challenge{% endblock %}
+{% block title %}Emitir Desafio{% endblock %}
 
 {% block content %}
 <section class="armies-builder-section">
   <div class="container" style="max-width:600px;">
-    <p class="eyebrow"><a href="{{ url_for('matches.index') }}">Lobby</a> &rsaquo; New Challenge</p>
-    <h1 class="section-title">Issue Challenge</h1>
+    <p class="eyebrow"><a href="{{ url_for('matches.index') }}">Lobby</a> &rsaquo; Novo Desafio</p>
+    <h1 class="section-title">Emitir Desafio</h1>
 
     <div class="card-form" style="padding:2rem;">
       <form method="POST" action="{{ url_for('matches.new_post') }}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
         <div class="form-field">
-          <label for="opponent_id">Opponent (accepted friends only)</label>
+          <label for="opponent_id">Oponente (apenas amigos aceitos)</label>
           <select id="opponent_id" name="opponent_id" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
-            <option value="">— Select opponent —</option>
+            <option value="">— Selecionar oponente —</option>
             {% for fs in current_user.sent_friend_requests %}
               {% if fs.status == 'accepted' %}
                 <option value="{{ fs.addressee.id }}">{{ fs.addressee.name }}</option>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="form-field">
-          <label for="system_id">Game System</label>
+          <label for="system_id">Sistema de Jogo</label>
           <select id="system_id" name="system_id" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
-            <option value="">— Select system —</option>
+            <option value="">— Selecionar sistema —</option>
             {% for sys in systems %}
               <option value="{{ sys.id }}">{{ sys.name }} ({{ sys.edition }})</option>
             {% endfor %}
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-field">
-          <label for="format">Format</label>
+          <label for="format">Formato</label>
           <select id="format" name="format" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
             {% for fmt in formats %}
               <option value="{{ fmt }}">{{ fmt | replace('_',' ') | title }} ({{ FORMAT_POINTS[fmt] }}pts)</option>
@@ -89,9 +89,9 @@
         </script>
 
         <div class="form-field">
-          <label for="army_host_id">Your Army</label>
+          <label for="army_host_id">Seu Exército</label>
           <select id="army_host_id" name="army_host_id" required style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
-            <option value="">— Select army —</option>
+            <option value="">— Selecionar exército —</option>
             {% for army in my_armies %}
               <option value="{{ army.id }}">{{ army.name }} ({{ army.faction.name }}, {{ army.points_limit }}pts)</option>
             {% endfor %}
@@ -99,9 +99,9 @@
         </div>
 
         <div class="form-field">
-          <label for="battlepack_id">Mission / Battlepack <span style="opacity:0.5;font-size:0.85rem;">(optional)</span></label>
+          <label for="battlepack_id">Missão / Battlepack <span style="opacity:0.5;font-size:0.85rem;">(opcional)</span></label>
           <select id="battlepack_id" name="battlepack_id" style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
-            <option value="">— None —</option>
+            <option value="">— Nenhum —</option>
             {% for bp in battlepacks_db %}
               <option value="{{ bp.id }}" data-system-id="{{ bp.system_id }}" data-format="{{ bp.format }}">
                 {{ bp.name }} ({{ bp.format | replace('_',' ') | title }})
@@ -142,8 +142,8 @@
         </script>
 
         <div class="modal-actions">
-          <button type="submit" class="btn-primary">Issue Challenge</button>
-          <a href="{{ url_for('matches.index') }}" class="btn-secondary">Cancel</a>
+          <button type="submit" class="btn-primary">Emitir Desafio</button>
+          <a href="{{ url_for('matches.index') }}" class="btn-secondary">Cancelar</a>
         </div>
       </form>
     </div>

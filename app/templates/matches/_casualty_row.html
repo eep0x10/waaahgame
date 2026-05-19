@@ -11,7 +11,7 @@
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="army_unit_id" value="{{ au.id }}">
     <button type="submit" class="btn-secondary btn-sm" style="padding:0.1rem 0.5rem;font-size:0.75rem;">
-      {% if casualties.get(au.id) and casualties[au.id].removed %}Restore{% else %}Remove{% endif %}
+      {% if casualties.get(au.id) and casualties[au.id].removed %}Restaurar{% else %}Remover{% endif %}
     </button>
   </form>
   {% endif %}
