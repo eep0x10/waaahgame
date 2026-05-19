@@ -40,7 +40,7 @@
         <div class="faction-radio-group" id="faction-radio-group">
           {% for faction in factions %}
             <label class="faction-radio-card"
-                   data-system="{{ faction.game_system.code if faction.game_system else 'aos4' }}">
+                   data-system="{{ faction.game_system.code if faction.game_system else '' }}">
               <input type="radio" name="faction_id" value="{{ faction.id }}" required>
               <span class="faction-radio-inner">
                 <span class="faction-radio-name">{{ faction.name }}</span>
@@ -54,29 +54,22 @@
       </div>
 
       <div class="form-field">
-        <label>Battlepack / Formato</label>
+        <label>Formato</label>
         <div id="battlepack-radio-group" class="battlepack-radio-group">
-          {% for key, bp in battlepacks.items() %}
-            <label class="battlepack-radio-card" data-system="aos4">
-              <input type="radio" name="battlepack" value="{{ key }}"
-                     {% if key == 'vanguard' %}checked{% endif %}>
-              <span class="battlepack-radio-inner">
-                <span class="battlepack-radio-name">{{ bp.label }}</span>
-                <span class="battlepack-radio-pts">{{ bp.pts }} pts</span>
-              </span>
-            </label>
-          {% endfor %}
-          {% for fmt_key, fmt_pts in system_formats.get('w40k10', {}).items() %}
-            <label class="battlepack-radio-card" data-system="w40k10" style="display:none">
-              <input type="radio" name="battlepack" value="{{ fmt_key }}">
-              <span class="battlepack-radio-inner">
-                <span class="battlepack-radio-name">{{ fmt_key | replace('_',' ') | title }}</span>
-                <span class="battlepack-radio-pts">{{ fmt_pts }} pts</span>
-              </span>
-            </label>
+          {# Generate format cards dynamically from system_formats #}
+          {% for sys_code, fmts in system_formats.items() %}
+            {% for fmt_key, fmt_pts in fmts.items() %}
+              <label class="battlepack-radio-card" data-system="{{ sys_code }}" style="display:none">
+                <input type="radio" name="battlepack" value="{{ fmt_key }}">
+                <span class="battlepack-radio-inner">
+                  <span class="battlepack-radio-name">{{ fmt_key | replace('_',' ') | title }}</span>
+                  <span class="battlepack-radio-pts">{{ fmt_pts }} pts</span>
+                </span>
+              </label>
+            {% endfor %}
           {% endfor %}
         </div>
-        <p id="pts-preview" class="battlepack-pts-hint">1000 pts limite</p>
+        <p id="pts-preview" class="battlepack-pts-hint">— pts limite</p>
       </div>
 
       <script>

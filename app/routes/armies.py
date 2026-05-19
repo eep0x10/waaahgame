@@ -3,11 +3,12 @@ from flask import (
 )
 from flask_login import login_required, current_user
 from app.extensions import db
-from app.models.army import Army, Regiment, ArmyUnit, BATTLEPACKS
+from app.models.army import Army, Regiment, ArmyUnit
 from app.models.game import Faction, Unit, GameSystem
 from app.models.army_template import ArmyTemplate
 from app.services.validator import validate
-from app.services.formats import SYSTEM_FORMATS, formats_for_system
+from app.services.validators import validator_for, all_systems
+from app.services.formats import formats_for_system
 
 armies_bp = Blueprint('armies', __name__, url_prefix='/armies')
 
@@ -26,6 +27,20 @@ def _is_htmx():
 def _summary_html(army):
     result = validate(army)
     return render_template('armies/_summary.html', army=army, result=result)
+
+
+def _army_validator(army):
+    """Return the validator for an army, or abort(400) if system unknown."""
+    try:
+        code = army.faction.game_system.code
+    except AttributeError:
+        abort(400)
+    if not code:
+        abort(400)
+    try:
+        return validator_for(code)
+    except ValueError:
+        abort(400)
 
 
 @armies_bp.route('/')
@@ -53,9 +68,14 @@ def templates():
     army_templates = q.order_by(ArmyTemplate.name).all()
     systems = GameSystem.query.order_by(GameSystem.name).all()
     factions = Faction.query.order_by(Faction.name).all()
+
+    # Build validators_by_code for template badge rendering
+    validators_by_code = {code: cls for code, cls in all_systems().items()}
+
     return render_template('armies/templates.html', army_templates=army_templates,
                            systems=systems, factions=factions,
-                           system_filter=system_filter, faction_filter=faction_filter)
+                           system_filter=system_filter, faction_filter=faction_filter,
+                           validators_by_code=validators_by_code)
 
 
 @armies_bp.route('/from-template/<int:template_id>', methods=['POST'])
@@ -69,8 +89,16 @@ def from_template(template_id):
     if not faction:
         abort(400)
 
-    system_code = faction.game_system.code if faction.game_system else 'aos4'
-    valid_formats = formats_for_system(system_code)
+    if not faction.game_system:
+        abort(400)
+
+    system_code = faction.game_system.code
+    try:
+        v = validator_for(system_code)
+    except ValueError:
+        abort(400)
+
+    valid_formats = v.formats
     pts_limit = valid_formats.get(tmpl.format, tmpl.points_target)
 
     army = Army(
@@ -87,13 +115,18 @@ def from_template(template_id):
     unit_cache = {}
 
     for reg_data in (tmpl.regiments_layout_json or []):
-        reg = Regiment(army_id=army.id, position=reg_data.get('position', 1))
-        db.session.add(reg)
-        db.session.flush()
+        # Only create regiment structure if system supports groups
+        if v.supports_groups:
+            reg = Regiment(army_id=army.id, position=reg_data.get('position', 1))
+            db.session.add(reg)
+            db.session.flush()
+            reg_id = reg.id
+        else:
+            reg_id = None
 
         sort_counter = [0]
 
-        def _add_unit(slug, is_leader=False, is_general=False):
+        def _add_unit(slug, is_leader=False, is_general=False, _reg_id=reg_id):
             if slug not in unit_cache:
                 unit_cache[slug] = Unit.query.filter_by(slug=slug, faction_id=tmpl.faction_id).first()
             unit = unit_cache[slug]
@@ -103,7 +136,7 @@ def from_template(template_id):
             au = ArmyUnit(
                 army_id=army.id,
                 unit_id=unit.id,
-                regiment_id=reg.id,
+                regiment_id=_reg_id,
                 is_leader=is_leader,
                 is_general=is_general,
                 sort_order=sort_counter[0],
@@ -112,7 +145,8 @@ def from_template(template_id):
 
         leader_slug = reg_data.get('leader_slug')
         if leader_slug:
-            _add_unit(leader_slug, is_leader=True, is_general=(reg_data.get('position', 1) == 1))
+            _add_unit(leader_slug, is_leader=v.supports_groups,
+                      is_general=(reg_data.get('position', 1) == 1))
 
         for comp_slug in reg_data.get('companion_slugs', []):
             _add_unit(comp_slug)
@@ -127,9 +161,9 @@ def from_template(template_id):
 def new():
     factions = Faction.query.order_by(Faction.name).all()
     systems = GameSystem.query.order_by(GameSystem.name).all()
-    battlepacks = BATTLEPACKS
+    from app.services.formats import _get_system_formats
     return render_template('armies/new.html', factions=factions, systems=systems,
-                           battlepacks=battlepacks, system_formats=SYSTEM_FORMATS)
+                           system_formats=_get_system_formats())
 
 
 @armies_bp.route('/new', methods=['POST'])
@@ -137,7 +171,7 @@ def new():
 def new_post():
     name = request.form.get('name', '').strip()
     faction_id = request.form.get('faction_id', type=int)
-    battlepack = request.form.get('battlepack', 'vanguard')
+    battlepack = request.form.get('battlepack', '').strip()
 
     if not name or not faction_id:
         flash('Nome e facção são obrigatórios.', 'error')
@@ -147,17 +181,22 @@ def new_post():
     if not faction:
         abort(400)
 
-    # Determine valid formats for this faction's system
-    system_code = faction.game_system.code if faction.game_system else 'aos4'
-    valid_formats = formats_for_system(system_code)
+    if not faction.game_system:
+        flash('Facção sem sistema de jogo configurado.', 'error')
+        abort(400)
 
-    if battlepack not in valid_formats and battlepack not in BATTLEPACKS:
-        battlepack = next(iter(valid_formats))
+    system_code = faction.game_system.code
+    try:
+        v = validator_for(system_code)
+    except ValueError:
+        abort(400)
 
-    if battlepack in valid_formats:
-        pts_limit = valid_formats[battlepack]
-    else:
-        pts_limit = BATTLEPACKS.get(battlepack, BATTLEPACKS['vanguard'])['pts']
+    valid_formats = v.formats
+
+    if battlepack not in valid_formats:
+        battlepack = v.default_format
+
+    pts_limit = valid_formats.get(battlepack, 1000)
 
     army = Army(
         user_id=current_user.id,
@@ -169,8 +208,11 @@ def new_post():
     db.session.add(army)
     db.session.flush()
 
-    reg1 = Regiment(army_id=army.id, position=1)
-    db.session.add(reg1)
+    # Only create initial regiment structure for systems that use groups
+    if v.supports_groups:
+        reg1 = Regiment(army_id=army.id, position=1)
+        db.session.add(reg1)
+
     db.session.commit()
 
     return redirect(url_for('armies.show', army_id=army.id))
@@ -183,13 +225,14 @@ def show(army_id):
     units = sorted(army.faction.units, key=lambda u: (u.unit_role or 'zz', u.name))
     aux_units = [au for au in army.army_units if au.regiment_id is None]
     result = validate(army)
+    v = _army_validator(army)
     return render_template(
         'armies/show.html',
         army=army,
         units=units,
         aux_units=aux_units,
         result=result,
-        battlepacks=BATTLEPACKS,
+        validator=v,
     )
 
 
@@ -244,13 +287,16 @@ def add_unit(army_id):
 
     if _is_htmx():
         result = validate(army)
+        v = _army_validator(army)
         summary = _summary_html(army)
         if regiment:
             regiment = db.session.get(Regiment, regiment.id)
-            partial = render_template('armies/_regiment.html', regiment=regiment, army=army, result=result)
+            partial = render_template('armies/_regiment.html', regiment=regiment, army=army,
+                                      result=result, validator=v)
         else:
             aux_units = [a for a in army.army_units if a.regiment_id is None]
-            partial = render_template('armies/_auxiliary.html', army=army, aux_units=aux_units, result=result)
+            partial = render_template('armies/_auxiliary.html', army=army, aux_units=aux_units,
+                                      result=result, validator=v)
         return partial + summary
     return redirect(url_for('armies.show', army_id=army_id))
 
@@ -262,7 +308,7 @@ def move_unit(army_id, au_id):
     au = ArmyUnit.query.filter_by(id=au_id, army_id=army_id).first_or_404()
     target = request.form.get('target', 'aux').strip()
 
-    old_regiment_id = au.regiment_id
+    old_regiment_id = au.regiment_id  # noqa: F841
 
     if target == 'aux':
         au.regiment_id = None
@@ -286,8 +332,10 @@ def move_unit(army_id, au_id):
 
     if _is_htmx():
         result = validate(army)
+        v = _army_validator(army)
         summary = _summary_html(army)
-        return render_template('armies/_regiments_and_aux.html', army=army, result=result) + summary
+        return render_template('armies/_regiments_and_aux.html', army=army, result=result,
+                               validator=v) + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
 
@@ -302,8 +350,10 @@ def remove_unit(army_id, au_id):
 
     if _is_htmx():
         result = validate(army)
+        v = _army_validator(army)
         summary = _summary_html(army)
-        return render_template('armies/_regiments_and_aux.html', army=army, result=result) + summary
+        return render_template('armies/_regiments_and_aux.html', army=army, result=result,
+                               validator=v) + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
 
@@ -319,8 +369,10 @@ def reinforce_unit(army_id, au_id):
 
     if _is_htmx():
         result = validate(army)
+        v = _army_validator(army)
         summary = _summary_html(army)
-        row = render_template('armies/_army_unit_row.html', au=au, army=army, result=result)
+        row = render_template('armies/_army_unit_row.html', au=au, army=army, result=result,
+                              validator=v)
         return row + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
@@ -343,8 +395,10 @@ def promote_leader(army_id, au_id):
 
     if _is_htmx():
         result = validate(army)
+        v = _army_validator(army)
         summary = _summary_html(army)
-        partial = render_template('armies/_regiment.html', regiment=regiment, army=army, result=result)
+        partial = render_template('armies/_regiment.html', regiment=regiment, army=army,
+                                  result=result, validator=v)
         return partial + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
@@ -372,14 +426,26 @@ def set_general(army_id, au_id):
 @login_required
 def add_regiment(army_id):
     army = _owned_army_or_404(army_id)
-    bp = BATTLEPACKS.get(army.battlepack, BATTLEPACKS['vanguard'])
-    _, reg_max = bp['regiments']
+    v = _army_validator(army)
+
+    if not v.supports_groups:
+        abort(400)
+
+    # Use AoS-specific BATTLEPACKS if available, otherwise use formats
+    from app.services.validators.aos import AoSValidator
+    if isinstance(v, AoSValidator):
+        bp = AoSValidator.BATTLEPACKS.get(army.battlepack, AoSValidator.BATTLEPACKS['vanguard'])
+        _, reg_max = bp['regiments']
+    else:
+        # Generic fallback for future systems that support groups
+        reg_max = 4
 
     if len(army.regiments) >= reg_max:
-        flash(f'Máximo de {reg_max} regimentos para {army.battlepack.capitalize()}.', 'error')
+        flash(f'Máximo de {reg_max} {v.group_label_plural.lower()} para {army.battlepack.capitalize()}.', 'error')
         if _is_htmx():
             result = validate(army)
-            return render_template('armies/_regiments_and_aux.html', army=army, result=result)
+            return render_template('armies/_regiments_and_aux.html', army=army, result=result,
+                                   validator=v)
         return redirect(url_for('armies.show', army_id=army_id))
 
     next_pos = max((r.position for r in army.regiments), default=0) + 1
@@ -390,7 +456,8 @@ def add_regiment(army_id):
     if _is_htmx():
         result = validate(army)
         summary = _summary_html(army)
-        return render_template('armies/_regiments_and_aux.html', army=army, result=result) + summary
+        return render_template('armies/_regiments_and_aux.html', army=army, result=result,
+                               validator=v) + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
 
@@ -410,8 +477,10 @@ def remove_regiment(army_id, reg_id):
 
     if _is_htmx():
         result = validate(army)
+        v = _army_validator(army)
         summary = _summary_html(army)
-        return render_template('armies/_regiments_and_aux.html', army=army, result=result) + summary
+        return render_template('armies/_regiments_and_aux.html', army=army, result=result,
+                               validator=v) + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
 
@@ -466,11 +535,13 @@ def public_view(token):
     army = Army.query.filter_by(public_token=token).first_or_404()
     result = validate(army)
     aux_units = [au for au in army.army_units if au.regiment_id is None]
+    v = _army_validator(army)
     return render_template(
         'armies/public.html',
         army=army,
         result=result,
         aux_units=aux_units,
+        validator=v,
     )
 
 

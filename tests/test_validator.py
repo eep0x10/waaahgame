@@ -59,14 +59,27 @@ class RegimentStub:
         return next((a for a in self.army_units if a.is_leader), None)
 
 
+class _GameSystemStub:
+    """Minimal game system stub for dispatcher routing."""
+    def __init__(self, code='aos4'):
+        self.code = code
+
+
+class _FactionStub:
+    def __init__(self, code='aos4'):
+        self.game_system = _GameSystemStub(code)
+
+
 class ArmyStub:
-    def __init__(self, army_id, faction_id, battlepack, pts_limit, regiments=None, army_units=None):
+    def __init__(self, army_id, faction_id, battlepack, pts_limit, regiments=None,
+                 army_units=None, system_code='aos4'):
         self.id = army_id
         self.faction_id = faction_id
         self.battlepack = battlepack
         self.points_limit = pts_limit
         self.regiments = regiments or []
         self.army_units = army_units or []
+        self.faction = _FactionStub(system_code)
 
 
 def _unit(name, pts, role=None, keywords=None, companions=None, can_reinforce=False, uid=None):
@@ -683,28 +696,13 @@ def test_companion_max_spec_enforced():
 # REGRESSION: AoS validator still dispatches correctly after package refactor
 # ===========================================================================
 
-class _GameSystemAoS:
-    code = 'aos4'
-
-
-class _FactionWithSystem:
-    game_system = _GameSystemAoS()
-
-
-class ArmyStubWithSystem(ArmyStub):
-    """ArmyStub with faction.game_system to exercise dispatcher routing."""
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.faction = _FactionWithSystem()
-
-
 def test_aos_dispatcher_routes_correctly():
     """Dispatcher sends aos4 army to AoS validator (not 40k validator)."""
     corruptor = _verminlord_corruptor()
     au1 = _au(1, corruptor, regiment_id=10, is_leader=True, is_general=True)
     reg1 = _regiment(10, 1, 1, [au1])
 
-    army = ArmyStubWithSystem(
+    army = _army(
         army_id=1, faction_id=1,
         battlepack='vanguard', pts_limit=1000,
         regiments=[reg1], army_units=[au1],

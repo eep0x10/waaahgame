@@ -1,8 +1,9 @@
-{# Auxiliary pool card. Variables: army (Army), aux_units (list[ArmyUnit]), result (ValidationResult) #}
+{# Auxiliary pool card. Variables: army (Army), aux_units (list[ArmyUnit]), result (ValidationResult), validator (BaseValidator) #}
+{% set aux_label = validator.auxiliary_label | upper if validator is defined else 'AUXILIAR' %}
 <div class="aux-card" id="aux-card">
 
   <div class="aux-card-header">
-    <span class="aux-label">AUXILIAR</span>
+    <span class="aux-label">{{ aux_label }}</span>
     <span class="aux-count-badge">{{ aux_units | length }}</span>
   </div>
 
@@ -16,7 +17,7 @@
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="target" value="aux">
       <select name="unit_slug" class="au-add-select" required>
-        <option value="">Adicionar unidade ao auxiliar...</option>
+        <option value="">Adicionar unidade ao {{ validator.auxiliary_label | lower if validator is defined else 'auxiliar' }}...</option>
         {% for unit in army.faction.units | sort(attribute='name') %}
           <option value="{{ unit.slug }}">{{ unit.name }} ({{ unit.points_cost }}pts)</option>
         {% endfor %}
@@ -32,7 +33,7 @@
       {% endfor %}
     </div>
   {% else %}
-    <div class="aux-empty"><em>Nenhuma unidade auxiliar. Adicione heróis avulsos ou unidades de suporte aqui.</em></div>
+    <div class="aux-empty"><em>Nenhuma unidade {{ validator.auxiliary_label | lower if validator is defined else 'auxiliar' }}. Adicione heróis avulsos ou unidades de suporte aqui.</em></div>
   {% endif %}
 
 </div>

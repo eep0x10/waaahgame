@@ -28,6 +28,8 @@
   {% endif %}
 {% else %}
   {% for system in systems %}
+    {# Determine if this system supports alliances (grand alliance filter) #}
+    {% set supports_alliances = system.factions | selectattr('grand_alliance') | list | length > 0 %}
     <div class="factions-system-block">
       <div class="factions-system-header">
         <h2 class="factions-system-name">{{ system.name }}</h2>
@@ -38,7 +40,7 @@
           {% for faction in system.factions %}
             <article class="faction-card">
               <div class="faction-card-header">
-                {% if faction.grand_alliance %}
+                {% if supports_alliances and faction.grand_alliance %}
                   <span class="alliance-badge alliance-{{ faction.grand_alliance | lower }}">
                     {{ faction.grand_alliance }}
                   </span>

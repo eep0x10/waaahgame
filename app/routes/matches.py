@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from flask import Blueprint, render_template, redirect, url_for, flash, request, abort
 from flask_login import login_required, current_user
 from app.extensions import db, socketio
-from app.models.match import Match, PHASES, FORMAT_POINTS
+from app.models.match import Match, PHASES
 from app.services.formats import all_formats as _all_formats, SYSTEM_FORMATS
 from app.models.match_event import MatchEvent
 from app.models.match_casualty import MatchCasualty
@@ -96,8 +96,10 @@ def new():
     combined_format_points = _all_formats()
     formats = list(combined_format_points.keys())
     battlepacks_db = Battlepack.query.order_by(Battlepack.name).all()
+    from app.services.formats import _get_system_formats
     return render_template('matches/new.html', systems=systems, my_armies=my_armies, formats=formats,
-                           FORMAT_POINTS=combined_format_points, system_formats=SYSTEM_FORMATS,
+                           FORMAT_POINTS=combined_format_points,
+                           system_formats=_get_system_formats(),
                            battlepacks_db=battlepacks_db)
 
 
@@ -125,9 +127,9 @@ def new_post():
     if army is None or army.user_id != current_user.id:
         abort(403)
 
-    # Accept both AoS and 40k formats
+    # Accept all registered system formats
     combined_fp = _all_formats()
-    pts = combined_fp.get(fmt) or FORMAT_POINTS.get(fmt)
+    pts = combined_fp.get(fmt)
     if pts is None:
         flash('Formato inválido.', 'error')
         return redirect(url_for('matches.new'))

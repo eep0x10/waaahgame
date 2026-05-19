@@ -5,8 +5,6 @@ from app.extensions import db
 from app.models._base import TimestampMixin
 
 MATCH_STATUSES = ('pending', 'army_select', 'active', 'finished', 'cancelled')
-MATCH_FORMATS = ('vanguard', 'battlehost', 'spearhead')
-FORMAT_POINTS = {'vanguard': 1000, 'battlehost': 2000, 'spearhead': 750}
 PHASES = ('hero', 'move', 'shoot', 'charge', 'combat', 'end')
 
 

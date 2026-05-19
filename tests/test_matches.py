@@ -7,7 +7,7 @@ from app.models.user import User
 from app.models.friendship import Friendship
 from app.models.game import GameSystem
 from app.models.army import Army, Regiment
-from app.models.match import Match, FORMAT_POINTS
+from app.models.match import Match
 
 
 # ---------------------------------------------------------------------------

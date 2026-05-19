@@ -47,11 +47,12 @@
                 <span class="role-tag">{{ tmpl.faction.name }}</span>
                 <span class="role-tag">{{ tmpl.format | replace('_', ' ') | title }}</span>
                 <span class="pts-badge">{{ tmpl.points_target }}<span class="pts-label">pts</span></span>
-                {% set sys_code = tmpl.system.code if tmpl.system else 'aos4' %}
-                {% if sys_code == 'w40k10' %}
-                  <span class="role-tag" style="background:#1a3a6b;color:#c8a94a;border-color:#1a3a6b;font-size:0.7rem;">40K</span>
-                {% else %}
-                  <span class="role-tag" style="background:#2a1a0a;color:#b8935a;border-color:#4a3010;font-size:0.7rem;">AoS</span>
+                {% set sys_code = tmpl.system.code if tmpl.system else '' %}
+                {% if sys_code and validators_by_code is defined and sys_code in validators_by_code %}
+                  {% set v_cls = validators_by_code[sys_code] %}
+                  <span class="role-tag" style="background:{{ v_cls.color }};color:#fff;border-color:{{ v_cls.color }};font-size:0.7rem;">{{ tmpl.system.name }}</span>
+                {% elif tmpl.system %}
+                  <span class="role-tag" style="font-size:0.7rem;">{{ tmpl.system.name }}</span>
                 {% endif %}
               </div>
               {% if tmpl.summary %}

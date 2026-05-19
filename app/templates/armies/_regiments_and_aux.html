@@ -1,22 +1,29 @@
-{# Full center column — regiments + auxiliary. Used as HTMX swap target. #}
-{# Variables: army (Army), result (ValidationResult) #}
+{# Full center column — regiments/groups + auxiliary. Used as HTMX swap target. #}
+{# Variables: army (Army), result (ValidationResult), validator (BaseValidator) #}
 {% set aux_units = army.army_units | selectattr('regiment_id', 'none') | list %}
 
-{% for regiment in army.regiments %}
-  {% include 'armies/_regiment.html' %}
-{% endfor %}
+{% if validator is defined and validator.supports_groups %}
+  {% for regiment in army.regiments %}
+    {% include 'armies/_regiment.html' %}
+  {% endfor %}
 
-{% set bp = battlepacks[army.battlepack] if battlepacks is defined else {'regiments': (1,2)} %}
-{% set reg_max = bp.regiments[1] if bp else 2 %}
-{% if army.regiments | length < reg_max %}
-  <form method="POST"
-        action="{{ url_for('armies.add_regiment', army_id=army.id) }}"
-        hx-post="{{ url_for('armies.add_regiment', army_id=army.id) }}"
-        hx-target="#regiments-aux-container"
-        hx-swap="innerHTML">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <button type="submit" class="btn-secondary add-regiment-btn">+ Add Regiment</button>
-  </form>
+  {# Determine regiment cap from validator (AoS uses BATTLEPACKS, generic uses formats) #}
+  {% set reg_max = validator.BATTLEPACKS[army.battlepack].regiments[1]
+                   if validator.BATTLEPACKS is defined and army.battlepack in validator.BATTLEPACKS
+                   else 4 %}
+
+  {% if army.regiments | length < reg_max %}
+    <form method="POST"
+          action="{{ url_for('armies.add_regiment', army_id=army.id) }}"
+          hx-post="{{ url_for('armies.add_regiment', army_id=army.id) }}"
+          hx-target="#regiments-aux-container"
+          hx-swap="innerHTML">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="btn-secondary add-regiment-btn">
+        + Adicionar {{ validator.group_label }}
+      </button>
+    </form>
+  {% endif %}
 {% endif %}
 
 {% include 'armies/_auxiliary.html' %}

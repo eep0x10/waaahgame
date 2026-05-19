@@ -86,17 +86,16 @@
         {% endif %}
 
         <!-- System badge -->
-        {% set sys_code = unit.faction.game_system.code if unit.faction.game_system else 'aos4' %}
-        {% if sys_code == 'w40k10' %}
-          <span class="role-tag" style="background:#1a3a6b;color:#c8a94a;border-color:#1a3a6b;margin-bottom:0.4rem;display:inline-block;">WH40K 10e</span>
-        {% else %}
-          <span class="role-tag" style="background:#2a1a0a;color:#b8935a;border-color:#4a3010;margin-bottom:0.4rem;display:inline-block;">AoS 4e</span>
+        {% if unit.faction.game_system %}
+          <span class="role-tag" style="margin-bottom:0.4rem;display:inline-block;">{{ unit.faction.game_system.name }}</span>
         {% endif %}
+        {% set sys_code = unit.faction.game_system.code if unit.faction.game_system else '' %}
 
         <!-- Stats -->
         {% if unit.stats_json %}
           <div class="warscroll-block">
             <h2 class="warscroll-block-title">Características</h2>
+            {# system-specific stats schema — add elif blocks for new wargames #}
             {% if sys_code == 'w40k10' %}
               {# 40k stat schema: M / T / Sv / W / Ld / OC #}
               <table class="warscroll-stats">

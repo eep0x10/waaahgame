@@ -90,14 +90,26 @@ class RegimentStub:
         return next((a for a in self.army_units if a.is_leader), None)
 
 
+class _GameSystemStub:
+    def __init__(self, code='aos4'):
+        self.code = code
+
+
+class _FactionStub:
+    def __init__(self, code='aos4'):
+        self.game_system = _GameSystemStub(code)
+
+
 class ArmyStub:
-    def __init__(self, army_id, faction_id, battlepack, pts_limit, regiments=None, army_units=None):
+    def __init__(self, army_id, faction_id, battlepack, pts_limit, regiments=None,
+                 army_units=None, system_code='aos4'):
         self.id = army_id
         self.faction_id = faction_id
         self.battlepack = battlepack
         self.points_limit = pts_limit
         self.regiments = regiments or []
         self.army_units = army_units or []
+        self.faction = _FactionStub(system_code)
 
 
 def _u(name, pts, role=None, keywords=None, companions=None, can_reinforce=False, uid=None):

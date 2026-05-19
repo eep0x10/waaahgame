@@ -1,21 +1,22 @@
-{# Single regiment card. Variables: regiment (Regiment), army (Army), result (ValidationResult) #}
+{# Single group/regiment card. Variables: regiment (Regiment), army (Army), result (ValidationResult), validator (BaseValidator) #}
 {% set reg_numerals = ['I','II','III','IV','V'] %}
 {% set reg_num = reg_numerals[regiment.position - 1] if regiment.position <= 5 else regiment.position %}
 {% set has_leader = regiment.leader is not none %}
 {% set companions = regiment.army_units | selectattr('is_leader', 'equalto', false) | list %}
+{% set group_label = validator.group_label | upper if validator is defined else 'REGIMENTO' %}
 
 <div class="regiment-card {% if not has_leader %}leader-missing{% endif %}"
      id="regiment-card-{{ regiment.id }}">
 
   <div class="regiment-card-header">
-    <span class="regiment-label">REGIMENTO {{ reg_num }}</span>
+    <span class="regiment-label">{{ group_label }} {{ reg_num }}</span>
     <div class="regiment-card-actions">
       <form method="POST"
             action="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
             hx-post="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
             hx-target="#regiments-aux-container"
             hx-swap="innerHTML"
-            onsubmit="return confirm('Remover Regimento {{ reg_num }}? As unidades vão para auxiliar.');">
+            onsubmit="return confirm('Remover {{ group_label }} {{ reg_num }}? As unidades vão para auxiliar.');">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit" class="btn-danger btn-sm">Remover</button>
       </form>
@@ -32,7 +33,7 @@
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="target" value="reg-{{ regiment.id }}">
       <select name="unit_slug" class="au-add-select" required>
-        <option value="">Adicionar unidade ao regimento...</option>
+        <option value="">Adicionar unidade ao {{ validator.group_label | lower if validator is defined else 'regimento' }}...</option>
         {% for unit in army.faction.units | sort(attribute='name') %}
           <option value="{{ unit.slug }}">{{ unit.name }} ({{ unit.points_cost }}pts)</option>
         {% endfor %}
@@ -49,7 +50,7 @@
     </div>
   {% else %}
     <div class="leader-empty">
-      <em>Sem líder — adicione um Hero a este regimento.</em>
+      <em>Sem líder — adicione um Hero a este {{ validator.group_label | lower if validator is defined else 'regimento' }}.</em>
     </div>
   {% endif %}
 

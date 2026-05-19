@@ -11,7 +11,7 @@
         <h1 class="section-title">{{ army.name }}</h1>
         <div class="builder-header-meta">
           <span class="role-tag">{{ army.faction.name }}</span>
-          <span class="role-tag">{{ army.battlepack | capitalize }}</span>
+          <span class="role-tag">{{ army.battlepack | replace('_',' ') | title }}</span>
           <span class="pts-badge">{{ result.points.total }}<span class="pts-label">/{{ result.points.limit }}pts</span></span>
         </div>
       </div>
@@ -46,24 +46,7 @@
 
       <div class="builder-center">
         <div id="regiments-aux-container">
-          {% set battlepacks_data = battlepacks %}
-          {% for regiment in army.regiments %}
-            {% include 'armies/_regiment.html' %}
-          {% endfor %}
-
-          {% set bp_data = battlepacks[army.battlepack] %}
-          {% if army.regiments | length < bp_data.regiments[1] %}
-            <form method="POST"
-                  action="{{ url_for('armies.add_regiment', army_id=army.id) }}"
-                  hx-post="{{ url_for('armies.add_regiment', army_id=army.id) }}"
-                  hx-target="#regiments-aux-container"
-                  hx-swap="innerHTML">
-              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-              <button type="submit" class="btn-secondary add-regiment-btn">+ Adicionar Regimento</button>
-            </form>
-          {% endif %}
-
-          {% include 'armies/_auxiliary.html' %}
+          {% include 'armies/_regiments_and_aux.html' %}
         </div>
       </div>
 
