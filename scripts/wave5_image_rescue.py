@@ -311,7 +311,7 @@ def _do_run(db, Faction, Unit):
     for unit in target_units:
         faction_slug = unit.faction.slug
         unit_slug = unit.slug
-        jpg_rel = f'img/units/{faction_slug}/{unit_slug}.jpg'
+        jpg_rel = f'units/{faction_slug}/{unit_slug}.jpg'
         jpg_abs = os.path.join(STATIC_DIR, 'img', 'units', faction_slug, f'{unit_slug}.jpg')
 
         log.info('Rescuing: %s (%s)...', unit.name, faction_slug)

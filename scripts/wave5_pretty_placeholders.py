@@ -142,7 +142,7 @@ def _do_run(db, Faction, Unit):
         if os.path.exists(jpg_abs):
             continue
 
-        svg_rel = f'img/units/{faction_slug}/{unit_slug}.svg'
+        svg_rel = f'units/{faction_slug}/{unit_slug}.svg'
         svg_abs = os.path.join(STATIC_DIR, 'img', 'units', faction_slug, f'{unit_slug}.svg')
 
         alliance = faction.grand_alliance or 'Order'

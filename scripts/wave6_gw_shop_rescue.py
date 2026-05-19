@@ -401,7 +401,7 @@ def _do_run(db, Faction, Unit):
         unit_slug = unit.slug
         jpg_abs = os.path.join(STATIC_DIR, 'img', 'units', faction_slug, f'{unit_slug}.jpg')
         if os.path.exists(jpg_abs) and os.path.getsize(jpg_abs) >= MIN_BYTES:
-            unit.image_path = f'img/units/{faction_slug}/{unit_slug}.jpg'
+            unit.image_path = f'units/{faction_slug}/{unit_slug}.jpg'
             db.session.commit()
             svg_abs = os.path.join(STATIC_DIR, 'img', 'units', faction_slug, f'{unit_slug}.svg')
             if os.path.exists(svg_abs):
@@ -422,7 +422,7 @@ def _do_run(db, Faction, Unit):
         faction_slug = unit.faction.slug
         unit_slug = unit.slug
         jpg_abs = os.path.join(STATIC_DIR, 'img', 'units', faction_slug, f'{unit_slug}.jpg')
-        jpg_rel = f'img/units/{faction_slug}/{unit_slug}.jpg'
+        jpg_rel = f'units/{faction_slug}/{unit_slug}.jpg'
         svg_abs = os.path.join(STATIC_DIR, 'img', 'units', faction_slug, f'{unit_slug}.svg')
 
         print(f'[{idx}/{len(to_scrape)}] {faction_slug}/{unit_slug}...', end=' ', flush=True)

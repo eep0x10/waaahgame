@@ -647,7 +647,7 @@ def _do_seed(db, GameSystem, Faction, Unit):
         for row in units_data:
             name, pts, role, hero, reinforceable, model_count, keywords, companions, stats = row
             unit_slug = _slug(name)
-            image_path = f'img/units/{faction_obj.slug}/{unit_slug}.jpg'
+            image_path = f'units/{faction_obj.slug}/{unit_slug}.jpg'
             waha_name = name.replace(' ', '-')
             wahapedia_url = f'{WAHAPEDIA_BASE}/{faction_obj.slug}/{waha_name}'
 

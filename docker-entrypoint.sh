@@ -11,5 +11,6 @@ python scripts/seed_40k_expansion.py
 python scripts/seed_aos_wave5.py
 python scripts/seed_battlepacks.py
 python scripts/seed_army_templates.py
+python scripts/fix_image_path_prefix.py
 
 exec "$@"
