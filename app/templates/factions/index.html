@@ -13,16 +13,36 @@
       </p>
     </div>
 
-    {% for system in systems %}
-      <div class="factions-system-block">
-        <div class="factions-system-header">
-          <h2 class="factions-system-name">{{ system.name }}</h2>
-          <span class="factions-system-meta">{{ system.edition }} &middot; {{ system.ruleset_label }}</span>
-        </div>
+    <!-- Filter Form -->
+    <form id="faction-filter-form"
+          hx-get="{{ url_for('factions.index') }}"
+          hx-target="#faction-results"
+          hx-swap="innerHTML"
+          hx-trigger="change from:select, keyup changed delay:400ms from:input"
+          style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;align-items:flex-end;">
 
-        {% if system.factions %}
+      <div>
+        <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">SYSTEM</label>
+        <select name="system" class="form-select" style="min-width:140px;">
+          <option value="" {% if not system_filter %}selected{% endif %}>All Systems</option>
+          {% for sys in systems %}
+            <option value="{{ sys.code }}" {% if system_filter == sys.code %}selected{% endif %}>{{ sys.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div>
+        <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">SEARCH</label>
+        <input type="text" name="q" value="{{ q or '' }}" placeholder="Faction name…"
+               class="form-input" style="min-width:200px;">
+      </div>
+    </form>
+
+    <div id="faction-results">
+      {% if filtered_factions is defined %}
+        {% if filtered_factions %}
           <div class="faction-grid">
-            {% for faction in system.factions %}
+            {% for faction in filtered_factions %}
               <article class="faction-card">
                 <div class="faction-card-header">
                   {% if faction.grand_alliance %}
@@ -45,12 +65,48 @@
             {% endfor %}
           </div>
         {% else %}
-          <p class="factions-empty"><em>No factions catalogued yet for this game system.</em></p>
+          <p class="factions-empty"><em>No factions match your filters.</em></p>
         {% endif %}
-      </div>
-    {% else %}
-      <p class="factions-empty"><em>The archive awaits its first cataloguers. Seed the database to begin.</em></p>
-    {% endfor %}
+      {% else %}
+        {% for system in systems %}
+          <div class="factions-system-block">
+            <div class="factions-system-header">
+              <h2 class="factions-system-name">{{ system.name }}</h2>
+              <span class="factions-system-meta">{{ system.edition }} &middot; {{ system.ruleset_label }}</span>
+            </div>
+            {% if system.factions %}
+              <div class="faction-grid">
+                {% for faction in system.factions %}
+                  <article class="faction-card">
+                    <div class="faction-card-header">
+                      {% if faction.grand_alliance %}
+                        <span class="alliance-badge alliance-{{ faction.grand_alliance | lower }}">
+                          {{ faction.grand_alliance }}
+                        </span>
+                      {% endif %}
+                      <h3 class="faction-card-name">{{ faction.name }}</h3>
+                    </div>
+                    {% if faction.blurb %}
+                      <p class="faction-card-blurb">{{ faction.blurb[:220] }}{% if faction.blurb|length > 220 %}&hellip;{% endif %}</p>
+                    {% endif %}
+                    <div class="faction-card-footer">
+                      <span class="faction-unit-count">{{ faction.units | length }} units</span>
+                      <a href="{{ url_for('factions.detail', faction_slug=faction.slug) }}" class="btn-secondary btn-sm">
+                        View Roster &rarr;
+                      </a>
+                    </div>
+                  </article>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p class="factions-empty"><em>No factions catalogued yet for this game system.</em></p>
+            {% endif %}
+          </div>
+        {% else %}
+          <p class="factions-empty"><em>The archive awaits its first cataloguers. Seed the database to begin.</em></p>
+        {% endfor %}
+      {% endif %}
+    </div>
 
   </div>
 </section>

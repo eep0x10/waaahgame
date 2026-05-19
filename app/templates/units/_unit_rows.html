@@ -1,0 +1,49 @@
+{% if pagination.items %}
+  <div class="army-list">
+    {% for unit in pagination.items %}
+      <div class="army-row">
+        <div class="army-row-main">
+          <div class="army-row-name">
+            <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="army-name-link">{{ unit.name }}</a>
+          </div>
+          <div class="army-row-meta">
+            <span class="role-tag" style="font-size:0.75rem;">{{ unit.faction.name }}</span>
+            {% if unit.unit_role %}
+              <span class="role-tag" style="font-size:0.75rem;opacity:0.8;">{{ unit.unit_role }}</span>
+            {% endif %}
+            <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+            {% set sys_code = unit.faction.game_system.code if unit.faction.game_system else 'aos4' %}
+            {% if sys_code == 'w40k10' %}
+              <span class="role-tag" style="background:#1a3a6b;color:#c8a94a;border-color:#1a3a6b;font-size:0.7rem;">40K</span>
+            {% else %}
+              <span class="role-tag" style="background:#2a1a0a;color:#b8935a;border-color:#4a3010;font-size:0.7rem;">AoS</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="army-row-actions">
+          <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="btn-secondary btn-sm">View &rarr;</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if pagination.pages > 1 %}
+    <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1.5rem;">
+      {% if pagination.has_prev %}
+        <a href="{{ url_for('units.index', page=pagination.prev_num, system=system_filter, faction=faction_filter, q=q, pts_min=pts_min, pts_max=pts_max) }}"
+           class="btn-secondary btn-sm">&larr; Prev</a>
+      {% endif %}
+      <span style="padding:0.4rem 0.8rem;opacity:0.6;font-size:0.85rem;">
+        Page {{ pagination.page }} / {{ pagination.pages }}
+        ({{ pagination.total }} units)
+      </span>
+      {% if pagination.has_next %}
+        <a href="{{ url_for('units.index', page=pagination.next_num, system=system_filter, faction=faction_filter, q=q, pts_min=pts_min, pts_max=pts_max) }}"
+           class="btn-secondary btn-sm">Next &rarr;</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+{% else %}
+  <p class="factions-empty"><em>No units match your filters.</em></p>
+{% endif %}

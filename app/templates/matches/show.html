@@ -41,6 +41,41 @@
       </div>
     </div>
 
+    {# Mission panel if battlepack assigned #}
+    {% if match.battlepack %}
+    <div class="card-form" style="padding:1.5rem;margin-bottom:1.5rem;border-left:3px solid #b8935a;">
+      <h3 style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.1em;margin-bottom:0.8rem;">
+        MISSION: {{ match.battlepack.name }}
+        <span class="role-tag" style="font-size:0.75rem;margin-left:0.5rem;">{{ match.battlepack.format | replace('_',' ') | title }}</span>
+      </h3>
+      {% if match.battlepack.summary %}
+        <p style="font-family:'EB Garamond',serif;font-size:0.95rem;opacity:0.85;margin-bottom:0.8rem;">{{ match.battlepack.summary }}</p>
+      {% endif %}
+      {% if match.battlepack.primary_objective %}
+        <div style="margin-bottom:0.6rem;">
+          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">PRIMARY</span>
+          <p style="font-family:'EB Garamond',serif;font-size:0.9rem;margin:0.2rem 0 0;">{{ match.battlepack.primary_objective }}</p>
+        </div>
+      {% endif %}
+      {% if match.battlepack.secondary_objectives_json %}
+        <div style="margin-bottom:0.6rem;">
+          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">SECONDARIES</span>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;">
+            {% for sec in match.battlepack.secondary_objectives_json %}
+              <li style="font-family:'EB Garamond',serif;font-size:0.88rem;margin-bottom:0.2rem;">{{ sec }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      {% if match.battlepack.deployment_text %}
+        <div>
+          <span style="font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;opacity:0.6;">DEPLOYMENT</span>
+          <p style="font-family:'EB Garamond',serif;font-size:0.88rem;margin:0.2rem 0 0;">{{ match.battlepack.deployment_text }}</p>
+        </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
     {# Army select phase — opponent chooses army #}
     {% if match.status == 'army_select' and current_user.id == match.opponent_id and not match.army_opponent_id %}
     <div class="card-form" style="padding:1.5rem;margin-bottom:1.5rem;">

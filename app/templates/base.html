@@ -41,15 +41,15 @@
         <li><a href="{{ url_for('main.index') }}">HOME</a></li>
         <li><a href="{{ url_for('rules.index') }}">RULES</a></li>
         <li><a href="{{ url_for('factions.index') }}">FACTIONS</a></li>
+        <li><a href="{{ url_for('units.index') }}">UNITS</a></li>
         <li><a href="{{ url_for('armies.index') }}">ARMIES</a></li>
         {% if current_user.is_authenticated %}
           <li><a href="{{ url_for('matches.index') }}">MATCHES</a></li>
-        {% else %}
-          <li><a href="#" class="disabled">MATCHES</a></li>
-        {% endif %}
-        {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('matches.history') }}">HISTORY</a></li>
+          <li><a href="{{ url_for('stats.index') }}">STATS</a></li>
           <li><a href="{{ url_for('friends.index') }}">FRIENDS</a></li>
         {% else %}
+          <li><a href="#" class="disabled">MATCHES</a></li>
           <li><a href="#" class="disabled">FRIENDS</a></li>
         {% endif %}
       </ul>

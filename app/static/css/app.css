@@ -2763,3 +2763,24 @@ img, svg {
   }
 }
 
+/* ============================================================
+   WAVE 4B — Filter inputs
+   ============================================================ */
+.form-select,
+.form-input {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border-gold);
+  background: var(--bg-parchment-card);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  border-radius: 2px;
+}
+
+.form-select:focus,
+.form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(184,147,90,0.2);
+}
+

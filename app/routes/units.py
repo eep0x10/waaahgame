@@ -5,9 +5,57 @@ from flask import (
 )
 from flask_login import login_required, current_user
 from app.extensions import db
-from app.models.game import Unit
+from app.models.game import Unit, Faction, GameSystem
 
 units_bp = Blueprint('units', __name__, url_prefix='/units')
+
+
+@units_bp.route('/')
+def index():
+    system_filter = request.args.get('system', '').strip()
+    faction_filter = request.args.get('faction', '').strip()
+    q = request.args.get('q', '').strip()
+    pts_min = request.args.get('pts_min', type=int)
+    pts_max = request.args.get('pts_max', type=int)
+    page = request.args.get('page', 1, type=int)
+
+    unit_query = Unit.query.join(Faction).join(GameSystem)
+
+    if system_filter:
+        unit_query = unit_query.filter(GameSystem.code == system_filter)
+    if faction_filter:
+        unit_query = unit_query.filter(Faction.slug == faction_filter)
+    if q:
+        unit_query = unit_query.filter(Unit.name.ilike(f'%{q}%'))
+    if pts_min is not None:
+        unit_query = unit_query.filter(Unit.points_cost >= pts_min)
+    if pts_max is not None:
+        unit_query = unit_query.filter(Unit.points_cost <= pts_max)
+
+    pagination = unit_query.order_by(Faction.name, Unit.name).paginate(
+        page=page, per_page=30, error_out=False
+    )
+
+    systems = GameSystem.query.order_by(GameSystem.name).all()
+    factions = Faction.query.order_by(Faction.name).all()
+
+    is_htmx = request.headers.get('HX-Request') == 'true'
+    if is_htmx:
+        return render_template('units/_unit_rows.html', pagination=pagination,
+                               system_filter=system_filter, faction_filter=faction_filter,
+                               q=q, pts_min=pts_min, pts_max=pts_max)
+
+    return render_template(
+        'units/index.html',
+        pagination=pagination,
+        systems=systems,
+        factions=factions,
+        system_filter=system_filter,
+        faction_filter=faction_filter,
+        q=q,
+        pts_min=pts_min,
+        pts_max=pts_max,
+    )
 
 ALLOWED_MIME = {'image/jpeg', 'image/png', 'image/webp'}
 STATIC_DIR = os.path.join(

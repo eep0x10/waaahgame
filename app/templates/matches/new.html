@@ -98,6 +98,49 @@
           </select>
         </div>
 
+        <div class="form-field">
+          <label for="battlepack_id">Mission / Battlepack <span style="opacity:0.5;font-size:0.85rem;">(optional)</span></label>
+          <select id="battlepack_id" name="battlepack_id" style="width:100%;padding:0.5rem;border:1px solid var(--border-gold);background:var(--bg-parchment-card);font-family:var(--font-body);font-size:1rem;">
+            <option value="">— None —</option>
+            {% for bp in battlepacks_db %}
+              <option value="{{ bp.id }}" data-system-id="{{ bp.system_id }}" data-format="{{ bp.format }}">
+                {{ bp.name }} ({{ bp.format | replace('_',' ') | title }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <script>
+        (function() {
+          var bpSelect = document.getElementById('battlepack_id');
+          var fmtSelect = document.getElementById('format');
+          var sysSelect = document.getElementById('system_id');
+          {% for bp in battlepacks_db %}
+          {% endfor %}
+          var bpSystemMap = {};
+          {% for bp in battlepacks_db %}
+          bpSystemMap[{{ bp.id }}] = { system_id: {{ bp.system_id }}, format: "{{ bp.format }}" };
+          {% endfor %}
+
+          function filterBattlepacks() {
+            var sysId = parseInt(sysSelect.value) || 0;
+            var fmt = fmtSelect.value;
+            var opts = bpSelect.options;
+            for (var i = 1; i < opts.length; i++) {
+              var bp = bpSystemMap[parseInt(opts[i].value)];
+              var show = (!sysId || bp.system_id === sysId) && (!fmt || bp.format === fmt);
+              opts[i].style.display = show ? '' : 'none';
+            }
+            if (bpSelect.selectedOptions[0] && bpSelect.selectedOptions[0].style.display === 'none') {
+              bpSelect.value = '';
+            }
+          }
+
+          sysSelect.addEventListener('change', filterBattlepacks);
+          fmtSelect.addEventListener('change', filterBattlepacks);
+          filterBattlepacks();
+        })();
+        </script>
+
         <div class="modal-actions">
           <button type="submit" class="btn-primary">Issue Challenge</button>
           <a href="{{ url_for('matches.index') }}" class="btn-secondary">Cancel</a>

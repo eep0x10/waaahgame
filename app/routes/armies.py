@@ -4,7 +4,8 @@ from flask import (
 from flask_login import login_required, current_user
 from app.extensions import db
 from app.models.army import Army, Regiment, ArmyUnit, BATTLEPACKS
-from app.models.game import Faction, Unit
+from app.models.game import Faction, Unit, GameSystem
+from app.models.army_template import ArmyTemplate
 from app.services.validator import validate
 from app.services.formats import SYSTEM_FORMATS, formats_for_system
 
@@ -33,6 +34,92 @@ def index():
     armies = Army.query.filter_by(user_id=current_user.id).order_by(Army.created_at.desc()).all()
     results = {a.id: validate(a) for a in armies}
     return render_template('armies/index.html', armies=armies, results=results)
+
+
+@armies_bp.route('/templates')
+@login_required
+def templates():
+    system_filter = request.args.get('system', '').strip()
+    faction_filter = request.args.get('faction', '').strip()
+    q = ArmyTemplate.query
+    if system_filter:
+        gs = GameSystem.query.filter_by(code=system_filter).first()
+        if gs:
+            q = q.filter_by(system_id=gs.id)
+    if faction_filter:
+        fac = Faction.query.filter_by(slug=faction_filter).first()
+        if fac:
+            q = q.filter_by(faction_id=fac.id)
+    army_templates = q.order_by(ArmyTemplate.name).all()
+    systems = GameSystem.query.order_by(GameSystem.name).all()
+    factions = Faction.query.order_by(Faction.name).all()
+    return render_template('armies/templates.html', army_templates=army_templates,
+                           systems=systems, factions=factions,
+                           system_filter=system_filter, faction_filter=faction_filter)
+
+
+@armies_bp.route('/from-template/<int:template_id>', methods=['POST'])
+@login_required
+def from_template(template_id):
+    tmpl = db.session.get(ArmyTemplate, template_id)
+    if tmpl is None:
+        abort(404)
+
+    faction = db.session.get(Faction, tmpl.faction_id)
+    if not faction:
+        abort(400)
+
+    system_code = faction.game_system.code if faction.game_system else 'aos4'
+    valid_formats = formats_for_system(system_code)
+    pts_limit = valid_formats.get(tmpl.format, tmpl.points_target)
+
+    army = Army(
+        user_id=current_user.id,
+        faction_id=tmpl.faction_id,
+        name=tmpl.name,
+        battlepack=tmpl.format,
+        points_limit=pts_limit,
+        notes=tmpl.summary,
+    )
+    db.session.add(army)
+    db.session.flush()
+
+    unit_cache = {}
+
+    for reg_data in (tmpl.regiments_layout_json or []):
+        reg = Regiment(army_id=army.id, position=reg_data.get('position', 1))
+        db.session.add(reg)
+        db.session.flush()
+
+        sort_counter = [0]
+
+        def _add_unit(slug, is_leader=False, is_general=False):
+            if slug not in unit_cache:
+                unit_cache[slug] = Unit.query.filter_by(slug=slug, faction_id=tmpl.faction_id).first()
+            unit = unit_cache[slug]
+            if not unit:
+                return
+            sort_counter[0] += 1
+            au = ArmyUnit(
+                army_id=army.id,
+                unit_id=unit.id,
+                regiment_id=reg.id,
+                is_leader=is_leader,
+                is_general=is_general,
+                sort_order=sort_counter[0],
+            )
+            db.session.add(au)
+
+        leader_slug = reg_data.get('leader_slug')
+        if leader_slug:
+            _add_unit(leader_slug, is_leader=True, is_general=(reg_data.get('position', 1) == 1))
+
+        for comp_slug in reg_data.get('companion_slugs', []):
+            _add_unit(comp_slug)
+
+    db.session.commit()
+    flash(f'Army "{army.name}" created from template.', 'success')
+    return redirect(url_for('armies.show', army_id=army.id))
 
 
 @armies_bp.route('/new', methods=['GET'])

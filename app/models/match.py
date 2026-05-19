@@ -29,6 +29,7 @@ class Match(TimestampMixin, db.Model):
                              default=lambda: secrets.token_urlsafe(12))
     started_at = db.Column(db.DateTime, nullable=True)
     finished_at = db.Column(db.DateTime, nullable=True)
+    battlepack_id = db.Column(db.Integer, db.ForeignKey('battlepacks_db.id'), nullable=True)
 
     host = db.relationship('User', foreign_keys=[host_id], backref='hosted_matches')
     opponent = db.relationship('User', foreign_keys=[opponent_id], backref='opponent_matches')

@@ -14,6 +14,7 @@ from app.models.match_message import MatchMessage
 from app.models.friendship import Friendship
 from app.models.army import Army
 from app.models.game import GameSystem
+from app.models.battlepack import Battlepack
 
 _DICE_RE = re.compile(r'^(\d+)d(\d+)([+-]\d+)?$')
 _RNG = random.SystemRandom()
@@ -61,6 +62,17 @@ def _is_accepted_friend(user_a_id, user_b_id):
     return fs is not None and fs.status == 'accepted'
 
 
+@matches_bp.route('/history')
+@login_required
+def history():
+    page = request.args.get('page', 1, type=int)
+    pagination = Match.query.filter(
+        ((Match.host_id == current_user.id) | (Match.opponent_id == current_user.id)),
+        Match.status == 'finished',
+    ).order_by(Match.finished_at.desc().nullslast()).paginate(page=page, per_page=20, error_out=False)
+    return render_template('matches/history.html', pagination=pagination)
+
+
 @matches_bp.route('/')
 @login_required
 def index():
@@ -81,11 +93,12 @@ def index():
 def new():
     systems = GameSystem.query.order_by(GameSystem.name).all()
     my_armies = Army.query.filter_by(user_id=current_user.id).order_by(Army.name).all()
-    # Combine all formats for template; system_formats passed for JS filtering
     combined_format_points = _all_formats()
     formats = list(combined_format_points.keys())
+    battlepacks_db = Battlepack.query.order_by(Battlepack.name).all()
     return render_template('matches/new.html', systems=systems, my_armies=my_armies, formats=formats,
-                           FORMAT_POINTS=combined_format_points, system_formats=SYSTEM_FORMATS)
+                           FORMAT_POINTS=combined_format_points, system_formats=SYSTEM_FORMATS,
+                           battlepacks_db=battlepacks_db)
 
 
 @matches_bp.route('/new', methods=['POST'])
@@ -127,6 +140,11 @@ def new_post():
     if system is None:
         abort(400)
 
+    battlepack_id = request.form.get('battlepack_id', type=int)
+    bp_obj = None
+    if battlepack_id:
+        bp_obj = db.session.get(Battlepack, battlepack_id)
+
     match = Match(
         host_id=current_user.id,
         opponent_id=opponent_id,
@@ -135,6 +153,7 @@ def new_post():
         points_limit=pts,
         army_host_id=army_host_id,
         status='pending',
+        battlepack_id=bp_obj.id if bp_obj else None,
     )
     db.session.add(match)
     db.session.commit()

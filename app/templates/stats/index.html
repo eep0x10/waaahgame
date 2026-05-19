@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Stats — waaahgame{% endblock %}
+
+{% block content %}
+<section class="armies-section">
+  <div class="container">
+    <div class="armies-header">
+      <p class="eyebrow">Commander's Chronicle</p>
+      <h1 class="section-title">Battle Statistics</h1>
+    </div>
+
+    <!-- Summary Row -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:2rem;">
+      <div class="card-form" style="text-align:center;padding:1.2rem;">
+        <div style="font-family:'Cinzel',serif;font-size:2rem;color:#b8935a;">{{ stats.total }}</div>
+        <div style="font-size:0.8rem;letter-spacing:0.1em;opacity:0.6;margin-top:0.2rem;">BATTLES</div>
+      </div>
+      <div class="card-form" style="text-align:center;padding:1.2rem;">
+        <div style="font-family:'Cinzel',serif;font-size:2rem;color:#5a9a5a;">{{ stats.won }}</div>
+        <div style="font-size:0.8rem;letter-spacing:0.1em;opacity:0.6;margin-top:0.2rem;">WINS</div>
+      </div>
+      <div class="card-form" style="text-align:center;padding:1.2rem;">
+        <div style="font-family:'Cinzel',serif;font-size:2rem;color:#9a3a3a;">{{ stats.lost }}</div>
+        <div style="font-size:0.8rem;letter-spacing:0.1em;opacity:0.6;margin-top:0.2rem;">LOSSES</div>
+      </div>
+      <div class="card-form" style="text-align:center;padding:1.2rem;">
+        <div style="font-family:'Cinzel',serif;font-size:2rem;color:#c8a96a;">{{ stats.draws }}</div>
+        <div style="font-size:0.8rem;letter-spacing:0.1em;opacity:0.6;margin-top:0.2rem;">DRAWS</div>
+      </div>
+      <div class="card-form" style="text-align:center;padding:1.2rem;">
+        <div style="font-family:'Cinzel',serif;font-size:2rem;color:#b8935a;">{{ stats.win_rate }}%</div>
+        <div style="font-size:0.8rem;letter-spacing:0.1em;opacity:0.6;margin-top:0.2rem;">WIN RATE</div>
+      </div>
+    </div>
+
+    <!-- Recent Form -->
+    {% if stats.recent_form %}
+    <div class="card-form" style="margin-bottom:1.5rem;padding:1.2rem;">
+      <h2 style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.1em;margin-bottom:0.8rem;opacity:0.8;">RECENT FORM</h2>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        {% for result in stats.recent_form %}
+          {% if result == 'W' %}
+            <span class="legal-pill legal-pill--legal" style="font-size:0.9rem;padding:0.3rem 0.8rem;">W</span>
+          {% elif result == 'L' %}
+            <span class="legal-pill legal-pill--illegal" style="font-size:0.9rem;padding:0.3rem 0.8rem;">L</span>
+          {% else %}
+            <span class="legal-pill" style="background:#3a2810;color:#c8a96a;border-color:#5a4020;font-size:0.9rem;padding:0.3rem 0.8rem;">D</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Per-System Breakdown -->
+    {% if stats.system_stats %}
+    <div class="card-form" style="margin-bottom:1.5rem;padding:1.2rem;">
+      <h2 style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.1em;margin-bottom:0.8rem;opacity:0.8;">BY GAME SYSTEM</h2>
+      {% for code, s in stats.system_stats.items() %}
+        <div style="display:flex;align-items:center;gap:1rem;padding:0.5rem 0;border-bottom:1px solid #2a1a0a;">
+          <span style="flex:1;font-family:'EB Garamond',serif;">{{ s.name }}</span>
+          <span class="legal-pill legal-pill--legal">{{ s.W }}W</span>
+          <span class="legal-pill legal-pill--illegal">{{ s.L }}L</span>
+          <span class="legal-pill" style="background:#3a2810;color:#c8a96a;border-color:#5a4020;">{{ s.D }}D</span>
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Per-Faction Breakdown -->
+    {% if stats.faction_stats %}
+    <div class="card-form" style="margin-bottom:1.5rem;padding:1.2rem;">
+      <h2 style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.1em;margin-bottom:0.8rem;opacity:0.8;">BY FACTION</h2>
+      {% for fname, s in stats.faction_stats.items() %}
+        <div style="display:flex;align-items:center;gap:1rem;padding:0.5rem 0;border-bottom:1px solid #2a1a0a;">
+          <span style="flex:1;font-family:'EB Garamond',serif;">{{ fname }}</span>
+          <span class="legal-pill legal-pill--legal">{{ s.W }}W</span>
+          <span class="legal-pill legal-pill--illegal">{{ s.L }}L</span>
+          <span class="legal-pill" style="background:#3a2810;color:#c8a96a;border-color:#5a4020;">{{ s.D }}D</span>
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if not stats.total %}
+      <div class="armies-empty">
+        <p><em>No finished matches yet. Your chronicle awaits its first entry.</em></p>
+      </div>
+    {% endif %}
+
+    <div style="margin-top:1.5rem;">
+      <a href="{{ url_for('matches.history') }}" class="btn-secondary btn-sm">View Full History &rarr;</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

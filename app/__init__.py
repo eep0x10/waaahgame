@@ -62,6 +62,9 @@ def create_app(config_name='dev', test_config=None):
     from .routes.matches import matches_bp
     app.register_blueprint(matches_bp)
 
+    from .routes.stats import stats_bp
+    app.register_blueprint(stats_bp)
+
     # Register sockets
     from .sockets import register_sockets
     register_sockets(socketio)

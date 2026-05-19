@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Match History — waaahgame{% endblock %}
+
+{% block content %}
+<section class="armies-section">
+  <div class="container">
+    <div class="armies-header">
+      <p class="eyebrow">Battle Record</p>
+      <h1 class="section-title">Match History</h1>
+    </div>
+
+    {% if pagination.items %}
+      <div class="army-list">
+        <div class="army-row" style="font-weight:600;font-size:0.8rem;letter-spacing:0.08em;opacity:0.6;border-bottom:1px solid #3a2810;padding-bottom:0.5rem;margin-bottom:0.5rem;">
+          <div style="flex:1;">Opponent</div>
+          <div style="flex:1;">System / Format</div>
+          <div style="flex:1;">Score</div>
+          <div style="width:80px;text-align:center;">Winner</div>
+          <div style="width:110px;text-align:right;">Date</div>
+        </div>
+        {% for m in pagination.items %}
+          {% set scores = m.get_scores() if m.scores_json else {'host': {'vp': 0, 'cp': 0}, 'opponent': {'vp': 0, 'cp': 0}} %}
+          {% set is_host = (m.host_id == current_user.id) %}
+          {% set h_vp = scores.host.vp %}
+          {% set o_vp = scores.opponent.vp %}
+          {% set h_cp = scores.host.cp %}
+          {% set o_cp = scores.opponent.cp %}
+          {% if h_vp > o_vp %}
+            {% set winner_key = 'host' %}
+          {% elif o_vp > h_vp %}
+            {% set winner_key = 'opponent' %}
+          {% elif h_cp > o_cp %}
+            {% set winner_key = 'host' %}
+          {% elif o_cp > h_cp %}
+            {% set winner_key = 'opponent' %}
+          {% else %}
+            {% set winner_key = 'draw' %}
+          {% endif %}
+          {% if winner_key == 'host' %}
+            {% set winner_name = m.host.username %}
+          {% elif winner_key == 'opponent' %}
+            {% set winner_name = m.opponent.username if m.opponent else '???' %}
+          {% else %}
+            {% set winner_name = 'Draw' %}
+          {% endif %}
+          {% set opponent = m.opponent if is_host else m.host %}
+          <a href="{{ url_for('matches.show', match_id=m.id) }}" style="text-decoration:none;display:block;">
+            <div class="army-row" style="padding:0.75rem 0;">
+              <div style="flex:1;">
+                <span class="role-tag">{{ opponent.username if opponent else '???' }}</span>
+              </div>
+              <div style="flex:1;">
+                <span class="role-tag" style="font-size:0.75rem;">{{ m.system.name if m.system else '?' }}</span>
+                <span class="role-tag" style="font-size:0.75rem;opacity:0.8;">{{ m.format | replace('_', ' ') | title }}</span>
+              </div>
+              <div style="flex:1;">
+                <span class="pts-badge">{{ h_vp }} VP / {{ h_cp }} CP</span>
+                <span style="opacity:0.5;padding:0 0.3rem;">vs</span>
+                <span class="pts-badge">{{ o_vp }} VP / {{ o_cp }} CP</span>
+              </div>
+              <div style="width:80px;text-align:center;">
+                {% if winner_key == ('host' if is_host else 'opponent') %}
+                  <span class="legal-pill legal-pill--legal">WIN</span>
+                {% elif winner_key == 'draw' %}
+                  <span class="legal-pill" style="background:#3a2810;color:#c8a96a;border-color:#5a4020;">DRAW</span>
+                {% else %}
+                  <span class="legal-pill legal-pill--illegal">LOSS</span>
+                {% endif %}
+              </div>
+              <div style="width:110px;text-align:right;font-size:0.8rem;opacity:0.7;">
+                {{ m.finished_at.strftime('%d %b %Y') if m.finished_at else '—' }}
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      {% if pagination.pages > 1 %}
+        <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:2rem;">
+          {% if pagination.has_prev %}
+            <a href="{{ url_for('matches.history', page=pagination.prev_num) }}" class="btn-secondary btn-sm">&larr; Prev</a>
+          {% endif %}
+          <span style="padding:0.4rem 0.8rem;opacity:0.6;font-size:0.85rem;">
+            Page {{ pagination.page }} / {{ pagination.pages }}
+          </span>
+          {% if pagination.has_next %}
+            <a href="{{ url_for('matches.history', page=pagination.next_num) }}" class="btn-secondary btn-sm">Next &rarr;</a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    {% else %}
+      <div class="armies-empty">
+        <p><em>No finished matches yet. Issue a challenge to begin your record.</em></p>
+      </div>
+    {% endif %}
+
+    <div style="margin-top:2rem;">
+      <a href="{{ url_for('matches.index') }}" class="btn-secondary btn-sm">&larr; Match Lobby</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
