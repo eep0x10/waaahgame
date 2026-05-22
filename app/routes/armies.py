@@ -5,7 +5,7 @@ from flask import (
 from flask_login import login_required, current_user
 from app.extensions import db
 from app.models.army import Army, Regiment, ArmyUnit
-from app.models.game import Faction, Unit, GameSystem
+from app.models.game import Faction, Unit, GameSystem, RegimentOfRenown
 from app.models.army_template import ArmyTemplate
 from app.services.validator import validate
 from app.services.validators import validator_for, all_systems
@@ -253,7 +253,11 @@ def new_post():
 @login_required
 def show(army_id):
     army = _owned_army_or_404(army_id)
-    units = sorted(army.faction.units, key=lambda u: (1 if u.unit_category == 'legends' else 0, u.unit_role or 'zz', u.name))
+    # Bug 7: manifestations are summoned via lores, not added to regiments/aux.
+    units = sorted(
+        [u for u in army.faction.units if u.unit_category != 'manifestation'],
+        key=lambda u: (1 if u.unit_category == 'legends' else 0, u.unit_role or 'zz', u.name)
+    )
     aux_units = [au for au in army.army_units if au.regiment_id is None]
     result = validate(army)
     v = _army_validator(army)
@@ -281,6 +285,9 @@ def add_unit(army_id):
     unit = Unit.query.filter_by(slug=unit_slug).first()
     if not unit or unit.faction_id != army.faction_id:
         abort(400)
+    # Bug 7: manifestations are managed via lore selection, not added manually.
+    if getattr(unit, 'unit_category', None) == 'manifestation':
+        abort(400, "Manifestações são gerenciadas separadamente via Lore de Manifestação.")
 
     regiment = None
     regiment_id = None
@@ -325,8 +332,11 @@ def add_unit(army_id):
         summary = _summary_html(army)
         if regiment:
             regiment = db.session.get(Regiment, regiment.id)
+            faction_has_rules, faction_rules = _load_faction_rules(army)
             partial = render_template('armies/_regiment.html', regiment=regiment, army=army,
-                                      result=result, validator=v)
+                                      result=result, validator=v,
+                                      faction_has_rules=faction_has_rules,
+                                      faction_rules=faction_rules)
         else:
             aux_units = [a for a in army.army_units if a.regiment_id is None]
             partial = render_template('armies/_auxiliary.html', army=army, aux_units=aux_units,
@@ -431,8 +441,11 @@ def promote_leader(army_id, au_id):
         result = validate(army)
         v = _army_validator(army)
         summary = _summary_html(army)
+        faction_has_rules, faction_rules = _load_faction_rules(army)
         partial = render_template('armies/_regiment.html', regiment=regiment, army=army,
-                                  result=result, validator=v)
+                                  result=result, validator=v,
+                                  faction_has_rules=faction_has_rules,
+                                  faction_rules=faction_rules)
         return partial + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
@@ -444,6 +457,17 @@ def set_general(army_id, au_id):
     army = _owned_army_or_404(army_id)
     au = ArmyUnit.query.filter_by(id=au_id, army_id=army_id).first_or_404()
 
+    # Bug 4: validate can_be_general.
+    # If any unit in the army has can_be_general=True explicitly set, enforce it.
+    # Otherwise (all False/NULL — typical for most heroes), allow any Hero.
+    any_explicit = any(other.unit.can_be_general for other in army.army_units)
+    if any_explicit and not au.unit.can_be_general:
+        abort(400, "Esta unidade não pode ser General (sem keyword CAN BE GENERAL).")
+
+    # Also must be a Hero (rule 3.2)
+    if not _is_hero(au.unit):
+        abort(400, "Apenas Heroes podem ser o General.")
+
     for other in army.army_units:
         other.is_general = False
     au.is_general = True
@@ -452,6 +476,88 @@ def set_general(army_id, au_id):
     if _is_htmx():
         result = validate(army)
         return _summary_html(army)
+
+    return redirect(url_for('armies.show', army_id=army_id))
+
+
+@armies_bp.route('/<int:army_id>/units/<int:au_id>/enhancement', methods=['POST'])
+@login_required
+def set_enhancement(army_id, au_id):
+    """Set or clear heroic_trait / artefact / command_trait on a Regiment leader."""
+    army = _owned_army_or_404(army_id)
+    au = ArmyUnit.query.filter_by(id=au_id, army_id=army_id).first_or_404()
+
+    # Must be a Regiment leader
+    if au.regiment_id is None:
+        abort(400, "Auxiliares não podem receber Aprimoramentos.")
+    # RoR members cannot receive enhancements
+    reg = db.session.get(Regiment, au.regiment_id)
+    if reg and reg.is_ror:
+        abort(400, "Unidades de Regimento de Renome não podem receber Aprimoramentos.")
+    if not au.is_leader:
+        abort(400, "Apenas líderes de Regimento podem receber Aprimoramentos.")
+
+    # Load faction rules to validate values
+    _, faction_rules = _load_faction_rules(army)
+    faction_rules = faction_rules or {}
+
+    valid_traits    = {t['name'] for t in faction_rules.get('heroic_traits', []) if t.get('name')}
+    valid_artefacts = {a['name'] for a in faction_rules.get('artefacts', []) if a.get('name')}
+    valid_cmd       = {c['name'] for c in faction_rules.get('command_traits', []) if c.get('name')}
+    if not valid_cmd:
+        valid_cmd = valid_traits  # fallback
+
+    enh_type  = request.form.get('enhancement_type', '').strip()
+    enh_value = request.form.get('enhancement_value', '').strip()
+
+    # Empty value = clear
+    if enh_value == '':
+        enh_value = None
+
+    if enh_type == 'heroic_trait':
+        if enh_value and valid_traits and enh_value not in valid_traits:
+            abort(400, f'Heroic Trait "{enh_value}" inválido para esta facção.')
+        # Uniqueness check
+        if enh_value:
+            conflict = ArmyUnit.query.filter_by(army_id=army_id, heroic_trait=enh_value).filter(
+                ArmyUnit.id != au_id).first()
+            if conflict:
+                abort(400, f'Heroic Trait "{enh_value}" já está em uso neste exército.')
+        au.heroic_trait = enh_value
+
+    elif enh_type == 'artefact':
+        if enh_value and valid_artefacts and enh_value not in valid_artefacts:
+            abort(400, f'Artefact "{enh_value}" inválido para esta facção.')
+        if enh_value:
+            conflict = ArmyUnit.query.filter_by(army_id=army_id, artefact=enh_value).filter(
+                ArmyUnit.id != au_id).first()
+            if conflict:
+                abort(400, f'Artefact "{enh_value}" já está em uso neste exército.')
+        au.artefact = enh_value
+
+    elif enh_type == 'command_trait':
+        if not au.is_general:
+            abort(400, 'Command Trait só pode ser atribuído ao General.')
+        if enh_value and valid_cmd and enh_value not in valid_cmd:
+            abort(400, f'Command Trait "{enh_value}" inválido para esta facção.')
+        au.command_trait = enh_value
+
+    else:
+        abort(400, 'Tipo de aprimoramento desconhecido.')
+
+    db.session.commit()
+
+    if _is_htmx():
+        result = validate(army)
+        v = _army_validator(army)
+        summary = _summary_html(army)
+        regiment = db.session.get(Regiment, au.regiment_id)
+        faction_has_rules, faction_rules_fresh = _load_faction_rules(army)
+        partial = render_template('armies/_regiment.html', regiment=regiment, army=army,
+                                  result=result, validator=v,
+                                  faction_has_rules=faction_has_rules,
+                                  faction_rules=faction_rules_fresh)
+        return partial + summary
 
     return redirect(url_for('armies.show', army_id=army_id))
 
@@ -496,15 +602,143 @@ def add_regiment(army_id):
     return redirect(url_for('armies.show', army_id=army_id))
 
 
+@armies_bp.route('/<int:army_id>/ror/available', methods=['GET'])
+@login_required
+def ror_available(army_id):
+    """HTMX partial: list of RoR available for army's grand alliance."""
+    army = _owned_army_or_404(army_id)
+    faction = army.faction
+    army_alliance = faction.grand_alliance if faction else None
+
+    q = RegimentOfRenown.query
+    if army_alliance:
+        q = q.filter(
+            db.or_(
+                RegimentOfRenown.alliance == army_alliance,
+                db.func.lower(RegimentOfRenown.alliance) == 'mercenary',
+            )
+        )
+    else:
+        # No faction alliance defined — show only Mercenary
+        q = q.filter(db.func.lower(RegimentOfRenown.alliance) == 'mercenary')
+
+    available = q.order_by(RegimentOfRenown.name).all()
+    return render_template('armies/_ror_picker.html', army=army, available=available)
+
+
+@armies_bp.route('/<int:army_id>/ror/add', methods=['POST'])
+@login_required
+def add_ror(army_id):
+    """Add a Regiment of Renown as a regiment slot in the army."""
+    army = _owned_army_or_404(army_id)
+    v = _army_validator(army)
+
+    if not v.supports_groups:
+        abort(400)
+
+    ror_id = request.form.get('ror_id', type=int)
+    if not ror_id:
+        abort(400)
+
+    ror = db.session.get(RegimentOfRenown, ror_id)
+    if not ror:
+        abort(404)
+
+    # Alliance check
+    faction = army.faction
+    army_alliance = faction.grand_alliance if faction else None
+    ror_alliance = ror.alliance or ''
+    if ror_alliance.lower() != 'mercenary':
+        if army_alliance and ror_alliance != army_alliance:
+            flash(
+                f'RoR "{ror.name}" é da aliança {ror_alliance}; '
+                f'exército é {army_alliance}.',
+                'error'
+            )
+            if _is_htmx():
+                result = validate(army)
+                return render_template('armies/_regiments_and_aux.html', army=army,
+                                       result=result, validator=v)
+            return redirect(url_for('armies.show', army_id=army_id))
+
+    # Regiment count check (RoR counts as regiment)
+    from app.services.validators.aos import AoSValidator
+    if isinstance(v, AoSValidator):
+        bp = AoSValidator.BATTLEPACKS.get(army.battlepack, AoSValidator.BATTLEPACKS['vanguard'])
+        _, reg_max = bp['regiments']
+    else:
+        reg_max = 4
+
+    if len(army.regiments) >= reg_max:
+        flash(f'Máximo de {reg_max} regimentos para {army.battlepack.capitalize()}.', 'error')
+        if _is_htmx():
+            result = validate(army)
+            return render_template('armies/_regiments_and_aux.html', army=army,
+                                   result=result, validator=v)
+        return redirect(url_for('armies.show', army_id=army_id))
+
+    next_pos = max((r.position for r in army.regiments), default=0) + 1
+    reg = Regiment(army_id=army.id, position=next_pos, ror_id=ror.id)
+    db.session.add(reg)
+    db.session.flush()
+
+    # Populate ArmyUnit stubs for each unit string in the RoR
+    # units_json is a list of strings like "3 Warpvolt Scourgers"
+    import json as _json
+    units_list = _json.loads(ror.units_json) if ror.units_json else []
+    sort_counter = max((au.sort_order for au in army.army_units), default=0)
+    first = True
+    for unit_str in units_list:
+        # unit_str may be "1 Warlock Galvaneer" or "3 Warpvolt Scourgers"
+        # We store regiment_id but leave unit_id as a placeholder (no real Unit match needed)
+        # Best-effort: try to find unit by name in any faction
+        parts = unit_str.split(' ', 1)
+        unit_name = parts[1] if len(parts) == 2 and parts[0].isdigit() else unit_str
+        unit_count = int(parts[0]) if len(parts) == 2 and parts[0].isdigit() else 1
+
+        unit = Unit.query.filter(Unit.name.ilike(unit_name)).first()
+        if not unit:
+            # Try partial match
+            unit = Unit.query.filter(Unit.name.ilike(f'%{unit_name}%')).first()
+
+        if unit:
+            for _ in range(unit_count):
+                sort_counter += 1
+                au = ArmyUnit(
+                    army_id=army.id,
+                    unit_id=unit.id,
+                    regiment_id=reg.id,
+                    is_leader=first,  # mark first unit as "leader" for display
+                    is_general=False,
+                    sort_order=sort_counter,
+                )
+                db.session.add(au)
+                first = False
+
+    db.session.commit()
+
+    if _is_htmx():
+        result = validate(army)
+        summary = _summary_html(army)
+        return render_template('armies/_regiments_and_aux.html', army=army, result=result,
+                               validator=v) + summary
+    return redirect(url_for('armies.show', army_id=army_id))
+
+
 @armies_bp.route('/<int:army_id>/regiments/<int:reg_id>/remove', methods=['POST'])
 @login_required
 def remove_regiment(army_id, reg_id):
     army = _owned_army_or_404(army_id)
     regiment = Regiment.query.filter_by(id=reg_id, army_id=army_id).first_or_404()
 
-    for au in regiment.army_units:
-        au.regiment_id = None
-        au.is_leader = False
+    if regiment.is_ror:
+        # RoR: delete all member units (fixed composition, no orphan to aux)
+        for au in list(regiment.army_units):
+            db.session.delete(au)
+    else:
+        for au in regiment.army_units:
+            au.regiment_id = None
+            au.is_leader = False
 
     db.session.delete(regiment)
     db.session.commit()

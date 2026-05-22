@@ -42,12 +42,19 @@ class Regiment(TimestampMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     army_id = db.Column(db.Integer, db.ForeignKey("armies.id"), nullable=False, index=True)
     position = db.Column(db.Integer, nullable=False)
+    # FK to regiments_of_renown — set when this slot is a RoR, None for normal regiments
+    ror_id = db.Column(db.Integer, db.ForeignKey("regiments_of_renown.id"), nullable=True, index=True)
 
     army_units = db.relationship(
         "ArmyUnit",
         backref="regiment",
         primaryjoin="Regiment.id == ArmyUnit.regiment_id",
     )
+    ror = db.relationship("RegimentOfRenown", foreign_keys=[ror_id])
+
+    @property
+    def is_ror(self):
+        return self.ror_id is not None
 
     @property
     def leader(self):
@@ -67,6 +74,11 @@ class ArmyUnit(TimestampMixin, db.Model):
     is_leader = db.Column(db.Boolean, nullable=False, default=False)
     is_general = db.Column(db.Boolean, nullable=False, default=False)
     sort_order = db.Column(db.Integer, nullable=False, default=0)
+
+    # Enhancements (AoS rules 24-26, 30) — stored as name strings
+    heroic_trait  = db.Column(db.String(120), nullable=True)
+    artefact      = db.Column(db.String(120), nullable=True)
+    command_trait = db.Column(db.String(120), nullable=True)  # General only
 
     unit = db.relationship("Unit")
 

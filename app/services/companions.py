@@ -84,7 +84,10 @@ def is_companion_valid(unit, leader_unit, regiment_units):
     specs = leader_unit.companions_json or []
 
     if not specs:
-        return True, None
+        return False, (
+            "Este Herói não possui Companion Units listadas; "
+            "não pode incluir unidades adicionais no Regimento."
+        )
 
     if len(specs) == 1 and (specs[0].get('type') or '').lower() == 'any':
         return True, None

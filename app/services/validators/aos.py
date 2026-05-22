@@ -3,6 +3,8 @@ AoS 4e army validator.
 
 validate_aos(army) -> ValidationResult   (legacy function — delegates to class)
 """
+import collections
+
 from app.services.companions import is_companion_valid
 from app.services.validators._types import Issue, PointsBreakdown, ValidationResult
 from app.services.validators.base import BaseValidator
@@ -38,6 +40,14 @@ def _has_keyword(unit, keyword):
     return keyword.upper() in {k.upper() for k in kws}
 
 
+def _regiment_is_ror(au, army):
+    """True if this ArmyUnit's regiment is a Regiment of Renown."""
+    if au.regiment_id is None:
+        return False
+    reg = au.regiment
+    return reg is not None and reg.is_ror
+
+
 def validate_aos(army) -> ValidationResult:
     """Standalone function kept for backward compat and direct import."""
     issues = []
@@ -54,7 +64,12 @@ def validate_aos(army) -> ValidationResult:
 
     aux_surcharge = 10 * n_aux * (n_aux - 1)
 
-    base_pts = sum(au.points for au in all_aus)
+    # Points: RoR regiments use ror.points_cost (fixed), not sum of their units
+    ror_regiment_ids = {r.id for r in regiments if r.is_ror}
+    base_pts = (
+        sum(au.points for au in all_aus if au.regiment_id not in ror_regiment_ids)
+        + sum(r.ror.points_cost for r in regiments if r.is_ror and r.ror and r.ror.points_cost)
+    )
     total_pts = base_pts + aux_surcharge
     over_by = max(0, total_pts - limit)
 
@@ -101,13 +116,17 @@ def validate_aos(army) -> ValidationResult:
             ),
         ))
 
-    if not (aux_min <= n_aux <= aux_max):
+    # Aux limit: PDF (3.6) diz "any number" — sem hard cap.
+    # O ponto 0-1/0-2 é onde a sobretaxa começa; já calculada acima.
+    # Emitir info apenas se exceder o limite soft para awareness.
+    if n_aux > aux_max:
         issues.append(Issue(
-            level="error",
-            code="aux_count",
+            level="info",
+            code="aux_count_surcharge",
             message=(
-                f"{army.battlepack.capitalize()} permite {aux_min}-{aux_max} "
-                f"auxiliares; encontrado {n_aux}"
+                f"{army.battlepack.capitalize()}: {n_aux} auxiliares "
+                f"(acima de {aux_max}). Sobretaxa cumulativa aplicada — "
+                f"sem limite máximo por regras (Core Rules 3.6)."
             ),
         ))
 
@@ -174,6 +193,27 @@ def validate_aos(army) -> ValidationResult:
                 reinforced_unit_ids.add(au.unit_id)
 
     for regiment in regiments:
+        # ── RoR regiment: skip all normal structural checks ──────────────
+        if regiment.is_ror:
+            ror = regiment.ror
+            if ror:
+                # Alliance check: ror.alliance must match army faction alliance OR be Mercenary
+                faction = army.faction
+                army_alliance = faction.grand_alliance if faction else None
+                ror_alliance = ror.alliance or ''
+                if ror_alliance.lower() != 'mercenary' and army_alliance and ror_alliance != army_alliance:
+                    issues.append(Issue(
+                        level="error",
+                        code="ror_alliance_mismatch",
+                        message=(
+                            f'Regimento de Renome "{ror.name}" é da aliança {ror_alliance}; '
+                            f"exército é {army_alliance}. Apenas RoR da mesma aliança ou "
+                            f"Mercenário são permitidos."
+                        ),
+                        target=f"regiment:{regiment.id}",
+                    ))
+            continue
+
         reg_aus = list(regiment.army_units)
         leaders = [au for au in reg_aus if au.is_leader]
         companions = [au for au in reg_aus if not au.is_leader]
@@ -259,7 +299,141 @@ def validate_aos(army) -> ValidationResult:
                         target=f"army_unit:{comp_au.id}",
                     ))
 
-    aux_command_bonus = n_aux == 0
+    # Bug 5 — UNIQUE units: no duplicates allowed (Core Rules 3.4)
+    unique_counts = collections.Counter(
+        au.unit_id for au in all_aus
+        if _has_keyword(au.unit, "UNIQUE")
+    )
+    for uid, n in unique_counts.items():
+        if n > 1:
+            unit_name = next(au.unit.name for au in all_aus if au.unit_id == uid)
+            issues.append(Issue(
+                level="error",
+                code="unique_duplicate",
+                message=(
+                    f"Unidade Única '{unit_name}' aparece {n}x; máximo 1 por exército."
+                ),
+            ))
+
+    # Bug 6 — Legends units: warn (not block) per updates FAQ
+    for au in all_aus:
+        if getattr(au.unit, 'unit_category', None) == 'legends':
+            issues.append(Issue(
+                level="warning",
+                code="legends_unit",
+                message=(
+                    f"'{au.unit.name}' é uma unidade Legends — restrita a jogo casual/"
+                    f"matched-play não-oficial. Verifique se o evento aceita."
+                ),
+                target=f"army_unit:{au.id}",
+            ))
+
+    # ── Enhancements (rules 24-26, 30) ──────────────────────────────────
+    import json as _json
+    faction = army.faction
+    try:
+        _rules = _json.loads(faction.rules_json) if faction and faction.rules_json else {}
+    except (ValueError, TypeError):
+        _rules = {}
+
+    _valid_traits    = {t['name'] for t in _rules.get('heroic_traits', []) if t.get('name')}
+    _valid_artefacts = {a['name'] for a in _rules.get('artefacts', []) if a.get('name')}
+    _valid_cmd       = {c['name'] for c in _rules.get('command_traits', []) if c.get('name')}
+    # Fallback: command_traits → heroic_traits list when no dedicated table exists
+    if not _valid_cmd:
+        _valid_cmd = _valid_traits
+
+    _used_traits    = []
+    _used_artefacts = []
+
+    for au in all_aus:
+        is_ror = au.regiment_id is not None and _regiment_is_ror(au, army)
+        is_aux = au.regiment_id is None
+
+        # Auxiliaries and RoR members cannot have enhancements
+        if au.heroic_trait or au.artefact or au.command_trait:
+            if is_aux:
+                issues.append(Issue(
+                    level="error",
+                    code="enhancement_on_aux",
+                    message=f'Auxiliar "{au.unit.name}" não pode receber Aprimoramentos.',
+                    target=f"army_unit:{au.id}",
+                ))
+            elif is_ror:
+                issues.append(Issue(
+                    level="error",
+                    code="enhancement_on_ror",
+                    message=f'"{au.unit.name}" pertence a Regimento de Renome; Aprimoramentos não permitidos.',
+                    target=f"army_unit:{au.id}",
+                ))
+
+        if au.heroic_trait or au.artefact or au.command_trait:
+            if not au.is_leader:
+                issues.append(Issue(
+                    level="error",
+                    code="enhancement_on_non_leader",
+                    message=f'"{au.unit.name}" não é líder de Regimento; não pode receber Aprimoramentos.',
+                    target=f"army_unit:{au.id}",
+                ))
+
+        # heroic_trait uniqueness + validity
+        if au.heroic_trait:
+            if _valid_traits and au.heroic_trait not in _valid_traits:
+                issues.append(Issue(
+                    level="error",
+                    code="invalid_heroic_trait",
+                    message=f'Heroic Trait "{au.heroic_trait}" não pertence a esta facção.',
+                    target=f"army_unit:{au.id}",
+                ))
+            if au.heroic_trait in _used_traits:
+                issues.append(Issue(
+                    level="error",
+                    code="duplicate_heroic_trait",
+                    message=f'Heroic Trait "{au.heroic_trait}" já está em uso neste exército.',
+                    target=f"army_unit:{au.id}",
+                ))
+            else:
+                _used_traits.append(au.heroic_trait)
+
+        # artefact uniqueness + validity
+        if au.artefact:
+            if _valid_artefacts and au.artefact not in _valid_artefacts:
+                issues.append(Issue(
+                    level="error",
+                    code="invalid_artefact",
+                    message=f'Artefact "{au.artefact}" não pertence a esta facção.',
+                    target=f"army_unit:{au.id}",
+                ))
+            if au.artefact in _used_artefacts:
+                issues.append(Issue(
+                    level="error",
+                    code="duplicate_artefact",
+                    message=f'Artefact "{au.artefact}" já está em uso neste exército.',
+                    target=f"army_unit:{au.id}",
+                ))
+            else:
+                _used_artefacts.append(au.artefact)
+
+        # command_trait: General only
+        if au.command_trait:
+            if not au.is_general:
+                issues.append(Issue(
+                    level="error",
+                    code="command_trait_non_general",
+                    message=f'Command Trait só pode ser atribuído ao General.',
+                    target=f"army_unit:{au.id}",
+                ))
+            elif _valid_cmd and au.command_trait not in _valid_cmd:
+                issues.append(Issue(
+                    level="error",
+                    code="invalid_command_trait",
+                    message=f'Command Trait "{au.command_trait}" não pertence a esta facção.',
+                    target=f"army_unit:{au.id}",
+                ))
+
+    # CP underdog: bônus depende de comparação com oponente (runtime).
+    # Sempre informar; não condicionar a n_aux == 0.
+    aux_command_bonus = True  # sempre passa nota para o template
 
     errors = [i for i in issues if i.level == "error"]
     is_legal = len(errors) == 0

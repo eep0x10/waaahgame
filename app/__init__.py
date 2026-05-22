@@ -64,6 +64,8 @@ def create_app(config_name='dev', test_config=None):
 
     # Jinja2 filters
     app.jinja_env.filters['simple_md'] = _simple_md
+    import json as _json_mod
+    app.jinja_env.filters['from_json'] = lambda s: _json_mod.loads(s) if s else []
 
     login_manager.login_view = 'auth.login'
     login_manager.login_message = 'Sign in to enter the war-host.'

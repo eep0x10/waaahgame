@@ -1,0 +1,143 @@
+{#
+  Enhancement panel for a Regiment leader.
+  Variables: au (ArmyUnit), army (Army), regiment (Regiment),
+             faction_has_rules (bool), faction_rules (dict|None)
+#}
+{% set is_general = au.is_general %}
+{% set reg1 = army.regiments | selectattr('position', 'equalto', 1) | first | default(none) %}
+{% set is_reg1_leader = (reg1 is not none and reg1.id == regiment.id) %}
+
+{% set faction_rules = faction_rules or {} %}
+{% set heroic_traits    = faction_rules.get('heroic_traits', []) %}
+{% set artefacts        = faction_rules.get('artefacts', []) %}
+{% set command_traits   = faction_rules.get('command_traits', heroic_traits) %}
+
+{% set has_any_table = heroic_traits or artefacts %}
+
+{% if not has_any_table %}
+  <div class="enhancements-unavailable">
+    <em>Esta facção não possui aprimoramentos cadastrados.</em>
+  </div>
+{% else %}
+<div class="enhancements-panel" id="enhancements-au-{{ au.id }}">
+
+  {# ── header row ── #}
+  <div class="enhancements-header">
+    <span class="enhancements-title">Aprimoramentos</span>
+    {% set picked = (1 if au.heroic_trait else 0) + (1 if au.artefact else 0) %}
+    {% set max_picks = 2 %}
+    <span class="enhancements-count">{{ picked }}/{{ max_picks }}</span>
+    {% if is_reg1_leader %}
+      <span class="enhancements-free-badge">Gratuitos (Reg. I)</span>
+    {% else %}
+      <span class="enhancements-cp-badge">Custa CP</span>
+    {% endif %}
+  </div>
+
+  {# ── Heroic Trait ── #}
+  {% if heroic_traits %}
+  <div class="enhancements-row">
+    <label class="enhancements-label">Heroic Trait</label>
+    <form hx-post="{{ url_for('armies.set_enhancement', army_id=army.id, au_id=au.id) }}"
+          hx-target="#regiment-card-{{ regiment.id }}"
+          hx-swap="outerHTML"
+          hx-include="[name=csrf_token]">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="enhancement_type" value="heroic_trait">
+      <select name="enhancement_value"
+              class="enhancements-select"
+              onchange="this.form.requestSubmit()">
+        <option value="">— Nenhum —</option>
+        {% for t in heroic_traits %}
+          <option value="{{ t.name }}"
+                  {% if au.heroic_trait == t.name %}selected{% endif %}
+                  title="{{ t.get('text_pt') or t.get('text_en') or '' | truncate(120) }}">
+            {{ t.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+    {% if au.heroic_trait %}
+      {% set sel_trait = heroic_traits | selectattr('name', 'equalto', au.heroic_trait) | first | default(none) %}
+      {% if sel_trait and (sel_trait.get('text_pt') or sel_trait.get('text_en')) %}
+        <details class="enhancements-desc">
+          <summary class="enhancements-desc-toggle">&#8505; Detalhes</summary>
+          <p class="enhancements-desc-text">{{ sel_trait.get('text_pt') or sel_trait.get('text_en') }}</p>
+        </details>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# ── Artefact of Power ── #}
+  {% if artefacts %}
+  <div class="enhancements-row">
+    <label class="enhancements-label">Artefact of Power</label>
+    <form hx-post="{{ url_for('armies.set_enhancement', army_id=army.id, au_id=au.id) }}"
+          hx-target="#regiment-card-{{ regiment.id }}"
+          hx-swap="outerHTML"
+          hx-include="[name=csrf_token]">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="enhancement_type" value="artefact">
+      <select name="enhancement_value"
+              class="enhancements-select"
+              onchange="this.form.requestSubmit()">
+        <option value="">— Nenhum —</option>
+        {% for a in artefacts %}
+          <option value="{{ a.name }}"
+                  {% if au.artefact == a.name %}selected{% endif %}
+                  title="{{ a.get('text_pt') or a.get('text_en') or '' | truncate(120) }}">
+            {{ a.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+    {% if au.artefact %}
+      {% set sel_art = artefacts | selectattr('name', 'equalto', au.artefact) | first | default(none) %}
+      {% if sel_art and (sel_art.get('text_pt') or sel_art.get('text_en')) %}
+        <details class="enhancements-desc">
+          <summary class="enhancements-desc-toggle">&#8505; Detalhes</summary>
+          <p class="enhancements-desc-text">{{ sel_art.get('text_pt') or sel_art.get('text_en') }}</p>
+        </details>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# ── Command Trait (General only) ── #}
+  {% if is_general and command_traits %}
+  <div class="enhancements-row">
+    <label class="enhancements-label">Command Trait</label>
+    <form hx-post="{{ url_for('armies.set_enhancement', army_id=army.id, au_id=au.id) }}"
+          hx-target="#regiment-card-{{ regiment.id }}"
+          hx-swap="outerHTML"
+          hx-include="[name=csrf_token]">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="enhancement_type" value="command_trait">
+      <select name="enhancement_value"
+              class="enhancements-select"
+              onchange="this.form.requestSubmit()">
+        <option value="">— Nenhum —</option>
+        {% for ct in command_traits %}
+          <option value="{{ ct.name }}"
+                  {% if au.command_trait == ct.name %}selected{% endif %}
+                  title="{{ ct.get('text_pt') or ct.get('text_en') or '' | truncate(120) }}">
+            {{ ct.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+    {% if au.command_trait %}
+      {% set sel_ct = command_traits | selectattr('name', 'equalto', au.command_trait) | first | default(none) %}
+      {% if sel_ct and (sel_ct.get('text_pt') or sel_ct.get('text_en')) %}
+        <details class="enhancements-desc">
+          <summary class="enhancements-desc-toggle">&#8505; Detalhes</summary>
+          <p class="enhancements-desc-text">{{ sel_ct.get('text_pt') or sel_ct.get('text_en') }}</p>
+        </details>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% endif %}
+
+</div>
+{% endif %}

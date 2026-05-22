@@ -1,0 +1,54 @@
+{#
+  RoR picker modal content.
+  Variables: army (Army), available (list[RegimentOfRenown])
+#}
+<div class="modal-overlay" id="ror-modal" style="display:flex;" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal-box" style="max-width:520px;">
+    <h2 class="modal-title">Adicionar Regimento de Renome</h2>
+    {% if not available %}
+      <p style="color:var(--text-muted);font-style:italic;">
+        Nenhum Regimento de Renome disponível para a aliança deste exército.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="document.getElementById('ror-modal').style.display='none'">Fechar</button>
+      </div>
+    {% else %}
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">
+        Exibe apenas RoR da aliança <strong>{{ army.faction.grand_alliance or '?' }}</strong> e Mercenários.
+      </p>
+      <div style="max-height:400px;overflow-y:auto;">
+        {% for ror in available %}
+        <form method="POST"
+              action="{{ url_for('armies.add_ror', army_id=army.id) }}"
+              hx-post="{{ url_for('armies.add_ror', army_id=army.id) }}"
+              hx-target="#regiments-aux-container"
+              hx-swap="innerHTML"
+              hx-on::after-request="document.getElementById('ror-modal').style.display='none'"
+              style="margin-bottom:0.5rem;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="ror_id" value="{{ ror.id }}">
+          <div class="ror-picker-row">
+            <div class="ror-picker-info">
+              <span class="ror-picker-name">{{ ror.name }}</span>
+              <span class="ror-picker-meta">
+                <span class="alliance-badge alliance-{{ ror.alliance | lower if ror.alliance else 'neutral' }}">{{ ror.alliance or '?' }}</span>
+                {% if ror.points_cost %}
+                  <span class="pts-badge">{{ ror.points_cost }}<span class="pts-label">pts</span></span>
+                {% endif %}
+              </span>
+              {% if ror.units_json %}
+                {% set units_list = ror.units_json | from_json %}
+                <span class="ror-picker-units">{{ units_list | join(' · ') }}</span>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn-primary btn-sm">Adicionar</button>
+          </div>
+        </form>
+        {% endfor %}
+      </div>
+      <div class="modal-actions" style="margin-top:1rem;">
+        <button type="button" class="btn-secondary" onclick="document.getElementById('ror-modal').style.display='none'">Cancelar</button>
+      </div>
+    {% endif %}
+  </div>
+</div>

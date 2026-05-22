@@ -35,6 +35,9 @@
   </div>
 
   <div class="au-row-actions">
+    {% if ror_locked is defined and ror_locked %}
+      <span class="ror-lock-icon" title="Composição fixa — Regimento de Renome">&#128274;</span>
+    {% else %}
     <details class="au-dropdown">
       <summary class="au-dropdown-toggle">&#9660;</summary>
       <div class="au-dropdown-menu">
@@ -104,5 +107,6 @@
         </form>
       </div>
     </details>
+    {% endif %}
   </div>
 </div>

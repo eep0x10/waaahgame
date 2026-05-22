@@ -4,48 +4,84 @@
 {% set has_leader = regiment.leader is not none %}
 {% set companions = regiment.army_units | selectattr('is_leader', 'equalto', false) | list %}
 {% set group_label = validator.group_label | upper if validator is defined else 'REGIMENTO' %}
+{% set is_ror = regiment.is_ror %}
 
-<div class="regiment-card {% if not has_leader %}leader-missing{% endif %}"
+<div class="regiment-card {% if not has_leader and not is_ror %}leader-missing{% endif %} {% if is_ror %}regiment-card--ror{% endif %}"
      id="regiment-card-{{ regiment.id }}"
+     {% if not is_ror %}
      data-drop-target="reg-{{ regiment.id }}"
-     data-drop-url="{{ url_for('armies.add_unit', army_id=army.id) }}">
+     data-drop-url="{{ url_for('armies.add_unit', army_id=army.id) }}"
+     {% endif %}>
 
   <div class="regiment-card-header">
-    <span class="regiment-label">{{ group_label }} {{ reg_num }}</span>
+    <span class="regiment-label">
+      {{ group_label }} {{ reg_num }}
+      {% if is_ror %}
+        <span class="ror-badge" title="Regimento de Renome — composição fixa">&#9733; Renome</span>
+      {% endif %}
+    </span>
+    {% if is_ror and regiment.ror %}
+      <span class="ror-name-label">{{ regiment.ror.name }}</span>
+    {% endif %}
     <div class="regiment-card-actions">
-      <span class="drop-hint">Arraste unidade aqui</span>
+      {% if not is_ror %}<span class="drop-hint">Arraste unidade aqui</span>{% endif %}
       <form method="POST"
             action="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
             hx-post="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
             hx-target="#regiments-aux-container"
             hx-swap="innerHTML"
-            onsubmit="return confirm('Remover {{ group_label }} {{ reg_num }}? As unidades vão para auxiliar.');">
+            onsubmit="return confirm('Remover {{ group_label }} {{ reg_num }}?{% if is_ror %} As unidades do RoR serão removidas.{% else %} As unidades vão para auxiliar.{% endif %}');">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit" class="btn-danger btn-sm">Remover</button>
       </form>
     </div>
   </div>
 
-  {% set leader_au = regiment.leader %}
-  {% if leader_au %}
-    <div class="leader-slot">
-      {% set au = leader_au %}
-      {% include 'armies/_army_unit_row.html' %}
-    </div>
+  {% if is_ror %}
+    {# RoR: show all units locked (no enhancements, no add/remove/move) #}
+    {% if is_ror and regiment.ror and regiment.ror.points_cost %}
+      <div class="ror-pts-row">
+        <span class="ror-pts-label">Custo fixo:</span>
+        <span class="pts-badge">{{ regiment.ror.points_cost }}<span class="pts-label">pts</span></span>
+      </div>
+    {% endif %}
+    {% if regiment.army_units %}
+      <div class="ror-units-locked">
+        {% for au in regiment.army_units %}
+          {% set ror_locked = true %}
+          {% include 'armies/_army_unit_row.html' %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="ror-units-empty"><em>Unidades do RoR não encontradas no banco de dados.</em></div>
+    {% endif %}
   {% else %}
-    <div class="leader-empty">
-      <em>Sem líder — adicione um Hero a este {{ validator.group_label | lower if validator is defined else 'regimento' }}.</em>
-    </div>
-  {% endif %}
-
-  {% if companions %}
-    <div class="companion-list">
-      {% for au in companions %}
+    {% set leader_au = regiment.leader %}
+    {% if leader_au %}
+      <div class="leader-slot">
+        {% set au = leader_au %}
         {% include 'armies/_army_unit_row.html' %}
-      {% endfor %}
-    </div>
-  {% elif leader_au %}
-    <div class="companions-empty"><em>Sem companheiros ainda. Adicione até 3.</em></div>
+      </div>
+      {# ── Enhancements for this leader (AoS only) ── #}
+      {% if faction_has_rules is defined %}
+        {% set au = leader_au %}
+        {% include 'armies/_enhancements.html' %}
+      {% endif %}
+    {% else %}
+      <div class="leader-empty">
+        <em>Sem líder — adicione um Hero a este {{ validator.group_label | lower if validator is defined else 'regimento' }}.</em>
+      </div>
+    {% endif %}
+
+    {% if companions %}
+      <div class="companion-list">
+        {% for au in companions %}
+          {% include 'armies/_army_unit_row.html' %}
+        {% endfor %}
+      </div>
+    {% elif leader_au %}
+      <div class="companions-empty"><em>Sem companheiros ainda. Adicione até 3.</em></div>
+    {% endif %}
   {% endif %}
 
 </div>

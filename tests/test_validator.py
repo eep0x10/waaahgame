@@ -349,7 +349,7 @@ def test_skaven_list4_legal():
 
 
 # ===========================================================================
-# TEST: 4 auxiliaries — illegal (aux_count + points surcharge)
+# TEST: 4 auxiliaries — surcharge info (no hard cap per Core Rules 3.6)
 # ===========================================================================
 
 def test_skaven_too_many_aux_illegal():
@@ -357,7 +357,9 @@ def test_skaven_too_many_aux_illegal():
     Reg 1: Verminlord Corruptor (Gen/Leader) only
     Reg 2: Master Moulder (Leader) + HPA
     Aux: Grey Seer, Warlock Bombardier, Stormvermin, Night Runners
-    4 aux -> surcharge = 10*4*3 = 120, and vanguard allows max 1 aux
+    4 aux -> surcharge = 10*4*3 = 120.
+    Core Rules 3.6: no hard cap on aux — surcharge applied, info emitted.
+    List is illegal only because total pts exceed 1000 limit.
     """
     corruptor = _verminlord_corruptor()
     moulder = _master_moulder()
@@ -384,13 +386,14 @@ def test_skaven_too_many_aux_illegal():
     )
 
     result = validate(army)
-    assert result.is_legal is False
 
     surcharge = result.points.aux_surcharge
     assert surcharge == 10 * 4 * 3  # 120
 
     codes = {i.code for i in result.issues}
-    assert 'aux_count' in codes
+    # No hard cap: aux_count_surcharge is info, not error
+    assert 'aux_count_surcharge' in codes
+    assert 'aux_count' not in codes
 
 
 # ===========================================================================
@@ -599,10 +602,11 @@ def test_pts_over_limit():
 
 
 # ===========================================================================
-# TEST: Aux command bonus flag when 0 auxiliaries
+# TEST: Aux command bonus note — always True (runtime comparison, not builder)
 # ===========================================================================
 
 def test_aux_command_bonus_no_aux():
+    # Bug 3 fix: note always present so player remembers to compare at game start
     corruptor = _verminlord_corruptor()
     au1 = _au(1, corruptor, regiment_id=10, is_leader=True, is_general=True)
     reg1 = _regiment(10, 1, 1, [au1])
@@ -612,6 +616,7 @@ def test_aux_command_bonus_no_aux():
 
 
 def test_aux_command_bonus_with_aux():
+    # Bug 3 fix: note always present regardless of aux count
     corruptor = _verminlord_corruptor()
     grey_seer = _grey_seer()
     au1 = _au(1, corruptor, regiment_id=10, is_leader=True, is_general=True)
@@ -619,7 +624,7 @@ def test_aux_command_bonus_with_aux():
     reg1 = _regiment(10, 1, 1, [au1])
     army = _build_vanguard_army([(reg1,[au1])], [au2])
     result = validate(army)
-    assert result.aux_command_bonus is False
+    assert result.aux_command_bonus is True
 
 
 # ===========================================================================

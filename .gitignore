@@ -26,6 +26,9 @@ app/static/css/app.css.bak_*
 scripts/cache/
 *.clean.md.bak
 
+# Local smoke scripts (dev only)
+scripts/smoke_*.py
+
 # Logs
 *.log
 logs/
