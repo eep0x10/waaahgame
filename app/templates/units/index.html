@@ -54,6 +54,16 @@
         <input type="number" name="pts_max" value="{{ pts_max or '' }}" placeholder="∞"
                class="form-input" style="width:80px;">
       </div>
+
+      <div style="align-self:flex-end;padding-bottom:2px;">
+        <label style="display:flex;align-items:center;gap:0.35rem;cursor:pointer;font-size:0.72rem;letter-spacing:0.06em;opacity:0.75;white-space:nowrap;">
+          <input type="checkbox" name="only_incomplete" value="1"
+                 {% if only_incomplete %}checked{% endif %}
+                 style="accent-color:#b8935a;width:13px;height:13px;">
+          <span style="background:#f0e6c8;color:#7a5a2a;font-size:0.6rem;font-weight:700;padding:1px 5px;border-radius:8px;border:1px solid #c9a96e;">?</span>
+          Apenas incompletos
+        </label>
+      </div>
     </form>
 
     <div id="unit-results">

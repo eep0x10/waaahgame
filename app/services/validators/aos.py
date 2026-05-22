@@ -264,9 +264,24 @@ def validate_aos(army) -> ValidationResult:
     errors = [i for i in issues if i.level == "error"]
     is_legal = len(errors) == 0
 
+    # Collect selected faction picks for display in the summary panel.
+    # No enforcement yet — Phase 2 read-only display only.
+    faction_picks = {}
+    for attr, label in (
+        ('sub_faction_id',        'Sub-facção'),
+        ('formation_id',          'Formação'),
+        ('spell_lore_id',         'Lore de Magia'),
+        ('prayer_lore_id',        'Lore de Oração'),
+        ('manifestation_lore_id', 'Lore de Manifestação'),
+    ):
+        val = getattr(army, attr, None)
+        if val:
+            faction_picks[label] = val
+
     return ValidationResult(
         is_legal=is_legal,
         points=pts,
         issues=issues,
         aux_command_bonus=aux_command_bonus,
+        faction_picks=faction_picks,
     )

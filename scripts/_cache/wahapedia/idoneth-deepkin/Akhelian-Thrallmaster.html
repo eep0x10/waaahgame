@@ -1,0 +1,770 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Wahapedia: Age of Sigmar 4th edition, Idoneth Deepkin — Akhelian Thrallmaster (unit characteristics, wargear options, wargear profiles, abilities, battle profile and keywords)." />
+<meta name="keywords" content="Wahapedia, Age of Sigmar 4th edition, ORDER, IDONETH DEEPKIN, AELF, EIDOLON, AKHELIAN, ISHARANN, NAMARTI, HERO, INFANTRY, ORDER, IDONETH DEEPKIN, AELF, AKHELIAN" />
+
+<script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+<script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+	window.ezstandalone = window.ezstandalone || {};
+	ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
+<script src="//ezoicanalytics.com/analytics.js"></script>
+<link rel="stylesheet" type="text/css" href="/aos4/css/fonts121.css">
+<link name="magnus_did_what" rel="stylesheet" href="/aos4/css/magnus_did_not121.css">
+<link rel="stylesheet" href="/aos4/css/main121.css">
+<link rel="stylesheet" href="/aos4/css/header121.css">
+<link rel="stylesheet" href="/aos4/css/profile121.css">
+<link rel="stylesheet" href="/aos4/css/noprint121.css">
+<link rel="icon" type="image/png" href="/aos4/img/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/tooltipster.bundle.min.css" />
+<link rel="manifest" href="/manifest_AoS4.json">
+<link rel="apple-touch-icon" sizes="57x57" href="/img/web-app/wahapedia-icon-57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/web-app/wahapedia-icon-76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/web-app/wahapedia-icon-114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/web-app/wahapedia-icon-120.png">
+<link rel="apple-touch-icon" sizes="128x128" href="/img/web-app/wahapedia-icon-128.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/web-app/wahapedia-icon-152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="/img/web-app/wahapedia-icon-167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/web-app/wahapedia-icon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/img/web-app/wahapedia-icon-192.png">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+<script type="text/javascript" src="/tooltipster-scrollableTip/tooltipster-scrollableTip.min.js"></script>
+<script type="text/javascript" src="https://wahapedia.ru/scripts/jquery.cookie.js"></script><script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir.min.css" />
+<link rel="stylesheet" href="/aos4/css/tooltipster-noir121.css">
+<title>Akhelian Thrallmaster</title>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4"></script>
+<script>   
+function submitCaptcha(e) {
+	e.preventDefault();
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4', {action: 'submit'}).then(function(token) {    
+			$(".tooltipster-box #captcha-box").val(token);
+			$(".tooltipster-box #disable-ads").submit();
+		});
+	});
+}
+function loadErrors() {
+  if($(location).attr('hash') == ""){
+  let searchParams = new URLSearchParams(window.location.search);
+     if(searchParams.has('error')){
+         err = document.createTextNode(searchParams.get('error'));
+         $('#error-login').append(err);
+         $('#error-login').show();
+     }
+     if(searchParams.has('message')){
+         msg = document.createTextNode(searchParams.get('message'));
+         $('#email-sent').append(msg);
+         $('#email-sent').show();
+     }
+  }
+}
+
+$(document).on( 'click', '#btnGetPin', function(e) {
+  $(".tooltipster-box #password-text-field").val("");
+  submitCaptcha(e);
+});
+
+$(document).on( 'click', '#btnDisableAds', function(e) {
+  submitCaptcha(e);
+});
+</script>
+<script type="text/javascript">
+function switchColorTheme(){
+		var userTheme = localStorage.ColorTheme;
+		if (userTheme == undefined) {userTheme = 'default'; localStorage.ColorTheme = userTheme};
+		if ((userTheme == 'dark') || (userTheme == 'light')) {
+			document.documentElement.setAttribute('data-theme', userTheme);}
+		else if (!window.matchMedia) {
+			document.documentElement.setAttribute('data-theme', 'light');}
+		else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-theme', 'dark');}
+			else {
+				document.documentElement.setAttribute('data-theme', 'light');}
+   };
+	switchColorTheme();
+$(document).ready(function(){
+touchHover(); loadErrors(); $.get('https://wahapedia.ru/relog.php');
+	var data = localStorage.ShowFluff;
+	if (data == undefined) {data = 'true'; localStorage.ShowFluff = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowFluff').prop('checked', StrData);
+	ChangeShowFluff();
+
+	$('.ShowFluff').change(function () {
+      localStorage.ShowFluff = $(this).prop('checked');
+	   ChangeShowFluff();
+   });
+
+	function ChangeShowFluff() {
+	if (localStorage.ShowFluff == 'true')
+		{$('.ShowFluff').css('display', '');}
+	else
+		{$('.ShowFluff').css('display', 'none');}
+	}
+	var data = localStorage.ShowLegendaryDatasheets;
+	if (data == undefined) {data = 'false'; localStorage.ShowLegendaryDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowLegendaryDatasheets').prop('checked', StrData);
+
+	$('.ShowLegendaryDatasheets').change(function () {
+      localStorage.ShowLegendaryDatasheets = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPathToGlory;
+	if (data == undefined) {data = 'true'; localStorage.ShowPathToGlory = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPathToGlory').prop('checked', StrData);
+
+	$('.ShowPathToGlory').change(function () {
+      localStorage.ShowPathToGlory = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPitchedBattleProfile;
+	if (data == undefined) {data = 'true'; localStorage.ShowPitchedBattleProfile = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPitchedBattleProfile').prop('checked', StrData);
+	ChangeShowPitchedBattleProfile();
+
+	$('.ShowPitchedBattleProfile').change(function () {
+      localStorage.ShowPitchedBattleProfile = $(this).prop('checked');
+	   ChangeShowPitchedBattleProfile();
+   });
+
+	function ChangeShowPitchedBattleProfile() {
+	if (localStorage.ShowPitchedBattleProfile == 'true')
+		{$('.ShowPitchedBattleProfile').css('display', '');}
+	else
+		{$('.ShowPitchedBattleProfile').css('display', 'none');}
+	}
+	var data = localStorage.ShowBaseSize;
+	if (data == undefined) {data = 'true'; localStorage.ShowBaseSize = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowBaseSize').prop('checked', StrData);
+	ChangeShowBaseSize();
+
+	$('.ShowBaseSize').change(function () {
+      localStorage.ShowBaseSize = $(this).prop('checked');
+	   ChangeShowBaseSize();
+   });
+
+	function ChangeShowBaseSize() {
+	if (localStorage.ShowBaseSize == 'true')
+		{$('.ShowBaseSize').css('display', '');}
+	else
+		{$('.ShowBaseSize').css('display', 'none');}
+	}
+	var data = localStorage.ShowForgeWorldDatasheets;
+	if (data == undefined) {data = 'true'; localStorage.ShowForgeWorldDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowForgeWorldDatasheets').prop('checked', StrData);
+
+	$('.ShowForgeWorldDatasheets').change(function () {
+      localStorage.ShowForgeWorldDatasheets = $(this).prop('checked');
+	   FilterSelect(false);
+	   FilterApply(false);
+   });
+	$('.ColorTheme').prop('value', localStorage.ColorTheme);
+	$('.ColorTheme').change(function () {
+		localStorage.ColorTheme = $(this).prop('value');
+		switchColorTheme();
+	});	
+	$(window).on('load', function() {
+		$('.ya-site-form__input-text').addClass('ya_input');
+	});
+
+
+function FilterSelect(IsInit) {};
+function FilterApply(IsInit) {
+var clFlags = '';
+var comma = '';
+var clAllFlags = '.sLegendary, .sForgeWorld, .sShowPathToGlory';
+if (localStorage.ShowLegendaryDatasheets == 'false') {clFlags = clFlags + comma + '.sLegendary'; comma = ', ';};
+if (localStorage.ShowPathToGlory == 'false') {clFlags = clFlags + comma + '.sShowPathToGlory'; comma = ', ';};
+if (localStorage.ShowForgeWorldDatasheets == 'false') {clFlags = clFlags + comma + '.sForgeWorld'; comma = ', ';};
+
+	$(clAllFlags).show();
+	$(clFlags).hide();
+if ($('.datasheet').is(":hidden")) {$('.datasheet').show(); $('.selectionWarning').show()} else {$('.selectionWarning').hide()}
+UpdateTooltipster(IsInit);
+};
+FilterApply(true);
+
+function UpdateTooltipster(IsInit) {
+if (!IsInit) 
+	{
+	 $('.tooltip').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipk').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipArmyList').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipContents').filter('.tooltipstered').tooltipster('destroy');
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"UNIQUE"},{tCl:"INFANTRY"},{tCl:"00007"},{tCl:"CHAMPION"},{tCl:"ORDER"},{tCl:"IDONETHDEEPKIN"},{tCl:"AELF"},{tCl:"AKHELIAN"},{tCl:"NAMARTI"},{tCl:"00017"},{tCl:"00018"},{tCl:"00019"},{tCl:"00020"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"00024"},{tCl:"MONSTER"},{tCl:"00026"},{tCl:"FLY"},{tCl:"WARD"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"00032"},{tCl:"HERO"},{tCl:"CAVALRY"},{tCl:"00035"},{tCl:"00036"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"WIZARD"},{tCl:"EIDOLON"},{tCl:"00042"},{tCl:"00043"},{tCl:"ISHARANN"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"00050"},{tCl:"00051"},{tCl:"00052"},{tCl:"00053"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"MUSICIAN"},{tCl:"00062"},{tCl:"00063"},{tCl:"STANDARDBEARER"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"},{tCl:"00070"},{tCl:"00071"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+$('.tooltipk'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+});
+	 if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"UNIQUE"},{tCl:"INFANTRY"},{tCl:"00007"},{tCl:"CHAMPION"},{tCl:"ORDER"},{tCl:"IDONETHDEEPKIN"},{tCl:"AELF"},{tCl:"AKHELIAN"},{tCl:"NAMARTI"},{tCl:"00017"},{tCl:"00018"},{tCl:"00019"},{tCl:"00020"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"00024"},{tCl:"MONSTER"},{tCl:"00026"},{tCl:"FLY"},{tCl:"WARD"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"00032"},{tCl:"HERO"},{tCl:"CAVALRY"},{tCl:"00035"},{tCl:"00036"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"WIZARD"},{tCl:"EIDOLON"},{tCl:"00042"},{tCl:"00043"},{tCl:"ISHARANN"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"00050"},{tCl:"00051"},{tCl:"00052"},{tCl:"00053"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"MUSICIAN"},{tCl:"00062"},{tCl:"00063"},{tCl:"STANDARDBEARER"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"},{tCl:"00070"},{tCl:"00071"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});}
+};
+if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"UNIQUE"},{tCl:"INFANTRY"},{tCl:"00007"},{tCl:"CHAMPION"},{tCl:"ORDER"},{tCl:"IDONETHDEEPKIN"},{tCl:"AELF"},{tCl:"AKHELIAN"},{tCl:"NAMARTI"},{tCl:"00017"},{tCl:"00018"},{tCl:"00019"},{tCl:"00020"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"00024"},{tCl:"MONSTER"},{tCl:"00026"},{tCl:"FLY"},{tCl:"WARD"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"00032"},{tCl:"HERO"},{tCl:"CAVALRY"},{tCl:"00035"},{tCl:"00036"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"WIZARD"},{tCl:"EIDOLON"},{tCl:"00042"},{tCl:"00043"},{tCl:"ISHARANN"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"00050"},{tCl:"00051"},{tCl:"00052"},{tCl:"00053"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"MUSICIAN"},{tCl:"00062"},{tCl:"00063"},{tCl:"STANDARDBEARER"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"},{tCl:"00070"},{tCl:"00071"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});
+
+});
+$.tooltipster.setDefaults({
+arrow: true,
+delay: [200, 200],
+interactive: true,
+theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+});
+</script>
+<script type="text/javascript">
+var touchHover = function() {
+    $('.tooltip').on('touchstart', function(e) {
+          e.preventDefault();
+          return false;
+    });
+};
+$(document).ready(function() { touchHover(); });
+</script>
+</head>
+
+<body>
+<!--noindex-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')!='turn_it_off') {
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-3",
+		"renderTo": "yandex_rtb_R-A-3376916-3",
+		"type": "feed"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-2",
+		"type": "fullscreen",
+		"platform": "desktop"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-1",
+		"type": "fullscreen",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-5",
+		"type": "floorAd",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-6",
+		"type": "floorAd",
+		"platform": "desktop"
+	})
+})
+}});</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')=='turn_it_off') {
+	var oldlink = document.getElementsByTagName("link").namedItem('magnus_did_what');
+	oldlink.href = "/aos4/css/magnus_did121.css";
+}
+});
+</script>
+<div id="wrapper2"><div class="noprint"><div id="ezoic-pub-ad-placeholder-147"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(147)});</script></div>
+<div id="wrapper">
+<div class="noprint">
+<div style="position:relative"><div class="SiteHeader_wrapper"><div class="SiteHeader"><a href="/"><div class="SiteHeader_A"></div></a></div></div>
+<div class="NavWrapper_P">
+	<div class="NavDropdown_P">
+	<div class="NavBtn_P NavBtn_Datasheets">Warscrolls</div>
+	<div class="NavDropdown-content_P">
+		<span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/idoneth-deepkin/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-King" class="cnClr">Akhelian King</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Volturnos-High-King-of-the-Deep" class="cnClr">Volturnos, High King of the Deep</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulrender" class="cnClr">Isharann Soulrender</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulscryer" class="cnClr">Isharann Soulscryer</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Tidecaster" class="cnClr">Isharann Tidecaster</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Lotann-Warden-of-the-Soul-Ledgers" class="cnClr">Lotann, Warden of the Soul Ledgers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Mathaela-Oracle-of-the-Abyss" class="cnClr">Mathaela, Oracle of the Abyss</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Sea" class="cnClr">Eidolon of Mathlann, Aspect of the Sea</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Storm" class="cnClr">Eidolon of Mathlann, Aspect of the Storm</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Allopex" class="cnClr">Akhelian Allopex</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Ishlaen-Guard" class="cnClr">Akhelian Ishlaen Guard</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Morrsarr-Guard" class="cnClr">Akhelian Morrsarr Guard</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Reavers" class="cnClr">Namarti Reavers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls" class="cnClr">Namarti Thralls</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Namarti-Thralls" class="cnClr">Scourge of Ghyran Namarti Thralls</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Leviadon" class="cnClr">Akhelian Leviadon</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Manifestation</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Abyssal-Tendril" class="cnClr">Abyssal Tendril</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Incarnate-of-the-Deep" class="cnClr">Incarnate of the Deep</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Gloomtide-Shipwreck" class="cnClr">Gloomtide Shipwreck</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Bundo-Whalebiter" class="cnClr">Bundo Whalebiter</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Dawnrider-Lance" class="cnClr">Dawnrider Lance</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Drekki-s-Privateers" class="cnClr">Drekki’s Privateers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Drycha-s-Talons" class="cnClr">Drycha’s Talons</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elthwin-s-Thorns" class="cnClr">Elthwin’s Thorns</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Cities of Sigmar (4th edition)" src="/aos4/img/expansions/CoS_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Heroes-of-The-Jade-Abbey" class="cnClr">Heroes of The Jade Abbey</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Khinerai-Death-Flight" class="cnClr">Khinerai Death Flight</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Sigil-Convocation" class="cnClr">Sigil Convocation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Sky-Port-Profiteers" class="cnClr">Sky-Port Profiteers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Crimson-Lash" class="cnClr">The Crimson Lash</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Horizon-Seekers" class="cnClr">The Horizon Seekers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Lost-Song-Spirits" class="cnClr">The Lost-Song Spirits</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Twisted-Branch" class="cnClr">The Twisted Branch</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Valnir-s-Stormwing" class="cnClr">Valnir’s Stormwing</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Fjori-s-Flamebearers" class="cnClr">Fjori’s Flamebearers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Gotrek-Gurnisson" class="cnClr">Gotrek Gurnisson</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Norgrimm-s-Rune-Throng" class="cnClr">Norgrimm’s Rune Throng</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Saviours-of-Cinderfall" class="cnClr">Saviours of Cinderfall</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Blacktalons" class="cnClr">The Blacktalons</a></div></div></div></span>
+	</div>
+	</div>
+</div>
+	<div class="NavWrapper_M">
+
+	<div class="NavDropdown_Search">
+	<div class="NavBtn_Search">&nbsp;</div>
+	<div class="NavDropdown-content_Search">
+		<div class="yandex_search_line_short"><div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script></div>
+	</div>
+	</div>
+<div class="NavDropdown_A">
+	<div class="NavBtn_A">&nbsp;</div>
+	<div class="NavDropdown-content_A">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/about">About</a><a href="/aos4/the-rules/data-export">Data Export</a>
+	</div>
+	</div>
+	<div class="NavDropdown_S">
+	<div class="NavBtn_S">&nbsp;</div>
+	<div class="NavDropdown-content_S">
+		<div class="armylist_header">Settings</div><div style="clear:both"></div><label class="container">
+<input checked="true" type="checkbox" class="ShowForgeWorldDatasheets"></input>
+	<span class="checkmark"></span>Show Forge World warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowLegendaryDatasheets"></input>
+	<span class="checkmark"></span>Show Legends and not recommended rules/warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowFluff"></input>
+	<span class="checkmark"></span>Show fluff text
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPathToGlory"></input>
+	<span class="checkmark"></span>Show Path to Glory rules
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPitchedBattleProfile"></input>
+	<span class="checkmark"></span>Show Battle Profile
+</label>
+<label style="margin-left:22px" class="container">
+<input checked="true" type="checkbox" class="ShowBaseSize"></input>
+	<span class="checkmark"></span>Show base size
+</label>
+<label class="container" style="padding-left:0px">Color theme: 
+	<select class="ctrlSelect ColorTheme" size="1">
+		<option class="ctrlOption" value="default">OS default</option>
+		<option class="ctrlOption" value="light">Bright</option>
+		<option class="ctrlOption" value="dark">Dark</option>
+	</select>
+</label>
+	</div>
+	</div>
+<div class="NavDropdown">
+	<div class="NavBtn NavBtn_TheRules">The Rules</div>
+	<div class="NavDropdown-content">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/quick-start-guide">Quick Start Guide</a><a href="/aos4/the-rules/the-core-rules">The Core Rules</a><a href="/aos4/the-rules/faqs">FAQs</a><div class="NavColumns_indent_solid"><br></div><div class="BreakInsideAvoid"><div class="FactionHeader">Matched Play Battlepack</div><a href="/aos4/the-rules/first-blood">First Blood</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Path to Glory Battlepack</div><a href="/aos4/the-rules/ascension">Ascension</a><a href="/aos4/the-rules/ravaged-coast">Ravaged Coast</a><a href="/aos4/the-rules/blighted-wilds">Blighted Wilds</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">General’s Handbooks</div><a href="/aos4/the-rules/general-s-handbook-2024-25">General’s Handbook 2024-25</a><a href="/aos4/the-rules/general-s-handbook-2025-26">General’s Handbook 2025-26</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Battleplans</div><a href="/aos4/the-rules/bunker">Bunker</a><a href="/aos4/the-rules/red-gobbo-battleplan">Red Gobbo Battleplan</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Flashpoints</div><a href="/aos4/the-rules/siege-of-lethis">Siege of Lethis</a></div>
+	</div>
+	</div>
+	<div class="NavDropdown">
+	<div class="NavBtn NavBtn_Factions">Factions</div>
+	<div class="NavDropdown-content">
+		<div class="NavColumns3"><div class="BreakInsideAvoid"><div class="FactionHeader">Order</div><a   href="/aos4/factions/cities-of-sigmar">Cities of Sigmar</a><a   href="/aos4/factions/daughters-of-khaine">Daughters of Khaine</a><a   href="/aos4/factions/fyreslayers">Fyreslayers</a><a   href="/aos4/factions/idoneth-deepkin">Idoneth Deepkin</a><a   href="/aos4/factions/kharadron-overlords">Kharadron Overlords</a><a   href="/aos4/factions/lumineth-realm-lords">Lumineth Realm-lords</a><a   href="/aos4/factions/seraphon">Seraphon</a><a   href="/aos4/factions/stormcast-eternals">Stormcast Eternals</a><a   href="/aos4/factions/sylvaneth">Sylvaneth</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Chaos</div><a   href="/aos4/factions/beasts-of-chaos">Beasts of Chaos</a><a   href="/aos4/factions/blades-of-khorne">Blades of Khorne</a><a   href="/aos4/factions/disciples-of-tzeentch">Disciples of Tzeentch</a><a   href="/aos4/factions/hedonites-of-slaanesh">Hedonites of Slaanesh</a><a   href="/aos4/factions/helsmiths-of-hashut">Helsmiths of Hashut</a><a   href="/aos4/factions/maggotkin-of-nurgle">Maggotkin of Nurgle</a><a   href="/aos4/factions/skaven">Skaven</a><a   href="/aos4/factions/slaves-to-darkness">Slaves to Darkness</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Death</div><a   href="/aos4/factions/flesh-eater-courts">Flesh-eater Courts</a><a   href="/aos4/factions/nighthaunt">Nighthaunt</a><a   href="/aos4/factions/ossiarch-bonereapers">Ossiarch Bonereapers</a><a   href="/aos4/factions/soulblight-gravelords">Soulblight Gravelords</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Destruction</div><a   href="/aos4/factions/bonesplitterz">Bonesplitterz</a><a   href="/aos4/factions/gloomspite-gitz">Gloomspite Gitz</a><a   href="/aos4/factions/ironjawz">Ironjawz</a><a   href="/aos4/factions/kruleboyz">Kruleboyz</a><a   href="/aos4/factions/ogor-mawtribes">Ogor Mawtribes</a><a   href="/aos4/factions/sons-of-behemat">Sons of Behemat</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Other</div><a   href="/aos4/factions/endless-spells">Endless Spells</a></div></div>
+	</div>
+	</div>
+</div>
+<div class="NavUnderline_M"></div>
+
+<div class="logoBW_float">
+<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logoBW no_tooltip" title="Support on Boosty"></div></a>
+<a class="noads_logoBW tooltip" data-tooltip-content="#tooltip_contentLoginForm"></a>
+<div class="slide-bottom" id="error-login"></div>
+<div class="slide-bottom" id="email-sent"></div>
+</div>
+</div>
+
+<div class="yandex_search_line yandex_search_line_show">
+<div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+</div>
+<div style="clear:both"></div>
+</div>
+<h1 class="page_header2"><span class="page_header_span2 kwbu tooltip" data-tooltip-content="#tooltip_contentFactionRules">Idoneth Deepkin</span><span class="page_header_span2"> – Akhelian Thrallmaster</span></h1>
+<div class="noprint">
+
+</div>
+<!--/noindex-->
+<div class="noprint"><div class="selectionWarning"><div class="WahapediaWarningSign"></div>This warscroll does not meet the selection criteria (see <b>Settings</b> tab).</div></div>
+<div class="datasheet  "><div class="wsHeader_short"><div class="nails-header"><span class="nails">•</span>IDONETH DEEPKIN WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Akhelian Thrallmaster<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Idoneth%20Deepkin%20Akhelian%20Thrallmaster%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div><div class="wsCharLegend"><div class="BreakInsideAvoid Corner22f stretchTable" style="padding:0px;max-width:100%;"><table class=" stretchTable collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22f_1 dsColorCSSID"></td><td class="Corner22f_2 dsColorCSSID"></td><td class="Corner22f_3 dsColorCSSID"></td></tr><tr><td class="Corner22f_8 dsColorCSSID"></td><td class="Corner22f_9 dsColorBanID"><div class="AoS_profile"><div class="wsMove">6"</div><div class="wsWounds">5</div><div class="wsSave">5+</div><div class="wsBravery">2</div></div><div class="ShowFluff wsLegend">Thrallmasters are cunning and sea-scarred Akhelians who lead the Namarti hosts into battle. Master duellists skilled with all manner of exotic weaponry, they scythe through their foes with contemptuous ease.</div></td><td class="Corner22f_4 dsColorCSSID"></td></tr><tr><td class="Corner22f_7 dsColorCSSID"></td><td class="Corner22f_6 dsColorCSSID"></td><td class="Corner22f_5 dsColorCSSID"></td></tr></tbody></table></div></div><div class="wsBody"><div class="wsBodyTop"><div class="wsHeader_long"><div class="nails-header"><span class="nails">•</span>IDONETH DEEPKIN WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Akhelian Thrallmaster<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Idoneth%20Deepkin%20Akhelian%20Thrallmaster%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div><div class="wsTable"><table class="wTable" border="1" cellspacing="0" cellpadding="2" style="border-collapse:collapse;border-width:0px"><tr class="dsColorBgID wsHeaderRow"><td class="wsHeaderCellName_MeleeWeapons wsDataCell_long"></td><td class="wsHeaderCellName_NoRng"><div class="wsHeaderCellName_MeleeWeapons wsDataCell_short"></div><span class="wsDataCell_long">MELEE WEAPONS</span></td><td class="wsHeaderCell">Atk</td><td class="wsHeaderCell">Hit</td><td class="wsHeaderCell">Wnd</td><td class="wsHeaderCell">Rnd</td><td class="wsHeaderCell">Dmg</td></tr><tbody class="bkg"><tr class="wsDataRow wsDataRow_short"><td colspan="6" style="border-width:0px">Esoteric Weapons</td></tr><tr class="wsDataRow dsColorFrID"><td class="wsDataCell_long wsBorderN_"></td><td class="wsDataCell_short wsBorderN_ dsColorFrID"></td><td class="wsDataCell_long wsBorderN_ dsColorFrID">Esoteric Weapons</td><td class="wsBorderM_ wsCell dsColorFrID">6</td><td class="wsBorderM_ wsCell dsColorFrID">3+</td><td class="wsBorderM_ wsCell dsColorFrID">4+</td><td class="wsBorderM_ wsCell dsColorFrID">1</td><td class="wsBorderR_ wsCell dsColorFrID">2</td></tr></tbody></table></div><div style="clear:both"></div><div class="Columns2_AoS"><div class="BreakInsideAvoid PitchedBattleProfile ShowPitchedBattleProfile"><div class="wsAbilityHeader">BATTLE PROFILE</div><a href="/aos4/the-rules/the-core-rules/#Battle-Profiles"><div class="tooltip_link_inline"></div></a><br><span class="redfont">Unit Size</span><b>: </b>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redfont">Points</span><b>: </b>90<br><span class="ShowBaseSize"><span class="redfont">Base size</span><b>: </b>32mm</span><br class="ShowBaseSize"><div><b>Can be reinforced: </b>No</div><div><b>Regiment Options: </b>Any <span class="tooltipIDONETHDEEPKIN" data-tooltip-content="#tooltip_contentIDONETHDEEPKIN" data-tooltip-anchor="#tooltip_contentIDONETHDEEPKIN"><span class="kwb kwbu">IDONETH</span> <span class="kwb kwbu">DEEPKIN</span></span></div><div><b>Notes: </b>This <span class="kwb">HERO</span> can join an eligible <span class="tooltip00030" data-tooltip-content="#tooltip_content00030"><span class="tt kwbu">regiment</span></span> as an <span class="tooltip00031" data-tooltip-content="#tooltip_content00031" data-tooltip-anchor="#tooltip_content00031"><i><span class="tt kwbu">Akhelian</span> <span class="tt kwbu">Raidmaster</span></i></span>.</div></div><div class="ShowPitchedBattleProfile"><br></div><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td class="abHeader" bgcolor="#802022"><img class="abLogo" src="/aos4/img/abOffensive.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#802022" class="abBody abNoReaction"><b>AKHELIAN INSIGHTS<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Thrallmasters train their Namarti warriors in Akhelian techniques to maximise their martial capabilities.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> Melee weapons used by friendly <span class="tooltipNAMARTI" data-tooltip-content="#tooltip_contentNAMARTI" data-tooltip-anchor="#tooltip_contentNAMARTI"><span class="kwb kwbu">NAMARTI</span></span> units have <span class="tooltip00071" data-tooltip-content="#tooltip_content00071"><span class="tt kwbu">Crit</span> <span class="tt kwbu">(2</span> <span class="tt kwbu">Hits)</span></span> while they are wholly within 12" of this unit.</div><div><br></div></div></div><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td class="abHeader" bgcolor="#802022"><img class="abLogo" src="/aos4/img/abOffensive.png">Reaction: You declared a <span class="tooltip00018" data-tooltip-content="#tooltip_content00018"><span class="tt kwbu"><span class="kwb">FIGHT</span></span> <span class="tt kwbu">ability</span></span> for this unit</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#802022" class="abBody abIsReaction"><b>THRALLMASTER<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Thrallmasters are cunning and sea-scarred Akhelians who lead the Namarti hosts into battle.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> Pick a friendly <a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls"><b>Namarti Thralls</b></a> unit that has not used a <span class="tooltip00018" data-tooltip-content="#tooltip_content00018"><span class="tt kwbu"><span class="kwb">FIGHT</span></span> <span class="tt kwbu">ability</span></span> this turn and is within this unit’s <span class="tooltip00004" data-tooltip-content="#tooltip_content00004"><span class="tt kwbu">combat</span> <span class="tt kwbu">range</span></span> to be the target. The target can be picked to use a FIGHT ability immediately after the <span class="kwb">FIGHT</span> ability used by this unit has been resolved.</div></div></div></div><div class="wsBodyBottom"><div style="clear:both"><br></div><table width=100% border="0" cellspacing="0" cellpadding="6"><tr><td rowspan="2" class="wsKeywordHeader dsColorBgID"><div style="font-weight:700; font-family:'Minion-Pro',serif;">KEYWORDS</div></td><td class="wsKeywordLine1 dsColorFrID"><span class="tooltipkHERO" data-tooltip-content="#tooltip_contentHERO" data-tooltip-anchor="#tooltip_contentHERO"><span class="kwb kwbu">HERO</span></span>, <span class="tooltipkINFANTRY" data-tooltip-content="#tooltip_contentINFANTRY" data-tooltip-anchor="#tooltip_contentINFANTRY"><span class="kwb kwbu">INFANTRY</span></span></td></tr><tr><td class="wsKeywordLine2 dsColorFrID"><span class="tooltipkORDER" data-tooltip-content="#tooltip_contentORDER" data-tooltip-anchor="#tooltip_contentORDER"><span class="kwb kwbu">ORDER</span></span>, <span class="tooltipkIDONETHDEEPKIN" data-tooltip-content="#tooltip_contentIDONETHDEEPKIN" data-tooltip-anchor="#tooltip_contentIDONETHDEEPKIN"><span class="kwb kwbu">IDONETH</span> <span class="kwb kwbu">DEEPKIN</span></span>, <span class="tooltipkAELF" data-tooltip-content="#tooltip_contentAELF" data-tooltip-anchor="#tooltip_contentAELF"><span class="kwb kwbu">AELF</span></span>, <span class="tooltipkAKHELIAN" data-tooltip-content="#tooltip_contentAKHELIAN" data-tooltip-anchor="#tooltip_contentAKHELIAN"><span class="kwb kwbu">AKHELIAN</span></span></td></tr></table></div></div></div><div style="clear:both"></div>
+<!--noindex--><div class="tooltip_templates"><span id="tooltip_content00004"><div class="tooltip_header">7.0 Combat Range</div><a href="/aos4/the-rules/the-core-rules/#Combat-Range"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+<div class="Columns2"><div class="BreakInsideAvoid">Each model has a <b>combat range</b> that extends 3" horizontally from its base and any distance vertically from that circle to form a cylinder. The combat range of a unit extends 3" horizontally and any distance vertically from every model in that unit. Units from opposing armies that are within each other’s combat range and that are <b><a href="/aos4/the-rules/the-core-rules/#Visibility">visible</a></b> to each other are <b>in combat</b> with each other. When a unit that is not in combat enters the combat range of a visible enemy unit, it <b>moves into combat</b>.<br>A model is considered to be in combat with an enemy unit if that unit is within the model’s combat range and visible to it’<br><br></div><div class="BreakInsideAvoid Corner22r" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22r_1"></td><td class="Corner22r_2"></td><td class="Corner22r_3"></td></tr><tr><td class="Corner22r_8"></td><td class="Corner22r_9"><ul><li>A unit’s combat range extends 3" out from every model in that unit.</li><li>If any enemy models are within a unit’s combat range and visible to it, that unit is in combat.</li></ul></td><td class="Corner22r_4"></td></tr><tr><td class="Corner22r_7"></td><td class="Corner22r_6"></td><td class="Corner22r_5"></td></tr></tbody></table></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_contentINFANTRY"><p>The <span class="kwb">INFANTRY</span> keyword is used in the following Idoneth Deepkin warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulrender" class="cnClr">Isharann Soulrender</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulscryer" class="cnClr">Isharann Soulscryer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Tidecaster" class="cnClr">Isharann Tidecaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Lotann-Warden-of-the-Soul-Ledgers" class="cnClr">Lotann, Warden of the Soul Ledgers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Mathaela-Oracle-of-the-Abyss" class="cnClr">Mathaela, Oracle of the Abyss</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Reavers" class="cnClr">Namarti Reavers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls" class="cnClr">Namarti Thralls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Namarti-Thralls" class="cnClr">Scourge of Ghyran Namarti Thralls</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentORDER"><p>The <span class="kwb">ORDER</span> keyword is used in the following Idoneth Deepkin warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Abyssal-Tendril" class="cnClr">Abyssal Tendril</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Allopex" class="cnClr">Akhelian Allopex</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Ishlaen-Guard" class="cnClr">Akhelian Ishlaen Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-King" class="cnClr">Akhelian King</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Leviadon" class="cnClr">Akhelian Leviadon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Morrsarr-Guard" class="cnClr">Akhelian Morrsarr Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Sea" class="cnClr">Eidolon of Mathlann, Aspect of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Storm" class="cnClr">Eidolon of Mathlann, Aspect of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Gloomtide-Shipwreck" class="cnClr">Gloomtide Shipwreck</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Incarnate-of-the-Deep" class="cnClr">Incarnate of the Deep</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulrender" class="cnClr">Isharann Soulrender</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulscryer" class="cnClr">Isharann Soulscryer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Tidecaster" class="cnClr">Isharann Tidecaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Lotann-Warden-of-the-Soul-Ledgers" class="cnClr">Lotann, Warden of the Soul Ledgers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Mathaela-Oracle-of-the-Abyss" class="cnClr">Mathaela, Oracle of the Abyss</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Reavers" class="cnClr">Namarti Reavers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls" class="cnClr">Namarti Thralls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Volturnos-High-King-of-the-Deep" class="cnClr">Volturnos, High King of the Deep</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Namarti-Thralls" class="cnClr">Scourge of Ghyran Namarti Thralls</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentIDONETHDEEPKIN"><p>The <span class="kwb">IDONETH</span> <span class="kwb">DEEPKIN</span> keyword is used in the following Idoneth Deepkin warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Abyssal-Tendril" class="cnClr">Abyssal Tendril</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Allopex" class="cnClr">Akhelian Allopex</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Ishlaen-Guard" class="cnClr">Akhelian Ishlaen Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-King" class="cnClr">Akhelian King</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Leviadon" class="cnClr">Akhelian Leviadon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Morrsarr-Guard" class="cnClr">Akhelian Morrsarr Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Sea" class="cnClr">Eidolon of Mathlann, Aspect of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Storm" class="cnClr">Eidolon of Mathlann, Aspect of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Gloomtide-Shipwreck" class="cnClr">Gloomtide Shipwreck</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Incarnate-of-the-Deep" class="cnClr">Incarnate of the Deep</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulrender" class="cnClr">Isharann Soulrender</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulscryer" class="cnClr">Isharann Soulscryer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Tidecaster" class="cnClr">Isharann Tidecaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Lotann-Warden-of-the-Soul-Ledgers" class="cnClr">Lotann, Warden of the Soul Ledgers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Mathaela-Oracle-of-the-Abyss" class="cnClr">Mathaela, Oracle of the Abyss</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Reavers" class="cnClr">Namarti Reavers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls" class="cnClr">Namarti Thralls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Volturnos-High-King-of-the-Deep" class="cnClr">Volturnos, High King of the Deep</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Namarti-Thralls" class="cnClr">Scourge of Ghyran Namarti Thralls</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentAELF"><p>The <span class="kwb">AELF</span> keyword is used in the following Idoneth Deepkin warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Allopex" class="cnClr">Akhelian Allopex</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Ishlaen-Guard" class="cnClr">Akhelian Ishlaen Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-King" class="cnClr">Akhelian King</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Leviadon" class="cnClr">Akhelian Leviadon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Morrsarr-Guard" class="cnClr">Akhelian Morrsarr Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Sea" class="cnClr">Eidolon of Mathlann, Aspect of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Storm" class="cnClr">Eidolon of Mathlann, Aspect of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulrender" class="cnClr">Isharann Soulrender</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulscryer" class="cnClr">Isharann Soulscryer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Tidecaster" class="cnClr">Isharann Tidecaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Lotann-Warden-of-the-Soul-Ledgers" class="cnClr">Lotann, Warden of the Soul Ledgers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Mathaela-Oracle-of-the-Abyss" class="cnClr">Mathaela, Oracle of the Abyss</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Reavers" class="cnClr">Namarti Reavers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls" class="cnClr">Namarti Thralls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Volturnos-High-King-of-the-Deep" class="cnClr">Volturnos, High King of the Deep</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Namarti-Thralls" class="cnClr">Scourge of Ghyran Namarti Thralls</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentAKHELIAN"><p>The <span class="kwb">AKHELIAN</span> keyword is used in the following Idoneth Deepkin warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Allopex" class="cnClr">Akhelian Allopex</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Ishlaen-Guard" class="cnClr">Akhelian Ishlaen Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-King" class="cnClr">Akhelian King</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Leviadon" class="cnClr">Akhelian Leviadon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Morrsarr-Guard" class="cnClr">Akhelian Morrsarr Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Volturnos-High-King-of-the-Deep" class="cnClr">Volturnos, High King of the Deep</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentNAMARTI"><p>The <span class="kwb">NAMARTI</span> keyword is used in the following Idoneth Deepkin warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Reavers" class="cnClr">Namarti Reavers</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls" class="cnClr">Namarti Thralls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Namarti-Thralls" class="cnClr">Scourge of Ghyran Namarti Thralls</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentArmyList"><span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/idoneth-deepkin/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-King" class="cnClr">Akhelian King</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Volturnos-High-King-of-the-Deep" class="cnClr">Volturnos, High King of the Deep</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulrender" class="cnClr">Isharann Soulrender</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulscryer" class="cnClr">Isharann Soulscryer</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Tidecaster" class="cnClr">Isharann Tidecaster</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Lotann-Warden-of-the-Soul-Ledgers" class="cnClr">Lotann, Warden of the Soul Ledgers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Mathaela-Oracle-of-the-Abyss" class="cnClr">Mathaela, Oracle of the Abyss</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Sea" class="cnClr">Eidolon of Mathlann, Aspect of the Sea</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Storm" class="cnClr">Eidolon of Mathlann, Aspect of the Storm</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Allopex" class="cnClr">Akhelian Allopex</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Ishlaen-Guard" class="cnClr">Akhelian Ishlaen Guard</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Morrsarr-Guard" class="cnClr">Akhelian Morrsarr Guard</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Reavers" class="cnClr">Namarti Reavers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Namarti-Thralls" class="cnClr">Namarti Thralls</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Namarti-Thralls" class="cnClr">Scourge of Ghyran Namarti Thralls</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Cyreni-s-Razors" class="cnClr">Cyreni’s Razors</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elathain-s-Soulraid" class="cnClr">Elathain’s Soulraid</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Leviadon" class="cnClr">Akhelian Leviadon</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Manifestation</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Abyssal-Tendril" class="cnClr">Abyssal Tendril</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Incarnate-of-the-Deep" class="cnClr">Incarnate of the Deep</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Gloomtide-Shipwreck" class="cnClr">Gloomtide Shipwreck</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Bundo-Whalebiter" class="cnClr">Bundo Whalebiter</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Dawnrider-Lance" class="cnClr">Dawnrider Lance</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Drekki-s-Privateers" class="cnClr">Drekki’s Privateers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Drycha-s-Talons" class="cnClr">Drycha’s Talons</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Elthwin-s-Thorns" class="cnClr">Elthwin’s Thorns</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Cities of Sigmar (4th edition)" src="/aos4/img/expansions/CoS_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Heroes-of-The-Jade-Abbey" class="cnClr">Heroes of The Jade Abbey</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Khinerai-Death-Flight" class="cnClr">Khinerai Death Flight</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Sigil-Convocation" class="cnClr">Sigil Convocation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Sky-Port-Profiteers" class="cnClr">Sky-Port Profiteers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Crimson-Lash" class="cnClr">The Crimson Lash</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Horizon-Seekers" class="cnClr">The Horizon Seekers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Lost-Song-Spirits" class="cnClr">The Lost-Song Spirits</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Twisted-Branch" class="cnClr">The Twisted Branch</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Valnir-s-Stormwing" class="cnClr">Valnir’s Stormwing</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Fjori-s-Flamebearers" class="cnClr">Fjori’s Flamebearers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Gotrek-Gurnisson" class="cnClr">Gotrek Gurnisson</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Norgrimm-s-Rune-Throng" class="cnClr">Norgrimm’s Rune Throng</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Saviours-of-Cinderfall" class="cnClr">Saviours of Cinderfall</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/idoneth-deepkin/The-Blacktalons" class="cnClr">The Blacktalons</a></div></div></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentFactionRules"><span class="contents"><div class="tooltip_header">Faction Rules</div><a href="/aos4/factions/idoneth-deepkin"><div class="tooltip_link"></div></a><div style="clear:both"></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#Battle-Traits" class="cnClr">Battle Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#Battle-Formations" class="cnClr">Battle Formations</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#Heroic-Traits" class="cnClr">Heroic Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#Artefacts-of-Power" class="cnClr">Artefacts of Power</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#Spell-Lore" class="cnClr">Spell Lore</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#Manifestation-Lore" class="cnClr">Manifestation Lore</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#The-First-Phalanx-of-Ionrach" class="cnClr">The First Phalanx of Ionrach</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#Wardens-of-the-Chorrileum" class="cnClr">Wardens of the Chorrileum</a></div><div class="clFl sShowPathToGlory w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/#PATH-TO-GLORY" class="cnClr">PATH TO GLORY</a></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentLoginForm"><form action="/login.php" method="POST" id="disable-ads">
+<div class="lfWrapper">
+<h4 style="padding-bottom:6px">Disable Ads</h4>
+<label class="lfLabel" for="email" id="email">E-mail:</label> <input id="user-text-field" type="email" class="lfInput_w lfInput" autocomplete="username" name="email" id="email" value="" />
+<br><div><label class="lfLabel" for="passcode" type="password">Pin code:</label> <input id="password-text-field" type="password" autocomplete="current-password" style="width:68px" class="lfInput" name="passcode" value="" /> <button class="lfButton" id="btnDisableAds">Disable Ads</button></div>
+<input type="text" style="display:none"  name="g-recaptcha-response" id="captcha-box"></input>
+<button class="lfDisableAds" id="btnGetPin">Get new pin code</button>
+<br><a href="https://boosty.to/wahapedia">Boosty</a> subscribers may disable ads:
+<br>1. Enter e-mail you have used to login on Boosty.
+<br>2. Press <b>Get new pin code</b> button (if you don’t have it already)
+<br>3. Enter pin code.
+<br>
+<br><i>Note that login database updated once a day. So, if you are a new booster - try tomorrow. And thank you!</i>
+</div>
+</form></span></div><div class="tooltip_templates"><span id="tooltip_content00018"><div class="tooltip_header">13.1 Fight Abilities</div><a href="/aos4/the-rules/the-core-rules/#Fight-Abilities"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Abilities with the <span class="kwb">FIGHT</span> keyword follow a different sequence to other abilities. When the players are using <div class="term_red">Combat Phase</div> abilities as described in <a href="/aos4/the-rules/the-core-rules/#Turn-Phases">13.0</a>, they cannot use <span class="kwb">FIGHT</span> abilities.<br><br>After the players have finished using <div class="term_red">Combat Phase</div> abilities that are <b>not</b> <span class="kwb">FIGHT</span> abilities, they must alternate picking 1 eligible unit to use a <span class="kwb">FIGHT</span> ability, starting with the active player. Each unit in combat <b>must</b> use a <span class="kwb">FIGHT</span> ability if it is able to.<br><br>Once a player has no more units that are eligible to use a <span class="kwb">FIGHT</span> ability, the other player continues to pick units that are eligible to use a <span class="kwb">FIGHT</span> ability, one after another, until there are no more units that are eligible to use a <span class="kwb">FIGHT</span> ability.<br><br><div class="BreakInsideAvoid Corner22r" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22r_1"></td><td class="Corner22r_2"></td><td class="Corner22r_3"></td></tr><tr><td class="Corner22r_8"></td><td class="Corner22r_9"><ul class="Rhombus"><li>The active player uses Combat Phase abilities that are <b>not</b> <span class="kwb">FIGHT</span> abilities, then the opponent does the same.</li><li>Players alternate picking a unit to use a <span class="kwb">FIGHT</span> ability, starting with the active player.</li><li>Each unit <b>must</b> use a <span class="kwb">FIGHT</span> ability if it is able to.</li></ul></td><td class="Corner22r_4"></td></tr><tr><td class="Corner22r_7"></td><td class="Corner22r_6"></td><td class="Corner22r_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00030"><div class="tooltip_header">3.1 Regiments</div><a href="/aos4/the-rules/the-core-rules/#Regiments"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Armies are made up of one or more <b>regiments</b>, each of which is led by a Hero. You must have <b>at least 1</b> regiment in your army, and you can include a <b>maximum of 5</b> regiments. To add a regiment, pick <span class="kwb">1</span> <span class="kwb">HERO</span> from your faction, then pick up to <b>3</b> non‑<span class="kwb">HERO</span> units to accompany them.<br><br>Each <span class="kwb">HERO</span>’s battle profile lists which units can be added to their regiment, and each non-<span class="kwb">HERO</span> unit’s battle profile lists any relevant <a href="/aos4/the-rules/the-core-rules/#Keywords">keywords</a> it has. The <a href="/aos4/the-rules/the-core-rules/#Battle-Profiles">battle profiles</a> of some <span class="kwb">HEROES</span> may say that they can be added to the regiment of another <span class="kwb">HERO</span> in place of a non-<span class="kwb">HERO</span> unit in that regiment.
+</span></div><div class="tooltip_templates"><span id="tooltip_content00031">Those <span class="kwb">HEROES</span> can join an eligible <span class="tooltip00030" data-tooltip-content="#tooltip_content00030"><span class="tt kwbu">regiment</span></span> as a <i>Akhelian Raidmaster</i>.<br><br><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Infantry Hero</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentHERO"><p>The <span class="kwb">HERO</span> keyword is used in the following Idoneth Deepkin warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-King" class="cnClr">Akhelian King</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Akhelian-Thrallmaster" class="cnClr">Akhelian Thrallmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Sea" class="cnClr">Eidolon of Mathlann, Aspect of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Eidolon-of-Mathlann-Aspect-of-the-Storm" class="cnClr">Eidolon of Mathlann, Aspect of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Sea" class="cnClr">Ikon of the Sea</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Ikon-of-the-Storm" class="cnClr">Ikon of the Storm</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulrender" class="cnClr">Isharann Soulrender</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Soulscryer" class="cnClr">Isharann Soulscryer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Isharann-Tidecaster" class="cnClr">Isharann Tidecaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Lotann-Warden-of-the-Soul-Ledgers" class="cnClr">Lotann, Warden of the Soul Ledgers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Mathaela-Oracle-of-the-Abyss" class="cnClr">Mathaela, Oracle of the Abyss</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/idoneth-deepkin/Volturnos-High-King-of-the-Deep" class="cnClr">Volturnos, High King of the Deep</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/idoneth-deepkin/Scourge-of-Ghyran-Akhelian-Thrallmaster" class="cnClr">Scourge of Ghyran Akhelian Thrallmaster</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_content00071"><div class="tooltip_header">Crit (2 Hits)</div><div style="clear:both"></div>If an attack made with this weapon scores a <b><a href="">critical hit</a></b>, that attack scores 2 hits on the target unit instead of 1. Make a <b><a href="">wound roll</a></b> for each hit.</span></div><!--/noindex-->
+<div style="clear:both"></div>
+<!--noindex-->
+
+<div class="noprint"><div id="btnBackToTop"></div></div>
+
+<div class="tooltipArmyList" data-tooltip-content="#tooltip_contentArmyList" id="btnArmyList"></div>
+<script type='text/javascript'>
+$(window).scroll(function() {
+if ($(this).scrollTop() >= 200) {
+$('#btnBackToTop').fadeIn(300); 
+} else {
+$('#btnBackToTop').fadeOut(300); 
+}
+});
+
+$('#btnBackToTop').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop_Hover.png); background-image: var(--button-to-top-hover)');
+	$(this).fadeIn(300);
+	return true;
+});
+
+$('#btnBackToTop').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop.png); background-image: var(--button-to-top)');
+		$(this).fadeOut(300);
+   document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnBackToTop').on('click', function () { 
+	'use strict';
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnArmyList').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList_Hover.png); background-image: var(--button-army-list-hover)');
+	return true;
+});
+$('#btnArmyList').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList.png); background-image: var(--button-army-list)');
+	return true;
+});
+
+$('#btnContents').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents_Hover.png); background-image: var(--button-contents-hover)');
+	return true;
+});
+$('#btnContents').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents.png); background-image: var(--button-contents)');
+	return true;
+});
+</script>
+</div>
+<div class="noprint">
+	<div align="center"><div class="author">© Vyacheslav Maltsev 2013-2026</div></div>
+	<div style="display:flex;justify-content:center;align-items:center;">
+		<div class="social_buttons">
+			<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logo no_tooltip" title="Support on Boosty"></div></a>
+			<a target="_blank" href="https://vk.com/wahapedia"><div class="social_vk no_tooltip" title="Follow on VKontakte"></div></a>
+			<a target="_blank" href="https://discord.gg/VAXG2jRjXY"><div class="social_dd no_tooltip" title="Join Discord server"></div></a>
+			<a target="_blank" href="mailto:info@wahapedia.ru"><div class="social_email no_tooltip" title="Send e-mail"></div></a>
+		</div>		
+	</div>
+	<div id="ezoic-pub-ad-placeholder-103"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(103)});</script><div id="yandex_rtb_R-A-3376916-3"></div>
+</div>
+</div>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-57173050-3', 'auto');
+ga('send', 'pageview');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YCMHCMW8RQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YCMHCMW8RQ');
+</script>
+<!--/noindex-->
+</body>
+</html>

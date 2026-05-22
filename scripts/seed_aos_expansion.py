@@ -366,8 +366,8 @@ def _do_seed(db, GameSystem, Faction, Unit):
                 u.points_cost = pts
                 u.unit_role = role
                 u.model_count = model_count
-                u.stats_json = stats
-                u.keywords_json = keywords
+                # Do NOT overwrite scraped JSON fields on existing rows
+                # u.stats_json / u.keywords_json intentionally omitted
                 u.companions_json = companions
                 u.image_path = image_path
                 log.info('[~] %s (updated)', name)

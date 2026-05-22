@@ -5,19 +5,37 @@
 <section class="armies-builder-section">
   <div class="container">
 
-    <div class="builder-header">
-      <div class="builder-header-left">
-        <p class="eyebrow"><a href="{{ url_for('armies.index') }}">Meus Exércitos</a> &rsaquo; {{ army.faction.name }}</p>
-        <h1 class="section-title">{{ army.name }}</h1>
-        <div class="builder-header-meta">
+    {# ── Top-bar header (Battlebase-style compact topbar) ── #}
+    <div class="army-topbar">
+      <div class="army-topbar-left">
+        <p class="eyebrow" style="margin-bottom:0.15rem;font-size:0.62rem;">
+          <a href="{{ url_for('armies.index') }}">Exércitos</a> &rsaquo; {{ army.faction.name }}
+        </p>
+        <div class="army-topbar-title-row">
+          <h1 class="army-topbar-name">{{ army.name }}</h1>
+          {% if army.faction.game_system %}
+            <span class="army-topbar-sys">{{ army.faction.game_system.code | upper }}</span>
+          {% endif %}
+        </div>
+        <div class="army-topbar-chips">
           <span class="role-tag">{{ army.faction.name }}</span>
+          {% if army.faction.grand_alliance %}
+            <span class="alliance-badge alliance-{{ army.faction.grand_alliance | lower }}">{{ army.faction.grand_alliance }}</span>
+          {% endif %}
           <span class="role-tag">{{ army.battlepack | replace('_',' ') | title }}</span>
           <span class="pts-badge">{{ result.points.total }}<span class="pts-label">/{{ result.points.limit }}pts</span></span>
+          {% if result.is_legal %}
+            <span class="legal-pill legal-pill--legal">LEGAL</span>
+          {% else %}
+            <span class="legal-pill legal-pill--illegal">ILEGAL</span>
+          {% endif %}
         </div>
       </div>
-      <div class="builder-header-actions">
+      <div class="army-topbar-actions">
         {% if army.public_token %}
-          <a href="{{ url_for('armies.public_view', token=army.public_token) }}" class="btn-secondary btn-sm" target="_blank">Ver Público</a>
+          <a href="{{ url_for('armies.public_view', token=army.public_token) }}"
+             class="btn-secondary btn-sm army-topbar-share" target="_blank"
+             title="Link público copiado">&#10138; Compartilhar</a>
           <form method="POST" action="{{ url_for('armies.unpublish', army_id=army.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="btn-secondary btn-sm">Despublicar</button>
@@ -25,26 +43,23 @@
         {% else %}
           <form method="POST" action="{{ url_for('armies.publish', army_id=army.id) }}" style="display:inline;">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="btn-secondary btn-sm">Publicar</button>
+            <button type="submit" class="btn-secondary btn-sm">&#128257; Publicar</button>
           </form>
         {% endif %}
-
         <button class="btn-secondary btn-sm"
-                onclick="document.getElementById('edit-modal').style.display='flex'">Editar</button>
-
+                onclick="document.getElementById('edit-modal').style.display='flex'">&#9998; Editar</button>
         <button class="btn-danger btn-sm"
-                hx-get="{{ url_for('armies.show', army_id=army.id) }}"
                 onclick="document.getElementById('delete-modal-container').innerHTML=''; loadDeleteModal()">Excluir</button>
       </div>
     </div>
 
-    <div class="builder" id="builder">
+    {# ── Faction Rules Panel ── #}
+    {% include 'armies/_faction_rules.html' %}
 
-      <div class="builder-rail" id="roster-rail">
-        {% include 'armies/_roster_pool.html' %}
-      </div>
+    <div class="builder builder--no-left" id="builder">
 
       <div class="builder-center">
+        {% include 'armies/_unit_pool.html' %}
         <div id="regiments-aux-container">
           {% include 'armies/_regiments_and_aux.html' %}
         </div>

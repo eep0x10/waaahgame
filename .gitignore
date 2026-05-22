@@ -12,3 +12,36 @@ build/
 htmlcov/
 *.db
 *.sqlite3
+
+# Backup dirs and files
+*.bak
+*.bak_*
+**/units.bak_*/
+**/units/_backup_*/
+**/_backup_pre_*/
+**/_backup_targeted_*/
+app/static/css/app.css.bak_*
+
+# Cache and extraction artifacts
+scripts/cache/
+*.clean.md.bak
+
+# Logs
+*.log
+logs/
+
+# Docker volumes / data
+data/
+volumes/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Local docker
+.docker/
+docker-compose.override.yml

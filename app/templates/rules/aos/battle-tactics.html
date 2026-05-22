@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+{% block title %}Battle Tactics — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#tactical-gambit">Tactical Gambit</a></li>
+        <li><a href="#scoring">Como Pontuar</a></li>
+        <li><a href="#universal">Táticas Universais</a></li>
+        <li><a href="#ghb-tactics">Táticas do GHB 2025-26</a></li>
+        <li><a href="#faction-tactics">Táticas de Facção</a></li>
+        <li><a href="#tips">Dicas de Uso</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Battle Tactics
+      </p>
+      <h1 class="section-title" id="overview">Battle Tactics</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        <strong>Battle Tactics</strong> são objetivos secundários escolhidos a cada turno — metas
+        específicas que, se cumpridas antes do fim do turno do jogador ativo, concedem
+        <strong>Victory Points</strong> extras. São a fonte de diferenciação táticas e uma das
+        principais formas de fechar a pontuação em partidas equilibradas.
+      </p>
+
+      <!-- Tactical Gambit -->
+      <h2 id="tactical-gambit">Tactical Gambit</h2>
+      <p>
+        No <strong>início de cada turno do jogador ativo</strong> (no Start of Turn), o jogador
+        usa a habilidade <strong>Tactical Gambit</strong> para escolher sua Battle Tactic da rodada:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>Escolha uma Battle Tactic disponível (Universal, GHB ou Facção, conforme elegível).</li>
+        <li>Anuncie a tática escolhida ao oponente — não é segredo.</li>
+        <li>Tente completar a condição de pontuação durante este turno.</li>
+        <li>Se completar antes do End of Turn, marque os Victory Points indicados.</li>
+      </ol>
+      <div class="rules-callout">
+        <strong>Restrição de repetição.</strong> Se você foi segundo no Battle Round anterior
+        (seu oponente foi primeiro) e neste Battle Round você vai primeiro, você <em>não pode</em>
+        escolher uma Battle Tactic neste turno — use Tactical Gambit para declarar &ldquo;nenhuma&rdquo;.
+        Isso é a regra anti-Double Turn de Battle Tactics.
+      </div>
+      <div class="rules-callout">
+        <strong>Pontuação obrigatória.</strong> Se as condições da sua Battle Tactic foram
+        cumpridas durante o turno, você <em>deve</em> pontuar — não é opcional. Da mesma forma,
+        cada tática pode ser completada no máximo uma vez por jogo.
+      </div>
+
+      <!-- Scoring -->
+      <h2 id="scoring">Como Pontuar</h2>
+      <p>
+        Cada Battle Tactic completada vale <strong>4 Victory Points</strong>. Esse valor é fixo
+        para todas as Battle Tactics universais — não há variação por dificuldade. Os VPs de Battle
+        Tactics somam-se aos VPs de objetivos no mapa para determinar o placar geral.
+      </p>
+      <p>
+        Ao final de uma partida de 5 Battle Rounds, uma estratégia equilibrada entre controlar
+        objetivos e completar Battle Tactics é normalmente superior a focar apenas em um dos
+        dois caminhos.
+      </p>
+
+      <!-- Universais -->
+      <h2 id="universal">Táticas Universais</h2>
+      <p>
+        As seguintes Battle Tactics estão disponíveis para <em>todos</em> os exércitos, a menos
+        que um battlepack as restrinja. Cada uma vale <strong>4 Victory Points</strong> ao ser completada.
+      </p>
+      <table class="warscroll-stats">
+        <thead>
+          <tr><th>Nome</th><th>Condição Completa de Pontuação</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Do Not Waver</strong></td>
+            <td>Ao final do seu turno: <strong>2 ou mais unidades amigas lutaram</strong> neste turno
+              <em>e</em> <strong>nenhuma unidade amiga foi destruída</strong> neste turno.</td>
+          </tr>
+          <tr>
+            <td><strong>Slay the Entourage</strong></td>
+            <td>Ao declarar: escolha uma unidade do <strong>Regimento do General inimigo</strong>.
+              Complete se essa unidade for <strong>destruída</strong> neste turno.</td>
+          </tr>
+          <tr>
+            <td><strong>Attack on Two Fronts</strong></td>
+            <td>Ao final do turno: você controla <strong>2 ou mais objetivos que não controlava</strong>
+              no início do turno, e <strong>pelo menos 1 desses objetivos era controlado pelo
+              oponente</strong> no início do turno.</td>
+          </tr>
+          <tr>
+            <td><strong>Take Their Land</strong></td>
+            <td>Ao declarar: escolha uma <strong>peça de terreno</strong> total ou parcialmente
+              dentro do território inimigo <em>e</em> totalmente fora do território amigo. Complete
+              se você <strong>controlar esse terreno</strong> ao final do turno.</td>
+          </tr>
+          <tr>
+            <td><strong>Seize the Centre</strong></td>
+            <td>Ao final do turno: <strong>2 ou mais unidades amigas</strong> estão a <strong>3&Prime;
+              ou menos do centro do campo</strong> e <strong>nenhuma delas está em combat</strong>
+              (ou seja, sem inimigos a 3&Prime;).</td>
+          </tr>
+          <tr>
+            <td><strong>Take the Flanks</strong></td>
+            <td>Ao final do turno: pelo menos <strong>1 unidade amiga a 6&Prime; ou menos de cada
+              borda curta</strong> do campo; nenhuma dessas unidades está totalmente dentro do
+              território amigo; nenhuma foi colocada em campo <em>neste turno</em>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- GHB 2025-26 -->
+      <h2 id="ghb-tactics">Táticas do GHB 2025-26 (Cards 1-6)</h2>
+      <p>
+        O GHB 2025-26 inclui 6 cards de Battle Tactics temáticos de Ghyran. Cada card contém
+        <strong>duas opções</strong>: uma <em>Strike</em> (tática de pontuação — vale 4 VPs) e
+        uma <em>Domination</em> (comando de uso imediato — não pontua VPs). O jogador escolhe
+        um dos dois a cada turno; não pode usar os dois do mesmo card.
+      </p>
+      <p>
+        Abaixo as condições exatas conforme a <strong>errata de Abril 2026</strong> (fonte oficial
+        disponível no site da GW). Os Cards 1 e 4 não constam na errata e estão reproduzidos
+        conforme impressão original.
+      </p>
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Card</th>
+            <th>Strike — Condição de Pontuação (4 VPs)</th>
+            <th>Domination — Comando (uso imediato)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Card 1</strong></td>
+            <td colspan="2" style="text-align:center;font-style:italic">
+              Condições completas constam no card físico (não disponível nos documentos de errata).
+              Consulte o produto ou o site da GW.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Card 2 — Restless Energy</strong></td>
+            <td>
+              <strong>Strike:</strong> Complete ao final do turno se você
+              <strong>controla todo objetivo que pode ser controlado</strong> no campo ao final
+              do turno. <em>(Errata Abr/2026: "every objective that can be controlled" — objetivos
+              com Lock ou sem marcador não contam.)</em>
+            </td>
+            <td>
+              <strong>Domination:</strong> Complete ao final do turno se você
+              <strong>controla todo objetivo que pode ser controlado</strong> — mesma condição,
+              mas usada como comando em vez de pontuação.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Card 3 — Intercept and Recover</strong></td>
+            <td>
+              <strong>Strike:</strong> Ao declarar, distribua <strong>Ghyranite Treasures</strong>
+              a unidades amigas. Complete se ao final do turno <strong>pelo menos 2 unidades inimigas
+              que carregavam um Treasure foram destruídas</strong> e você ficou com o Treasure de
+              cada uma. <em>(Errata Abr/2026: se uma habilidade remove a unidade portadora do campo
+              sem destruí-la, o oponente deve passar o Treasure para outra unidade a 3&Prime;; se
+              não houver, conta como destruída para fins da tática.)</em>
+            </td>
+            <td>
+              <strong>Domination:</strong> Efeito de comando relacionado à distribuição de
+              Ghyranite Treasures entre suas unidades. Consulte o card físico para uso exato.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Card 4</strong></td>
+            <td colspan="2" style="text-align:center;font-style:italic">
+              Condições completas constam no card físico (não disponível nos documentos de errata).
+              Consulte o produto ou o site da GW.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Card 5 — Scouting Force</strong></td>
+            <td>
+              <strong>Strike — Bold Explorers:</strong> Ao início da batalha, toda unidade amiga
+              de Infantaria ou Cavalaria não-Herói <strong>que não foi colocada em reserva via
+              Deploy</strong> torna-se uma <em>scout unit</em>. Complete ao final do turno se
+              <strong>3 ou mais scout units amigas</strong> estão contestando <strong>objetivos
+              ou peças de terreno que não sejam Faction Terrain</strong>.
+            </td>
+            <td>
+              <strong>Domination — Courageous Adventurers:</strong> Complete ao final do turno se
+              uma scout unit amiga está contestando uma <strong>peça de terreno que não seja
+              Faction Terrain</strong>.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Card 6 — Attuned to Ghyran</strong></td>
+            <td>
+              <strong>Strike — Fey Strikes:</strong> Complete ao final do turno se <em>todas</em>
+              as seguintes condições forem verdadeiras:
+              <ul class="rules-list" style="margin-top:0.4rem">
+                <li>Pelo menos <strong>2 unidades amigas</strong> usaram uma habilidade
+                  <em>Retreat</em> neste turno — essas são as <strong>lure units</strong>.</li>
+                <li>Pelo menos <strong>2 outras unidades amigas</strong> realizaram uma carga neste
+                  turno e ao menos 1 delas <strong>terminou a carga em combat com uma unidade
+                  inimiga da qual alguma lure unit recuou</strong>.</li>
+              </ul>
+            </td>
+            <td>
+              <strong>Domination:</strong> Efeito de comando temático de Ghyran. Consulte o card
+              físico para uso exato.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="rules-callout">
+        <strong>Errata de Abril 2026.</strong> Os Cards 2, 3, 5 e 6 foram corrigidos. A versão
+        atualizada está disponível no site oficial da GW (Warhammer Community → FAQs &amp; Errata).
+        Cards 1 e 4 não constam na errata — use a impressão original.
+      </div>
+
+      <!-- Facção -->
+      <h2 id="faction-tactics">Táticas de Facção</h2>
+      <p>
+        Muitos Battletomes incluem Battle Tactics exclusivas para aquela facção. Essas táticas
+        frequentemente se complementam com os pontos fortes do exército — um exército de cavalaria
+        pode ter táticas de carga; um exército de magia pode ter táticas de conjuro.
+      </p>
+      <p>
+        Táticas de facção normalmente <em>substituem</em> parte das táticas universais ou do GHB —
+        o jogador escolhe entre táticas universais, GHB e de facção conforme indicado pelo
+        battlepack em uso.
+      </p>
+
+      <!-- Dicas -->
+      <h2 id="tips">Dicas de Uso</h2>
+      <ul class="rules-list">
+        <li>
+          <strong>Planeje com antecedência:</strong> Escolha a Battle Tactic no começo do turno,
+          mas pense nela já no turno anterior ao se posicionar.
+        </li>
+        <li>
+          <strong>Do Not Waver é bônus passivo:</strong> Se você acredita que não vai perder
+          unidades, essa tática pode ser &ldquo;gratuita&rdquo; — mas o oponente sabendo disso
+          vai tentar derrubar algo.
+        </li>
+        <li>
+          <strong>Take Their Land força engajamento:</strong> Ótima tática para pressionar o
+          adversário a defender ao invés de atacar.
+        </li>
+        <li>
+          <strong>Slay the Entourage exige informação:</strong> Conheça a composição do Regimento
+          do General inimigo (ambas as listas são abertas em torneios) para saber quais unidades
+          precisam ser destruídas.
+        </li>
+      </ul>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,609 @@
+{% extends "base.html" %}
+{% block title %}Regras de Torneio AoS — GHB 2025-26 Tournament Organiser Pack{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#scoring">Sistema de Pontuação</a></li>
+        <li><a href="#tiebreakers">Tie-Breakers</a></li>
+        <li><a href="#round-timing">Tempo de Round</a></li>
+        <li><a href="#pairings">Sistema de Pairings</a></li>
+        <li><a href="#win-path">Win Path</a></li>
+        <li><a href="#concession">Concession</a></li>
+        <li><a href="#overrun">Overrun de Tempo</a></li>
+        <li><a href="#dropped">Jogadores Dropados</a></li>
+        <li><a href="#spare-player">Spare Player / Bye</a></li>
+        <li><a href="#late-player">Atraso de Jogador</a></li>
+        <li><a href="#cutoff">Cut-off de Regras</a></li>
+        <li><a href="#list-submission">Submissão de Lista</a></li>
+        <li><a href="#painting">Padrão de Pintura</a></li>
+        <li><a href="#awards">Premiações</a></li>
+        <li><a href="#players-code">Player's Code</a></li>
+        <li><a href="#judges">Regras de Juízes</a></li>
+        <li><a href="#terrain">Layouts de Terreno</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}">Carga</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}">Magia &amp; Preces</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_glossary') }}">Glossário</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Regras de Torneio
+      </p>
+      <h1 class="section-title" id="tournament-top">Regras de Torneio</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Tournament Organiser Pack</p>
+
+      <p>
+        Esta seção cobre o conjunto completo de regras e procedimentos do pacote oficial de organização
+        de torneios do General's Handbook 2025-26. As informações aqui refletem as práticas recomendadas
+        para eventos de Matched Play competitivo, desde o sistema de pontuação até a conduta dos jogadores.
+      </p>
+
+      <!-- 1. Scoring System -->
+      <h2 id="scoring">Sistema de Pontuação</h2>
+      <p>
+        Torneios de Age of Sigmar usam uma hierarquia de resultados para rankear jogadores. Cada partida
+        de Matched Play pode terminar com um dos seguintes resultados:
+      </p>
+
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Resultado</th>
+            <th>Condição exata (Core Rules + battleplan)</th>
+            <th>Prioridade no Ranking</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Major Win</strong></td>
+            <td>O jogador tem <strong>mais Victory Points</strong> que o oponente ao final da batalha
+              (qualquer margem — 1 VP a mais já é Major Win)</td>
+            <td>1º (mais alto)</td>
+          </tr>
+          <tr>
+            <td><strong>Minor Win</strong></td>
+            <td>Os VPs estão <strong>empatados</strong> ao final, mas apenas <strong>o General deste
+              jogador sobreviveu</strong> (o General inimigo foi destruído)</td>
+            <td>2º</td>
+          </tr>
+          <tr>
+            <td><strong>Draw</strong></td>
+            <td>Os VPs estão <strong>empatados</strong> ao final, e <strong>ambos os Generals
+              sobreviveram</strong> — ou <strong>nenhum</strong> dos dois sobreviveu</td>
+            <td>3º</td>
+          </tr>
+          <tr>
+            <td><strong>Minor Loss</strong></td>
+            <td>O oponente tem Minor Win: VP empatados mas só o General do oponente sobreviveu</td>
+            <td>4º</td>
+          </tr>
+          <tr>
+            <td><strong>Major Loss</strong></td>
+            <td>O oponente tem mais VPs ao final da batalha</td>
+            <td>5º (mais baixo)</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="rules-callout">
+        <strong>Major Win não precisa de margem mínima.</strong> Qualquer vantagem de VP ao final
+        da batalha — mesmo 1 VP — resulta em Major Win para o líder. Não há limite mínimo de
+        diferença. Isso incentiva marcar VPs até o último turno, pois um único objetivo ou
+        Battle Tactic de último momento pode converter um Draw em Major Win.
+      </div>
+
+      <p>
+        O ranking geral ordena os jogadores primeiro pelo número de Major Wins conquistados, depois pelo
+        número de Minor Wins, depois por Draws, e assim por diante. Um jogador com 4 Major Wins sempre
+        estará acima de um jogador com 3 Major Wins e 1 Minor Win, independentemente de qualquer outro
+        fator.
+      </p>
+
+      <!-- 2. Tie-breakers -->
+      <h2 id="tiebreakers">Tie-Breakers em Ordem</h2>
+      <p>
+        Quando dois ou mais jogadores têm o mesmo record (mesma combinação de Major Wins, Minor Wins,
+        Draws, etc.), desempates são aplicados na seguinte sequência obrigatória:
+      </p>
+
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Critério</th>
+            <th>Explicação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td><strong>OGW% — Opponent Game Win Percentage</strong></td>
+            <td>
+              Percentual de vitórias acumulado pelos oponentes enfrentados. Um jogador que venceu
+              adversários com records mais fortes pontua mais alto que alguém com vitórias sobre
+              adversários de record fraco.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td><strong>VP Total</strong></td>
+            <td>Soma total de Victory Points marcados em todos os rounds.</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td><strong>Battle Tactics completadas</strong></td>
+            <td>Total de Battle Tactics concluídas com sucesso pelo jogador durante o evento.</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td><strong>Battle Tactics dos oponentes falhadas</strong></td>
+            <td>Total de Battle Tactics que os oponentes tentaram mas não conseguiram completar.</td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td><strong>VP Differential</strong></td>
+            <td>Diferença entre os VPs marcados e os VPs concedidos ao longo de todo o evento.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rules-callout">
+        <strong>Dica competitiva.</strong> O OGW% favorece quem enfrenta adversários fortes. Perder
+        para um jogador de alto record costuma ser menos prejudicial ao ranking final do que vencer
+        alguém de record fraco. Sempre jogue cada round com intensidade máxima — cada vitória conta.
+      </div>
+
+      <!-- 3. Round Timing -->
+      <h2 id="round-timing">Tempo de Round e Milestones</h2>
+      <p>
+        Para partidas de 2000 pontos, o tempo recomendado por round é de <strong>2 a 3 horas</strong>.
+        Jogadores experientes costumam terminar mais rápido; o organizador decide o tempo final com
+        base no perfil dos participantes.
+      </p>
+      <p>
+        Para ajudar os jogadores a manter o ritmo, recomenda-se que o organizador anuncie
+        <strong>milestones de velocidade</strong> em vez de simplesmente contar o tempo restante.
+        Isso dá a ambos os jogadores uma referência imediata sobre onde deveriam estar na partida.
+        Um guia de milestones para um round de 3 horas:
+      </p>
+
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Tempo Restante</th>
+            <th>Milestone Recomendado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>3:00</td><td>Round formalmente iniciado</td></tr>
+          <tr><td>2:50</td><td>Discussões pré-jogo e seleção de secundários concluídas</td></tr>
+          <tr><td>2:30</td><td>Implantação completa — início do Battle Round 1</td></tr>
+          <tr><td>1:50</td><td>Battle Round 1 completo — início do Battle Round 2</td></tr>
+          <tr><td>1:10</td><td>Battle Round 2 completo — início do Battle Round 3</td></tr>
+          <tr><td>0:40</td><td>Battle Round 3 completo — início do Battle Round 4</td></tr>
+          <tr><td>0:20</td><td>Battle Round 4 completo — início do Battle Round 5</td></tr>
+          <tr><td>0:10</td><td>Não iniciar novo Battle Round sem autorização do juiz</td></tr>
+        </tbody>
+      </table>
+
+      <p>
+        Os milestones são orientativos, não obrigatórios. Sua função é ajudar os jogadores a perceber
+        quando estão atrasados para que possam acelerar o ritmo por conta própria, antes que seja
+        necessária a intervenção de um juiz.
+      </p>
+      <p>
+        É aconselhável lembrar os jogadores de que se houver preocupação em não terminar a partida
+        dentro do tempo, chamar um juiz proativamente é a atitude correta.
+      </p>
+
+      <!-- 4. Pairing System -->
+      <h2 id="pairings">Sistema de Pairings</h2>
+      <p>
+        O sistema de pairings recomendado segue três critérios em ordem de prioridade:
+      </p>
+      <ol class="rules-list">
+        <li>
+          <strong>Record</strong> — Jogadores com o mesmo record (ex.: 3-1) são emparelhados entre si.
+          Este é sempre o critério primário. Um jogador 3-1 não deve enfrentar um jogador 2-2 se houver
+          outro 3-1 disponível.
+        </li>
+        <li>
+          <strong>Win Path</strong> — Dentro de jogadores com o mesmo record, o emparelhamento é feito
+          pelo Win Path (ver seção abaixo). Este critério garante que adversários com experiências
+          recentes similares se enfrentem.
+        </li>
+        <li>
+          <strong>Aleatório</strong> — Se ainda houver empate após os dois critérios anteriores, o
+          emparelhamento é feito de forma aleatória dentro do grupo.
+        </li>
+      </ol>
+      <p>
+        O primeiro round de qualquer torneio é sempre <strong>totalmente aleatório</strong>, já que
+        todos os jogadores têm o mesmo record de 0-0.
+      </p>
+
+      <!-- 5. Win Path -->
+      <h2 id="win-path">Win Path</h2>
+      <p>
+        O <strong>Win Path</strong> não é simplesmente o número de vitórias e derrotas de um jogador,
+        mas sim <em>quando</em> essas vitórias e derrotas ocorreram ao longo do evento. Dois jogadores
+        com record idêntico de 3-1 podem ter trajetórias muito diferentes:
+      </p>
+      <ul class="rules-list">
+        <li>
+          Jogador A perdeu o Round 1 e ganhou os três seguintes — entrou no round atual animado após
+          uma sequência de três vitórias consecutivas.
+        </li>
+        <li>
+          Jogador B ganhou os primeiros três rounds e perdeu o Round 4 — entrou no round atual
+          frustrado após uma derrota que quebrou uma sequência invicta.
+        </li>
+      </ul>
+      <p>
+        Emparelhar esses dois jogadores entre si seria antinatural: seus estados emocionais e
+        expectativas estão em polos opostos. Usar o Win Path como segundo critério garante que jogadores
+        com sequências recentes similares — e portanto em "sintonia" de experiência — se encontrem.
+        Isso melhora a qualidade das partidas e favorece a construção de amizades durante o evento.
+      </p>
+      <div class="rules-callout">
+        <strong>Efeito colateral positivo.</strong> O Win Path tem a tendência incidental de parear
+        jogadores por força de schedule, sem ser explicitamente um critério de força. Um jogador que
+        venceu três adversários fortes no início do evento tende a ter um Win Path que o coloca contra
+        outros jogadores igualmente fortes.
+      </div>
+
+      <!-- 6. Concession -->
+      <h2 id="concession">Concession</h2>
+      <p>
+        Quando um jogador decide conceder (desistir) uma partida em andamento, as seguintes
+        consequências se aplicam imediatamente:
+      </p>
+      <ul class="rules-list">
+        <li>O jogador que concedeu recebe um <strong>Major Loss</strong>.</li>
+        <li>O oponente recebe um <strong>Major Win</strong>.</li>
+        <li>
+          O oponente marca o <strong>máximo de VP disponível em cada round restante</strong> da partida
+          (como se tivesse jogado e conquistado todos os objetivos).
+        </li>
+        <li>O jogador que concedeu não marca nenhum VP adicional a partir do momento da concession.</li>
+      </ul>
+
+      <div class="rules-callout">
+        <strong>Atenção.</strong> Conceder inflige uma penalidade significativa: além do Major Loss, o
+        oponente é creditado com VP máximo retroativamente para os rounds não jogados. Isso pode afetar
+        o ranking por VP differential. Considere cuidadosamente antes de conceder — mesmo uma derrota
+        natural por Major Loss é menos prejudicial ao ranking do que uma concession com muitos rounds
+        restantes.
+      </div>
+
+      <!-- 7. Overrun de Tempo -->
+      <h2 id="overrun">Overrun de Tempo</h2>
+      <p>
+        Mesmo com bons milestones e juízes ativos, partidas ocasionalmente excedem o tempo alocado.
+        Quando isso ocorre e ainda há Battle Rounds por disputar, o procedimento padrão é o seguinte:
+      </p>
+      <p>
+        O juiz se senta com ambos os jogadores e conduz uma conversa estruturada sobre os prováveis
+        resultados dos rounds restantes. Com base nessa análise conjunta, o juiz determina o resultado
+        final da partida. O objetivo é chegar a uma conclusão razoável e justa para ambos, sem a
+        necessidade de jogar fisicamente os rounds faltantes.
+      </p>
+      <p>
+        Esta situação deve ser rara. A melhor prática é garantir que os milestones sejam comunicados
+        claramente e que o juiz intervenha proativamente antes que o tempo esgote.
+      </p>
+
+      <!-- 8. Dropped Players -->
+      <h2 id="dropped">Jogadores Dropados (Mid-Event)</h2>
+      <p>
+        Em circunstâncias excepcionais, um jogador pode precisar se retirar do evento antes de sua
+        conclusão. Para garantir que todos os demais jogadores tenham sempre um oponente disponível,
+        a presença de um <strong>Spare Player</strong> é fortemente recomendada (ver seção abaixo).
+      </p>
+      <p>
+        Quanto ao jogador que abandonou o evento mid-game:
+      </p>
+      <ul class="rules-list">
+        <li>Ele recebe um <strong>Major Loss</strong> pela partida em aberto.</li>
+        <li>O oponente recebe um <strong>Major Win</strong>.</li>
+        <li>
+          O oponente é creditado com o <strong>máximo de VP disponível</strong> para cada round
+          restante da partida e para cada round futuro do evento em que deveria ter enfrentado o
+          jogador dropado.
+        </li>
+        <li>O jogador que saiu não acumula mais nenhum VP.</li>
+      </ul>
+
+      <!-- 9. Spare Player / Bye -->
+      <h2 id="spare-player">Spare Player e Bye</h2>
+      <p>
+        Todo torneio deve ter um <strong>número par de participantes</strong>. Para cobrir eventuais
+        no-shows ou drops, recomenda-se fortemente ter um <strong>Spare Player</strong> disponível —
+        geralmente um amigo do organizador ou o próprio juiz do evento, caso ele não esteja participando
+        como competidor.
+      </p>
+      <p>
+        O Spare Player joga normalmente contra o jogador sem oponente em cada round que for necessário,
+        mas <strong>não é elegível para premiações ou colocações no ranking</strong>. Sua função é
+        exclusivamente garantir que todos os jogadores inscritos tenham experiência completa.
+      </p>
+      <p>
+        Caso não haja Spare Player disponível e o número de jogadores seja ímpar, um jogador receberá
+        um <strong>bye</strong> — ele não joga naquele round e é creditado automaticamente com o
+        máximo de VP disponível para aquela partida. No primeiro round, o bye é selecionado de
+        forma aleatória.
+      </p>
+
+      <!-- 10. Atraso de Jogador -->
+      <h2 id="late-player">Atraso de Jogador</h2>
+      <p>
+        Jogadores que chegam com atraso a um round têm diferentes tratamentos dependendo de quando
+        o atraso ocorre:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Atraso no Round 1:</strong> Jogadores atrasados no primeiro round são emparelhados
+          entre si, a critério do organizador. Se o número de atrasados gerar um número ímpar de
+          jogadores em espera, o jogador sem par marca 0 VP naquele round.
+        </li>
+        <li>
+          <strong>Atraso superior a 15 minutos em qualquer round (exceto Round 1):</strong> O jogador
+          marca <strong>0 VP</strong> naquele round. Seu oponente recebe automaticamente o
+          <strong>máximo de VP disponível</strong> na partida, como se tivesse vencido plenamente.
+        </li>
+      </ul>
+
+      <div class="rules-callout">
+        <strong>Regra clara.</strong> 15 minutos de atraso = 0 VP para o atrasado + VP máximo para
+        o oponente. Não há exceções baseadas em justificativas — o organizador deve comunicar esta
+        regra claramente no pack do evento.
+      </div>
+
+      <!-- 11. Cut-off Date -->
+      <h2 id="cutoff">Cut-off Date de Regras</h2>
+      <p>
+        Novos lançamentos, erratas e atualizações de pontos podem entrar em vigor em qualquer momento,
+        incluindo durante fins de semana de evento. Para evitar que regras publicadas às 6h de um sábado
+        alterem listas que foram montadas semanas antes, o organizador deve definir uma
+        <strong>data de cut-off</strong>: qualquer regra publicada após essa data não pode ser utilizada
+        no evento.
+      </p>
+      <p>
+        As duas opções mais práticas de cut-off são:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Mesmo dia do deadline de submissão de lista</strong> — simples e consistente com o
+          processo de verificação das listas.
+        </li>
+        <li>
+          <strong>1 a 2 semanas antes do evento</strong> — dá tempo para jogadores ajustarem suas
+          listas caso alguma publicação altere pontos ou regras relevantes para sua army.
+        </li>
+      </ul>
+      <p>
+        A escolha é do organizador. O importante é comunicar a data no pack do evento antes que os
+        jogadores comecem a montar suas listas.
+      </p>
+
+      <!-- 12. List Submission / Open List -->
+      <h2 id="list-submission">Submissão de Lista e Open-List</h2>
+      <p>
+        O organizador pode escolher entre dois formatos de entrega de listas:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Submissão prévia (deadline antes do evento):</strong> Os jogadores enviam suas
+          listas antes do evento, o organizador verifica erros ou inconsistências e, se desejar,
+          distribui as listas entre todos os participantes. Esse formato é chamado de
+          <strong>open-list event</strong> e permite que os jogadores revisem as listas dos oponentes
+          antes de cada partida, ajudando a identificar discrepâncias antes que o jogo comece.
+        </li>
+        <li>
+          <strong>Lista no evento:</strong> Cada jogador traz sua lista impressa ou no app e mostra
+          ao oponente no início de cada partida, sem envio prévio ao organizador. Mais simples de
+          gerenciar, porém com menos controle de qualidade.
+        </li>
+      </ul>
+      <p>
+        Independentemente do formato escolhido, recomenda-se que todos os jogadores construam suas
+        listas usando o aplicativo oficial de Age of Sigmar, garantindo uniformidade de formato e
+        facilitando a verificação.
+      </p>
+
+      <!-- 13. Painting Standard -->
+      <h2 id="painting">Padrão de Pintura — Battle Ready</h2>
+      <p>
+        Todos os modelos participantes de um torneio devem estar <strong>completamente montados</strong>
+        e pintados a pelo menos o padrão <strong>Battle Ready</strong> da Games Workshop. Modelos não
+        pintados ou em plástico cru não são permitidos em mesas de torneio.
+      </p>
+      <p>
+        O padrão Battle Ready é definido como: base coberta (com tinta ou material de basing), modelo
+        com pelo menos três cores distintas aplicadas e sem plástico/metal exposto visível. Detalhes
+        avançados como sombreamento, highlights ou basing elaborado vão além do Battle Ready e são
+        naturalmente encorajados, mas não são exigidos para participação.
+      </p>
+      <div class="rules-callout">
+        <strong>Requisito mínimo.</strong> Battle Ready não é apenas estético — é uma questão de
+        respeito à experiência de jogo dos adversários. O organizador tem autoridade para retirar
+        modelos fora do padrão de uma lista antes do início do evento.
+      </div>
+
+      <!-- 14. Awards -->
+      <h2 id="awards">Premiações</h2>
+      <p>
+        Além das colocações competitivas, torneios de Age of Sigmar tradicionalmente reconhecem outros
+        aspectos do hobby. As premiações recomendadas são:
+      </p>
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Prêmio</th>
+            <th>Critério</th>
+            <th>Método de seleção</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Best General</strong></td>
+            <td>Melhor colocação geral no ranking competitivo</td>
+            <td>Calculado automaticamente pelo sistema de pontuação (1º, 2º e 3º lugar)</td>
+          </tr>
+          <tr>
+            <td><strong>Best Painted</strong></td>
+            <td>Army com a mais alta qualidade de pintura e presentação</td>
+            <td>Votação pelos próprios jogadores</td>
+          </tr>
+          <tr>
+            <td><strong>Favourite Opponent</strong></td>
+            <td>Jogador com melhor conduta, sportspersonship e espírito de jogo</td>
+            <td>Votação pelos próprios jogadores</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Premiações adicionais, como Best Theme ou prêmios para 1º, 2º e 3º em categorias separadas,
+        são opcionais e ficam a critério do organizador. Certificados para download estão disponíveis
+        no site warhammer-community.com.
+      </p>
+
+      <!-- 15. Player's Code -->
+      <h2 id="players-code">Player's Code e Conduta</h2>
+      <p>
+        Todos os participantes de um torneio de Age of Sigmar são obrigados a aderir ao
+        <strong>Player's Code</strong> estabelecido no General's Handbook 2025-26. O código define
+        as expectativas de comportamento e sportspersonship para garantir que o evento seja uma
+        experiência positiva para todos.
+      </p>
+      <p>
+        Os princípios centrais do Player's Code incluem:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Respeito mútuo:</strong> Tratar adversários, juízes e outros participantes com
+          cortesia e respeito, independentemente do resultado das partidas.
+        </li>
+        <li>
+          <strong>Jogo honesto:</strong> Aplicar as regras corretamente mesmo quando fazê-lo é
+          desvantajoso para si mesmo. Informar ao oponente sobre regras relevantes que ele possa
+          ter esquecido.
+        </li>
+        <li>
+          <strong>Pace of play:</strong> Manter um ritmo de jogo que permita que ambos os jogadores
+          completem a partida dentro do tempo alocado. Jogadas deliberadamente lentas são
+          inaceitáveis.
+        </li>
+        <li>
+          <strong>Espírito do jogo:</strong> Lembrar que a finalidade do evento é que todos os
+          participantes se divirtam e tenham boas experiências, não apenas o vencedor.
+        </li>
+      </ul>
+      <p>
+        Violações graves do Player's Code devem ser reportadas ao juiz responsável, que tem autoridade
+        para aplicar penalidades até a exclusão do evento em casos extremos.
+      </p>
+
+      <!-- 16. Judges -->
+      <h2 id="judges">Juízes — Active Judging e Decisão Final</h2>
+      <p>
+        Um evento bem organizado tem pelo menos um <strong>juiz</strong> dedicado — alguém que não
+        está participando como competidor para evitar conflitos de interesse. O juiz pode ser um segundo
+        organizador, um amigo experiente no sistema de regras ou o próprio Spare Player.
+      </p>
+      <h3>Active Judging</h3>
+      <p>
+        A abordagem recomendada para eventos com experiência suficiente é o
+        <strong>Active Judging</strong>: os juízes se movem constantemente entre as mesas, observando
+        as partidas em andamento em vez de esperar ser chamados. Isso permite:
+      </p>
+      <ul class="rules-list">
+        <li>Corrigir misplays imediatamente, antes que gerem consequências maiores.</li>
+        <li>
+          Comunicar implicitamente aos jogadores que o evento está sendo monitorado de perto,
+          desestimulando qualquer comportamento questionável.
+        </li>
+        <li>Garantir que o pace of play seja mantido em todas as mesas.</li>
+      </ul>
+      <p>
+        É importante que os jogadores sejam informados no briefing inicial de que o Active Judging
+        está em efeito e que os juízes podem intervir sem ser chamados.
+      </p>
+      <h3>Decisão Final</h3>
+      <p>
+        Em qualquer disputa de regras, o processo do juiz é:
+      </p>
+      <ol class="rules-list">
+        <li>
+          Verificar o texto exato da regra em questão — Core Rules, battletome, battlescroll ou FAQ
+          oficial.
+        </li>
+        <li>
+          Se não houver orientação clara, tomar a decisão que parecer mais razoável e justa para
+          permitir que a partida continue.
+        </li>
+        <li>
+          A decisão do juiz é <strong>final</strong> para aquela partida. Não há recurso durante
+          o evento. Feedback para o organizador pode ser dado após a rodada.
+        </li>
+      </ol>
+      <div class="rules-callout">
+        <strong>Princípio base.</strong> Quando a regra não é clara, o juiz decide pelo que for
+        mais razoável e equitativo. A integridade e fluidez do evento são prioritárias sobre a
+        busca por uma interpretação "ótima" de uma regra ambígua.
+      </div>
+
+      <!-- 17. Terrain Layouts -->
+      <h2 id="terrain">Layouts de Terreno por Battleplan</h2>
+      <p>
+        O General's Handbook 2025-26 oferece dois sistemas de colocação de terreno para partidas de
+        Matched Play:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Attacker/Defender Roll-off:</strong> Os jogadores determinam por uma rolagem quem é
+          o atacante e quem é o defensor, e as regras de colocação de terreno se aplicam com base
+          nessa posição.
+        </li>
+        <li>
+          <strong>Preset Terrain Layouts:</strong> Cada battleplan do GHB 2025-26 inclui um layout
+          de terreno pré-definido que pode ser montado antes do início da partida. Para eventos com
+          múltiplas rodadas, esses layouts indicam no cabeçalho quais outros battleplans compartilham
+          a mesma configuração, permitindo que o terreno seja mantido montado entre rodadas
+          consecutivas e economizando tempo de setup.
+        </li>
+      </ul>
+      <p>
+        Para torneios maiores, os layouts pré-definidos são especialmente práticos: a equipe de
+        organização pode montar todas as mesas no início do dia e simplesmente trocar battleplan
+        entre os rounds sem desmontar o terreno. Recomenda-se usar terreno suficiente e de qualidade
+        adequada — ou coordenar com os jogadores para trazerem os seus próprios, estando ciente de
+        que isso reduz o controle do organizador sobre a aparência e funcionalidade das mesas.
+      </p>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

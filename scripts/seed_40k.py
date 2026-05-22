@@ -331,9 +331,8 @@ def _do_seed(db, GameSystem, Faction, Unit):
                 u.can_be_general = can_general
                 u.can_be_reinforced = can_reinforce
                 u.model_count = model_count
-                u.stats_json = stats
-                u.abilities_json = abilities
-                u.keywords_json = kws
+                # Do NOT overwrite scraped JSON fields on existing rows
+                # u.stats_json / u.abilities_json / u.keywords_json intentionally omitted
                 if not u.image_path:
                     u.image_path = img_path
                 log.info('[~] %s updated', name)

@@ -1,3 +1,4 @@
+import json
 from flask import (
     Blueprint, render_template, redirect, url_for, flash, request, abort, jsonify
 )
@@ -9,6 +10,17 @@ from app.models.army_template import ArmyTemplate
 from app.services.validator import validate
 from app.services.validators import validator_for, all_systems
 from app.services.formats import formats_for_system
+
+
+def _load_faction_rules(army):
+    """Return (has_rules: bool, rules_dict: dict|None)."""
+    faction = army.faction
+    if not faction or not faction.rules_json:
+        return False, None
+    try:
+        return True, json.loads(faction.rules_json)
+    except (ValueError, TypeError):
+        return False, None
 
 armies_bp = Blueprint('armies', __name__, url_prefix='/armies')
 
@@ -159,19 +171,32 @@ def from_template(template_id):
 @armies_bp.route('/new', methods=['GET'])
 @login_required
 def new():
+    from app.models.game import Ruleset
+    from app.services.formats import _get_system_formats
     factions = Faction.query.order_by(Faction.name).all()
     systems = GameSystem.query.order_by(GameSystem.name).all()
-    from app.services.formats import _get_system_formats
+    rulesets_by_system = {}
+    for gs in systems:
+        rulesets_by_system[gs.code] = [
+            {'id': r.id, 'code': r.code, 'name': r.name, 'edition': r.edition,
+             'release_date': r.release_date.isoformat() if r.release_date else None,
+             'is_current': r.is_current}
+            for r in gs.rulesets
+        ]
     return render_template('armies/new.html', factions=factions, systems=systems,
-                           system_formats=_get_system_formats())
+                           system_formats=_get_system_formats(),
+                           rulesets_by_system=rulesets_by_system)
 
 
 @armies_bp.route('/new', methods=['POST'])
 @login_required
 def new_post():
+    from app.models.game import Ruleset
+    from app.services.unit_view import current_ruleset_for_system
     name = request.form.get('name', '').strip()
     faction_id = request.form.get('faction_id', type=int)
     battlepack = request.form.get('battlepack', '').strip()
+    ruleset_id = request.form.get('ruleset_id', type=int)
 
     if not name or not faction_id:
         flash('Nome e facção são obrigatórios.', 'error')
@@ -198,12 +223,18 @@ def new_post():
 
     pts_limit = valid_formats.get(battlepack, 1000)
 
+    if ruleset_id is None:
+        rs = current_ruleset_for_system(faction.game_system)
+        if rs:
+            ruleset_id = rs.id
+
     army = Army(
         user_id=current_user.id,
         faction_id=faction_id,
         name=name,
         battlepack=battlepack,
         points_limit=pts_limit,
+        ruleset_id=ruleset_id,
     )
     db.session.add(army)
     db.session.flush()
@@ -222,10 +253,11 @@ def new_post():
 @login_required
 def show(army_id):
     army = _owned_army_or_404(army_id)
-    units = sorted(army.faction.units, key=lambda u: (u.unit_role or 'zz', u.name))
+    units = sorted(army.faction.units, key=lambda u: (1 if u.unit_category == 'legends' else 0, u.unit_role or 'zz', u.name))
     aux_units = [au for au in army.army_units if au.regiment_id is None]
     result = validate(army)
     v = _army_validator(army)
+    faction_has_rules, faction_rules = _load_faction_rules(army)
     return render_template(
         'armies/show.html',
         army=army,
@@ -233,6 +265,8 @@ def show(army_id):
         aux_units=aux_units,
         result=result,
         validator=v,
+        faction_has_rules=faction_has_rules,
+        faction_rules=faction_rules,
     )
 
 
@@ -542,6 +576,63 @@ def public_view(token):
         result=result,
         aux_units=aux_units,
         validator=v,
+    )
+
+
+@armies_bp.route('/<int:army_id>/select-formation', methods=['POST'])
+@login_required
+def select_formation(army_id):
+    army = _owned_army_or_404(army_id)
+    name = request.form.get('formation_name', '').strip()
+    if name:
+        army.formation_id = name
+        db.session.commit()
+    faction_has_rules, faction_rules = _load_faction_rules(army)
+    return render_template(
+        'armies/_faction_rules.html',
+        army=army,
+        faction_has_rules=faction_has_rules,
+        faction_rules=faction_rules,
+    )
+
+
+@armies_bp.route('/<int:army_id>/select-sub-faction', methods=['POST'])
+@login_required
+def select_sub_faction(army_id):
+    army = _owned_army_or_404(army_id)
+    name = request.form.get('sub_faction_name', '').strip()
+    if name:
+        army.sub_faction_id = name
+        db.session.commit()
+    faction_has_rules, faction_rules = _load_faction_rules(army)
+    return render_template(
+        'armies/_faction_rules.html',
+        army=army,
+        faction_has_rules=faction_has_rules,
+        faction_rules=faction_rules,
+    )
+
+
+@armies_bp.route('/<int:army_id>/select-lore', methods=['POST'])
+@login_required
+def select_lore(army_id):
+    army = _owned_army_or_404(army_id)
+    lore_type = request.form.get('lore_type', '').strip()
+    lore_name = request.form.get('lore_name', '').strip()
+    if lore_name and lore_type in ('spell', 'prayer', 'manifestation'):
+        if lore_type == 'spell':
+            army.spell_lore_id = lore_name
+        elif lore_type == 'prayer':
+            army.prayer_lore_id = lore_name
+        else:
+            army.manifestation_lore_id = lore_name
+        db.session.commit()
+    faction_has_rules, faction_rules = _load_faction_rules(army)
+    return render_template(
+        'armies/_faction_rules.html',
+        army=army,
+        faction_has_rules=faction_has_rules,
+        faction_rules=faction_rules,
     )
 
 

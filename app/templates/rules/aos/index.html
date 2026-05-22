@@ -17,9 +17,21 @@
       <div class="rules-toc-divider"></div>
       <p class="rules-toc-label">Outras Seções</p>
       <ul>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
         <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}">Carga</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}">Magia &amp; Preces</a></li>
         <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
         <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_regiments_of_renown') }}">Regimentos de Renome</a></li>
+        <li><a href="{{ url_for('rules.aos_glossary') }}">Glossário</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
       </ul>
     </nav>
 
@@ -78,12 +90,34 @@
 
       <h2 id="sections">Seções Detalhadas de Regras</h2>
       <ul class="rules-nav-list">
+        <li><a href="{{ url_for('rules.aos_setup') }}" class="rules-nav-link">Implantação &rarr;</a>
+            <span>Campo de batalha, territórios, drops, quem vai primeiro</span></li>
         <li><a href="{{ url_for('rules.aos_turn') }}" class="rules-nav-link">Estrutura do Turno &rarr;</a>
             <span>Priority rolls, fases, ativações alternadas, Command Points</span></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}" class="rules-nav-link">Movimento &rarr;</a>
+            <span>Normal Move, Run, Retreat, coerência, Engagement Range, Fly</span></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}" class="rules-nav-link">Tiro &rarr;</a>
+            <span>Linha de visão, alcance, atirar em combate, Guarded Hero</span></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}" class="rules-nav-link">Carga &rarr;</a>
+            <span>Charge Roll 2D6, movimento de carga, bônus, carga fracassada</span></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}" class="rules-nav-link">Combate &rarr;</a>
+            <span>Sequência Hit→Wound→Save→Damage→Ward, Pile-In, Strike-First/Last</span></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}" class="rules-nav-link">Magia &amp; Preces &rarr;</a>
+            <span>Wizards, Casting Roll, Unbind, Priests, Manifestations, Endless Spells</span></li>
         <li><a href="{{ url_for('rules.aos_abilities') }}" class="rules-nav-link">Habilidades &amp; Palavras-Chave &rarr;</a>
-            <span>Ward saves, Rend, Mortal Wounds, Manifestations</span></li>
+            <span>Ward saves, Rend, Mortal Wounds, modificadores, ordem de efeitos</span></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}" class="rules-nav-link">Terreno &rarr;</a>
+            <span>Tipos, Cover, Obscuring, Impassable, Place of Power, Faction Terrain</span></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}" class="rules-nav-link">Battle Tactics &rarr;</a>
+            <span>Tactical Gambit, táticas universais, GHB 2025-26, pontuação</span></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}" class="rules-nav-link">Battleplans &rarr;</a>
+            <span>Border War, GHB 2025-26 (Liferoots, Linked Leylines e mais), objetivos</span></li>
         <li><a href="{{ url_for('rules.aos_composition') }}" class="rules-nav-link">Composição de Exército &rarr;</a>
             <span>Regimentos, Auxiliares, Battlepacks, Cumulative Surcharge</span></li>
+        <li><a href="{{ url_for('rules.aos_regiments_of_renown') }}" class="rules-nav-link">Regimentos de Renome &rarr;</a>
+            <span>RoR para todos os Grand Alliances, regras de inclusão, restrições de Enhancement</span></li>
+        <li><a href="{{ url_for('rules.aos_glossary') }}" class="rules-nav-link">Glossário &rarr;</a>
+            <span>Termos EN↔PT-BR, definições rápidas de todas as palavras-chave</span></li>
       </ul>
 
     </article>

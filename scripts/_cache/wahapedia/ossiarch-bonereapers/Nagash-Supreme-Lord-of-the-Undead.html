@@ -1,0 +1,786 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Wahapedia: Age of Sigmar 4th edition, Ossiarch Bonereapers — Nagash, Supreme Lord of the Undead (unit characteristics, wargear options, wargear profiles, abilities, battle profile and keywords)." />
+<meta name="keywords" content="Wahapedia, Age of Sigmar 4th edition, DEATH, OSSIARCH BONEREAPERS, MORTISAN, WARMASTER, UNIQUE, HERO, MONSTER, WIZARD, FLY, WARD, RELENTLESS DISCIPLINE, DEATH, OSSIARCH BONEREAPERS" />
+
+<script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+<script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+	window.ezstandalone = window.ezstandalone || {};
+	ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
+<script src="//ezoicanalytics.com/analytics.js"></script>
+<link rel="stylesheet" type="text/css" href="/aos4/css/fonts121.css">
+<link name="magnus_did_what" rel="stylesheet" href="/aos4/css/magnus_did_not121.css">
+<link rel="stylesheet" href="/aos4/css/main121.css">
+<link rel="stylesheet" href="/aos4/css/header121.css">
+<link rel="stylesheet" href="/aos4/css/profile121.css">
+<link rel="stylesheet" href="/aos4/css/noprint121.css">
+<link rel="icon" type="image/png" href="/aos4/img/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/tooltipster.bundle.min.css" />
+<link rel="manifest" href="/manifest_AoS4.json">
+<link rel="apple-touch-icon" sizes="57x57" href="/img/web-app/wahapedia-icon-57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/web-app/wahapedia-icon-76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/web-app/wahapedia-icon-114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/web-app/wahapedia-icon-120.png">
+<link rel="apple-touch-icon" sizes="128x128" href="/img/web-app/wahapedia-icon-128.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/web-app/wahapedia-icon-152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="/img/web-app/wahapedia-icon-167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/web-app/wahapedia-icon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/img/web-app/wahapedia-icon-192.png">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+<script type="text/javascript" src="/tooltipster-scrollableTip/tooltipster-scrollableTip.min.js"></script>
+<script type="text/javascript" src="https://wahapedia.ru/scripts/jquery.cookie.js"></script><script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir.min.css" />
+<link rel="stylesheet" href="/aos4/css/tooltipster-noir121.css">
+<title>Nagash, Supreme Lord of the Undead</title>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4"></script>
+<script>   
+function submitCaptcha(e) {
+	e.preventDefault();
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4', {action: 'submit'}).then(function(token) {    
+			$(".tooltipster-box #captcha-box").val(token);
+			$(".tooltipster-box #disable-ads").submit();
+		});
+	});
+}
+function loadErrors() {
+  if($(location).attr('hash') == ""){
+  let searchParams = new URLSearchParams(window.location.search);
+     if(searchParams.has('error')){
+         err = document.createTextNode(searchParams.get('error'));
+         $('#error-login').append(err);
+         $('#error-login').show();
+     }
+     if(searchParams.has('message')){
+         msg = document.createTextNode(searchParams.get('message'));
+         $('#email-sent').append(msg);
+         $('#email-sent').show();
+     }
+  }
+}
+
+$(document).on( 'click', '#btnGetPin', function(e) {
+  $(".tooltipster-box #password-text-field").val("");
+  submitCaptcha(e);
+});
+
+$(document).on( 'click', '#btnDisableAds', function(e) {
+  submitCaptcha(e);
+});
+</script>
+<script type="text/javascript">
+function switchColorTheme(){
+		var userTheme = localStorage.ColorTheme;
+		if (userTheme == undefined) {userTheme = 'default'; localStorage.ColorTheme = userTheme};
+		if ((userTheme == 'dark') || (userTheme == 'light')) {
+			document.documentElement.setAttribute('data-theme', userTheme);}
+		else if (!window.matchMedia) {
+			document.documentElement.setAttribute('data-theme', 'light');}
+		else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-theme', 'dark');}
+			else {
+				document.documentElement.setAttribute('data-theme', 'light');}
+   };
+	switchColorTheme();
+$(document).ready(function(){
+touchHover(); loadErrors(); $.get('https://wahapedia.ru/relog.php');
+	var data = localStorage.ShowFluff;
+	if (data == undefined) {data = 'true'; localStorage.ShowFluff = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowFluff').prop('checked', StrData);
+	ChangeShowFluff();
+
+	$('.ShowFluff').change(function () {
+      localStorage.ShowFluff = $(this).prop('checked');
+	   ChangeShowFluff();
+   });
+
+	function ChangeShowFluff() {
+	if (localStorage.ShowFluff == 'true')
+		{$('.ShowFluff').css('display', '');}
+	else
+		{$('.ShowFluff').css('display', 'none');}
+	}
+	var data = localStorage.ShowLegendaryDatasheets;
+	if (data == undefined) {data = 'false'; localStorage.ShowLegendaryDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowLegendaryDatasheets').prop('checked', StrData);
+
+	$('.ShowLegendaryDatasheets').change(function () {
+      localStorage.ShowLegendaryDatasheets = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPathToGlory;
+	if (data == undefined) {data = 'true'; localStorage.ShowPathToGlory = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPathToGlory').prop('checked', StrData);
+
+	$('.ShowPathToGlory').change(function () {
+      localStorage.ShowPathToGlory = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPitchedBattleProfile;
+	if (data == undefined) {data = 'true'; localStorage.ShowPitchedBattleProfile = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPitchedBattleProfile').prop('checked', StrData);
+	ChangeShowPitchedBattleProfile();
+
+	$('.ShowPitchedBattleProfile').change(function () {
+      localStorage.ShowPitchedBattleProfile = $(this).prop('checked');
+	   ChangeShowPitchedBattleProfile();
+   });
+
+	function ChangeShowPitchedBattleProfile() {
+	if (localStorage.ShowPitchedBattleProfile == 'true')
+		{$('.ShowPitchedBattleProfile').css('display', '');}
+	else
+		{$('.ShowPitchedBattleProfile').css('display', 'none');}
+	}
+	var data = localStorage.ShowBaseSize;
+	if (data == undefined) {data = 'true'; localStorage.ShowBaseSize = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowBaseSize').prop('checked', StrData);
+	ChangeShowBaseSize();
+
+	$('.ShowBaseSize').change(function () {
+      localStorage.ShowBaseSize = $(this).prop('checked');
+	   ChangeShowBaseSize();
+   });
+
+	function ChangeShowBaseSize() {
+	if (localStorage.ShowBaseSize == 'true')
+		{$('.ShowBaseSize').css('display', '');}
+	else
+		{$('.ShowBaseSize').css('display', 'none');}
+	}
+	var data = localStorage.ShowForgeWorldDatasheets;
+	if (data == undefined) {data = 'true'; localStorage.ShowForgeWorldDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowForgeWorldDatasheets').prop('checked', StrData);
+
+	$('.ShowForgeWorldDatasheets').change(function () {
+      localStorage.ShowForgeWorldDatasheets = $(this).prop('checked');
+	   FilterSelect(false);
+	   FilterApply(false);
+   });
+	$('.ColorTheme').prop('value', localStorage.ColorTheme);
+	$('.ColorTheme').change(function () {
+		localStorage.ColorTheme = $(this).prop('value');
+		switchColorTheme();
+	});	
+	$(window).on('load', function() {
+		$('.ya-site-form__input-text').addClass('ya_input');
+	});
+
+
+function FilterSelect(IsInit) {};
+function FilterApply(IsInit) {
+var clFlags = '';
+var comma = '';
+var clAllFlags = '.sLegendary, .sForgeWorld, .sShowPathToGlory';
+if (localStorage.ShowLegendaryDatasheets == 'false') {clFlags = clFlags + comma + '.sLegendary'; comma = ', ';};
+if (localStorage.ShowPathToGlory == 'false') {clFlags = clFlags + comma + '.sShowPathToGlory'; comma = ', ';};
+if (localStorage.ShowForgeWorldDatasheets == 'false') {clFlags = clFlags + comma + '.sForgeWorld'; comma = ', ';};
+
+	$(clAllFlags).show();
+	$(clFlags).hide();
+if ($('.datasheet').is(":hidden")) {$('.datasheet').show(); $('.selectionWarning').show()} else {$('.selectionWarning').hide()}
+UpdateTooltipster(IsInit);
+};
+FilterApply(true);
+
+function UpdateTooltipster(IsInit) {
+if (!IsInit) 
+	{
+	 $('.tooltip').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipk').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipArmyList').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipContents').filter('.tooltipstered').tooltipster('destroy');
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"CAVALRY"},{tCl:"00006"},{tCl:"CHAMPION"},{tCl:"00008"},{tCl:"00009"},{tCl:"STANDARDBEARER"},{tCl:"00011"},{tCl:"WARD"},{tCl:"DEATH"},{tCl:"OSSIARCHBONEREAPERS"},{tCl:"00018"},{tCl:"00019"},{tCl:"INFANTRY"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"00024"},{tCl:"00025"},{tCl:"WARMACHINE"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"UNIQUE"},{tCl:"HERO"},{tCl:"RELENTLESSDISCIPLINE"},{tCl:"00035"},{tCl:"WARMASTER"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"00040"},{tCl:"00041"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"WIZARD"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"FLY"},{tCl:"00051"},{tCl:"00052"},{tCl:"MONSTER"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"MANIFESTATION"},{tCl:"ENDLESSSPELL"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"},{tCl:"MORTISAN"},{tCl:"00071"},{tCl:"00072"},{tCl:"00073"},{tCl:"00074"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+$('.tooltipk'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+});
+	 if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"CAVALRY"},{tCl:"00006"},{tCl:"CHAMPION"},{tCl:"00008"},{tCl:"00009"},{tCl:"STANDARDBEARER"},{tCl:"00011"},{tCl:"WARD"},{tCl:"DEATH"},{tCl:"OSSIARCHBONEREAPERS"},{tCl:"00018"},{tCl:"00019"},{tCl:"INFANTRY"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"00024"},{tCl:"00025"},{tCl:"WARMACHINE"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"UNIQUE"},{tCl:"HERO"},{tCl:"RELENTLESSDISCIPLINE"},{tCl:"00035"},{tCl:"WARMASTER"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"00040"},{tCl:"00041"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"WIZARD"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"FLY"},{tCl:"00051"},{tCl:"00052"},{tCl:"MONSTER"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"MANIFESTATION"},{tCl:"ENDLESSSPELL"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"},{tCl:"MORTISAN"},{tCl:"00071"},{tCl:"00072"},{tCl:"00073"},{tCl:"00074"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});}
+};
+if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"CAVALRY"},{tCl:"00006"},{tCl:"CHAMPION"},{tCl:"00008"},{tCl:"00009"},{tCl:"STANDARDBEARER"},{tCl:"00011"},{tCl:"WARD"},{tCl:"DEATH"},{tCl:"OSSIARCHBONEREAPERS"},{tCl:"00018"},{tCl:"00019"},{tCl:"INFANTRY"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"00024"},{tCl:"00025"},{tCl:"WARMACHINE"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"UNIQUE"},{tCl:"HERO"},{tCl:"RELENTLESSDISCIPLINE"},{tCl:"00035"},{tCl:"WARMASTER"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"00040"},{tCl:"00041"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"WIZARD"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"FLY"},{tCl:"00051"},{tCl:"00052"},{tCl:"MONSTER"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"MANIFESTATION"},{tCl:"ENDLESSSPELL"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"},{tCl:"MORTISAN"},{tCl:"00071"},{tCl:"00072"},{tCl:"00073"},{tCl:"00074"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});
+
+});
+$.tooltipster.setDefaults({
+arrow: true,
+delay: [200, 200],
+interactive: true,
+theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+});
+</script>
+<script type="text/javascript">
+var touchHover = function() {
+    $('.tooltip').on('touchstart', function(e) {
+          e.preventDefault();
+          return false;
+    });
+};
+$(document).ready(function() { touchHover(); });
+</script>
+</head>
+
+<body>
+<!--noindex-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')!='turn_it_off') {
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-3",
+		"renderTo": "yandex_rtb_R-A-3376916-3",
+		"type": "feed"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-2",
+		"type": "fullscreen",
+		"platform": "desktop"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-1",
+		"type": "fullscreen",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-5",
+		"type": "floorAd",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-6",
+		"type": "floorAd",
+		"platform": "desktop"
+	})
+})
+}});</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')=='turn_it_off') {
+	var oldlink = document.getElementsByTagName("link").namedItem('magnus_did_what');
+	oldlink.href = "/aos4/css/magnus_did121.css";
+}
+});
+</script>
+<div id="wrapper2"><div class="noprint"><div id="ezoic-pub-ad-placeholder-147"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(147)});</script></div>
+<div id="wrapper">
+<div class="noprint">
+<div style="position:relative"><div class="SiteHeader_wrapper"><div class="SiteHeader"><a href="/"><div class="SiteHeader_A"></div></a></div></div>
+<div class="NavWrapper_P">
+	<div class="NavDropdown_P">
+	<div class="NavBtn_P NavBtn_Datasheets">Warscrolls</div>
+	<div class="NavDropdown-content_P">
+		<span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/ossiarch-bonereapers/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortisan-Boneshaper" class="cnClr">Scourge of Ghyran Mortisan Boneshaper</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Beast</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Teratic-Cohort" class="cnClr">Teratic Cohort</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-Deathriders" class="cnClr">Kavalos Deathriders</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Immortis-Guard" class="cnClr">Immortis Guard</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Archai" class="cnClr">Morghast Archai</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Harbingers" class="cnClr">Morghast Harbingers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Guard" class="cnClr">Mortek Guard</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Triaxes" class="cnClr">Mortek Triaxes</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortis-Reapers" class="cnClr">Mortis Reapers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Necropolis-Stalkers" class="cnClr">Necropolis Stalkers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortek-Guard" class="cnClr">Scourge of Ghyran Mortek Guard</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Kainan-s-Reapers" class="cnClr">Kainan’s Reapers</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Gothizzar-Harvester" class="cnClr">Gothizzar Harvester</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-War-Chariot" class="cnClr">Kavalos War Chariot</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Crawler" class="cnClr">Mortek Crawler</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Nexus" class="cnClr">Bone-tithe Nexus</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Endless Spell</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Shrieker" class="cnClr">Bone-tithe Shrieker</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nightmare-Predator" class="cnClr">Nightmare Predator</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Soulstealer-Carrion" class="cnClr">Soulstealer Carrion</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Big-Drogg-Fort-Kicka" class="cnClr">Big Drogg Fort-Kicka</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Soulblight Gravelords (4th edition)" src="/aos4/img/expansions/LoN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Blades-of-the-Hollow-King" class="cnClr">Blades of the Hollow King</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Nighthaunt (4th edition)" src="/aos4/img/expansions/NT_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Casket-of-Resurrections" class="cnClr">Casket of Resurrections</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Nighthaunt (4th edition)" src="/aos4/img/expansions/NT_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Craventhrone-Executioners" class="cnClr">Craventhrone Executioners</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Exile-Scavengers" class="cnClr">Exile Scavengers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Sky-Port-Profiteers" class="cnClr">Sky-Port Profiteers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Soulblight Gravelords (4th edition)" src="/aos4/img/expansions/LoN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Beast-of-Castle-Sternieste" class="cnClr">The Beast of Castle Sternieste</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Flesh-eater Courts (4th edition)" src="/aos4/img/expansions/FE_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Horror-of-Hallow-s-Watch" class="cnClr">The Horror of Hallow’s Watch</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Lost-Song-Spirits" class="cnClr">The Lost-Song Spirits</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Flesh-eater Courts (4th edition)" src="/aos4/img/expansions/FE_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Scarlet-Jury" class="cnClr">The Scarlet Jury</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Jerrion-s-Delegation" class="cnClr">Jerrion’s Delegation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Neferata-s-Royal-Echelon" class="cnClr">Neferata’s Royal Echelon</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Sorrowmourn-Choir" class="cnClr">The Sorrowmourn Choir</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Sternieste-Garrison" class="cnClr">The Sternieste Garrison</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Summerking-s-Entourage" class="cnClr">The Summerking’s Entourage</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Veremord-s-Shamblers" class="cnClr">Veremord’s Shamblers</a></div></div></div></span>
+	</div>
+	</div>
+</div>
+	<div class="NavWrapper_M">
+
+	<div class="NavDropdown_Search">
+	<div class="NavBtn_Search">&nbsp;</div>
+	<div class="NavDropdown-content_Search">
+		<div class="yandex_search_line_short"><div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script></div>
+	</div>
+	</div>
+<div class="NavDropdown_A">
+	<div class="NavBtn_A">&nbsp;</div>
+	<div class="NavDropdown-content_A">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/about">About</a><a href="/aos4/the-rules/data-export">Data Export</a>
+	</div>
+	</div>
+	<div class="NavDropdown_S">
+	<div class="NavBtn_S">&nbsp;</div>
+	<div class="NavDropdown-content_S">
+		<div class="armylist_header">Settings</div><div style="clear:both"></div><label class="container">
+<input checked="true" type="checkbox" class="ShowForgeWorldDatasheets"></input>
+	<span class="checkmark"></span>Show Forge World warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowLegendaryDatasheets"></input>
+	<span class="checkmark"></span>Show Legends and not recommended rules/warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowFluff"></input>
+	<span class="checkmark"></span>Show fluff text
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPathToGlory"></input>
+	<span class="checkmark"></span>Show Path to Glory rules
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPitchedBattleProfile"></input>
+	<span class="checkmark"></span>Show Battle Profile
+</label>
+<label style="margin-left:22px" class="container">
+<input checked="true" type="checkbox" class="ShowBaseSize"></input>
+	<span class="checkmark"></span>Show base size
+</label>
+<label class="container" style="padding-left:0px">Color theme: 
+	<select class="ctrlSelect ColorTheme" size="1">
+		<option class="ctrlOption" value="default">OS default</option>
+		<option class="ctrlOption" value="light">Bright</option>
+		<option class="ctrlOption" value="dark">Dark</option>
+	</select>
+</label>
+	</div>
+	</div>
+<div class="NavDropdown">
+	<div class="NavBtn NavBtn_TheRules">The Rules</div>
+	<div class="NavDropdown-content">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/quick-start-guide">Quick Start Guide</a><a href="/aos4/the-rules/the-core-rules">The Core Rules</a><a href="/aos4/the-rules/faqs">FAQs</a><div class="NavColumns_indent_solid"><br></div><div class="BreakInsideAvoid"><div class="FactionHeader">Matched Play Battlepack</div><a href="/aos4/the-rules/first-blood">First Blood</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Path to Glory Battlepack</div><a href="/aos4/the-rules/ascension">Ascension</a><a href="/aos4/the-rules/ravaged-coast">Ravaged Coast</a><a href="/aos4/the-rules/blighted-wilds">Blighted Wilds</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">General’s Handbooks</div><a href="/aos4/the-rules/general-s-handbook-2024-25">General’s Handbook 2024-25</a><a href="/aos4/the-rules/general-s-handbook-2025-26">General’s Handbook 2025-26</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Battleplans</div><a href="/aos4/the-rules/bunker">Bunker</a><a href="/aos4/the-rules/red-gobbo-battleplan">Red Gobbo Battleplan</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Flashpoints</div><a href="/aos4/the-rules/siege-of-lethis">Siege of Lethis</a></div>
+	</div>
+	</div>
+	<div class="NavDropdown">
+	<div class="NavBtn NavBtn_Factions">Factions</div>
+	<div class="NavDropdown-content">
+		<div class="NavColumns3"><div class="BreakInsideAvoid"><div class="FactionHeader">Order</div><a   href="/aos4/factions/cities-of-sigmar">Cities of Sigmar</a><a   href="/aos4/factions/daughters-of-khaine">Daughters of Khaine</a><a   href="/aos4/factions/fyreslayers">Fyreslayers</a><a   href="/aos4/factions/idoneth-deepkin">Idoneth Deepkin</a><a   href="/aos4/factions/kharadron-overlords">Kharadron Overlords</a><a   href="/aos4/factions/lumineth-realm-lords">Lumineth Realm-lords</a><a   href="/aos4/factions/seraphon">Seraphon</a><a   href="/aos4/factions/stormcast-eternals">Stormcast Eternals</a><a   href="/aos4/factions/sylvaneth">Sylvaneth</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Chaos</div><a   href="/aos4/factions/beasts-of-chaos">Beasts of Chaos</a><a   href="/aos4/factions/blades-of-khorne">Blades of Khorne</a><a   href="/aos4/factions/disciples-of-tzeentch">Disciples of Tzeentch</a><a   href="/aos4/factions/hedonites-of-slaanesh">Hedonites of Slaanesh</a><a   href="/aos4/factions/helsmiths-of-hashut">Helsmiths of Hashut</a><a   href="/aos4/factions/maggotkin-of-nurgle">Maggotkin of Nurgle</a><a   href="/aos4/factions/skaven">Skaven</a><a   href="/aos4/factions/slaves-to-darkness">Slaves to Darkness</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Death</div><a   href="/aos4/factions/flesh-eater-courts">Flesh-eater Courts</a><a   href="/aos4/factions/nighthaunt">Nighthaunt</a><a   href="/aos4/factions/ossiarch-bonereapers">Ossiarch Bonereapers</a><a   href="/aos4/factions/soulblight-gravelords">Soulblight Gravelords</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Destruction</div><a   href="/aos4/factions/bonesplitterz">Bonesplitterz</a><a   href="/aos4/factions/gloomspite-gitz">Gloomspite Gitz</a><a   href="/aos4/factions/ironjawz">Ironjawz</a><a   href="/aos4/factions/kruleboyz">Kruleboyz</a><a   href="/aos4/factions/ogor-mawtribes">Ogor Mawtribes</a><a   href="/aos4/factions/sons-of-behemat">Sons of Behemat</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Other</div><a   href="/aos4/factions/endless-spells">Endless Spells</a></div></div>
+	</div>
+	</div>
+</div>
+<div class="NavUnderline_M"></div>
+
+<div class="logoBW_float">
+<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logoBW no_tooltip" title="Support on Boosty"></div></a>
+<a class="noads_logoBW tooltip" data-tooltip-content="#tooltip_contentLoginForm"></a>
+<div class="slide-bottom" id="error-login"></div>
+<div class="slide-bottom" id="email-sent"></div>
+</div>
+</div>
+
+<div class="yandex_search_line yandex_search_line_show">
+<div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+</div>
+<div style="clear:both"></div>
+</div>
+<h1 class="page_header2"><span class="page_header_span2 kwbu tooltip" data-tooltip-content="#tooltip_contentFactionRules">Ossiarch Bonereapers</span><span class="page_header_span2"> – Nagash, Supreme Lord of the Undead</span></h1>
+<div class="noprint">
+
+</div>
+<!--/noindex-->
+<div class="noprint"><div class="selectionWarning"><div class="WahapediaWarningSign"></div>This warscroll does not meet the selection criteria (see <b>Settings</b> tab).</div></div>
+<div class="datasheet  "><div class="wsHeader_short"><div class="nails-header"><span class="nails">•</span>OSSIARCH BONEREAPERS WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Nagash
+<div class="wsAddName">Supreme Lord of the Undead<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Ossiarch%20Bonereapers%20Nagash,%20Supreme%20Lord%20of%20the%20Undead%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div></div><div class="wsCharLegend"><div class="BreakInsideAvoid Corner22f stretchTable" style="padding:0px;max-width:100%;"><table class=" stretchTable collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22f_1 dsColorCSSOB"></td><td class="Corner22f_2 dsColorCSSOB"></td><td class="Corner22f_3 dsColorCSSOB"></td></tr><tr><td class="Corner22f_8 dsColorCSSOB"></td><td class="Corner22f_9 dsColorBanOB"><div class="AoS_profile_Ward_RDP"><div class="wsMove">10"</div><div class="wsWounds">18</div><div class="wsSave">3+</div><div class="wsBravery">10</div><div class="wsWard">5+</div><div class="wsDiscipline">3</div></div><div class="ShowFluff wsLegend">All living beings dread the name of Nagash, the God of Undeath. Cruel and tyrannical, the overlord of Shyish intends to conquer the Mortal Realms and transform them into a lifeless Necrotopia, in which not a speck of dust moves unless it is by his will.</div></td><td class="Corner22f_4 dsColorCSSOB"></td></tr><tr><td class="Corner22f_7 dsColorCSSOB"></td><td class="Corner22f_6 dsColorCSSOB"></td><td class="Corner22f_5 dsColorCSSOB"></td></tr></tbody></table></div></div><div class="wsBody"><div class="wsBodyTop"><div class="wsHeader_long"><div class="nails-header"><span class="nails">•</span>OSSIARCH BONEREAPERS WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Nagash
+<div class="wsAddName">Supreme Lord of the Undead<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Ossiarch%20Bonereapers%20Nagash,%20Supreme%20Lord%20of%20the%20Undead%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div></div><div class="wsTable"><table class="wTable" border="1" cellspacing="0" cellpadding="2" style="border-collapse:collapse;border-width:0px"><tr class="dsColorBgOB wsHeaderRow"><td class="wsHeaderCellName_MeleeWeapons wsDataCell_long"></td><td class="wsHeaderCellName_NoRng"><div class="wsHeaderCellName_MeleeWeapons wsDataCell_short"></div><span class="wsDataCell_long">MELEE WEAPONS</span></td><td class="wsHeaderCell">Atk</td><td class="wsHeaderCell">Hit</td><td class="wsHeaderCell">Wnd</td><td class="wsHeaderCell">Rnd</td><td class="wsHeaderCell">Dmg</td></tr><tbody class="bkg"><tr class="wsDataRow wsDataRow_short"><td colspan="6" style="border-width:0px">Alakanash, the Staff of Power</td></tr><tr class="wsDataRow dsColorFrOB"><td class="wsDataCell_long wsBorderN"></td><td class="wsDataCell_short wsBorderN dsColorFrOB"></td><td class="wsDataCell_long wsBorderN dsColorFrOB">Alakanash, the Staff of Power</td><td class="wsBorderM wsCell dsColorFrOB">4</td><td class="wsBorderM wsCell dsColorFrOB">3+</td><td class="wsBorderM wsCell dsColorFrOB">3+</td><td class="wsBorderM wsCell dsColorFrOB">2</td><td class="wsBorderR wsCell dsColorFrOB">D6</td></tr></tbody><tbody class="bkg"><tr class="wsDataRow wsDataRow_short"><td colspan="6" style="border-width:0px">Zefet-nebtar, the Mortis Blade</td></tr><tr class="wsDataRow dsColorFrOB"><td class="wsDataCell_long wsBorderN_"></td><td class="wsDataCell_short wsBorderN_ dsColorFrOB"></td><td class="wsDataCell_long wsBorderN_ dsColorFrOB">Zefet-nebtar, the Mortis Blade</td><td class="wsBorderM_ wsCell dsColorFrOB">4</td><td class="wsBorderM_ wsCell dsColorFrOB">3+</td><td class="wsBorderM_ wsCell dsColorFrOB">3+</td><td class="wsBorderM_ wsCell dsColorFrOB">2</td><td class="wsBorderR_ wsCell dsColorFrOB">3</td></tr></tbody></table></div><div style="clear:both"></div><div class="Columns2_AoS"><div class="BreakInsideAvoid PitchedBattleProfile ShowPitchedBattleProfile"><div class="wsAbilityHeader">BATTLE PROFILE</div><a href="/aos4/the-rules/the-core-rules/#Battle-Profiles"><div class="tooltip_link_inline"></div></a><br><span class="redfont">Unit Size</span><b>: </b>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redfont">Points</span><b>: </b>830<br><span class="ShowBaseSize"><span class="redfont">Base size</span><b>: </b>130mm</span><br class="ShowBaseSize"><div><b>Can be reinforced: </b>No</div><div><b>Regiment Options: </b>0-1 <span class="tooltip00031" data-tooltip-content="#tooltip_content00031" data-tooltip-anchor="#tooltip_content00031"><i><span class="tt kwbu">Legion</span> <span class="tt kwbu">Subcommander</span></i></span>, Any <span class="tooltipOSSIARCHBONEREAPERS" data-tooltip-content="#tooltip_contentOSSIARCHBONEREAPERS" data-tooltip-anchor="#tooltip_contentOSSIARCHBONEREAPERS"><span class="kwb kwbu">OSSIARCH</span> <span class="kwb kwbu">BONEREAPERS</span></span></div></div><div class="ShowPitchedBattleProfile"><br></div><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7474%) hue-rotate(193deg) brightness(92%) contrast(106%);"></td><td class="abHeader" bgcolor="#000000"><img class="abLogo" src="/aos4/img/abDamage.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7474%) hue-rotate(193deg) brightness(92%) contrast(106%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#000000" class="abBody abNoReaction"><b>BATTLE DAMAGED</b></br><b>Effect:</b> While this unit has 10 or more damage points, subtract 3 from its <span class="tooltip00067" data-tooltip-content="#tooltip_content00067"><span class="tt kwbu">power</span> <span class="tt kwbu">level</span></span>.</div><div><br></div></div></div><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td class="abHeader" bgcolor="#76602b"><img class="abLogo" src="/aos4/img/abSpecial.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#76602b" class="abBody abNoReaction"><b>THE STAFF OF POWER<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Alakanash is capped with gems of purest grave-sand.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> Add 2 to <span class="tooltip00046" data-tooltip-content="#tooltip_content00046"><span class="tt kwbu">casting</span> <span class="tt kwbu">rolls</span></span> for this unit while it has not <span class="tooltip00046" data-tooltip-content="#tooltip_content00046"><span class="tt kwbu">miscast</span></span> any spells this turn. If this unit miscasts a spell, ignore the restriction that would stop this unit from casting any more spells this turn.</div><div><br></div></div><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(30%) sepia(11%) saturate(2025%) hue-rotate(224deg) brightness(93%) contrast(85%);"></td><td class="abHeader" bgcolor="#5e4a79"><img class="abLogo" src="/aos4/img/abOffensive.png">Once Per Turn (Army), End of Any Turn</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(30%) sepia(11%) saturate(2025%) hue-rotate(224deg) brightness(93%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#5e4a79" class="abBody abNoReaction"><b>HAND OF DUST<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Nagash’s touch can turn a foe to a pile of dusty bones in moments.<br><div class="spc"></div></span><div><br></div><b>Declare:</b> Pick a <span class="tooltip00019" data-tooltip-content="#tooltip_content00019"><span class="tt kwbu">visible</span></span> enemy <span class="kwb">HERO</span> or <span class="kwb">MONSTER</span> <span class="tooltip00003" data-tooltip-content="#tooltip_content00003"><span class="tt kwbu">in</span> <span class="tt kwbu">combat</span></span> with this unit to be the target.<br><br><b>Effect:</b> Hide a dice in one of your hands or under one of two appropriate containers. Your opponent must pick one of your hands or containers. If they pick the one hiding the dice, this ability has no effect. If they pick the empty one, the target is automatically destroyed.</div><div class="abKeywords" style="border-color:#5e4a79"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td bgcolor="#5e4a79" class="abHeader abKeywordsBody"><span class="kwb">KEYWORDS</span></td><td class="abKeywordsBodyText abNoReaction"><span class="kwb">RAMPAGE</span></td></tr></tbody></table></div><div><br></div></div><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td class="abHeader" bgcolor="#76602b"><img class="abLogo" src="/aos4/img/abSpecial.png">Your Hero Phase</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td style="width:0px; position:absolute;"><div class="abSpellPoints"><div class="abSpellPointsN">7</div></div></td></tr></tbody></table><div style="border-color:#76602b" class="abBody abNoReaction"><b>INVOCATION OF NAGASH<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">In a storm of morbid sorcery, Nagash blasts his foes’ souls or re-knits his minions’ bodies.<br><div class="spc"></div></span><div><br></div><b>Declare:</b> This unit can cast this spell more than once per phase. Pick a <span class="tooltip00019" data-tooltip-content="#tooltip_content00019"><span class="tt kwbu">visible</span></span> unit wholly within 18" of this unit that has not been picked to be the target of this spell this turn to be the target, then make a <span class="tooltip00046" data-tooltip-content="#tooltip_content00046"><span class="tt kwbu">casting</span> <span class="tt kwbu">roll</span></span> of 2D6.<br><br><b>Effect:</b> If the target is an enemy unit, inflict D3 <span class="tooltip00004" data-tooltip-content="#tooltip_content00004"><span class="tt kwbu">mortal</span> <span class="tt kwbu">damage</span></span> on it. If the target is a friendly <span class="kwb">DEATH</span> unit, pick 1 of the following effects:<br><ul><li>Return a number of <span class="tooltip00028" data-tooltip-content="#tooltip_content00028"><span class="tt kwbu">slain</span> <span class="tt kwbu">models</span></span> to the target unit with a combined Health characteristic of up to 3.</li><li>The target has <span class="tooltip00011" data-tooltip-content="#tooltip_content00011"><span class="kwb kwbu">WARD</span> <span class="kwb4">(</span><span class="kwb2_ kwbu">5+</span><span class="kwb4">)</span></span> until the start of your next turn.</li></ul></div><div class="abKeywords" style="border-color:#76602b"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td bgcolor="#76602b" class="abHeader abKeywordsBody"><span class="kwb">KEYWORDS</span></td><td class="abKeywordsBodyText abNoReaction"><span class="kwb">SPELL</span></td></tr></tbody></table></div><div><br></div></div><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td class="abHeader" bgcolor="#76602b"><img class="abLogo" src="/aos4/img/abRallying.png">Once Per Battle, Your Hero Phase</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#76602b" class="abBody abNoReaction"><b>SUPREME LORD OF THE UNDEAD<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Nagash is the undisputed master of all undead creatures.<br><div class="spc"></div></span><div><br></div><b>Declare:</b> Pick a friendly non-<span class="tooltip00074" data-tooltip-content="#tooltip_content00074" data-tooltip-anchor="#tooltip_content00074"><span class="kwb kwbu">HERO</span></span> non-<span class="tooltip00074" data-tooltip-content="#tooltip_content00074" data-tooltip-anchor="#tooltip_content00074"><span class="kwb kwbu">UNIQUE</span> <span class="kwb kwbu">DEATH</span></span> unit that has been destroyed to be the target.<br><br><b>Effect:</b> <a href="/aos4/the-rules/the-core-rules/#Setting-Up-Units">Set up</a> a <span class="tooltip00040" data-tooltip-content="#tooltip_content00040"><span class="tt kwbu">replacement</span> <span class="tt kwbu">unit</span></span> identical to the target wholly within 12" of this unit and more than 9" from all enemy units.</div></div></div></div><div class="wsBodyBottom"><div style="clear:both"><br></div><table width=100% border="0" cellspacing="0" cellpadding="6"><tr><td rowspan="2" class="wsKeywordHeader dsColorBgOB"><div style="font-weight:700; font-family:'Minion-Pro',serif;">KEYWORDS</div></td><td class="wsKeywordLine1 dsColorFrOB"><span class="tooltipkWARMASTER" data-tooltip-content="#tooltip_contentWARMASTER" data-tooltip-anchor="#tooltip_contentWARMASTER"><span class="kwb kwbu">WARMASTER</span></span>, <span class="tooltipkUNIQUE" data-tooltip-content="#tooltip_contentUNIQUE" data-tooltip-anchor="#tooltip_contentUNIQUE"><span class="kwb kwbu">UNIQUE</span></span>, <span class="tooltipkHERO" data-tooltip-content="#tooltip_contentHERO" data-tooltip-anchor="#tooltip_contentHERO"><span class="kwb kwbu">HERO</span></span>, <span class="tooltipkMONSTER" data-tooltip-content="#tooltip_contentMONSTER" data-tooltip-anchor="#tooltip_contentMONSTER"><span class="kwb kwbu">MONSTER</span></span>, <span class="tooltipkWIZARD" data-tooltip-content="#tooltip_contentWIZARD" data-tooltip-anchor="#tooltip_contentWIZARD"><span class="kwb kwbu">WIZARD</span> <span class="kwb4">(</span><span class="kwb2_ kwbu">9</span><span class="kwb4">)</span></span>, <span class="tooltipkFLY" data-tooltip-content="#tooltip_contentFLY" data-tooltip-anchor="#tooltip_contentFLY"><span class="kwb kwbu">FLY</span></span>, <span class="tooltipkWARD" data-tooltip-content="#tooltip_contentWARD" data-tooltip-anchor="#tooltip_contentWARD"><span class="kwb kwbu">WARD</span> <span class="kwb4">(</span><span class="kwb2_ kwbu">5+</span><span class="kwb4">)</span></span>, <span class="tooltipkRELENTLESSDISCIPLINE" data-tooltip-content="#tooltip_contentRELENTLESSDISCIPLINE" data-tooltip-anchor="#tooltip_contentRELENTLESSDISCIPLINE"><span class="kwb kwbu">RELENTLESS</span> <span class="kwb kwbu">DISCIPLINE</span> <span class="kwb4">(</span><span class="kwb2_ kwbu">3</span><span class="kwb4">)</span></span></td></tr><tr><td class="wsKeywordLine2 dsColorFrOB"><span class="tooltipkDEATH" data-tooltip-content="#tooltip_contentDEATH" data-tooltip-anchor="#tooltip_contentDEATH"><span class="kwb kwbu">DEATH</span></span>, <span class="tooltipkOSSIARCHBONEREAPERS" data-tooltip-content="#tooltip_contentOSSIARCHBONEREAPERS" data-tooltip-anchor="#tooltip_contentOSSIARCHBONEREAPERS"><span class="kwb kwbu">OSSIARCH</span> <span class="kwb kwbu">BONEREAPERS</span></span></td></tr></table></div></div></div><div style="clear:both"></div>
+<!--noindex--><div class="tooltip_templates"><span id="tooltip_content00003"><div class="tooltip_header">7.0 Combat Range</div><a href="/aos4/the-rules/the-core-rules/#Combat-Range"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+<div class="Columns2"><div class="BreakInsideAvoid">Each model has a <b>combat range</b> that extends 3" horizontally from its base and any distance vertically from that circle to form a cylinder. The combat range of a unit extends 3" horizontally and any distance vertically from every model in that unit. Units from opposing armies that are within each other’s combat range and that are <b><a href="/aos4/the-rules/the-core-rules/#Visibility">visible</a></b> to each other are <b>in combat</b> with each other. When a unit that is not in combat enters the combat range of a visible enemy unit, it <b>moves into combat</b>.<br>A model is considered to be in combat with an enemy unit if that unit is within the model’s combat range and visible to it’<br><br></div><div class="BreakInsideAvoid Corner22r" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22r_1"></td><td class="Corner22r_2"></td><td class="Corner22r_3"></td></tr><tr><td class="Corner22r_8"></td><td class="Corner22r_9"><ul><li>A unit’s combat range extends 3" out from every model in that unit.</li><li>If any enemy models are within a unit’s combat range and visible to it, that unit is in combat.</li></ul></td><td class="Corner22r_4"></td></tr><tr><td class="Corner22r_7"></td><td class="Corner22r_6"></td><td class="Corner22r_5"></td></tr></tbody></table></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00004"><div class="tooltip_header">17.2 Mortal Damage</div><a href="/aos4/the-rules/the-core-rules/#Mortal-Damage"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Some abilities inflict <b>mortal damage</b>. If an ability inflicts mortal damage on a unit, add that number of damage points to the unit’s damage pool for that ability (<a href="/aos4/the-rules/the-core-rules/#Allocating-Damage">see 18.2 Allocating Damage</a>).
+</span></div><div class="tooltip_templates"><span id="tooltip_content00011"><div class="tooltip_header">18.1 Ward Saves</div><a href="/aos4/the-rules/the-core-rules/#Ward-Saves"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Units with the <span class="kwb">WARD</span> keyword have the ‘Ward Save’ <a href="/aos4/the-rules/the-core-rules/#Passive-Abilities">passive ability</a>. The number after the <span class="kwb">WARD</span> keyword indicates the <b>ward value</b> for the ward save. If a unit had <span class="kwb">WARD</span> <span class="kwb4">(</span><span class="kwb2_">5+</span><span class="kwb4">)</span>, for example, its ward value would be 5. If a unit has more than one ward save, only the ward save with the lowest value applies to it; the other has no effect.<br><br><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(31%) sepia(7%) saturate(3612%) hue-rotate(51deg) brightness(91%) contrast(85%);"></td><td class="abHeader" bgcolor="#3d5b26"><img class="abLogo" src="/aos4/img/abDefensive.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(31%) sepia(7%) saturate(3612%) hue-rotate(51deg) brightness(91%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#3d5b26" class="abBody abNoReaction"><b>WARD SAVE<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Whether through their uncanny reflexes, unnatural toughness or a source of mystical protection, these warriors can avoid otherwise lethal attacks.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> In step 1 of the damage sequence (<a href="/aos4/the-rules/the-core-rules/#The-Damage-Sequence">see 18.0</a>), make a <b>ward roll</b> of D6 for each <b>damage point</b> in this unit’s <b>damage pool</b>. If the roll equals or exceeds this unit’s <b>ward value</b>, remove that damage point from the damage pool.</div><div><br></div></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_contentWARD"><p>The <span class="tooltip00011" data-tooltip-content="#tooltip_content00011"><span class="kwb kwbu">WARD</span></span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Gothizzar-Harvester" class="cnClr">Gothizzar Harvester</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Immortis-Guard" class="cnClr">Immortis Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-Deathriders" class="cnClr">Kavalos Deathriders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-War-Chariot" class="cnClr">Kavalos War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Archai" class="cnClr">Morghast Archai</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Harbingers" class="cnClr">Morghast Harbingers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Crawler" class="cnClr">Mortek Crawler</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Guard" class="cnClr">Mortek Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Triaxes" class="cnClr">Mortek Triaxes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortis-Reapers" class="cnClr">Mortis Reapers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Necropolis-Stalkers" class="cnClr">Necropolis Stalkers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Teratic-Cohort" class="cnClr">Teratic Cohort</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortek-Guard" class="cnClr">Scourge of Ghyran Mortek Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortisan-Boneshaper" class="cnClr">Scourge of Ghyran Mortisan Boneshaper</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Kainan-s-Reapers" class="cnClr">Kainan’s Reapers</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Shrieker" class="cnClr">Bone-tithe Shrieker</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nightmare-Predator" class="cnClr">Nightmare Predator</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Soulstealer-Carrion" class="cnClr">Soulstealer Carrion</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentDEATH"><p>The <span class="kwb">DEATH</span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Nexus" class="cnClr">Bone-tithe Nexus</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Gothizzar-Harvester" class="cnClr">Gothizzar Harvester</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Immortis-Guard" class="cnClr">Immortis Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-Deathriders" class="cnClr">Kavalos Deathriders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-War-Chariot" class="cnClr">Kavalos War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Archai" class="cnClr">Morghast Archai</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Harbingers" class="cnClr">Morghast Harbingers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Crawler" class="cnClr">Mortek Crawler</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Guard" class="cnClr">Mortek Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Triaxes" class="cnClr">Mortek Triaxes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortis-Reapers" class="cnClr">Mortis Reapers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Necropolis-Stalkers" class="cnClr">Necropolis Stalkers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Teratic-Cohort" class="cnClr">Teratic Cohort</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortek-Guard" class="cnClr">Scourge of Ghyran Mortek Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortisan-Boneshaper" class="cnClr">Scourge of Ghyran Mortisan Boneshaper</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Kainan-s-Reapers" class="cnClr">Kainan’s Reapers</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Shrieker" class="cnClr">Bone-tithe Shrieker</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nightmare-Predator" class="cnClr">Nightmare Predator</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Soulstealer-Carrion" class="cnClr">Soulstealer Carrion</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentOSSIARCHBONEREAPERS"><p>The <span class="kwb">OSSIARCH</span> <span class="kwb">BONEREAPERS</span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Nexus" class="cnClr">Bone-tithe Nexus</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Gothizzar-Harvester" class="cnClr">Gothizzar Harvester</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Immortis-Guard" class="cnClr">Immortis Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-Deathriders" class="cnClr">Kavalos Deathriders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-War-Chariot" class="cnClr">Kavalos War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Archai" class="cnClr">Morghast Archai</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Harbingers" class="cnClr">Morghast Harbingers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Crawler" class="cnClr">Mortek Crawler</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Guard" class="cnClr">Mortek Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Triaxes" class="cnClr">Mortek Triaxes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortis-Reapers" class="cnClr">Mortis Reapers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Necropolis-Stalkers" class="cnClr">Necropolis Stalkers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Teratic-Cohort" class="cnClr">Teratic Cohort</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortek-Guard" class="cnClr">Scourge of Ghyran Mortek Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortisan-Boneshaper" class="cnClr">Scourge of Ghyran Mortisan Boneshaper</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Kainan-s-Reapers" class="cnClr">Kainan’s Reapers</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Shrieker" class="cnClr">Bone-tithe Shrieker</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nightmare-Predator" class="cnClr">Nightmare Predator</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Soulstealer-Carrion" class="cnClr">Soulstealer Carrion</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentArmyList"><span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/ossiarch-bonereapers/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortisan-Boneshaper" class="cnClr">Scourge of Ghyran Mortisan Boneshaper</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Beast</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Teratic-Cohort" class="cnClr">Teratic Cohort</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-Deathriders" class="cnClr">Kavalos Deathriders</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Immortis-Guard" class="cnClr">Immortis Guard</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Archai" class="cnClr">Morghast Archai</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Harbingers" class="cnClr">Morghast Harbingers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Guard" class="cnClr">Mortek Guard</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Triaxes" class="cnClr">Mortek Triaxes</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortis-Reapers" class="cnClr">Mortis Reapers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Necropolis-Stalkers" class="cnClr">Necropolis Stalkers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortek-Guard" class="cnClr">Scourge of Ghyran Mortek Guard</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Kainan-s-Reapers" class="cnClr">Kainan’s Reapers</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Gothizzar-Harvester" class="cnClr">Gothizzar Harvester</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-War-Chariot" class="cnClr">Kavalos War Chariot</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Crawler" class="cnClr">Mortek Crawler</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Nexus" class="cnClr">Bone-tithe Nexus</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Endless Spell</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Shrieker" class="cnClr">Bone-tithe Shrieker</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nightmare-Predator" class="cnClr">Nightmare Predator</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Soulstealer-Carrion" class="cnClr">Soulstealer Carrion</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Big-Drogg-Fort-Kicka" class="cnClr">Big Drogg Fort-Kicka</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Soulblight Gravelords (4th edition)" src="/aos4/img/expansions/LoN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Blades-of-the-Hollow-King" class="cnClr">Blades of the Hollow King</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Nighthaunt (4th edition)" src="/aos4/img/expansions/NT_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Casket-of-Resurrections" class="cnClr">Casket of Resurrections</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Nighthaunt (4th edition)" src="/aos4/img/expansions/NT_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Craventhrone-Executioners" class="cnClr">Craventhrone Executioners</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Exile-Scavengers" class="cnClr">Exile Scavengers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Sky-Port-Profiteers" class="cnClr">Sky-Port Profiteers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Soulblight Gravelords (4th edition)" src="/aos4/img/expansions/LoN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Beast-of-Castle-Sternieste" class="cnClr">The Beast of Castle Sternieste</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Flesh-eater Courts (4th edition)" src="/aos4/img/expansions/FE_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Horror-of-Hallow-s-Watch" class="cnClr">The Horror of Hallow’s Watch</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Lost-Song-Spirits" class="cnClr">The Lost-Song Spirits</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Flesh-eater Courts (4th edition)" src="/aos4/img/expansions/FE_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Scarlet-Jury" class="cnClr">The Scarlet Jury</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Jerrion-s-Delegation" class="cnClr">Jerrion’s Delegation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Neferata-s-Royal-Echelon" class="cnClr">Neferata’s Royal Echelon</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Sorrowmourn-Choir" class="cnClr">The Sorrowmourn Choir</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Sternieste-Garrison" class="cnClr">The Sternieste Garrison</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Summerking-s-Entourage" class="cnClr">The Summerking’s Entourage</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Veremord-s-Shamblers" class="cnClr">Veremord’s Shamblers</a></div></div></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentFactionRules"><span class="contents"><div class="tooltip_header">Faction Rules</div><a href="/aos4/factions/ossiarch-bonereapers"><div class="tooltip_link"></div></a><div style="clear:both"></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#Battle-Traits" class="cnClr">Battle Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#Battle-Formations" class="cnClr">Battle Formations</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#Heroic-Traits" class="cnClr">Heroic Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#Artefacts-of-Power" class="cnClr">Artefacts of Power</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#Spell-Lore" class="cnClr">Spell Lore</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#Manifestation-Lore" class="cnClr">Manifestation Lore</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#The-Lance-of-Ossia" class="cnClr">The Lance of Ossia</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#The-Null-Myriad" class="cnClr">The Null Myriad</a></div><div class="clFl sShowPathToGlory w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/#PATH-TO-GLORY" class="cnClr">PATH TO GLORY</a></div><div class="clFl sLegendary w1 i15"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/#Petrifex-Elite" class="cnClr">Petrifex Elite</a></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentLoginForm"><form action="/login.php" method="POST" id="disable-ads">
+<div class="lfWrapper">
+<h4 style="padding-bottom:6px">Disable Ads</h4>
+<label class="lfLabel" for="email" id="email">E-mail:</label> <input id="user-text-field" type="email" class="lfInput_w lfInput" autocomplete="username" name="email" id="email" value="" />
+<br><div><label class="lfLabel" for="passcode" type="password">Pin code:</label> <input id="password-text-field" type="password" autocomplete="current-password" style="width:68px" class="lfInput" name="passcode" value="" /> <button class="lfButton" id="btnDisableAds">Disable Ads</button></div>
+<input type="text" style="display:none"  name="g-recaptcha-response" id="captcha-box"></input>
+<button class="lfDisableAds" id="btnGetPin">Get new pin code</button>
+<br><a href="https://boosty.to/wahapedia">Boosty</a> subscribers may disable ads:
+<br>1. Enter e-mail you have used to login on Boosty.
+<br>2. Press <b>Get new pin code</b> button (if you don’t have it already)
+<br>3. Enter pin code.
+<br>
+<br><i>Note that login database updated once a day. So, if you are a new booster - try tomorrow. And thank you!</i>
+</div>
+</form></span></div><div class="tooltip_templates"><span id="tooltip_content00019"><div class="tooltip_header">6.0 Visibility</div><a href="/aos4/the-rules/the-core-rules/#Visibility"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+A target model is visible to another model (which we’ll call the ‘observing model’) if you can draw a straight line through the air (whether horizontal, diagonal or vertical) from any point on the observing model to any point on the target model that does not intersect any objects except for other models in the observing model’s unit. A target unit is visible to an observing unit if at least 1 model in the target unit is visible to at least 1 model in the observing unit. A model is always considered to be visible to itself.<br>If a rule or ability requires a target to be both within a given range of and visible to the unit using that ability, or to a model in that unit, both conditions must be met by the same model in the target. You could not, for instance, target a unit where one model is within range but not visible and another model is not in range but is visible.<br><div class="BreakInsideAvoid Corner22r" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22r_1"></td><td class="Corner22r_2"></td><td class="Corner22r_3"></td></tr><tr><td class="Corner22r_8"></td><td class="Corner22r_9"><ul class="Rhombus"><li>If any part of another model can be seen by an observing model, both the target model and its unit are visible to that observing model.</li></ul></td><td class="Corner22r_4"></td></tr><tr><td class="Corner22r_7"></td><td class="Corner22r_6"></td><td class="Corner22r_5"></td></tr></tbody></table></div><br><div class="BreakInsideAvoid Corner22" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22_1"></td><td class="Corner22_2"></td><td class="Corner22_3"></td></tr><tr><td class="Corner22_8"></td><td class="Corner22_9">In some cases, it might not be immediately clear whether a model is visible. If so, stoop down to get a look from behind the observing model. If any part of the other model is visible, even if it is just the tip of a spear, then that model is visible for rules purposes.</td><td class="Corner22_4"></td></tr><tr><td class="Corner22_7"></td><td class="Corner22_6"></td><td class="Corner22_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00028"><div class="tooltip_header">18.3 Slain Models</div><a href="/aos4/the-rules/the-core-rules/#Slain-Models"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+The commander of a unit must pick which model(s) in the unit are slain. However, after each slain model is removed, the unit must be in a single coherent group (<a href="/aos4/the-rules/the-core-rules/#Coherency">see 15.1</a>). If this is not possible, continue to remove models, one at a time, until the unit is in a single coherent group. You must remove the fewest models possible to make the unit a single coherent group.
+</span></div><div class="tooltip_templates"><span id="tooltip_content00031">Those <span class="kwb">HEROES</span> can join an eligible <span class="tooltip00030" data-tooltip-content="#tooltip_content00030"><span class="tt kwbu">regiment</span></span> as a <i>Legion Subcommander</i>.<br><br><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Infantry Hero</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Cavalry Hero</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">War Machine Hero</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentUNIQUE"><p>The <span class="kwb">UNIQUE</span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Kainan-s-Reapers" class="cnClr">Kainan’s Reapers</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentHERO"><p>The <span class="kwb">HERO</span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortisan-Boneshaper" class="cnClr">Scourge of Ghyran Mortisan Boneshaper</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentRELENTLESSDISCIPLINE"><p>The <a href="/aos4/factions/ossiarch-bonereapers/#Battle-Traits"><span class="kwb">RELENTLESS</span> <span class="kwb">DISCIPLINE</span></a> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arch-Kavalos-Zandtos" class="cnClr">Arch-Kavalos Zandtos</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos" class="cnClr">Liege-Kavalos</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Kavalos-on-War-Chariot" class="cnClr">Liege-Kavalos on War Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Liege-Mortek" class="cnClr">Liege-Mortek</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentWARMASTER"><p>The <span class="kwb">WARMASTER</span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Katakros-Mortarch-of-the-Necropolis" class="cnClr">Katakros, Mortarch of the Necropolis</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_content00040"><div class="tooltip_header">24.2 Replacement Units</div><a href="/aos4/the-rules/the-core-rules/#Replacement-Units"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Some abilities allow you to set up a <b>replacement unit</b>. When setting up that unit, it should have the same <a href="/aos4/the-rules/the-core-rules/#Warscrolls">warscroll</a> type, weapon options and number of models as the original unit, unless otherwise specified in the ability. Many of these abilities specify the proportion of models in the replacement unit (e.g. half the number of models from the original unit). In these cases, you can pick which models from the original unit are set up.<br><br>The replacement unit is otherwise treated as a new unit; any <a href="/aos4/the-rules/the-core-rules/#Keywords">keywords</a> or <a href="/aos4/the-rules/the-core-rules/#Abilities">abilities</a> the original unit gained during the battle, and any <a href="/aos4/the-rules/the-core-rules/#Persisting-Effects">persisting effects</a> that applied to it, do not apply to the replacement unit. Each unit can only be replaced once, and you cannot replace replacement units.<br><br><div class="BreakInsideAvoid Corner22" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22_1"></td><td class="Corner22_2"></td><td class="Corner22_3"></td></tr><tr><td class="Corner22_8"></td><td class="Corner22_9">Because a replacement unit is treated as a completely new unit, it could, for instance, use a <b>Once Per Battle</b> ability on its warscroll even if the unit it replaced used that ability earlier in the battle.</td><td class="Corner22_4"></td></tr><tr><td class="Corner22_7"></td><td class="Corner22_6"></td><td class="Corner22_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00044"><div class="tooltip_header">1.0 Wizards and Priests</div><a href="/aos4/the-rules/the-core-rules/#Wizards-and-Priests"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+<span class="kwb">WIZARDS</span> are special units that can cast <b><a href="/aos4/the-rules/the-core-rules/#Spells">spells</a></b>, and <span class="kwb">PRIESTS</span> are special units that can chant <b><a href="/aos4/the-rules/the-core-rules/#Prayers">prayers</a></b>. Spells and prayers are powerful <b><a href="/aos4/the-rules/the-core-rules/#Abilities">abilities</a></b> that can have a dramatic impact on the battle.
+</span></div><div class="tooltip_templates"><span id="tooltip_contentWIZARD"><p>The <span class="tooltip00044" data-tooltip-content="#tooltip_content00044"><span class="kwb kwbu">WIZARD</span></span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Boneshaper" class="cnClr">Mortisan Boneshaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulmason" class="cnClr">Mortisan Soulmason</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Vokmortian-Master-of-the-Bone-tithe" class="cnClr">Vokmortian, Master of the Bone-tithe</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortisan-Boneshaper" class="cnClr">Scourge of Ghyran Mortisan Boneshaper</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Thanatek-s-Tithe" class="cnClr">Thanatek’s Tithe</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_content00046"><div class="tooltip_header">2.0 Spells</div><a href="/aos4/the-rules/the-core-rules/#Spells"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+The declare step of each spell will tell you to make a <b>casting roll</b> of <b>2D6</b>. If the roll does <b>not</b> equal or exceed the spell’s <b>casting value</b> (at the top-right corner of the spell), the spell fails and its effect is not resolved.<br><br>If the unmodified casting roll includes <b>2 or more rolls of 1</b>, the spell is <b>miscast</b>: the spell fails, its effect is not resolved, <b>D3 <a href="/aos4/the-rules/the-core-rules/#Mortal-Damage">mortal damage</a></b> is inflicted on the <span class="kwb">WIZARD</span> that used it, and that <span class="kwb">WIZARD</span> cannot use any more spells in that phase.<br><br>Enemy reactions can only be used if the <b>casting roll</b> equals or exceeds the spell’s <b>casting value</b>. So long as the spell is not <b>unbound</b> (<a href="/aos4/the-rules/the-core-rules/#Unbinding-Spells">see 4.0</a>), then it is <b>successfully cast</b>: resolve its <b>effect</b>.<br><br><div class="h_custom">EXAMPLE SPELL</div><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td class="abHeader" bgcolor="#76602b"><img class="abLogo" src="/aos4/img/abDefensive.png">Your Hero Phase</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td style="width:0px; position:absolute;"><div class="abSpellPoints"><div class="abSpellPointsN">6</div></div></td></tr></tbody></table><div style="border-color:#76602b" class="abBody abNoReaction"><b>MYSTIC SHIELD<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">The caster's allies are bathed in an unearthly glow that protects them from harm.<br><div class="spc"></div></span><div><br></div><b>Declare:</b> Pick a <span class="tooltip00019" data-tooltip-content="#tooltip_content00019"><span class="tt kwbu">visible</span></span> friendly unit wholly within 12" of this <span class="kwb">WIZARD</span> to be the target. Then, make a <b>casting roll</b> of 2D6.<br><br><b>Effect:</b> The target has <span class="tooltip00011" data-tooltip-content="#tooltip_content00011"><span class="kwb kwbu">WARD</span> <span class="kwb4">(</span><span class="kwb2_ kwbu">6+</span><span class="kwb4">)</span></span> this turn.</div><div class="abKeywords" style="border-color:#76602b"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td bgcolor="#76602b" class="abHeader abKeywordsBody"><span class="kwb">KEYWORDS</span></td><td class="abKeywordsBodyText abNoReaction"><span class="kwb">SPELL</span></td></tr></tbody></table></div><div><br></div></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00049"><div class="tooltip_header">15.4 Flying</div><a href="/aos4/the-rules/the-core-rules/#Flying"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Units with the <span class="kwb">FLY</span> keyword have the following passive ability:<br><br><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(1927%) hue-rotate(171deg) brightness(95%) contrast(90%);"></td><td class="abHeader" bgcolor="#606362"><img class="abLogo" src="/aos4/img/abMovement.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(1927%) hue-rotate(171deg) brightness(95%) contrast(90%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#606362" class="abBody abNoReaction"><b>FLY<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Soaring above the battlefield, this unit can reach destinations that are inaccessible to other troops.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> As this unit moves, it ignores other models, <a href="/aos4/the-rules/the-core-rules/#Terrain-2025-26">terrain features</a> and the <span class="tooltip00003" data-tooltip-content="#tooltip_content00003"><span class="tt kwbu">combat</span> <span class="tt kwbu">ranges</span></span> of enemy units. It cannot end its move in combat unless specified in the ability that allowed it to move. Ignore any vertical distance moved for this unit.</div><div><br></div></div></div><br><div class="BreakInsideAvoid Corner22" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22_1"></td><td class="Corner22_2"></td><td class="Corner22_3"></td></tr><tr><td class="Corner22_8"></td><td class="Corner22_9">When moving flying units, move them horizontally in any direction, ignoring intervening models and terrain, and place them where you wish, so long as they are allowed to end their move on that spot. Note that some units have the <span class="kwb">FLY</span> keyword even if that unit can’t really fly. This often represents units that bounce, bound or skitter across the battlefield so adeptly that they might as well be flying!</td><td class="Corner22_4"></td></tr><tr><td class="Corner22_7"></td><td class="Corner22_6"></td><td class="Corner22_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_contentFLY"><p>The <span class="tooltip00049" data-tooltip-content="#tooltip_content00049"><span class="kwb kwbu">FLY</span></span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Archai" class="cnClr">Morghast Archai</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Harbingers" class="cnClr">Morghast Harbingers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Ossifector" class="cnClr">Mortisan Ossifector</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortisan-Soulreaper" class="cnClr">Mortisan Soulreaper</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Shrieker" class="cnClr">Bone-tithe Shrieker</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nightmare-Predator" class="cnClr">Nightmare Predator</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Soulstealer-Carrion" class="cnClr">Soulstealer Carrion</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentMONSTER"><p>The <span class="kwb">MONSTER</span> keyword is used in the following Ossiarch Bonereapers warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Arkhan-the-Black-Mortarch-of-Sacrament" class="cnClr">Arkhan the Black, Mortarch of Sacrament</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nagash-Supreme-Lord-of-the-Undead" class="cnClr">Nagash, Supreme Lord of the Undead</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="White Dwarf’11/24 Petrifex Elite (4th edition)" src="/aos4/img/expansions/WhiteDwarf_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/The-Grand-Necromystic" class="cnClr">The Grand Necromystic</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_content00067"><div class="tooltip_header">1.1 Power Level</div><a href="/aos4/the-rules/the-core-rules/#Power-Level"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Each <span class="kwb">WIZARD</span> and <span class="kwb">PRIEST</span> has a power level shown after the keyword, e.g. <span class="kwb">WIZARD</span> <span class="kwb4">(</span><span class="kwb2_">2</span><span class="kwb4">)</span>. A <span class="kwb">WIZARD</span>’s casting power level determines how many Spell abilities they can use per phase. A <span class="kwb">PRIEST</span>’s chanting power level determines how many <span class="kwb">PRAYER</span> abilities they can use per phase.<br><br><div class="hi_custom">MULTIPLE POWER LEVELS</div><ul><li>If an ability references a unit’s power level and that unit has more than one power level, use whichever power level is higher.</li><li>If an ability modifies a unit’s power level and that unit has more than one power level, it modifies both.</li></ul>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00074">The non-<span class="kwb">HERO</span> non-<span class="kwb">UNIQUE</span> <span class="kwb">DEATH</span> keyword is used in the following Ossiarch Bonereapers warscrolls:<br><br><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Soulstealer-Carrion" class="cnClr">Soulstealer Carrion</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Shrieker" class="cnClr">Bone-tithe Shrieker</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Nightmare-Predator" class="cnClr">Nightmare Predator</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Cavalry</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-Deathriders" class="cnClr">Kavalos Deathriders</a></div></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Faction Terrain</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Bone-tithe-Nexus" class="cnClr">Bone-tithe Nexus</a></div></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Infantry</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Guard" class="cnClr">Mortek Guard</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Immortis-Guard" class="cnClr">Immortis Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Archai" class="cnClr">Morghast Archai</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Morghast-Harbingers" class="cnClr">Morghast Harbingers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Necropolis-Stalkers" class="cnClr">Necropolis Stalkers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Triaxes" class="cnClr">Mortek Triaxes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortis-Reapers" class="cnClr">Mortis Reapers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Ossiarch Bonereapers (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/ossiarch-bonereapers/Scourge-of-Ghyran-Mortek-Guard" class="cnClr">Scourge of Ghyran Mortek Guard</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">War Machine</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Mortek-Crawler" class="cnClr">Mortek Crawler</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Gothizzar-Harvester" class="cnClr">Gothizzar Harvester</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Kavalos-War-Chariot" class="cnClr">Kavalos War Chariot</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Beast</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/ossiarch-bonereapers/Teratic-Cohort" class="cnClr">Teratic Cohort</a></div></div><div style="clear:both"></div></div></div></span></div><!--/noindex-->
+<div style="clear:both"></div>
+<!--noindex-->
+
+<div class="noprint"><div id="btnBackToTop"></div></div>
+
+<div class="tooltipArmyList" data-tooltip-content="#tooltip_contentArmyList" id="btnArmyList"></div>
+<script type='text/javascript'>
+$(window).scroll(function() {
+if ($(this).scrollTop() >= 200) {
+$('#btnBackToTop').fadeIn(300); 
+} else {
+$('#btnBackToTop').fadeOut(300); 
+}
+});
+
+$('#btnBackToTop').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop_Hover.png); background-image: var(--button-to-top-hover)');
+	$(this).fadeIn(300);
+	return true;
+});
+
+$('#btnBackToTop').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop.png); background-image: var(--button-to-top)');
+		$(this).fadeOut(300);
+   document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnBackToTop').on('click', function () { 
+	'use strict';
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnArmyList').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList_Hover.png); background-image: var(--button-army-list-hover)');
+	return true;
+});
+$('#btnArmyList').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList.png); background-image: var(--button-army-list)');
+	return true;
+});
+
+$('#btnContents').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents_Hover.png); background-image: var(--button-contents-hover)');
+	return true;
+});
+$('#btnContents').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents.png); background-image: var(--button-contents)');
+	return true;
+});
+</script>
+</div>
+<div class="noprint">
+	<div align="center"><div class="author">© Vyacheslav Maltsev 2013-2026</div></div>
+	<div style="display:flex;justify-content:center;align-items:center;">
+		<div class="social_buttons">
+			<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logo no_tooltip" title="Support on Boosty"></div></a>
+			<a target="_blank" href="https://vk.com/wahapedia"><div class="social_vk no_tooltip" title="Follow on VKontakte"></div></a>
+			<a target="_blank" href="https://discord.gg/VAXG2jRjXY"><div class="social_dd no_tooltip" title="Join Discord server"></div></a>
+			<a target="_blank" href="mailto:info@wahapedia.ru"><div class="social_email no_tooltip" title="Send e-mail"></div></a>
+		</div>		
+	</div>
+	<div id="ezoic-pub-ad-placeholder-103"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(103)});</script><div id="yandex_rtb_R-A-3376916-3"></div>
+</div>
+</div>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-57173050-3', 'auto');
+ga('send', 'pageview');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YCMHCMW8RQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YCMHCMW8RQ');
+</script>
+<!--/noindex-->
+</body>
+</html>

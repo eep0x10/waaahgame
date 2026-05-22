@@ -26,6 +26,12 @@
       <span class="pts-badge">{{ au.points }}<span class="pts-label">pts</span></span>
       {% if au.is_reinforced %}<span class="reinforced-tag">Reforçado</span>{% endif %}
     </span>
+    {# ── Warscroll stat peek (move/save/wounds/control) ── #}
+    {% if unit.stats_json %}
+      <span class="au-stats-peek">
+        {% for k, v in unit.stats_json.items() %}{% if loop.index <= 4 %}<span class="au-stat-peek" title="{{ k }}"><b>{{ v }}</b>{{ k | upper | truncate(3, True, '') }}</span>{% endif %}{% endfor %}
+      </span>
+    {% endif %}
   </div>
 
   <div class="au-row-actions">

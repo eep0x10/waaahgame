@@ -1,0 +1,326 @@
+{% extends "base.html" %}
+{% block title %}Implantação — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#battlefield">Campo de Batalha</a></li>
+        <li><a href="#objectives">Objetivos &amp; Terreno</a></li>
+        <li><a href="#territories">Territórios</a></li>
+        <li><a href="#deployment-phase">Fase de Implantação</a></li>
+        <li><a href="#deploy-order">Ordem de Implantação</a></li>
+        <li><a href="#pregame">Decisões Pré-Batalha</a></li>
+        <li><a href="#reserves">Unidades em Reserva</a></li>
+        <li><a href="#first-turn">Quem Vai Primeiro</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Implantação
+      </p>
+      <h1 class="section-title" id="overview">Implantação</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        Antes que qualquer dado de combate seja rolado, os dois exércitos precisam chegar ao campo de batalha.
+        A fase de Implantação acontece uma única vez — antes do primeiro Battle Round — e estabelece
+        a posição inicial de todas as unidades, objetivos e elementos de terreno. Decisões tomadas
+        aqui repercutem por toda a partida.
+      </p>
+
+      <!-- Campo de Batalha -->
+      <h2 id="battlefield">Campo de Batalha</h2>
+      <p>
+        A superfície de jogo é chamada de <strong>battlefield</strong>. O tamanho recomendado depende
+        do formato:
+      </p>
+      <table class="warscroll-stats">
+        <thead>
+          <tr><th>Formato</th><th>Pontos</th><th>Tamanho do campo</th><th>Terreno</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Vanguard</td><td>1.000 pts</td><td>30&Prime; &times; 44&Prime;</td><td>~4 peças</td></tr>
+          <tr><td>Battlehost</td><td>2.000 pts</td><td>44&Prime; &times; 60&Prime;</td><td>~8 peças</td></tr>
+        </tbody>
+      </table>
+      <p>
+        O campo é dividido em quatro quadrantes pelo battleplan em uso. A linha divisória entre os
+        territórios dos dois jogadores corre horizontalmente pelo centro (short edge to short edge
+        na maioria dos battleplans do GHB).
+      </p>
+
+      <!-- Objetivos e Terreno -->
+      <h2 id="objectives">Posicionamento de Objetivos &amp; Terreno</h2>
+      <p>
+        Antes de implantar qualquer unidade, o campo precisa ser preparado. A sequência padrão é:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>
+          <strong>Posicionar os marcadores de objetivo</strong> nos locais indicados pelo mapa do
+          battleplan (círculos dourados). Marcadores de objetivo são discos de 40 mm.
+        </li>
+        <li>
+          <strong>Posicionar peças de terreno</strong> de forma mutuamente acordada, respeitando
+          as restrições do battlepack: normalmente cada peça deve ficar a mais de 3&Prime; da borda
+          do campo, a mais de 6&Prime; de outras peças de terreno e a mais de 3&Prime; de objetivos.
+        </li>
+      </ol>
+      <div class="rules-callout">
+        <strong>Terreno pré-definido.</strong> O GHB 2025-26 inclui dois sistemas de posicionamento
+        de terreno: um via roll-off entre atacante/defensor, e outro usando layouts pré-definidos
+        por battleplan. Nas layouts pré-definidas, o terreno permanece o mesmo entre partidas
+        compatíveis, facilitando eventos com múltiplas mesas.
+      </div>
+
+      <!-- Territórios -->
+      <h2 id="territories">Determinando os Territórios</h2>
+      <p>
+        Após o posicionamento de objetivos e terreno, os jogadores fazem um roll-off. O vencedor
+        escolhe qual <strong>território</strong> pertence a qual jogador — o oponente decide quem
+        começa a implantação. Uma unidade está dentro de um território se qualquer parte da base
+        de qualquer modelo estiver dentro daquele território; está <em>wholly within</em> se
+        todos os modelos estiverem inteiramente nele.
+      </p>
+      <p>
+        A área que não pertence a nenhum jogador é o <strong>território neutro</strong>. Objetivos
+        na fronteira entre territórios contam como estando em ambos os territórios, mas
+        <em>wholly within</em> nenhum.
+      </p>
+
+      <!-- Diagrama SVG Zonas de Implantação -->
+      <svg viewBox="0 0 400 310" xmlns="http://www.w3.org/2000/svg" style="max-width:520px;margin:1.5rem auto;display:block;font-family:sans-serif">
+        <title>Zonas de Implantação — Battlehost 44&quot;×60&quot;</title>
+        <!-- Fundo escuro -->
+        <rect width="400" height="310" rx="8" fill="#1a1a2e"/>
+
+        <!-- Campo de batalha: 44"×60" representado proporcionalemente 44:60 = ~293:400 -->
+        <!-- Margens: top=30 left=50 right=350 bottom=270 → width=300, height=240 -->
+        <!-- proporcao 44:60 → 300:400? Vamos usar width=240, height=210 centralizado -->
+        <!-- Campo: x=80 y=45 width=240 height=210 (44x60 proporcional: 44/60*210=154... ajusta) -->
+        <!-- Usar 240 wide × 175 tall para 44×60 prop (44/60=0.733, 240*0.733=176) ≈ OK -->
+
+        <!-- Campo principal -->
+        <rect x="80" y="45" width="240" height="176" fill="#2a3a2a" stroke="#556655" stroke-width="2"/>
+
+        <!-- Linha central (divisor de território) -->
+        <line x1="80" y1="133" x2="320" y2="133" stroke="#888" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="335" y="137" fill="#888" font-size="9">centro</text>
+
+        <!-- Zona de implantação Jogador 1 (azul) — 9" desde borda sul -->
+        <!-- 9/60 * 176 = 26.4 ≈ 26px desde a borda inferior -->
+        <rect x="80" y="195" width="240" height="26" fill="#1a4a8a" opacity="0.5"/>
+        <text x="200" y="212" text-anchor="middle" fill="#7ab3e8" font-size="10" font-weight="bold">Zona J1 (9&quot; da borda)</text>
+
+        <!-- Zona de implantação Jogador 2 (vermelho) — 9" desde borda norte -->
+        <rect x="80" y="45" width="240" height="26" fill="#8a1a1a" opacity="0.5"/>
+        <text x="200" y="62" text-anchor="middle" fill="#e87a7a" font-size="10" font-weight="bold">Zona J2 (9&quot; da borda)</text>
+
+        <!-- Linha de 9" borda sul -->
+        <line x1="80" y1="195" x2="320" y2="195" stroke="#7ab3e8" stroke-width="1" stroke-dasharray="4,3"/>
+        <!-- Linha de 9" borda norte -->
+        <line x1="80" y1="71" x2="320" y2="71" stroke="#e87a7a" stroke-width="1" stroke-dasharray="4,3"/>
+
+        <!-- Seta de medição 9" zona sul -->
+        <line x1="330" y1="195" x2="330" y2="221" stroke="#7ab3e8" stroke-width="1.5" marker-end="url(#aB)" marker-start="url(#aB2)"/>
+        <text x="340" y="212" fill="#7ab3e8" font-size="9">9&quot;</text>
+
+        <!-- Seta de medição 9" zona norte -->
+        <line x1="330" y1="71" x2="330" y2="45" stroke="#e87a7a" stroke-width="1.5" marker-end="url(#aR)" marker-start="url(#aR2)"/>
+        <text x="340" y="62" fill="#e87a7a" font-size="9">9&quot;</text>
+
+        <!-- Objetivos (estrelas/círculos dourados) — posições típicas GHB -->
+        <!-- Obj 1: centro -->
+        <circle cx="200" cy="133" r="8" fill="#f39c12" opacity="0.9" stroke="#e67e22" stroke-width="1"/>
+        <text x="200" y="137" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">⭑</text>
+
+        <!-- Obj 2 e 3: flancos da zona J1 -->
+        <circle cx="130" cy="172" r="7" fill="#f39c12" opacity="0.9" stroke="#e67e22" stroke-width="1"/>
+        <text x="130" y="176" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">⭑</text>
+        <circle cx="270" cy="172" r="7" fill="#f39c12" opacity="0.9" stroke="#e67e22" stroke-width="1"/>
+        <text x="270" y="176" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">⭑</text>
+
+        <!-- Obj 4 e 5: flancos da zona J2 -->
+        <circle cx="130" cy="94" r="7" fill="#f39c12" opacity="0.9" stroke="#e67e22" stroke-width="1"/>
+        <text x="130" y="98" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">⭑</text>
+        <circle cx="270" cy="94" r="7" fill="#f39c12" opacity="0.9" stroke="#e67e22" stroke-width="1"/>
+        <text x="270" y="98" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">⭑</text>
+
+        <!-- Medidas externas -->
+        <!-- Largura 44" -->
+        <line x1="80" y1="235" x2="320" y2="235" stroke="#666" stroke-width="1" marker-end="url(#aG)" marker-start="url(#aG2)"/>
+        <text x="200" y="249" text-anchor="middle" fill="#999" font-size="10">44&quot;</text>
+
+        <!-- Altura 60" -->
+        <line x1="55" y1="45" x2="55" y2="221" stroke="#666" stroke-width="1" marker-end="url(#aG)" marker-start="url(#aG2)"/>
+        <text x="40" y="137" text-anchor="middle" fill="#999" font-size="10" transform="rotate(-90,40,137)">60&quot;</text>
+
+        <!-- Label jogadores -->
+        <text x="200" y="186" text-anchor="middle" fill="#5a9a5a" font-size="9">Território J1</text>
+        <text x="200" y="110" text-anchor="middle" fill="#9a5a5a" font-size="9">Território J2</text>
+
+        <!-- Defs para setas -->
+        <defs>
+          <marker id="aB" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="#7ab3e8"/>
+          </marker>
+          <marker id="aB2" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse">
+            <path d="M0,0 L0,6 L6,3 z" fill="#7ab3e8"/>
+          </marker>
+          <marker id="aR" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="#e87a7a"/>
+          </marker>
+          <marker id="aR2" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse">
+            <path d="M0,0 L0,6 L6,3 z" fill="#e87a7a"/>
+          </marker>
+          <marker id="aG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="#666"/>
+          </marker>
+          <marker id="aG2" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse">
+            <path d="M0,0 L0,6 L6,3 z" fill="#666"/>
+          </marker>
+        </defs>
+
+        <!-- Legenda -->
+        <rect x="80" y="260" width="14" height="10" fill="#1a4a8a" opacity="0.7"/>
+        <text x="99" y="270" fill="#ccc" font-size="9">Zona de implantação (9&quot;)</text>
+        <circle cx="250" cy="265" r="6" fill="#f39c12" opacity="0.9"/>
+        <text x="260" y="270" fill="#ccc" font-size="9">Objetivo</text>
+        <line x1="310" y1="265" x2="330" y2="265" stroke="#888" stroke-dasharray="4,3" stroke-width="1.5"/>
+        <text x="300" y="280" fill="#888" font-size="8">--- linha central</text>
+      </svg>
+
+      <!-- Fase de Implantação -->
+      <h2 id="deployment-phase">A Fase de Implantação</h2>
+      <p>
+        A Deployment Phase ocorre antes do Battle Round 1 e segue três etapas em ordem:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>
+          <strong>Etapa 1 — Implantar Terreno de Facção:</strong> Facções com terrain features
+          próprias (ex: Sylvaneth Wyldwoods, Skaven Bell Tower) as implantam nesta etapa.
+          O jogador que começa a implantação vai primeiro, seguido pelo oponente.
+          Terrain features de facção são posicionadas inteiramente dentro do território amigo,
+          a mais de 3&Prime; de todos os objetivos e de outras peças de terreno.
+        </li>
+        <li>
+          <strong>Etapa 2 — Implantar Exércitos:</strong> Os jogadores se alternam usando
+          habilidades <strong>Deploy</strong> para posicionar suas unidades. O jogador que começa
+          a implantação vai primeiro. Cada habilidade Deploy padrão posiciona uma unidade
+          inteiramente dentro do território amigo, a mais de 9&Prime; do território inimigo.
+          Usar <strong>Deploy Regiment</strong> permite implantar todas as unidades de um
+          Regimento sem alternar — mas nenhuma unidade do Regimento pode ter sido implantada
+          anteriormente via Deploy individual.
+        </li>
+        <li>
+          <strong>Etapa 3 — Outras habilidades de Deployment Phase:</strong> Após ambos os
+          jogadores terminarem de implantar, o jogador que começou usa qualquer outra habilidade
+          de Deployment Phase (exceto Deploy e Deploy Terrain), seguido pelo oponente.
+        </li>
+      </ol>
+
+      <!-- Ordem de Implantação -->
+      <h2 id="deploy-order">Ordem de Implantação e "Drops"</h2>
+      <p>
+        O número mínimo de habilidades Deploy necessárias para implantar um exército é chamado de
+        <strong>drops</strong>. Um exército com 3 Regimentos e 1 Auxiliar tem pelo menos 4 drops
+        (um por Regimento + um pelo Auxiliar), se todos os Regimentos forem implantados via
+        Deploy Regiment. Exércitos com menos drops terminam a implantação antes, ganhando
+        potencialmente a vantagem de decidir quem vai primeiro no Battle Round 1.
+      </p>
+      <div class="rules-callout">
+        <strong>Vantagem de drops.</strong> Se você terminar de implantar antes do oponente,
+        você &ldquo;ganhou o deploy&rdquo; — seu oponente continua implantando sozinho enquanto
+        você observa. Ao final, o jogador que terminou primeiro decide quem toma o primeiro
+        Turno do Jogador no Battle Round 1.
+      </div>
+
+      <!-- Decisões Pré-Batalha -->
+      <h2 id="pregame">Decisões Pré-Batalha</h2>
+      <p>
+        Antes ou durante a fase de implantação, os jogadores tomam as seguintes decisões:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>General:</strong> O Herói líder do Regimento 1 é automaticamente o General.
+          Deve ser um Herói com a condição de liderança do battlepack ativo. Apenas Heróis que
+          lideram um Regimento podem ser General.
+        </li>
+        <li>
+          <strong>Battle Formation:</strong> Cada facção pode ter uma ou mais Battle Formations.
+          A escolha é registrada na lista antes da partida — não é decidida durante a implantação.
+        </li>
+        <li>
+          <strong>Enhancements (Heroic Traits &amp; Artefacts):</strong> Atribuídos na lista.
+          Cada Enhancement só pode aparecer uma vez por exército; um mesmo Herói não pode ter
+          dois Enhancements do mesmo tipo.
+        </li>
+        <li>
+          <strong>Lores (Spell / Prayer / Manifestation):</strong> Escolhidos durante a
+          construção da lista. Todos os Wizards do exército conhecem as magias do Spell Lore
+          escolhido; todos os Priests conhecem as preces do Prayer Lore.
+        </li>
+        <li>
+          <strong>Battle Tactic:</strong> Escolhida no início de cada turno do jogador ativo
+          via Tactical Gambit, não antes da batalha (exceto alguns formatos que exigem
+          seleção prévia).
+        </li>
+      </ul>
+
+      <!-- Unidades em Reserva -->
+      <h2 id="reserves">Unidades em Reserva</h2>
+      <p>
+        Algumas habilidades permitem que uma unidade seja colocada <strong>em reserva</strong>
+        em vez de ser implantada normalmente — ela fica à margem do campo e entra mais tarde.
+        Unidades em reserva que ainda não foram implantadas no início do Battle Round 4 são
+        automaticamente destruídas. Unidades que entram no campo via reserva não podem usar
+        habilidades de Movimento naquele mesmo turno (mas podem usar outras habilidades).
+      </p>
+      <p>
+        Unidades colocadas em reserva via habilidade Deploy contam para os <em>drops</em> do
+        exército e aparecem na lista — elas não são &ldquo;escondidas&rdquo; do oponente.
+      </p>
+
+      <!-- Quem Vai Primeiro -->
+      <h2 id="first-turn">Quem Vai Primeiro no Battle Round 1</h2>
+      <p>
+        No <strong>primeiro Battle Round</strong>, não há Priority Roll. Em vez disso, o jogador
+        que terminou de implantar seu exército primeiro decide quem toma o primeiro Turno do
+        Jogador. Se ambos terminarem simultaneamente (pouco provável, mas possível), os jogadores
+        fazem um roll-off.
+      </p>
+      <p>
+        A partir do Battle Round 2, o Priority Roll normal entra em vigor: ambos rolam um D6
+        simultâneo, e o vencedor decide quem vai primeiro naquela rodada. Empates são resolvidos
+        pelo jogador que <em>não</em> teve a prioridade na rodada anterior.
+      </p>
+      <div class="rules-callout">
+        <strong>Underdog.</strong> No início de cada Battle Round, o jogador com <em>menos</em>
+        victory points é designado Underdog e recebe +1 Command Point bônus naquela rodada.
+        No primeiro Battle Round — onde nenhum ponto foi marcado ainda — não há Underdog.
+        Se houver empate em pontos, também não há Underdog.
+      </div>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

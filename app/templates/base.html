@@ -5,13 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}waaahgame{% endblock %}</title>
 
-  <!-- Google Fonts: Cinzel + EB Garamond -->
+  <!-- Google Fonts: Cinzel (display only) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Pre-paint theme: read localStorage before first render to avoid flash -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('wg-theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}?v=simplify3">
   <script src="{{ url_for('static', filename='js/htmx.min.js') }}" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -38,21 +50,37 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="{{ url_for('main.index') }}">INÍCIO</a></li>
-        <li><a href="{{ url_for('rules.index') }}">REGRAS</a></li>
-        <li><a href="{{ url_for('factions.index') }}">FACÇÕES</a></li>
-        <li><a href="{{ url_for('units.index') }}">UNIDADES</a></li>
-        <li><a href="{{ url_for('armies.index') }}">EXÉRCITOS</a></li>
+        <li><a href="{{ url_for('units.index') }}" {% if request.endpoint and request.endpoint.startswith('units') %}class="nav-active"{% endif %}>UNIDADES</a></li>
+        <li><a href="{{ url_for('armies.index') }}" {% if request.endpoint and request.endpoint.startswith('armies') %}class="nav-active"{% endif %}>EXÉRCITOS</a></li>
         {% if current_user.is_authenticated %}
-          <li><a href="{{ url_for('matches.index') }}">PARTIDAS</a></li>
-          <li><a href="{{ url_for('matches.history') }}">HISTÓRICO</a></li>
-          <li><a href="{{ url_for('stats.index') }}">ESTATÍSTICAS</a></li>
-          <li><a href="{{ url_for('friends.index') }}">AMIGOS</a></li>
+          <li><a href="{{ url_for('matches.index') }}" {% if request.endpoint and request.endpoint.startswith('matches') %}class="nav-active"{% endif %}>PARTIDAS</a></li>
+          <li><a href="{{ url_for('stats.index') }}" {% if request.endpoint and request.endpoint.startswith('stats') %}class="nav-active"{% endif %}>ESTATÍSTICAS</a></li>
+          <li><a href="{{ url_for('friends.index') }}" {% if request.endpoint and request.endpoint.startswith('friends') %}class="nav-active"{% endif %}>AMIGOS</a></li>
         {% else %}
           <li><a href="#" class="disabled">PARTIDAS</a></li>
-          <li><a href="#" class="disabled">AMIGOS</a></li>
+          <li><a href="#" class="disabled">ESTATÍSTICAS</a></li>
         {% endif %}
+        <li><a href="{{ url_for('rules.index') }}" {% if request.endpoint and request.endpoint.startswith('rules') %}class="nav-active"{% endif %}>REGRAS</a></li>
       </ul>
+
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <!-- sun: shown in dark mode -->
+        <svg class="icon-sun" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="10" y1="1" x2="10" y2="3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="10" y1="16.5" x2="10" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="1" y1="10" x2="3.5" y2="10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="16.5" y1="10" x2="19" y2="10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="3.05" y1="3.05" x2="4.81" y2="4.81" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="15.19" y1="15.19" x2="16.95" y2="16.95" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="16.95" y1="3.05" x2="15.19" y2="4.81" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="4.81" y1="15.19" x2="3.05" y2="16.95" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <!-- moon: shown in light mode -->
+        <svg class="icon-moon" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 13A7 7 0 1 1 7 3a5.5 5.5 0 0 0 10 10z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
       {% if current_user.is_authenticated %}
         <div class="nav-auth">
@@ -75,12 +103,53 @@
 
   <main>{% block content %}{% endblock %}</main>
 
+  {# ── Mobile bottom tab bar ── #}
+  <nav class="mobile-bottom-nav" aria-label="Navegação principal">
+    <a href="{{ url_for('units.index') }}" class="mbn-tab {% if request.endpoint and request.endpoint.startswith('units') %}mbn-tab--active{% endif %}">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="2" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="7" x2="14" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="10" x2="14" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="13" x2="10" y2="13" stroke="currentColor" stroke-width="1.2"/></svg>
+      <span>Unidades</span>
+    </a>
+    <a href="{{ url_for('armies.index') }}" class="mbn-tab {% if request.endpoint and request.endpoint.startswith('armies') %}mbn-tab--active{% endif %}">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2 L17 6 L17 12 Q17 17 10 18 Q3 17 3 12 L3 6 Z" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span>Exércitos</span>
+    </a>
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('matches.index') }}" class="mbn-tab {% if request.endpoint and request.endpoint.startswith('matches') %}mbn-tab--active{% endif %}">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="6" x2="10" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="10" y1="10" x2="13" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Partidas</span>
+      </a>
+      <a href="{{ url_for('stats.index') }}" class="mbn-tab {% if request.endpoint and request.endpoint.startswith('stats') %}mbn-tab--active{% endif %}">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="12" width="3" height="6" fill="currentColor" opacity=".5"/><rect x="8.5" y="8" width="3" height="10" fill="currentColor" opacity=".75"/><rect x="14" y="4" width="3" height="14" fill="currentColor"/></svg>
+        <span>Stats</span>
+      </a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}" class="mbn-tab">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Entrar</span>
+      </a>
+    {% endif %}
+  </nav>
+
   <footer class="site-footer">
     <div class="container">
       <p class="footer-quote">"Glória a quem marcha sob sua própria bandeira."</p>
       <p class="footer-meta">waaahgame &middot; Phase 2 &middot; 2026</p>
     </div>
   </footer>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        try { localStorage.setItem('wg-theme', next); } catch(e) {}
+      });
+    })();
+  </script>
 
 </body>
 </html>

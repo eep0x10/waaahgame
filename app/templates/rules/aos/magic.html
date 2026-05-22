@@ -1,0 +1,366 @@
+{% extends "base.html" %}
+{% block title %}Magia &amp; Preces — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#wizards">Wizards</a></li>
+        <li><a href="#casting">Conjurar Magias</a></li>
+        <li><a href="#unbinding">Unbind</a></li>
+        <li><a href="#miscast">Miscast</a></li>
+        <li><a href="#spell-lores">Spell Lores</a></li>
+        <li><a href="#jealous-mages">Jealous Mages</a></li>
+        <li><a href="#prayers">Priests &amp; Preces</a></li>
+        <li><a href="#ritual-points">Ritual Points</a></li>
+        <li><a href="#manifestations">Manifestations</a></li>
+        <li><a href="#hero-phase">Fase de Heróis</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Magia &amp; Preces
+      </p>
+      <h1 class="section-title" id="overview">Magia &amp; Preces</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        A magia permeia os Mortal Realms. Wizards conjuram feitiços e Priests invocam bênçãos
+        divinas durante a <strong>Hero Phase</strong>. Ambos funcionam por rolagens de dados, mas
+        com mecânicas distintas. Além disso, as forças mais poderosas podem invocar
+        <strong>Manifestations</strong> — entidades ou fenômenos físicos que persistem no campo
+        de batalha.
+      </p>
+
+      <!-- Tabela comparativa Wizard vs Priest -->
+      <h2 id="wizard-vs-priest">Wizard vs Priest — Comparação Rápida</h2>
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Wizard</th>
+            <th>Priest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Rolagem base</strong></td>
+            <td>2D6 (Casting Roll)</td>
+            <td>D6 (Chanting Roll)</td>
+          </tr>
+          <tr>
+            <td><strong>Pode ser bloqueado?</strong></td>
+            <td>Sim — Unbind pelo oponente</td>
+            <td>Não — preces são inbloqueáveis</td>
+          </tr>
+          <tr>
+            <td><strong>Falha catastrófica</strong></td>
+            <td>Miscast (duplo 1 = D3 dano mortal + magia falha)</td>
+            <td>Resultado 1 = perde D3 Ritual Points</td>
+          </tr>
+          <tr>
+            <td><strong>Quantidade por turno</strong></td>
+            <td>Até Power Level (ex: Wizard(2) = 2 conjurações)</td>
+            <td>1 prece por Priest por turno</td>
+          </tr>
+          <tr>
+            <td><strong>Sistema de acumulação</strong></td>
+            <td>Não — cada conjuração é independente</td>
+            <td>Sim — Ritual Points acumulam entre turnos</td>
+          </tr>
+          <tr>
+            <td><strong>Pode fazer Unbind?</strong></td>
+            <td>Sim (até Power Level vezes por turno)</td>
+            <td>Não (exceto via Place of Power)</td>
+          </tr>
+          <tr>
+            <td><strong>Lore escolhido na lista</strong></td>
+            <td>Spell Lore</td>
+            <td>Prayer Lore</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Wizards -->
+      <h2 id="wizards">Wizards</h2>
+      <p>
+        Um <strong>Wizard</strong> é qualquer modelo com a keyword <em>Wizard</em> em seu warscroll.
+        Todo Wizard tem um valor de <strong>Power Level</strong> (ex: Wizard(2)) que indica quantas
+        magias pode conjurar <em>e</em> quantas pode tentar fazer Unbind por turno.
+      </p>
+      <p>
+        Todo Wizard conhece automaticamente a magia universal <strong>Arcane Bolt</strong> e
+        <strong>Mystic Shield</strong>. Além disso, conhece todas as magias do Spell Lore escolhido
+        para o exército, conforme descrito na
+        <a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a>.
+      </p>
+
+      <!-- Conjurar Magias -->
+      <h2 id="casting">Conjurar Magias</h2>
+      <p>
+        Para conjurar uma magia, o Wizard usa a habilidade <strong>Cast</strong> durante a Hero Phase:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>Declare a magia que será conjurada.</li>
+        <li>Role <strong>2D6</strong>. O resultado deve ser igual ou maior ao valor de <strong>Casting Value</strong> da magia.</li>
+        <li>O oponente pode tentar <strong>Unbind</strong> antes que o efeito se resolva.</li>
+        <li>Se não for bloqueada, a magia tem efeito.</li>
+      </ol>
+      <p>
+        Um mesmo Wizard não pode conjurar a mesma magia mais de uma vez por turno. Cada conjuro
+        bem-sucedido conta contra o limite de Power Level do Wizard naquele turno.
+      </p>
+      <div class="rules-callout">
+        <strong>Magias Universais.</strong> <em>Arcane Bolt</em> (Casting 5 — causa D3 Mortal Wounds
+        a uma unidade inimiga a 18&Prime;) e <em>Mystic Shield</em> (Casting 5 — uma unidade amiga a
+        18&Prime; ganha Ward 6+ até o próximo Hero Phase do conjurador) são disponíveis para todos os
+        Wizards.
+      </div>
+
+      <!-- Unbind -->
+      <h2 id="unbinding">Unbind</h2>
+      <p>
+        Quando um Wizard inimigo conjura uma magia, qualquer Wizard amigo a <strong>30&Prime;</strong>
+        do conjurador pode tentar <strong>Unbind</strong>:
+      </p>
+      <ul class="rules-list">
+        <li>Role 2D6. Se o resultado for <em>maior</em> que o resultado de conjuro do oponente, a magia é bloqueada.</li>
+        <li>Empate não bloqueia — apenas resultado estritamente maior.</li>
+        <li>Cada Wizard pode tentar Unbind uma quantidade de vezes por turno igual ao seu Power Level.</li>
+        <li>Unbind é uma Reaction — usada imediatamente após o Casting Roll bem-sucedido.</li>
+      </ul>
+
+      <!-- Miscast -->
+      <h2 id="miscast">Miscast</h2>
+      <p>
+        Se o resultado do Casting Roll incluir <strong>dois ou mais dados com resultado 1</strong>,
+        ocorre um <strong>Miscast</strong>:
+      </p>
+      <ul class="rules-list">
+        <li>A magia <strong>falha automaticamente</strong> — o efeito não é resolvido.</li>
+        <li>O Wizard sofre <strong>D3 de dano mortal</strong>.</li>
+        <li>O Wizard <strong>não pode usar mais magias</strong> nesta fase.</li>
+      </ul>
+      <p>
+        Qualquer outra combinação de duplos (2+2, 3+3, 4+4, 5+5, 6+6) não tem efeito especial
+        — o resultado é simplesmente a soma dos dados. Em particular, <em>duplo 6 não garante
+        conjuro automático nem impede Unbind</em>: é apenas um resultado de 12, que pode ou não
+        superar o Casting Value da magia.
+      </p>
+      <div class="rules-callout">
+        <strong>Reações do oponente.</strong> Reações de Unbind só podem ser usadas <em>após</em>
+        o Casting Roll ter igualado ou superado o Casting Value. Um Miscast (duplo 1) falha antes
+        de chegar a esse ponto, portanto não há janela para Unbind.
+      </div>
+
+      <!-- Spell Lores -->
+      <h2 id="spell-lores">Spell Lores</h2>
+      <p>
+        Cada <strong>Spell Lore</strong> é uma lista de magias disponíveis para todos os Wizards
+        do exército. O Spell Lore é escolhido durante a construção da lista (não durante a partida).
+        Há Spell Lores nos Battletomes de facção e no GHB para forças não-faccionais.
+      </p>
+      <p>
+        Além do Spell Lore escolhido, Wizards específicos podem conhecer magias exclusivas listadas
+        em seus warscrolls — essas são sempre disponíveis independente do Spell Lore.
+      </p>
+
+      <!-- Jealous Mages -->
+      <h2 id="jealous-mages">Jealous Mages &amp; Fickle Gods</h2>
+      <p>
+        Para evitar que múltiplos Wizards ou Priests da mesma facção empilhem a mesma magia ou prece,
+        existe a regra <strong>Jealous Mages and Fickle Gods</strong>:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Wizards:</strong> No máximo <em>1 Wizard amigo</em> pode conjurar a mesma magia
+          por turno, a menos que a magia tenha a keyword <strong>Unlimited</strong>.
+        </li>
+        <li>
+          <strong>Priests:</strong> No máximo <em>1 Priest amigo</em> pode cantar a mesma prece
+          por turno, a menos que a prece tenha a keyword <strong>Unlimited</strong>.
+        </li>
+        <li>
+          Essa restrição é independente da regra de Power Level — mesmo que dois Wizards(2)
+          diferentes tentassem conjurar a mesma magia, apenas o primeiro que a conjurar com sucesso
+          conta. O segundo não pode tentar a mesma magia naquele turno.
+        </li>
+      </ul>
+
+      <!-- Priests -->
+      <h2 id="prayers">Priests &amp; Preces</h2>
+      <p>
+        <strong>Priests</strong> (modelos com a keyword <em>Priest</em>) não conjuram magia —
+        eles recitam <strong>Prayers</strong> (preces), invocando o favor de suas divindades.
+        A mecânica é distinta:
+      </p>
+      <ul class="rules-list">
+        <li>
+          Priests usam a habilidade <strong>Pray</strong> durante a Hero Phase.
+        </li>
+        <li>
+          Role um D6. Cada Prayer tem um <strong>Chanting Value</strong> (ex: 3+). Se o resultado
+          for igual ou maior, a prece é atendida.
+        </li>
+        <li>
+          <strong>Não há Unbind</strong> para preces — o oponente não pode bloqueá-las com magias.
+        </li>
+        <li>
+          Priests conhecem as preces do <strong>Prayer Lore</strong> escolhido para o exército,
+          mais quaisquer preces específicas listadas em seus warscrolls.
+        </li>
+        <li>
+          Algumas preces têm efeito de duração — ficam ativas e o Priest deve continuar rezando
+          em turnos seguintes para mantê-las (re-roll ou novo teste conforme indicado).
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Sacred Rites.</strong> O GHB 2025-26 inclui Sacred Rites opcionais — um conjunto
+        de preces especiais disputadas entre jogadores. Verifique o pacote de regras do evento para
+        saber se Sacred Rites estão em uso.
+      </div>
+
+      <!-- Ritual Points -->
+      <h2 id="ritual-points">Ritual Points (Sistema de Preces)</h2>
+      <p>
+        As preces funcionam com um sistema de acumulação chamado <strong>Ritual Points</strong>.
+        Cada Priest tem um total de Ritual Points que começa em 0 e pode ser acumulado ao longo
+        dos turnos:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>
+          Ao usar uma prece, role o <strong>Chanting Roll</strong> (D6). Com resultado não-modificado
+          de 1, a prece falha e <strong>D3 Ritual Points são removidos</strong> desse Priest.
+        </li>
+        <li>
+          Com resultado 2 ou mais, escolha <em>uma</em> das opções abaixo:
+          <ul class="rules-list">
+            <li>
+              <strong>Acumular:</strong> Adicione ao Priest um número de Ritual Points igual ao
+              resultado do Chanting Roll.
+            </li>
+            <li>
+              <strong>Gastar:</strong> Adicione os Ritual Points acumulados do Priest à rolagem.
+              Se o total igualar ou superar o <strong>Chanting Value</strong> da prece, ela é
+              atendida — resolva o efeito e <strong>redefina os Ritual Points do Priest para 0</strong>.
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <div class="rules-callout">
+        <strong>Estratégia.</strong> Ritual Points incentivam paciência: acumular por alguns turnos
+        antes de gastar aumenta muito a chance de ativar preces com Chanting Value alto. Porém,
+        um resultado de 1 pode destruir essa reserva — gerencie o risco com cuidado.
+      </div>
+
+      <!-- Exemplo numérico de Ritual Points -->
+      <h3>Exemplo Passo a Passo</h3>
+      <div class="rules-infobox">
+        <p><strong>Situação:</strong> Um Priest acumulou <strong>4 Ritual Points</strong> em turnos anteriores.
+        Agora quer rezar uma prece com <strong>Chanting Value 7</strong>.</p>
+        <ol class="rules-list rules-list--ordered">
+          <li>
+            <strong>Rola o Chanting Roll (D6): resultado 3.</strong>
+            <ul class="rules-list">
+              <li>Decide <em>Gastar</em>: soma os Ritual Points acumulados ao resultado → 4 + 3 = <strong>7</strong>.</li>
+              <li>7 ≥ Chanting Value 7 → prece <strong>atendida</strong>! Resolva o efeito.</li>
+              <li>Ritual Points do Priest voltam a <strong>0</strong>.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>E se tivesse rolado 1?</strong>
+            <ul class="rules-list">
+              <li>Resultado não-modificado 1 = falha automática.</li>
+              <li>Perde <strong>D3 Ritual Points</strong> (suponha D3 = 2 → fica com 4 − 2 = <strong>2 RPs</strong>).</li>
+              <li>Prece não é atendida; nenhum efeito ocorre.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>E se tivesse decidido Acumular com resultado 3?</strong>
+            <ul class="rules-list">
+              <li>Adiciona 3 aos RPs → passa de 4 para <strong>7 Ritual Points</strong> acumulados.</li>
+              <li>Próximo turno tenta Gastar com chance ainda maior de superar Chanting Values altos.</li>
+            </ul>
+          </li>
+        </ol>
+        <p style="margin-top:0.5rem;font-size:0.9em;color:var(--color-text-muted, #888)">
+          <em>Ritual Points persistem entre turnos até serem gastos ou perdidos por resultado 1.</em>
+        </p>
+      </div>
+
+      <!-- Manifestations -->
+      <h2 id="manifestations">Manifestations</h2>
+      <p>
+        <strong>Manifestations</strong> são entidades mágicas — Endless Spells, Invocations e
+        Faction Spells — que podem ser convocadas para o campo de batalha e persistem entre turnos.
+      </p>
+      <p>
+        Para invocar uma Manifestation, o Wizard (ou Priest, para alguns tipos) usa uma habilidade
+        específica durante a Hero Phase. A Manifestation é colocada em jogo como uma peça separada,
+        com seu próprio warscroll descrevendo habilidades, movimento e efeitos.
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Endless Spells:</strong> Convocadas por Wizards como se fosse uma magia (Casting
+          Roll). Uma vez em jogo, se movem automaticamente no início de cada Hero Phase — primeiro
+          o jogador ativo move todas as Manifestations, depois o jogador inativo.
+        </li>
+        <li>
+          <strong>Banishment:</strong> Um Wizard pode usar a habilidade Banish durante a Hero Phase
+          para tentar remover uma Endless Spell inimiga do campo. Role 2D6; se o resultado for
+          maior que o Casting Value da Endless Spell, ela é removida.
+        </li>
+        <li>
+          <strong>Faction Spells e Invocations:</strong> Funcionam de forma similar mas são
+          específicas de certas facções (ex: Ossiarchs, Sylvaneth). Detalhes em seus respectivos
+          Battletomes.
+        </li>
+        <li>
+          <strong>Manifestation Lore:</strong> Exércitos de algumas facções escolhem um Manifestation
+          Lore na construção da lista, determinando quais Endless Spells estarão disponíveis.
+        </li>
+      </ul>
+
+      <!-- Hero Phase -->
+      <h2 id="hero-phase">Hero Phase — Ordem das Ações</h2>
+      <p>
+        A <strong>Hero Phase</strong> é o momento principal para Wizards e Priests agirem. A
+        sequência dentro da Hero Phase:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>
+          <strong>Mover Manifestations:</strong> Primeiro o jogador ativo move todas as suas
+          Manifestations, depois o jogador inativo move as dele.
+        </li>
+        <li>
+          <strong>Habilidades de Hero Phase:</strong> O jogador ativo usa todas as habilidades de
+          Hero Phase que queira (incluindo Cast e Pray), podendo ativá-las em qualquer ordem. O
+          jogador inativo usa suas Reactions conforme aplicável.
+        </li>
+        <li>
+          Após o jogador ativo concluir, o jogador inativo não tem uma Hero Phase própria neste
+          turno — aguarda seu próximo turno.
+        </li>
+      </ol>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

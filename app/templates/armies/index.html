@@ -16,34 +16,56 @@
     </div>
 
     {% if armies %}
-      <div class="army-list">
+      <div class="roster-card-grid">
         {% for army in armies %}
           {% set result = results[army.id] %}
-          <div class="army-row">
-            <div class="army-row-main">
-              <div class="army-row-name">
-                <a href="{{ url_for('armies.show', army_id=army.id) }}" class="army-name-link">{{ army.name }}</a>
+          <div class="roster-card">
+            <a href="{{ url_for('armies.show', army_id=army.id) }}" class="roster-card-link" aria-label="{{ army.name }}"></a>
+
+            <div class="roster-card-top">
+              <div class="roster-card-system-badge">
+                {{ army.faction.game_system.code | upper if army.faction.game_system else '?' }}
               </div>
-              <div class="army-row-meta">
+              {% if result.is_legal %}
+                <span class="legal-pill legal-pill--legal">LEGAL</span>
+              {% else %}
+                <span class="legal-pill legal-pill--illegal">ILEGAL</span>
+              {% endif %}
+            </div>
+
+            <div class="roster-card-body">
+              <h2 class="roster-card-name">{{ army.name }}</h2>
+              <div class="roster-card-meta">
                 <span class="role-tag">{{ army.faction.name }}</span>
-                <span class="role-tag">{{ army.battlepack | capitalize }}</span>
-                <span class="pts-badge">{{ result.points.total }}<span class="pts-label">/{{ result.points.limit }}pts</span></span>
-                {% if result.is_legal %}
-                  <span class="legal-pill legal-pill--legal">LEGAL</span>
-                {% else %}
-                  <span class="legal-pill legal-pill--illegal">ILEGAL</span>
+                {% if army.faction.grand_alliance %}
+                  <span class="alliance-badge alliance-{{ army.faction.grand_alliance | lower }}">{{ army.faction.grand_alliance }}</span>
                 {% endif %}
+                <span class="role-tag">{{ army.battlepack | replace('_',' ') | title }}</span>
               </div>
             </div>
-            <div class="army-row-actions">
-              <a href="{{ url_for('armies.show', army_id=army.id) }}" class="btn-secondary btn-sm">Editar</a>
-              <form method="POST" action="{{ url_for('armies.delete', army_id=army.id) }}"
-                    onsubmit="return confirm('Excluir exército {{ army.name | replace("'", "") }}?');"
-                    style="display:inline;">
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                <button type="submit" class="btn-danger btn-sm">Excluir</button>
-              </form>
+
+            <div class="roster-card-footer">
+              <div class="roster-card-pts">
+                <span class="pts-badge">{{ result.points.total }}<span class="pts-label">/{{ result.points.limit }}pts</span></span>
+                {% set pct = (result.points.total / result.points.limit * 100) | int if result.points.limit else 0 %}
+                <div class="roster-pts-bar" title="{{ pct }}% utilizado">
+                  <div class="roster-pts-bar-fill {% if pct > 100 %}roster-pts-bar-fill--over{% endif %}" style="width:{{ [pct, 100] | min }}%"></div>
+                </div>
+              </div>
+              <div class="roster-card-actions">
+                <a href="{{ url_for('armies.show', army_id=army.id) }}" class="btn-secondary btn-sm">Editar</a>
+                <form method="POST" action="{{ url_for('armies.delete', army_id=army.id) }}"
+                      onsubmit="return confirm('Excluir exército {{ army.name | replace("'", "") }}?');"
+                      style="display:inline;">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                  <button type="submit" class="btn-danger btn-sm">Excluir</button>
+                </form>
+              </div>
             </div>
+
+            {% if army.updated_at %}
+              <p class="roster-card-updated">Atualizado {{ army.updated_at.strftime('%d/%m/%Y') }}</p>
+            {% endif %}
           </div>
         {% endfor %}
       </div>

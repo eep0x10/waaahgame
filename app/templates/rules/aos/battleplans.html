@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}Battleplans — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#structure">Estrutura de um Battleplan</a></li>
+        <li><a href="#objectives">Objetivos e Pontuação</a></li>
+        <li><a href="#victory">Condições de Vitória</a></li>
+        <li><a href="#border-war">Border War</a></li>
+        <li><a href="#ghb-battleplans">Battleplans do GHB 2025-26</a></li>
+        <li><a href="#attacker-defender">Atacante &amp; Defensor</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Battleplans
+      </p>
+      <h1 class="section-title" id="overview">Battleplans</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        Um <strong>Battleplan</strong> define o campo de batalha específico para uma partida:
+        quantos e onde ficam os objetivos, o layout de implantação de cada jogador, quais
+        Battle Tactics são elegíveis e as condições especiais únicas daquele cenário. Os
+        battleplans competitivos são definidos pelo <strong>Battlepack</strong> em uso — o
+        GHB 2025-26 define os battleplans da temporada atual.
+      </p>
+
+      <!-- Estrutura -->
+      <h2 id="structure">Estrutura de um Battleplan</h2>
+      <p>
+        Todo Battleplan contém:
+      </p>
+      <ul class="rules-list">
+        <li><strong>Mapa:</strong> Layout do campo com posição dos objetivos e zonas de implantação.</li>
+        <li><strong>Regras de Implantação:</strong> Dimensões e formato das deployment zones para cada jogador.</li>
+        <li><strong>Regras de Objetivos:</strong> Quantos pontos cada objetivo vale e quando são pontuados.</li>
+        <li><strong>Habilidades Especiais:</strong> Regras únicas que se aplicam somente neste battleplan.</li>
+        <li><strong>Battle Tactics Elegíveis:</strong> Quais táticas (Universais, GHB, Facção) estão disponíveis.</li>
+      </ul>
+
+      <!-- Objetivos e Pontuação -->
+      <h2 id="objectives">Objetivos e Pontuação</h2>
+      <p>
+        A maioria dos battleplans usa marcadores de objetivo circulares (40 mm) espalhados pelo
+        campo. A pontuação acontece em momentos definidos:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Controle de Objetivo:</strong> Uma unidade contesta um objetivo se qualquer modelo
+          estiver dentro de 3&Prime; (Combat Range) do marcador. O controle é determinado pelo
+          <strong>Control score</strong>: a soma da característica <strong>Control</strong> (do warscroll)
+          de todos os modelos da unidade que estão contestando. Heróis <em>não</em> contam em dobro por
+          padrão — cada modelo contribui exatamente o valor de Control do seu warscroll. Algumas
+          habilidades (ex: Standard Bearer, certas habilidades de battleplan) modificam o Control score.
+        </li>
+        <li>
+          <strong>Momento de Pontuação:</strong> Objetivos são pontuados no <em>End of Turn</em>
+          de cada turno do jogador ativo (ou em momentos específicos definidos pelo battleplan).
+        </li>
+        <li>
+          <strong>Valor por Objetivo:</strong> Normalmente 1 VP por objetivo controlado por turno.
+          Alguns battleplans têm objetivos que valem mais em certos Battle Rounds.
+        </li>
+        <li>
+          <strong>Objetivo na Deployment Zone Inimiga:</strong> Frequentemente vale VP adicional
+          ou tem condição especial.
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Objetivos na fronteira territorial.</strong> Um objetivo no limite entre os dois
+        territórios pertence simultaneamente a ambos — está &ldquo;em&rdquo; cada território mas
+        <em>wholly within</em> nenhum. Verifique o battleplan para saber como isso afeta
+        pontuação de objetivos limítrofes.
+      </div>
+
+      <!-- Vitória -->
+      <h2 id="victory">Condições de Vitória</h2>
+      <p>
+        A vitória é determinada pelo maior número de <strong>Victory Points</strong> ao final de
+        5 Battle Rounds. VPs vêm de:
+      </p>
+      <ul class="rules-list">
+        <li>Controlar objetivos nos momentos de pontuação.</li>
+        <li>Completar Battle Tactics.</li>
+        <li>Habilidades especiais do battleplan (se houver).</li>
+      </ul>
+      <p>
+        Empate em VPs ao final: o jogador com mais unidades amigas <em>wholly within</em> do
+        território inimigo vence. Se ainda empatado, a partida termina em Empate.
+      </p>
+
+      <!-- Border War -->
+      <h2 id="border-war">Border War</h2>
+      <p>
+        <strong>Border War</strong> é o battleplan incluído nas Core Rules — serve como introdução
+        ao jogo competitivo e como fallback quando não há GHB disponível. Suas características:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>5 objetivos:</strong> Um central, um em cada quadrante, dispostos simetricamente.
+          Cada jogador tem um objetivo em sua deployment zone.
+        </li>
+        <li>
+          <strong>Deployment Zones:</strong> Cada jogador implanta em uma faixa de 9&Prime; ao
+          longo de sua borda curta (short edge), full width do campo.
+        </li>
+        <li>
+          <strong>Pontuação:</strong> No End of Turn de cada turno, cada jogador pontua 1 VP por
+          objetivo controlado. O objetivo central vale 2 VPs.
+        </li>
+        <li>
+          <strong>5 Battle Rounds.</strong>
+        </li>
+      </ul>
+
+      <!-- GHB 2025-26 -->
+      <h2 id="ghb-battleplans">Battleplans do GHB 2025-26</h2>
+      <p>
+        O GHB 2025-26 inclui battleplans competitivos para a temporada atual. Os nomes e
+        características gerais são (a lista abaixo reflete os battleplans confirmados; consulte
+        os cards físicos do GHB 2025-26 para a lista completa e oficial):
+      </p>
+      <table class="warscroll-stats">
+        <thead>
+          <tr><th>Battleplan</th><th>Característica Principal</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Liferoots</strong></td>
+            <td>Objetivos próximos a elementos de terreno temáticos; pontuação por controle de
+              área. Errata Abril 2026 corrigiu o valor de VP do objetivo central.</td>
+          </tr>
+          <tr>
+            <td><strong>Linked Leylines</strong></td>
+            <td>Conexões mágicas entre objetivos; controlar dois objetivos conectados gera bônus.
+              Errata corrigiu condição de ativação das leylines.</td>
+          </tr>
+          <tr>
+            <td><strong>Paths of the Fey</strong></td>
+            <td>Rotas de movimento especiais atravessando o campo; unidades podem usar os caminhos
+              para teleportar dentro de certas condições. Errata corrigiu a distância de
+              teleporte.</td>
+          </tr>
+          <tr>
+            <td><strong>Creeping Corruption</strong></td>
+            <td>Área de corrupção que se expande pelo campo ao longo dos Battle Rounds; unidades
+              dentro da zona sofrem efeitos negativos. Errata corrigiu a taxa de expansão.</td>
+          </tr>
+          <tr>
+            <td><strong>Grasp of Thorns</strong></td>
+            <td>Terreno de espinhos que se move ou se expande; restrições de movimento para
+              unidades capturadas. Errata corrigiu qual jogador controla o movimento do terreno.</td>
+          </tr>
+          <tr>
+            <td><strong>Roiling Roots</strong></td>
+            <td>Raízes que emergem do campo; objetivos sob influência das raízes têm pontuação
+              alternativa.</td>
+          </tr>
+          <tr>
+            <td><strong>Starstrike</strong></td>
+            <td>Fragmentos de estrela caem aleatoriamente; criam objetivos temporários em posições
+              imprevisíveis ao longo do jogo.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="rules-callout">
+        <strong>Regras completas nos cards físicos.</strong> Os layouts de mapa, deployment zones
+        exatas, regras de objetivos e habilidades especiais de cada battleplan estão nos cards do
+        GHB 2025-26. Esta página oferece uma visão geral — consulte o produto físico ou a errata
+        digital para as regras completas e corretas (pós-Battlescroll Abril 2026).
+      </div>
+
+      <!-- Atacante e Defensor -->
+      <h2 id="attacker-defender">Atacante &amp; Defensor</h2>
+      <p>
+        Alguns battleplans do GHB dividem os jogadores em <strong>Atacante</strong> e
+        <strong>Defensor</strong>, com deployment zones assimétricas e VPs diferenciados. A
+        determinação de quem é qual:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>
+          Os jogadores fazem um <strong>roll-off</strong>. O vencedor escolhe ser Atacante ou
+          Defensor.
+        </li>
+        <li>
+          O Atacante geralmente tem a deployment zone menor ou menos favorável, mas pode ter
+          vantagens de pontuação em objetivos avançados.
+        </li>
+        <li>
+          O Defensor geralmente implanta primeiro (ou determina a ordem de implantação conforme
+          a regra de Territórios — veja
+          <a href="{{ url_for('rules.aos_setup') }}">Implantação</a>).
+        </li>
+      </ol>
+      <p>
+        Quando não há distinção Atacante/Defensor, os jogadores simplesmente fazem o roll-off
+        de Territórios normalmente (descrito na
+        <a href="{{ url_for('rules.aos_setup') }}">página de Implantação</a>).
+      </p>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

@@ -27,3 +27,5 @@ class ValidationResult:
     points: PointsBreakdown
     issues: list = field(default_factory=list)
     aux_command_bonus: bool = False
+    # Phase 2: selected faction picks (display-only, not yet enforced)
+    faction_picks: dict = field(default_factory=dict)

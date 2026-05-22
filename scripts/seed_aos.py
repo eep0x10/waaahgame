@@ -417,10 +417,16 @@ def _do_seed(db, GameSystem, Faction, Unit):
                 u.unit_role = role
                 u.model_count = count
                 if has_data:
-                    u.stats_json = warscroll.get('stats', u.stats_json)
-                    u.weapons_json = warscroll.get('weapons', u.weapons_json)
-                    u.abilities_json = warscroll.get('abilities', u.abilities_json)
-                    u.keywords_json = warscroll.get('keywords', u.keywords_json)
+                    # Only write JSON fields when the DB row has no data yet;
+                    # scrape_wahapedia.py owns these once populated.
+                    if not u.stats_json:
+                        u.stats_json = warscroll.get('stats', u.stats_json)
+                    if not u.weapons_json:
+                        u.weapons_json = warscroll.get('weapons', u.weapons_json)
+                    if not u.abilities_json:
+                        u.abilities_json = warscroll.get('abilities', u.abilities_json)
+                    if not u.keywords_json:
+                        u.keywords_json = warscroll.get('keywords', u.keywords_json)
                     u.companions_json = warscroll.get('companions', u.companions_json)
                 if not u.wahapedia_url:
                     u.wahapedia_url = f'{WAHAPEDIA_BASE}/{faction_wahapedia_slug}/{waha_slug}'

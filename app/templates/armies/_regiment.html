@@ -6,11 +6,14 @@
 {% set group_label = validator.group_label | upper if validator is defined else 'REGIMENTO' %}
 
 <div class="regiment-card {% if not has_leader %}leader-missing{% endif %}"
-     id="regiment-card-{{ regiment.id }}">
+     id="regiment-card-{{ regiment.id }}"
+     data-drop-target="reg-{{ regiment.id }}"
+     data-drop-url="{{ url_for('armies.add_unit', army_id=army.id) }}">
 
   <div class="regiment-card-header">
     <span class="regiment-label">{{ group_label }} {{ reg_num }}</span>
     <div class="regiment-card-actions">
+      <span class="drop-hint">Arraste unidade aqui</span>
       <form method="POST"
             action="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
             hx-post="{{ url_for('armies.remove_regiment', army_id=army.id, reg_id=regiment.id) }}"
@@ -21,25 +24,6 @@
         <button type="submit" class="btn-danger btn-sm">Remover</button>
       </form>
     </div>
-  </div>
-
-  <div class="regiment-add-form">
-    <form method="POST"
-          action="{{ url_for('armies.add_unit', army_id=army.id) }}"
-          hx-post="{{ url_for('armies.add_unit', army_id=army.id) }}"
-          hx-target="#regiment-card-{{ regiment.id }}"
-          hx-swap="outerHTML"
-          class="au-add-form">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-      <input type="hidden" name="target" value="reg-{{ regiment.id }}">
-      <select name="unit_slug" class="au-add-select" required>
-        <option value="">Adicionar unidade ao {{ validator.group_label | lower if validator is defined else 'regimento' }}...</option>
-        {% for unit in army.faction.units | sort(attribute='name') %}
-          <option value="{{ unit.slug }}">{{ unit.name }} ({{ unit.points_cost }}pts)</option>
-        {% endfor %}
-      </select>
-      <button type="submit" class="btn-secondary btn-sm">Adicionar</button>
-    </form>
   </div>
 
   {% set leader_au = regiment.leader %}

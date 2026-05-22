@@ -20,6 +20,8 @@
           {% for system in systems %}
             <label class="system-radio-card">
               <input type="radio" name="system_code" value="{{ system.code }}"
+                     data-edition="{{ system.edition }}"
+                     data-ruleset="{{ system.ruleset_label }}"
                      {% if loop.first %}checked{% endif %}>
               <span class="system-radio-inner">
                 <span class="system-radio-name">{{ system.name }}</span>
@@ -27,6 +29,18 @@
               </span>
             </label>
           {% endfor %}
+        </div>
+        <p id="ruleset-hint" class="ruleset-chip" style="margin-top:0.6rem;">
+          <span class="ruleset-chip-edition" id="ruleset-hint-edition"></span>
+          <span class="ruleset-chip-sep">&middot;</span>
+          <span class="ruleset-chip-label" id="ruleset-hint-label"></span>
+        </p>
+      </div>
+
+      <div class="form-field">
+        <label>Versão das Regras</label>
+        <div id="ruleset-select-group" class="ruleset-select-group">
+          <!-- preenchido pelo JS -->
         </div>
       </div>
 
@@ -75,9 +89,14 @@
       <script>
       (function() {
         var systemFormats = {{ system_formats | tojson }};
+        var rulesetsBySystem = {{ rulesets_by_system | tojson }};
         var factionGroup = document.getElementById('faction-radio-group');
         var bpGroup = document.getElementById('battlepack-radio-group');
         var preview = document.getElementById('pts-preview');
+        var rsGroup = document.getElementById('ruleset-select-group');
+
+        var hintEdition = document.getElementById('ruleset-hint-edition');
+        var hintLabel = document.getElementById('ruleset-hint-label');
 
         function applySystem(systemCode) {
           var fcards = factionGroup.querySelectorAll('.faction-radio-card');
@@ -104,6 +123,29 @@
             firstShown.checked = true;
             var val = firstShown.value;
             if (fmts[val]) preview.textContent = fmts[val] + ' pts limite';
+          }
+
+          // Ruleset cards
+          var rsList = rulesetsBySystem[systemCode] || [];
+          rsGroup.innerHTML = '';
+          rsList.forEach(function(r, i) {
+            var lbl = document.createElement('label');
+            lbl.className = 'system-radio-card';
+            lbl.innerHTML =
+              '<input type="radio" name="ruleset_id" value="' + r.id + '"' +
+              (r.is_current || i === 0 ? ' checked' : '') + '>' +
+              '<span class="system-radio-inner">' +
+                '<span class="system-radio-name">' + r.name + '</span>' +
+                '<span class="system-radio-code">' + r.edition +
+                (r.release_date ? ' &middot; ' + r.release_date : '') +
+                (r.is_current ? ' &middot; current' : '') + '</span>' +
+              '</span>';
+            rsGroup.appendChild(lbl);
+          });
+          var sel = rsList.find(function(r) { return r.is_current; }) || rsList[0];
+          if (sel && hintEdition && hintLabel) {
+            hintEdition.textContent = sel.edition;
+            hintLabel.textContent = sel.name;
           }
         }
 

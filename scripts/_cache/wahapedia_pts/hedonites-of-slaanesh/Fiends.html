@@ -1,0 +1,780 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Wahapedia: Age of Sigmar 4th edition, Hedonites of Slaanesh — Fiends (unit characteristics, wargear options, wargear profiles, abilities, battle profile and keywords)." />
+<meta name="keywords" content="Wahapedia, Age of Sigmar 4th edition, CHAOS, HEDONITES OF SLAANESH, DAEMON, SYBARITE, BEAST, CHAMPION, WARD, CHAOS, HEDONITES OF SLAANESH, DAEMON" />
+
+<script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+<script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+	window.ezstandalone = window.ezstandalone || {};
+	ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
+<script src="//ezoicanalytics.com/analytics.js"></script>
+<link rel="stylesheet" type="text/css" href="/aos4/css/fonts121.css">
+<link name="magnus_did_what" rel="stylesheet" href="/aos4/css/magnus_did_not121.css">
+<link rel="stylesheet" href="/aos4/css/main121.css">
+<link rel="stylesheet" href="/aos4/css/header121.css">
+<link rel="stylesheet" href="/aos4/css/profile121.css">
+<link rel="stylesheet" href="/aos4/css/noprint121.css">
+<link rel="icon" type="image/png" href="/aos4/img/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/tooltipster.bundle.min.css" />
+<link rel="manifest" href="/manifest_AoS4.json">
+<link rel="apple-touch-icon" sizes="57x57" href="/img/web-app/wahapedia-icon-57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/web-app/wahapedia-icon-76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/web-app/wahapedia-icon-114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/web-app/wahapedia-icon-120.png">
+<link rel="apple-touch-icon" sizes="128x128" href="/img/web-app/wahapedia-icon-128.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/web-app/wahapedia-icon-152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="/img/web-app/wahapedia-icon-167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/web-app/wahapedia-icon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/img/web-app/wahapedia-icon-192.png">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+<script type="text/javascript" src="/tooltipster-scrollableTip/tooltipster-scrollableTip.min.js"></script>
+<script type="text/javascript" src="https://wahapedia.ru/scripts/jquery.cookie.js"></script><script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir.min.css" />
+<link rel="stylesheet" href="/aos4/css/tooltipster-noir121.css">
+<title>Fiends</title>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4"></script>
+<script>   
+function submitCaptcha(e) {
+	e.preventDefault();
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4', {action: 'submit'}).then(function(token) {    
+			$(".tooltipster-box #captcha-box").val(token);
+			$(".tooltipster-box #disable-ads").submit();
+		});
+	});
+}
+function loadErrors() {
+  if($(location).attr('hash') == ""){
+  let searchParams = new URLSearchParams(window.location.search);
+     if(searchParams.has('error')){
+         err = document.createTextNode(searchParams.get('error'));
+         $('#error-login').append(err);
+         $('#error-login').show();
+     }
+     if(searchParams.has('message')){
+         msg = document.createTextNode(searchParams.get('message'));
+         $('#email-sent').append(msg);
+         $('#email-sent').show();
+     }
+  }
+}
+
+$(document).on( 'click', '#btnGetPin', function(e) {
+  $(".tooltipster-box #password-text-field").val("");
+  submitCaptcha(e);
+});
+
+$(document).on( 'click', '#btnDisableAds', function(e) {
+  submitCaptcha(e);
+});
+</script>
+<script type="text/javascript">
+function switchColorTheme(){
+		var userTheme = localStorage.ColorTheme;
+		if (userTheme == undefined) {userTheme = 'default'; localStorage.ColorTheme = userTheme};
+		if ((userTheme == 'dark') || (userTheme == 'light')) {
+			document.documentElement.setAttribute('data-theme', userTheme);}
+		else if (!window.matchMedia) {
+			document.documentElement.setAttribute('data-theme', 'light');}
+		else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-theme', 'dark');}
+			else {
+				document.documentElement.setAttribute('data-theme', 'light');}
+   };
+	switchColorTheme();
+$(document).ready(function(){
+touchHover(); loadErrors(); $.get('https://wahapedia.ru/relog.php');
+	var data = localStorage.ShowFluff;
+	if (data == undefined) {data = 'true'; localStorage.ShowFluff = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowFluff').prop('checked', StrData);
+	ChangeShowFluff();
+
+	$('.ShowFluff').change(function () {
+      localStorage.ShowFluff = $(this).prop('checked');
+	   ChangeShowFluff();
+   });
+
+	function ChangeShowFluff() {
+	if (localStorage.ShowFluff == 'true')
+		{$('.ShowFluff').css('display', '');}
+	else
+		{$('.ShowFluff').css('display', 'none');}
+	}
+	var data = localStorage.ShowLegendaryDatasheets;
+	if (data == undefined) {data = 'false'; localStorage.ShowLegendaryDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowLegendaryDatasheets').prop('checked', StrData);
+
+	$('.ShowLegendaryDatasheets').change(function () {
+      localStorage.ShowLegendaryDatasheets = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPathToGlory;
+	if (data == undefined) {data = 'true'; localStorage.ShowPathToGlory = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPathToGlory').prop('checked', StrData);
+
+	$('.ShowPathToGlory').change(function () {
+      localStorage.ShowPathToGlory = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPitchedBattleProfile;
+	if (data == undefined) {data = 'true'; localStorage.ShowPitchedBattleProfile = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPitchedBattleProfile').prop('checked', StrData);
+	ChangeShowPitchedBattleProfile();
+
+	$('.ShowPitchedBattleProfile').change(function () {
+      localStorage.ShowPitchedBattleProfile = $(this).prop('checked');
+	   ChangeShowPitchedBattleProfile();
+   });
+
+	function ChangeShowPitchedBattleProfile() {
+	if (localStorage.ShowPitchedBattleProfile == 'true')
+		{$('.ShowPitchedBattleProfile').css('display', '');}
+	else
+		{$('.ShowPitchedBattleProfile').css('display', 'none');}
+	}
+	var data = localStorage.ShowBaseSize;
+	if (data == undefined) {data = 'true'; localStorage.ShowBaseSize = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowBaseSize').prop('checked', StrData);
+	ChangeShowBaseSize();
+
+	$('.ShowBaseSize').change(function () {
+      localStorage.ShowBaseSize = $(this).prop('checked');
+	   ChangeShowBaseSize();
+   });
+
+	function ChangeShowBaseSize() {
+	if (localStorage.ShowBaseSize == 'true')
+		{$('.ShowBaseSize').css('display', '');}
+	else
+		{$('.ShowBaseSize').css('display', 'none');}
+	}
+	var data = localStorage.ShowForgeWorldDatasheets;
+	if (data == undefined) {data = 'true'; localStorage.ShowForgeWorldDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowForgeWorldDatasheets').prop('checked', StrData);
+
+	$('.ShowForgeWorldDatasheets').change(function () {
+      localStorage.ShowForgeWorldDatasheets = $(this).prop('checked');
+	   FilterSelect(false);
+	   FilterApply(false);
+   });
+	$('.ColorTheme').prop('value', localStorage.ColorTheme);
+	$('.ColorTheme').change(function () {
+		localStorage.ColorTheme = $(this).prop('value');
+		switchColorTheme();
+	});	
+	$(window).on('load', function() {
+		$('.ya-site-form__input-text').addClass('ya_input');
+	});
+
+
+function FilterSelect(IsInit) {};
+function FilterApply(IsInit) {
+var clFlags = '';
+var comma = '';
+var clAllFlags = '.sLegendary, .sForgeWorld, .sShowPathToGlory';
+if (localStorage.ShowLegendaryDatasheets == 'false') {clFlags = clFlags + comma + '.sLegendary'; comma = ', ';};
+if (localStorage.ShowPathToGlory == 'false') {clFlags = clFlags + comma + '.sShowPathToGlory'; comma = ', ';};
+if (localStorage.ShowForgeWorldDatasheets == 'false') {clFlags = clFlags + comma + '.sForgeWorld'; comma = ', ';};
+
+	$(clAllFlags).show();
+	$(clFlags).hide();
+if ($('.datasheet').is(":hidden")) {$('.datasheet').show(); $('.selectionWarning').show()} else {$('.selectionWarning').hide()}
+UpdateTooltipster(IsInit);
+};
+FilterApply(true);
+
+function UpdateTooltipster(IsInit) {
+if (!IsInit) 
+	{
+	 $('.tooltip').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipk').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipArmyList').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipContents').filter('.tooltipstered').tooltipster('destroy');
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"00005"},{tCl:"00006"},{tCl:"00007"},{tCl:"00008"},{tCl:"00009"},{tCl:"WARMASTER"},{tCl:"UNIQUE"},{tCl:"HERO"},{tCl:"MONSTER"},{tCl:"00014"},{tCl:"00015"},{tCl:"FLY"},{tCl:"00017"},{tCl:"WARD"},{tCl:"CHAOS"},{tCl:"HEDONITESOFSLAANESH"},{tCl:"DAEMON"},{tCl:"00025"},{tCl:"00026"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"WIZARD"},{tCl:"00033"},{tCl:"00034"},{tCl:"00035"},{tCl:"00036"},{tCl:"WARMACHINE"},{tCl:"SYBARITE"},{tCl:"00039"},{tCl:"00040"},{tCl:"INFANTRY"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"CHAMPION"},{tCl:"CAVALRY"},{tCl:"00051"},{tCl:"00052"},{tCl:"00053"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"00061"},{tCl:"00062"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"MANIFESTATION"},{tCl:"ENDLESSSPELL"},{tCl:"00071"},{tCl:"00072"},{tCl:"00073"},{tCl:"MUSICIAN"},{tCl:"00075"},{tCl:"STANDARDBEARER"},{tCl:"00077"},{tCl:"00078"},{tCl:"00079"},{tCl:"00080"},{tCl:"00081"},{tCl:"00082"},{tCl:"00083"},{tCl:"00084"},{tCl:"00085"},{tCl:"00086"},{tCl:"00087"},{tCl:"DISCIPLESOFTZEENTCH"},{tCl:"00089"},{tCl:"00090"},{tCl:"00091"},{tCl:"00092"},{tCl:"00093"},{tCl:"00094"},{tCl:"00095"},{tCl:"00096"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+$('.tooltipk'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+});
+	 if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"00005"},{tCl:"00006"},{tCl:"00007"},{tCl:"00008"},{tCl:"00009"},{tCl:"WARMASTER"},{tCl:"UNIQUE"},{tCl:"HERO"},{tCl:"MONSTER"},{tCl:"00014"},{tCl:"00015"},{tCl:"FLY"},{tCl:"00017"},{tCl:"WARD"},{tCl:"CHAOS"},{tCl:"HEDONITESOFSLAANESH"},{tCl:"DAEMON"},{tCl:"00025"},{tCl:"00026"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"WIZARD"},{tCl:"00033"},{tCl:"00034"},{tCl:"00035"},{tCl:"00036"},{tCl:"WARMACHINE"},{tCl:"SYBARITE"},{tCl:"00039"},{tCl:"00040"},{tCl:"INFANTRY"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"CHAMPION"},{tCl:"CAVALRY"},{tCl:"00051"},{tCl:"00052"},{tCl:"00053"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"00061"},{tCl:"00062"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"MANIFESTATION"},{tCl:"ENDLESSSPELL"},{tCl:"00071"},{tCl:"00072"},{tCl:"00073"},{tCl:"MUSICIAN"},{tCl:"00075"},{tCl:"STANDARDBEARER"},{tCl:"00077"},{tCl:"00078"},{tCl:"00079"},{tCl:"00080"},{tCl:"00081"},{tCl:"00082"},{tCl:"00083"},{tCl:"00084"},{tCl:"00085"},{tCl:"00086"},{tCl:"00087"},{tCl:"DISCIPLESOFTZEENTCH"},{tCl:"00089"},{tCl:"00090"},{tCl:"00091"},{tCl:"00092"},{tCl:"00093"},{tCl:"00094"},{tCl:"00095"},{tCl:"00096"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});}
+};
+if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"00005"},{tCl:"00006"},{tCl:"00007"},{tCl:"00008"},{tCl:"00009"},{tCl:"WARMASTER"},{tCl:"UNIQUE"},{tCl:"HERO"},{tCl:"MONSTER"},{tCl:"00014"},{tCl:"00015"},{tCl:"FLY"},{tCl:"00017"},{tCl:"WARD"},{tCl:"CHAOS"},{tCl:"HEDONITESOFSLAANESH"},{tCl:"DAEMON"},{tCl:"00025"},{tCl:"00026"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"00030"},{tCl:"00031"},{tCl:"WIZARD"},{tCl:"00033"},{tCl:"00034"},{tCl:"00035"},{tCl:"00036"},{tCl:"WARMACHINE"},{tCl:"SYBARITE"},{tCl:"00039"},{tCl:"00040"},{tCl:"INFANTRY"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"CHAMPION"},{tCl:"CAVALRY"},{tCl:"00051"},{tCl:"00052"},{tCl:"00053"},{tCl:"00054"},{tCl:"00055"},{tCl:"00056"},{tCl:"00057"},{tCl:"00058"},{tCl:"00059"},{tCl:"00060"},{tCl:"00061"},{tCl:"00062"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"MANIFESTATION"},{tCl:"ENDLESSSPELL"},{tCl:"00071"},{tCl:"00072"},{tCl:"00073"},{tCl:"MUSICIAN"},{tCl:"00075"},{tCl:"STANDARDBEARER"},{tCl:"00077"},{tCl:"00078"},{tCl:"00079"},{tCl:"00080"},{tCl:"00081"},{tCl:"00082"},{tCl:"00083"},{tCl:"00084"},{tCl:"00085"},{tCl:"00086"},{tCl:"00087"},{tCl:"DISCIPLESOFTZEENTCH"},{tCl:"00089"},{tCl:"00090"},{tCl:"00091"},{tCl:"00092"},{tCl:"00093"},{tCl:"00094"},{tCl:"00095"},{tCl:"00096"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});
+
+});
+$.tooltipster.setDefaults({
+arrow: true,
+delay: [200, 200],
+interactive: true,
+theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+});
+</script>
+<script type="text/javascript">
+var touchHover = function() {
+    $('.tooltip').on('touchstart', function(e) {
+          e.preventDefault();
+          return false;
+    });
+};
+$(document).ready(function() { touchHover(); });
+</script>
+</head>
+
+<body>
+<!--noindex-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')!='turn_it_off') {
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-3",
+		"renderTo": "yandex_rtb_R-A-3376916-3",
+		"type": "feed"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-2",
+		"type": "fullscreen",
+		"platform": "desktop"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-1",
+		"type": "fullscreen",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-5",
+		"type": "floorAd",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-6",
+		"type": "floorAd",
+		"platform": "desktop"
+	})
+})
+}});</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')=='turn_it_off') {
+	var oldlink = document.getElementsByTagName("link").namedItem('magnus_did_what');
+	oldlink.href = "/aos4/css/magnus_did121.css";
+}
+});
+</script>
+<div id="wrapper2"><div class="noprint"><div id="ezoic-pub-ad-placeholder-147"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(147)});</script></div>
+<div id="wrapper">
+<div class="noprint">
+<div style="position:relative"><div class="SiteHeader_wrapper"><div class="SiteHeader"><a href="/"><div class="SiteHeader_A"></div></a></div></div>
+<div class="NavWrapper_P">
+	<div class="NavDropdown_P">
+	<div class="NavBtn_P NavBtn_Datasheets">Warscrolls</div>
+	<div class="NavDropdown-content_P">
+		<span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/hedonites-of-slaanesh/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Contorted-Epitome-1" class="cnClr">Contorted Epitome</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Infernal-Enrapturess-Herald-of-Slaanesh" class="cnClr">Infernal Enrapturess, Herald of Slaanesh</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Hubris" class="cnClr">Lord of Hubris</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Pain" class="cnClr">Lord of Pain</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shardspeaker-of-Slaanesh" class="cnClr">Shardspeaker of Slaanesh</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Sigvald-Prince-of-Slaanesh" class="cnClr">Sigvald, Prince of Slaanesh</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Syll’Esske, the Vengeful Allegiance</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/The-Masque" class="cnClr">The Masque</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Scourge of Ghyran Syll’Esske, the Vengeful Allegiance</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Viceleader-Herald-of-Slaanesh" class="cnClr">Viceleader, Herald of Slaanesh</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dexcessa-The-Talon-of-Slaanesh" class="cnClr">Dexcessa, The Talon of Slaanesh</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Keeper-of-Secrets" class="cnClr">Keeper of Secrets</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shalaxi-Helbane" class="cnClr">Shalaxi Helbane</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Synessa-the-Voice-of-Slaanesh" class="cnClr">Synessa, the Voice of Slaanesh</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Exalted-Chariot" class="cnClr">Bladebringer, Herald on Exalted Chariot</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Glutos-Orscollion-Lord-of-Gluttony" class="cnClr">Glutos Orscollion, Lord of Gluttony</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Hellflayer" class="cnClr">Bladebringer, Herald on Hellflayer</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Seeker-Chariot" class="cnClr">Bladebringer, Herald on Seeker Chariot</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Beast</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fiends" class="cnClr">Fiends</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Seekers" class="cnClr">Blissbarb Seekers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellstriders" class="cnClr">Hellstriders</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seekers" class="cnClr">Seekers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slickblade-Seekers" class="cnClr">Slickblade Seekers</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Archers" class="cnClr">Blissbarb Archers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Daemonettes" class="cnClr">Daemonettes</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Myrmidesh-Painbringers" class="cnClr">Myrmidesh Painbringers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slaangor-Fiendbloods" class="cnClr">Slaangor Fiendbloods</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Symbaresh-Twinsouls" class="cnClr">Symbaresh Twinsouls</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Slaangor-Fiendbloods" class="cnClr">Scourge of Ghyran Slaangor Fiendbloods</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Dread-Pageant" class="cnClr">The Dread Pageant</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Thricefold-Discord" class="cnClr">The Thricefold Discord</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellflayer" class="cnClr">Hellflayer</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-Chariot" class="cnClr">Seeker Chariot</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Exalted-Chariot" class="cnClr">Exalted Chariot</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fane-of-Slaanesh" class="cnClr">Fane of Slaanesh</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Endless Spell</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dreadful-Visage" class="cnClr">Dreadful Visage</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Mesmerising-Mirror" class="cnClr">Mesmerising Mirror</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Wheels-of-Excrutiation" class="cnClr">Wheels of Excrutiation</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Maggotkin of Nurgle (4th edition)" src="/aos4/img/expansions/MoN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Diseased-Revellers" class="cnClr">Diseased Revellers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Slaves to Darkness (4th edition)" src="/aos4/img/expansions/StD_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Godmarked-Ascendant" class="cnClr">Godmarked Ascendant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Skaven (4th edition)" src="/aos4/img/expansions/SK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Krittok-s-Clawpack" class="cnClr">Krittok’s Clawpack</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Slaves to Darkness (4th edition)" src="/aos4/img/expansions/StD_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Lord-Skaldior-s-Chosen" class="cnClr">Lord Skaldior’s Chosen</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/One-eyed-Grunnock" class="cnClr">One-eyed Grunnock</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Maggotkin of Nurgle (4th edition)" src="/aos4/img/expansions/MoN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Phulgoth-s-Shudderhood" class="cnClr">Phulgoth’s Shudderhood</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Helsmiths of Hashut (4th edition)" src="/aos4/img/expansions/HoH_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-of-the-Dread-Dirge" class="cnClr">Seeker of the Dread Dirge</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Seekers-of-Silver" class="cnClr">Seekers of Silver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Coven-of-Thryx" class="cnClr">The Coven of Thryx</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Helsmiths of Hashut (4th edition)" src="/aos4/img/expansions/HoH_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Curse-Steel-Battery" class="cnClr">The Curse-Steel Battery</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Blades of Khorne (4th edition)" src="/aos4/img/expansions/BoK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Exiled-One" class="cnClr">The Exiled One</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Maggotkin of Nurgle (4th edition)" src="/aos4/img/expansions/MoN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Pustules" class="cnClr">The Pustules</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Blades of Khorne (4th edition)" src="/aos4/img/expansions/BoK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Red-Revelation" class="cnClr">The Red Revelation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Skaven (4th edition)" src="/aos4/img/expansions/SK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Volt-Klaw-s-Enginecoven" class="cnClr">Volt-Klaw’s Enginecoven</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Brand-s-Oathbound" class="cnClr">Brand’s Oathbound</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Squires-of-the-Everchosen" class="cnClr">Squires of the Everchosen</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Hargax-s-Pit-Beasts" class="cnClr">Hargax’s Pit-Beasts</a></div></div></div></span>
+	</div>
+	</div>
+</div>
+	<div class="NavWrapper_M">
+
+	<div class="NavDropdown_Search">
+	<div class="NavBtn_Search">&nbsp;</div>
+	<div class="NavDropdown-content_Search">
+		<div class="yandex_search_line_short"><div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script></div>
+	</div>
+	</div>
+<div class="NavDropdown_A">
+	<div class="NavBtn_A">&nbsp;</div>
+	<div class="NavDropdown-content_A">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/about">About</a><a href="/aos4/the-rules/data-export">Data Export</a>
+	</div>
+	</div>
+	<div class="NavDropdown_S">
+	<div class="NavBtn_S">&nbsp;</div>
+	<div class="NavDropdown-content_S">
+		<div class="armylist_header">Settings</div><div style="clear:both"></div><label class="container">
+<input checked="true" type="checkbox" class="ShowForgeWorldDatasheets"></input>
+	<span class="checkmark"></span>Show Forge World warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowLegendaryDatasheets"></input>
+	<span class="checkmark"></span>Show Legends and not recommended rules/warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowFluff"></input>
+	<span class="checkmark"></span>Show fluff text
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPathToGlory"></input>
+	<span class="checkmark"></span>Show Path to Glory rules
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPitchedBattleProfile"></input>
+	<span class="checkmark"></span>Show Battle Profile
+</label>
+<label style="margin-left:22px" class="container">
+<input checked="true" type="checkbox" class="ShowBaseSize"></input>
+	<span class="checkmark"></span>Show base size
+</label>
+<label class="container" style="padding-left:0px">Color theme: 
+	<select class="ctrlSelect ColorTheme" size="1">
+		<option class="ctrlOption" value="default">OS default</option>
+		<option class="ctrlOption" value="light">Bright</option>
+		<option class="ctrlOption" value="dark">Dark</option>
+	</select>
+</label>
+	</div>
+	</div>
+<div class="NavDropdown">
+	<div class="NavBtn NavBtn_TheRules">The Rules</div>
+	<div class="NavDropdown-content">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/quick-start-guide">Quick Start Guide</a><a href="/aos4/the-rules/the-core-rules">The Core Rules</a><a href="/aos4/the-rules/faqs">FAQs</a><div class="NavColumns_indent_solid"><br></div><div class="BreakInsideAvoid"><div class="FactionHeader">Matched Play Battlepack</div><a href="/aos4/the-rules/first-blood">First Blood</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Path to Glory Battlepack</div><a href="/aos4/the-rules/ascension">Ascension</a><a href="/aos4/the-rules/ravaged-coast">Ravaged Coast</a><a href="/aos4/the-rules/blighted-wilds">Blighted Wilds</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">General’s Handbooks</div><a href="/aos4/the-rules/general-s-handbook-2024-25">General’s Handbook 2024-25</a><a href="/aos4/the-rules/general-s-handbook-2025-26">General’s Handbook 2025-26</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Battleplans</div><a href="/aos4/the-rules/bunker">Bunker</a><a href="/aos4/the-rules/red-gobbo-battleplan">Red Gobbo Battleplan</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Flashpoints</div><a href="/aos4/the-rules/siege-of-lethis">Siege of Lethis</a></div>
+	</div>
+	</div>
+	<div class="NavDropdown">
+	<div class="NavBtn NavBtn_Factions">Factions</div>
+	<div class="NavDropdown-content">
+		<div class="NavColumns3"><div class="BreakInsideAvoid"><div class="FactionHeader">Order</div><a   href="/aos4/factions/cities-of-sigmar">Cities of Sigmar</a><a   href="/aos4/factions/daughters-of-khaine">Daughters of Khaine</a><a   href="/aos4/factions/fyreslayers">Fyreslayers</a><a   href="/aos4/factions/idoneth-deepkin">Idoneth Deepkin</a><a   href="/aos4/factions/kharadron-overlords">Kharadron Overlords</a><a   href="/aos4/factions/lumineth-realm-lords">Lumineth Realm-lords</a><a   href="/aos4/factions/seraphon">Seraphon</a><a   href="/aos4/factions/stormcast-eternals">Stormcast Eternals</a><a   href="/aos4/factions/sylvaneth">Sylvaneth</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Chaos</div><a   href="/aos4/factions/beasts-of-chaos">Beasts of Chaos</a><a   href="/aos4/factions/blades-of-khorne">Blades of Khorne</a><a   href="/aos4/factions/disciples-of-tzeentch">Disciples of Tzeentch</a><a   href="/aos4/factions/hedonites-of-slaanesh">Hedonites of Slaanesh</a><a   href="/aos4/factions/helsmiths-of-hashut">Helsmiths of Hashut</a><a   href="/aos4/factions/maggotkin-of-nurgle">Maggotkin of Nurgle</a><a   href="/aos4/factions/skaven">Skaven</a><a   href="/aos4/factions/slaves-to-darkness">Slaves to Darkness</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Death</div><a   href="/aos4/factions/flesh-eater-courts">Flesh-eater Courts</a><a   href="/aos4/factions/nighthaunt">Nighthaunt</a><a   href="/aos4/factions/ossiarch-bonereapers">Ossiarch Bonereapers</a><a   href="/aos4/factions/soulblight-gravelords">Soulblight Gravelords</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Destruction</div><a   href="/aos4/factions/bonesplitterz">Bonesplitterz</a><a   href="/aos4/factions/gloomspite-gitz">Gloomspite Gitz</a><a   href="/aos4/factions/ironjawz">Ironjawz</a><a   href="/aos4/factions/kruleboyz">Kruleboyz</a><a   href="/aos4/factions/ogor-mawtribes">Ogor Mawtribes</a><a   href="/aos4/factions/sons-of-behemat">Sons of Behemat</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Other</div><a   href="/aos4/factions/endless-spells">Endless Spells</a></div></div>
+	</div>
+	</div>
+</div>
+<div class="NavUnderline_M"></div>
+
+<div class="logoBW_float">
+<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logoBW no_tooltip" title="Support on Boosty"></div></a>
+<a class="noads_logoBW tooltip" data-tooltip-content="#tooltip_contentLoginForm"></a>
+<div class="slide-bottom" id="error-login"></div>
+<div class="slide-bottom" id="email-sent"></div>
+</div>
+</div>
+
+<div class="yandex_search_line yandex_search_line_show">
+<div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+</div>
+<div style="clear:both"></div>
+</div>
+<h1 class="page_header2"><span class="page_header_span2 kwbu tooltip" data-tooltip-content="#tooltip_contentFactionRules">Hedonites of Slaanesh</span><span class="page_header_span2"> – Fiends</span></h1>
+<div class="noprint">
+
+</div>
+<!--/noindex-->
+<div class="noprint"><div class="selectionWarning"><div class="WahapediaWarningSign"></div>This warscroll does not meet the selection criteria (see <b>Settings</b> tab).</div></div>
+<div class="datasheet  "><div class="wsHeader_short"><div class="nails-header"><span class="nails">•</span>HEDONITES OF SLAANESH WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Fiends<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Hedonites%20of%20Slaanesh%20Fiends%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div><div class="wsCharLegend"><div class="BreakInsideAvoid Corner22f stretchTable" style="padding:0px;max-width:100%;"><table class=" stretchTable collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22f_1 dsColorCSSHS"></td><td class="Corner22f_2 dsColorCSSHS"></td><td class="Corner22f_3 dsColorCSSHS"></td></tr><tr><td class="Corner22f_8 dsColorCSSHS"></td><td class="Corner22f_9 dsColorBanHS"><div class="AoS_profile_Ward"><div class="wsMove">10"</div><div class="wsWounds">4</div><div class="wsSave">5+</div><div class="wsBravery">1</div><div class="wsWard">6+</div></div><div class="ShowFluff wsLegend">Fiends are perhaps the strangest of all Slaanesh’s daemonspawn, unholy fusions of beast and lurid nightmare. Their two sets of lower limbs are vaguely humanoid, yet their arms end in enormous pincers. Uncannily prehensile tongues flick from their elongated faces, and their whipping tails are tipped with spikes coated in arcane venoms. Unsurprisingly, Fiends cannot inspire deep-seated desire through their appearance alone; rather, they emit a soporific musk that both attracts and immobilises their prey, filling their minds with rapturous hallucinations and allowing the Fiends to tear them apart at their leisure.
+
+Packs of Fiends skitter throughout the Six Circles of Seduction, crooning discordant songs wherever they travel. Daemons consider these tunes to be lays of the utmost sweetness, each recalling the greatest atrocities ever to grace the innermost cloisters of the Palace of Pleasure. To those mortals not in Slaanesh’s favour, a Fiend’s song is nigh-on unbearable, rolling through the meat of their minds like a ball of wicked knives. Only through repeated exposure and deep inhalations of the daemon’s musk do they begin to grasp the beauty of a Fiend’s chorus, whereupon the ‘enlightened’ mortal becomes a creature of the Dark Prince through and through.</div></td><td class="Corner22f_4 dsColorCSSHS"></td></tr><tr><td class="Corner22f_7 dsColorCSSHS"></td><td class="Corner22f_6 dsColorCSSHS"></td><td class="Corner22f_5 dsColorCSSHS"></td></tr></tbody></table></div></div><div class="wsBody"><div class="wsBodyTop"><div class="wsHeader_long"><div class="nails-header"><span class="nails">•</span>HEDONITES OF SLAANESH WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Fiends<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Hedonites%20of%20Slaanesh%20Fiends%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div><div class="wsTable"><table class="wTable" border="1" cellspacing="0" cellpadding="2" style="border-collapse:collapse;border-width:0px"><tr class="dsColorBgHS wsHeaderRow"><td class="wsHeaderCellName_MeleeWeapons wsDataCell_long"></td><td class="wsHeaderCellName_NoRng"><div class="wsHeaderCellName_MeleeWeapons wsDataCell_short"></div><span class="wsDataCell_long">MELEE WEAPONS</span></td><td class="wsHeaderCell">Atk</td><td class="wsHeaderCell">Hit</td><td class="wsHeaderCell">Wnd</td><td class="wsHeaderCell">Rnd</td><td class="wsHeaderCell">Dmg</td></tr><tbody class="bkg"><tr class="wsDataRow wsDataRow_short"><td colspan="6" style="border-width:0px">Deadly Pincers and Barbed Stinger [<span class="wsWeaponAbility"><span class="tooltip00071" data-tooltip-content="#tooltip_content00071"><span class="tt kwbu">Anti-<span class="kwb">MONSTER</span></span> <span class="tt kwbu">(+1</span> <span class="tt kwbu">Rend)</span></span>, <span class="tooltip00042" data-tooltip-content="#tooltip_content00042"><span class="tt kwbu">Companion</span></span></span>]</td></tr><tr class="wsDataRow dsColorFrHS"><td class="wsDataCell_long wsBorderN_"></td><td class="wsDataCell_short wsBorderN_ dsColorFrHS"></td><td class="wsDataCell_long wsBorderN_ dsColorFrHS">Deadly Pincers and Barbed Stinger<br><span class="wsWeaponAbility"><span class="tooltip00071" data-tooltip-content="#tooltip_content00071"><span class="tt kwbu">Anti-<span class="kwb">MONSTER</span></span> <span class="tt kwbu">(+1</span> <span class="tt kwbu">Rend)</span></span>, <span class="tooltip00042" data-tooltip-content="#tooltip_content00042"><span class="tt kwbu">Companion</span></span></span></td><td class="wsBorderM_ wsCell dsColorFrHS">4</td><td class="wsBorderM_ wsCell dsColorFrHS">4+</td><td class="wsBorderM_ wsCell dsColorFrHS">3+</td><td class="wsBorderM_ wsCell dsColorFrHS">1</td><td class="wsBorderR_ wsCell dsColorFrHS">D3</td></tr></tbody></table></div><div style="clear:both"></div><div class="Columns2_AoS"><div class="BreakInsideAvoid PitchedBattleProfile ShowPitchedBattleProfile"><div class="wsAbilityHeader">BATTLE PROFILE</div><a href="/aos4/the-rules/the-core-rules/#Battle-Profiles"><div class="tooltip_link_inline"></div></a><br><span class="redfont">Unit Size</span><b>: </b>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redfont">Points</span><b>: </b>150<br><span class="ShowBaseSize"><span class="redfont">Base size</span><b>: </b>75 × 42mm</span><br class="ShowBaseSize"><div><b>Can be reinforced: </b>Yes</div></div><div class="ShowPitchedBattleProfile"><br></div><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td class="abHeader" bgcolor="#802022"><img class="abLogo" src="/aos4/img/abDefensive.png">Once Per Turn (Army), Any Combat Phase</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#802022" class="abBody abNoReaction"><b>SOPORIFIC MUSK<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">A Fiend exudes a pervasive and oily musk that numbs a foe to all but the most extreme of stimuli.<br><div class="spc"></div></span><div><br></div><b>Declare:</b> Pick an enemy unit in combat with this unit to be the target.<br><br><b>Effect:</b> Roll a dice. On a 4+, the target has <span class="tooltip00045" data-tooltip-content="#tooltip_content00045"><span class="kwb kwbu">STRIKE-LAST</span></span> for the rest of the turn.</div><div><br></div></div></div><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td class="abHeader" bgcolor="#76602b"><img class="abLogo" src="/aos4/img/abSpecial.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#76602b" class="abBody abNoReaction"><b>DISRUPTIVE SONG<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Fiends of Slaanesh let out a keening song that disturbs the concentration of spellcasters who hear it.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> Subtract 1 from <span class="tooltip00030" data-tooltip-content="#tooltip_content00030"><span class="tt kwbu">casting</span> <span class="tt kwbu">rolls</span></span> and <span class="tooltip00096" data-tooltip-content="#tooltip_content00096"><span class="tt kwbu">unbinding</span> <span class="tt kwbu">rolls</span></span> for enemy <span class="kwb">WIZARDS</span> while they are within 12" of this unit.</div><div><br></div></div><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(30%) sepia(11%) saturate(2025%) hue-rotate(224deg) brightness(93%) contrast(85%);"></td><td class="abHeader" bgcolor="#5e4a79"><img class="abLogo" src="/aos4/img/abControl.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(30%) sepia(11%) saturate(2025%) hue-rotate(224deg) brightness(93%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#5e4a79" class="abBody abNoReaction"><b>BEAST</b></br><b>Effect:</b> This unit has a maximum <span class="tooltip00028" data-tooltip-content="#tooltip_content00028"><span class="tt kwbu">control</span> <span class="tt kwbu">score</span></span> of 1.</div></div></div></div><div class="wsBodyBottom"><div style="clear:both"><br></div><table width=100% border="0" cellspacing="0" cellpadding="6"><tr><td rowspan="2" class="wsKeywordHeader dsColorBgHS"><div style="font-weight:700; font-family:'Minion-Pro',serif;">KEYWORDS</div></td><td class="wsKeywordLine1 dsColorFrHS"><span class="kwb">BEAST</span>, <span class="tooltipkCHAMPION" data-tooltip-content="#tooltip_contentCHAMPION" data-tooltip-anchor="#tooltip_contentCHAMPION"><span class="kwb kwbu">CHAMPION</span></span>, <span class="tooltipkWARD" data-tooltip-content="#tooltip_contentWARD" data-tooltip-anchor="#tooltip_contentWARD"><span class="kwb kwbu">WARD</span> <span class="kwb4">(</span><span class="kwb2_ kwbu">6+</span><span class="kwb4">)</span></span></td></tr><tr><td class="wsKeywordLine2 dsColorFrHS"><span class="tooltipkCHAOS" data-tooltip-content="#tooltip_contentCHAOS" data-tooltip-anchor="#tooltip_contentCHAOS"><span class="kwb kwbu">CHAOS</span></span>, <span class="tooltipkHEDONITESOFSLAANESH" data-tooltip-content="#tooltip_contentHEDONITESOFSLAANESH" data-tooltip-anchor="#tooltip_contentHEDONITESOFSLAANESH"><span class="kwb kwbu">HEDONITES</span> <span class="kwb2 kwbu">OF</span> <span class="kwb kwbu">SLAANESH</span></span>, <span class="tooltipkDAEMON" data-tooltip-content="#tooltip_contentDAEMON" data-tooltip-anchor="#tooltip_contentDAEMON"><span class="kwb kwbu">DAEMON</span></span></td></tr></table></div></div></div><div style="clear:both"></div>
+<!--noindex--><div class="tooltip_templates"><span id="tooltip_content00017"><div class="tooltip_header">18.1 Ward Saves</div><a href="/aos4/the-rules/the-core-rules/#Ward-Saves"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Units with the <span class="kwb">WARD</span> keyword have the ‘Ward Save’ <a href="/aos4/the-rules/the-core-rules/#Passive-Abilities">passive ability</a>. The number after the <span class="kwb">WARD</span> keyword indicates the <b>ward value</b> for the ward save. If a unit had <span class="kwb">WARD</span> <span class="kwb4">(</span><span class="kwb2_">5+</span><span class="kwb4">)</span>, for example, its ward value would be 5. If a unit has more than one ward save, only the ward save with the lowest value applies to it; the other has no effect.<br><br><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(31%) sepia(7%) saturate(3612%) hue-rotate(51deg) brightness(91%) contrast(85%);"></td><td class="abHeader" bgcolor="#3d5b26"><img class="abLogo" src="/aos4/img/abDefensive.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(31%) sepia(7%) saturate(3612%) hue-rotate(51deg) brightness(91%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#3d5b26" class="abBody abNoReaction"><b>WARD SAVE<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Whether through their uncanny reflexes, unnatural toughness or a source of mystical protection, these warriors can avoid otherwise lethal attacks.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> In step 1 of the damage sequence (<a href="/aos4/the-rules/the-core-rules/#The-Damage-Sequence">see 18.0</a>), make a <b>ward roll</b> of D6 for each <b>damage point</b> in this unit’s <b>damage pool</b>. If the roll equals or exceeds this unit’s <b>ward value</b>, remove that damage point from the damage pool.</div><div><br></div></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_contentWARD"><p>The <span class="tooltip00017" data-tooltip-content="#tooltip_content00017"><span class="kwb kwbu">WARD</span></span> keyword is used in the following Hedonites of Slaanesh warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Exalted-Chariot" class="cnClr">Bladebringer, Herald on Exalted Chariot</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Contorted-Epitome-1" class="cnClr">Contorted Epitome</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Daemonettes" class="cnClr">Daemonettes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dexcessa-The-Talon-of-Slaanesh" class="cnClr">Dexcessa, The Talon of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fane-of-Slaanesh" class="cnClr">Fane of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fiends" class="cnClr">Fiends</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Glutos-Orscollion-Lord-of-Gluttony" class="cnClr">Glutos Orscollion, Lord of Gluttony</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellflayer" class="cnClr">Hellflayer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Infernal-Enrapturess-Herald-of-Slaanesh" class="cnClr">Infernal Enrapturess, Herald of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Keeper-of-Secrets" class="cnClr">Keeper of Secrets</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Hubris" class="cnClr">Lord of Hubris</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Pain" class="cnClr">Lord of Pain</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-Chariot" class="cnClr">Seeker Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seekers" class="cnClr">Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shalaxi-Helbane" class="cnClr">Shalaxi Helbane</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shardspeaker-of-Slaanesh" class="cnClr">Shardspeaker of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Sigvald-Prince-of-Slaanesh" class="cnClr">Sigvald, Prince of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Synessa-the-Voice-of-Slaanesh" class="cnClr">Synessa, the Voice of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/The-Masque" class="cnClr">The Masque</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Scourge of Ghyran Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Hellflayer" class="cnClr">Bladebringer, Herald on Hellflayer</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Seeker-Chariot" class="cnClr">Bladebringer, Herald on Seeker Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Exalted-Chariot" class="cnClr">Exalted Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Thricefold-Discord" class="cnClr">The Thricefold Discord</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Viceleader-Herald-of-Slaanesh" class="cnClr">Viceleader, Herald of Slaanesh</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dreadful-Visage" class="cnClr">Dreadful Visage</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Mesmerising-Mirror" class="cnClr">Mesmerising Mirror</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Wheels-of-Excrutiation" class="cnClr">Wheels of Excrutiation</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentCHAOS"><p>The <span class="kwb">CHAOS</span> keyword is used in the following Hedonites of Slaanesh warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Exalted-Chariot" class="cnClr">Bladebringer, Herald on Exalted Chariot</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Archers" class="cnClr">Blissbarb Archers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Seekers" class="cnClr">Blissbarb Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Contorted-Epitome-1" class="cnClr">Contorted Epitome</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Daemonettes" class="cnClr">Daemonettes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dexcessa-The-Talon-of-Slaanesh" class="cnClr">Dexcessa, The Talon of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fane-of-Slaanesh" class="cnClr">Fane of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fiends" class="cnClr">Fiends</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Glutos-Orscollion-Lord-of-Gluttony" class="cnClr">Glutos Orscollion, Lord of Gluttony</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellflayer" class="cnClr">Hellflayer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellstriders" class="cnClr">Hellstriders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Infernal-Enrapturess-Herald-of-Slaanesh" class="cnClr">Infernal Enrapturess, Herald of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Keeper-of-Secrets" class="cnClr">Keeper of Secrets</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Hubris" class="cnClr">Lord of Hubris</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Pain" class="cnClr">Lord of Pain</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Myrmidesh-Painbringers" class="cnClr">Myrmidesh Painbringers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-Chariot" class="cnClr">Seeker Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seekers" class="cnClr">Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shalaxi-Helbane" class="cnClr">Shalaxi Helbane</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shardspeaker-of-Slaanesh" class="cnClr">Shardspeaker of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Sigvald-Prince-of-Slaanesh" class="cnClr">Sigvald, Prince of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slaangor-Fiendbloods" class="cnClr">Slaangor Fiendbloods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slickblade-Seekers" class="cnClr">Slickblade Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Symbaresh-Twinsouls" class="cnClr">Symbaresh Twinsouls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Synessa-the-Voice-of-Slaanesh" class="cnClr">Synessa, the Voice of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/The-Masque" class="cnClr">The Masque</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Slaangor-Fiendbloods" class="cnClr">Scourge of Ghyran Slaangor Fiendbloods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Scourge of Ghyran Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Hellflayer" class="cnClr">Bladebringer, Herald on Hellflayer</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Seeker-Chariot" class="cnClr">Bladebringer, Herald on Seeker Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Exalted-Chariot" class="cnClr">Exalted Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Dread-Pageant" class="cnClr">The Dread Pageant</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Thricefold-Discord" class="cnClr">The Thricefold Discord</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Viceleader-Herald-of-Slaanesh" class="cnClr">Viceleader, Herald of Slaanesh</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dreadful-Visage" class="cnClr">Dreadful Visage</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Mesmerising-Mirror" class="cnClr">Mesmerising Mirror</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Wheels-of-Excrutiation" class="cnClr">Wheels of Excrutiation</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentHEDONITESOFSLAANESH"><p>The <span class="kwb">HEDONITES</span> <span class="kwb2">OF</span> <span class="kwb">SLAANESH</span> keyword is used in the following Hedonites of Slaanesh warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Exalted-Chariot" class="cnClr">Bladebringer, Herald on Exalted Chariot</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Archers" class="cnClr">Blissbarb Archers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Seekers" class="cnClr">Blissbarb Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Contorted-Epitome-1" class="cnClr">Contorted Epitome</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Daemonettes" class="cnClr">Daemonettes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dexcessa-The-Talon-of-Slaanesh" class="cnClr">Dexcessa, The Talon of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fane-of-Slaanesh" class="cnClr">Fane of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fiends" class="cnClr">Fiends</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Glutos-Orscollion-Lord-of-Gluttony" class="cnClr">Glutos Orscollion, Lord of Gluttony</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellflayer" class="cnClr">Hellflayer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellstriders" class="cnClr">Hellstriders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Infernal-Enrapturess-Herald-of-Slaanesh" class="cnClr">Infernal Enrapturess, Herald of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Keeper-of-Secrets" class="cnClr">Keeper of Secrets</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Hubris" class="cnClr">Lord of Hubris</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Pain" class="cnClr">Lord of Pain</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Myrmidesh-Painbringers" class="cnClr">Myrmidesh Painbringers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-Chariot" class="cnClr">Seeker Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seekers" class="cnClr">Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shalaxi-Helbane" class="cnClr">Shalaxi Helbane</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shardspeaker-of-Slaanesh" class="cnClr">Shardspeaker of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Sigvald-Prince-of-Slaanesh" class="cnClr">Sigvald, Prince of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slaangor-Fiendbloods" class="cnClr">Slaangor Fiendbloods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slickblade-Seekers" class="cnClr">Slickblade Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Symbaresh-Twinsouls" class="cnClr">Symbaresh Twinsouls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Synessa-the-Voice-of-Slaanesh" class="cnClr">Synessa, the Voice of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/The-Masque" class="cnClr">The Masque</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Slaangor-Fiendbloods" class="cnClr">Scourge of Ghyran Slaangor Fiendbloods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Scourge of Ghyran Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Hellflayer" class="cnClr">Bladebringer, Herald on Hellflayer</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Seeker-Chariot" class="cnClr">Bladebringer, Herald on Seeker Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Exalted-Chariot" class="cnClr">Exalted Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Dread-Pageant" class="cnClr">The Dread Pageant</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Thricefold-Discord" class="cnClr">The Thricefold Discord</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Viceleader-Herald-of-Slaanesh" class="cnClr">Viceleader, Herald of Slaanesh</a></div><div style="clear:both"></div></div><div style="clear:both; margin-bottom:8px;"><div class="BatRole">Endless Spell</div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dreadful-Visage" class="cnClr">Dreadful Visage</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Mesmerising-Mirror" class="cnClr">Mesmerising Mirror</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Wheels-of-Excrutiation" class="cnClr">Wheels of Excrutiation</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentDAEMON"><p>The <span class="kwb">DAEMON</span> keyword is used in the following Hedonites of Slaanesh warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Exalted-Chariot" class="cnClr">Bladebringer, Herald on Exalted Chariot</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Contorted-Epitome-1" class="cnClr">Contorted Epitome</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Daemonettes" class="cnClr">Daemonettes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dexcessa-The-Talon-of-Slaanesh" class="cnClr">Dexcessa, The Talon of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fiends" class="cnClr">Fiends</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellflayer" class="cnClr">Hellflayer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Infernal-Enrapturess-Herald-of-Slaanesh" class="cnClr">Infernal Enrapturess, Herald of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Keeper-of-Secrets" class="cnClr">Keeper of Secrets</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-Chariot" class="cnClr">Seeker Chariot</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seekers" class="cnClr">Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shalaxi-Helbane" class="cnClr">Shalaxi Helbane</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Synessa-the-Voice-of-Slaanesh" class="cnClr">Synessa, the Voice of Slaanesh</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/The-Masque" class="cnClr">The Masque</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Scourge of Ghyran Syll’Esske, the Vengeful Allegiance</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Hellflayer" class="cnClr">Bladebringer, Herald on Hellflayer</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Seeker-Chariot" class="cnClr">Bladebringer, Herald on Seeker Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Exalted-Chariot" class="cnClr">Exalted Chariot</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Thricefold-Discord" class="cnClr">The Thricefold Discord</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Viceleader-Herald-of-Slaanesh" class="cnClr">Viceleader, Herald of Slaanesh</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentArmyList"><span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/hedonites-of-slaanesh/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Contorted-Epitome-1" class="cnClr">Contorted Epitome</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Infernal-Enrapturess-Herald-of-Slaanesh" class="cnClr">Infernal Enrapturess, Herald of Slaanesh</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Hubris" class="cnClr">Lord of Hubris</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Lord-of-Pain" class="cnClr">Lord of Pain</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shardspeaker-of-Slaanesh" class="cnClr">Shardspeaker of Slaanesh</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Sigvald-Prince-of-Slaanesh" class="cnClr">Sigvald, Prince of Slaanesh</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Syll’Esske, the Vengeful Allegiance</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/The-Masque" class="cnClr">The Masque</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Syll-Esske-the-Vengeful-Allegiance" class="cnClr">Scourge of Ghyran Syll’Esske, the Vengeful Allegiance</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Viceleader-Herald-of-Slaanesh" class="cnClr">Viceleader, Herald of Slaanesh</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dexcessa-The-Talon-of-Slaanesh" class="cnClr">Dexcessa, The Talon of Slaanesh</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Keeper-of-Secrets" class="cnClr">Keeper of Secrets</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Shalaxi-Helbane" class="cnClr">Shalaxi Helbane</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Synessa-the-Voice-of-Slaanesh" class="cnClr">Synessa, the Voice of Slaanesh</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Exalted-Chariot" class="cnClr">Bladebringer, Herald on Exalted Chariot</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Glutos-Orscollion-Lord-of-Gluttony" class="cnClr">Glutos Orscollion, Lord of Gluttony</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Hellflayer" class="cnClr">Bladebringer, Herald on Hellflayer</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Bladebringer-Herald-on-Seeker-Chariot" class="cnClr">Bladebringer, Herald on Seeker Chariot</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Beast</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fiends" class="cnClr">Fiends</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Seekers" class="cnClr">Blissbarb Seekers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellstriders" class="cnClr">Hellstriders</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seekers" class="cnClr">Seekers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slickblade-Seekers" class="cnClr">Slickblade Seekers</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Archers" class="cnClr">Blissbarb Archers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Daemonettes" class="cnClr">Daemonettes</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Myrmidesh-Painbringers" class="cnClr">Myrmidesh Painbringers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slaangor-Fiendbloods" class="cnClr">Slaangor Fiendbloods</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Symbaresh-Twinsouls" class="cnClr">Symbaresh Twinsouls</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Slaangor-Fiendbloods" class="cnClr">Scourge of Ghyran Slaangor Fiendbloods</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Dread-Pageant" class="cnClr">The Dread Pageant</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Thricefold-Discord" class="cnClr">The Thricefold Discord</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">War Machine</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellflayer" class="cnClr">Hellflayer</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-Chariot" class="cnClr">Seeker Chariot</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Exalted-Chariot" class="cnClr">Exalted Chariot</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fane-of-Slaanesh" class="cnClr">Fane of Slaanesh</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Endless Spell</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Dreadful-Visage" class="cnClr">Dreadful Visage</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Mesmerising-Mirror" class="cnClr">Mesmerising Mirror</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Wheels-of-Excrutiation" class="cnClr">Wheels of Excrutiation</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Maggotkin of Nurgle (4th edition)" src="/aos4/img/expansions/MoN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Diseased-Revellers" class="cnClr">Diseased Revellers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Slaves to Darkness (4th edition)" src="/aos4/img/expansions/StD_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Godmarked-Ascendant" class="cnClr">Godmarked Ascendant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Skaven (4th edition)" src="/aos4/img/expansions/SK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Krittok-s-Clawpack" class="cnClr">Krittok’s Clawpack</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Slaves to Darkness (4th edition)" src="/aos4/img/expansions/StD_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Lord-Skaldior-s-Chosen" class="cnClr">Lord Skaldior’s Chosen</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/One-eyed-Grunnock" class="cnClr">One-eyed Grunnock</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Maggotkin of Nurgle (4th edition)" src="/aos4/img/expansions/MoN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Phulgoth-s-Shudderhood" class="cnClr">Phulgoth’s Shudderhood</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Helsmiths of Hashut (4th edition)" src="/aos4/img/expansions/HoH_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Seeker-of-the-Dread-Dirge" class="cnClr">Seeker of the Dread Dirge</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Seekers-of-Silver" class="cnClr">Seekers of Silver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Coven-of-Thryx" class="cnClr">The Coven of Thryx</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Helsmiths of Hashut (4th edition)" src="/aos4/img/expansions/HoH_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Curse-Steel-Battery" class="cnClr">The Curse-Steel Battery</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Blades of Khorne (4th edition)" src="/aos4/img/expansions/BoK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Exiled-One" class="cnClr">The Exiled One</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Maggotkin of Nurgle (4th edition)" src="/aos4/img/expansions/MoN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Pustules" class="cnClr">The Pustules</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Blades of Khorne (4th edition)" src="/aos4/img/expansions/BoK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Red-Revelation" class="cnClr">The Red Revelation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Skaven (4th edition)" src="/aos4/img/expansions/SK_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Volt-Klaw-s-Enginecoven" class="cnClr">Volt-Klaw’s Enginecoven</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Brand-s-Oathbound" class="cnClr">Brand’s Oathbound</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Squires-of-the-Everchosen" class="cnClr">Squires of the Everchosen</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Hargax-s-Pit-Beasts" class="cnClr">Hargax’s Pit-Beasts</a></div></div></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentFactionRules"><span class="contents"><div class="tooltip_header">Faction Rules</div><a href="/aos4/factions/hedonites-of-slaanesh"><div class="tooltip_link"></div></a><div style="clear:both"></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/#Battle-Traits" class="cnClr">Battle Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/#Battle-Formations" class="cnClr">Battle Formations</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/#Heroic-Traits" class="cnClr">Heroic Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/#Artefacts-of-Power" class="cnClr">Artefacts of Power</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/#Spell-Lore" class="cnClr">Spell Lore</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/#Manifestation-Lore" class="cnClr">Manifestation Lore</a></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentLoginForm"><form action="/login.php" method="POST" id="disable-ads">
+<div class="lfWrapper">
+<h4 style="padding-bottom:6px">Disable Ads</h4>
+<label class="lfLabel" for="email" id="email">E-mail:</label> <input id="user-text-field" type="email" class="lfInput_w lfInput" autocomplete="username" name="email" id="email" value="" />
+<br><div><label class="lfLabel" for="passcode" type="password">Pin code:</label> <input id="password-text-field" type="password" autocomplete="current-password" style="width:68px" class="lfInput" name="passcode" value="" /> <button class="lfButton" id="btnDisableAds">Disable Ads</button></div>
+<input type="text" style="display:none"  name="g-recaptcha-response" id="captcha-box"></input>
+<button class="lfDisableAds" id="btnGetPin">Get new pin code</button>
+<br><a href="https://boosty.to/wahapedia">Boosty</a> subscribers may disable ads:
+<br>1. Enter e-mail you have used to login on Boosty.
+<br>2. Press <b>Get new pin code</b> button (if you don’t have it already)
+<br>3. Enter pin code.
+<br>
+<br><i>Note that login database updated once a day. So, if you are a new booster - try tomorrow. And thank you!</i>
+</div>
+</form></span></div><div class="tooltip_templates"><span id="tooltip_content00027"><div class="tooltip_header">6.0 Visibility</div><a href="/aos4/the-rules/the-core-rules/#Visibility"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+A target model is visible to another model (which we’ll call the ‘observing model’) if you can draw a straight line through the air (whether horizontal, diagonal or vertical) from any point on the observing model to any point on the target model that does not intersect any objects except for other models in the observing model’s unit. A target unit is visible to an observing unit if at least 1 model in the target unit is visible to at least 1 model in the observing unit. A model is always considered to be visible to itself.<br>If a rule or ability requires a target to be both within a given range of and visible to the unit using that ability, or to a model in that unit, both conditions must be met by the same model in the target. You could not, for instance, target a unit where one model is within range but not visible and another model is not in range but is visible.<br><div class="BreakInsideAvoid Corner22r" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22r_1"></td><td class="Corner22r_2"></td><td class="Corner22r_3"></td></tr><tr><td class="Corner22r_8"></td><td class="Corner22r_9"><ul class="Rhombus"><li>If any part of another model can be seen by an observing model, both the target model and its unit are visible to that observing model.</li></ul></td><td class="Corner22r_4"></td></tr><tr><td class="Corner22r_7"></td><td class="Corner22r_6"></td><td class="Corner22r_5"></td></tr></tbody></table></div><br><div class="BreakInsideAvoid Corner22" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22_1"></td><td class="Corner22_2"></td><td class="Corner22_3"></td></tr><tr><td class="Corner22_8"></td><td class="Corner22_9">In some cases, it might not be immediately clear whether a model is visible. If so, stoop down to get a look from behind the observing model. If any part of the other model is visible, even if it is just the tip of a spear, then that model is visible for rules purposes.</td><td class="Corner22_4"></td></tr><tr><td class="Corner22_7"></td><td class="Corner22_6"></td><td class="Corner22_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00028"><div class="tooltip_header">32.2 Objective Control</div><a href="/aos4/the-rules/the-core-rules/#Objective-Control"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+In the <b>deployment phase</b> after all Deployment Phase abilities have been used and at the <b>end of each turn</b>, follow this sequence for <b>each objective</b> in an order chosen by the active player:<br><ol><li>Starting with the active player, each player determines the <b>control score</b> of each of their units that is contesting that objective. A unit’s control score is the combined <b>Control</b> characteristics of all the models in that unit that are contesting the objective. Some abilities modify a unit’s control score, but it cannot be reduced to less than 1.</li><li>Each player adds up the control scores of all of their units contesting that objective. This is their <b>army control score</b> for that objective.</li><li>The players compare their army control scores for that objective. If one player’s score is higher, that player <b>gains control</b> of that objective. Once a player gains control of an objective, it <b>remains under their control</b> until their opponent gains control of it.</li></ol><br><div class="BreakInsideAvoid Corner22" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22_1"></td><td class="Corner22_2"></td><td class="Corner22_3"></td></tr><tr><td class="Corner22_8"></td><td class="Corner22_9">Sometimes objective markers get accidentally nudged while you are moving models around. This is perfectly fine - just remember to put them back in their proper positions when determining objective control.</td><td class="Corner22_4"></td></tr><tr><td class="Corner22_7"></td><td class="Corner22_6"></td><td class="Corner22_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00030"><div class="tooltip_header">2.0 Spells</div><a href="/aos4/the-rules/the-core-rules/#Spells"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+The declare step of each spell will tell you to make a <b>casting roll</b> of <b>2D6</b>. If the roll does <b>not</b> equal or exceed the spell’s <b>casting value</b> (at the top-right corner of the spell), the spell fails and its effect is not resolved.<br><br>If the unmodified casting roll includes <b>2 or more rolls of 1</b>, the spell is <b>miscast</b>: the spell fails, its effect is not resolved, <b>D3 <a href="/aos4/the-rules/the-core-rules/#Mortal-Damage">mortal damage</a></b> is inflicted on the <span class="kwb">WIZARD</span> that used it, and that <span class="kwb">WIZARD</span> cannot use any more spells in that phase.<br><br>Enemy reactions can only be used if the <b>casting roll</b> equals or exceeds the spell’s <b>casting value</b>. So long as the spell is not <b>unbound</b> (<a href="/aos4/the-rules/the-core-rules/#Unbinding-Spells">see 4.0</a>), then it is <b>successfully cast</b>: resolve its <b>effect</b>.<br><br><div class="h_custom">EXAMPLE SPELL</div><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td class="abHeader" bgcolor="#76602b"><img class="abLogo" src="/aos4/img/abDefensive.png">Your Hero Phase</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td style="width:0px; position:absolute;"><div class="abSpellPoints"><div class="abSpellPointsN">6</div></div></td></tr></tbody></table><div style="border-color:#76602b" class="abBody abNoReaction"><b>MYSTIC SHIELD<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">The caster's allies are bathed in an unearthly glow that protects them from harm.<br><div class="spc"></div></span><div><br></div><b>Declare:</b> Pick a <span class="tooltip00027" data-tooltip-content="#tooltip_content00027"><span class="tt kwbu">visible</span></span> friendly unit wholly within 12" of this <span class="kwb">WIZARD</span> to be the target. Then, make a <b>casting roll</b> of 2D6.<br><br><b>Effect:</b> The target has <span class="tooltip00017" data-tooltip-content="#tooltip_content00017"><span class="kwb kwbu">WARD</span> <span class="kwb4">(</span><span class="kwb2_ kwbu">6+</span><span class="kwb4">)</span></span> this turn.</div><div class="abKeywords" style="border-color:#76602b"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td bgcolor="#76602b" class="abHeader abKeywordsBody"><span class="kwb">KEYWORDS</span></td><td class="abKeywordsBodyText abNoReaction"><span class="kwb">SPELL</span></td></tr></tbody></table></div><div><br></div></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00042"><div class="tooltip_header">Companion</div><div style="clear:both"></div>Unless otherwise specified, attacks made by this weapon are not affected by friendly abilities that modify <a href="">hit rolls</a>, <a href="">wound rolls</a> or weapon characteristics, except for those that apply negative modifiers (e.g. ‘<a href="">Covering Fire</a>’).</span></div><div class="tooltip_templates"><span id="tooltip_content00044"><div class="tooltip_header">15.3 Pile-in Moves</div><a href="/aos4/the-rules/the-core-rules/#Pile-in-Moves"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Some abilities, such as <span class="kwb">FIGHT</span> abilities, allow a unit to make a short move called a <b>pile-in move</b> to get into a better position for combat. To do so:<br><br><u><b>If your unit is in combat:</b></u> Pick an enemy unit your unit is <b>in combat</b> with to be the <b>target</b> of the pile-in move. Each model in your unit can move up to 3". That move can pass through the <a href="/aos4/the-rules/the-core-rules/#Combat-Range">combat ranges</a> of any enemy units, but each model must end that move <b>no further from</b> the <b>target</b> unit. At the end of the move, your unit must still be in combat with all units that it was in combat with at the start of the move.<br><br><u><b>If your unit is not in combat:</b></u> Each model in your unit can move 3" in any direction. That move can pass through and end within the combat ranges of any enemy units.<br><br><div class="BreakInsideAvoid Corner22r" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22r_1"></td><td class="Corner22r_2"></td><td class="Corner22r_3"></td></tr><tr><td class="Corner22r_8"></td><td class="Corner22r_9"><ul class="Rhombus"><li>Pile in: move up to 3".</li><li>If in combat, the unit must end the move closer, or at least as close, to the target enemy unit.</li></ul></td><td class="Corner22r_4"></td></tr><tr><td class="Corner22r_7"></td><td class="Corner22r_6"></td><td class="Corner22r_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00045"><div class="tooltip_header">19.0 Strike-first and Strike-last</div><a href="/aos4/the-rules/the-core-rules/#Strike-first-and-Strike-last"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+If there are any <span class="kwb">STRIKE-FIRST</span> units <b>in combat</b> after any non-<span class="kwb">FIGHT</span> combat phase abilities have been used, other units cannot be picked to use a <span class="kwb">FIGHT</span> ability until those units have been picked to use a <span class="kwb">FIGHT</span> ability. After all those <span class="kwb">STRIKE-FIRST</span> units have fought, the active player picks the next unit to fight.<br><br>If there are any <span class="kwb">STRIKE-LAST</span> units <b>in combat</b>, they cannot be picked to use a <span class="kwb">FIGHT</span> ability if there are any units <b>in combat</b> that do not have <span class="kwb">STRIKE-LAST</span> and have not yet used a <span class="kwb">FIGHT</span> ability.<br><br>If a unit has <span class="kwb">STRIKE-FIRST</span> and <span class="kwb">STRIKE-LAST</span>, treat it as if it had neither.<br><br><div class="BreakInsideAvoid Corner22" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22_1"></td><td class="Corner22_2"></td><td class="Corner22_3"></td></tr><tr><td class="Corner22_8"></td><td class="Corner22_9">There may be situations when a unit that has <span class="kwb">STRIKE-FIRST</span> is not in combat at the start of the phase, but because of moves such as <span class="tooltip00044" data-tooltip-content="#tooltip_content00044"><span class="tt kwbu">pile-in</span> <span class="tt kwbu">moves</span></span>, it is ‘pulled into combat’ later in the phase. In such cases, <span class="kwb">STRIKE-FIRST</span> has no effect on that unit because it was not in combat at the start of the phase.<br><br>Abilities that allow a unit to use a <span class="kwb">FIGHT</span> ability immediately after another unit do not override the <span class="kwb">STRIKE-FIRST</span> or <span class="kwb">STRIKE-LAST</span> constraints, so you could not pick a unit with <span class="kwb">STRIKE-LAST</span> to fight immediately after a unit with <span class="kwb">STRIKE-FIRST</span>.</td><td class="Corner22_4"></td></tr><tr><td class="Corner22_7"></td><td class="Corner22_6"></td><td class="Corner22_5"></td></tr></tbody></table></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00048"><div class="tooltip_header">1.0 Champions</div><a href="/aos4/the-rules/the-core-rules/#Champions"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Units with the <span class="kwb">CHAMPION</span> keyword have one or more <b>champion</b> models. If there is a number after the <span class="kwb">CHAMPION</span> keyword, that number indicates the proportion of models in that unit that can be champions. In any other case, 1 model in the unit can be a champion. Units with the <span class="kwb">CHAMPION</span> keyword have the following <a href="/aos4/the-rules/the-core-rules/#Passive-Abilities">passive ability</a>:<br><br><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td class="abHeader" bgcolor="#802022"><img class="abLogo" src="/aos4/img/abOffensive.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#802022" class="abBody abNoReaction"><b>CHAMPION<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">A veteran fighter leads the charge.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> Add 1 to the Attacks characteristic of weapons used by champions in this unit.</div><div><br></div></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_contentCHAMPION"><p>The <span class="tooltip00048" data-tooltip-content="#tooltip_content00048"><span class="kwb kwbu">CHAMPION</span></span> keyword is used in the following Hedonites of Slaanesh warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Archers" class="cnClr">Blissbarb Archers</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Blissbarb-Seekers" class="cnClr">Blissbarb Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Daemonettes" class="cnClr">Daemonettes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Fiends" class="cnClr">Fiends</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Hellstriders" class="cnClr">Hellstriders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Myrmidesh-Painbringers" class="cnClr">Myrmidesh Painbringers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Seekers" class="cnClr">Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slaangor-Fiendbloods" class="cnClr">Slaangor Fiendbloods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Slickblade-Seekers" class="cnClr">Slickblade Seekers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/hedonites-of-slaanesh/Symbaresh-Twinsouls" class="cnClr">Symbaresh Twinsouls</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Hedonites of Slaanesh (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/Scourge-of-Ghyran-Slaangor-Fiendbloods" class="cnClr">Scourge of Ghyran Slaangor Fiendbloods</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Dread-Pageant" class="cnClr">The Dread Pageant</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/hedonites-of-slaanesh/The-Thricefold-Discord" class="cnClr">The Thricefold Discord</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_content00071"><div class="tooltip_header">Anti-X (+1 Rend)</div><div style="clear:both"></div>Add 1 to this weapon’s <b>Rend</b> characteristic if the target has the keyword after ‘<b>Anti-</b>’ or fulfils the condition after ‘<b>Anti-</b>’. Multiples of this ability are cumulative. For example, if a weapon has both <b>Anti-charge (+1 Rend)</b> and <b>Anti-<span class="kwb">HERO</span> (+1 Rend)</b>, then add 2 to the <b>Rend</b> characteristic of the weapon for attacks that target a <span class="kwb">HERO</span> that <b>charged</b> in the same turn.</span></div><div class="tooltip_templates"><span id="tooltip_content00096"><div class="tooltip_header">Unbind</div><div style="clear:both"></div><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td class="abHeader" bgcolor="#76602b"><img class="abLogo" src="/aos4/img/abSpecial.png">Reaction: Opponent declared a <span class="kwb">SPELL</span> ability</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(35%) sepia(13%) saturate(1838%) hue-rotate(4deg) brightness(100%) contrast(85%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#76602b" class="abBody abIsReaction"><b>UNBIND<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">The wizard saps the energy from an enemy’s spell, nullifying its effects.<br><div class="spc"></div></span><div><br></div><b>Used By:</b> A friendly <span class="kwb">WIZARD</span> within 30" of the enemy <span class="kwb">WIZARD</span> casting the <span class="tooltip00030" data-tooltip-content="#tooltip_content00030"><span class="tt kwbu">spell</span></span>.<br><br><b>Effect:</b> Make an <b>unbinding roll</b> of 2D6. If the roll exceeds the <b>casting roll</b> tor the spell, then the spell is <b>unbound</b> and its effect is not resolved. This reaction cannot be used more than once per <b>casting roll</b>.</div><div class="abKeywords" style="border-color:#76602b"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td bgcolor="#76602b" class="abHeader abKeywordsBody"><span class="kwb">KEYWORDS</span></td><td class="abKeywordsBodyText abIsReaction"><span class="kwb">UNBIND</span></td></tr></tbody></table></div><div><br></div></div></div></span></div><!--/noindex-->
+<div style="clear:both"></div>
+<!--noindex-->
+
+<div class="noprint"><div id="btnBackToTop"></div></div>
+
+<div class="tooltipArmyList" data-tooltip-content="#tooltip_contentArmyList" id="btnArmyList"></div>
+<script type='text/javascript'>
+$(window).scroll(function() {
+if ($(this).scrollTop() >= 200) {
+$('#btnBackToTop').fadeIn(300); 
+} else {
+$('#btnBackToTop').fadeOut(300); 
+}
+});
+
+$('#btnBackToTop').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop_Hover.png); background-image: var(--button-to-top-hover)');
+	$(this).fadeIn(300);
+	return true;
+});
+
+$('#btnBackToTop').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop.png); background-image: var(--button-to-top)');
+		$(this).fadeOut(300);
+   document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnBackToTop').on('click', function () { 
+	'use strict';
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnArmyList').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList_Hover.png); background-image: var(--button-army-list-hover)');
+	return true;
+});
+$('#btnArmyList').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList.png); background-image: var(--button-army-list)');
+	return true;
+});
+
+$('#btnContents').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents_Hover.png); background-image: var(--button-contents-hover)');
+	return true;
+});
+$('#btnContents').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents.png); background-image: var(--button-contents)');
+	return true;
+});
+</script>
+</div>
+<div class="noprint">
+	<div align="center"><div class="author">© Vyacheslav Maltsev 2013-2026</div></div>
+	<div style="display:flex;justify-content:center;align-items:center;">
+		<div class="social_buttons">
+			<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logo no_tooltip" title="Support on Boosty"></div></a>
+			<a target="_blank" href="https://vk.com/wahapedia"><div class="social_vk no_tooltip" title="Follow on VKontakte"></div></a>
+			<a target="_blank" href="https://discord.gg/VAXG2jRjXY"><div class="social_dd no_tooltip" title="Join Discord server"></div></a>
+			<a target="_blank" href="mailto:info@wahapedia.ru"><div class="social_email no_tooltip" title="Send e-mail"></div></a>
+		</div>		
+	</div>
+	<div id="ezoic-pub-ad-placeholder-103"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(103)});</script><div id="yandex_rtb_R-A-3376916-3"></div>
+</div>
+</div>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-57173050-3', 'auto');
+ga('send', 'pageview');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YCMHCMW8RQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YCMHCMW8RQ');
+</script>
+<!--/noindex-->
+</body>
+</html>

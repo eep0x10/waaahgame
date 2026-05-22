@@ -1,0 +1,408 @@
+{% extends "base.html" %}
+{% block title %}Combate — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#attack-sequence">Sequência de Ataque</a></li>
+        <li><a href="#hit">Rolagem de Hit</a></li>
+        <li><a href="#wound">Rolagem de Wound</a></li>
+        <li><a href="#save">Rolagem de Save</a></li>
+        <li><a href="#damage">Aplicação de Dano</a></li>
+        <li><a href="#ward">Ward Saves</a></li>
+        <li><a href="#crits">Críticos</a></li>
+        <li><a href="#weapon-abilities">Habilidades de Arma</a></li>
+        <li><a href="#combat-phase">Fase de Combate</a></li>
+        <li><a href="#pile-in">Pile-In</a></li>
+        <li><a href="#strike-order">Strike-First &amp; Strike-Last</a></li>
+        <li><a href="#modifier-caps">Caps de Modificadores</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}">Carga</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Combate
+      </p>
+      <h1 class="section-title" id="overview">Combate</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        O combate em Age of Sigmar resolve todos os ataques com armas de Melee durante a Fase de
+        Combate — e todos os ataques com armas de Shooting durante a Fase de Tiro — usando a mesma
+        <strong>sequência de ataque</strong>. Entender essa sequência é fundamental para o jogo.
+      </p>
+
+      <!-- Sequência de Ataque -->
+      <h2 id="attack-sequence">Sequência de Ataque</h2>
+      <p>
+        Cada grupo de ataques de uma arma segue estas etapas em ordem:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li><strong>Declare alvos:</strong> Escolha quais unidades inimigas serão atacadas por cada arma.</li>
+        <li><strong>Role Hit:</strong> Para cada ataque, role um D6 e compare ao valor de Hit da arma (ex: 3+). Sucessos prosseguem.</li>
+        <li><strong>Role Wound:</strong> Para cada hit, role um D6 e compare ao valor de Wound da arma (ex: 4+). Sucessos prosseguem.</li>
+        <li><strong>Role Save:</strong> O defensor rola um D6 por wound sofrido, somando qualquer bônus de save. Se o resultado for maior ou igual ao valor de Save do defensor (modificado pelo Rend), o ataque é bloqueado.</li>
+        <li><strong>Aplique Dano:</strong> Wounds não bloqueados pelo Save causam Dano igual ao valor de Damage da arma. O defensor pode então rolar Ward saves.</li>
+      </ol>
+
+      <!-- Hit -->
+      <h2 id="hit">Rolagem de Hit</h2>
+      <p>
+        Role um D6 por ataque. O valor de <strong>Hit</strong> da arma indica o mínimo necessário
+        para acertar (ex: &ldquo;3+&rdquo; = rolar 3 ou mais no D6). Um resultado natural de 1
+        sempre falha, independente de modificadores.
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Re-rolls de Hit:</strong> Se uma habilidade permite re-rolar hits, role novamente
+          todos os dados indicados pela habilidade. Re-rolls são aplicados antes de modificadores
+          extras a não ser que a habilidade especifique outra coisa.
+        </li>
+        <li>
+          <strong>Modificadores de Hit:</strong> Aplicados ao valor alvo, não ao dado. Um
+          modificador de +1 a Hit em uma arma 4+ a torna efetivamente 3+.
+        </li>
+      </ul>
+
+      <!-- Wound -->
+      <h2 id="wound">Rolagem de Wound</h2>
+      <p>
+        Para cada hit bem-sucedido, role um D6. O valor de <strong>Wound</strong> da arma indica
+        o mínimo para ferir (ex: &ldquo;4+&rdquo;). Um resultado natural de 1 sempre falha.
+        Modificadores funcionam da mesma forma que em Hit.
+      </p>
+
+      <!-- Save -->
+      <h2 id="save">Rolagem de Save</h2>
+      <p>
+        O defensor rola um D6 por wound recebido. O valor de <strong>Save</strong> do modelo
+        (indicado no warscroll, ex: 4+) é o mínimo para bloquear — <em>mas o Rend da arma é
+        subtraído do Save do defensor</em>.
+      </p>
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Save do Defensor</th><th>Rend da Arma</th><th>Save Efetivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>4+</td><td>0</td><td>4+</td></tr>
+          <tr><td>4+</td><td>-1</td><td>5+</td></tr>
+          <tr><td>4+</td><td>-2</td><td>6+</td></tr>
+          <tr><td>4+</td><td>-3</td><td>7+ (falha automática)</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Um resultado natural de 1 no Save sempre falha. Um resultado que, mesmo após Rend, seja
+        igual ou maior ao save original <em>salva</em> o modelo — os dados nunca são piores que
+        o natural rolado.
+      </p>
+
+      <!-- Dano -->
+      <h2 id="damage">Aplicação de Dano</h2>
+      <p>
+        Cada wound não bloqueado causa <strong>Damage</strong> igual ao valor da arma (pode ser
+        fixo como &ldquo;2&rdquo;, ou variável como &ldquo;D3&rdquo;). O <strong>jogador defensor</strong>
+        escolhe qual modelo da unidade recebe os pontos de dano — o comandante da unidade alvo decide
+        a alocação, desde que a unidade permaneça em coerência após cada modelo abatido.
+      </p>
+      <ul class="rules-list">
+        <li>
+          Se o modelo acumulou wounds suficientes para igualar ou exceder seus Wounds totais,
+          ele é <strong>abatido</strong> (slain) e removido.
+        </li>
+        <li>
+          <strong>Mortal Wounds:</strong> Causam dano diretamente, pulando as rolagens de Save e
+          Ward (a não ser que a habilidade diga o contrário). Cada Mortal Wound causa 1 ponto de
+          dano.
+        </li>
+      </ul>
+      <div class="rules-callout" style="border-left-color:#c0392b">
+        <strong>Dano não transborda entre unidades.</strong> Se um ataque causa 3 pontos de dano
+        a um modelo que tem apenas 1 Wound restante, ele é abatido — mas os 2 pontos excedentes
+        <strong>desaparecem</strong>. Eles não saltam para o modelo ao lado da mesma unidade, e
+        muito menos para outra unidade. Cada ataque individual esgota seu dano no modelo alvo
+        atual. Isso significa que múltiplos ataques de baixo dano tendem a ser mais eficientes
+        contra unidades de modelos com poucos Wounds cada.
+      </div>
+
+      <!-- Ward -->
+      <h2 id="ward">Ward Saves</h2>
+      <p>
+        Após qualquer dano ser alocado a um modelo (tanto de wounds normais quanto de Mortal
+        Wounds), se o modelo tem uma habilidade de <strong>Ward</strong>, o defensor pode rolar
+        um D6. Se o resultado for igual ou maior ao valor de Ward (ex: Ward 5+), aquele ponto
+        de dano é ignorado.
+      </p>
+      <ul class="rules-list">
+        <li>Ward é uma segunda camada de proteção <em>depois</em> do Save.</li>
+        <li>Um modelo pode ter no máximo um valor de Ward — se múltiplas fontes fornecessem Ward,
+          usa-se o melhor.</li>
+        <li>Ward funciona contra Mortal Wounds salvo indicação contrária na habilidade que os causa.</li>
+      </ul>
+
+      <!-- Críticos -->
+      <h2 id="crits">Críticos (Critical Hits)</h2>
+      <p>
+        Um resultado natural de <strong>6</strong> em uma rolagem de Hit é um <strong>Critical Hit</strong>.
+        Por padrão, um crítico é simplesmente um hit — mas muitas armas têm habilidades que melhoram
+        o efeito de críticos. As mais comuns:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Crit (Mortal):</strong> O crítico causa 1 Mortal Wound adicional além de prosseguir
+          normalmente como hit.
+        </li>
+        <li>
+          <strong>Crit (2 Hits):</strong> O crítico gera 2 hits em vez de 1.
+        </li>
+        <li>
+          <strong>Crit (Auto-Wound):</strong> O crítico passa automaticamente para a etapa de Wound
+          (sem rolar Wound).
+        </li>
+      </ul>
+      <p>
+        Críticos na rolagem de Wound (resultado natural 6) funcionam de forma similar quando
+        indicados por uma habilidade — o efeito exato é sempre descrito no warscroll ou habilidade.
+      </p>
+
+      <!-- Habilidades de Arma -->
+      <h2 id="weapon-abilities">Habilidades de Arma</h2>
+      <p>
+        Além dos Crits, armas podem ter outras habilidades especiais indicadas em seu perfil:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Anti-[keyword] (+1 Rend):</strong> Ataques desta arma contra alvos com a keyword
+          especificada ganham +1 Rend.
+        </li>
+        <li>
+          <strong>Charge (+1 Damage):</strong> Ataques realizados no mesmo turno em que a unidade
+          Carregou ganham +1 Damage.
+        </li>
+        <li>
+          <strong>Companion:</strong> Ataques desta arma não podem ser modificados por habilidades
+          de aliados ou inimigos — eles sempre atacam com seus valores base. Não se beneficiam de
+          All-Out Attack nem são afetados por All-Out Defence.
+        </li>
+        <li>
+          <strong>Shoot in Combat:</strong> Esta arma pode ser usada na Fase de Tiro mesmo quando
+          a unidade está em Engagement Range com inimigos.
+        </li>
+      </ul>
+
+      <!-- Fase de Combate -->
+      <h2 id="combat-phase">Fase de Combate</h2>
+      <p>
+        Na Fase de Combate, os jogadores se alternam <strong>ativando unidades</strong> para
+        combater. O jogador ativo escolhe uma unidade em Engagement Range com inimigos para usar a
+        habilidade <strong>Fight</strong>:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li><strong>Pile-In:</strong> A unidade se move até 3&Prime; em direção ao inimigo mais próximo.</li>
+        <li><strong>Declare alvos e resolva ataques</strong> com todas as armas Melee elegíveis.</li>
+      </ol>
+      <p>
+        Após o jogador ativo ativar uma unidade, o jogador inativo escolhe uma unidade própria em
+        Engagement Range para usar Fight. Os jogadores continuam se alternando assim até que
+        <em>todas</em> as unidades elegíveis de ambos os lados tenham lutado.
+      </p>
+      <div class="rules-callout">
+        <strong>Passar a vez.</strong> Se um jogador não tem mais unidades elegíveis para ativar,
+        o outro pode continuar ativando todas as suas unidades restantes em sequência.
+      </div>
+
+      <!-- Pile-In -->
+      <h2 id="pile-in">Pile-In</h2>
+      <p>
+        Antes de realizar ataques na Fase de Combate, cada modelo pode se mover até <strong>3&Prime;</strong>
+        no Pile-In. Regras:
+      </p>
+      <ul class="rules-list">
+        <li>Cada modelo deve terminar mais próximo do inimigo mais próximo do que estava antes do Pile-In.</li>
+        <li>Nenhum modelo pode terminar a mais de 3&Prime; de um inimigo após o Pile-In.</li>
+        <li>Modelos podem usar o Pile-In para se aproximar de inimigos diferentes dos que já estavam em contato.</li>
+      </ul>
+      <p>
+        Armas Melee têm alcance indicado no perfil (normalmente 1&Prime; ou 2&Prime;). Um modelo
+        pode atacar com uma arma Melee se o alvo estiver dentro do alcance da arma ao final do
+        Pile-In.
+      </p>
+
+      <!-- Diagrama SVG Pile-In -->
+      <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="max-width:580px;margin:1.5rem auto;display:block;font-family:sans-serif">
+        <title>Pile-In: antes e depois</title>
+        <!-- Fundo -->
+        <rect width="520" height="200" rx="8" fill="#1a1a2e" opacity="0.85"/>
+
+        <!-- Painel ANTES -->
+        <text x="120" y="22" text-anchor="middle" fill="#aaa" font-size="12">ANTES do Pile-In</text>
+
+        <!-- Inimigos (vermelho) - posição estática à direita no painel antes -->
+        <circle cx="185" cy="90" r="16" fill="#c0392b" opacity="0.85"/>
+        <text x="185" y="95" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">E</text>
+        <circle cx="185" cy="140" r="16" fill="#c0392b" opacity="0.85"/>
+        <text x="185" y="145" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">E</text>
+
+        <!-- Modelos amigos (azul) - espalhados, longe dos inimigos -->
+        <circle cx="50" cy="70" r="14" fill="#2980b9" opacity="0.85"/>
+        <text x="50" y="75" text-anchor="middle" fill="#fff" font-size="10">A</text>
+        <circle cx="75" cy="110" r="14" fill="#2980b9" opacity="0.85"/>
+        <text x="75" y="115" text-anchor="middle" fill="#fff" font-size="10">B</text>
+        <circle cx="50" cy="150" r="14" fill="#2980b9" opacity="0.85"/>
+        <text x="50" y="155" text-anchor="middle" fill="#fff" font-size="10">C</text>
+
+        <!-- Distâncias "longe" -->
+        <line x1="64" y1="70" x2="169" y2="90" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="89" y1="110" x2="169" y2="120" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="64" y1="150" x2="169" y2="140" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+
+        <!-- Divisor -->
+        <line x1="260" y1="10" x2="260" y2="190" stroke="#444" stroke-width="1" stroke-dasharray="5,4"/>
+
+        <!-- Painel DEPOIS -->
+        <text x="390" y="22" text-anchor="middle" fill="#aaa" font-size="12">DEPOIS do Pile-In (até 3&quot;)</text>
+
+        <!-- Inimigos (vermelho) - mesmas posições -->
+        <circle cx="420" cy="90" r="16" fill="#c0392b" opacity="0.85"/>
+        <text x="420" y="95" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">E</text>
+        <circle cx="420" cy="140" r="16" fill="#c0392b" opacity="0.85"/>
+        <text x="420" y="145" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">E</text>
+
+        <!-- Modelos amigos após Pile-In (mais próximos) -->
+        <circle cx="360" cy="82" r="14" fill="#27ae60" opacity="0.9"/>
+        <text x="360" y="87" text-anchor="middle" fill="#fff" font-size="10">A</text>
+        <circle cx="355" cy="115" r="14" fill="#27ae60" opacity="0.9"/>
+        <text x="355" y="120" text-anchor="middle" fill="#fff" font-size="10">B</text>
+        <circle cx="360" cy="148" r="14" fill="#27ae60" opacity="0.9"/>
+        <text x="360" y="153" text-anchor="middle" fill="#fff" font-size="10">C</text>
+
+        <!-- Setas mostrando movimento -->
+        <line x1="290" y1="70" x2="345" y2="80" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="305" y1="110" x2="340" y2="113" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="290" y1="150" x2="345" y2="147" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arr)"/>
+
+        <!-- Faixa de alcance 1" (arma melee) -->
+        <line x1="374" y1="82" x2="404" y2="88" stroke="#f39c12" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="369" y1="115" x2="404" y2="120" stroke="#f39c12" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="374" y1="148" x2="404" y2="140" stroke="#f39c12" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="388" y="106" fill="#f39c12" font-size="9" text-anchor="middle">≤ 1&quot;</text>
+
+        <!-- Seta marcador -->
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#27ae60"/>
+          </marker>
+        </defs>
+
+        <!-- Legenda -->
+        <circle cx="285" cy="177" r="6" fill="#2980b9" opacity="0.85"/>
+        <text x="295" y="181" fill="#ccc" font-size="10">Posição original</text>
+        <circle cx="365" cy="177" r="6" fill="#27ae60" opacity="0.9"/>
+        <text x="375" y="181" fill="#ccc" font-size="10">Após Pile-In</text>
+        <circle cx="435" cy="177" r="6" fill="#c0392b" opacity="0.85"/>
+        <text x="445" y="181" fill="#ccc" font-size="10">Inimigos</text>
+      </svg>
+
+      <!-- Strike-First e Strike-Last -->
+      <h2 id="strike-order">Strike-First &amp; Strike-Last</h2>
+      <p>
+        Algumas habilidades conferem vantagem na ordem de combate:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Strike-First:</strong> Unidades com esta condição ativa devem ser ativadas
+          <em>antes</em> de quaisquer unidades que não tenham Strike-First. O jogador ativo escolhe
+          a ordem entre suas próprias unidades com Strike-First.
+        </li>
+        <li>
+          <strong>Strike-Last:</strong> Unidades com esta condição ativa são ativadas <em>depois</em>
+          de todas as unidades que não tenham Strike-Last. Igualmente, o jogador ativo ordena as
+          suas com Strike-Last.
+        </li>
+        <li>
+          Se uma unidade tiver simultaneamente Strike-First e Strike-Last (por habilidades sobrepostas),
+          ambos se cancelam — ela luta na ordem normal.
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Ordem na prática.</strong> Fase de Combate segue este ciclo: 1) Strike-First ativam
+        (alternando entre jogadores); 2) Todas as demais unidades ativam (alternando); 3) Strike-Last
+        ativam (alternando). Se apenas um jogador tem unidades em cada camada, ele ativa todas as
+        suas naquela camada em sequência.
+      </div>
+
+      <!-- Exemplo numérico Strike-First/Last -->
+      <h3>Exemplo — 3 Unidades em Combate</h3>
+      <div class="rules-infobox">
+        <p><strong>Situação:</strong> Fase de Combate, jogador A é o ativo. Há 3 unidades elegíveis:</p>
+        <ul class="rules-list">
+          <li><strong>Unidade A1</strong> (jogador A) — tem Strike-First</li>
+          <li><strong>Unidade B1</strong> (jogador B) — normal (sem Strike-First nem Strike-Last)</li>
+          <li><strong>Unidade A2</strong> (jogador A) — tem Strike-Last</li>
+        </ul>
+        <p><strong>Ordem de ativação:</strong></p>
+        <ol class="rules-list rules-list--ordered">
+          <li>
+            <strong>Camada Strike-First:</strong> Apenas A1 tem Strike-First. Jogador A ativa A1
+            → A1 faz Pile-In e ataca. Se B1 não tem Strike-First, não pode ativar agora.
+          </li>
+          <li>
+            <strong>Camada Normal:</strong> B1 é a única unidade normal. Jogador B ativa B1 →
+            B1 faz Pile-In e ataca. Nenhuma outra unidade normal existe.
+          </li>
+          <li>
+            <strong>Camada Strike-Last:</strong> Apenas A2 tem Strike-Last. Jogador A ativa A2
+            → A2 faz Pile-In e ataca por último.
+          </li>
+        </ol>
+        <p>
+          <strong>Consequência prática:</strong> Se A1 (Strike-First) elimina B1 antes que B1
+          possa agir, A2 (Strike-Last) talvez não tenha mais alvos — o Strike-First protegeu
+          A2 ao remover a ameaça antes dela ser atingida.
+        </p>
+      </div>
+
+      <!-- Caps de Modificadores -->
+      <h2 id="modifier-caps">Caps de Modificadores</h2>
+      <p>
+        Modificadores em rolagens de ataque têm limites máximos para evitar efeitos excessivos:
+      </p>
+      <ul class="rules-list">
+        <li>Modificadores de <strong>Hit</strong>: máximo de +1 / &minus;1 no total.</li>
+        <li>Modificadores de <strong>Wound</strong>: máximo de +1 / &minus;1 no total.</li>
+        <li>Modificadores de <strong>Save</strong>: máximo de +1 / &minus;1 no total (Rend <em>não</em> é modificador — ele é aplicado separadamente e não tem cap).</li>
+      </ul>
+      <p>
+        Esses caps se aplicam ao <em>total acumulado</em> de modificadores, não a cada fonte
+        individualmente. Se múltiplas habilidades somam +1 Hit cada, o resultado é +1 (não +2).
+      </p>
+      <p>
+        <strong>Ordem de aplicação:</strong> Valores fixos são aplicados primeiro, depois
+        multiplicações/divisões, depois somas/subtrações. Re-rolls são sempre aplicados com
+        o valor base da habilidade — antes de quaisquer outros modificadores.
+      </p>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

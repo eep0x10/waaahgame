@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% block title %}Carga — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#charge-phase">Fase de Carga</a></li>
+        <li><a href="#declare">Declarar a Carga</a></li>
+        <li><a href="#charge-roll">Charge Roll</a></li>
+        <li><a href="#charge-move">Movimento de Carga</a></li>
+        <li><a href="#failed">Carga Fracassada</a></li>
+        <li><a href="#charge-bonus">Bônus de Carga</a></li>
+        <li><a href="#reactions">Reações à Carga</a></li>
+        <li><a href="#restrictions">Restrições</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Carga
+      </p>
+      <h1 class="section-title" id="overview">Carga</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        A Fase de Carga ocorre após a Fase de Tiro. Carregar leva uma unidade ao combate corpo-a-corpo
+        — é o único caminho para entrar em Engagement Range com inimigos e usar armas Melee na Fase
+        de Combate seguinte.
+      </p>
+
+      <!-- Fase de Carga -->
+      <h2 id="charge-phase">Fase de Carga</h2>
+      <p>
+        O jogador ativo pode usar a habilidade <strong>Charge</strong> em qualquer unidade amiga
+        que <em>não</em> esteja já em Engagement Range com inimigos. Assim como o Tiro, o jogador
+        ativo ativa unidades uma a uma — não há alternância com o oponente nesta fase.
+      </p>
+
+      <!-- Declarar -->
+      <h2 id="declare">Declarar a Carga</h2>
+      <p>
+        Para usar Charge, a unidade deve ter ao menos uma unidade inimiga dentro de
+        <strong>12&Prime;</strong> (medido do modelo mais próximo da unidade carregante ao modelo
+        mais próximo do alvo). Passos:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>Declare o alvo (ou alvos — é possível declarar carga contra mais de uma unidade inimiga).</li>
+        <li>Role o <strong>Charge Roll</strong>: 2D6.</li>
+        <li>Se o resultado for suficiente, execute o movimento de carga.</li>
+      </ol>
+
+      <!-- Charge Roll -->
+      <h2 id="charge-roll">Charge Roll</h2>
+      <p>
+        Role <strong>2D6</strong>. O resultado é a distância máxima de movimento de carga em
+        polegadas. Para a carga ser bem-sucedida, o resultado deve ser suficiente para que
+        <em>pelo menos um modelo</em> da unidade carregante chegue a ½&Prime; ou menos de
+        pelo menos um modelo de cada unidade alvo declarada.
+      </p>
+
+      <!-- SVG: Charge Diagram -->
+      <figure style="margin: 1.5rem 0;">
+        <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" class="svg-diagram" aria-label="Diagrama de carga: sucesso vs falha" style="width:100%;max-width:520px;display:block;font-family:inherit;">
+          <!-- Panel labels -->
+          <text x="130" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#22c55e">SUCESSO</text>
+          <text x="390" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#ef4444">FALHA</text>
+          <!-- Divider -->
+          <line x1="260" y1="8" x2="260" y2="212" stroke="#444" stroke-width="1" stroke-dasharray="4,3"/>
+
+          <!-- === LEFT PANEL: success === -->
+          <!-- Charging unit (blue) -->
+          <circle cx="40" cy="110" r="18" fill="#3b82f6" opacity="0.85"/>
+          <text x="40" y="114" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">ATK</text>
+          <!-- Arrow path -->
+          <defs>
+            <marker id="arrow-ok" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#22c55e"/>
+            </marker>
+            <marker id="arrow-fail" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#ef4444"/>
+            </marker>
+          </defs>
+          <line x1="60" y1="110" x2="148" y2="110" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow-ok)"/>
+          <!-- Distance label -->
+          <text x="104" y="103" text-anchor="middle" font-size="9" fill="#aaa">8&quot;</text>
+          <!-- Roll label -->
+          <rect x="60" y="128" width="60" height="16" rx="3" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
+          <text x="90" y="140" text-anchor="middle" font-size="9" fill="#22c55e">Roll: 9 ✓</text>
+          <!-- Target (red) -->
+          <circle cx="170" cy="110" r="18" fill="#ef4444" opacity="0.85"/>
+          <text x="170" y="114" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">ALV</text>
+          <!-- Final position (green) small circle at ½" -->
+          <circle cx="150" cy="110" r="5" fill="#22c55e" stroke="#fff" stroke-width="1" opacity="0.9"/>
+          <text x="150" y="98" text-anchor="middle" font-size="8" fill="#22c55e">½&quot;</text>
+          <!-- Final position label -->
+          <text x="104" y="160" text-anchor="middle" font-size="9" fill="#94a3b8">Posição final: verde a ½&quot;</text>
+          <text x="104" y="172" text-anchor="middle" font-size="9" fill="#94a3b8">do alvo. Carga bem-sucedida.</text>
+
+          <!-- === RIGHT PANEL: failure === -->
+          <!-- Charging unit (blue) -->
+          <circle cx="295" cy="110" r="18" fill="#3b82f6" opacity="0.85"/>
+          <text x="295" y="114" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">ATK</text>
+          <!-- Short arrow (does not reach) -->
+          <line x1="315" y1="110" x2="370" y2="110" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-fail)"/>
+          <!-- Distance label -->
+          <text x="342" y="103" text-anchor="middle" font-size="9" fill="#aaa">8&quot;</text>
+          <!-- Roll label -->
+          <rect x="315" y="128" width="70" height="16" rx="3" fill="#1e293b" stroke="#ef4444" stroke-width="1"/>
+          <text x="350" y="140" text-anchor="middle" font-size="9" fill="#ef4444">Roll: 5 &lt; 8 ✗</text>
+          <!-- Target (red) far away -->
+          <circle cx="425" cy="110" r="18" fill="#ef4444" opacity="0.85"/>
+          <text x="425" y="114" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">ALV</text>
+          <!-- X mark indicating no move -->
+          <text x="342" y="88" text-anchor="middle" font-size="18" fill="#ef4444" opacity="0.7">✕</text>
+          <!-- Failure label -->
+          <text x="360" y="160" text-anchor="middle" font-size="9" fill="#94a3b8">Roll insuficiente. Unidade</text>
+          <text x="360" y="172" text-anchor="middle" font-size="9" fill="#94a3b8">não se move. Carga falha.</text>
+        </svg>
+        <figcaption style="font-size:0.8rem;color:#94a3b8;text-align:center;margin-top:0.4rem;">
+          Esquerda: Roll 9 ≥ 8&Prime; necessário → carga bem-sucedida, modelo verde termina a ½&Prime; do alvo.
+          Direita: Roll 5 &lt; 8&Prime; necessário → carga falha, unidade permanece no lugar.
+        </figcaption>
+      </figure>
+
+      <div class="rules-callout">
+        <strong>Carga em múltiplos alvos.</strong> Se você declarou carga contra dois inimigos,
+        o Charge Roll precisa ser alto o suficiente para chegar perto de <em>ambos</em> (ou a
+        carga falhará). É um risco — declare múltiplos alvos apenas se tiver distâncias favoráveis.
+      </div>
+
+      <!-- Movimento -->
+      <h2 id="charge-move">Movimento de Carga</h2>
+      <p>
+        Se o Charge Roll for bem-sucedido (resultado suficiente para alcançar o alvo), mova os
+        modelos da unidade. Regras do movimento de carga:
+      </p>
+      <ul class="rules-list">
+        <li>
+          Cada modelo pode mover até o valor do Charge Roll em polegadas.
+        </li>
+        <li>
+          Ao menos um modelo deve terminar a ½&Prime; ou menos de um modelo inimigo de cada alvo
+          declarado.
+        </li>
+        <li>
+          Nenhum modelo pode terminar seu movimento de carga passando por, ou terminando em,
+          Engagement Range de uma unidade inimiga que <em>não</em> foi declarada como alvo da carga.
+        </li>
+        <li>
+          A unidade deve manter coerência ao final do movimento de carga.
+        </li>
+      </ul>
+
+      <!-- Carga Fracassada -->
+      <h2 id="failed">Carga Fracassada</h2>
+      <p>
+        Se o Charge Roll for insuficiente para alcançar pelo menos um modelo de cada alvo
+        declarado, a carga falha: os modelos <strong>não se movem</strong>. A unidade permanece
+        onde estava. Não há penalidade adicional além de perder a ação de movimento da Fase de
+        Carga.
+      </p>
+
+      <!-- Bônus de Carga -->
+      <h2 id="charge-bonus">Bônus de Carga</h2>
+      <p>
+        Unidades que carregaram com sucesso recebem benefícios na Fase de Combate imediata:
+      </p>
+      <ul class="rules-list">
+        <li>
+          Armas com a habilidade <strong>Charge (+1 Damage)</strong> causam +1 Damage por ataque
+          neste turno.
+        </li>
+        <li>
+          Algumas warscrolls e Battle Formations oferecem bônus adicionais a unidades que
+          carregaram (ex: ataques extras, Mortal Wounds automáticos), indicados no texto da
+          habilidade.
+        </li>
+        <li>
+          O bônus de Charge se aplica apenas no <em>mesmo turno em que a carga ocorreu</em> — não
+          persiste para rodadas seguintes.
+        </li>
+      </ul>
+
+      <!-- Reações -->
+      <h2 id="reactions">Reações à Carga</h2>
+      <p>
+        O jogador <em>inativo</em> pode reagir a uma carga declarada. A reação mais comum é:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Stand and Shoot:</strong> Disponível para algumas unidades via warscroll ou
+          habilidade. Permite que a unidade alvo da carga dispare contra a unidade carregante
+          antes que o movimento de carga seja executado. Se a carga falhar após o Stand and Shoot,
+          os tiros ainda foram resolvidos.
+        </li>
+        <li>
+          <strong>Habilidades de Retreat-reação:</strong> Algumas habilidades permitem mover uma
+          unidade antes da resolução da carga — criando espaço ou reposicionando para desviar do
+          alcance.
+        </li>
+      </ul>
+
+      <!-- Restrições -->
+      <h2 id="restrictions">Restrições ao Carregamento</h2>
+      <ul class="rules-list">
+        <li>
+          <strong>Após Run:</strong> Uma unidade que usou Run neste turno <strong>não pode
+          Carregar</strong> (salvo habilidade específica que remove essa restrição).
+        </li>
+        <li>
+          <strong>Após Retreat:</strong> Uma unidade que usou Retreat neste turno não pode Carregar.
+        </li>
+        <li>
+          <strong>Já em Engagement Range:</strong> Uma unidade já a ½&Prime; ou menos de inimigos
+          não pode usar Charge — ela já está em combate. Use Retreat primeiro se quiser se
+          reposicionar.
+        </li>
+        <li>
+          <strong>Nenhum inimigo a 12&Prime;:</strong> Sem alvo no alcance de declaração, a
+          habilidade Charge não pode ser usada.
+        </li>
+      </ul>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

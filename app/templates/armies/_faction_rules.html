@@ -1,0 +1,335 @@
+{# ── Faction Rules Panel (Phase 2)
+   Context:  army, faction_rules (dict|None), faction_has_rules (bool)
+   Included in show.html; also returned as HTMX partial by select-* routes.
+   id="faction-rules-panel" enables OOB swap.
+#}
+<div id="faction-rules-panel">
+
+{% set faction = army.faction %}
+
+{% if not faction_has_rules %}
+  {# ── Placeholder for factions without imported PDF ── #}
+  <details class="faction-rules-panel">
+    <summary class="faction-rules-toggle">
+      <span class="faction-rules-toggle-title">Regras da Facção</span>
+      <span class="faction-rules-toggle-chevron">&#9660;</span>
+    </summary>
+    <div class="faction-rules-body">
+      <p class="faction-rules-placeholder">Regras desta facção ainda não importadas.</p>
+    </div>
+  </details>
+
+{% else %}
+
+  {# ── Active picks summary chips ── #}
+  {% set has_any_pick = army.formation_id or army.sub_faction_id or army.spell_lore_id or army.prayer_lore_id or army.manifestation_lore_id %}
+  {% if has_any_pick %}
+    <div class="faction-picks-bar">
+      {% if army.sub_faction_id %}
+        <span class="faction-pick-chip"><span class="faction-pick-chip-label">Sub-facção</span> {{ army.sub_faction_id }}</span>
+      {% endif %}
+      {% if army.formation_id %}
+        <span class="faction-pick-chip"><span class="faction-pick-chip-label">Formação</span> {{ army.formation_id }}</span>
+      {% endif %}
+      {% if army.spell_lore_id %}
+        <span class="faction-pick-chip"><span class="faction-pick-chip-label">Lore de Magia</span> {{ army.spell_lore_id }}</span>
+      {% endif %}
+      {% if army.prayer_lore_id %}
+        <span class="faction-pick-chip"><span class="faction-pick-chip-label">Lore de Oração</span> {{ army.prayer_lore_id }}</span>
+      {% endif %}
+      {% if army.manifestation_lore_id %}
+        <span class="faction-pick-chip"><span class="faction-pick-chip-label">Lore de Manifestação</span> {{ army.manifestation_lore_id }}</span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <details class="faction-rules-panel" open>
+    <summary class="faction-rules-toggle">
+      <span class="faction-rules-toggle-title">Regras da Facção — {{ faction.name }}</span>
+      <span class="faction-rules-toggle-chevron">&#9660;</span>
+    </summary>
+    <div class="faction-rules-body">
+
+      {# ── Lore description ── #}
+      {% if faction.description_pt_md %}
+        <div class="faction-rules-lore">
+          {{ faction.description_pt_md | simple_md }}
+        </div>
+      {% endif %}
+
+      {# ── Battle Traits ── #}
+      {% if faction_rules.get('battle_traits') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Traços de Batalha</div>
+          <div class="faction-rules-traits">
+            {% for trait in faction_rules.battle_traits %}
+              <details class="faction-rules-trait">
+                <summary class="faction-rules-trait-toggle">
+                  {% if trait.get('timing') %}
+                    <span class="faction-rules-trait-timing">{{ trait.timing }}</span>
+                  {% endif %}
+                  <span class="faction-rules-trait-name">{{ trait.name }}</span>
+                  <span class="faction-rules-trait-chevron">&#9660;</span>
+                </summary>
+                <div class="faction-rules-trait-body">
+                  {% if trait.get('text_pt') %}
+                    <p class="faction-rules-text-pt">{{ trait.text_pt }}</p>
+                  {% endif %}
+                  {% if trait.get('text_en') %}
+                    <p class="faction-rules-text-en">EN: {{ trait.text_en | truncate(180) }}</p>
+                  {% endif %}
+                </div>
+              </details>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {# ── Sub-faction Picker ── #}
+      {% if faction_rules.get('sub_factions') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Sub-facção</div>
+          <form hx-post="{{ url_for('armies.select_sub_faction', army_id=army.id) }}"
+                hx-target="#faction-rules-panel"
+                hx-swap="outerHTML"
+                hx-include="[name=csrf_token]">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="faction-rules-picker-grid">
+              {% for sf in faction_rules.sub_factions %}
+                <label class="faction-rules-pick-card">
+                  <input type="radio" name="sub_faction_name" value="{{ sf.name }}"
+                         {% if army.sub_faction_id == sf.name %}checked{% endif %}
+                         onchange="this.form.requestSubmit()">
+                  <div class="faction-rules-pick-inner">
+                    <div class="faction-rules-pick-name">
+                      {{ sf.name }}
+                      {% if army.sub_faction_id == sf.name %}
+                        <span class="faction-rules-pick-selected-badge">Selecionado</span>
+                      {% endif %}
+                    </div>
+                    {% if sf.get('text_pt') %}
+                      <p class="faction-rules-pick-desc">{{ sf.text_pt | truncate(200) }}</p>
+                    {% elif sf.get('text_en') %}
+                      <p class="faction-rules-pick-desc">{{ sf.text_en | truncate(200) }}</p>
+                    {% endif %}
+                  </div>
+                </label>
+              {% endfor %}
+            </div>
+          </form>
+        </div>
+      {% endif %}
+
+      {# ── Formations Picker ── #}
+      {% if faction_rules.get('formations') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Formação</div>
+          <form hx-post="{{ url_for('armies.select_formation', army_id=army.id) }}"
+                hx-target="#faction-rules-panel"
+                hx-swap="outerHTML"
+                hx-include="[name=csrf_token]">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="faction-rules-picker-grid">
+              {% for fm in faction_rules.formations %}
+                <label class="faction-rules-pick-card">
+                  <input type="radio" name="formation_name" value="{{ fm.name }}"
+                         {% if army.formation_id == fm.name %}checked{% endif %}
+                         onchange="this.form.requestSubmit()">
+                  <div class="faction-rules-pick-inner">
+                    <div class="faction-rules-pick-name">
+                      {{ fm.name }}
+                      {% if army.formation_id == fm.name %}
+                        <span class="faction-rules-pick-selected-badge">Selecionado</span>
+                      {% endif %}
+                    </div>
+                    {% if fm.get('text_pt') %}
+                      <p class="faction-rules-pick-desc">{{ fm.text_pt | truncate(200) }}</p>
+                    {% elif fm.get('text_en') %}
+                      <p class="faction-rules-pick-desc">{{ fm.text_en | truncate(200) }}</p>
+                    {% endif %}
+                  </div>
+                </label>
+              {% endfor %}
+            </div>
+          </form>
+        </div>
+      {% endif %}
+
+      {# ── Spell Lore Picker ── #}
+      {% if faction_rules.get('spell_lores') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Lore de Magia</div>
+          <form hx-post="{{ url_for('armies.select_lore', army_id=army.id) }}"
+                hx-target="#faction-rules-panel"
+                hx-swap="outerHTML"
+                hx-include="[name=csrf_token]">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="lore_type" value="spell">
+            <div class="faction-rules-picker-grid">
+              {% for lore in faction_rules.spell_lores %}
+                <label class="faction-rules-pick-card">
+                  <input type="radio" name="lore_name" value="{{ lore.name }}"
+                         {% if army.spell_lore_id == lore.name %}checked{% endif %}
+                         onchange="this.form.requestSubmit()">
+                  <div class="faction-rules-pick-inner">
+                    <div class="faction-rules-pick-name">
+                      {{ lore.name }}
+                      {% if army.spell_lore_id == lore.name %}
+                        <span class="faction-rules-pick-selected-badge">Selecionado</span>
+                      {% endif %}
+                    </div>
+                    {% if lore.get('text_pt') %}
+                      <p class="faction-rules-pick-desc">{{ lore.text_pt | truncate(200) }}</p>
+                    {% elif lore.get('text_en') %}
+                      <p class="faction-rules-pick-desc">{{ lore.text_en | truncate(200) }}</p>
+                    {% endif %}
+                  </div>
+                </label>
+              {% endfor %}
+            </div>
+          </form>
+        </div>
+      {% endif %}
+
+      {# ── Prayer Lore Picker ── #}
+      {% if faction_rules.get('prayer_lores') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Lore de Oração</div>
+          <form hx-post="{{ url_for('armies.select_lore', army_id=army.id) }}"
+                hx-target="#faction-rules-panel"
+                hx-swap="outerHTML"
+                hx-include="[name=csrf_token]">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="lore_type" value="prayer">
+            <div class="faction-rules-picker-grid">
+              {% for lore in faction_rules.prayer_lores %}
+                <label class="faction-rules-pick-card">
+                  <input type="radio" name="lore_name" value="{{ lore.name }}"
+                         {% if army.prayer_lore_id == lore.name %}checked{% endif %}
+                         onchange="this.form.requestSubmit()">
+                  <div class="faction-rules-pick-inner">
+                    <div class="faction-rules-pick-name">
+                      {{ lore.name }}
+                      {% if army.prayer_lore_id == lore.name %}
+                        <span class="faction-rules-pick-selected-badge">Selecionado</span>
+                      {% endif %}
+                    </div>
+                    {% if lore.get('text_pt') %}
+                      <p class="faction-rules-pick-desc">{{ lore.text_pt | truncate(200) }}</p>
+                    {% elif lore.get('text_en') %}
+                      <p class="faction-rules-pick-desc">{{ lore.text_en | truncate(200) }}</p>
+                    {% endif %}
+                  </div>
+                </label>
+              {% endfor %}
+            </div>
+          </form>
+        </div>
+      {% endif %}
+
+      {# ── Manifestation Lore Picker ── #}
+      {% if faction_rules.get('manifestation_lores') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Lore de Manifestação</div>
+          <form hx-post="{{ url_for('armies.select_lore', army_id=army.id) }}"
+                hx-target="#faction-rules-panel"
+                hx-swap="outerHTML"
+                hx-include="[name=csrf_token]">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="lore_type" value="manifestation">
+            <div class="faction-rules-picker-grid">
+              {% for lore in faction_rules.manifestation_lores %}
+                <label class="faction-rules-pick-card">
+                  <input type="radio" name="lore_name" value="{{ lore.name }}"
+                         {% if army.manifestation_lore_id == lore.name %}checked{% endif %}
+                         onchange="this.form.requestSubmit()">
+                  <div class="faction-rules-pick-inner">
+                    <div class="faction-rules-pick-name">
+                      {{ lore.name }}
+                      {% if army.manifestation_lore_id == lore.name %}
+                        <span class="faction-rules-pick-selected-badge">Selecionado</span>
+                      {% endif %}
+                    </div>
+                    {% if lore.get('text_pt') %}
+                      <p class="faction-rules-pick-desc">{{ lore.text_pt | truncate(200) }}</p>
+                    {% elif lore.get('text_en') %}
+                      <p class="faction-rules-pick-desc">{{ lore.text_en | truncate(200) }}</p>
+                    {% endif %}
+                  </div>
+                </label>
+              {% endfor %}
+            </div>
+          </form>
+        </div>
+      {% endif %}
+
+      {# ── Heroic Traits ── #}
+      {% if faction_rules.get('heroic_traits') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Traços Heroicos</div>
+          <div class="rules-callout">
+            <p class="rules-callout-note">Traços heroicos podem ser selecionados para o general do exército. Apenas 1 por exército.</p>
+          </div>
+          <div class="faction-rules-traits">
+            {% for trait in faction_rules.heroic_traits %}
+              <details class="faction-rules-trait">
+                <summary class="faction-rules-trait-toggle">
+                  <span class="faction-rules-trait-name">{{ trait.name | title }}</span>
+                  {% if trait.get('refs') %}
+                    <span class="faction-rules-trait-ref">{{ trait.refs }}</span>
+                  {% endif %}
+                  <span class="faction-rules-trait-chevron">&#9660;</span>
+                </summary>
+                <div class="faction-rules-trait-body">
+                  {% if trait.get('text_pt') %}
+                    <p class="faction-rules-text-pt">{{ trait.text_pt }}</p>
+                  {% elif trait.get('text_en') %}
+                    <p class="faction-rules-text-en">{{ trait.text_en | truncate(220) }}</p>
+                  {% else %}
+                    <p class="faction-rules-text-en">Texto disponível no Faction Pack oficial.</p>
+                  {% endif %}
+                </div>
+              </details>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {# ── Artefacts of Power ── #}
+      {% if faction_rules.get('artefacts') %}
+        <div class="faction-rules-section">
+          <div class="faction-rules-section-title">Artefatos de Poder</div>
+          <div class="rules-callout">
+            <p class="rules-callout-note">Artefatos de poder podem ser concedidos a um herói do exército. Apenas 1 por exército (salvo exceções).</p>
+          </div>
+          <div class="faction-rules-traits">
+            {% for artefact in faction_rules.artefacts %}
+              <details class="faction-rules-trait">
+                <summary class="faction-rules-trait-toggle">
+                  <span class="faction-rules-trait-name">{{ artefact.name | title }}</span>
+                  {% if artefact.get('refs') %}
+                    <span class="faction-rules-trait-ref">{{ artefact.refs }}</span>
+                  {% endif %}
+                  <span class="faction-rules-trait-chevron">&#9660;</span>
+                </summary>
+                <div class="faction-rules-trait-body">
+                  {% if artefact.get('text_pt') %}
+                    <p class="faction-rules-text-pt">{{ artefact.text_pt }}</p>
+                  {% elif artefact.get('text_en') %}
+                    <p class="faction-rules-text-en">{{ artefact.text_en | truncate(220) }}</p>
+                  {% else %}
+                    <p class="faction-rules-text-en">Texto disponível no Faction Pack oficial.</p>
+                  {% endif %}
+                </div>
+              </details>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+    </div>{# /faction-rules-body #}
+  </details>
+
+{% endif %}{# faction_has_rules #}
+
+</div>{# /id=faction-rules-panel #}

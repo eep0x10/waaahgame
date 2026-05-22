@@ -2,190 +2,263 @@
 {% block title %}{{ unit.name }} — Warscroll{% endblock %}
 
 {% block content %}
+{% set sys_code = unit.faction.game_system.code if unit.faction.game_system else '' %}
+
 <section class="warscroll-section">
   <div class="container">
-    <p class="eyebrow">
-      <a href="{{ url_for('factions.index') }}">Facções</a> &rsaquo;
-      <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}">{{ unit.faction.name }}</a> &rsaquo;
+
+    {# ── Breadcrumb ── #}
+    <p class="eyebrow" style="margin-bottom:1.25rem;">
+      <a href="{{ url_for('units.index') }}">Unidades</a> &rsaquo;
+      <a href="{{ url_for('units.index') }}?faction={{ unit.faction.slug }}">{{ unit.faction.name }}</a> &rsaquo;
       {{ unit.name }}
     </p>
 
-    <div class="warscroll-layout">
+    {# ── Warscroll card ── #}
+    <div class="ws-card">
 
-      <!-- Left: image -->
-      <div class="warscroll-image-col">
-        <div class="unit-image-frame warscroll-image-frame">
+      {# ── Header band ── #}
+      <div class="ws-header">
+        <div class="ws-header-image">
           {% if unit.image_path %}
             <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
-                 alt="{{ unit.name }}"
-                 class="warscroll-unit-img">
+                 alt="{{ unit.name }}" class="ws-hero-img">
           {% else %}
-            <div class="warscroll-placeholder">
+            <div class="ws-hero-placeholder">
               {% set faction_code = unit.faction.code %}
               {% include '_partials/_shield_placeholder.html' %}
             </div>
           {% endif %}
         </div>
 
-        <!-- Admin: edit banner button -->
-        {% if current_user.is_authenticated and current_user.is_admin %}
-          <p style="text-align:center; margin-top:0.6rem;">
-            <a href="{{ url_for('units.upload_image', unit_slug=unit.slug) }}"
-               style="font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.08em;
-                      color:#1a1108; background:#b8935a; padding:0.3rem 0.9rem;
-                      border-radius:2px; text-decoration:none;">
-              &#9998; EDITAR IMAGEM
-            </a>
-          </p>
-        {% endif %}
-
-        <!-- Fallback: Google Images search link when no image present -->
-        {% if not unit.image_path and unit.image_search_url %}
-          <p style="text-align:center; margin-top:0.5rem;">
-            <a href="{{ unit.image_search_url }}" target="_blank" rel="noopener noreferrer"
-               style="font-family:'EB Garamond',serif; font-size:0.85rem; color:#b8935a;">
-              Buscar foto oficial &rarr;
-            </a>
-          </p>
-        {% endif %}
-
-        {% if unit.wahapedia_url %}
-          <p class="warscroll-source">
-            <a href="{{ unit.wahapedia_url }}" target="_blank" rel="noopener noreferrer" class="warscroll-source-link">
-              Ver no Wahapedia &rarr;
-            </a>
-          </p>
-        {% endif %}
-      </div>
-
-      <!-- Right: data -->
-      <div class="warscroll-data-col">
-
-        <!-- Name + meta -->
-        <h1 class="warscroll-name">{{ unit.name }}</h1>
-        <div class="warscroll-badges">
-          {% if unit.unit_role %}
-            <span class="role-tag">{{ unit.unit_role }}</span>
-          {% endif %}
-          {% if unit.faction.grand_alliance %}
-            <span class="alliance-badge alliance-{{ unit.faction.grand_alliance | lower }}">{{ unit.faction.grand_alliance }}</span>
-          {% endif %}
-          <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
-          {% if unit.model_count > 1 %}
-            <span class="role-tag">{{ unit.model_count }} modelos</span>
-          {% endif %}
-        </div>
-
-        <!-- Keywords -->
-        {% if unit.keywords_json %}
-          <div class="warscroll-keywords">
-            {% for kw in unit.keywords_json %}
-              <span class="keyword-pill">{{ kw }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-
-        <!-- System badge -->
-        {% if unit.faction.game_system %}
-          <span class="role-tag" style="margin-bottom:0.4rem;display:inline-block;">{{ unit.faction.game_system.name }}</span>
-        {% endif %}
-        {% set sys_code = unit.faction.game_system.code if unit.faction.game_system else '' %}
-
-        <!-- Stats -->
-        {% if unit.stats_json %}
-          <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Características</h2>
-            {# system-specific stats schema — add elif blocks for new wargames #}
-            {% if sys_code == 'w40k10' %}
-              {# 40k stat schema: M / T / Sv / W / Ld / OC #}
-              <table class="warscroll-stats">
-                <thead>
-                  <tr>
-                    <th title="Move">M</th>
-                    <th title="Toughness">T</th>
-                    <th title="Save">Sv</th>
-                    <th title="Wounds">W</th>
-                    <th title="Leadership">Ld</th>
-                    <th title="Objective Control">OC</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{{ unit.stats_json.get('move', '—') }}</td>
-                    <td>{{ unit.stats_json.get('toughness', '—') }}</td>
-                    <td>{{ unit.stats_json.get('save', '—') }}</td>
-                    <td>{{ unit.stats_json.get('wounds', '—') }}</td>
-                    <td>{{ unit.stats_json.get('leadership', '—') }}</td>
-                    <td>{{ unit.stats_json.get('oc', '—') }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            {% else %}
-              {# AoS stat schema: generic key-value render #}
-              <table class="warscroll-stats">
-                <thead>
-                  <tr>
-                    {% for key in unit.stats_json %}
-                      <th>{{ key | title }}</th>
+        <div class="ws-header-meta">
+          <div class="ws-header-top-row">
+            {% if unit.faction.game_system %}
+              <span class="ws-system-badge">{{ unit.faction.game_system.name }}</span>
+            {% endif %}
+            {% if current_ruleset %}
+              <span class="ws-ruleset-chip">
+                {{ current_ruleset.edition }}
+                {% if available_rulesets|length > 1 %}
+                  &middot;
+                  <select onchange="window.location.href='?ruleset=' + this.value"
+                          style="background:transparent;border:none;color:var(--gold-deep);font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.08em;cursor:pointer;">
+                    {% for r in available_rulesets %}
+                      <option value="{{ r.code }}" {% if r.code == current_ruleset.code %}selected{% endif %}>{{ r.name }}</option>
                     {% endfor %}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    {% for key, val in unit.stats_json.items() %}
-                      <td>{{ val }}</td>
-                    {% endfor %}
-                  </tr>
-                </tbody>
-              </table>
+                  </select>
+                {% else %}
+                  &middot; {{ current_ruleset.name }}
+                {% endif %}
+              </span>
             {% endif %}
           </div>
-        {% endif %}
 
-        <!-- Weapons -->
-        {% if unit.weapons_json %}
-          <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Armas</h2>
-            <table class="weapons-table">
-              <thead>
-                <tr>
-                  {% for key in unit.weapons_json[0] %}
-                    <th>{{ key }}</th>
-                  {% endfor %}
-                </tr>
-              </thead>
-              <tbody>
-                {% for weapon in unit.weapons_json %}
-                  <tr>
-                    {% for key, val in weapon.items() %}
-                      <td>{{ val }}</td>
-                    {% endfor %}
-                  </tr>
+          <h1 class="ws-name">{{ unit.name }}</h1>
+
+          <div class="ws-badges-row">
+            {% if unit.unit_role %}
+              <span class="role-tag">{{ unit.unit_role }}</span>
+            {% endif %}
+            {% if unit.faction.grand_alliance %}
+              <span class="alliance-badge alliance-{{ unit.faction.grand_alliance | lower }}">{{ unit.faction.grand_alliance }}</span>
+            {% endif %}
+            <span class="pts-badge ws-pts">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+            {% if unit.model_count > 1 %}
+              <span class="role-tag">{{ unit.model_count }} modelos</span>
+            {% endif %}
+          </div>
+
+          {# ── Stats bar ── inline horizontal strip #}
+          {% if unit.stats_json %}
+            <div class="ws-stats-bar">
+              {% if sys_code == 'w40k10' %}
+                {# 40K: M / T / Sv / W / Ld / OC #}
+                {% set stat_map = [
+                  ('move',       'M',   'Movimento'),
+                  ('toughness',  'T',   'Resistência'),
+                  ('save',       'Sv',  'Armadura'),
+                  ('wounds',     'W',   'Ferimentos'),
+                  ('leadership', 'Ld',  'Liderança'),
+                  ('oc',         'OC',  'Controlo de Obj.'),
+                ] %}
+                {% for key, abbr, label in stat_map %}
+                  {% set val = unit.stats_json.get(key) %}
+                  {% if val %}
+                    <div class="ws-stat-cell" title="{{ label }}">
+                      <span class="ws-stat-val">{{ val }}</span>
+                      <span class="ws-stat-key">{{ abbr }}</span>
+                    </div>
+                  {% endif %}
                 {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        {% endif %}
+              {% else %}
+                {# AoS / generic: render all keys from stats_json #}
+                {% for key, val in unit.stats_json.items() %}
+                  <div class="ws-stat-cell" title="{{ key }}">
+                    <span class="ws-stat-val">{{ val }}</span>
+                    <span class="ws-stat-key">{{ key | upper | truncate(4, True, '') }}</span>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endif %}
 
-        <!-- Abilities -->
-        {% if unit.abilities_json %}
-          <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Habilidades</h2>
-            {% for ability in unit.abilities_json %}
-              <div class="ability-card">
-                <p class="ability-name">{{ ability.name }}</p>
-                {% if ability.description %}
-                  <p class="ability-desc">{{ ability.description }}</p>
-                {% endif %}
-              </div>
+          {# ── Admin actions ── #}
+          <div class="ws-admin-row">
+            {% if current_user.is_authenticated and current_user.is_admin %}
+              <a href="{{ url_for('units.upload_image', unit_slug=unit.slug) }}" class="btn-secondary btn-sm">&#9998; Editar Imagem</a>
+            {% endif %}
+            {% if not unit.image_path and unit.image_search_url %}
+              <a href="{{ unit.image_search_url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-sm">Buscar Foto &rarr;</a>
+            {% endif %}
+            {% if unit.wahapedia_url %}
+              <a href="{{ unit.wahapedia_url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-sm">Wahapedia &rarr;</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>{# /ws-header #}
+
+      {# ── Body sections ── #}
+      <div class="ws-body">
+
+        {# ── Weapons ── #}
+        {% if unit.weapons_json %}
+          {% set ranged = unit.weapons_json | selectattr('Type', 'defined') | selectattr('Type', 'equalto', 'RANGED WEAPONS') | list
+                          if unit.weapons_json[0] is mapping and 'Type' in unit.weapons_json[0] else [] %}
+          {% set melee  = unit.weapons_json | selectattr('Type', 'defined') | selectattr('Type', 'equalto', 'MELEE WEAPONS')  | list
+                          if unit.weapons_json[0] is mapping and 'Type' in unit.weapons_json[0] else [] %}
+          {% set has_typed = ranged or melee %}
+
+          {% if has_typed %}
+            {# AoS-style split sections #}
+            {% for section_label, section_weapons in [('Armas de Alcance', ranged), ('Armas de Combate', melee)] %}
+              {% if section_weapons %}
+                <div class="ws-section">
+                  <h2 class="ws-section-title">{{ section_label }}</h2>
+                  {% set col_keys = [] %}
+                  {% for k in section_weapons[0] %}
+                    {% if k != 'Type' %}{% if col_keys.append(k) %}{% endif %}{% endif %}
+                  {% endfor %}
+                  <div class="ws-table-wrap">
+                    <table class="weapons-table ws-weapons-table">
+                      <thead>
+                        <tr>
+                          {% for k in col_keys %}<th>{{ k }}</th>{% endfor %}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for w in section_weapons %}
+                          <tr>
+                            {% for k in col_keys %}<td>{{ w.get(k, '—') }}</td>{% endfor %}
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              {% endif %}
             {% endfor %}
-          </div>
+          {% else %}
+            {# Generic flat weapons list (40K or unknown schema) #}
+            <div class="ws-section">
+              <h2 class="ws-section-title">Armas</h2>
+              <div class="ws-table-wrap">
+                <table class="weapons-table ws-weapons-table">
+                  <thead>
+                    <tr>
+                      {% for key in unit.weapons_json[0] %}
+                        <th>{{ key }}</th>
+                      {% endfor %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for weapon in unit.weapons_json %}
+                      <tr>
+                        {% for key, val in weapon.items() %}
+                          <td>{{ val if val else '—' }}</td>
+                        {% endfor %}
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          {% endif %}
         {% endif %}
 
-        <!-- Companions (Heroes only) -->
+        {# ── Abilities ── #}
+        {% if unit.abilities_json %}
+          {% set passive_labels   = ['Passive', 'passive', 'Passiva', 'passiva'] %}
+          {% set command_labels   = ['Command', 'command', 'Comando', 'comando', 'Command Ability', 'Habilidade de Comando'] %}
+          {% set reaction_labels  = ['Reaction', 'reaction', 'Once Per Turn', 'Ação de Reação'] %}
+
+          {% set ab_passive  = unit.abilities_json | selectattr('type', 'defined') | selectattr('type', 'in', passive_labels)  | list %}
+          {% set ab_command  = unit.abilities_json | selectattr('type', 'defined') | selectattr('type', 'in', command_labels)  | list %}
+          {% set ab_other    = [] %}
+          {% for ab in unit.abilities_json %}
+            {% set t = ab.get('type', '') %}
+            {% if t not in passive_labels and t not in command_labels %}
+              {% if ab_other.append(ab) %}{% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% set has_typed_abilities = ab_passive or ab_command %}
+
+          {% if has_typed_abilities %}
+            {% for section_label, section_abs in [('Habilidades de Comando', ab_command), ('Habilidades Passivas', ab_passive), ('Habilidades', ab_other)] %}
+              {% if section_abs %}
+                <div class="ws-section">
+                  <h2 class="ws-section-title">{{ section_label }}</h2>
+                  <div class="ws-abilities-grid">
+                    {% for ab in section_abs %}
+                      <div class="ability-card ws-ability-card">
+                        <p class="ability-name">{{ ab.name }}</p>
+                        {% if ab.get('text_pt') %}
+                          <p class="ws-ability-card-pt">{{ ab.text_pt }}</p>
+                        {% elif ab.get('description') %}
+                          <p class="ability-desc">{{ ab.description }}</p>
+                        {% endif %}
+                        {% if ab.get('text_en') %}
+                          <p class="ws-ability-card-en">{{ ab.text_en | truncate(160) }}</p>
+                        {% endif %}
+                        {% if ab.get('timing') %}
+                          <span class="ws-ability-timing">{{ ab.timing }}</span>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {# All abilities as a single grid #}
+            <div class="ws-section">
+              <h2 class="ws-section-title">Habilidades</h2>
+              <div class="ws-abilities-grid">
+                {% for ab in unit.abilities_json %}
+                  <div class="ability-card ws-ability-card">
+                    <p class="ability-name">{{ ab.name if ab.name is defined else ab }}</p>
+                    {% if ab is mapping %}
+                      {% if ab.get('text_pt') %}
+                        <p class="ws-ability-card-pt">{{ ab.text_pt }}</p>
+                      {% elif ab.get('description') %}
+                        <p class="ability-desc">{{ ab.description }}</p>
+                      {% endif %}
+                      {% if ab.get('text_en') %}
+                        <p class="ws-ability-card-en">{{ ab.text_en | truncate(160) }}</p>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+
+        {# ── Companions (Heroes only) ── #}
         {% if unit.can_be_general and unit.companions_json %}
-          <div class="warscroll-block">
-            <h2 class="warscroll-block-title">Unidades Companheiras</h2>
+          <div class="ws-section">
+            <h2 class="ws-section-title">Unidades Companheiras</h2>
             <ul class="companions-list">
               {% for companion in unit.companions_json %}
                 <li>{{ companion }}</li>
@@ -194,32 +267,53 @@
           </div>
         {% endif %}
 
-        <!-- Properties -->
-        <div class="warscroll-block">
-          <h2 class="warscroll-block-title">Propriedades</h2>
-          <dl class="warscroll-props">
-            {% if unit.base_size_mm %}
-              <div class="warscroll-prop-row">
-                <dt>Tamanho da Base</dt><dd>{{ unit.base_size_mm }}</dd>
-              </div>
-            {% endif %}
-            <div class="warscroll-prop-row">
-              <dt>Pode Ser General</dt>
-              <dd>{% if unit.can_be_general %}Sim{% else %}Não{% endif %}</dd>
+        {# ── Keywords ── #}
+        {% if unit.keywords_json %}
+          <div class="ws-section ws-section--keywords">
+            <h2 class="ws-section-title">Palavras-chave</h2>
+            <div class="warscroll-keywords">
+              {% for kw in unit.keywords_json %}
+                <span class="keyword-pill">{{ kw }}</span>
+              {% endfor %}
             </div>
-            <div class="warscroll-prop-row">
-              <dt>Pode Ser Reforçado</dt>
-              <dd>{% if unit.can_be_reinforced %}Sim{% else %}Não{% endif %}</dd>
+          </div>
+        {% endif %}
+
+        {# ── Properties strip ── #}
+        <div class="ws-section ws-props-strip">
+          {% if unit.base_size_mm %}
+            <div class="ws-prop"><span class="ws-prop-label">Base</span><span class="ws-prop-val">{{ unit.base_size_mm }}</span></div>
+          {% endif %}
+          <div class="ws-prop">
+            <span class="ws-prop-label">General</span>
+            <span class="ws-prop-val">{% if unit.can_be_general %}Sim{% else %}Não{% endif %}</span>
+          </div>
+          <div class="ws-prop">
+            <span class="ws-prop-label">Reforçável</span>
+            <span class="ws-prop-val">{% if unit.can_be_reinforced %}Sim{% else %}Não{% endif %}</span>
+          </div>
+          {% if unit.model_count > 1 %}
+            <div class="ws-prop">
+              <span class="ws-prop-label">Modelos</span>
+              <span class="ws-prop-val">{{ unit.model_count }}</span>
             </div>
-          </dl>
+          {% endif %}
         </div>
 
-      </div>
-    </div>
+      {# ── Unit Lore (lore_pt_md) ── #}
+      {% if unit.lore_pt_md %}
+        <div class="unit-lore-section">
+          <div class="unit-lore-title">Lore da Unidade</div>
+          {{ unit.lore_pt_md | simple_md }}
+        </div>
+      {% endif %}
+
+      </div>{# /ws-body #}
+    </div>{# /ws-card #}
 
     <div class="warscroll-back">
-      <a href="{{ url_for('factions.detail', faction_slug=unit.faction.slug) }}" class="btn-secondary">
-        &larr; Voltar ao Roster de {{ unit.faction.name }}
+      <a href="{{ url_for('units.index') }}?faction={{ unit.faction.slug }}" class="btn-secondary">
+        &larr; Voltar a {{ unit.faction.name }}
       </a>
     </div>
 

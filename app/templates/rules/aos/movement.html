@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+{% block title %}Movimento — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#normal-move">Normal Move</a></li>
+        <li><a href="#run">Run</a></li>
+        <li><a href="#retreat">Retreat</a></li>
+        <li><a href="#coherency">Coerência de Unidade</a></li>
+        <li><a href="#combat-range">Combat Range</a></li>
+        <li><a href="#flying">Voar &amp; Vertical</a></li>
+        <li><a href="#terrain-move">Terreno &amp; Movimento</a></li>
+        <li><a href="#visibility">Visibilidade</a></li>
+        <li><a href="#reactions">Reações de Movimento</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}">Carga</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Movimento
+      </p>
+      <h1 class="section-title" id="overview">Movimento</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <div class="rules-callout rules-callout--key">
+        <strong>Duas distâncias essenciais:</strong>
+        <ul class="rules-list" style="margin-top:0.5rem">
+          <li><strong>Engagement Range — ½&Prime;</strong>: distância mínima para terminar uma Carga. Estar a ½&Prime; de uma unidade inimiga visível significa que a carga foi bem-sucedida.</li>
+          <li><strong>Combat Range — 3&Prime;</strong>: cilindro de 3&Prime; horizontal + altitude ilimitada em torno de cada modelo. Unidades de exércitos opostos dentro do Combat Range mútuo <em>e</em> visíveis entre si estão <strong>em combate</strong>.</li>
+        </ul>
+        <p style="margin-top:0.5rem;margin-bottom:0">Engagement Range e Combat Range <strong>não são a mesma coisa</strong>: ½&Prime; é o ponto de chegada de uma carga; 3&Prime; é quando as unidades estão em combate.</p>
+      </div>
+
+      <!-- Diagrama Combat Range & Engagement Range -->
+      <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" style="max-width:520px;margin:1.5rem auto;display:block;font-family:sans-serif">
+        <!-- base do modelo -->
+        <circle cx="130" cy="100" r="16" fill="#4a5568" stroke="#2d3748" stroke-width="2"/>
+        <text x="130" y="105" text-anchor="middle" font-size="10" fill="#fff">base</text>
+        <!-- Combat Range 3" -->
+        <circle cx="130" cy="100" r="76" fill="none" stroke="#e53e3e" stroke-width="2" stroke-dasharray="6,3"/>
+        <text x="130" y="22" text-anchor="middle" font-size="11" fill="#e53e3e">Combat Range 3&Prime;</text>
+        <!-- Engagement Range ½" -->
+        <circle cx="130" cy="100" r="29" fill="rgba(72,187,120,0.15)" stroke="#38a169" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="130" y="140" text-anchor="middle" font-size="10" fill="#38a169">½&Prime; Engagement</text>
+        <!-- legenda direita -->
+        <rect x="250" y="50" width="14" height="3" fill="#e53e3e"/>
+        <text x="270" y="55" font-size="10" fill="#4a5568">Combat Range (3&Prime;) — em combate</text>
+        <rect x="250" y="70" width="14" height="3" fill="#38a169"/>
+        <text x="270" y="75" font-size="10" fill="#4a5568">Engagement Range (½&Prime;) — charge ok</text>
+        <circle cx="257" cy="95" r="6" fill="#4a5568"/>
+        <text x="270" y="99" font-size="10" fill="#4a5568">base 32mm (escala aprox.)</text>
+      </svg>
+
+      <p>
+        A Fase de Movimento ocorre no início de cada turno do jogador ativo. Todas as unidades amigas
+        podem se mover — mas cada unidade pode usar apenas <em>uma</em> habilidade de movimento por
+        fase. Os tipos principais são: <strong>Normal Move</strong>, <strong>Run</strong> e
+        <strong>Retreat</strong>.
+      </p>
+
+      <!-- Normal Move -->
+      <h2 id="normal-move">Normal Move</h2>
+      <p>
+        Ao usar a habilidade <strong>Normal Move</strong>, cada modelo da unidade pode se mover
+        até o valor de <strong>Move</strong> indicado no warscroll. Regras:
+      </p>
+      <ul class="rules-list">
+        <li>Nenhum modelo pode terminar o movimento dentro do <strong>Combat Range</strong> (3&Prime;) de uma unidade inimiga.</li>
+        <li>
+          Uma unidade que está em combate (inimigos dentro de seu Combat Range) no início da fase
+          <strong>não pode realizar Normal Move</strong>.
+        </li>
+        <li>Modelos individuais dentro de uma unidade podem mover-se por caminhos diferentes,
+          desde que a unidade mantenha coerência ao final do movimento.</li>
+      </ul>
+
+      <!-- Run -->
+      <h2 id="run">Run</h2>
+      <p>
+        <strong>Run</strong> permite que a unidade avance mais depressa: role um D6 e adicione o
+        resultado ao valor de Move para aquele movimento. Restrições importantes:
+      </p>
+      <ul class="rules-list">
+        <li>Unidades que correm <strong>não podem Atirar</strong> neste turno.</li>
+        <li>Unidades que correm <strong>não podem Carregar</strong> neste turno.</li>
+        <li>Uma unidade em Engagement Range com inimigos não pode usar Run (mesma regra do Normal Move).</li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Habilidades &ldquo;Run and Shoot&rdquo; / &ldquo;Run and Charge&rdquo;.</strong>
+        Algumas habilidades de warscroll ou Battle Formation removem explicitamente essas restrições.
+        Se um warscroll diz que a unidade pode Atirar após Run, ela pode. Verifique sempre o texto
+        da habilidade.
+      </div>
+
+      <!-- Retreat -->
+      <h2 id="retreat">Retreat</h2>
+      <p>
+        Uma unidade em combate (inimigos dentro de seu Combat Range de 3&Prime;) pode usar
+        <strong>Retreat</strong> para sair do combate. Ao Recuar, a unidade sofre D3 de dano mortal
+        e pode mover-se até o valor de Move, podendo passar pelo Combat Range de unidades inimigas
+        — mas não pode terminar o movimento dentro do Combat Range de nenhum inimigo. Restrições:
+      </p>
+      <ul class="rules-list">
+        <li>Unidades que recuam <strong>não podem Atirar</strong> neste turno.</li>
+        <li>Unidades que recuam <strong>não podem Carregar</strong> neste turno.</li>
+      </ul>
+      <p>
+        Algumas habilidades permitem que a unidade recue e ainda assim atire ou carregue — o
+        warscroll ou a Battle Formation indicarão quando isso é possível.
+      </p>
+
+      <!-- Coerência -->
+      <h2 id="coherency">Coerência de Unidade</h2>
+      <p>
+        Todos os modelos de uma unidade devem manter <strong>coerência</strong> — cada modelo deve
+        estar a no máximo <strong>½&Prime;</strong> horizontalmente de pelo menos outro modelo da
+        mesma unidade, formando uma corrente contínua da unidade inteira.
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Unidades de 7+ modelos:</strong> Cada modelo deve estar a ½&Prime; de pelo menos
+          <em>dois</em> outros modelos da unidade.
+        </li>
+        <li>
+          Ao final de qualquer movimento, a unidade inteira deve estar em coerência. Se algum modelo
+          ficou fora de coerência após o movimento, a jogada não é legal — ajuste antes de declarar
+          o fim.
+        </li>
+        <li>
+          Se uma unidade ficar fora de coerência por perda de modelos (por dano sofrido), o jogador
+          deve restaurar a coerência no próximo movimento disponível da unidade.
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Diferenças de altura.</strong> Coerência é medida horizontalmente — diferenças de
+        elevação entre modelos não são consideradas para efeitos de coerência.
+      </div>
+
+      <!-- Diagrama Coherency Chain (7+ modelos) -->
+      <svg viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" style="max-width:560px;margin:1.5rem auto;display:block;font-family:sans-serif">
+        <text x="240" y="16" text-anchor="middle" font-size="12" fill="#4a5568" font-weight="bold">Corrente de Coerência — 7+ modelos (cada um a ½&Prime; de 2 outros)</text>
+        <!-- modelos: coerentes -->
+        <circle cx="40"  cy="70" r="14" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="90"  cy="60" r="14" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="140" cy="75" r="14" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="190" cy="65" r="14" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="240" cy="72" r="14" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="290" cy="63" r="14" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="340" cy="70" r="14" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <!-- modelo isolado (fora) -->
+        <circle cx="430" cy="70" r="14" fill="#fc8181" stroke="#c53030" stroke-width="2"/>
+        <text x="430" y="105" text-anchor="middle" font-size="10" fill="#c53030">FORA</text>
+        <!-- linhas de coerência -->
+        <line x1="54"  y1="70" x2="76"  y2="63" stroke="#276749" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <line x1="104" y1="63" x2="126" y2="72" stroke="#276749" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <line x1="154" y1="72" x2="176" y2="67" stroke="#276749" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <line x1="204" y1="67" x2="226" y2="70" stroke="#276749" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <line x1="254" y1="70" x2="276" y2="65" stroke="#276749" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <line x1="304" y1="65" x2="326" y2="70" stroke="#276749" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <!-- gap para isolado -->
+        <line x1="354" y1="70" x2="415" y2="70" stroke="#c53030" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <text x="385" y="62" text-anchor="middle" font-size="9" fill="#c53030">distância &gt; ½&Prime;</text>
+        <!-- labels -->
+        <text x="190" y="105" text-anchor="middle" font-size="10" fill="#276749">corrente válida (cada um a ½&Prime; de 2 vizinhos)</text>
+      </svg>
+
+      <!-- Combat Range -->
+      <h2 id="combat-range">Combat Range</h2>
+      <p>
+        O <strong>Combat Range</strong> de cada modelo se estende <strong>3&Prime; horizontalmente</strong>
+        em todas as direções a partir de sua base e <strong>qualquer distância verticalmente</strong>,
+        formando um cilindro. O Combat Range de uma unidade é a união de todos os Combat Ranges de
+        seus modelos.
+      </p>
+      <p>
+        Unidades de exércitos opostos que estejam dentro do Combat Range uma da outra <em>e</em>
+        sejam visíveis entre si estão <strong>em combate</strong>. Estar em combate tem as seguintes
+        consequências:
+      </p>
+      <ul class="rules-list">
+        <li>A unidade <strong>não pode usar Normal Move</strong> nem Run.</li>
+        <li>A unidade pode usar <strong>Retreat</strong> para sair do combate — mas não poderá
+          Atirar ou Carregar depois neste turno.</li>
+        <li>A unidade pode usar a habilidade <strong>Fight</strong> na Fase de Combate.</li>
+      </ul>
+      <div class="rules-callout">
+        <strong>½&Prime; na Carga.</strong> Ao realizar uma Carga bem-sucedida, a unidade deve
+        terminar seu movimento a <strong>½&Prime; ou menos</strong> de uma unidade inimiga visível
+        — essa é a distância mínima de contato de carga, não o Combat Range. O Combat Range em si
+        é sempre 3&Prime; horizontalmente.
+      </div>
+
+      <!-- Voar -->
+      <h2 id="flying">Voar &amp; Movimento Vertical</h2>
+      <p>
+        Modelos com a palavra-chave <strong>Fly</strong> ignoram terrenos e outros modelos ao se
+        mover — eles voam sobre tudo. Restrições de nota:
+      </p>
+      <ul class="rules-list">
+        <li>
+          Modelos voadores ainda precisam terminar o movimento em um local válido (não em cima de
+          outro modelo, fora do campo, etc.).
+        </li>
+        <li>
+          Modelos voadores ainda devem manter coerência ao final do movimento.
+        </li>
+        <li>
+          A restrição de não terminar a ½&Prime; de inimigos após Normal Move se aplica normalmente
+          a voadores — eles não podem &ldquo;pousar&rdquo; em cima de um inimigo.
+        </li>
+      </ul>
+      <p>
+        Para modelos <em>sem</em> Fly, terrenos podem bloquear o caminho. Modelos podem subir e
+        descer faces de terreno usando a medida de movimento normalmente (a distância percorrida
+        inclui a variação vertical).
+      </p>
+      <p>
+        Modelos com o tipo <strong>Cavalry</strong> ou similares frequentemente têm exceções
+        específicas indicadas em seu warscroll — consulte o warscroll para detalhes.
+      </p>
+
+      <!-- Terreno e Movimento -->
+      <h2 id="terrain-move">Terreno &amp; Movimento</h2>
+      <p>
+        O impacto do terreno no movimento depende do tipo de terreno (ver
+        <a href="{{ url_for('rules.aos_terrain') }}">página de Terreno</a> para regras completas):
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Obstáculos:</strong> Modelos podem mover sobre obstáculos (paredes, cercas),
+          medindo o movimento ao longo da superfície real — suba, cruze e desça, tudo conta.
+        </li>
+        <li>
+          <strong>Area Terrain:</strong> Modelos dentro de area terrain (florestas, ruínas) se
+          movem normalmente, mas a peça pode ter regras específicas como Cover ou Obscuring.
+        </li>
+        <li>
+          <strong>Impassable:</strong> Nenhum modelo pode terminar seu movimento dentro de uma
+          peça marcada como Impassable. Modelos sem Fly não podem atravessá-la.
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Modelos em balanço (overhanging).</strong> Um modelo cuja base se projeta para
+        fora de uma superfície de terreno, mas cujo centro de base ainda está sobre ela, é
+        considerado legalmente posicionado. O modelo pode ocupar esse espaço em balanço.
+      </div>
+
+      <!-- Visibilidade -->
+      <h2 id="visibility">Visibilidade</h2>
+      <p>
+        Para verificar se um modelo <strong>A</strong> tem linha de visão para um modelo
+        <strong>B</strong>, traça-se uma linha imaginária de qualquer ponto do volume do modelo A
+        (base + corpo) até qualquer ponto do volume do modelo B. Se essa linha não for obstruída
+        por terreno Obscuring ou outro modelo que bloqueie a visão, o alvo é visível.
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Terreno Obscuring:</strong> Bloqueia a linha de visão se a linha passar por dentro
+          da peça (não apenas raspar a borda).
+        </li>
+        <li>
+          <strong>Modelos amigos e inimigos:</strong> O corpo de outros modelos pode bloquear visão
+          conforme acordado pelos jogadores — geralmente tratados como volumes sólidos para efeito
+          de visibilidade.
+        </li>
+        <li>
+          Visibilidade é relevante principalmente para <em>Tiro</em> (ver
+          <a href="{{ url_for('rules.aos_shooting') }}">página de Tiro</a>) e algumas habilidades
+          que exigem linha de visão para ser ativadas.
+        </li>
+      </ul>
+
+      <!-- Reações -->
+      <h2 id="reactions">Reações de Movimento</h2>
+      <p>
+        Algumas habilidades permitem que o jogador <em>inativo</em> reaja a movimentos do oponente.
+        Essas são habilidades com o tipo <strong>Reaction</strong> disparadas em fases de movimento.
+        Exemplos comuns:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Redeploy:</strong> Habilidade de Movement Phase do oponente — permite mover uma
+          unidade amiga D6&Prime; antes que a unidade adversária complete sua movimentação. Disponível
+          via Command Ability para muitas facções; algumas warscrolls têm versões próprias.
+        </li>
+        <li>
+          <strong>Habilidades de intercepção:</strong> Alguns warscrolls permitem reposicionar ou
+          fazer ataques como reação a um movimento inimigo específico.
+        </li>
+      </ul>
+      <p>
+        Reactions são sempre indicadas no texto da habilidade com a tag <em>Reaction</em> e
+        especificam exatamente <em>quando</em> (used when) são ativadas.
+      </p>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

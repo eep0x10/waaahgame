@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+{% block title %}Terreno — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#types">Tipos de Terreno</a></li>
+        <li><a href="#universal">Habilidades Universais</a></li>
+        <li><a href="#cover-vs-obscuring">Cover vs Obscuring</a></li>
+        <li><a href="#cover">Cover</a></li>
+        <li><a href="#obscuring">Obscuring</a></li>
+        <li><a href="#impassable">Impassable</a></li>
+        <li><a href="#place-of-power">Place of Power</a></li>
+        <li><a href="#faction-terrain">Terreno de Facção</a></li>
+        <li><a href="#garrison">Garrison</a></li>
+        <li><a href="#control">Controle de Terreno</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Terreno
+      </p>
+      <h1 class="section-title" id="overview">Terreno</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        O terreno transforma o campo de batalha — criando abrigos, obstáculos e pontos estratégicos.
+        Cada peça de terreno tem um ou mais tipos e pode ter habilidades especiais. Regras de terreno
+        aplicam-se conforme o <strong>Battlepack</strong> em uso e o acordo mútuo dos jogadores
+        antes da partida.
+      </p>
+
+      <!-- Tipos de Terreno -->
+      <h2 id="types">Tipos de Terreno</h2>
+      <table class="warscroll-stats">
+        <thead>
+          <tr><th>Tipo</th><th>Descrição Geral</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Obstacle</strong></td>
+            <td>Parede, cerca ou barricada — pode ser cruzado; modelos sem Fly medem ao longo
+              da superfície</td>
+          </tr>
+          <tr>
+            <td><strong>Area Terrain</strong></td>
+            <td>Floresta, ruínas, pântano — modelos ficam dentro da peça; normalmente concede Cover</td>
+          </tr>
+          <tr>
+            <td><strong>Impassable</strong></td>
+            <td>Torre sólida, rocha gigante — nenhum modelo pode terminar dentro nem atravessar
+              (sem Fly)</td>
+          </tr>
+          <tr>
+            <td><strong>Place of Power</strong></td>
+            <td>Fonte mágica — Heróis a 3&Prime; podem Ativar: risco de D3 dano mortal (resultado 1) ou bônus de conjuro/prece e acesso a Unbind (resultado 2+)</td>
+          </tr>
+          <tr>
+            <td><strong>Faction Terrain</strong></td>
+            <td>Terreno específico de uma facção — implantado na Etapa 1 da Deployment Phase;
+              warscroll próprio</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Habilidades Universais -->
+      <h2 id="universal">Habilidades Universais de Terreno</h2>
+      <p>
+        Toda peça de terreno pode ter uma ou mais das seguintes habilidades universais:
+      </p>
+      <ul class="rules-list">
+        <li><strong>Cover</strong></li>
+        <li><strong>Obscuring</strong></li>
+        <li><strong>Impassable</strong></li>
+        <li><strong>Place of Power</strong></li>
+        <li><strong>Unstable</strong></li>
+      </ul>
+      <p>
+        As habilidades são atribuídas às peças antes da partida e visíveis para ambos os jogadores.
+        O GHB 2025-26 e a Core Rules definem como cada peça no layout padrão recebe suas
+        habilidades.
+      </p>
+
+      <!-- Tabela comparativa Cover vs Obscuring -->
+      <h2 id="cover-vs-obscuring">Cover vs Obscuring — Comparação</h2>
+      <table class="warscroll-stats">
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Cover</th>
+            <th>Obscuring</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Efeito principal</strong></td>
+            <td>+1 ao Save contra ataques de Shooting originados de fora da peça</td>
+            <td>Bloqueia linha de visão — ataques de fora não podem mirar unidades do outro lado</td>
+          </tr>
+          <tr>
+            <td><strong>Quando se aplica</strong></td>
+            <td>Todos os modelos da unidade devem estar <em>wholly within</em> a peça de Cover</td>
+            <td>A linha de visão traçada deve passar pelo <em>interior</em> da peça Obscuring</td>
+          </tr>
+          <tr>
+            <td><strong>Afeta Melee?</strong></td>
+            <td>Não — apenas Shooting</td>
+            <td>Não — apenas Shooting (LoS em melee não usa a mesma restrição)</td>
+          </tr>
+          <tr>
+            <td><strong>Afeta a unidade dentro?</strong></td>
+            <td>Beneficia a unidade dentro — +1 Save</td>
+            <td>Protege qualquer unidade cuja LoS exija passar pelo terreno; modelos dentro ainda veem para fora</td>
+          </tr>
+          <tr>
+            <td><strong>Exemplos típicos</strong></td>
+            <td>Ruínas, florestas, arbustos densos (Area Terrain com Cover)</td>
+            <td>Torres sólidas, colinas altas, muros opacos (Area Terrain com Obscuring)</td>
+          </tr>
+          <tr>
+            <td><strong>Acumula com bônus de Save?</strong></td>
+            <td>Sim — mas o bônus de Cover <em>não</em> é limitado pelo cap de +1 de modificadores; ele é uma característica de terreno</td>
+            <td>N/A — não é um bônus de Save</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Cover -->
+      <h2 id="cover">Cover</h2>
+      <p>
+        Modelos <em>wholly within</em> (totalmente dentro) de uma peça com <strong>Cover</strong>
+        ganham +1 ao Save contra ataques de ranged originados de fora da peça.
+      </p>
+      <ul class="rules-list">
+        <li>O bônus aplica-se apenas a ataques de <em>Shooting</em> — não a Melee.</li>
+        <li>O bônus de Save de Cover não é afetado pelo cap de modificadores de +1/−1 ao Save —
+          ele é tratado como característica do terreno, não como modificador de habilidade.</li>
+        <li>Unidades <em>parcialmente</em> dentro do terreno (alguns modelos dentro, outros fora)
+          não recebem o bônus — todos os modelos precisam estar inteiramente within.</li>
+      </ul>
+
+      <!-- Obscuring -->
+      <h2 id="obscuring">Obscuring</h2>
+      <p>
+        Terreno com <strong>Obscuring</strong> bloqueia linha de visão quando a linha de traçado
+        passa pelo interior da peça. Isso significa:
+      </p>
+      <ul class="rules-list">
+        <li>
+          Unidades totalmente atrás (ou dentro) de terreno Obscuring ficam invisíveis para inimigos
+          do outro lado — desde que a linha de visão realmente passe pelo interior da peça.
+        </li>
+        <li>
+          <strong>GHB 2025-26 atualização:</strong> O battlepack ativo define quais peças são
+          Obscuring conforme o layout do battleplan. Algumas peças de Área Terrain podem ser
+          Obscuring no GHB mas não nas Core Rules padrão — verifique o layout atual.
+        </li>
+        <li>
+          Modelos <em>dentro</em> de terreno Obscuring ainda podem ver através dele para fora
+          (dependendo do warscroll e acordos pré-jogo), mas oponentes não veem para dentro.
+        </li>
+      </ul>
+
+      <!-- Impassable -->
+      <h2 id="impassable">Impassable</h2>
+      <p>
+        Nenhum modelo pode terminar seu movimento dentro ou sobre uma peça marcada como
+        <strong>Impassable</strong>. Modelos sem a keyword <strong>Fly</strong> também não podem
+        atravessá-la — precisam contorná-la.
+      </p>
+      <p>
+        Modelos com Fly podem voar sobre terreno Impassable normalmente (eles não terminam dentro
+        dele — apenas passam por cima durante o movimento).
+      </p>
+
+      <!-- Place of Power -->
+      <h2 id="place-of-power">Place of Power</h2>
+      <p>
+        Terrenos marcados como <strong>Place of Power</strong> são pontos estratégicos de energia
+        mística. Durante o <strong>Start of Any Turn</strong> — o início de qualquer turno do
+        jogador (ativo <em>ou</em> passivo) — um Herói amigo a <strong>3&Prime; ou menos</strong>
+        da peça pode usar a habilidade <strong>Activate Place of Power</strong>:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>Declare o Herói que ativará o Place of Power.</li>
+        <li>Role um D6:
+          <ul class="rules-list">
+            <li>
+              <strong>1:</strong> O Herói sofre <strong>D3 de dano mortal</strong> — o poder é
+              perigoso de controlar.
+            </li>
+            <li>
+              <strong>2+:</strong> Escolha um dos seguintes benefícios:
+              <ul class="rules-list">
+                <li>Se o Herói for um <strong>Wizard ou Priest</strong>, adicione <strong>+1</strong>
+                  às rolagens de Casting ou Chanting desse Herói neste turno.</li>
+                <li>Se o Herói <em>não</em> for Wizard nem Priest, ele pode usar as habilidades
+                  <strong>Unbind</strong> ou <strong>Banish Manifestation</strong> neste turno como
+                  se fosse um Wizard(1).</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <div class="rules-callout">
+        <strong>Unstable.</strong> Places of Power têm a habilidade <em>Unstable</em> — modelos
+        não podem ser posicionados sobre partes da peça com mais de 1&Prime; de altura ao terminar
+        qualquer tipo de movimento.
+      </div>
+
+      <!-- Faction Terrain -->
+      <h2 id="faction-terrain">Terreno de Facção</h2>
+      <p>
+        Certas facções têm <strong>Faction Terrain</strong> — peças de terreno com warscrolls
+        próprios (ex: Wyldwoods dos Sylvaneth, Bell Tower dos Skaven). Essas peças:
+      </p>
+      <ul class="rules-list">
+        <li>
+          São implantadas durante a <strong>Etapa 1 da Deployment Phase</strong> (antes dos
+          exércitos), dentro do território amigo, a mais de 3&Prime; de objetivos e outras peças
+          de terreno.
+        </li>
+        <li>
+          Têm habilidades especiais únicas descritas em seus warscrolls — frequentemente beneficiando
+          unidades da própria facção próximas.
+        </li>
+        <li>
+          Algumas podem ter regras que se aplicam a inimigos dentro de certo raio — leia o warscroll
+          completo antes de posicionar.
+        </li>
+        <li>
+          O número de peças de Faction Terrain disponíveis é determinado pelo warscroll e pelo
+          battlepack em uso.
+        </li>
+      </ul>
+
+      <!-- Garrison -->
+      <h2 id="garrison">Garrison em Faction Terrain</h2>
+      <p>
+        Algumas peças de Faction Terrain permitem que unidades sejam <strong>colocadas sobre elas</strong>
+        (garrisoned). Quando isso ocorre, medições de alcance e visibilidade de e para aquela unidade
+        são feitas <em>a partir da peça de terreno</em>, não dos modelos da unidade.
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Quem pode garrisonar:</strong> Apenas unidades especificadas no warscroll da Faction
+          Terrain podem ser colocadas sobre ela. O warscroll descreverá como e quando a unidade pode
+          entrar ou sair.
+        </li>
+        <li>
+          <strong>Combate e Fight:</strong> A menos que o warscroll diga o contrário, unidades sobre
+          uma Faction Terrain <strong>não podem usar habilidades Fight</strong> (não podem lutar em
+          melee diretamente).
+        </li>
+        <li>
+          <strong>Alvejamento:</strong> A unidade sobre a Faction Terrain pode ser alvo de habilidades
+          inimigas como se fosse uma unidade normal — mas as medições usam a peça como referência.
+        </li>
+        <li>
+          <strong>Saída:</strong> Se a unidade for removida da peça por uma habilidade, ela perde
+          qualquer papel especial ou bônus associado a estar sobre ela.
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Faction Terrain em Combate.</strong> Na Fase de Combate, Faction Terrain é tratada
+        como se fosse uma unidade para fins de Combat Range, movimento e Pile-In. Unidades podem
+        terminar uma carga a ½&Prime; de uma Faction Terrain inimiga.
+      </div>
+
+      <!-- Controle de Terreno -->
+      <h2 id="control">Controle de Terreno</h2>
+      <p>
+        Alguns battleplans exigem que os jogadores controlem terrenos. Terrenos são controlados
+        da <strong>mesma forma que objetivos</strong>: um modelo contesta um terreno se o marcador
+        do terreno estiver dentro de seu Combat Range (3&Prime;). O controle é determinado somando
+        a característica <strong>Control</strong> de todos os modelos amigos que contestam o terreno
+        e comparando com a soma inimiga. O jogador com a soma maior controla a peça.
+      </p>
+      <ul class="rules-list">
+        <li>O controle de terreno é reavaliado no início da primeira Battle Round e ao final de
+          cada turno.</li>
+        <li>Diferente de objetivos, um terreno <strong>não</strong> permanece sob controle do
+          jogador se nenhuma de suas unidades estiver contestando-o.</li>
+        <li>Uma unidade pode contestar ao mesmo tempo <em>um objetivo</em> e <em>um terreno</em>.</li>
+      </ul>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

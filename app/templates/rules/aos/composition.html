@@ -13,6 +13,10 @@
         <li><a href="#auxiliary">Unidades Auxiliares</a></li>
         <li><a href="#surcharge">Cumulative Surcharge</a></li>
         <li><a href="#reinforcement">Reforço</a></li>
+        <li><a href="#unique">Unique Units</a></li>
+        <li><a href="#battle-formations">Battle Formations</a></li>
+        <li><a href="#armies-of-renown">Armies of Renown</a></li>
+        <li><a href="#command-models">Command Models</a></li>
         <li><a href="#enhancements">Aprimoramentos</a></li>
         <li><a href="#general">O General</a></li>
       </ul>
@@ -21,7 +25,15 @@
       <ul>
         <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
         <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}">Magia &amp; Preces</a></li>
         <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
+        <li><a href="{{ url_for('rules.aos_glossary') }}">Glossário</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
       </ul>
     </nav>
 
@@ -52,7 +64,8 @@
           <p class="rules-battlepack-pts">1.000 pontos</p>
           <ul class="rules-list">
             <li>1&ndash;2 Regimentos</li>
-            <li>0&ndash;1 unidades Auxiliares</li>
+            <li>0&ndash;1 unidade Auxiliar sem sobretaxa</li>
+            <li>2ª Auxiliar em diante: Cumulative Surcharge</li>
             <li>Tabuleiros menores, 4 Battle Rounds</li>
           </ul>
         </div>
@@ -61,7 +74,8 @@
           <p class="rules-battlepack-pts">2.000 pontos</p>
           <ul class="rules-list">
             <li>2&ndash;4 Regimentos</li>
-            <li>0&ndash;2 unidades Auxiliares (antes da sobretaxa)</li>
+            <li>0&ndash;2 unidades Auxiliares sem sobretaxa</li>
+            <li>3ª Auxiliar em diante: Cumulative Surcharge</li>
             <li>Tabuleiro padrão, 5 Battle Rounds</li>
           </ul>
         </div>
@@ -95,6 +109,64 @@
         magos Skaven. Verifique o warscroll de cada Herói para sua lista específica de Companions.
       </div>
 
+      <!-- SVG: Regiment Structure Diagram -->
+      <figure style="margin: 1.5rem 0;">
+        <svg viewBox="0 0 540 230" xmlns="http://www.w3.org/2000/svg" class="svg-diagram" aria-label="Diagrama de estrutura de Regimento e Auxiliares" style="width:100%;max-width:540px;display:block;font-family:inherit;">
+          <!-- Regiment box -->
+          <rect x="30" y="20" width="310" height="190" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+          <text x="185" y="42" text-anchor="middle" font-size="12" font-weight="bold" fill="#3b82f6">REGIMENTO</text>
+
+          <!-- Hero leader box -->
+          <rect x="60" y="54" width="250" height="38" rx="6" fill="#1d4ed8" opacity="0.7"/>
+          <text x="185" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">1 × Herói (líder)</text>
+          <text x="185" y="83" text-anchor="middle" font-size="9" fill="#bfdbfe">warscroll define Companion Units</text>
+
+          <!-- Companion units boxes -->
+          <rect x="60" y="102" width="72" height="36" rx="5" fill="#0f172a" stroke="#475569" stroke-width="1.2"/>
+          <text x="96" y="118" text-anchor="middle" font-size="9" fill="#94a3b8">Companion</text>
+          <text x="96" y="130" text-anchor="middle" font-size="9" fill="#94a3b8">Unit 1</text>
+
+          <rect x="149" y="102" width="72" height="36" rx="5" fill="#0f172a" stroke="#475569" stroke-width="1.2"/>
+          <text x="185" y="118" text-anchor="middle" font-size="9" fill="#94a3b8">Companion</text>
+          <text x="185" y="130" text-anchor="middle" font-size="9" fill="#94a3b8">Unit 2</text>
+
+          <rect x="238" y="102" width="72" height="36" rx="5" fill="#0f172a" stroke="#475569" stroke-width="1.2"/>
+          <text x="274" y="118" text-anchor="middle" font-size="9" fill="#94a3b8">Companion</text>
+          <text x="274" y="130" text-anchor="middle" font-size="9" fill="#94a3b8">Unit 3</text>
+
+          <!-- Companion label -->
+          <text x="185" y="154" text-anchor="middle" font-size="9" fill="#64748b">0–3 Companion Units (keywords do warscroll do Herói)</text>
+
+          <!-- Regimento count note -->
+          <text x="185" y="172" text-anchor="middle" font-size="9" fill="#64748b">Vanguard: 1–2 Regimentos · Battlehost: 2–4 Regimentos</text>
+          <text x="185" y="184" text-anchor="middle" font-size="9" fill="#64748b">Cada lista pode ter múltiplos Regimentos</text>
+          <text x="185" y="198" text-anchor="middle" font-size="9" fill="#64748b">(deploy com Deploy Regiment = 1 drop por Regimento)</text>
+
+          <!-- Auxiliary units box (separate) -->
+          <rect x="370" y="50" width="148" height="140" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+          <text x="444" y="72" text-anchor="middle" font-size="11" font-weight="bold" fill="#f59e0b">AUXILIARES</text>
+
+          <rect x="388" y="83" width="112" height="32" rx="5" fill="#0f172a" stroke="#78716c" stroke-width="1.2"/>
+          <text x="444" y="97" text-anchor="middle" font-size="9" fill="#d6d3d1">Auxiliar 1</text>
+          <text x="444" y="109" text-anchor="middle" font-size="8" fill="#78716c">+0 pts</text>
+
+          <rect x="388" y="122" width="112" height="32" rx="5" fill="#0f172a" stroke="#78716c" stroke-width="1.2"/>
+          <text x="444" y="136" text-anchor="middle" font-size="9" fill="#d6d3d1">Auxiliar 2+</text>
+          <text x="444" y="148" text-anchor="middle" font-size="8" fill="#f59e0b">+20/+40/+60… pts</text>
+
+          <text x="444" y="172" text-anchor="middle" font-size="8" fill="#64748b">Vanguard: 0–1 sem sobretaxa</text>
+          <text x="444" y="183" text-anchor="middle" font-size="8" fill="#64748b">Battlehost: 0–2 sem sobretaxa</text>
+
+          <!-- Connector -->
+          <line x1="340" y1="120" x2="370" y2="120" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="355" y="115" text-anchor="middle" font-size="8" fill="#64748b">fora</text>
+          <text x="355" y="126" text-anchor="middle" font-size="8" fill="#64748b">do reg.</text>
+        </svg>
+        <figcaption style="font-size:0.8rem;color:#94a3b8;text-align:center;margin-top:0.4rem;">
+          Estrutura de um Regimento: 1 Herói líder + até 3 Companion Units. Unidades Auxiliares ficam fora dos Regimentos e estão sujeitas ao Cumulative Surcharge a partir da 2ª.
+        </figcaption>
+      </figure>
+
       <!-- Auxiliary -->
       <h2 id="auxiliary">Unidades Auxiliares</h2>
       <p>
@@ -108,9 +180,9 @@
         <li>Acomodar Behemoths poderosos que não são Heróis</li>
       </ul>
       <p>
-        O número de slots Auxiliares é limitado pelo Battlepack: Vanguard permite 0&ndash;1,
-        Battlehost permite 0&ndash;2 (antes do Cumulative Surcharge). Auxiliares adicionais além
-        desses tetos são válidos mas acionam a sobretaxa (ver abaixo).
+        O número de Auxiliares <em>sem sobretaxa</em> é limitado pelo Battlepack: Vanguard permite 1
+        (a 2ª já incorre na sobretaxa), Battlehost permite 2 (a 3ª já incorre na sobretaxa).
+        Auxiliares adicionais além desses tetos são válidos mas acionam o Cumulative Surcharge (ver abaixo).
       </p>
 
       <!-- Cumulative Surcharge -->
@@ -119,6 +191,13 @@
         O <strong>Cumulative Surcharge</strong> foi introduzido no <em>Battlescroll de Abril 2026</em>
         para desincentivar listas pesadas em Auxiliares. Funciona da seguinte forma:
       </p>
+      <div class="rules-callout">
+        <strong>Teto de Auxiliares por Battlepack.</strong> O número de Auxiliares <em>sem sobretaxa</em>
+        depende do Battlepack: <strong>Vanguard</strong> permite apenas 1 Auxiliar — qualquer 2º Auxiliar
+        já incorre na sobretaxa. <strong>Battlehost</strong> permite até 2 Auxiliares — a sobretaxa começa
+        no 3º (independentemente do teto). A tabela abaixo mostra o custo adicional acumulado a partir
+        do <strong>2º Auxiliar</strong> (regra global do Battlescroll Abril 2026).
+      </div>
       <p>
         Para cada unidade Auxiliar além da primeira (ou seja, a 2ª, 3ª, 4ª etc.), um custo adicional
         cumulativo de pontos é adicionado ao preço base daquela unidade:
@@ -152,6 +231,80 @@
         do que o oponente ganha <strong>+1 Command Point por Battle Round</strong>. Isso cria uma troca
         real: mais Auxiliares conferem flexibilidade ao custo de eficiência e pontos, enquanto listas
         mais enxutas ganham uma vantagem contínua de recursos.
+      </div>
+
+      <!-- Unique Units -->
+      <h2 id="unique">Unique Units</h2>
+      <p>
+        Algumas unidades têm a keyword <strong>Unique</strong> em seus perfis — geralmente personagens
+        nomeados (named characters) como grandes heróis ou vilões da facção. Regras para Unique Units:
+      </p>
+      <ul class="rules-list">
+        <li>Um exército <strong>não pode incluir mais de uma cópia</strong> da mesma Unique Unit.</li>
+        <li>Unique Units <strong>não podem ser reforçadas</strong> (Reinforced).</li>
+        <li>Unique Units <strong>não podem receber Aprimoramentos</strong> (Heroic Traits, Artefacts
+          of Power etc.).</li>
+      </ul>
+
+      <!-- Battle Formations -->
+      <h2 id="battle-formations">Battle Formations</h2>
+      <p>
+        Cada facção pode ter uma ou mais <strong>Battle Formations</strong> disponíveis. Uma Battle
+        Formation representa uma organização tática ou doutrina de combate específica dentro da facção
+        e confere benefícios únicos ao exército inteiro. Regras:
+      </p>
+      <ul class="rules-list">
+        <li>Uma Battle Formation é escolhida durante a criação da lista — <em>antes da partida</em>.</li>
+        <li>Apenas <strong>uma</strong> Battle Formation pode ser escolhida por exército.</li>
+        <li>Os benefícios da Battle Formation são descritos nas regras de facção (Battletome ou GHB).</li>
+        <li>Algumas Battle Formations podem impor restrições na composição do exército (ex: exigir
+          um tipo específico de unidade como General ou número mínimo de certos warscrolls).</li>
+      </ul>
+
+      <!-- Armies of Renown -->
+      <h2 id="armies-of-renown">Armies of Renown</h2>
+      <p>
+        Algumas facções têm acesso a <strong>Armies of Renown</strong> — exércitos temáticos com
+        regras de facção modificadas. Ao escolher usar um Army of Renown, as regras normais de facção
+        são <strong>substituídas</strong> pelas regras do Army of Renown. Características típicas:
+      </p>
+      <ul class="rules-list">
+        <li>As regras do Army of Renown especificam quais unidades podem ser incluídas (frequentemente
+          restringindo a certas subfações ou keywords).</li>
+        <li>Em troca das restrições, o Army of Renown geralmente oferece Battle Traits e habilidades
+          exclusivas mais poderosas ou temáticas.</li>
+        <li>Regiments of Renown (regimentos pré-construídos de outras facções) podem ser incluídos
+          em Armies of Renown, sujeitos às restrições indicadas no perfil de cada regiment.</li>
+      </ul>
+
+      <!-- Command Models -->
+      <h2 id="command-models">Command Models</h2>
+      <p>
+        Muitas unidades de infantaria e cavalaria podem incluir modelos especiais chamados
+        <strong>Command Models</strong>. Eles são indicados pelas keywords <strong>Champion</strong>,
+        <strong>Musician</strong> e <strong>Standard Bearer</strong> no perfil da unidade.
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Champion:</strong> Um modelo veterano na unidade. Adiciona <strong>+1 ao
+          característica de Attacks</strong> de suas armas. Se o perfil indicar
+          &ldquo;Champion (1/10)&rdquo;, 1 modelo a cada 10 pode ser champion.
+        </li>
+        <li>
+          <strong>Musician:</strong> Enquanto a unidade contiver um músico, ao usar o comando
+          <strong>Rally</strong> a unidade pode fazer <strong>uma rolagem de rally adicional</strong>
+          (além das 6 normais).
+        </li>
+        <li>
+          <strong>Standard Bearer:</strong> Enquanto a unidade contiver um porta-estandarte,
+          adiciona <strong>+1 ao Control score</strong> da unidade para fins de controle de
+          objetivos e terreno.
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Indicação no tabuleiro.</strong> Informe ao oponente antes do jogo quais modelos
+        são champions, músicos e porta-estandartes — especialmente quando não for óbvio pelas
+        miniaturas.
       </div>
 
       <!-- Reinforcement -->

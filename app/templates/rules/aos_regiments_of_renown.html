@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}Regimentos de Renome — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Alianças</p>
+      <ul>
+        <li><a href="#mercenary">Mercenários</a></li>
+        <li><a href="#order">Order</a></li>
+        <li><a href="#chaos">Chaos</a></li>
+        <li><a href="#death">Death</a></li>
+        <li><a href="#destruction">Destruction</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}">Magia &amp; Preces</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
+        <li><a href="{{ url_for('rules.aos_glossary') }}">Glossário</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Regimentos de Renome
+      </p>
+      <h1 class="section-title">Regimentos de Renome</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        Regimentos de Renome são grupos de unidades pré-definidos, temáticos e prontos para uso,
+        que podem ser incluídos em qualquer exército que atenda aos requisitos de aliança. Cada
+        regimento ocupa um slot de Regimento na sua lista e possui custo fixo em pontos.
+        Regimentos marcados com <strong>NOVO</strong> foram adicionados no GHB 2025-26.
+      </p>
+
+      <!-- Regras de Inclusão de RoR -->
+      <h2 id="ror-rules">Regras de Inclusão</h2>
+      <p>
+        Para incluir um Regimento de Renome na sua lista, observe as seguintes regras:
+      </p>
+      <ul class="rules-list">
+        <li>
+          O <strong>Grand Alliance</strong> do regimento deve ser compatível com o Grand Alliance
+          do seu exército — ou o regimento deve ser <strong>Mercenário</strong> (disponível para
+          qualquer aliança).
+        </li>
+        <li>
+          Regimentos de Renome <strong>ocupam um slot de Regimento</strong> na lista, igual a um
+          Regimento normal. O número máximo de Regimentos de Renome permitidos pode ser limitado
+          pelo battlepack em uso (normalmente 1 por lista no formato Battlehost).
+        </li>
+        <li>
+          As unidades de um Regimento de Renome <strong>não podem usar regras de facção</strong>
+          da aliança anfitriã (keywords, habilidades, batalha-formações, etc.) a menos que
+          possuam em seu warscroll a keyword correspondente àquela facção.
+        </li>
+        <li>
+          O líder e as unidades de um Regimento de Renome <strong>não podem receber
+          Enhancements</strong> (Heroic Traits, Artefacts of Power) a menos que possuam a
+          keyword que corresponde ao nome da facção que concede o Enhancement. Enhancements
+          universais (Grand Alliance level) se aplicam normalmente se a keyword de aliança
+          corresponder.
+        </li>
+        <li>
+          Unidades de Regimentos de Renome mantêm seus <strong>warscrolls e habilidades
+          originais</strong> intactos. Apenas restrições de aliança e Enhancements se aplicam
+          de forma diferente.
+        </li>
+      </ul>
+      <div class="rules-callout" style="border-left-color:#c0392b">
+        <strong>RoR não recebe Heroic Traits nem Artefacts.</strong> Mesmo que o líder do
+        Regimento de Renome seja um Herói, ele <em>não pode</em> receber Heroic Traits ou
+        Artefacts of Power do exército aliado a não ser que tenha a keyword da facção daquele
+        Enhancement. Isso é um ponto crítico na construção de listas — não confundir com
+        aliados normais.
+      </div>
+
+      <p>
+        Para incluir um Regimento de Renome na sua lista, o Grand Alliance do regimento deve ser
+        compatível com o Grand Alliance do seu exército (ou o regimento deve ser Mercenário).
+        Mercenários podem ser tomados por qualquer exército independente de aliança.
+      </p>
+
+      <div class="rules-infobox">
+        <strong>Total:</strong> {{ total }} regimentos disponíveis no GHB 2025-26.
+      </div>
+
+      {% for alliance, regiments in grouped %}
+      {% set alliance_slug = alliance | lower | replace(' ', '-') %}
+      <h2 id="{{ alliance_slug }}">{{ alliance }}</h2>
+
+      <div class="ror-grid">
+        {% for r in regiments %}
+        <div class="ror-card">
+          <div class="ror-card-header">
+            <span class="ror-card-name">
+              {% if r.is_new %}<span class="badge-new">NOVO</span> {% endif %}
+              {{ r.name }}
+            </span>
+            {% if r.points_cost %}
+            <span class="ror-card-pts">{{ r.points_cost }} pts</span>
+            {% endif %}
+          </div>
+
+          {% if r.units_list %}
+          <div class="ror-card-units">
+            <span class="ror-label">Unidades:</span>
+            <ul class="ror-unit-list">
+              {% for unit in r.units_list %}
+              <li>{{ unit }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if r.factions_list %}
+          <div class="ror-card-factions">
+            <span class="ror-label">Exércitos elegíveis:</span>
+            <span class="ror-factions">{{ r.factions_list | join(', ') }}</span>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+    </article>
+  </div>
+</section>
+{% endblock %}

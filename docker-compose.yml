@@ -13,6 +13,9 @@ services:
       WAAAHGAME_INSTANCE_DIR: /app/instance
     volumes:
       - waaahgame_data:/app/instance
+      - ./scripts:/app/scripts
+      - ./app/static:/app/app/static
+      - ./app/templates:/app/app/templates
     restart: unless-stopped
 
 volumes:

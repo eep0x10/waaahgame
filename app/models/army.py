@@ -8,14 +8,24 @@ class Army(TimestampMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False, index=True)
     faction_id = db.Column(db.Integer, db.ForeignKey("factions.id"), nullable=False, index=True)
+    ruleset_id = db.Column(db.Integer, db.ForeignKey("rulesets.id"), nullable=True, index=True)
     name = db.Column(db.String(96), nullable=False)
     battlepack = db.Column(db.String(16), nullable=False, default="vanguard")
     points_limit = db.Column(db.Integer, nullable=False, default=1000)
     notes = db.Column(db.Text, nullable=True)
     public_token = db.Column(db.String(32), unique=True, nullable=True, index=True)
 
+    # Faction rule picks (Phase 2) — stored as rule name strings; canonical
+    # data lives in factions.rules_json.  All nullable.
+    formation_id          = db.Column(db.String(120), nullable=True)
+    sub_faction_id        = db.Column(db.String(120), nullable=True)
+    spell_lore_id         = db.Column(db.String(120), nullable=True)
+    prayer_lore_id        = db.Column(db.String(120), nullable=True)
+    manifestation_lore_id = db.Column(db.String(120), nullable=True)
+
     user = db.relationship("User", backref="armies")
     faction = db.relationship("Faction")
+    ruleset = db.relationship("Ruleset")
     regiments = db.relationship(
         "Regiment", backref="army", cascade="all, delete-orphan", order_by="Regiment.position"
     )

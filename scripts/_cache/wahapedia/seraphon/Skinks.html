@@ -1,0 +1,770 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Wahapedia: Age of Sigmar 4th edition, Seraphon — Skinks (unit characteristics, wargear options, wargear profiles, abilities, battle profile and keywords)." />
+<meta name="keywords" content="Wahapedia, Age of Sigmar 4th edition, ORDER, SERAPHON, SLANN, SKINK, SAURUS, KROXIGOR, INFANTRY, CHAMPION, ORDER, SERAPHON, SKINK" />
+
+<script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+<script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+	window.ezstandalone = window.ezstandalone || {};
+	ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
+<script src="//ezoicanalytics.com/analytics.js"></script>
+<link rel="stylesheet" type="text/css" href="/aos4/css/fonts121.css">
+<link name="magnus_did_what" rel="stylesheet" href="/aos4/css/magnus_did_not121.css">
+<link rel="stylesheet" href="/aos4/css/main121.css">
+<link rel="stylesheet" href="/aos4/css/header121.css">
+<link rel="stylesheet" href="/aos4/css/profile121.css">
+<link rel="stylesheet" href="/aos4/css/noprint121.css">
+<link rel="icon" type="image/png" href="/aos4/img/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/tooltipster.bundle.min.css" />
+<link rel="manifest" href="/manifest_AoS4.json">
+<link rel="apple-touch-icon" sizes="57x57" href="/img/web-app/wahapedia-icon-57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/web-app/wahapedia-icon-76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/web-app/wahapedia-icon-114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/web-app/wahapedia-icon-120.png">
+<link rel="apple-touch-icon" sizes="128x128" href="/img/web-app/wahapedia-icon-128.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/web-app/wahapedia-icon-152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="/img/web-app/wahapedia-icon-167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/web-app/wahapedia-icon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/img/web-app/wahapedia-icon-192.png">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+<script type="text/javascript" src="/tooltipster-scrollableTip/tooltipster-scrollableTip.min.js"></script>
+<script type="text/javascript" src="https://wahapedia.ru/scripts/jquery.cookie.js"></script><script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+
+<link rel="stylesheet" type="text/css" href="/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir.min.css" />
+<link rel="stylesheet" href="/aos4/css/tooltipster-noir121.css">
+<title>Skinks</title>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4"></script>
+<script>   
+function submitCaptcha(e) {
+	e.preventDefault();
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6LfARRUkAAAAAD0Li_kOGLUDH_77uo1aMO8YZsA4', {action: 'submit'}).then(function(token) {    
+			$(".tooltipster-box #captcha-box").val(token);
+			$(".tooltipster-box #disable-ads").submit();
+		});
+	});
+}
+function loadErrors() {
+  if($(location).attr('hash') == ""){
+  let searchParams = new URLSearchParams(window.location.search);
+     if(searchParams.has('error')){
+         err = document.createTextNode(searchParams.get('error'));
+         $('#error-login').append(err);
+         $('#error-login').show();
+     }
+     if(searchParams.has('message')){
+         msg = document.createTextNode(searchParams.get('message'));
+         $('#email-sent').append(msg);
+         $('#email-sent').show();
+     }
+  }
+}
+
+$(document).on( 'click', '#btnGetPin', function(e) {
+  $(".tooltipster-box #password-text-field").val("");
+  submitCaptcha(e);
+});
+
+$(document).on( 'click', '#btnDisableAds', function(e) {
+  submitCaptcha(e);
+});
+</script>
+<script type="text/javascript">
+function switchColorTheme(){
+		var userTheme = localStorage.ColorTheme;
+		if (userTheme == undefined) {userTheme = 'default'; localStorage.ColorTheme = userTheme};
+		if ((userTheme == 'dark') || (userTheme == 'light')) {
+			document.documentElement.setAttribute('data-theme', userTheme);}
+		else if (!window.matchMedia) {
+			document.documentElement.setAttribute('data-theme', 'light');}
+		else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-theme', 'dark');}
+			else {
+				document.documentElement.setAttribute('data-theme', 'light');}
+   };
+	switchColorTheme();
+$(document).ready(function(){
+touchHover(); loadErrors(); $.get('https://wahapedia.ru/relog.php');
+	var data = localStorage.ShowFluff;
+	if (data == undefined) {data = 'true'; localStorage.ShowFluff = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowFluff').prop('checked', StrData);
+	ChangeShowFluff();
+
+	$('.ShowFluff').change(function () {
+      localStorage.ShowFluff = $(this).prop('checked');
+	   ChangeShowFluff();
+   });
+
+	function ChangeShowFluff() {
+	if (localStorage.ShowFluff == 'true')
+		{$('.ShowFluff').css('display', '');}
+	else
+		{$('.ShowFluff').css('display', 'none');}
+	}
+	var data = localStorage.ShowLegendaryDatasheets;
+	if (data == undefined) {data = 'false'; localStorage.ShowLegendaryDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowLegendaryDatasheets').prop('checked', StrData);
+
+	$('.ShowLegendaryDatasheets').change(function () {
+      localStorage.ShowLegendaryDatasheets = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPathToGlory;
+	if (data == undefined) {data = 'true'; localStorage.ShowPathToGlory = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPathToGlory').prop('checked', StrData);
+
+	$('.ShowPathToGlory').change(function () {
+      localStorage.ShowPathToGlory = $(this).prop('checked');
+	   FilterApply(false);
+   });
+	var data = localStorage.ShowPitchedBattleProfile;
+	if (data == undefined) {data = 'true'; localStorage.ShowPitchedBattleProfile = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowPitchedBattleProfile').prop('checked', StrData);
+	ChangeShowPitchedBattleProfile();
+
+	$('.ShowPitchedBattleProfile').change(function () {
+      localStorage.ShowPitchedBattleProfile = $(this).prop('checked');
+	   ChangeShowPitchedBattleProfile();
+   });
+
+	function ChangeShowPitchedBattleProfile() {
+	if (localStorage.ShowPitchedBattleProfile == 'true')
+		{$('.ShowPitchedBattleProfile').css('display', '');}
+	else
+		{$('.ShowPitchedBattleProfile').css('display', 'none');}
+	}
+	var data = localStorage.ShowBaseSize;
+	if (data == undefined) {data = 'true'; localStorage.ShowBaseSize = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowBaseSize').prop('checked', StrData);
+	ChangeShowBaseSize();
+
+	$('.ShowBaseSize').change(function () {
+      localStorage.ShowBaseSize = $(this).prop('checked');
+	   ChangeShowBaseSize();
+   });
+
+	function ChangeShowBaseSize() {
+	if (localStorage.ShowBaseSize == 'true')
+		{$('.ShowBaseSize').css('display', '');}
+	else
+		{$('.ShowBaseSize').css('display', 'none');}
+	}
+	var data = localStorage.ShowForgeWorldDatasheets;
+	if (data == undefined) {data = 'true'; localStorage.ShowForgeWorldDatasheets = data};
+
+	var StrData; if (data == 'true') {StrData = true} else {StrData = false};
+	$('.ShowForgeWorldDatasheets').prop('checked', StrData);
+
+	$('.ShowForgeWorldDatasheets').change(function () {
+      localStorage.ShowForgeWorldDatasheets = $(this).prop('checked');
+	   FilterSelect(false);
+	   FilterApply(false);
+   });
+	$('.ColorTheme').prop('value', localStorage.ColorTheme);
+	$('.ColorTheme').change(function () {
+		localStorage.ColorTheme = $(this).prop('value');
+		switchColorTheme();
+	});	
+	$(window).on('load', function() {
+		$('.ya-site-form__input-text').addClass('ya_input');
+	});
+
+
+function FilterSelect(IsInit) {};
+function FilterApply(IsInit) {
+var clFlags = '';
+var comma = '';
+var clAllFlags = '.sLegendary, .sForgeWorld, .sShowPathToGlory';
+if (localStorage.ShowLegendaryDatasheets == 'false') {clFlags = clFlags + comma + '.sLegendary'; comma = ', ';};
+if (localStorage.ShowPathToGlory == 'false') {clFlags = clFlags + comma + '.sShowPathToGlory'; comma = ', ';};
+if (localStorage.ShowForgeWorldDatasheets == 'false') {clFlags = clFlags + comma + '.sForgeWorld'; comma = ', ';};
+
+	$(clAllFlags).show();
+	$(clFlags).hide();
+if ($('.datasheet').is(":hidden")) {$('.datasheet').show(); $('.selectionWarning').show()} else {$('.selectionWarning').hide()}
+UpdateTooltipster(IsInit);
+};
+FilterApply(true);
+
+function UpdateTooltipster(IsInit) {
+if (!IsInit) 
+	{
+	 $('.tooltip').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipk').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipArmyList').filter('.tooltipstered').tooltipster('destroy');
+	 $('.tooltipContents').filter('.tooltipstered').tooltipster('destroy');
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"BEAST"},{tCl:"ORDER"},{tCl:"SERAPHON"},{tCl:"SKINK"},{tCl:"00012"},{tCl:"00013"},{tCl:"00014"},{tCl:"00015"},{tCl:"HERO"},{tCl:"CAVALRY"},{tCl:"SAURUS"},{tCl:"00019"},{tCl:"CHAMPION"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"MUSICIAN"},{tCl:"00025"},{tCl:"STANDARDBEARER"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"INFANTRY"},{tCl:"KROXIGOR"},{tCl:"00032"},{tCl:"00033"},{tCl:"00034"},{tCl:"00035"},{tCl:"00036"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"MONSTER"},{tCl:"00041"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"00050"},{tCl:"00051"},{tCl:"WARMASTER"},{tCl:"UNIQUE"},{tCl:"WIZARD"},{tCl:"00055"},{tCl:"00056"},{tCl:"FLY"},{tCl:"WARD"},{tCl:"SLANN"},{tCl:"00060"},{tCl:"00061"},{tCl:"00062"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+$('.tooltipk'+item.tCl).filter('.tooltipstered').tooltipster('destroy');
+});
+	 if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+	 var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"BEAST"},{tCl:"ORDER"},{tCl:"SERAPHON"},{tCl:"SKINK"},{tCl:"00012"},{tCl:"00013"},{tCl:"00014"},{tCl:"00015"},{tCl:"HERO"},{tCl:"CAVALRY"},{tCl:"SAURUS"},{tCl:"00019"},{tCl:"CHAMPION"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"MUSICIAN"},{tCl:"00025"},{tCl:"STANDARDBEARER"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"INFANTRY"},{tCl:"KROXIGOR"},{tCl:"00032"},{tCl:"00033"},{tCl:"00034"},{tCl:"00035"},{tCl:"00036"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"MONSTER"},{tCl:"00041"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"00050"},{tCl:"00051"},{tCl:"WARMASTER"},{tCl:"UNIQUE"},{tCl:"WIZARD"},{tCl:"00055"},{tCl:"00056"},{tCl:"FLY"},{tCl:"WARD"},{tCl:"SLANN"},{tCl:"00060"},{tCl:"00061"},{tCl:"00062"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});}
+};
+if ($(window).width() >= 800) {
+	$('.no_tooltip').addClass('tooltip').removeClass('no_tooltip');
+	sidesArr = ['top', 'bottom', 'left', 'right'];
+	}
+else {
+	sidesArr = ['top', 'bottom'];
+	}
+;
+sidesArrButt = ['left'];
+$('.tooltip_').addClass('tooltip').removeClass('tooltip_');
+$('.tooltip:hidden').addClass('tooltip_').removeClass('tooltip');
+$('.wTable:visible').each(function (index1, element1) {
+	var trg = true;
+	$(element1).children('.bkg:visible').each(function (index2, element2) {
+		if (trg) {$(element2).addClass('bkg0').removeClass('bkg1')}
+		else {$(element2).addClass('bkg1').removeClass('bkg0')};
+		trg = !trg;
+		if ($(element2).hasClass('bkg_reset')) {trg = true};
+	});
+});
+
+$('.tooltip').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipContents').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipArmyList').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+position: 'left',
+restoration: 'current',
+viewportAware: true,
+arrow: false,
+positionTracker: true,
+contentCloning: true,
+repositionOnScroll: false,
+maxWidth: 1100,
+trigger: 'custom',
+triggerOpen: {
+    mouseenter: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+	 mouseleave: true,
+    tap: true
+}
+});
+$('.tooltipk').tooltipster({
+functionBefore: function(instance, helper){
+$.each($.tooltipster.instances(), function(i, instance){
+	instance.close();
+});
+},
+plugins: ['sideTip', 'scrollableTip'],
+contentCloning: true,
+position: sidesArr,
+restoration: 'current',
+maxWidth: 600,
+viewportAware: true,
+repositionOnScroll: false,
+trigger: 'custom',
+triggerOpen: {
+    click: true,
+    tap: true
+},
+triggerClose: {
+    click: true,
+    tap: true
+}
+});
+var arrTT = [{tCl:"00001"},{tCl:"00002"},{tCl:"00003"},{tCl:"00004"},{tCl:"BEAST"},{tCl:"ORDER"},{tCl:"SERAPHON"},{tCl:"SKINK"},{tCl:"00012"},{tCl:"00013"},{tCl:"00014"},{tCl:"00015"},{tCl:"HERO"},{tCl:"CAVALRY"},{tCl:"SAURUS"},{tCl:"00019"},{tCl:"CHAMPION"},{tCl:"00021"},{tCl:"00022"},{tCl:"00023"},{tCl:"MUSICIAN"},{tCl:"00025"},{tCl:"STANDARDBEARER"},{tCl:"00027"},{tCl:"00028"},{tCl:"00029"},{tCl:"INFANTRY"},{tCl:"KROXIGOR"},{tCl:"00032"},{tCl:"00033"},{tCl:"00034"},{tCl:"00035"},{tCl:"00036"},{tCl:"00037"},{tCl:"00038"},{tCl:"00039"},{tCl:"MONSTER"},{tCl:"00041"},{tCl:"00042"},{tCl:"00043"},{tCl:"00044"},{tCl:"00045"},{tCl:"00046"},{tCl:"00047"},{tCl:"00048"},{tCl:"00049"},{tCl:"00050"},{tCl:"00051"},{tCl:"WARMASTER"},{tCl:"UNIQUE"},{tCl:"WIZARD"},{tCl:"00055"},{tCl:"00056"},{tCl:"FLY"},{tCl:"WARD"},{tCl:"SLANN"},{tCl:"00060"},{tCl:"00061"},{tCl:"00062"},{tCl:"00063"},{tCl:"00064"},{tCl:"00065"},{tCl:"00066"},{tCl:"00067"},{tCl:"00068"},{tCl:"00069"}];arrTT.forEach(function(item, i, arr) {
+$('.tooltip'+item.tCl).on('mouseover', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{mouseenter:true,tap:true},triggerClose:{click:true,mouseleave:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+$('.tooltipk'+item.tCl).on('click', function(){
+	var tooltipInstance;
+	if (!$(this).hasClass('tooltipstered')) 
+		{tooltipInstance = $(this).tooltipster({plugins:['sideTip','scrollableTip'],contentCloning:true,position:sidesArr,restoration:'current',maxWidth:600,viewportAware:true,repositionOnScroll:false,trigger:'custom',triggerOpen:{click:true,tap:true},triggerClose:{click:true,tap:true}}); tooltipInstance.tooltipster('open')}
+	});
+});
+
+});
+$.tooltipster.setDefaults({
+arrow: true,
+delay: [200, 200],
+interactive: true,
+theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+});
+</script>
+<script type="text/javascript">
+var touchHover = function() {
+    $('.tooltip').on('touchstart', function(e) {
+          e.preventDefault();
+          return false;
+    });
+};
+$(document).ready(function() { touchHover(); });
+</script>
+</head>
+
+<body>
+<!--noindex-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')!='turn_it_off') {
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-3",
+		"renderTo": "yandex_rtb_R-A-3376916-3",
+		"type": "feed"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-2",
+		"type": "fullscreen",
+		"platform": "desktop"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-1",
+		"type": "fullscreen",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-5",
+		"type": "floorAd",
+		"platform": "touch"
+	})
+})
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-3376916-6",
+		"type": "floorAd",
+		"platform": "desktop"
+	})
+})
+}});</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+var CookieSet = $.cookie('no_ads_for_boosters');
+
+if (jQuery.cookie('no_ads_for_boosters')=='turn_it_off') {
+	var oldlink = document.getElementsByTagName("link").namedItem('magnus_did_what');
+	oldlink.href = "/aos4/css/magnus_did121.css";
+}
+});
+</script>
+<div id="wrapper2"><div class="noprint"><div id="ezoic-pub-ad-placeholder-147"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(147)});</script></div>
+<div id="wrapper">
+<div class="noprint">
+<div style="position:relative"><div class="SiteHeader_wrapper"><div class="SiteHeader"><a href="/"><div class="SiteHeader_A"></div></a></div></div>
+<div class="NavWrapper_P">
+	<div class="NavDropdown_P">
+	<div class="NavBtn_P NavBtn_Datasheets">Warscrolls</div>
+	<div class="NavDropdown-content_P">
+		<span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/seraphon/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Chief" class="cnClr">Ripperdactyl Chief</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Aggradon" class="cnClr">Saurus Scar-Veteran on Aggradon</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Chief" class="cnClr">Terradon Chief</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Astrolith-Bearer" class="cnClr">Saurus Astrolith Bearer</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood" class="cnClr">Saurus Oldblood</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starpriest" class="cnClr">Skink Starpriest</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starseer" class="cnClr">Skink Starseer</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Slann-Starmaster" class="cnClr">Slann Starmaster</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Datasheet. Seraphon - Sunblood Pack Warscroll (4th edition)" src="/aos4/img/expansions/SN_logo2.png"><a href="/aos4/factions/seraphon/Sunblood-Pack" class="cnClr">Sunblood Pack</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood-on-Carnosaur" class="cnClr">Saurus Oldblood on Carnosaur</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Carnosaur" class="cnClr">Saurus Scar-Veteran on Carnosaur</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Oracle-on-Troglodon" class="cnClr">Skink Oracle on Troglodon</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon-Chief" class="cnClr">Stegadon Chief</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Seraphon (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/seraphon/Scourge-of-Ghyran-Saurus-Oldblood-on-Carnosaur" class="cnClr">Scourge of Ghyran Saurus Oldblood on Carnosaur</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Lord-Kroak" class="cnClr">Lord Kroak</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Beast</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Spawn-of-Chotec" class="cnClr">Spawn of Chotec</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terrawings" class="cnClr">Terrawings</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Aggradon-Lancers" class="cnClr">Aggradon Lancers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Chargers" class="cnClr">Raptadon Chargers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Hunters" class="cnClr">Raptadon Hunters</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders" class="cnClr">Ripperdactyl Riders</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders-2-models-" class="cnClr">Ripperdactyl Riders (2 models)</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders" class="cnClr">Terradon Riders</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders-2-models-" class="cnClr">Terradon Riders (2 models)</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Dartpipes" class="cnClr">Hunters of Huanchi with Dartpipes</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Starstone-Bolas" class="cnClr">Hunters of Huanchi with Starstone Bolas</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor" class="cnClr">Kroxigor</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor-Warspawned" class="cnClr">Kroxigor Warspawned</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Guard" class="cnClr">Saurus Guard</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Warriors" class="cnClr">Saurus Warriors</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skinks" class="cnClr">Skinks</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Jaws-of-Itzl" class="cnClr">The Jaws of Itzl</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Starblood-Stalkers" class="cnClr">The Starblood Stalkers</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Ark-of-Sotek" class="cnClr">Bastiladon with Ark of Sotek</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Solar-Engine" class="cnClr">Bastiladon with Solar Engine</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Engine-of-the-Gods" class="cnClr">Engine of the Gods</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon" class="cnClr">Stegadon</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Realmshaper-Engine" class="cnClr">Realmshaper Engine</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Regiments of Renown - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/ID_logo2.png"><a href="/aos4/factions/seraphon/Bloodthirsty-Shiver" class="cnClr">Bloodthirsty Shiver</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/seraphon/Bundo-Whalebiter" class="cnClr">Bundo Whalebiter</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/seraphon/Dawnrider-Lance" class="cnClr">Dawnrider Lance</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/seraphon/Drekki-s-Privateers" class="cnClr">Drekki’s Privateers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/seraphon/Drycha-s-Talons" class="cnClr">Drycha’s Talons</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/seraphon/Elthwin-s-Thorns" class="cnClr">Elthwin’s Thorns</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/seraphon/Exile-Scavengers" class="cnClr">Exile Scavengers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Cities of Sigmar (4th edition)" src="/aos4/img/expansions/CoS_logo2.png"><a href="/aos4/factions/seraphon/Heroes-of-The-Jade-Abbey" class="cnClr">Heroes of The Jade Abbey</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/seraphon/Khinerai-Death-Flight" class="cnClr">Khinerai Death Flight</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/seraphon/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Regiments of Renown - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/ID_logo2.png"><a href="/aos4/factions/seraphon/Namarti-Shore-Raid" class="cnClr">Namarti Shore Raid</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/seraphon/Sigil-Convocation" class="cnClr">Sigil Convocation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/seraphon/Sky-Port-Profiteers" class="cnClr">Sky-Port Profiteers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/seraphon/The-Crimson-Lash" class="cnClr">The Crimson Lash</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/seraphon/The-Horizon-Seekers" class="cnClr">The Horizon Seekers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/seraphon/The-Twisted-Branch" class="cnClr">The Twisted Branch</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/seraphon/Valnir-s-Stormwing" class="cnClr">Valnir’s Stormwing</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Fjori-s-Flamebearers" class="cnClr">Fjori’s Flamebearers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Gotrek-Gurnisson" class="cnClr">Gotrek Gurnisson</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Norgrimm-s-Rune-Throng" class="cnClr">Norgrimm’s Rune Throng</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Saviours-of-Cinderfall" class="cnClr">Saviours of Cinderfall</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/seraphon/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/seraphon/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/The-Blacktalons" class="cnClr">The Blacktalons</a></div></div></div></span>
+	</div>
+	</div>
+</div>
+	<div class="NavWrapper_M">
+
+	<div class="NavDropdown_Search">
+	<div class="NavBtn_Search">&nbsp;</div>
+	<div class="NavDropdown-content_Search">
+		<div class="yandex_search_line_short"><div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script></div>
+	</div>
+	</div>
+<div class="NavDropdown_A">
+	<div class="NavBtn_A">&nbsp;</div>
+	<div class="NavDropdown-content_A">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/about">About</a><a href="/aos4/the-rules/data-export">Data Export</a>
+	</div>
+	</div>
+	<div class="NavDropdown_S">
+	<div class="NavBtn_S">&nbsp;</div>
+	<div class="NavDropdown-content_S">
+		<div class="armylist_header">Settings</div><div style="clear:both"></div><label class="container">
+<input checked="true" type="checkbox" class="ShowForgeWorldDatasheets"></input>
+	<span class="checkmark"></span>Show Forge World warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowLegendaryDatasheets"></input>
+	<span class="checkmark"></span>Show Legends and not recommended rules/warscrolls
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowFluff"></input>
+	<span class="checkmark"></span>Show fluff text
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPathToGlory"></input>
+	<span class="checkmark"></span>Show Path to Glory rules
+</label>
+<label class="container">
+<input checked="true" type="checkbox" class="ShowPitchedBattleProfile"></input>
+	<span class="checkmark"></span>Show Battle Profile
+</label>
+<label style="margin-left:22px" class="container">
+<input checked="true" type="checkbox" class="ShowBaseSize"></input>
+	<span class="checkmark"></span>Show base size
+</label>
+<label class="container" style="padding-left:0px">Color theme: 
+	<select class="ctrlSelect ColorTheme" size="1">
+		<option class="ctrlOption" value="default">OS default</option>
+		<option class="ctrlOption" value="light">Bright</option>
+		<option class="ctrlOption" value="dark">Dark</option>
+	</select>
+</label>
+	</div>
+	</div>
+<div class="NavDropdown">
+	<div class="NavBtn NavBtn_TheRules">The Rules</div>
+	<div class="NavDropdown-content">
+		<div class="FactionHeader"></div><a href="/aos4/the-rules/quick-start-guide">Quick Start Guide</a><a href="/aos4/the-rules/the-core-rules">The Core Rules</a><a href="/aos4/the-rules/faqs">FAQs</a><div class="NavColumns_indent_solid"><br></div><div class="BreakInsideAvoid"><div class="FactionHeader">Matched Play Battlepack</div><a href="/aos4/the-rules/first-blood">First Blood</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Path to Glory Battlepack</div><a href="/aos4/the-rules/ascension">Ascension</a><a href="/aos4/the-rules/ravaged-coast">Ravaged Coast</a><a href="/aos4/the-rules/blighted-wilds">Blighted Wilds</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">General’s Handbooks</div><a href="/aos4/the-rules/general-s-handbook-2024-25">General’s Handbook 2024-25</a><a href="/aos4/the-rules/general-s-handbook-2025-26">General’s Handbook 2025-26</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Battleplans</div><a href="/aos4/the-rules/bunker">Bunker</a><a href="/aos4/the-rules/red-gobbo-battleplan">Red Gobbo Battleplan</a><div class="NavColumns_indent_solid"><br></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Flashpoints</div><a href="/aos4/the-rules/siege-of-lethis">Siege of Lethis</a></div>
+	</div>
+	</div>
+	<div class="NavDropdown">
+	<div class="NavBtn NavBtn_Factions">Factions</div>
+	<div class="NavDropdown-content">
+		<div class="NavColumns3"><div class="BreakInsideAvoid"><div class="FactionHeader">Order</div><a   href="/aos4/factions/cities-of-sigmar">Cities of Sigmar</a><a   href="/aos4/factions/daughters-of-khaine">Daughters of Khaine</a><a   href="/aos4/factions/fyreslayers">Fyreslayers</a><a   href="/aos4/factions/idoneth-deepkin">Idoneth Deepkin</a><a   href="/aos4/factions/kharadron-overlords">Kharadron Overlords</a><a   href="/aos4/factions/lumineth-realm-lords">Lumineth Realm-lords</a><a   href="/aos4/factions/seraphon">Seraphon</a><a   href="/aos4/factions/stormcast-eternals">Stormcast Eternals</a><a   href="/aos4/factions/sylvaneth">Sylvaneth</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Chaos</div><a   href="/aos4/factions/beasts-of-chaos">Beasts of Chaos</a><a   href="/aos4/factions/blades-of-khorne">Blades of Khorne</a><a   href="/aos4/factions/disciples-of-tzeentch">Disciples of Tzeentch</a><a   href="/aos4/factions/hedonites-of-slaanesh">Hedonites of Slaanesh</a><a   href="/aos4/factions/helsmiths-of-hashut">Helsmiths of Hashut</a><a   href="/aos4/factions/maggotkin-of-nurgle">Maggotkin of Nurgle</a><a   href="/aos4/factions/skaven">Skaven</a><a   href="/aos4/factions/slaves-to-darkness">Slaves to Darkness</a><div class="NavColumns_indent"></div></div><div class="BreakInsideAvoid"><div class="FactionHeader">Death</div><a   href="/aos4/factions/flesh-eater-courts">Flesh-eater Courts</a><a   href="/aos4/factions/nighthaunt">Nighthaunt</a><a   href="/aos4/factions/ossiarch-bonereapers">Ossiarch Bonereapers</a><a   href="/aos4/factions/soulblight-gravelords">Soulblight Gravelords</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Destruction</div><a   href="/aos4/factions/bonesplitterz">Bonesplitterz</a><a   href="/aos4/factions/gloomspite-gitz">Gloomspite Gitz</a><a   href="/aos4/factions/ironjawz">Ironjawz</a><a   href="/aos4/factions/kruleboyz">Kruleboyz</a><a   href="/aos4/factions/ogor-mawtribes">Ogor Mawtribes</a><a   href="/aos4/factions/sons-of-behemat">Sons of Behemat</a><div class="NavColumns_indent"></div></div><div class="NavColumns_indent2"></div><div class="BreakInsideAvoid"><div class="FactionHeader">Other</div><a   href="/aos4/factions/endless-spells">Endless Spells</a></div></div>
+	</div>
+	</div>
+</div>
+<div class="NavUnderline_M"></div>
+
+<div class="logoBW_float">
+<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logoBW no_tooltip" title="Support on Boosty"></div></a>
+<a class="noads_logoBW tooltip" data-tooltip-content="#tooltip_contentLoginForm"></a>
+<div class="slide-bottom" id="error-login"></div>
+<div class="slide-bottom" id="email-sent"></div>
+</div>
+</div>
+
+<div class="yandex_search_line yandex_search_line_show">
+<div class="ya-site-form ya-site-form_inited_no" data-bem="{&quot;action&quot;:&quot;http://wahapedia.ru/aos4/search.html&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:16,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;en&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;Yandex Site Search #11489356&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;com&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:11489356,&quot;input_fg&quot;:&quot;#000000&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;Search this site...&quot;,&quot;input_placeholderColor&quot;:&quot;#999999&quot;,&quot;input_borderColor&quot;:&quot;#7f9db9&quot;}"><form action="https://yandex.com/search/site/" method="get" target="_blank" accept-charset="utf-8"><input type="hidden" name="searchid" value="11489356"/><input type="hidden" name="l10n" value="en"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Search"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+</div>
+<div style="clear:both"></div>
+</div>
+<h1 class="page_header2"><span class="page_header_span2 kwbu tooltip" data-tooltip-content="#tooltip_contentFactionRules">Seraphon</span><span class="page_header_span2"> – Skinks</span></h1>
+<div class="noprint">
+
+</div>
+<!--/noindex-->
+<div class="noprint"><div class="selectionWarning"><div class="WahapediaWarningSign"></div>This warscroll does not meet the selection criteria (see <b>Settings</b> tab).</div></div>
+<div class="datasheet  "><div class="wsHeader_short"><div class="nails-header"><span class="nails">•</span>SERAPHON WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Skinks<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Seraphon%20Skinks%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div><div class="wsCharLegend"><div class="BreakInsideAvoid Corner22f stretchTable" style="padding:0px;max-width:100%;"><table class=" stretchTable collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22f_1 dsColorCSSSN"></td><td class="Corner22f_2 dsColorCSSSN"></td><td class="Corner22f_3 dsColorCSSSN"></td></tr><tr><td class="Corner22f_8 dsColorCSSSN"></td><td class="Corner22f_9 dsColorBanSN"><div class="AoS_profile"><div class="wsMove">8"</div><div class="wsWounds">1</div><div class="wsSave">6+</div><div class="wsBravery">1</div></div><div class="ShowFluff wsLegend">Frailer than their saurus cousins, skinks make up for their lack of raw power with agility, cunning and a natural aptitude for skirmish combat. Few foes can keep pace with these fleet-footed reptiles as they strike and fade away, leaving their quarry riddled with poisonous blowpipe darts. Such tactics are a vital tool in the Seraphon way of war, pulling apart enemy formations so that the armoured wedge of the saurus can deal the killing blow. As confusion reigns amidst the maelstrom of battle, skinks circle back to strike at the flanks of their foe with ruthlessness at least equal to their larger kin, falling upon isolated troops with moonstone javelins, cudgels and daggers.
+
+By far the most numerous of all Seraphon species, skinks are not born warriors. When they are not called upon to fight, they spend most of their time performing the tasks that keep the temple-cities and ships functioning – acting as administrators, technicians and artisans. Yet such is their devotion to the Old Ones that they will drop their tools whenever the situation demands it, gladly sacrificing their lives for the greater cause.</div></td><td class="Corner22f_4 dsColorCSSSN"></td></tr><tr><td class="Corner22f_7 dsColorCSSSN"></td><td class="Corner22f_6 dsColorCSSSN"></td><td class="Corner22f_5 dsColorCSSSN"></td></tr></tbody></table></div></div><div class="wsBody"><div class="wsBodyTop"><div class="wsHeader_long"><div class="nails-header"><span class="nails">•</span>SERAPHON WARSCROLL<span class="nails">•</span></div><div class="wsHeaderWrap_c"><div class="wsHeader"><div class="wsHeaderIn">Skinks<a target="_blank" href="https://www.google.com/search?tbm=isch&q=Age%20of%20Sigmar%20Seraphon%20Skinks%20miniature"><div title="Search for model’s image on the Internet" class="tooltip picSearch"></div></a></div></div></div></div><div class="wsTable"><table class="wTable" border="1" cellspacing="0" cellpadding="2" style="border-collapse:collapse;border-width:0px"><tr class="dsColorBgSN wsHeaderRow"><td class="wsHeaderCellName_RangedWeapons wsDataCell_long"></td><td class="wsHeaderCellName"><div class="wsHeaderCellName_RangedWeapons wsDataCell_short"></div><span class="wsDataCell_long">RANGED WEAPONS</span></td><td class="wsHeaderCell">Rng</td><td class="wsHeaderCell">Atk</td><td class="wsHeaderCell">Hit</td><td class="wsHeaderCell">Wnd</td><td class="wsHeaderCell">Rnd</td><td class="wsHeaderCell">Dmg</td></tr><tbody class="bkg"><tr class="wsDataRow wsDataRow_short"><td colspan="7" style="border-width:0px">Javelins and Boltspitters [<span class="wsWeaponAbility"><span class="tooltip00036" data-tooltip-content="#tooltip_content00036"><span class="tt kwbu">Shoot</span> <span class="tt kwbu">in</span> <span class="tt kwbu">Combat</span></span></span>]</td></tr><tr class="wsDataRow dsColorFrSN"><td class="wsDataCell_long wsBorderN"></td><td class="wsDataCell_short wsBorderL dsColorFrSN"></td><td class="wsDataCell_long wsBorderL dsColorFrSN">Javelins and Boltspitters<br><span class="wsWeaponAbility"><span class="tooltip00036" data-tooltip-content="#tooltip_content00036"><span class="tt kwbu">Shoot</span> <span class="tt kwbu">in</span> <span class="tt kwbu">Combat</span></span></span></td><td class="wsBorderM wsCell dsColorFrSN">12"</td><td class="wsBorderM wsCell dsColorFrSN">2</td><td class="wsBorderM wsCell dsColorFrSN">4+</td><td class="wsBorderM wsCell dsColorFrSN">4+</td><td class="wsBorderM wsCell dsColorFrSN">-</td><td class="wsBorderR wsCell dsColorFrSN">1</td></tr></tbody><tr class="dsColorBgSN wsHeaderRow"><td class="wsHeaderCellName_MeleeWeapons wsDataCell_long"></td><td class="wsHeaderCellName"><div class="wsHeaderCellName_MeleeWeapons wsDataCell_short"></div><span class="wsDataCell_long">MELEE WEAPONS</span></td><td class="wsHeaderCell"></td><td class="wsHeaderCell">Atk</td><td class="wsHeaderCell">Hit</td><td class="wsHeaderCell">Wnd</td><td class="wsHeaderCell">Rnd</td><td class="wsHeaderCell">Dmg</td></tr><tbody class="bkg"><tr class="wsDataRow wsDataRow_short"><td colspan="7" style="border-width:0px">Celestite Daggers and Moonstone Clubs</td></tr><tr class="wsDataRow dsColorFrSN"><td class="wsDataCell_long wsBorderN_"></td><td class="wsDataCell_short wsBorderN_ dsColorFrSN"></td><td class="wsDataCell_long wsBorderN_ dsColorFrSN">Celestite Daggers and Moonstone Clubs</td><td class="wsBorderL_ wsCell dsColorFrSN"></td><td class="wsBorderM_ wsCell dsColorFrSN">1</td><td class="wsBorderM_ wsCell dsColorFrSN">4+</td><td class="wsBorderM_ wsCell dsColorFrSN">5+</td><td class="wsBorderM_ wsCell dsColorFrSN">-</td><td class="wsBorderR_ wsCell dsColorFrSN">1</td></tr></tbody></table></div><div style="clear:both"></div><div class="Columns2_AoS"><div class="BreakInsideAvoid PitchedBattleProfile ShowPitchedBattleProfile"><div class="wsAbilityHeader">BATTLE PROFILE</div><a href="/aos4/the-rules/the-core-rules/#Battle-Profiles"><div class="tooltip_link_inline"></div></a><br><span class="redfont">Unit Size</span><b>: </b>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redfont">Points</span><b>: </b>80<br><span class="ShowBaseSize"><span class="redfont">Base size</span><b>: </b>25mm</span><br class="ShowBaseSize"><div><b>Can be reinforced: </b>Yes</div></div><div class="ShowPitchedBattleProfile"><br></div><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(1927%) hue-rotate(171deg) brightness(95%) contrast(90%);"></td><td class="abHeader" bgcolor="#606362"><img class="abLogo" src="/aos4/img/abMovement.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(1927%) hue-rotate(171deg) brightness(95%) contrast(90%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#606362" class="abBody abNoReaction"><b>SWIFT AND NIMBLE<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Though not physically powerful, skinks are fleet of foot, able to rapidly redeploy and outmanoeuvre the enemy at a single chirruped command.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> When this unit uses the ‘<span class="tooltip00069" data-tooltip-content="#tooltip_content00069"><span class="tt kwbu">Redeploy</span></span>’ command, when determining the distance this unit can move, you can roll 2 dice instead of 1 and pick either result.</div></div></div></div></div><div class="wsBodyBottom"><div style="clear:both"><br></div><table width=100% border="0" cellspacing="0" cellpadding="6"><tr><td rowspan="2" class="wsKeywordHeader dsColorBgSN"><div style="font-weight:700; font-family:'Minion-Pro',serif;">KEYWORDS</div></td><td class="wsKeywordLine1 dsColorFrSN"><span class="tooltipkINFANTRY" data-tooltip-content="#tooltip_contentINFANTRY" data-tooltip-anchor="#tooltip_contentINFANTRY"><span class="kwb kwbu">INFANTRY</span></span>, <span class="tooltipkCHAMPION" data-tooltip-content="#tooltip_contentCHAMPION" data-tooltip-anchor="#tooltip_contentCHAMPION"><span class="kwb kwbu">CHAMPION</span></span></td></tr><tr><td class="wsKeywordLine2 dsColorFrSN"><span class="tooltipkORDER" data-tooltip-content="#tooltip_contentORDER" data-tooltip-anchor="#tooltip_contentORDER"><span class="kwb kwbu">ORDER</span></span>, <span class="tooltipkSERAPHON" data-tooltip-content="#tooltip_contentSERAPHON" data-tooltip-anchor="#tooltip_contentSERAPHON"><span class="kwb kwbu">SERAPHON</span></span>, <span class="tooltipkSKINK" data-tooltip-content="#tooltip_contentSKINK" data-tooltip-anchor="#tooltip_contentSKINK"><span class="kwb kwbu">SKINK</span></span></td></tr></table></div></div></div><div style="clear:both"></div>
+<!--noindex--><div class="tooltip_templates"><span id="tooltip_contentORDER"><p>The <span class="kwb">ORDER</span> keyword is used in the following Seraphon warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Aggradon-Lancers" class="cnClr">Aggradon Lancers</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Ark-of-Sotek" class="cnClr">Bastiladon with Ark of Sotek</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Solar-Engine" class="cnClr">Bastiladon with Solar Engine</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Engine-of-the-Gods" class="cnClr">Engine of the Gods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Dartpipes" class="cnClr">Hunters of Huanchi with Dartpipes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Starstone-Bolas" class="cnClr">Hunters of Huanchi with Starstone Bolas</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor" class="cnClr">Kroxigor</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor-Warspawned" class="cnClr">Kroxigor Warspawned</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Lord-Kroak" class="cnClr">Lord Kroak</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Chargers" class="cnClr">Raptadon Chargers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Hunters" class="cnClr">Raptadon Hunters</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Realmshaper-Engine" class="cnClr">Realmshaper Engine</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Chief" class="cnClr">Ripperdactyl Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders" class="cnClr">Ripperdactyl Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders-2-models-" class="cnClr">Ripperdactyl Riders (2 models)</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Astrolith-Bearer" class="cnClr">Saurus Astrolith Bearer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Guard" class="cnClr">Saurus Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood" class="cnClr">Saurus Oldblood</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood-on-Carnosaur" class="cnClr">Saurus Oldblood on Carnosaur</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Aggradon" class="cnClr">Saurus Scar-Veteran on Aggradon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Carnosaur" class="cnClr">Saurus Scar-Veteran on Carnosaur</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Warriors" class="cnClr">Saurus Warriors</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Oracle-on-Troglodon" class="cnClr">Skink Oracle on Troglodon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starpriest" class="cnClr">Skink Starpriest</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starseer" class="cnClr">Skink Starseer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skinks" class="cnClr">Skinks</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Slann-Starmaster" class="cnClr">Slann Starmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Spawn-of-Chotec" class="cnClr">Spawn of Chotec</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon" class="cnClr">Stegadon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon-Chief" class="cnClr">Stegadon Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Chief" class="cnClr">Terradon Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders" class="cnClr">Terradon Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders-2-models-" class="cnClr">Terradon Riders (2 models)</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terrawings" class="cnClr">Terrawings</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Datasheet. Seraphon - Sunblood Pack Warscroll (4th edition)" src="/aos4/img/expansions/SN_logo2.png"><a href="/aos4/factions/seraphon/Sunblood-Pack" class="cnClr">Sunblood Pack</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Seraphon (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/seraphon/Scourge-of-Ghyran-Saurus-Oldblood-on-Carnosaur" class="cnClr">Scourge of Ghyran Saurus Oldblood on Carnosaur</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Jaws-of-Itzl" class="cnClr">The Jaws of Itzl</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Starblood-Stalkers" class="cnClr">The Starblood Stalkers</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentSERAPHON"><p>The <a href="/aos4/factions/seraphon"><span class="kwb">SERAPHON</span></a> keyword is used in the following Seraphon warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Aggradon-Lancers" class="cnClr">Aggradon Lancers</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Ark-of-Sotek" class="cnClr">Bastiladon with Ark of Sotek</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Solar-Engine" class="cnClr">Bastiladon with Solar Engine</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Engine-of-the-Gods" class="cnClr">Engine of the Gods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Dartpipes" class="cnClr">Hunters of Huanchi with Dartpipes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Starstone-Bolas" class="cnClr">Hunters of Huanchi with Starstone Bolas</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor" class="cnClr">Kroxigor</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor-Warspawned" class="cnClr">Kroxigor Warspawned</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Lord-Kroak" class="cnClr">Lord Kroak</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Chargers" class="cnClr">Raptadon Chargers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Hunters" class="cnClr">Raptadon Hunters</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Realmshaper-Engine" class="cnClr">Realmshaper Engine</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Chief" class="cnClr">Ripperdactyl Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders" class="cnClr">Ripperdactyl Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders-2-models-" class="cnClr">Ripperdactyl Riders (2 models)</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Astrolith-Bearer" class="cnClr">Saurus Astrolith Bearer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Guard" class="cnClr">Saurus Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood" class="cnClr">Saurus Oldblood</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood-on-Carnosaur" class="cnClr">Saurus Oldblood on Carnosaur</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Aggradon" class="cnClr">Saurus Scar-Veteran on Aggradon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Carnosaur" class="cnClr">Saurus Scar-Veteran on Carnosaur</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Warriors" class="cnClr">Saurus Warriors</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Oracle-on-Troglodon" class="cnClr">Skink Oracle on Troglodon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starpriest" class="cnClr">Skink Starpriest</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starseer" class="cnClr">Skink Starseer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skinks" class="cnClr">Skinks</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Slann-Starmaster" class="cnClr">Slann Starmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Spawn-of-Chotec" class="cnClr">Spawn of Chotec</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon" class="cnClr">Stegadon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon-Chief" class="cnClr">Stegadon Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Chief" class="cnClr">Terradon Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders" class="cnClr">Terradon Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders-2-models-" class="cnClr">Terradon Riders (2 models)</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terrawings" class="cnClr">Terrawings</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Datasheet. Seraphon - Sunblood Pack Warscroll (4th edition)" src="/aos4/img/expansions/SN_logo2.png"><a href="/aos4/factions/seraphon/Sunblood-Pack" class="cnClr">Sunblood Pack</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Seraphon (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/seraphon/Scourge-of-Ghyran-Saurus-Oldblood-on-Carnosaur" class="cnClr">Scourge of Ghyran Saurus Oldblood on Carnosaur</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Jaws-of-Itzl" class="cnClr">The Jaws of Itzl</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Starblood-Stalkers" class="cnClr">The Starblood Stalkers</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentSKINK"><p>The <span class="kwb">SKINK</span> keyword is used in the following Seraphon warscrolls:</p><div class="Columns2"><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Ark-of-Sotek" class="cnClr">Bastiladon with Ark of Sotek</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Solar-Engine" class="cnClr">Bastiladon with Solar Engine</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Engine-of-the-Gods" class="cnClr">Engine of the Gods</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Dartpipes" class="cnClr">Hunters of Huanchi with Dartpipes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Starstone-Bolas" class="cnClr">Hunters of Huanchi with Starstone Bolas</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Chargers" class="cnClr">Raptadon Chargers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Hunters" class="cnClr">Raptadon Hunters</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Chief" class="cnClr">Ripperdactyl Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders" class="cnClr">Ripperdactyl Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders-2-models-" class="cnClr">Ripperdactyl Riders (2 models)</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Oracle-on-Troglodon" class="cnClr">Skink Oracle on Troglodon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starpriest" class="cnClr">Skink Starpriest</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starseer" class="cnClr">Skink Starseer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skinks" class="cnClr">Skinks</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Spawn-of-Chotec" class="cnClr">Spawn of Chotec</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon" class="cnClr">Stegadon</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon-Chief" class="cnClr">Stegadon Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Chief" class="cnClr">Terradon Chief</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders" class="cnClr">Terradon Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders-2-models-" class="cnClr">Terradon Riders (2 models)</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Starblood-Stalkers" class="cnClr">The Starblood Stalkers</a></div><div style="clear:both"></div></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentArmyList"><span class="contents"><div class="armylist_header">Army List</div><span class="datasheetsCollated"><a href="/aos4/factions/seraphon/warscrolls.html">Warscrolls collated</a></span><div style="clear:both"></div><div class="NavColumns3"><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Chief" class="cnClr">Ripperdactyl Chief</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Aggradon" class="cnClr">Saurus Scar-Veteran on Aggradon</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Chief" class="cnClr">Terradon Chief</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Astrolith-Bearer" class="cnClr">Saurus Astrolith Bearer</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood" class="cnClr">Saurus Oldblood</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starpriest" class="cnClr">Skink Starpriest</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starseer" class="cnClr">Skink Starseer</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Slann-Starmaster" class="cnClr">Slann Starmaster</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Datasheet. Seraphon - Sunblood Pack Warscroll (4th edition)" src="/aos4/img/expansions/SN_logo2.png"><a href="/aos4/factions/seraphon/Sunblood-Pack" class="cnClr">Sunblood Pack</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood-on-Carnosaur" class="cnClr">Saurus Oldblood on Carnosaur</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Scar-Veteran-on-Carnosaur" class="cnClr">Saurus Scar-Veteran on Carnosaur</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Oracle-on-Troglodon" class="cnClr">Skink Oracle on Troglodon</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon-Chief" class="cnClr">Stegadon Chief</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Seraphon (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/seraphon/Scourge-of-Ghyran-Saurus-Oldblood-on-Carnosaur" class="cnClr">Scourge of Ghyran Saurus Oldblood on Carnosaur</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Hero</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Lord-Kroak" class="cnClr">Lord Kroak</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Beast</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Spawn-of-Chotec" class="cnClr">Spawn of Chotec</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terrawings" class="cnClr">Terrawings</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Cavalry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Aggradon-Lancers" class="cnClr">Aggradon Lancers</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Chargers" class="cnClr">Raptadon Chargers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Hunters" class="cnClr">Raptadon Hunters</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders" class="cnClr">Ripperdactyl Riders</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders-2-models-" class="cnClr">Ripperdactyl Riders (2 models)</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders" class="cnClr">Terradon Riders</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders-2-models-" class="cnClr">Terradon Riders (2 models)</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Infantry</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Dartpipes" class="cnClr">Hunters of Huanchi with Dartpipes</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Starstone-Bolas" class="cnClr">Hunters of Huanchi with Starstone Bolas</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor" class="cnClr">Kroxigor</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor-Warspawned" class="cnClr">Kroxigor Warspawned</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Guard" class="cnClr">Saurus Guard</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Warriors" class="cnClr">Saurus Warriors</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skinks" class="cnClr">Skinks</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Jaws-of-Itzl" class="cnClr">The Jaws of Itzl</a></div><div class="i15 ATln clFl sLegendary"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Starblood-Stalkers" class="cnClr">The Starblood Stalkers</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Monster</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Ark-of-Sotek" class="cnClr">Bastiladon with Ark of Sotek</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Bastiladon-with-Solar-Engine" class="cnClr">Bastiladon with Solar Engine</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Engine-of-the-Gods" class="cnClr">Engine of the Gods</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Stegadon" class="cnClr">Stegadon</a></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Faction Terrain</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Realmshaper-Engine" class="cnClr">Realmshaper Engine</a></div></div></div><div style="margin-bottom:8px;"><div class="BreakInsideAvoid"><div class="i5 ATln "><span class="cnClr"><b class="BatRole">Regiment of Renown</b></span></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Regiments of Renown - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/ID_logo2.png"><a href="/aos4/factions/seraphon/Bloodthirsty-Shiver" class="cnClr">Bloodthirsty Shiver</a></div></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Sons of Behemat (4th edition)" src="/aos4/img/expansions/SoB_logo2.png"><a href="/aos4/factions/seraphon/Bundo-Whalebiter" class="cnClr">Bundo Whalebiter</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/seraphon/Dawnrider-Lance" class="cnClr">Dawnrider Lance</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/seraphon/Drekki-s-Privateers" class="cnClr">Drekki’s Privateers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/seraphon/Drycha-s-Talons" class="cnClr">Drycha’s Talons</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/seraphon/Elthwin-s-Thorns" class="cnClr">Elthwin’s Thorns</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/seraphon/Exile-Scavengers" class="cnClr">Exile Scavengers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Faction Pack. Cities of Sigmar (4th edition)" src="/aos4/img/expansions/CoS_logo2.png"><a href="/aos4/factions/seraphon/Heroes-of-The-Jade-Abbey" class="cnClr">Heroes of The Jade Abbey</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/seraphon/Khinerai-Death-Flight" class="cnClr">Khinerai Death Flight</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Disciples of Tzeentch (4th edition)" src="/aos4/img/expansions/DoT_logo2.png"><a href="/aos4/factions/seraphon/Mask-of-the-Deceiver" class="cnClr">Mask of the Deceiver</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Regiments of Renown - Idoneth Deepkin (4th edition)" src="/aos4/img/expansions/ID_logo2.png"><a href="/aos4/factions/seraphon/Namarti-Shore-Raid" class="cnClr">Namarti Shore Raid</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Lumineth Realm-lords (4th edition)" src="/aos4/img/expansions/LRL_logo2.png"><a href="/aos4/factions/seraphon/Sigil-Convocation" class="cnClr">Sigil Convocation</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Kharadron Overlords (4th edition)" src="/aos4/img/expansions/KO_logo2.png"><a href="/aos4/factions/seraphon/Sky-Port-Profiteers" class="cnClr">Sky-Port Profiteers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Daughters of Khaine (4th edition)" src="/aos4/img/expansions/DoK_logo2.png"><a href="/aos4/factions/seraphon/The-Crimson-Lash" class="cnClr">The Crimson Lash</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/seraphon/The-Horizon-Seekers" class="cnClr">The Horizon Seekers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Sylvaneth (4th edition)" src="/aos4/img/expansions/SY_logo2.png"><a href="/aos4/factions/seraphon/The-Twisted-Branch" class="cnClr">The Twisted Branch</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Battletome. Stormcast Eternals (4th edition)" src="/aos4/img/expansions/SE_logo2.png"><a href="/aos4/factions/seraphon/Valnir-s-Stormwing" class="cnClr">Valnir’s Stormwing</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Fjori-s-Flamebearers" class="cnClr">Fjori’s Flamebearers</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Gotrek-Gurnisson" class="cnClr">Gotrek Gurnisson</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Norgrimm-s-Rune-Throng" class="cnClr">Norgrimm’s Rune Throng</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/Saviours-of-Cinderfall" class="cnClr">Saviours of Cinderfall</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/seraphon/Snerk-s-Trogg-Fer-Hire" class="cnClr">Snerk’s Trogg-Fer-Hire</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Grotmas Advent: Regiments of Renown (4th edition)" src="/aos4/img/expansions/DaRedGobbo_logo2.png"><a href="/aos4/factions/seraphon/Stumblefoot-Gargant" class="cnClr">Stumblefoot Gargant</a></div><div class="i15 ATln "><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Regiments of Renown (4th edition)" src="/aos4/img/expansions/WARHAMMER_logo2.png"><a href="/aos4/factions/seraphon/The-Blacktalons" class="cnClr">The Blacktalons</a></div></div></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentFactionRules"><span class="contents"><div class="tooltip_header">Faction Rules</div><a href="/aos4/factions/seraphon"><div class="tooltip_link"></div></a><div style="clear:both"></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/#Battle-Traits" class="cnClr">Battle Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/#Battle-Formations" class="cnClr">Battle Formations</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/#Heroic-Traits" class="cnClr">Heroic Traits</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/#Artefacts-of-Power" class="cnClr">Artefacts of Power</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/#Spell-Lore" class="cnClr">Spell Lore</a></div><div class="w1 i15"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Expansion. Scourge of Ghyran - Seraphon (4th edition)" src="/aos4/img/expansions/GHYRAN_logo2.png"><a href="/aos4/factions/seraphon/#Monstrous-Traits" class="cnClr">Monstrous Traits</a></div></span></span></div><div class="tooltip_templates"><span id="tooltip_contentLoginForm"><form action="/login.php" method="POST" id="disable-ads">
+<div class="lfWrapper">
+<h4 style="padding-bottom:6px">Disable Ads</h4>
+<label class="lfLabel" for="email" id="email">E-mail:</label> <input id="user-text-field" type="email" class="lfInput_w lfInput" autocomplete="username" name="email" id="email" value="" />
+<br><div><label class="lfLabel" for="passcode" type="password">Pin code:</label> <input id="password-text-field" type="password" autocomplete="current-password" style="width:68px" class="lfInput" name="passcode" value="" /> <button class="lfButton" id="btnDisableAds">Disable Ads</button></div>
+<input type="text" style="display:none"  name="g-recaptcha-response" id="captcha-box"></input>
+<button class="lfDisableAds" id="btnGetPin">Get new pin code</button>
+<br><a href="https://boosty.to/wahapedia">Boosty</a> subscribers may disable ads:
+<br>1. Enter e-mail you have used to login on Boosty.
+<br>2. Press <b>Get new pin code</b> button (if you don’t have it already)
+<br>3. Enter pin code.
+<br>
+<br><i>Note that login database updated once a day. So, if you are a new booster - try tomorrow. And thank you!</i>
+</div>
+</form></span></div><div class="tooltip_templates"><span id="tooltip_content00019"><div class="tooltip_header">1.0 Champions</div><a href="/aos4/the-rules/the-core-rules/#Champions"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+Units with the <span class="kwb">CHAMPION</span> keyword have one or more <b>champion</b> models. If there is a number after the <span class="kwb">CHAMPION</span> keyword, that number indicates the proportion of models in that unit that can be champions. In any other case, 1 model in the unit can be a champion. Units with the <span class="kwb">CHAMPION</span> keyword have the following <a href="/aos4/the-rules/the-core-rules/#Passive-Abilities">passive ability</a>:<br><br><div class="BreakInsideAvoid"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td class="abHeader" bgcolor="#802022"><img class="abLogo" src="/aos4/img/abOffensive.png">Passive</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(13%) sepia(64%) saturate(2669%) hue-rotate(338deg) brightness(103%) contrast(93%);"></td><td style="width:0px; position:absolute;"></td></tr></tbody></table><div style="border-color:#802022" class="abBody abNoReaction"><b>CHAMPION<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">A veteran fighter leads the charge.<br><div class="spc"></div></span><div><br></div><b>Effect:</b> Add 1 to the Attacks characteristic of weapons used by champions in this unit.</div><div><br></div></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_contentCHAMPION"><p>The <span class="tooltip00019" data-tooltip-content="#tooltip_content00019"><span class="kwb kwbu">CHAMPION</span></span> keyword is used in the following Seraphon warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Aggradon-Lancers" class="cnClr">Aggradon Lancers</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Dartpipes" class="cnClr">Hunters of Huanchi with Dartpipes</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Starstone-Bolas" class="cnClr">Hunters of Huanchi with Starstone Bolas</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Chargers" class="cnClr">Raptadon Chargers</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Raptadon-Hunters" class="cnClr">Raptadon Hunters</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders" class="cnClr">Ripperdactyl Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Ripperdactyl-Riders-2-models-" class="cnClr">Ripperdactyl Riders (2 models)</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Guard" class="cnClr">Saurus Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Warriors" class="cnClr">Saurus Warriors</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skinks" class="cnClr">Skinks</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders" class="cnClr">Terradon Riders</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Terradon-Riders-2-models-" class="cnClr">Terradon Riders (2 models)</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Starblood-Stalkers" class="cnClr">The Starblood Stalkers</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_contentINFANTRY"><p>The <span class="kwb">INFANTRY</span> keyword is used in the following Seraphon warscrolls:</p><div style="clear:both; margin-bottom:8px;"><div class="BatRole"></div><div class="BreakInsideAvoid"><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Dartpipes" class="cnClr">Hunters of Huanchi with Dartpipes</a></div></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Hunters-of-Huanchi-with-Starstone-Bolas" class="cnClr">Hunters of Huanchi with Starstone Bolas</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor" class="cnClr">Kroxigor</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Kroxigor-Warspawned" class="cnClr">Kroxigor Warspawned</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Astrolith-Bearer" class="cnClr">Saurus Astrolith Bearer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Guard" class="cnClr">Saurus Guard</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Oldblood" class="cnClr">Saurus Oldblood</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Saurus-Warriors" class="cnClr">Saurus Warriors</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starpriest" class="cnClr">Skink Starpriest</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skink-Starseer" class="cnClr">Skink Starseer</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Skinks" class="cnClr">Skinks</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><a href="/aos4/factions/seraphon/Slann-Starmaster" class="cnClr">Slann Starmaster</a></div><div style="clear:both"></div><div  style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Datasheet. Seraphon - Sunblood Pack Warscroll (4th edition)" src="/aos4/img/expansions/SN_logo2.png"><a href="/aos4/factions/seraphon/Sunblood-Pack" class="cnClr">Sunblood Pack</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Jaws-of-Itzl" class="cnClr">The Jaws of Itzl</a></div><div style="clear:both"></div><div  class="clFl sLegendary" style="padding: 1px 10px 1px 15px"><span class="bl0">•&nbsp;</span><img class="tooltip logo2" title="Warscroll. Legends compendium (4th edition)" src="/aos4/img/expansions/Legends_logo2.png"><a href="/aos4/factions/seraphon/The-Starblood-Stalkers" class="cnClr">The Starblood Stalkers</a></div><div style="clear:both"></div></div></span></div><div class="tooltip_templates"><span id="tooltip_content00036"><div class="tooltip_header">Shoot in Combat</div><div style="clear:both"></div>This weapon can be used to make <a href="">shooting attacks</a> even if the attacking unit is in combat.</span></div><div class="tooltip_templates"><span id="tooltip_content00055"><div class="tooltip_header">7.0 Combat Range</div><a href="/aos4/the-rules/the-core-rules/#Combat-Range"><div class="tooltip_link"></div></a><div style="clear:both"></div>
+<div class="Columns2"><div class="BreakInsideAvoid">Each model has a <b>combat range</b> that extends 3" horizontally from its base and any distance vertically from that circle to form a cylinder. The combat range of a unit extends 3" horizontally and any distance vertically from every model in that unit. Units from opposing armies that are within each other’s combat range and that are <b><a href="/aos4/the-rules/the-core-rules/#Visibility">visible</a></b> to each other are <b>in combat</b> with each other. When a unit that is not in combat enters the combat range of a visible enemy unit, it <b>moves into combat</b>.<br>A model is considered to be in combat with an enemy unit if that unit is within the model’s combat range and visible to it’<br><br></div><div class="BreakInsideAvoid Corner22r" style="padding:0px;"><table class=" collapse" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td class="Corner22r_1"></td><td class="Corner22r_2"></td><td class="Corner22r_3"></td></tr><tr><td class="Corner22r_8"></td><td class="Corner22r_9"><ul><li>A unit’s combat range extends 3" out from every model in that unit.</li><li>If any enemy models are within a unit’s combat range and visible to it, that unit is in combat.</li></ul></td><td class="Corner22r_4"></td></tr><tr><td class="Corner22r_7"></td><td class="Corner22r_6"></td><td class="Corner22r_5"></td></tr></tbody></table></div></div>
+</span></div><div class="tooltip_templates"><span id="tooltip_content00069"><div class="BreakInsideAvoid"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td background="/aos4/img/abCutLeft.png" style="width:10px; filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(1927%) hue-rotate(171deg) brightness(95%) contrast(90%);"></td><td class="abHeader" bgcolor="#606362"><img class="abLogo" src="/aos4/img/abMovement.png">Enemy Movement Phase</td><td background="/aos4/img/abCutRight.png" style="width:10px; filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(1927%) hue-rotate(171deg) brightness(95%) contrast(90%);"></td><td style="width:0px; position:absolute;"><div class="abCommandPoints"><div class="abCommandPointsN">1</div></div></td></tr></tbody></table><div style="border-color:#606362" class="abBody abNoReaction"><b>REDEPLOY<span class="ShowFluff">:</span></b> <span class="ShowFluff legend4">Taking initiative, the warriors hastily reposition to respond to enemy movements.<br><div class="spc"></div></span><div><br></div><b>Declare:</b> Pick a friendly unit that is <b>not in combat</b> to use this ability.<br><br><b>Effect:</b> Each model in that unit can move up to D6". That move <b>cannot</b> pass through or end within the <span class="tooltip00055" data-tooltip-content="#tooltip_content00055"><span class="tt kwbu">combat</span> <span class="tt kwbu">range</span></span> of an enemy unit.</div><div class="abKeywords" style="border-color:#606362"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td bgcolor="#606362" class="abHeader abKeywordsBody"><span class="kwb">KEYWORDS</span></td><td class="abKeywordsBodyText abNoReaction"><span class="kwb">MOVE,</span> <span class="kwb">RUN</span></td></tr></tbody></table></div></div></span></div><!--/noindex-->
+<div style="clear:both"></div>
+<!--noindex-->
+
+<div class="noprint"><div id="btnBackToTop"></div></div>
+
+<div class="tooltipArmyList" data-tooltip-content="#tooltip_contentArmyList" id="btnArmyList"></div>
+<script type='text/javascript'>
+$(window).scroll(function() {
+if ($(this).scrollTop() >= 200) {
+$('#btnBackToTop').fadeIn(300); 
+} else {
+$('#btnBackToTop').fadeOut(300); 
+}
+});
+
+$('#btnBackToTop').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop_Hover.png); background-image: var(--button-to-top-hover)');
+	$(this).fadeIn(300);
+	return true;
+});
+
+$('#btnBackToTop').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ToTop.png); background-image: var(--button-to-top)');
+		$(this).fadeOut(300);
+   document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnBackToTop').on('click', function () { 
+	'use strict';
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
+	return true;
+});
+
+$('#btnArmyList').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList_Hover.png); background-image: var(--button-army-list-hover)');
+	return true;
+});
+$('#btnArmyList').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_ArmyList.png); background-image: var(--button-army-list)');
+	return true;
+});
+
+$('#btnContents').on('touchstart', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents_Hover.png); background-image: var(--button-contents-hover)');
+	return true;
+});
+$('#btnContents').on('touchend', function () {
+	'use strict';
+	$(this).attr('style', 'background-image: url(/aos4/img/Button_Contents.png); background-image: var(--button-contents)');
+	return true;
+});
+</script>
+</div>
+<div class="noprint">
+	<div align="center"><div class="author">© Vyacheslav Maltsev 2013-2026</div></div>
+	<div style="display:flex;justify-content:center;align-items:center;">
+		<div class="social_buttons">
+			<a target="_blank" href="https://boosty.to/wahapedia"><div class="boosty_logo no_tooltip" title="Support on Boosty"></div></a>
+			<a target="_blank" href="https://vk.com/wahapedia"><div class="social_vk no_tooltip" title="Follow on VKontakte"></div></a>
+			<a target="_blank" href="https://discord.gg/VAXG2jRjXY"><div class="social_dd no_tooltip" title="Join Discord server"></div></a>
+			<a target="_blank" href="mailto:info@wahapedia.ru"><div class="social_email no_tooltip" title="Send e-mail"></div></a>
+		</div>		
+	</div>
+	<div id="ezoic-pub-ad-placeholder-103"></div><script>ezstandalone.cmd.push(function() {ezstandalone.showAds(103)});</script><div id="yandex_rtb_R-A-3376916-3"></div>
+</div>
+</div>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-57173050-3', 'auto');
+ga('send', 'pageview');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YCMHCMW8RQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YCMHCMW8RQ');
+</script>
+<!--/noindex-->
+</body>
+</html>

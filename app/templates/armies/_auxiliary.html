@@ -1,29 +1,14 @@
 {# Auxiliary pool card. Variables: army (Army), aux_units (list[ArmyUnit]), result (ValidationResult), validator (BaseValidator) #}
 {% set aux_label = validator.auxiliary_label | upper if validator is defined else 'AUXILIAR' %}
-<div class="aux-card" id="aux-card">
+<div class="aux-card"
+     id="aux-card"
+     data-drop-target="aux"
+     data-drop-url="{{ url_for('armies.add_unit', army_id=army.id) }}">
 
   <div class="aux-card-header">
     <span class="aux-label">{{ aux_label }}</span>
     <span class="aux-count-badge">{{ aux_units | length }}</span>
-  </div>
-
-  <div class="regiment-add-form">
-    <form method="POST"
-          action="{{ url_for('armies.add_unit', army_id=army.id) }}"
-          hx-post="{{ url_for('armies.add_unit', army_id=army.id) }}"
-          hx-target="#aux-card"
-          hx-swap="outerHTML"
-          class="au-add-form">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-      <input type="hidden" name="target" value="aux">
-      <select name="unit_slug" class="au-add-select" required>
-        <option value="">Adicionar unidade ao {{ validator.auxiliary_label | lower if validator is defined else 'auxiliar' }}...</option>
-        {% for unit in army.faction.units | sort(attribute='name') %}
-          <option value="{{ unit.slug }}">{{ unit.name }} ({{ unit.points_cost }}pts)</option>
-        {% endfor %}
-      </select>
-      <button type="submit" class="btn-secondary btn-sm">Adicionar</button>
-    </form>
+    <span class="drop-hint">Arraste unidade aqui</span>
   </div>
 
   {% if aux_units %}

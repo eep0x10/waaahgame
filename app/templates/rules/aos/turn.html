@@ -25,8 +25,19 @@
       <p class="rules-toc-label">Outras Seções</p>
       <ul>
         <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}">Carga</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}">Magia &amp; Preces</a></li>
         <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades &amp; Palavras-Chave</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
         <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_glossary') }}">Glossário</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
       </ul>
     </nav>
 
@@ -55,6 +66,17 @@
         terminou de implantar seu exército primeiro vence o empate.
       </p>
 
+      <!-- Exemplo numérico Priority Roll -->
+      <div class="rules-infobox">
+        <p><strong>Exemplo — Battle Round 2:</strong></p>
+        <ul class="rules-list">
+          <li>No Battle Round 1, Jogador A foi primeiro (tinha menos drops).</li>
+          <li>No início do Battle Round 2, ambos rolam: Jogador A tira <strong>4</strong>, Jogador B tira <strong>4</strong> — empate.</li>
+          <li>Empate: quem <em>não</em> teve prioridade na rodada anterior vence. Jogador B foi segundo no Round 1, então <strong>Jogador B vence o empate</strong> e escolhe a ordem.</li>
+          <li>Jogador B decide ir <strong>segundo</strong> no Round 2 (cedendo o primeiro turno a A), esperando ter o Double Turn no Round 3 se vencer o Priority Roll.</li>
+        </ul>
+      </div>
+
       <!-- Double Turn -->
       <h2 id="double-turn">O Double Turn</h2>
       <p>
@@ -74,8 +96,93 @@
         pode ser catastrófico.
       </div>
 
+      <!-- Exemplo numérico Double Turn -->
+      <div class="rules-infobox">
+        <p><strong>Exemplo — Double Turn:</strong></p>
+        <ul class="rules-list">
+          <li><strong>Round 2:</strong> Jogador B vence o Priority Roll e escolhe ir <strong>segundo</strong>. Jogador A vai primeiro, depois B.</li>
+          <li><strong>Round 3:</strong> Jogador B vence o Priority Roll novamente e desta vez escolhe ir <strong>primeiro</strong>.</li>
+          <li>Resultado: a sequência de turnos foi A → <strong>B → B</strong> → A → … — Jogador B teve dois turnos consecutivos.</li>
+          <li>Consequência: B pode Mover, Atirar, Carregar e Combater duas vezes seguidas. Se uma unidade de A estava a 10" de B no fim do Round 2, B pode agora carregar com bônus de distância de 2D6 por dois rounds consecutivos — ou já foi suficiente no Round 3 para chegar a contato que antes parecia impossível.</li>
+          <li>Custo: B <strong>não pode escolher Battle Tactic</strong> no primeiro turno após ter ido segundo e agora ir primeiro (regra Tactical Gambit). Além disso, A vai primeiro no Round 4 se B vencer o Priority Roll novamente.</li>
+        </ul>
+      </div>
+
       <!-- Player Turn Phases -->
       <h2 id="phases">Fases do Turno do Jogador</h2>
+
+      <!-- Diagrama SVG — Estrutura do Turno -->
+      <svg viewBox="0 0 380 520" xmlns="http://www.w3.org/2000/svg" style="max-width:460px;margin:1.5rem auto;display:block;font-family:sans-serif">
+        <title>Estrutura do Turno — Age of Sigmar</title>
+        <rect width="380" height="520" rx="8" fill="#1a1a2e"/>
+
+        <!-- Título -->
+        <text x="190" y="24" text-anchor="middle" fill="#ccc" font-size="13" font-weight="bold">Turno do Jogador</text>
+
+        <!-- Helper: retângulos de fase -->
+        <!-- y positions: 40, 110, 180, 250, 320, 390, 460 (height 55, gap 25) -->
+
+        <!-- BATTLE ROUND start -->
+        <rect x="100" y="38" width="180" height="42" rx="6" fill="#2c2c4a" stroke="#5555aa" stroke-width="1.5"/>
+        <text x="190" y="55" text-anchor="middle" fill="#9999ee" font-size="11" font-weight="bold">Início da Battle Round</text>
+        <text x="190" y="70" text-anchor="middle" fill="#777" font-size="9">Priority Roll • Underdog CP</text>
+
+        <!-- Seta -->
+        <line x1="190" y1="80" x2="190" y2="100" stroke="#555" stroke-width="1.5" marker-end="url(#arrTurn)"/>
+
+        <!-- INÍCIO DO TURNO -->
+        <rect x="60" y="100" width="260" height="42" rx="6" fill="#1a3a2a" stroke="#336633" stroke-width="1.5"/>
+        <text x="190" y="117" text-anchor="middle" fill="#66bb66" font-size="11" font-weight="bold">1. Início do Turno</text>
+        <text x="190" y="132" text-anchor="middle" fill="#777" font-size="9">Efeitos persistentes • Tactical Gambit (Battle Tactic)</text>
+
+        <line x1="190" y1="142" x2="190" y2="162" stroke="#555" stroke-width="1.5" marker-end="url(#arrTurn)"/>
+
+        <!-- HERO PHASE -->
+        <rect x="60" y="162" width="260" height="42" rx="6" fill="#2a1a3a" stroke="#884488" stroke-width="1.5"/>
+        <text x="190" y="179" text-anchor="middle" fill="#cc88cc" font-size="11" font-weight="bold">2. Hero Phase</text>
+        <text x="190" y="194" text-anchor="middle" fill="#777" font-size="9">Magia • Preces • Habilidades Heroicas • Manifestations</text>
+
+        <line x1="190" y1="204" x2="190" y2="224" stroke="#555" stroke-width="1.5" marker-end="url(#arrTurn)"/>
+
+        <!-- MOVEMENT PHASE -->
+        <rect x="60" y="224" width="260" height="42" rx="6" fill="#1a2a3a" stroke="#335588" stroke-width="1.5"/>
+        <text x="190" y="241" text-anchor="middle" fill="#7799cc" font-size="11" font-weight="bold">3. Movement Phase</text>
+        <text x="190" y="256" text-anchor="middle" fill="#777" font-size="9">Mover • Correr (+D6) • Recuar</text>
+
+        <line x1="190" y1="266" x2="190" y2="286" stroke="#555" stroke-width="1.5" marker-end="url(#arrTurn)"/>
+
+        <!-- SHOOTING PHASE -->
+        <rect x="60" y="286" width="260" height="42" rx="6" fill="#3a2a1a" stroke="#886633" stroke-width="1.5"/>
+        <text x="190" y="303" text-anchor="middle" fill="#cc9955" font-size="11" font-weight="bold">4. Shooting Phase</text>
+        <text x="190" y="318" text-anchor="middle" fill="#777" font-size="9">Atirar com armas à distância (não correu/recuou)</text>
+
+        <line x1="190" y1="328" x2="190" y2="348" stroke="#555" stroke-width="1.5" marker-end="url(#arrTurn)"/>
+
+        <!-- CHARGE PHASE -->
+        <rect x="60" y="348" width="260" height="42" rx="6" fill="#3a1a1a" stroke="#883333" stroke-width="1.5"/>
+        <text x="190" y="365" text-anchor="middle" fill="#cc6666" font-size="11" font-weight="bold">5. Charge Phase</text>
+        <text x="190" y="380" text-anchor="middle" fill="#777" font-size="9">Carga 2D6 (não correu/recuou) • ½&quot; do alvo</text>
+
+        <line x1="190" y1="390" x2="190" y2="410" stroke="#555" stroke-width="1.5" marker-end="url(#arrTurn)"/>
+
+        <!-- COMBAT PHASE -->
+        <rect x="60" y="410" width="260" height="42" rx="6" fill="#3a1a2a" stroke="#883355" stroke-width="1.5"/>
+        <text x="190" y="427" text-anchor="middle" fill="#cc5588" font-size="11" font-weight="bold">6. Combat Phase</text>
+        <text x="190" y="442" text-anchor="middle" fill="#777" font-size="9">Pile-In + Melee alternados • Strike-First → Normal → Last</text>
+
+        <line x1="190" y1="452" x2="190" y2="472" stroke="#555" stroke-width="1.5" marker-end="url(#arrTurn)"/>
+
+        <!-- FIM DO TURNO -->
+        <rect x="100" y="472" width="180" height="38" rx="6" fill="#2a2a1a" stroke="#888833" stroke-width="1.5"/>
+        <text x="190" y="487" text-anchor="middle" fill="#cccc55" font-size="11" font-weight="bold">7. Fim do Turno</text>
+        <text x="190" y="502" text-anchor="middle" fill="#777" font-size="9">Efeitos expiram • Pontuar objetivos</text>
+
+        <defs>
+          <marker id="arrTurn" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L0,7 L7,3.5 z" fill="#555"/>
+          </marker>
+        </defs>
+      </svg>
       <p>
         Cada Turno do Jogador avança pelas seguintes fases em ordem estrita. O jogador cujo turno é
         chamado de <strong>Jogador Ativo</strong>; o oponente é o <strong>Jogador Passivo</strong>. Ambos
@@ -228,9 +335,9 @@
         aprimoramentos de exército. Usos comuns incluem:
       </p>
       <ul class="rules-list">
-        <li><strong>All-Out Attack</strong> — Rerole resultados de 1 em rolagens de Acertar para uma unidade (1 CP).</li>
-        <li><strong>All-Out Defence</strong> — Rerole resultados de 1 em rolagens de Salvar para uma unidade (1 CP).</li>
-        <li><strong>Inspiring Presence</strong> — Ignore o teste de Battleshock para uma unidade (1 CP).</li>
+        <li><strong>All-Out Attack</strong> — +1 em rolagens de Hit para uma unidade (1 CP, Reação a ataque).</li>
+        <li><strong>All-Out Defence</strong> — +1 em rolagens de Save para uma unidade (1 CP, Reação a ataque).</li>
+        <li><strong>Rally</strong> — A unidade rola 6 dados; para cada 4+, ganha 1 rally point. Cada rally point pode curar 1 wound ou, gastando pontos iguais ao Health da unidade, retornar um modelo abatido (1 CP, Hero Phase).</li>
         <li>Várias Command Abilities específicas de warscroll.</li>
       </ul>
       <p>

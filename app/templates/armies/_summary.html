@@ -52,4 +52,17 @@
     </div>
   {% endif %}
 
+  {# ── Faction picks display (Phase 2, read-only) ── #}
+  {% if result.faction_picks %}
+    <div class="issues-list" style="margin-top:0.75rem;">
+      <div class="issues-list-title">Escolhas da Facção</div>
+      {% for label, value in result.faction_picks.items() %}
+        <div class="issue issue-info">
+          <span class="issue-bullet">&#9670;</span>
+          <span class="issue-msg"><strong>{{ label }}:</strong> {{ value }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
 </div>

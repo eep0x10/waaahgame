@@ -1,0 +1,353 @@
+{% extends "base.html" %}
+{% block title %}Glossário AoS — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#a">A</a></li>
+        <li><a href="#b">B</a></li>
+        <li><a href="#c">C</a></li>
+        <li><a href="#d">D</a></li>
+        <li><a href="#e">E</a></li>
+        <li><a href="#f">F</a></li>
+        <li><a href="#g">G</a></li>
+        <li><a href="#h">H</a></li>
+        <li><a href="#i">I</a></li>
+        <li><a href="#l">L</a></li>
+        <li><a href="#m">M</a></li>
+        <li><a href="#o">O</a></li>
+        <li><a href="#p">P</a></li>
+        <li><a href="#r">R</a></li>
+        <li><a href="#s">S</a></li>
+        <li><a href="#t">T</a></li>
+        <li><a href="#u">U</a></li>
+        <li><a href="#v">V</a></li>
+        <li><a href="#w">W</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}">Magia &amp; Preces</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Glossário
+      </p>
+      <h1 class="section-title">Glossário</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        Termos em inglês são preservados conforme os componentes físicos e as regras oficiais.
+        Definições em PT-BR para referência rápida.
+      </p>
+
+      <h2 id="a">A</h2>
+      <dl>
+        <dt><strong>Ability</strong></dt>
+        <dd>Qualquer efeito ou ação descrita em um warscroll ou regra — pode ser Passive, Used ou Reaction.</dd>
+
+        <dt><strong>All-Out Attack</strong></dt>
+        <dd>Command Ability universal — gasta 1 CP para conferir +1 a Hit para todos os ataques de uma unidade neste turno.</dd>
+
+        <dt><strong>All-Out Defence</strong></dt>
+        <dd>Command Ability universal — gasta 1 CP para conferir +1 ao Save de uma unidade contra todos os ataques sofridos neste turno.</dd>
+
+        <dt><strong>Arcane Bolt</strong></dt>
+        <dd>Magia universal disponível para todo Wizard. Casting 5. Causa D3 Mortal Wounds a uma unidade inimiga a 18&Prime;.</dd>
+
+        <dt><strong>Area Terrain</strong></dt>
+        <dd>Tipo de terreno que os modelos podem ocupar internamente (floresta, ruínas). Geralmente concede Cover.</dd>
+
+        <dt><strong>Attacker</strong></dt>
+        <dd>Papel assimétrico em alguns battleplans — o jogador com a deployment zone ofensiva, geralmente menor.</dd>
+
+        <dt><strong>Auxiliary Unit</strong></dt>
+        <dd>Unidade adicionada ao exército fora dos Regimentos. Sujeita ao Cumulative Surcharge de +20 pts por unidade auxiliar a partir da 2ª.</dd>
+      </dl>
+
+      <h2 id="b">B</h2>
+      <dl>
+        <dt><strong>Battle Formation</strong></dt>
+        <dd>Regra de facção ou geral que modifica como o exército funciona. Escolhida na lista — não durante a partida.</dd>
+
+        <dt><strong>Battle Round</strong></dt>
+        <dd>Ciclo completo de um turno de cada jogador. Uma partida padrão tem 5 Battle Rounds.</dd>
+
+        <dt><strong>Battle Tactic</strong></dt>
+        <dd>Objetivo secundário escolhido a cada turno via Tactical Gambit. Concede Victory Points se completado.</dd>
+
+        <dt><strong>Battlepack</strong></dt>
+        <dd>Conjunto de regras suplementares que define o formato competitivo (pontos, táticas, battleplans). Atualmente: GHB 2025-26.</dd>
+
+        <dt><strong>Battleplan</strong></dt>
+        <dd>Cenário específico com mapa, objetivos e condições — determina como a partida é jogada.</dd>
+
+        <dt><strong>Battletome</strong></dt>
+        <dd>Manual de regras de uma facção específica — warscrolls, habilidades, Spell/Prayer Lores, Battle Formations.</dd>
+      </dl>
+
+      <h2 id="c">C</h2>
+      <dl>
+        <dt><strong>Casting Value</strong></dt>
+        <dd>Número mínimo em 2D6 necessário para conjurar uma magia.</dd>
+
+        <dt><strong>Charge</strong></dt>
+        <dd>Habilidade que move uma unidade até 2D6&Prime; para entrar em Engagement Range com inimigos.</dd>
+
+        <dt><strong>Chanting Value</strong></dt>
+        <dd>Número mínimo em 1D6 para que uma prece de Priest seja atendida.</dd>
+
+        <dt><strong>Coherency</strong></dt>
+        <dd>Exigência de que cada modelo de uma unidade esteja a no máximo ½&Prime; horizontalmente de pelo menos outro modelo da mesma unidade (2 modelos para unidades com 7+).</dd>
+
+        <dt><strong>Command Ability</strong></dt>
+        <dd>Habilidade ativada gastando Command Points — geralmente usada nas fases de Battle Round.</dd>
+
+        <dt><strong>Command Model</strong></dt>
+        <dd>Modelos especiais numa unidade (Champion, Musician, Standard Bearer) que conferem benefícios à unidade.</dd>
+
+        <dt><strong>Command Point (CP)</strong></dt>
+        <dd>Recurso gasto para ativar Command Abilities. Cada jogador ganha 4 CPs no início de cada Battle Round.</dd>
+
+        <dt><strong>Companion</strong></dt>
+        <dd>Habilidade de arma — ataques desta arma não são modificados por quaisquer habilidades (nem aliadas nem inimigas).</dd>
+
+        <dt><strong>Critical Hit</strong></dt>
+        <dd>Resultado natural 6 em uma rolagem de Hit. Por padrão é um hit comum; algumas armas têm efeitos especiais em críticos.</dd>
+
+        <dt><strong>Cumulative Surcharge</strong></dt>
+        <dd>Custo adicional por unidade Auxiliary além da 1ª — atualmente +20 pts por unidade Auxiliary extra.</dd>
+      </dl>
+
+      <h2 id="d">D</h2>
+      <dl>
+        <dt><strong>Damage</strong></dt>
+        <dd>Valor de dano aplicado por cada wound que supera o Save. Pode ser fixo (ex: 2) ou variável (ex: D3).</dd>
+
+        <dt><strong>Defender</strong></dt>
+        <dd>Papel assimétrico em alguns battleplans — o jogador com a deployment zone maior ou de retaguarda.</dd>
+
+        <dt><strong>Deploy Regiment</strong></dt>
+        <dd>Habilidade que implanta uma unidade inteira de um Regimento de uma só vez, sem alternar com o oponente. Conta como 1 drop.</dd>
+
+        <dt><strong>Deployment Phase</strong></dt>
+        <dd>Fase pré-batalha em 3 etapas: implantar terreno de facção, implantar exércitos, outras habilidades.</dd>
+
+        <dt><strong>Double Turn</strong></dt>
+        <dd>Quando um jogador ganha o Priority Roll e escolhe ir primeiro novamente, jogando dois turnos consecutivos.</dd>
+
+        <dt><strong>Drop</strong></dt>
+        <dd>Cada uso de uma habilidade Deploy durante a Deployment Phase conta como 1 drop. Deploy Regiment implanta um Regimento inteiro com um único drop. O jogador que <em>terminar a implantação primeiro</em> (ou seja, o que tiver menos drops) decide quem toma o primeiro turno no Battle Round 1.</dd>
+      </dl>
+
+      <h2 id="e">E</h2>
+      <dl>
+        <dt><strong>Endless Spell</strong></dt>
+        <dd>Manifestation mágica invocada por Wizards — persiste no campo de batalha e se move em cada Hero Phase.</dd>
+
+        <dt><strong>Combat Range</strong></dt>
+        <dd>3&Prime; horizontalmente (distância ilimitada verticalmente) a partir de cada modelo de uma unidade. Unidades de exércitos opostos que estejam dentro do Combat Range uma da outra <em>e</em> visíveis estão em combate. É a distância necessária para atacar com armas Melee.</dd>
+
+        <dt><strong>Engagement Range</strong></dt>
+        <dd>½&Prime; horizontalmente de um modelo inimigo — distância mínima de contato de carga. Terminar dentro do Engagement Range de um inimigo significa estar em contato direto. <strong>Nota:</strong> "estar em combate" (in combat) usa Combat Range (3&Prime;), não este valor; Engagement Range define apenas a distância final de um movimento de carga.</dd>
+
+        <dt><strong>Enhancement</strong></dt>
+        <dd>Heroic Trait ou Artefact atribuído a um Herói durante a construção da lista. Cada Enhancement único por exército.</dd>
+      </dl>
+
+      <h2 id="f">F</h2>
+      <dl>
+        <dt><strong>Fight</strong></dt>
+        <dd>Habilidade usada na Fase de Combate — Pile-In + ataques com armas Melee.</dd>
+
+        <dt><strong>Fly</strong></dt>
+        <dd>Keyword que permite ao modelo ignorar terreno e outros modelos ao se mover (ainda precisa terminar em posição legal).</dd>
+      </dl>
+
+      <h2 id="g">G</h2>
+      <dl>
+        <dt><strong>GHB (General's Handbook)</strong></dt>
+        <dd>Manual anual de regras competitivas — define battleplans, pontos, Battle Tactics e regras de temporada.</dd>
+
+        <dt><strong>Guarded Hero</strong></dt>
+        <dd>Habilidade passiva de todo Herói que não seja Monster nem War Machine. Quando o Herói está a 3&Prime; (Combat Range) de uma unidade amiga não-Herói: (1) atacantes sofrem &minus;1 nas rolagens de Hit para ataques de tiro contra o Herói; (2) se o Herói tiver keyword Infantry, não pode ser alvo de tiros feitos a mais de 12&Prime;.</dd>
+      </dl>
+
+      <h2 id="h">H</h2>
+      <dl>
+        <dt><strong>Hero Phase</strong></dt>
+        <dd>Primeira fase de cada turno — Wizards conjuram, Priests rezam, Manifestations se movem, habilidades especiais são ativadas.</dd>
+
+        <dt><strong>Heroic Trait</strong></dt>
+        <dd>Enhancement específico para um Herói — normalmente concede uma habilidade extra ou melhora uma característica.</dd>
+
+        <dt><strong>Hit</strong></dt>
+        <dd>Primeira rolagem da sequência de ataque — o valor mínimo em D6 para que um ataque acerte o alvo.</dd>
+      </dl>
+
+      <h2 id="i">I</h2>
+      <dl>
+        <dt><strong>Impassable</strong></dt>
+        <dd>Habilidade de terreno — nenhum modelo pode terminar dentro; modelos sem Fly não podem atravessar.</dd>
+
+        <dt><strong>Inspiring Presence</strong></dt>
+        <dd>Command Ability universal — gasta 1 CP para que uma unidade amiga ignore os efeitos de Battle Shock (Battleshock) neste turno.</dd>
+      </dl>
+
+      <h2 id="l">L</h2>
+      <dl>
+        <dt><strong>Lone Operative</strong></dt>
+        <dd>Habilidade que impede que um Herói seja alvo de ataques de ranged enquanto estiver a mais de 9&Prime; de unidades inimigas com 3+ modelos.</dd>
+      </dl>
+
+      <h2 id="m">M</h2>
+      <dl>
+        <dt><strong>Manifestation</strong></dt>
+        <dd>Entidade mágica física invocada para o campo — Endless Spells, Invocations, Faction Spells.</dd>
+
+        <dt><strong>Mortal Wound</strong></dt>
+        <dd>Dano que pula Save e Ward (salvo indicação contrária). Cada Mortal Wound = 1 ponto de dano.</dd>
+
+        <dt><strong>Move</strong></dt>
+        <dd>Característica do warscroll — distância máxima que cada modelo pode mover em Normal Move e Run.</dd>
+
+        <dt><strong>Mystic Shield</strong></dt>
+        <dd>Magia universal. Casting 5. Uma unidade amiga a 18&Prime; ganha Ward 6+ até o próximo Hero Phase do conjurador.</dd>
+      </dl>
+
+      <h2 id="o">O</h2>
+      <dl>
+        <dt><strong>Obscuring</strong></dt>
+        <dd>Habilidade de terreno que bloqueia linha de visão quando a linha de traçado passa pelo interior da peça.</dd>
+
+        <dt><strong>Objective</strong></dt>
+        <dd>Marcador circular (40 mm) no campo. Uma unidade contesta um objetivo se qualquer modelo estiver dentro de 3&Prime; (Combat Range) do marcador. Controle é determinado somando a característica <strong>Control</strong> (do warscroll) de todos os modelos contestando. Heróis <em>não</em> contam em dobro por padrão — cada modelo contribui exatamente seu valor de Control do warscroll.</dd>
+      </dl>
+
+      <h2 id="p">P</h2>
+      <dl>
+        <dt><strong>Passive</strong></dt>
+        <dd>Tipo de habilidade que funciona automaticamente sem ativação — sempre ativa quando as condições são atendidas.</dd>
+
+        <dt><strong>Pile-In</strong></dt>
+        <dd>Movimento de até 3&Prime; no início do Fight — cada modelo deve terminar mais próximo do inimigo mais próximo.</dd>
+
+        <dt><strong>Place of Power</strong></dt>
+        <dd>Tipo de terreno especial que pode ser Ativado durante a Hero Phase para ganhar 1 CP (com 3+ em D6).</dd>
+
+        <dt><strong>Power Level</strong></dt>
+        <dd>Valor de um Wizard indicando quantas magias pode conjurar e quantas pode tentar Unbind por turno.</dd>
+
+        <dt><strong>Prayer Lore</strong></dt>
+        <dd>Lista de preces disponíveis para todos os Priests do exército. Escolhida na lista.</dd>
+
+        <dt><strong>Priest</strong></dt>
+        <dd>Modelo com a keyword Priest — usa preces (não magias) via habilidade Pray com rolagem de D6.</dd>
+
+        <dt><strong>Priority Roll</strong></dt>
+        <dd>Roll-off de D6 no início de cada Battle Round 2+ — o vencedor decide quem vai primeiro naquela rodada.</dd>
+      </dl>
+
+      <h2 id="r">R</h2>
+      <dl>
+        <dt><strong>Reaction</strong></dt>
+        <dd>Tipo de habilidade ativada durante o turno do oponente, como resposta a uma ação específica.</dd>
+
+        <dt><strong>Regiment</strong></dt>
+        <dd>Grupo de unidades liderado por um Herói. O General lidera o Regimento 1.</dd>
+
+        <dt><strong>Regiment of Renown</strong></dt>
+        <dd>Grupo pré-definido de unidades de uma facção diferente que pode ser incluído como Auxiliaries.</dd>
+
+        <dt><strong>Reinforcement</strong></dt>
+        <dd>Comprar uma unidade pelo dobro dos pontos para dobrá-la em tamanho (até o máximo do warscroll).</dd>
+
+        <dt><strong>Rend</strong></dt>
+        <dd>Valor negativo de uma arma aplicado ao Save do defensor (ex: Rend −2 torna um Save 4+ efetivamente 6+).</dd>
+
+        <dt><strong>Retreat</strong></dt>
+        <dd>Habilidade de mover uma unidade para fora do Engagement Range. A unidade não pode Atirar nem Carregar depois.</dd>
+
+        <dt><strong>Run</strong></dt>
+        <dd>Habilidade de movimento que adiciona D6&Prime; ao Move. A unidade não pode Atirar nem Carregar depois.</dd>
+      </dl>
+
+      <h2 id="s">S</h2>
+      <dl>
+        <dt><strong>Save</strong></dt>
+        <dd>Característica do warscroll — valor mínimo em D6 para bloquear um wound, modificado pelo Rend.</dd>
+
+        <dt><strong>Shoot</strong></dt>
+        <dd>Habilidade universal — permite atacar com armas de ranged durante a Fase de Tiro.</dd>
+
+        <dt><strong>Spell Lore</strong></dt>
+        <dd>Lista de magias disponíveis para todos os Wizards do exército. Escolhida na lista.</dd>
+
+        <dt><strong>Strike-First</strong></dt>
+        <dd>Condição que força a unidade a ser ativada na Fase de Combate antes de unidades sem essa condição.</dd>
+
+        <dt><strong>Strike-Last</strong></dt>
+        <dd>Condição que força a unidade a ser ativada depois de todas as unidades sem essa condição na Fase de Combate.</dd>
+      </dl>
+
+      <h2 id="t">T</h2>
+      <dl>
+        <dt><strong>Tactical Gambit</strong></dt>
+        <dd>Habilidade usada no Start of Turn para selecionar a Battle Tactic da rodada. Obrigatória a cada turno.</dd>
+
+        <dt><strong>Territory</strong></dt>
+        <dd>Metade do campo que pertence a um jogador — determinada pelo roll-off de Territórios antes da implantação.</dd>
+      </dl>
+
+      <h2 id="u">U</h2>
+      <dl>
+        <dt><strong>Unbind</strong></dt>
+        <dd>Tentativa de bloquear uma magia inimiga — role 2D6; resultado estritamente maior que o Casting Roll bloqueia.</dd>
+
+        <dt><strong>Underdog</strong></dt>
+        <dd>Jogador com menos Victory Points no início de um Battle Round (verificado após determinar o jogador ativo). Recebe +1 CP bônus naquela rodada. Se os VPs estiverem empatados (inclusive no Battle Round 1), não há underdog a menos que uma regra especifique o contrário.</dd>
+
+        <dt><strong>Unstable</strong></dt>
+        <dd>Habilidade de terreno — no início de cada Battle Round, unidades dentro sofrem D3 Mortal Wounds com resultado 1 em D6.</dd>
+      </dl>
+
+      <h2 id="v">V</h2>
+      <dl>
+        <dt><strong>Victory Point (VP)</strong></dt>
+        <dd>Unidade de pontuação. Ganho por controlar objetivos e completar Battle Tactics. Quem tiver mais ao final de 5 Battle Rounds vence.</dd>
+      </dl>
+
+      <h2 id="w">W</h2>
+      <dl>
+        <dt><strong>Ward</strong></dt>
+        <dd>Habilidade de defesa adicional após o Save — role D6 por dano alocado; resultado igual ou maior ao valor de Ward ignora aquele dano.</dd>
+
+        <dt><strong>Warscroll</strong></dt>
+        <dd>Ficha técnica de uma unidade — contém Characteristics (Move, Health, Save, Control), Keywords e Abilities.</dd>
+
+        <dt><strong>Wholly Within</strong></dt>
+        <dd>Condição onde <em>todos</em> os modelos de uma unidade estão inteiramente dentro de uma área especificada (território, terreno, etc.).</dd>
+
+        <dt><strong>Wizard</strong></dt>
+        <dd>Modelo com a keyword Wizard — pode conjurar magias e tentar Unbind. Tem um Power Level que determina quantas magias/unbinds por turno.</dd>
+
+        <dt><strong>Wound</strong></dt>
+        <dd>(1) Característica do warscroll — quantos pontos de dano o modelo aguenta antes de ser abatido. (2) Segunda rolagem da sequência de ataque — mínimo em D6 para ferir após acertar.</dd>
+      </dl>
+
+    </article>
+  </div>
+</section>
+{% endblock %}

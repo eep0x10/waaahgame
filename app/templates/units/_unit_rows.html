@@ -1,48 +1,145 @@
-{% if pagination.items %}
-  <div class="army-list">
-    {% for unit in pagination.items %}
-      <div class="army-row">
-        <div class="army-row-main">
-          <div class="army-row-name">
-            <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="army-name-link">{{ unit.name }}</a>
-          </div>
-          <div class="army-row-meta">
-            <span class="role-tag" style="font-size:0.75rem;">{{ unit.faction.name }}</span>
-            {% if unit.unit_role %}
-              <span class="role-tag" style="font-size:0.75rem;opacity:0.8;">{{ unit.unit_role }}</span>
-            {% endif %}
-            <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
-            {% set sys_code = unit.faction.game_system.code if unit.faction.game_system else 'aos4' %}
-            {% if sys_code == 'w40k10' %}
-              <span class="role-tag" style="background:#1a3a6b;color:#c8a94a;border-color:#1a3a6b;font-size:0.7rem;">40K</span>
-            {% else %}
-              <span class="role-tag" style="background:#2a1a0a;color:#b8935a;border-color:#4a3010;font-size:0.7rem;">AoS</span>
-            {% endif %}
-          </div>
-        </div>
-        <div class="army-row-actions">
-          <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}" class="btn-secondary btn-sm">Ver &rarr;</a>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+{% if grouped %}
+  <p style="font-size:0.8rem;opacity:0.5;margin-bottom:1.25rem;">
+    {{ total_units }} unidade{{ 's' if total_units != 1 else '' }} encontrada{{ 's' if total_units != 1 else '' }}
+  </p>
 
-  {% if pagination.pages > 1 %}
-    <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1.5rem;">
-      {% if pagination.has_prev %}
-        <a href="{{ url_for('units.index', page=pagination.prev_num, system=system_filter, faction=faction_filter, q=q, pts_min=pts_min, pts_max=pts_max) }}"
-           class="btn-secondary btn-sm">&larr; Anterior</a>
-      {% endif %}
-      <span style="padding:0.4rem 0.8rem;opacity:0.6;font-size:0.85rem;">
-        Página {{ pagination.page }} / {{ pagination.pages }}
-        ({{ pagination.total }} unidades)
-      </span>
-      {% if pagination.has_next %}
-        <a href="{{ url_for('units.index', page=pagination.next_num, system=system_filter, faction=faction_filter, q=q, pts_min=pts_min, pts_max=pts_max) }}"
-           class="btn-secondary btn-sm">Próxima &rarr;</a>
-      {% endif %}
+  {% for system, factions in grouped %}
+    <div class="units-system-block" style="margin-bottom:2.5rem;">
+      <h2 class="units-system-heading" style="font-family:'Cinzel',serif;font-size:1.15rem;letter-spacing:0.12em;text-transform:uppercase;border-bottom:1px solid rgba(184,147,90,0.3);padding-bottom:0.4rem;margin-bottom:1.25rem;color:#b8935a;">
+        {{ system.name }}
+        <span style="font-size:0.7rem;opacity:0.5;font-weight:400;letter-spacing:0.06em;margin-left:0.5rem;">{{ system.edition }}</span>
+      </h2>
+
+      {% for faction, units in factions %}
+        {# Split units into regular/legends/incomplete vs manifestation #}
+        {% set manifestation_units = units | selectattr('unit_category', 'equalto', 'manifestation') | list %}
+        {% set regular_units = units | rejectattr('unit_category', 'equalto', 'manifestation') | list %}
+
+        {% if regular_units or manifestation_units %}
+        <details class="units-faction-block" open style="margin-bottom:1.25rem;">
+          <summary class="units-faction-heading" style="cursor:pointer;font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;padding:0.35rem 0;list-style:none;display:flex;align-items:center;gap:0.5rem;">
+            <span style="opacity:0.4;font-size:0.7rem;">&#9654;</span>
+            {{ faction.name }}
+            <span style="font-size:0.7rem;opacity:0.45;font-weight:400;">({{ units|length }})</span>
+            {% if faction.grand_alliance %}
+              <span class="role-tag" style="font-size:0.65rem;opacity:0.7;">{{ faction.grand_alliance }}</span>
+            {% endif %}
+          </summary>
+
+          {# --- Regular / Incomplete / Legends units --- #}
+          {% if regular_units %}
+          <div class="unit-grid unit-grid--bb" style="margin-top:0.75rem;">
+            {% for unit in regular_units %}
+              <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}"
+                 class="unit-card unit-card--bb{% if unit.unit_category == 'incomplete' %} unit-card--incomplete{% endif %}{% if unit.unit_category == 'legends' %} unit-card--legends{% endif %}"
+                 style="position:relative;">
+                <div class="unit-image-frame unit-card-bb-image">
+                  {% if unit.image_path %}
+                    <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+                         alt="{{ unit.name }}"
+                         class="unit-card-img"
+                         loading="lazy">
+                  {% else %}
+                    <div class="unit-card-placeholder">
+                      <svg class="shield-placeholder-svg" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M40 4 L74 18 L74 52 Q74 76 40 92 Q6 76 6 52 L6 18 Z" stroke="#b8935a" stroke-width="2" fill="rgba(184,147,90,0.06)"/>
+                        <text x="40" y="56" text-anchor="middle" font-size="28" fill="#b8935a" opacity="0.5" font-family="serif">?</text>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+
+                {# Incomplete badge #}
+                {% if unit.unit_category == 'incomplete' %}
+                  <span title="Dados incompletos" style="position:absolute;top:4px;right:4px;background:#f0e6c8;color:#7a5a2a;font-size:0.6rem;font-weight:700;padding:1px 5px;border-radius:8px;border:1px solid #c9a96e;line-height:1.4;z-index:2;">?</span>
+                {% endif %}
+                {# Legends badge #}
+                {% if unit.unit_category == 'legends' %}
+                  <span class="legacy-badge"
+                        data-tooltip="Legacy — unidade fora do range atual de Battletome. Pode ser usada em listas com restrições; consulte o pacote Legacy &amp; Forge World do GHB 2025-26.">LEG</span>
+                {% endif %}
+
+                <div class="unit-card-body unit-card-bb-body">
+                  <div class="unit-card-name" title="{{ unit.name }}">{{ unit.name }}</div>
+                  <div class="unit-card-meta">
+                    <span class="pts-badge" style="font-size:0.82rem;">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+                    {% if unit.unit_role %}
+                      <span class="role-tag" style="font-size:0.6rem;">{{ unit.unit_role }}</span>
+                    {% endif %}
+                  </div>
+                  {% if unit.stats_json %}
+                    {% set s = unit.stats_json %}
+                    <div class="unit-card-stats-peek">
+                      <span class="unit-stat-peek-item">
+                        <span class="unit-stat-peek-val">{{ s.get('Move', s.get('move', '—')) }}</span>
+                        <span class="unit-stat-peek-key">MOV</span>
+                      </span>
+                      <span class="unit-stat-peek-item">
+                        <span class="unit-stat-peek-val">{{ s.get('Health', s.get('health', '—')) }}</span>
+                        <span class="unit-stat-peek-key">HP</span>
+                      </span>
+                      <span class="unit-stat-peek-item">
+                        <span class="unit-stat-peek-val">{{ s.get('Save', s.get('save', '—')) }}</span>
+                        <span class="unit-stat-peek-key">SV</span>
+                      </span>
+                      <span class="unit-stat-peek-item">
+                        <span class="unit-stat-peek-val">{{ s.get('Control', s.get('control', '—')) }}</span>
+                        <span class="unit-stat-peek-key">CTL</span>
+                      </span>
+                    </div>
+                  {% endif %}
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {# --- Manifestações & Terreno subsection --- #}
+          {% if manifestation_units %}
+          <div class="manifestations-subsection" style="margin-top:1rem;padding:0.75rem 0.75rem 0.5rem;background:rgba(120,80,40,0.06);border-left:2px solid rgba(184,147,90,0.25);border-radius:3px;">
+            <div style="font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:0.6rem;">
+              Manifestações &amp; Terreno
+              <span style="opacity:0.6;font-weight:400;">({{ manifestation_units|length }})</span>
+            </div>
+            <div class="unit-grid unit-grid--manifestations" style="--card-min:120px;gap:0.5rem;">
+              {% for unit in manifestation_units %}
+                <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}"
+                   class="unit-card unit-card--manifestation"
+                   style="position:relative;opacity:0.72;">
+                  <div class="unit-image-frame" style="aspect-ratio:4/3;max-height:80px;">
+                    {% if unit.image_path %}
+                      <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+                           alt="{{ unit.name }}"
+                           class="unit-card-img"
+                           loading="lazy">
+                    {% else %}
+                      <div class="unit-card-placeholder" style="min-height:60px;">
+                        <svg viewBox="0 0 60 72" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:38px;" aria-hidden="true">
+                          <path d="M30 3 L55 13 L55 39 Q55 57 30 69 Q5 57 5 39 L5 13 Z" stroke="#b8935a" stroke-width="1.5" fill="rgba(184,147,90,0.05)"/>
+                          <text x="30" y="42" text-anchor="middle" font-size="20" fill="#b8935a" opacity="0.4" font-family="serif">✦</text>
+                        </svg>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="unit-card-body" style="padding:0.3rem 0.4rem;">
+                    <div class="unit-card-name" style="font-size:0.68rem;line-height:1.2;">{{ unit.name }}</div>
+                    <div class="unit-card-meta" style="margin-top:0.2rem;">
+                      {% if unit.unit_role %}
+                        <span class="role-tag" style="font-size:0.55rem;">{{ unit.unit_role }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+        </details>
+        {% endif %}
+      {% endfor %}
     </div>
-  {% endif %}
+  {% endfor %}
 
 {% else %}
   <p class="factions-empty"><em>Nenhuma unidade corresponde aos seus filtros.</em></p>

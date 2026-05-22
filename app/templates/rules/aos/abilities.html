@@ -12,18 +12,34 @@
         <li><a href="#passive">Passive</a></li>
         <li><a href="#used">Used</a></li>
         <li><a href="#reaction">Reaction</a></li>
+        <li><a href="#within-wholly-within">Within vs Wholly Within</a></li>
         <li><a href="#ward">Ward Saves</a></li>
         <li><a href="#rend">Rend</a></li>
         <li><a href="#mortal-wounds">Mortal Wounds</a></li>
+        <li><a href="#healing-returning">Healing &amp; Returning Models</a></li>
         <li><a href="#companions">Unidades Companheiras</a></li>
         <li><a href="#manifestations">Manifestations</a></li>
+        <li><a href="#modifier-order">Ordem de Modificadores</a></li>
+        <li><a href="#order-of-effects">Ordem de Efeitos</a></li>
+        <li><a href="#ability-card">Estrutura dos Cards</a></li>
       </ul>
       <div class="rules-toc-divider"></div>
       <p class="rules-toc-label">Outras Seções</p>
       <ul>
         <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
         <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_setup') }}">Implantação</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_shooting') }}">Tiro</a></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}">Carga</a></li>
+        <li><a href="{{ url_for('rules.aos_magic') }}">Magia &amp; Preces</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_battle_tactics') }}">Battle Tactics</a></li>
+        <li><a href="{{ url_for('rules.aos_battleplans') }}">Battleplans</a></li>
         <li><a href="{{ url_for('rules.aos_composition') }}">Composição de Exército</a></li>
+        <li><a href="{{ url_for('rules.aos_glossary') }}">Glossário</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
       </ul>
     </nav>
 
@@ -77,6 +93,98 @@
         gatilho específico que acabou de ocorrer. Um único gatilho só pode ser respondido uma vez por
         habilidade por jogador.
       </p>
+
+      <!-- Within vs Wholly Within -->
+      <h2 id="within-wholly-within">Within vs Wholly Within</h2>
+      <p>
+        A distinção entre <strong>Within</strong> e <strong>Wholly Within</strong> é fundamental
+        para interpretar habilidades corretamente:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Within X&Prime;</strong> (um modelo): O modelo está Within X&Prime; de algo se
+          <em>qualquer parte</em> de sua base estiver dentro dessa distância.
+        </li>
+        <li>
+          <strong>Wholly Within X&Prime;</strong> (um modelo): O modelo está Wholly Within X&Prime;
+          de algo se <em>todas as partes</em> de sua base estiverem dentro dessa distância.
+        </li>
+        <li>
+          <strong>Uma unidade está Within X&Prime;</strong> de algo se <em>pelo menos um modelo</em>
+          da unidade estiver Within X&Prime;.
+        </li>
+        <li>
+          <strong>Uma unidade está Wholly Within X&Prime;</strong> de algo se <em>todos os modelos</em>
+          da unidade estiverem Wholly Within X&Prime; — ou seja, cada parte de cada base está dentro
+          da distância.
+        </li>
+      </ul>
+
+      <!-- Diagrama SVG Within vs Wholly Within -->
+      <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;margin:1.5rem auto;display:block;font-family:sans-serif">
+        <!-- Título -->
+        <text x="260" y="18" text-anchor="middle" font-size="13" fill="#2d3748" font-weight="bold">Within vs Wholly Within — 4 modelos, borda de território</text>
+
+        <!-- Caso A: Within (esquerda) -->
+        <text x="120" y="40" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="bold">Caso A — Within</text>
+        <!-- Borda de território -->
+        <line x1="20" y1="55" x2="220" y2="55" stroke="#805ad5" stroke-width="2" stroke-dasharray="8,4"/>
+        <text x="120" y="51" text-anchor="middle" font-size="9" fill="#805ad5">borda do território</text>
+
+        <!-- 4 modelos: 3 dentro, 1 parcialmente fora -->
+        <circle cx="60"  cy="95"  r="13" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="100" cy="90"  r="13" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="140" cy="92"  r="13" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <!-- modelo parcialmente fora -->
+        <circle cx="180" cy="75"  r="13" fill="#fc8181" stroke="#c53030" stroke-width="2" opacity="0.85"/>
+        <!-- indicação -->
+        <line x1="180" y1="55" x2="180" y2="62" stroke="#c53030" stroke-width="1.5"/>
+        <text x="185" y="68" font-size="9" fill="#c53030">base cruza a borda</text>
+
+        <!-- legenda A -->
+        <rect x="25" y="125" width="170" height="48" rx="4" fill="#f0fff4" stroke="#276749" stroke-width="1"/>
+        <text x="110" y="141" text-anchor="middle" font-size="10" fill="#276749" font-weight="bold">Unidade está WITHIN</text>
+        <text x="110" y="155" text-anchor="middle" font-size="9" fill="#4a5568">1 modelo cruza a borda →</text>
+        <text x="110" y="167" text-anchor="middle" font-size="9" fill="#4a5568">unidade está Within (parcial ok)</text>
+
+        <!-- Caso B: Wholly Within (direita) -->
+        <text x="390" y="40" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="bold">Caso B — Wholly Within</text>
+        <!-- Borda de território -->
+        <line x1="290" y1="55" x2="490" y2="55" stroke="#805ad5" stroke-width="2" stroke-dasharray="8,4"/>
+        <text x="390" y="51" text-anchor="middle" font-size="9" fill="#805ad5">borda do território</text>
+
+        <!-- 4 modelos: todos abaixo da borda -->
+        <circle cx="320" cy="105" r="13" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="360" cy="98"  r="13" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="405" cy="102" r="13" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <circle cx="450" cy="96"  r="13" fill="#48bb78" stroke="#276749" stroke-width="2"/>
+        <!-- check marks -->
+        <text x="320" y="110" text-anchor="middle" font-size="10" fill="#fff">&#10003;</text>
+        <text x="360" y="103" text-anchor="middle" font-size="10" fill="#fff">&#10003;</text>
+        <text x="405" y="107" text-anchor="middle" font-size="10" fill="#fff">&#10003;</text>
+        <text x="450" y="101" text-anchor="middle" font-size="10" fill="#fff">&#10003;</text>
+
+        <!-- legenda B -->
+        <rect x="295" y="125" width="190" height="48" rx="4" fill="#f0fff4" stroke="#276749" stroke-width="1"/>
+        <text x="390" y="141" text-anchor="middle" font-size="10" fill="#276749" font-weight="bold">Unidade está WHOLLY WITHIN</text>
+        <text x="390" y="155" text-anchor="middle" font-size="9" fill="#4a5568">todos os 4 modelos inteiramente</text>
+        <text x="390" y="167" text-anchor="middle" font-size="9" fill="#4a5568">dentro do território ✓</text>
+
+        <!-- Legenda de cores -->
+        <circle cx="30" cy="210" r="8" fill="#48bb78" stroke="#276749" stroke-width="1.5"/>
+        <text x="43" y="214" font-size="10" fill="#4a5568">modelo dentro</text>
+        <circle cx="160" cy="210" r="8" fill="#fc8181" stroke="#c53030" stroke-width="1.5"/>
+        <text x="173" y="214" font-size="10" fill="#4a5568">modelo parcialmente fora</text>
+        <line x1="310" y1="210" x2="330" y2="210" stroke="#805ad5" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="335" y="214" font-size="10" fill="#4a5568">borda de território (tracejada)</text>
+      </svg>
+
+      <div class="rules-callout">
+        <strong>Impacto prático.</strong> Habilidades que exigem &ldquo;Wholly Within&rdquo;
+        (ex: &ldquo;Deploy units Wholly Within friendly territory&rdquo;) são mais restritas
+        do que aquelas que dizem apenas &ldquo;Within&rdquo;. Verifique sempre qual dos dois
+        termos a habilidade usa antes de medir.
+      </div>
 
       <!-- Ward Saves -->
       <h2 id="ward">Ward Saves</h2>
@@ -145,6 +253,41 @@
         dedicadas de Mortal Wound em warscrolls e regras de facção.
       </div>
 
+      <!-- Healing & Returning Models -->
+      <h2 id="healing-returning">Healing &amp; Returning Models</h2>
+      <p>
+        Habilidades de cura e retorno de modelos seguem regras específicas para evitar que unidades
+        excedam seus valores iniciais:
+      </p>
+      <h3>Heal</h3>
+      <p>
+        Quando uma habilidade diz <strong>Heal (X)</strong>, remova X pontos de dano atualmente
+        alocados à unidade. Uma unidade não pode ter menos que 0 pontos de dano alocados — Heal
+        não acumula &ldquo;crédito&rdquo; de cura.
+      </p>
+      <h3>Returning Models</h3>
+      <p>
+        Quando modelos são <em>retornados</em> (returned) à unidade por uma habilidade, posicione-os
+        em coerência com os modelos da unidade que <em>não</em> foram retornados nesta ativação.
+        Restrições importantes:
+      </p>
+      <ul class="rules-list">
+        <li>
+          Modelos retornados só podem ser posicionados em combate com uma unidade inimiga se a
+          unidade já estiver em combate com essa unidade inimiga.
+        </li>
+        <li>
+          Uma unidade <strong>não pode exceder seu tamanho inicial</strong> (starting model count)
+          ao retornar modelos — você não pode retornar mais modelos do que o total com que a unidade
+          começou a partida.
+        </li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Heal vs. Return.</strong> &ldquo;Heal&rdquo; remove pontos de dano de modelos
+        existentes (mas não pode reviver modelos abatidos). &ldquo;Return&rdquo; traz de volta
+        modelos que já foram removidos do jogo. São efeitos distintos.
+      </div>
+
       <!-- Companion Units -->
       <h2 id="companions">Unidades Companheiras</h2>
       <p>
@@ -183,6 +326,77 @@
         não é um efeito de magia e não expira no fim do turno. Pense nas Manifestations como
         conjurações de longa duração que precisam ser fisicamente eliminadas.
       </div>
+
+      <!-- Ordem de Modificadores -->
+      <h2 id="modifier-order">Ordem de Aplicação de Modificadores</h2>
+      <p>
+        Quando múltiplos modificadores afetam a mesma rolagem, eles são aplicados nesta ordem:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li><strong>Valores fixos</strong> — substituem o valor base (ex: &ldquo;o valor de Hit desta arma é 2+&rdquo;).</li>
+        <li><strong>Multiplicações e divisões</strong> — aplicadas após qualquer valor fixo.</li>
+        <li><strong>Somas e subtrações</strong> — aplicadas por último.</li>
+      </ol>
+      <p>
+        Re-rolls são sempre calculados usando o valor base da habilidade — antes de quaisquer outros
+        modificadores. Isso significa que se uma habilidade diz &ldquo;re-role hits com resultado 1&rdquo;,
+        você usa o resultado bruto do dado para determinar se o re-roll se aplica.
+      </p>
+      <p>
+        <strong>Caps de modificadores:</strong> O total acumulado de modificadores em rolagens de Hit,
+        Wound e Save não pode exceder +1 nem &minus;1. Se três fontes diferentes fornecerem +1 Hit cada,
+        o resultado final é +1 (não +3). Rend <em>não</em> é um modificador — não tem cap e é aplicado
+        separadamente ao valor de Save.
+      </p>
+
+      <!-- Ordem de Efeitos -->
+      <h2 id="order-of-effects">Ordem de Efeitos Simultâneos</h2>
+      <p>
+        Quando dois ou mais efeitos de habilidades diferentes ocorrem ao mesmo tempo (durante a mesma
+        etapa de um turno), o jogador <strong>ativo</strong> decide a ordem em que esses efeitos são
+        resolvidos — exceto quando ambos os jogadores têm efeitos simultâneos, nesse caso o jogador
+        ativo resolve os seus primeiro, depois o jogador inativo.
+      </p>
+      <p>
+        Isso se aplica a efeitos com a mesma janela de ativação (ex: dois Passive que se disparam no
+        mesmo momento, ou duas Reactions à mesma ação). O jogador ativo tem o controle da sequência
+        quando for a vez dele resolver.
+      </p>
+      <div class="rules-callout">
+        <strong>Efeitos encadeados.</strong> Se o efeito A dispara o efeito B, resolva A completamente
+        antes de iniciar B. Não há fila de efeitos em espera — cada efeito é resolvido totalmente antes
+        do próximo começar.
+      </div>
+
+      <!-- Estrutura dos Cards de Habilidade -->
+      <h2 id="ability-card">Estrutura dos Cards de Habilidade</h2>
+      <p>
+        Cada habilidade em um warscroll ou regra de facção segue uma estrutura padronizada:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Nome:</strong> Identifica a habilidade. Algumas habilidades com o mesmo nome em
+          diferentes unidades são tratadas como a mesma habilidade para fins de regras (ex: All-Out
+          Attack é uma só habilidade, não importa quem a usa).
+        </li>
+        <li>
+          <strong>Tipo:</strong> [Passive], [Used] ou [Reaction] — indica como a habilidade é ativada.
+        </li>
+        <li>
+          <strong>Used When:</strong> Para habilidades Used e Reaction, indica exatamente em que momento
+          durante o turno a habilidade pode ser ativada (ex: &ldquo;Used When: Hero Phase&rdquo;,
+          &ldquo;Used When: Enemy unit declares a charge&rdquo;).
+        </li>
+        <li>
+          <strong>Effect:</strong> O efeito real da habilidade — o que acontece quando ela é ativada.
+          Leia todo o Effect antes de resolver para garantir que todos os passos sejam seguidos na ordem
+          correta.
+        </li>
+        <li>
+          <strong>Keywords adicionais:</strong> Some habilidades têm tags como [Once Per Battle],
+          [Your Hero Phase], [Combat Phase] etc. que refinam ainda mais quando e como podem ser usadas.
+        </li>
+      </ul>
 
     </article>
   </div>

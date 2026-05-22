@@ -1,8 +1,42 @@
 import os
+import re
 import click
 from flask import Flask
+from markupsafe import Markup
 from .config import get_config
 from .extensions import db, migrate, socketio, login_manager, csrf
+
+
+def _simple_md(text):
+    """Minimal markdown-to-HTML: paragraphs, bold, italic, h1-h3.
+    No external dependency required."""
+    if not text:
+        return Markup('')
+    import html as _html
+    # Escape HTML first
+    text = _html.escape(text)
+    # Headers (##, ###, #)
+    text = re.sub(r'^### (.+)$', r'<h4 class="faction-rules-md-h3">\1</h4>', text, flags=re.MULTILINE)
+    text = re.sub(r'^## (.+)$',  r'<h3 class="faction-rules-md-h2">\1</h3>', text, flags=re.MULTILINE)
+    text = re.sub(r'^# (.+)$',   r'<h2 class="faction-rules-md-h1">\1</h2>', text, flags=re.MULTILINE)
+    # Bold + italic
+    text = re.sub(r'\*\*\*(.+?)\*\*\*', r'<strong><em>\1</em></strong>', text)
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    text = re.sub(r'\*(.+?)\*',   r'<em>\1</em>', text)
+    # Paragraphs: split on blank lines
+    blocks = re.split(r'\n{2,}', text.strip())
+    parts = []
+    for block in blocks:
+        b = block.strip()
+        if not b:
+            continue
+        if b.startswith('<h'):
+            parts.append(b)
+        else:
+            # turn single newlines into <br> inside paragraph
+            b = b.replace('\n', '<br>')
+            parts.append(f'<p>{b}</p>')
+    return Markup('\n'.join(parts))
 
 
 def create_app(config_name='dev', test_config=None):
@@ -28,6 +62,9 @@ def create_app(config_name='dev', test_config=None):
     login_manager.init_app(app)
     csrf.init_app(app)
 
+    # Jinja2 filters
+    app.jinja_env.filters['simple_md'] = _simple_md
+
     login_manager.login_view = 'auth.login'
     login_manager.login_message = 'Sign in to enter the war-host.'
 
@@ -49,9 +86,6 @@ def create_app(config_name='dev', test_config=None):
 
     from .routes.rules import rules_bp
     app.register_blueprint(rules_bp)
-
-    from .routes.factions import factions_bp
-    app.register_blueprint(factions_bp)
 
     from .routes.units import units_bp
     app.register_blueprint(units_bp)

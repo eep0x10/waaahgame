@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+{% block title %}Tiro — Regras AoS 4ed{% endblock %}
+
+{% block content %}
+<section class="rules-section-page">
+  <div class="container rules-layout">
+
+    <nav class="rules-toc">
+      <p class="rules-toc-label">Nesta página</p>
+      <ul>
+        <li><a href="#overview">Visão Geral</a></li>
+        <li><a href="#shooting-phase">Fase de Tiro</a></li>
+        <li><a href="#visibility">Linha de Visão</a></li>
+        <li><a href="#range">Alcance</a></li>
+        <li><a href="#in-combat">Atirar em Combate</a></li>
+        <li><a href="#guarded-hero">Guarded Hero</a></li>
+        <li><a href="#restrictions">Restrições Comuns</a></li>
+      </ul>
+      <div class="rules-toc-divider"></div>
+      <p class="rules-toc-label">Outras Seções</p>
+      <ul>
+        <li><a href="{{ url_for('rules.aos_overview') }}">Visão Geral AoS</a></li>
+        <li><a href="{{ url_for('rules.aos_turn') }}">Estrutura do Turno</a></li>
+        <li><a href="{{ url_for('rules.aos_movement') }}">Movimento</a></li>
+        <li><a href="{{ url_for('rules.aos_combat') }}">Combate</a></li>
+        <li><a href="{{ url_for('rules.aos_charge') }}">Carga</a></li>
+        <li><a href="{{ url_for('rules.aos_abilities') }}">Habilidades</a></li>
+        <li><a href="{{ url_for('rules.aos_terrain') }}">Terreno</a></li>
+        <li><a href="{{ url_for('rules.aos_tournament') }}">Regras de Torneio</a></li>
+      </ul>
+    </nav>
+
+    <article class="rules-body">
+      <p class="eyebrow">
+        <a href="{{ url_for('rules.index') }}">Compêndio de Regras</a> &rsaquo;
+        <a href="{{ url_for('rules.aos_overview') }}">Age of Sigmar</a> &rsaquo;
+        Tiro
+      </p>
+      <h1 class="section-title" id="overview">Tiro</h1>
+      <p class="rules-ruleset-badge">GHB 2025-26 &middot; Battlescroll Abril 2026 Ativo</p>
+
+      <p>
+        Durante a <strong>Fase de Tiro</strong>, unidades com armas de ranged (armas com alcance
+        indicado no perfil) podem disparar contra inimigos visíveis. A mecânica de resolução é
+        idêntica à sequência de ataque descrita na
+        <a href="{{ url_for('rules.aos_combat') }}">página de Combate</a> — Hit, Wound, Save, Damage,
+        Ward — com algumas restrições adicionais específicas do Tiro.
+      </p>
+
+      <!-- SVG: LoS + Cover + Obscuring -->
+      <figure style="margin: 1.5rem 0;">
+        <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" class="svg-diagram" aria-label="Cenários de Linha de Visão, Cover e Obscuring" style="width:100%;max-width:600px;display:block;font-family:inherit;">
+          <!-- Panel labels -->
+          <text x="100" y="14" text-anchor="middle" font-size="10" font-weight="bold" fill="#22c55e">(a) Sem Terreno</text>
+          <text x="300" y="14" text-anchor="middle" font-size="10" font-weight="bold" fill="#f59e0b">(b) Cover</text>
+          <text x="500" y="14" text-anchor="middle" font-size="10" font-weight="bold" fill="#ef4444">(c) Obscuring</text>
+          <!-- Dividers -->
+          <line x1="200" y1="6" x2="200" y2="194" stroke="#444" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="400" y1="6" x2="400" y2="194" stroke="#444" stroke-width="1" stroke-dasharray="4,3"/>
+
+          <defs>
+            <marker id="arr-clear" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+            </marker>
+            <marker id="arr-cover" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z" fill="#f59e0b"/>
+            </marker>
+            <marker id="arr-block" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z" fill="#ef4444"/>
+            </marker>
+          </defs>
+
+          <!-- === (a) Sem Terreno === -->
+          <!-- Attacker -->
+          <circle cx="30" cy="100" r="14" fill="#3b82f6" opacity="0.9"/>
+          <text x="30" y="104" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">ATK</text>
+          <!-- LoS line clear -->
+          <line x1="45" y1="100" x2="148" y2="100" stroke="#22c55e" stroke-width="2" marker-end="url(#arr-clear)"/>
+          <!-- Target -->
+          <circle cx="165" cy="100" r="14" fill="#ef4444" opacity="0.9"/>
+          <text x="165" y="104" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">ALV</text>
+          <!-- Result label -->
+          <rect x="55" y="118" width="90" height="15" rx="3" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
+          <text x="100" y="129" text-anchor="middle" font-size="8" fill="#22c55e">Hit normal</text>
+          <text x="100" y="155" text-anchor="middle" font-size="8" fill="#94a3b8">Linha de visão</text>
+          <text x="100" y="166" text-anchor="middle" font-size="8" fill="#94a3b8">desobstruída.</text>
+
+          <!-- === (b) Cover === -->
+          <!-- Attacker -->
+          <circle cx="225" cy="100" r="14" fill="#3b82f6" opacity="0.9"/>
+          <text x="225" y="104" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">ATK</text>
+          <!-- Terrain feature (ruin/wall where target is inside) -->
+          <rect x="305" y="78" width="38" height="38" rx="3" fill="#78716c" opacity="0.5" stroke="#a8a29e" stroke-width="1"/>
+          <text x="324" y="97" text-anchor="middle" font-size="7" fill="#e7e5e4">Cover</text>
+          <!-- Target inside terrain -->
+          <circle cx="324" cy="100" r="10" fill="#ef4444" opacity="0.9"/>
+          <text x="324" y="104" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ALV</text>
+          <!-- LoS line -->
+          <line x1="240" y1="100" x2="312" y2="100" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr-cover)"/>
+          <!-- Result label -->
+          <rect x="230" y="118" width="100" height="15" rx="3" fill="#1e293b" stroke="#f59e0b" stroke-width="1"/>
+          <text x="280" y="129" text-anchor="middle" font-size="8" fill="#f59e0b">+1 Save p/ alvo</text>
+          <text x="280" y="155" text-anchor="middle" font-size="8" fill="#94a3b8">Alvo dentro de terrain</text>
+          <text x="280" y="166" text-anchor="middle" font-size="8" fill="#94a3b8">feature: Cover ativo.</text>
+
+          <!-- === (c) Obscuring === -->
+          <!-- Attacker -->
+          <circle cx="420" cy="100" r="14" fill="#3b82f6" opacity="0.9"/>
+          <text x="420" y="104" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">ATK</text>
+          <!-- Obscuring terrain BETWEEN attacker and target -->
+          <rect x="455" y="72" width="34" height="52" rx="3" fill="#1e293b" opacity="0.75" stroke="#6b7280" stroke-width="1.5"/>
+          <text x="472" y="96" text-anchor="middle" font-size="7" fill="#9ca3af">Obs-</text>
+          <text x="472" y="106" text-anchor="middle" font-size="7" fill="#9ca3af">curing</text>
+          <!-- Target beyond -->
+          <circle cx="555" cy="100" r="14" fill="#ef4444" opacity="0.9"/>
+          <text x="555" y="104" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">ALV</text>
+          <!-- Blocked LoS line (dashed red) -->
+          <line x1="435" y1="100" x2="453" y2="100" stroke="#ef4444" stroke-width="2"/>
+          <line x1="491" y1="100" x2="538" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr-block)"/>
+          <!-- X on terrain -->
+          <text x="472" y="118" text-anchor="middle" font-size="14" fill="#ef4444" opacity="0.8">✕</text>
+          <!-- Result label -->
+          <rect x="425" y="126" width="115" height="15" rx="3" fill="#1e293b" stroke="#ef4444" stroke-width="1"/>
+          <text x="482" y="137" text-anchor="middle" font-size="8" fill="#ef4444">LoS bloqueada</text>
+          <text x="482" y="155" text-anchor="middle" font-size="8" fill="#94a3b8">Feature entre ATK e ALV:</text>
+          <text x="482" y="166" text-anchor="middle" font-size="8" fill="#94a3b8">tiro impossível.</text>
+        </svg>
+        <figcaption style="font-size:0.8rem;color:#94a3b8;text-align:center;margin-top:0.4rem;">
+          (a) Linha de visão livre → hit normal. (b) Alvo dentro de terrain feature com Cover → +1 Save. (c) Terrain Obscuring entre atacante e alvo → LoS bloqueada, tiro impossível.
+        </figcaption>
+      </figure>
+
+      <!-- Fase de Tiro -->
+      <h2 id="shooting-phase">Fase de Tiro</h2>
+      <p>
+        O jogador ativo seleciona uma unidade amiga com pelo menos uma arma de ranged elegível e
+        usa a habilidade <strong>Shoot</strong>:
+      </p>
+      <ol class="rules-list rules-list--ordered">
+        <li>Declare quais modelos da unidade dispararão e quais alvos cada arma atacará.</li>
+        <li>Verifique linha de visão e alcance para cada modelo.</li>
+        <li>Resolva os ataques (Hit → Wound → Save → Damage → Ward).</li>
+      </ol>
+      <p>
+        O jogador ativo ativa <em>uma unidade por vez</em> — não há alternância de ativação na
+        Fase de Tiro (ao contrário da Fase de Combate). Após a unidade disparar, o jogador ativo
+        pode escolher outra unidade, até que todas que queiram atirar tenham disparado.
+      </p>
+
+      <!-- Visibilidade -->
+      <h2 id="visibility">Linha de Visão</h2>
+      <p>
+        Para atirar em um alvo, o modelo atacante precisa ter <strong>linha de visão</strong> para
+        pelo menos um modelo da unidade alvo. A verificação: trace uma linha imaginária do volume
+        (base + corpo) do modelo atacante até qualquer ponto do volume do modelo alvo. Se a linha
+        não for bloqueada por terreno Obscuring ou outro obstáculo sólido, a visão existe.
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Terreno Obscuring:</strong> Bloqueia a linha de visão se a linha de traçado
+          passar pelo interior da peça. Raspar a borda não bloqueia.
+        </li>
+        <li>
+          <strong>Sem tiro indireto.</strong> Age of Sigmar não possui regra de tiro indireto no
+          ruleset padrão — todo ataque ranged requer linha de visão. Exceções são explicitamente
+          indicadas em warscrolls (ex: &ldquo;does not require line of sight&rdquo;).
+        </li>
+        <li>
+          Modelos da própria unidade do atacante não bloqueiam a visão — apenas unidades distintas
+          o fazem.
+        </li>
+      </ul>
+
+      <!-- Alcance -->
+      <h2 id="range">Alcance</h2>
+      <p>
+        Cada arma de ranged tem um valor de <strong>Range</strong> em polegadas. O modelo atacante
+        deve estar a essa distância ou menos do modelo alvo mais próximo da unidade inimiga
+        (medindo da base do atacante à base do alvo).
+      </p>
+      <p>
+        Modelos diferentes da mesma unidade podem ter alcances distintos se possuírem armas
+        diferentes — cada modelo usa o alcance de sua própria arma.
+      </p>
+
+      <!-- Atirar em Combate -->
+      <h2 id="in-combat">Atirar em Combate</h2>
+      <p>
+        Por padrão, uma unidade em <strong>Engagement Range</strong> (a ½&Prime; ou menos de um
+        inimigo) <strong>não pode usar a habilidade Shoot</strong>.
+      </p>
+      <p>
+        Exceções que permitem atirar em combate:
+      </p>
+      <ul class="rules-list">
+        <li>
+          <strong>Habilidade de warscroll ou Battle Formation</strong> que permite atirar mesmo em
+          engajamento (ex: Scurrying Away, algumas formações Skaven e Stormcast).
+        </li>
+        <li>
+          <strong>Arma com &ldquo;Shoot in Combat&rdquo;:</strong> Essa habilidade de arma específica
+          permite que aquela arma dispare mesmo que a unidade esteja em Engagement Range. As demais
+          armas da unidade ainda não podem atirar.
+        </li>
+      </ul>
+
+      <!-- Guarded Hero -->
+      <h2 id="guarded-hero">Guarded Hero</h2>
+      <p>
+        Todo Herói que não seja Monster nem War Machine possui a habilidade passiva
+        <strong>Guarded Hero</strong>, que representa a proteção concedida pelas tropas ao redor:
+      </p>
+      <p>
+        Se o Herói estiver dentro do <strong>Combat Range</strong> (3&Prime;) de uma unidade amiga
+        que <em>não</em> seja um Herói, dois efeitos se aplicam automaticamente a ataques de tiro
+        contra esse Herói:
+      </p>
+      <ul class="rules-list">
+        <li>Atacantes sofrem <strong>&minus;1 nas rolagens de Hit</strong> para ataques de tiro
+          que alvejam o Herói.</li>
+        <li>Se o Herói tiver a keyword <strong>Infantry</strong>, ele não pode ser escolhido como
+          alvo de ataques de tiro feitos por modelos a mais de <strong>12&Prime;</strong> de distância.</li>
+      </ul>
+      <div class="rules-callout">
+        <strong>Importante.</strong> Guarded Hero <em>não</em> exige um número mínimo de modelos
+        na unidade protetora. Qualquer unidade amiga não-Herói dentro de 3&Prime; do Herói ativa
+        a proteção. Não há redirecionamento de dados — o efeito é um modificador direto de &minus;1
+        Hit e, para Heróis Infantry, um teto de alcance de 12&Prime;.
+      </div>
+
+      <!-- Restrições -->
+      <h2 id="restrictions">Restrições Comuns ao Tiro</h2>
+      <ul class="rules-list">
+        <li>
+          <strong>Após Run:</strong> Uma unidade que usou Run neste turno não pode Atirar (salvo
+          habilidade que remove essa restrição).
+        </li>
+        <li>
+          <strong>Após Retreat:</strong> Uma unidade que usou Retreat neste turno não pode Atirar.
+        </li>
+        <li>
+          <strong>Em Engagement Range:</strong> Uma unidade em contato de combate não pode Atirar
+          (salvo exceções listadas acima).
+        </li>
+        <li>
+          <strong>Sem arma de ranged:</strong> Se nenhum modelo da unidade possui uma arma com
+          alcance, ela não pode usar a habilidade Shoot.
+        </li>
+      </ul>
+
+    </article>
+  </div>
+</section>
+{% endblock %}
