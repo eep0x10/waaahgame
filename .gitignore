@@ -24,6 +24,7 @@ app/static/css/app.css.bak_*
 
 # Cache and extraction artifacts
 scripts/cache/
+scripts/_cache/
 *.clean.md.bak
 
 # Local smoke scripts (dev only)
