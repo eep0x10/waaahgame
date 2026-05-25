@@ -49,3 +49,6 @@ Thumbs.db
 # Local docker
 .docker/
 docker-compose.override.yml
+
+# Windows temp paths (mangled)
+Userseep0x10*
