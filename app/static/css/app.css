@@ -32,6 +32,24 @@
   --font-display: 'Cinzel', serif;
   --nav-height: 56px;
   --container-max: 1100px;
+
+  /* Gold accents (BB-inspired) */
+  --gold: #b8935a;
+  --gold-deep: #8a6b3d;
+  --gold-soft: rgba(184,147,90,0.10);
+  --border-gold: rgba(184,147,90,0.45);
+
+  /* Grand alliance accents (light) */
+  --ga-order: #2a6db8;
+  --ga-order-soft: rgba(42,109,184,0.10);
+  --ga-chaos: #b8443a;
+  --ga-chaos-soft: rgba(184,68,58,0.10);
+  --ga-death: #6b4d8a;
+  --ga-death-soft: rgba(107,77,138,0.10);
+  --ga-destruction: #2d8a4e;
+  --ga-destruction-soft: rgba(45,138,78,0.10);
+  --ga-universal: #b8935a;
+  --ga-universal-soft: rgba(184,147,90,0.10);
 }
 
 [data-theme="dark"] {
@@ -47,6 +65,22 @@
   --border-strong: #3a3f4a;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+
+  --gold: #c9a96e;
+  --gold-deep: #b8935a;
+  --gold-soft: rgba(201,169,110,0.12);
+  --border-gold: rgba(201,169,110,0.40);
+
+  --ga-order: #5a9ce3;
+  --ga-order-soft: rgba(90,156,227,0.14);
+  --ga-chaos: #d96a5f;
+  --ga-chaos-soft: rgba(217,106,95,0.14);
+  --ga-death: #a98ad1;
+  --ga-death-soft: rgba(169,138,209,0.14);
+  --ga-destruction: #6ec78b;
+  --ga-destruction-soft: rgba(110,199,139,0.14);
+  --ga-universal: #c9a96e;
+  --ga-universal-soft: rgba(201,169,110,0.14);
 }
 
 /* ============================================================
@@ -3376,5 +3410,742 @@ details[open] .unit-pool-chevron { transform: rotate(180deg); }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* ============================================================
+   UNITS PAGE v3 — Grand Alliance accents, faction headers,
+   refined card, filter chips, empty placeholders, detail nav
+   ============================================================ */
+
+/* Grand-alliance badge color variants (apply to .alliance-badge) */
+.alliance-order       { color: var(--ga-order);       background: var(--ga-order-soft);       border-color: var(--ga-order); }
+.alliance-chaos       { color: var(--ga-chaos);       background: var(--ga-chaos-soft);       border-color: var(--ga-chaos); }
+.alliance-death       { color: var(--ga-death);       background: var(--ga-death-soft);       border-color: var(--ga-death); }
+.alliance-destruction { color: var(--ga-destruction); background: var(--ga-destruction-soft); border-color: var(--ga-destruction); }
+.alliance-universal   { color: var(--ga-universal);   background: var(--ga-universal-soft);   border-color: var(--ga-universal); }
+
+/* Unit-rows wrapper: counter + faction blocks */
+.units-results-count {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-bottom: var(--space-4);
+}
+
+.units-system-block { margin-bottom: var(--space-6); }
+
+.units-system-heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--border-gold);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+  font-weight: 600;
+}
+
+.units-system-heading .sys-edition {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  color: var(--fg-faint);
+}
+
+/* Faction collapsible block */
+.units-faction-block {
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg-elev);
+  overflow: hidden;
+}
+
+.units-faction-block[open] { box-shadow: var(--shadow-sm); }
+
+.units-faction-heading {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg);
+  background: linear-gradient(180deg, var(--bg-elev-2) 0%, var(--bg-elev) 100%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.units-faction-block[open] > .units-faction-heading {
+  border-bottom-color: var(--border-gold);
+}
+
+.units-faction-heading::-webkit-details-marker { display: none; }
+
+.units-faction-heading .chev {
+  display: inline-block;
+  width: 10px;
+  color: var(--gold);
+  transition: transform 0.2s;
+  font-size: 0.7em;
+}
+
+.units-faction-block[open] > .units-faction-heading .chev {
+  transform: rotate(90deg);
+}
+
+.units-faction-heading .faction-count {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: var(--fg-faint);
+  font-weight: 400;
+}
+
+.units-faction-heading .faction-spacer { flex: 1; }
+
+.units-faction-body { padding: var(--space-4); }
+
+/* Unit grid (BB style v3) */
+.unit-grid--bb {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: var(--space-3);
+}
+@media (min-width: 640px) {
+  .unit-grid--bb { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--space-4); }
+}
+@media (min-width: 960px) {
+  .unit-grid--bb { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+}
+
+/* Card v3 */
+.unit-card--bb {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--fg);
+  transition: transform 0.15s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+/* Top stripe (alliance accent) */
+.unit-card--bb::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+  z-index: 3;
+}
+.unit-card--bb.ga-order::before       { background: var(--ga-order); }
+.unit-card--bb.ga-chaos::before       { background: var(--ga-chaos); }
+.unit-card--bb.ga-death::before       { background: var(--ga-death); }
+.unit-card--bb.ga-destruction::before { background: var(--ga-destruction); }
+.unit-card--bb.ga-universal::before   { background: var(--ga-universal); }
+
+.unit-card--bb:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-gold);
+  opacity: 1;
+}
+
+.unit-card--bb.unit-card--legends {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--bg-elev) 0px,
+    var(--bg-elev) 14px,
+    var(--bg-elev-2) 14px,
+    var(--bg-elev-2) 16px
+  );
+}
+
+.unit-card--bb.unit-card--incomplete {
+  border-style: dashed;
+}
+
+.unit-card-bb-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--bg-elev-2);
+  overflow: hidden;
+  position: relative;
+}
+
+.unit-card-bb-body {
+  padding: var(--space-3) var(--space-3) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.unit-card--bb .unit-card-name {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.unit-card--bb .unit-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  align-items: center;
+}
+
+.unit-card--bb .pts-badge {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  color: var(--gold-deep);
+  font-weight: 700;
+  padding: 2px 7px;
+  font-size: 0.78rem;
+}
+[data-theme="dark"] .unit-card--bb .pts-badge { color: var(--gold); }
+
+.unit-card-bb-body .unit-card-stats-peek {
+  margin-top: auto;
+  background: var(--gold-soft);
+  border-color: var(--border-gold);
+}
+
+/* Incomplete chip on card */
+.incomplete-chip {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: var(--bg);
+  color: var(--gold-deep);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 9px;
+  border: 1px solid var(--gold);
+  line-height: 1.4;
+  z-index: 4;
+}
+[data-theme="dark"] .incomplete-chip { color: var(--gold); }
+
+/* Manifestations subsection */
+.manifestations-subsection {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  background: var(--gold-soft);
+  border-left: 2px solid var(--border-gold);
+  border-radius: var(--r-sm);
+}
+
+.manifestations-subsection-title {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-bottom: var(--space-2);
+}
+
+.manifestations-subsection-title .count { opacity: 0.7; font-weight: 400; }
+
+.unit-grid--manifestations {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: var(--space-2);
+}
+
+.unit-card--manifestation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elev);
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--fg);
+  opacity: 0.85;
+  transition: opacity 0.18s, transform 0.15s;
+}
+.unit-card--manifestation:hover { opacity: 1; transform: translateY(-1px); }
+
+.unit-card--manifestation .unit-image-frame {
+  aspect-ratio: 4 / 3;
+  max-height: 86px;
+}
+.unit-card--manifestation .unit-card-body {
+  padding: var(--space-2);
+}
+.unit-card--manifestation .unit-card-name {
+  font-size: 0.7rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   FILTER BAR v3 (units/index)
+   ============================================================ */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: flex-end;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-5);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-field-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  font-weight: 600;
+}
+
+.filter-field--system  .form-select { min-width: 140px; }
+.filter-field--faction .form-select { min-width: 180px; }
+.filter-field--search  .form-input  { min-width: 200px; }
+.filter-field--pts     .form-input  { width: 88px; }
+
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  padding-bottom: 6px;
+}
+
+.filter-toggle input[type=checkbox] {
+  accent-color: var(--gold);
+  width: 13px; height: 13px;
+}
+
+.filter-toggle .chip-q {
+  background: var(--gold-soft);
+  color: var(--gold-deep);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+}
+[data-theme="dark"] .filter-toggle .chip-q { color: var(--gold); }
+
+/* ============================================================
+   WARSCROLL — section nav + alliance accent + empty states
+   ============================================================ */
+.ws-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 50;
+}
+
+.ws-section-nav a {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+  color: var(--fg-muted);
+  border: 1px solid transparent;
+  background: transparent;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.ws-section-nav a:hover {
+  color: var(--gold-deep);
+  background: var(--gold-soft);
+  border-color: var(--border-gold);
+  opacity: 1;
+}
+[data-theme="dark"] .ws-section-nav a:hover { color: var(--gold); }
+
+/* Warscroll header alliance top stripe */
+.ws-card { position: relative; }
+.ws-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gold);
+  z-index: 2;
+}
+.ws-card.ga-order::before       { background: var(--ga-order); }
+.ws-card.ga-chaos::before       { background: var(--ga-chaos); }
+.ws-card.ga-death::before       { background: var(--ga-death); }
+.ws-card.ga-destruction::before { background: var(--ga-destruction); }
+.ws-card.ga-universal::before   { background: var(--ga-universal); }
+
+/* Empty-state placeholders within warscroll body */
+.ws-empty {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--fg-faint);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-elev-2);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-sm);
+  text-align: center;
+}
+
+.ws-empty .ws-empty-hint {
+  display: block;
+  font-size: var(--text-xs);
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* Lore section refined (warscroll) */
+.unit-lore-section {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--fg);
+}
+
+.unit-lore-section p {
+  margin-bottom: var(--space-3);
+}
+
+/* ============================================================
+   ARMY NEW FORM v3 — step-by-step layout
+   ============================================================ */
+.army-new-form {
+  max-width: 880px;
+  margin: 2rem auto;
+  background: var(--bg-card, #1a1814);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 2.2rem 2rem 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.army-new-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.army-new-header .eyebrow {
+  justify-content: center;
+}
+
+.army-new-sub {
+  color: var(--text-muted, #a89880);
+  font-size: 0.92rem;
+  margin-top: 0.4rem;
+}
+
+.army-new-step {
+  margin-bottom: 1.8rem;
+}
+
+.army-new-step-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.army-new-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.army-new-step-label {
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+
+.army-new-text-input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border-gold);
+  border-radius: 5px;
+  color: var(--text-primary);
+  font-family: var(--font-body, system-ui);
+  font-size: 0.95rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.army-new-text-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-soft);
+}
+
+.army-new-pts-hint {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--gold-deep);
+  font-family: var(--font-display, 'Cinzel', serif);
+  letter-spacing: 0.06em;
+}
+
+.army-new-submit {
+  margin-top: 1rem;
+}
+
+/* ── radio-card primitive (used by system/ruleset/battlepack/faction) ── */
+.radio-card-grid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.radio-card-grid--system {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.radio-card-grid--ruleset {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.radio-card-grid--battlepack {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.radio-card {
+  position: relative;
+  display: block;
+  padding: 0.7rem 0.85rem;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(184,147,90,0.25);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+
+.radio-card:hover {
+  border-color: var(--gold);
+  background: rgba(184,147,90,0.06);
+}
+
+.radio-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-card:has(input[type="radio"]:checked) {
+  border-color: var(--gold);
+  background: var(--gold-soft);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+
+.radio-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.radio-card-title {
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.radio-card:has(input[type="radio"]:checked) .radio-card-title {
+  color: var(--gold);
+}
+
+.radio-card-meta {
+  font-size: 0.7rem;
+  color: var(--text-muted, #a89880);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── faction picker (grouped by alliance) ── */
+.faction-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faction-picker-system {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faction-picker-group {
+  border-top: 1px solid rgba(184,147,90,0.15);
+  padding-top: 0.7rem;
+}
+
+.faction-picker-group:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.faction-picker-group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.faction-picker-group-count {
+  font-size: 0.7rem;
+  color: var(--text-muted, #a89880);
+  font-family: var(--font-display, 'Cinzel', serif);
+}
+
+.faction-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.45rem;
+}
+
+.radio-card--faction {
+  padding: 0.55rem 0.7rem;
+}
+
+.radio-card--faction .radio-card-title {
+  font-size: 0.82rem;
+}
+
+/* Alliance accent on faction cards */
+.radio-card--faction.ga-order:has(input:checked) { box-shadow: inset 0 0 0 1px var(--ga-order); border-color: var(--ga-order); background: var(--ga-order-soft); }
+.radio-card--faction.ga-chaos:has(input:checked) { box-shadow: inset 0 0 0 1px var(--ga-chaos); border-color: var(--ga-chaos); background: var(--ga-chaos-soft); }
+.radio-card--faction.ga-death:has(input:checked) { box-shadow: inset 0 0 0 1px var(--ga-death); border-color: var(--ga-death); background: var(--ga-death-soft); }
+.radio-card--faction.ga-destruction:has(input:checked) { box-shadow: inset 0 0 0 1px var(--ga-destruction); border-color: var(--ga-destruction); background: var(--ga-destruction-soft); }
+.radio-card--faction.ga-universal:has(input:checked) { box-shadow: inset 0 0 0 1px var(--ga-universal); border-color: var(--ga-universal); background: var(--ga-universal-soft); }
+
+.radio-card--faction.ga-order:has(input:checked) .radio-card-title { color: var(--ga-order); }
+.radio-card--faction.ga-chaos:has(input:checked) .radio-card-title { color: var(--ga-chaos); }
+.radio-card--faction.ga-death:has(input:checked) .radio-card-title { color: var(--ga-death); }
+.radio-card--faction.ga-destruction:has(input:checked) .radio-card-title { color: var(--ga-destruction); }
+.radio-card--faction.ga-universal:has(input:checked) .radio-card-title { color: var(--ga-universal); }
+
+@media (max-width: 640px) {
+  .army-new-form {
+    padding: 1.4rem 1rem 1.4rem;
+    margin: 1rem;
+  }
+  .faction-picker-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* ── Legacy subsection (dropdown per faction) ── */
+.legacy-subsection {
+  margin-top: var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  background: rgba(184, 147, 90, 0.04);
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--r-sm);
+}
+
+.legacy-subsection > .unit-grid {
+  margin-top: var(--space-3);
+}
+
+.legacy-subsection-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  padding: var(--space-1) 0;
+  user-select: none;
+}
+
+.legacy-subsection-summary::-webkit-details-marker { display: none; }
+
+.legacy-subsection-summary .chev {
+  display: inline-block;
+  font-size: 0.6rem;
+  transition: transform 0.15s ease;
+  color: var(--gold);
+}
+
+.legacy-subsection[open] > .legacy-subsection-summary .chev {
+  transform: rotate(90deg);
+}
+
+.legacy-subsection-summary .count {
+  opacity: 0.7;
+  font-weight: 400;
+  font-size: 0.72rem;
+}
+
+.legacy-subsection-hint {
+  font-family: var(--font-body, inherit);
+  font-size: 0.7rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg-faint);
+  opacity: 0.75;
+  margin-left: auto;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .legacy-subsection-hint { display: none; }
 }
 

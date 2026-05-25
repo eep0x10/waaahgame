@@ -1,0 +1,5414 @@
+{
+  "blades-of-khorne": {
+    "name": "Blades of Khorne",
+    "ga": "Chaos",
+    "units": [
+      [
+        "blood-warriors",
+        "Blood Warriors",
+        "infantry",
+        "regular"
+      ],
+      [
+        "bloodcrushers",
+        "Bloodcrushers",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "bloodletters",
+        "Bloodletters",
+        "infantry",
+        "regular"
+      ],
+      [
+        "bloodmaster-herald-of-khorne",
+        "Bloodmaster, Herald of Khorne",
+        "hero",
+        "regular"
+      ],
+      [
+        "bloodreavers",
+        "Bloodreavers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "bloodsecrator",
+        "Bloodsecrator",
+        "hero",
+        "regular"
+      ],
+      [
+        "bloodstoker",
+        "Bloodstoker",
+        "hero",
+        "regular"
+      ],
+      [
+        "bloodthirster-of-insensate-rage",
+        "Bloodthirster of Insensate Rage",
+        "hero",
+        "regular"
+      ],
+      [
+        "bloodthirster-of-unfettered-fury",
+        "Bloodthirster of Unfettered Fury",
+        "hero",
+        "regular"
+      ],
+      [
+        "claws-of-karanak",
+        "Claws of Karanak",
+        "infantry",
+        "regular"
+      ],
+      [
+        "deathbringer",
+        "Deathbringer",
+        "hero",
+        "regular"
+      ],
+      [
+        "flesh-hounds",
+        "Flesh Hounds",
+        "infantry",
+        "regular"
+      ],
+      [
+        "garreks-reavers",
+        "Garrek's Reavers",
+        "",
+        "legends"
+      ],
+      [
+        "gorechosen-of-dromm",
+        "Gorechosen of Dromm",
+        "",
+        "legends"
+      ],
+      [
+        "herald-of-khorne-on-blood-throne",
+        "Herald of Khorne on Blood Throne",
+        "",
+        "regular"
+      ],
+      [
+        "kamandoras-blades",
+        "Kamandora's Blades",
+        "",
+        "legends"
+      ],
+      [
+        "karanak",
+        "Karanak",
+        "hero",
+        "regular"
+      ],
+      [
+        "khorgorath",
+        "Khorgorath",
+        "monster",
+        "regular"
+      ],
+      [
+        "lord-of-khorne-on-juggernaut",
+        "Lord of Khorne on Juggernaut",
+        "hero",
+        "regular"
+      ],
+      [
+        "magores-fiends",
+        "Magore's Fiends",
+        "",
+        "legends"
+      ],
+      [
+        "mighty-lord-of-khorne",
+        "Mighty Lord of Khorne",
+        "hero",
+        "regular"
+      ],
+      [
+        "mighty-skullcrushers",
+        "Mighty Skullcrushers",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "realmgore-ritualist",
+        "Realmgore Ritualist",
+        "hero",
+        "regular"
+      ],
+      [
+        "scyla-anfingrimm",
+        "Scyla Anfingrimm",
+        "",
+        "legends"
+      ],
+      [
+        "skarbrand",
+        "Skarbrand",
+        "hero",
+        "regular"
+      ],
+      [
+        "skarr-bloodwrath",
+        "Skarr Bloodwrath",
+        "hero",
+        "regular"
+      ],
+      [
+        "skull-cannon",
+        "Skull Cannon",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "skullgrinder",
+        "Skullgrinder",
+        "hero",
+        "regular"
+      ],
+      [
+        "skullmaster-herald-of-khorne",
+        "Skullmaster, Herald of Khorne",
+        "hero",
+        "regular"
+      ],
+      [
+        "skullreapers",
+        "Skullreapers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "skulltaker",
+        "Skulltaker",
+        "hero",
+        "regular"
+      ],
+      [
+        "slaughterpriest",
+        "Slaughterpriest",
+        "hero",
+        "regular"
+      ],
+      [
+        "valkia-the-bloody",
+        "Valkia The Bloody",
+        "",
+        "legends"
+      ],
+      [
+        "wrath-of-khorne-bloodthirster",
+        "Wrath of Khorne Bloodthirster",
+        "hero",
+        "regular"
+      ],
+      [
+        "wrathmongers",
+        "Wrathmongers",
+        "infantry",
+        "regular"
+      ]
+    ]
+  },
+  "bonesplitterz": {
+    "name": "Bonesplitterz",
+    "ga": "Destruction",
+    "units": [
+      [
+        "hedkrakkas-madmob",
+        "Hedkrakka's Madmob",
+        "infantry",
+        "legends"
+      ],
+      [
+        "kragnos-the-end-of-empires",
+        "Kragnos, the End of Empires",
+        "hero",
+        "legends"
+      ],
+      [
+        "maniak-weirdnob",
+        "Maniak Weirdnob",
+        "hero",
+        "legends"
+      ],
+      [
+        "savage-big-boss",
+        "Savage Big Boss",
+        "hero",
+        "legends"
+      ],
+      [
+        "savage-big-stabbas",
+        "Savage Big Stabbas",
+        "infantry",
+        "legends"
+      ],
+      [
+        "savage-boarboy-maniaks",
+        "Savage Boarboy Maniaks",
+        "cavalry",
+        "legends"
+      ],
+      [
+        "savage-boarboys",
+        "Savage Boarboys",
+        "cavalry",
+        "legends"
+      ],
+      [
+        "savage-orruk-arrowboys",
+        "Savage Orruk Arrowboys",
+        "infantry",
+        "legends"
+      ],
+      [
+        "savage-orruk-morboys",
+        "Savage Orruk Morboys",
+        "Infantry",
+        "legends"
+      ],
+      [
+        "savage-orruks",
+        "Savage Orruks",
+        "infantry",
+        "legends"
+      ],
+      [
+        "wardokk",
+        "Wardokk",
+        "hero",
+        "legends"
+      ],
+      [
+        "wurrgog-prophet",
+        "Wurrgog Prophet",
+        "hero",
+        "legends"
+      ]
+    ]
+  },
+  "cities-of-sigmar": {
+    "name": "Cities of Sigmar",
+    "ga": "Order",
+    "units": [
+      [
+        "alchemite-warforger",
+        "Alchemite Warforger",
+        "hero",
+        "regular"
+      ],
+      [
+        "assassin",
+        "Assassin",
+        "hero",
+        "regular"
+      ],
+      [
+        "battlemage",
+        "Battlemage",
+        "Hero",
+        "regular"
+      ],
+      [
+        "battlemage-on-celestial-hurricanum",
+        "Battlemage on Celestial Hurricanum",
+        "",
+        "regular"
+      ],
+      [
+        "battlemage-on-griffon",
+        "Battlemage on Griffon",
+        "hero",
+        "regular"
+      ],
+      [
+        "battlemage-on-luminark-of-hysh",
+        "Battlemage on Luminark of Hysh",
+        "hero",
+        "regular"
+      ],
+      [
+        "black-ark-corsairs",
+        "Black Ark Corsair",
+        "infantry",
+        "regular"
+      ],
+      [
+        "black-ark-fleetmaster",
+        "Black Ark Fleetmaster",
+        "hero",
+        "regular"
+      ],
+      [
+        "black-guard",
+        "Black Guard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "bleakswords",
+        "Bleaksword",
+        "infantry",
+        "regular"
+      ],
+      [
+        "brethren-of-the-bolt",
+        "Brethren of the Bolt",
+        "",
+        "legends"
+      ],
+      [
+        "callis-and-toll",
+        "Callis and Toll",
+        "hero",
+        "regular"
+      ],
+      [
+        "celestial-hurricanum",
+        "Celestial Hurricanum",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "cogsmith",
+        "Cogsmith",
+        "Hero",
+        "regular"
+      ],
+      [
+        "dark-riders",
+        "Dark Rider",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "darkshards",
+        "Darkshard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "drakespawn-chariot",
+        "Drakespawn Chariot",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "drakespawn-knights",
+        "Drakespawn Knight",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dreadlord-on-black-dragon",
+        "Dreadlord on Black Dragon",
+        "hero",
+        "regular"
+      ],
+      [
+        "dreadspears",
+        "Dreadspear",
+        "infantry",
+        "regular"
+      ],
+      [
+        "executioners",
+        "Executioner",
+        "infantry",
+        "regular"
+      ],
+      [
+        "flagellants",
+        "Flagellant",
+        "infantry",
+        "regular"
+      ],
+      [
+        "freeguild-cavaliers",
+        "Freeguild Cavalier",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "freeguild-cavalier-marshal",
+        "Freeguild Cavalier-Marshal",
+        "hero",
+        "regular"
+      ],
+      [
+        "freeguild-command-corps",
+        "Freeguild Command Corps",
+        "infantry",
+        "regular"
+      ],
+      [
+        "freeguild-crossbowmen",
+        "Freeguild Crossbowmen",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "freeguild-fusiliers",
+        "Freeguild Fusilier",
+        "infantry",
+        "regular"
+      ],
+      [
+        "freeguild-marshal",
+        "Freeguild Marshal",
+        "Hero",
+        "regular"
+      ],
+      [
+        "freeguild-marshal-on-griffon",
+        "Freeguild Marshal on Griffon",
+        "hero",
+        "regular"
+      ],
+      [
+        "freeguild-steelhelms",
+        "Freeguild Steelhelm",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "fusil-major-on-ogor-warhulk",
+        "Fusil-Major on Ogor Warhulk",
+        "Hero",
+        "regular"
+      ],
+      [
+        "galen-ven-denst",
+        "Galen ven Denst",
+        "hero",
+        "regular"
+      ],
+      [
+        "gyrobomber",
+        "Gyrobomber",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "gyrocopter",
+        "Gyrocopter",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "hammerers",
+        "Hammerer",
+        "infantry",
+        "regular"
+      ],
+      [
+        "helblaster-volley-gun",
+        "Helblaster Volley Gun",
+        "",
+        "regular"
+      ],
+      [
+        "ironbreakers",
+        "Ironbreaker",
+        "infantry",
+        "regular"
+      ],
+      [
+        "irondrakes",
+        "Irondrake",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "ironweld-great-cannon",
+        "Ironweld Great Cannon",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "kharibdyss",
+        "Kharibdyss",
+        "monster",
+        "regular"
+      ],
+      [
+        "longbeards",
+        "Longbeard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "luminark-of-hysh",
+        "Luminark of Hysh",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "pontifex-zenestra-matriarch-of-the-great-wheel",
+        "Pontifex Zenestra, Matriarch of the Great Wheel",
+        "",
+        "regular"
+      ],
+      [
+        "runelord",
+        "Runelord",
+        "hero",
+        "regular"
+      ],
+      [
+        "scourgerunner-chariot",
+        "Scourgerunner Chariot",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "sorceress",
+        "Sorceress",
+        "hero",
+        "regular"
+      ],
+      [
+        "sorceress-on-black-dragon",
+        "Sorceress on Black Dragon",
+        "hero",
+        "regular"
+      ],
+      [
+        "steam-tank",
+        "Steam Tank",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "steam-tank-commander",
+        "Steam Tank Commander",
+        "hero",
+        "regular"
+      ],
+      [
+        "steam-tank-with-commander",
+        "Steam Tank with Commander",
+        "Hero",
+        "regular"
+      ],
+      [
+        "tahlia-vedra-lioness-of-the-parch",
+        "Tahlia Vedra, Lioness of the Parch",
+        "Hero",
+        "regular"
+      ],
+      [
+        "tolls-companions",
+        "Toll's Companions",
+        "",
+        "regular"
+      ],
+      [
+        "war-hydra",
+        "War Hydra",
+        "monster",
+        "regular"
+      ],
+      [
+        "warden-king",
+        "Warden King",
+        "hero",
+        "regular"
+      ],
+      [
+        "wildercorps-hunters",
+        "Wildercorps Hunter",
+        "",
+        "regular"
+      ]
+    ]
+  },
+  "daughters-of-khaine": {
+    "name": "Daughters of Khaine",
+    "ga": "Order",
+    "units": [
+      [
+        "avatar-of-khaine",
+        "Avatar of Khaine",
+        "monster",
+        "manifestation"
+      ],
+      [
+        "blood-sisters",
+        "Blood Sister",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "blood-stalkers",
+        "Blood Stalker",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "bloodwrack-medusa",
+        "Bloodwrack Medusa",
+        "Hero",
+        "regular"
+      ],
+      [
+        "bloodwrack-shrine",
+        "Bloodwrack Shrine",
+        "hero",
+        "regular"
+      ],
+      [
+        "doomfire-warlocks",
+        "Doomfire Warlock",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "gryselles-arenai",
+        "Gryselle's Arenai",
+        "",
+        "legends"
+      ],
+      [
+        "hag-queen",
+        "Hag Queen",
+        "Hero",
+        "regular"
+      ],
+      [
+        "hag-queen-on-cauldron-of-blood",
+        "Hag Queen on Cauldron of Blood",
+        "hero",
+        "regular"
+      ],
+      [
+        "high-gladiatrix",
+        "High Gladiatrix",
+        "hero",
+        "regular"
+      ],
+      [
+        "khainite-shadowstalkers",
+        "Khainite Shadowstalkers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "khinerai-heartrenders",
+        "Khinerai Heartrender",
+        "infantry",
+        "regular"
+      ],
+      [
+        "khinerai-lifetakers",
+        "Khinerai Lifetaker",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "krethusa-the-croneseer",
+        "Krethusa the Croneseer",
+        "hero",
+        "regular"
+      ],
+      [
+        "maleneth-witchblade",
+        "Maleneth Witchblade",
+        "",
+        "legends"
+      ],
+      [
+        "melusai-ironscale",
+        "Melusai Ironscale",
+        "hero",
+        "regular"
+      ],
+      [
+        "morathi-khaine",
+        "Morathi-Khaine",
+        "Hero",
+        "regular"
+      ],
+      [
+        "morgwaeths-blade-coven",
+        "Morgwaeth's Blade-coven",
+        "",
+        "legends"
+      ],
+      [
+        "sisters-of-slaughter",
+        "Sisters of Slaughter",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "sisters-of-slaughter-with-bladed-bucklers",
+        "Sisters of Slaughter with Bladed Bucklers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "sisters-of-slaughter-with-sacrificial-knives",
+        "Sisters of Slaughter with Sacrificial Knives",
+        "infantry",
+        "regular"
+      ],
+      [
+        "slaughter-queen",
+        "Slaughter Queen",
+        "Hero",
+        "regular"
+      ],
+      [
+        "slaughter-queen-on-cauldron-of-blood",
+        "Slaughter Queen on Cauldron of Blood",
+        "hero",
+        "regular"
+      ],
+      [
+        "the-knives-of-the-crone",
+        "The Knives of the Crone",
+        "",
+        "legends"
+      ],
+      [
+        "shadeborn",
+        "The Shadeborn",
+        "",
+        "legends"
+      ],
+      [
+        "the-shadow-queen",
+        "The Shadow Queen",
+        "infantry",
+        "regular"
+      ],
+      [
+        "witch-aelves",
+        "Witch Aelves",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "witch-aelves-with-bladed-bucklers",
+        "Witch Aelves with Bladed Bucklers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "witch-aelves-with-paired-sciansa",
+        "Witch Aelves with Paired Sciansá",
+        "infantry",
+        "regular"
+      ]
+    ]
+  },
+  "disciples-of-tzeentch": {
+    "name": "Disciples of Tzeentch",
+    "ga": "Chaos",
+    "units": [
+      [
+        "blue-horrors-and-brimstone-horrors",
+        "Blue Horrors and Brimstone Horrors",
+        "infantry",
+        "regular"
+      ],
+      [
+        "blue-horrors-of-tzeentch",
+        "Blue Horrors of Tzeentch",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "burning-chariot-of-tzeentch",
+        "Burning Chariot of Tzeentch",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "disciples-changecaster-herald-of-tzeentch",
+        "Changecaster Herald of Tzeentch",
+        "Hero",
+        "regular"
+      ],
+      [
+        "chaos-spawn-of-tzeentch",
+        "Chaos Spawn of Tzeentch",
+        "infantry",
+        "regular"
+      ],
+      [
+        "curseling-eye-of-tzeentch",
+        "Curseling, Eye of Tzeentch",
+        "hero",
+        "regular"
+      ],
+      [
+        "ephilims-pandaemonium",
+        "Ephilim's Pandaemonium",
+        "infantry",
+        "legends"
+      ],
+      [
+        "exalted-flamer-of-tzeentch",
+        "Exalted Flamer of Tzeentch",
+        "infantry",
+        "regular"
+      ],
+      [
+        "eyes-of-the-nine",
+        "Eyes of the Nine",
+        "",
+        "legends"
+      ],
+      [
+        "disciples-fatemaster",
+        "Fatemaster",
+        "Hero",
+        "regular"
+      ],
+      [
+        "fatemaster-on-disc-of-tzeentch",
+        "Fatemaster on Disc of Tzeentch",
+        "",
+        "legends"
+      ],
+      [
+        "fateskimmer-herald-of-tzeentch-on-burning-chariot",
+        "Fateskimmer, Herald of Tzeentch on Burning Chariot",
+        "hero",
+        "regular"
+      ],
+      [
+        "flamers-of-tzeentch",
+        "Flamers of Tzeentch",
+        "",
+        "regular"
+      ],
+      [
+        "fluxmaster-herald-of-tzeentch-on-disc",
+        "Fluxmaster, Herald of Tzeentch on Disc",
+        "",
+        "legends"
+      ],
+      [
+        "gaunt-summoner",
+        "Gaunt Summoner",
+        "hero",
+        "regular"
+      ],
+      [
+        "gaunt-summoner-on-disc-of-tzeentch",
+        "Gaunt Summoner on Disc of Tzeentch",
+        "hero",
+        "regular"
+      ],
+      [
+        "disciples-jade-obelisk",
+        "Jade Obelisk",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kairic-acolytes",
+        "Kairic Acolyte",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "kairos-fateweaver",
+        "Kairos Fateweaver",
+        "Hero",
+        "regular"
+      ],
+      [
+        "lord-of-change",
+        "Lord of Change",
+        "Hero",
+        "regular"
+      ],
+      [
+        "disciples-magister",
+        "Magister",
+        "Hero",
+        "regular"
+      ],
+      [
+        "magister",
+        "Magister",
+        "Hero",
+        "regular"
+      ],
+      [
+        "magister-on-disc-of-tzeentch",
+        "Magister on Disc of Tzeentch",
+        "hero",
+        "regular"
+      ],
+      [
+        "disciples-ogroid-thaumaturge",
+        "Ogroid Thaumaturge",
+        "Hero",
+        "regular"
+      ],
+      [
+        "pink-horrors",
+        "Pink Horrors",
+        "infantry",
+        "regular"
+      ],
+      [
+        "pink-horrors-of-tzeentch",
+        "Pink Horrors of Tzeentch",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "screamers-of-tzeentch",
+        "Screamers of Tzeentch",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "blue-scribes",
+        "The Blue Scribes",
+        "",
+        "legends"
+      ],
+      [
+        "changeling",
+        "The Changeling",
+        "hero",
+        "regular"
+      ],
+      [
+        "tzaangors",
+        "Tzaangor",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "disciples-tzaangor-enlightened",
+        "Tzaangor Enlightened",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "tzaangor-enlightened-on-foot",
+        "Tzaangor Enlightened on Foot",
+        "infantry",
+        "regular"
+      ],
+      [
+        "disciples-tzaangor-shaman",
+        "Tzaangor Shaman",
+        "Hero",
+        "regular"
+      ],
+      [
+        "tzaangor-shaman",
+        "Tzaangor Shaman",
+        "Hero",
+        "regular"
+      ],
+      [
+        "tzaangor-skyfires",
+        "Tzaangor Skyfire",
+        "cavalry",
+        "regular"
+      ]
+    ]
+  },
+  "flesh-eater-courts": {
+    "name": "Flesh-Eater Courts",
+    "ga": "Death",
+    "units": [
+      [
+        "abhorrant-archregent",
+        "Abhorrant Archregent",
+        "hero",
+        "regular"
+      ],
+      [
+        "abhorrant-cardinal",
+        "Abhorrant Cardinal",
+        "hero",
+        "regular"
+      ],
+      [
+        "abhorrant-ghoul-king",
+        "Abhorrant Ghoul King",
+        "hero",
+        "regular"
+      ],
+      [
+        "abhorrant-ghoul-king-on-royal-terrorgheist",
+        "Abhorrant Ghoul King on Royal Terrorgheist",
+        "hero",
+        "regular"
+      ],
+      [
+        "abhorrant-ghoul-king-on-royal-zombie-dragon",
+        "Abhorrant Ghoul King on Royal Zombie Dragon",
+        "hero",
+        "regular"
+      ],
+      [
+        "abhorrant-gorewarden",
+        "Abhorrant Gorewarden",
+        "hero",
+        "regular"
+      ],
+      [
+        "crypt-flayers",
+        "Crypt Flayers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "crypt-flayers-2-models",
+        "Crypt Flayers (2 models)",
+        "infantry",
+        "regular"
+      ],
+      [
+        "crypt-ghast-courtier",
+        "Crypt Ghast Courtier",
+        "",
+        "legends"
+      ],
+      [
+        "crypt-ghouls",
+        "Crypt Ghoul",
+        "infantry",
+        "regular"
+      ],
+      [
+        "crypt-haunter-courtier",
+        "Crypt Haunter Courtier",
+        "hero",
+        "regular"
+      ],
+      [
+        "crypt-horrors",
+        "Crypt Horrors",
+        "infantry",
+        "regular"
+      ],
+      [
+        "crypt-horrors-2-models",
+        "Crypt Horrors (2 models)",
+        "infantry",
+        "regular"
+      ],
+      [
+        "crypt-infernal-courtier",
+        "Crypt Infernal Courtier",
+        "hero",
+        "regular"
+      ],
+      [
+        "cryptguard",
+        "Cryptguard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "grand-justice-gormayne",
+        "Grand Justice Gormayne",
+        "hero",
+        "regular"
+      ],
+      [
+        "high-falconer-felgryn",
+        "High Falconer Felgryn",
+        "",
+        "regular"
+      ],
+      [
+        "marrowscroll-herald",
+        "Marrowscroll Herald",
+        "hero",
+        "regular"
+      ],
+      [
+        "morbheg-knights-2",
+        "Morbheg Knights",
+        "",
+        "regular"
+      ],
+      [
+        "fec-nagash-supreme-lord-of-the-undead",
+        "Nagash, Supreme Lord of the Undead",
+        "hero",
+        "regular"
+      ],
+      [
+        "royal-beastflayers",
+        "Royal Beastflayers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "royal-decapitator",
+        "Royal Decapitator",
+        "hero",
+        "regular"
+      ],
+      [
+        "royal-terrorgheist",
+        "Royal Terrorgheist",
+        "monster",
+        "regular"
+      ],
+      [
+        "royal-zombie-dragon",
+        "Royal Zombie Dragon",
+        "monster",
+        "regular"
+      ],
+      [
+        "grymwatch",
+        "The Grymwatch",
+        "",
+        "legends"
+      ],
+      [
+        "skinnerkin",
+        "The Skinnerkin",
+        "",
+        "legends"
+      ],
+      [
+        "ushoran-mortarch-of-delusion",
+        "Ushoran, Mortarch of Delusion",
+        "hero",
+        "regular"
+      ],
+      [
+        "varghulf-courtier",
+        "Varghulf Courtier",
+        "infantry",
+        "regular"
+      ]
+    ]
+  },
+  "fyreslayers": {
+    "name": "Fyreslayers",
+    "ga": "Order",
+    "units": [
+      [
+        "auric-flamekeeper",
+        "Auric Flamekeeper",
+        "hero",
+        "regular"
+      ],
+      [
+        "auric-hearthguard",
+        "Auric Hearthguard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "auric-runefather",
+        "Auric Runefather",
+        "hero",
+        "regular"
+      ],
+      [
+        "auric-runefather-on-magmadroth",
+        "Auric Runefather on Magmadroth",
+        "hero",
+        "regular"
+      ],
+      [
+        "auric-runemaster",
+        "Auric Runemaster",
+        "hero",
+        "regular"
+      ],
+      [
+        "auric-runesmiter",
+        "Auric Runesmiter",
+        "hero",
+        "regular"
+      ],
+      [
+        "auric-runesmiter-on-magmadroth",
+        "Auric Runesmiter on Magmadroth",
+        "hero",
+        "regular"
+      ],
+      [
+        "auric-runeson",
+        "Auric Runeson",
+        "hero",
+        "regular"
+      ],
+      [
+        "auric-runeson-on-magmadroth",
+        "Auric Runeson on Magmadroth",
+        "hero",
+        "regular"
+      ],
+      [
+        "battlesmith",
+        "Battlesmith",
+        "hero",
+        "regular"
+      ],
+      [
+        "doomseeker",
+        "Doomseeker",
+        "hero",
+        "regular"
+      ],
+      [
+        "grimhold-exile",
+        "Grimhold Exile",
+        "hero",
+        "regular"
+      ],
+      [
+        "grimwrath-berzerker",
+        "Grimwrath Berzerker",
+        "hero",
+        "regular"
+      ],
+      [
+        "hearthguard-berzerkers-with-berzerker-broadaxes",
+        "Hearthguard Berzerkers with Berzerker Broadaxes",
+        "infantry",
+        "regular"
+      ],
+      [
+        "hearthguard-berzerkers-with-flamestrike-poleaxes",
+        "Hearthguard Berzerkers with Flamestrike Poleaxes",
+        "infantry",
+        "regular"
+      ],
+      [
+        "chosen-axes",
+        "The Chosen Axes",
+        "",
+        "legends"
+      ],
+      [
+        "vulkite-berzerkers-with-bladed-slingshields",
+        "Vulkite Berzerkers with Bladed Slingshields",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vulkite-berzerkers-with-fyresteel-weapons",
+        "Vulkite Berzerkers with Fyresteel Weapons",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vulkyn-flameseekers",
+        "Vulkyn Flameseeker",
+        "infantry",
+        "regular"
+      ]
+    ]
+  },
+  "gloomspite-gitz": {
+    "name": "Gloomspite Gitz",
+    "ga": "Destruction",
+    "units": [
+      [
+        "aleguzzler-gargant",
+        "Aleguzzler Gargant",
+        "Behemoth",
+        "legends"
+      ],
+      [
+        "arachnarok-spider-with-flinger",
+        "Arachnarok Spider with Flinger",
+        "monster",
+        "regular"
+      ],
+      [
+        "arachnarok-spider-with-spiderfang-warparty",
+        "Arachnarok Spider with Spiderfang Warparty",
+        "monster",
+        "regular"
+      ],
+      [
+        "boingrot-bounderz",
+        "Boingrot Bounderz",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "borgits-beastgrabbaz",
+        "Borgit's Beastgrabbaz",
+        "",
+        "legends"
+      ],
+      [
+        "dankhold-troggboss",
+        "Dankhold Troggboss",
+        "hero",
+        "regular"
+      ],
+      [
+        "dankhold-troggoth",
+        "Dankhold Troggoth",
+        "monster",
+        "regular"
+      ],
+      [
+        "doom-diver-catapult",
+        "Doom Diver Catapult",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "droggz-da-sunchompa",
+        "Droggz Da Sunchompa",
+        "hero",
+        "regular"
+      ],
+      [
+        "fellwater-troggoths",
+        "Fellwater Troggoth",
+        "",
+        "regular"
+      ],
+      [
+        "frazzlegit-shaman-on-war-wheela",
+        "Frazzlegit Shaman on War-Wheela",
+        "hero",
+        "regular"
+      ],
+      [
+        "fungoid-cave-shaman",
+        "Fungoid Cave-Shaman",
+        "Hero",
+        "regular"
+      ],
+      [
+        "gobbapalooza",
+        "Gobbapalooza",
+        "infantry",
+        "regular"
+      ],
+      [
+        "grinkraks-looncourt",
+        "Grinkrak's Looncourt",
+        "",
+        "legends"
+      ],
+      [
+        "gloomspite-gitz-kragnos-the-end-of-empires",
+        "Kragnos, the End of Empires",
+        "Hero",
+        "regular"
+      ],
+      [
+        "loonboss",
+        "Loonboss",
+        "Hero",
+        "regular"
+      ],
+      [
+        "loonboss-on-giant-cave-squig",
+        "Loonboss on Giant Cave Squig",
+        "hero",
+        "regular"
+      ],
+      [
+        "loonboss-on-mangler-squigs",
+        "Loonboss on Mangler Squigs",
+        "hero",
+        "regular"
+      ],
+      [
+        "loonboss-with-giant-cave-squig",
+        "Loonboss with Giant Cave Squig",
+        "hero",
+        "legends"
+      ],
+      [
+        "loonsmasha-fanatics",
+        "Loonsmasha Fanatic",
+        "infantry",
+        "regular"
+      ],
+      [
+        "madcap-shaman",
+        "Madcap Shaman",
+        "",
+        "legends"
+      ],
+      [
+        "mangler-squigs",
+        "Mangler Squigs",
+        "monster",
+        "regular"
+      ],
+      [
+        "mollog",
+        "Mollog",
+        "",
+        "legends"
+      ],
+      [
+        "moonclan-grots",
+        "Moonclan Grots",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "moonclan-shootas",
+        "Moonclan Shootas",
+        "infantry",
+        "regular"
+      ],
+      [
+        "moonclan-stabbas",
+        "Moonclan Stabbas",
+        "infantry",
+        "regular"
+      ],
+      [
+        "rabble-rowza",
+        "Rabble-Rowza",
+        "hero",
+        "regular"
+      ],
+      [
+        "rippas-snarlfangs",
+        "Rippa's Snarlfangs",
+        "",
+        "legends"
+      ],
+      [
+        "rockgut-troggoths",
+        "Rockgut Troggoth",
+        "",
+        "regular"
+      ],
+      [
+        "scuttleboss-on-gigantic-spider",
+        "Scuttleboss on Gigantic Spider",
+        "",
+        "legends"
+      ],
+      [
+        "skitterstrand-arachnarok",
+        "Skitterstrand Arachnarok",
+        "monster",
+        "regular"
+      ],
+      [
+        "skragrott-the-loonking",
+        "Skragrott, the Loonking",
+        "Hero",
+        "regular"
+      ],
+      [
+        "snarlboss",
+        "Snarlboss",
+        "",
+        "regular"
+      ],
+      [
+        "snarlboss-on-war-wheela",
+        "Snarlboss on War-Wheela",
+        "hero",
+        "regular"
+      ],
+      [
+        "snarlfang-riders",
+        "Snarlfang Rider",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "snarlpack-cavalry",
+        "Snarlpack Cavalry",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "sneaky-snufflers",
+        "Sneaky Snuffler",
+        "infantry",
+        "regular"
+      ],
+      [
+        "spider-riders",
+        "Spider Rider",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "sporesplatta-fanatics",
+        "Sporesplatta Fanatic",
+        "infantry",
+        "regular"
+      ],
+      [
+        "squig-herd",
+        "Squig Herd",
+        "",
+        "regular"
+      ],
+      [
+        "squig-hoppers",
+        "Squig Hopper",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "squigboss-with-gnasha-squig",
+        "Squigboss with Gnasha-Squig",
+        "hero",
+        "regular"
+      ],
+      [
+        "sunsteala-wheelas",
+        "Sunsteala Wheela",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "troggboss",
+        "Troggboss",
+        "Hero",
+        "regular"
+      ],
+      [
+        "trugg-the-troggoth-king",
+        "Trugg, the Troggoth King",
+        "hero",
+        "regular"
+      ],
+      [
+        "webspinner-shaman",
+        "Webspinner Shaman",
+        "hero",
+        "regular"
+      ],
+      [
+        "webspinner-shaman-on-arachnarok-spider",
+        "Webspinner Shaman on Arachnarok Spider",
+        "hero",
+        "regular"
+      ],
+      [
+        "wolfgit-retinue",
+        "Wolfgit Retinue",
+        "",
+        "regular"
+      ],
+      [
+        "zarbags-gitz",
+        "Zarbag's Gitz",
+        "",
+        "legends"
+      ]
+    ]
+  },
+  "hedonites-of-slaanesh": {
+    "name": "Hedonites of Slaanesh",
+    "ga": "Chaos",
+    "units": [
+      [
+        "bladebringer-herald-on-exalted-chariot",
+        "Bladebringer Herald on Exalted Chariot",
+        "",
+        "regular"
+      ],
+      [
+        "bladebringer-herald-on-hellflayer",
+        "Bladebringer Herald on Hellflayer",
+        "",
+        "legends"
+      ],
+      [
+        "bladebringer-herald-on-seeker-chariot",
+        "Bladebringer Herald on Seeker Chariot",
+        "",
+        "legends"
+      ],
+      [
+        "blissbarb-archers",
+        "Blissbarb Archer",
+        "infantry",
+        "regular"
+      ],
+      [
+        "blissbarb-seekers",
+        "Blissbarb Seeker",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "contorted-epitome",
+        "Contorted Epitome",
+        "hero",
+        "regular"
+      ],
+      [
+        "daemonettes",
+        "Daemonettes",
+        "infantry",
+        "regular"
+      ],
+      [
+        "dexcessa-the-talon-of-slaanesh",
+        "Dexcessa, The Talon of Slaanesh",
+        "hero",
+        "regular"
+      ],
+      [
+        "exalted-chariot",
+        "Exalted Chariot",
+        "",
+        "legends"
+      ],
+      [
+        "fiends",
+        "Fiends",
+        "infantry",
+        "regular"
+      ],
+      [
+        "glutos-orscollion-lord-of-gluttony",
+        "Glutos Orscollion, Lord of Gluttony",
+        "hero",
+        "regular"
+      ],
+      [
+        "hellflayer",
+        "Hellflayer",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "hellstriders",
+        "Hellstriders",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "hedonites-infernal-enrapturess-herald",
+        "Infernal Enrapturess Herald of Slaanesh",
+        "Hero",
+        "regular"
+      ],
+      [
+        "keeper-of-secrets",
+        "Keeper of Secrets",
+        "hero",
+        "regular"
+      ],
+      [
+        "hedonites-lord-of-hubris",
+        "Lord of Hubris",
+        "Hero",
+        "regular"
+      ],
+      [
+        "hedonites-lord-of-pain",
+        "Lord of Pain",
+        "Hero",
+        "regular"
+      ],
+      [
+        "myrmidesh-painbringers",
+        "Myrmidesh Painbringer",
+        "infantry",
+        "regular"
+      ],
+      [
+        "seeker-chariot",
+        "Seeker Chariot",
+        "Behemoth",
+        "regular"
+      ],
+      [
+        "seekers",
+        "Seekers",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "shalaxi-helbane",
+        "Shalaxi Helbane",
+        "hero",
+        "regular"
+      ],
+      [
+        "hedonites-shardspeaker-of-slaanesh",
+        "Shardspeaker of Slaanesh",
+        "Hero",
+        "regular"
+      ],
+      [
+        "sigvald-prince-of-slaanesh",
+        "Sigvald, Prince of Slaanesh",
+        "hero",
+        "regular"
+      ],
+      [
+        "slaangor-fiendbloods",
+        "Slaangor Fiendblood",
+        "infantry",
+        "regular"
+      ],
+      [
+        "slickblade-seekers",
+        "Slickblade Seeker",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "syllesske-the-vengeful-allegiance",
+        "Syll'Esske, the Vengeful Allegiance",
+        "hero",
+        "regular"
+      ],
+      [
+        "symbaresh-twinsouls",
+        "Symbaresh Twinsoul",
+        "infantry",
+        "regular"
+      ],
+      [
+        "synessa-the-voice-of-slaanesh",
+        "Synessa, the Voice of Slaanesh",
+        "hero",
+        "regular"
+      ],
+      [
+        "dread-pageant",
+        "The Dread Pageant",
+        "",
+        "legends"
+      ],
+      [
+        "masque",
+        "The Masque",
+        "hero",
+        "regular"
+      ],
+      [
+        "thricefold-discord",
+        "The Thricefold Discord",
+        "",
+        "legends"
+      ],
+      [
+        "viceleader-herald-of-slaanesh-2",
+        "Viceleader Herald of Slaanesh",
+        "",
+        "legends"
+      ]
+    ]
+  },
+  "helsmiths-of-hashut": {
+    "name": "Helsmiths of Hashut",
+    "ga": "Chaos",
+    "units": [
+      [
+        "anointed-sentinels",
+        "Anointed Sentinels",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "ashen-elder",
+        "Ashen Elder",
+        "hero",
+        "regular"
+      ],
+      [
+        "bull-centaurs",
+        "Bull Centaurs",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "daemonsmith",
+        "Daemonsmith",
+        "hero",
+        "regular"
+      ],
+      [
+        "daemonsmith-on-infernal-taurus",
+        "Daemonsmith on Infernal Taurus",
+        "hero",
+        "regular"
+      ],
+      [
+        "deathshrieker-rocket-battery",
+        "Deathshrieker Rocket Battery",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "dominator-engine-with-bane-maces",
+        "Dominator Engine with Bane Maces",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "dominator-engine-with-immolation-cannons",
+        "Dominator Engine with Immolation Cannons",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "hobgrot-vandalz",
+        "Hobgrot Vandalz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "infernal-cohort-with-hashutite-blades",
+        "Infernal Cohort with Hashutite Blades",
+        "infantry",
+        "regular"
+      ],
+      [
+        "infernal-cohort-with-hashutite-spears",
+        "Infernal Cohort with Hashutite Spears",
+        "infantry",
+        "regular"
+      ],
+      [
+        "infernal-razers-with-blunderbusses",
+        "Infernal Razers with Blunderbusses",
+        "infantry",
+        "regular"
+      ],
+      [
+        "infernal-razers-with-flamehurlers",
+        "Infernal Razers with Flamehurlers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "the-blood-of-the-bull",
+        "The Blood of the Bull",
+        "",
+        "legends"
+      ],
+      [
+        "tormentor-bombard",
+        "Tormentor Bombard",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "urak-taar-the-first-daemonsmith",
+        "Urak Taar, the First Daemonsmith",
+        "",
+        "regular"
+      ],
+      [
+        "war-despot",
+        "War Despot",
+        "hero",
+        "regular"
+      ]
+    ]
+  },
+  "idoneth-deepkin": {
+    "name": "Idoneth Deepkin",
+    "ga": "Order",
+    "units": [
+      [
+        "akhelian-allopex",
+        "Akhelian Allopex",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "akhelian-ishlaen-guard",
+        "Akhelian Ishlaen Guard",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "akhelian-king",
+        "Akhelian King",
+        "hero",
+        "regular"
+      ],
+      [
+        "akhelian-leviadon",
+        "Akhelian Leviadon",
+        "monster",
+        "regular"
+      ],
+      [
+        "akhelian-morrsarr-guard",
+        "Akhelian Morrsarr Guard",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "akhelian-thrallmaster",
+        "Akhelian Thrallmaster",
+        "hero",
+        "regular"
+      ],
+      [
+        "cyrenis-razors",
+        "Cyreni's Razors",
+        "",
+        "legends"
+      ],
+      [
+        "eidolon-of-mathlann-aspect-of-the-sea",
+        "Eidolon of Mathlann, Aspect of the Sea",
+        "hero",
+        "regular"
+      ],
+      [
+        "eidolon-of-mathlann-aspect-of-the-storm",
+        "Eidolon of Mathlann, Aspect of the Storm",
+        "hero",
+        "regular"
+      ],
+      [
+        "elathains-soulraid",
+        "Elathain's Soulraid",
+        "",
+        "legends"
+      ],
+      [
+        "ikon-of-the-sea",
+        "Ikon of the Sea",
+        "hero",
+        "regular"
+      ],
+      [
+        "ikon-of-the-storm",
+        "Ikon of the Storm",
+        "hero",
+        "regular"
+      ],
+      [
+        "isharann-soulrender",
+        "Isharann Soulrender",
+        "hero",
+        "regular"
+      ],
+      [
+        "isharann-soulscryer",
+        "Isharann Soulscryer",
+        "hero",
+        "regular"
+      ],
+      [
+        "isharann-tidecaster",
+        "Isharann Tidecaster",
+        "hero",
+        "regular"
+      ],
+      [
+        "lotann-warden-of-the-soul-ledgers",
+        "Lotann, Warden of the Soul Ledgers",
+        "hero",
+        "regular"
+      ],
+      [
+        "mathaela-oracle-of-the-abyss",
+        "Mathaela, Oracle of the Abyss",
+        "hero",
+        "regular"
+      ],
+      [
+        "namarti-reavers",
+        "Namarti Reaver",
+        "infantry",
+        "regular"
+      ],
+      [
+        "namarti-thralls",
+        "Namarti Thrall",
+        "infantry",
+        "regular"
+      ],
+      [
+        "volturnos-high-king-of-the-deep",
+        "Volturnos, High King of the Deep",
+        "hero",
+        "regular"
+      ]
+    ]
+  },
+  "ironjawz": {
+    "name": "Ironjawz",
+    "ga": "Destruction",
+    "units": [
+      [
+        "ironjawz-ardboy-big-boss",
+        "Ardboy Big Boss",
+        "Hero",
+        "regular"
+      ],
+      [
+        "ardboyz",
+        "Ardboyz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "brutes",
+        "Brute",
+        "infantry",
+        "regular"
+      ],
+      [
+        "brute-ragerz",
+        "Brute Ragerz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "ironjawz-gordrakk-the-fist-of-gork",
+        "Gordrakk, the Fist of Gork",
+        "Hero",
+        "regular"
+      ],
+      [
+        "gordrakk-the-fist-of-gork",
+        "Gordrakk, the Fist of Gork",
+        "Hero",
+        "regular"
+      ],
+      [
+        "gore-gruntas",
+        "Gore-Grunta",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "ironjawz-kragnos-the-end-of-empires",
+        "Kragnos, the End of Empires",
+        "Hero",
+        "regular"
+      ],
+      [
+        "maw-grunta-gougers",
+        "Maw-Grunta Gouger",
+        "monster",
+        "regular"
+      ],
+      [
+        "maw-grunta-with-hakkin-krew",
+        "Maw-grunta with Hakkin' Krew",
+        "",
+        "regular"
+      ],
+      [
+        "ironjawz-megaboss",
+        "Megaboss",
+        "Hero",
+        "regular"
+      ],
+      [
+        "ironjawz-megaboss-on-maw-krusha",
+        "Megaboss on Maw-krusha",
+        "Hero",
+        "regular"
+      ],
+      [
+        "megaboss-on-maw-krusha",
+        "Megaboss on Maw-krusha",
+        "Hero",
+        "regular"
+      ],
+      [
+        "tuskboss-on-maw-grunta",
+        "Tuskboss on Maw-grunta",
+        "hero",
+        "regular"
+      ],
+      [
+        "ironjawz-warchanter",
+        "Warchanter",
+        "Hero",
+        "regular"
+      ],
+      [
+        "weirdbrute-wrekkaz",
+        "Weirdbrute Wrekkaz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "ironjawz-weirdnob-shaman",
+        "Weirdnob Shaman",
+        "Hero",
+        "regular"
+      ],
+      [
+        "zoggrok-anvilsmasha",
+        "Zoggrok Anvilsmasha",
+        "",
+        "regular"
+      ]
+    ]
+  },
+  "kharadron-overlords": {
+    "name": "Kharadron Overlords",
+    "ga": "Order",
+    "units": [
+      [
+        "aether-khemist",
+        "Aether-Khemist",
+        "Hero",
+        "regular"
+      ],
+      [
+        "aetheric-navigator",
+        "Aetheric Navigator",
+        "Hero",
+        "regular"
+      ],
+      [
+        "arkanaut-admiral",
+        "Arkanaut Admiral",
+        "Hero",
+        "regular"
+      ],
+      [
+        "arkanaut-company",
+        "Arkanaut Company",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "arkanaut-frigate",
+        "Arkanaut Frigate",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "arkanaut-ironclad",
+        "Arkanaut Ironclad",
+        "Hero",
+        "regular"
+      ],
+      [
+        "brokk-grungsson-lord-magnate-of-barak-nar",
+        "Brokk Grungsson, Lord-Magnate of Barak-Nar",
+        "Hero",
+        "regular"
+      ],
+      [
+        "codewright",
+        "Codewright",
+        "hero",
+        "regular"
+      ],
+      [
+        "drekki-flynt",
+        "Drekki Flynt",
+        "hero",
+        "regular"
+      ],
+      [
+        "endrinmaster-with-dirigible-suit",
+        "Endrinmaster with Dirigible Suit",
+        "Hero",
+        "regular"
+      ],
+      [
+        "endrinmaster-with-endrinharness",
+        "Endrinmaster with Endrinharness",
+        "hero",
+        "regular"
+      ],
+      [
+        "endrinriggers",
+        "Endrinrigger",
+        "infantry",
+        "regular"
+      ],
+      [
+        "grundstok-gunhauler",
+        "Grundstok Gunhauler",
+        "",
+        "regular"
+      ],
+      [
+        "grundstok-thunderers",
+        "Grundstok Thunderer",
+        "",
+        "regular"
+      ],
+      [
+        "null-khemist",
+        "Null-Khemist",
+        "hero",
+        "regular"
+      ],
+      [
+        "skywardens",
+        "Skywarden",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "thunderers",
+        "Thunderers",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "vongrim-harpoon-crew",
+        "Vongrim Harpoon Crew",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vongrim-salvagers",
+        "Vongrim Salvager",
+        "infantry",
+        "regular"
+      ]
+    ]
+  },
+  "kruleboyz": {
+    "name": "Kruleboyz",
+    "ga": "Destruction",
+    "units": [
+      [
+        "beast-skewer-killbow",
+        "Beast-skewer Killbow",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "breaka-boss-on-mirebrute-troggoth",
+        "Breaka-boss on Mirebrute Troggoth",
+        "",
+        "regular"
+      ],
+      [
+        "da-kunnin-krew",
+        "Da Kunnin' Krew",
+        "infantry",
+        "legends"
+      ],
+      [
+        "daggoks-stab-ladz",
+        "Daggok's Stab-ladz",
+        "infantry",
+        "legends"
+      ],
+      [
+        "gobsprakk-the-mouth-of-mork",
+        "Gobsprakk, the Mouth of Mork",
+        "hero",
+        "regular"
+      ],
+      [
+        "gutrippaz",
+        "Gutrippaz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "hobgrot-slittaboss",
+        "Hobgrot Slittaboss",
+        "hero",
+        "regular"
+      ],
+      [
+        "hobgrot-slittaz",
+        "Hobgrot Slittaz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "killaboss-on-corpse-rippa-vulcha",
+        "Killaboss on Corpse-rippa Vulcha",
+        "",
+        "regular"
+      ],
+      [
+        "killaboss-on-great-gnashtoof",
+        "Killaboss on Great Gnashtoof",
+        "hero",
+        "regular"
+      ],
+      [
+        "killaboss-with-stab-grot",
+        "Killaboss with Stab-grot",
+        "",
+        "regular"
+      ],
+      [
+        "kruleboyz-kragnos-the-end-of-empires",
+        "Kragnos, the End of Empires",
+        "Hero",
+        "regular"
+      ],
+      [
+        "kruleboyz-monsta-killaz",
+        "Kruleboyz Monsta-killaz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "man-skewer-boltboyz",
+        "Man-skewer Boltboyz",
+        "infantry",
+        "regular"
+      ],
+      [
+        "marshcrawla-sloggoth",
+        "Marshcrawla Sloggoth",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "murknob-with-belcha-banna",
+        "Murknob with Belcha-banna",
+        "hero",
+        "regular"
+      ],
+      [
+        "snatchaboss-on-sludgeraker-beast",
+        "Snatchaboss on Sludgeraker Beast",
+        "hero",
+        "regular"
+      ],
+      [
+        "swampboss-skumdrekk",
+        "Swampboss Skumdrekk",
+        "hero",
+        "regular"
+      ],
+      [
+        "kruleboyz-swampcalla-shaman-with-pot-grot",
+        "Swampcalla Shaman with Pot-grot",
+        "Hero",
+        "regular"
+      ]
+    ]
+  },
+  "lumineth-realm-lords": {
+    "name": "Lumineth Realm-Lords",
+    "ga": "Order",
+    "units": [
+      [
+        "alarith-spirit-of-the-mountain",
+        "Alarith Spirit of the Mountain",
+        "Hero",
+        "regular"
+      ],
+      [
+        "alarith-stoneguard",
+        "Alarith Stoneguard",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "alarith-stonemage",
+        "Alarith Stonemage",
+        "Hero",
+        "regular"
+      ],
+      [
+        "archmage-teclis-and-celennar-spirit-of-hysh",
+        "Archmage Teclis and Celennar, Spirit of Hysh",
+        "hero",
+        "regular"
+      ],
+      [
+        "avalenor-the-stoneheart-king",
+        "Avalenor, the Stoneheart King",
+        "Hero",
+        "regular"
+      ],
+      [
+        "ellania-and-ellathor-eclipsian-warsages",
+        "Ellania and Ellathor, Eclipsian Warsages",
+        "hero",
+        "regular"
+      ],
+      [
+        "hurakan-spirit-of-the-wind",
+        "Hurakan Spirit of the Wind",
+        "monster",
+        "regular"
+      ],
+      [
+        "hurakan-windchargers",
+        "Hurakan Windchargers",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "hurakan-windmage",
+        "Hurakan Windmage",
+        "Hero",
+        "regular"
+      ],
+      [
+        "lyrior-uthralle-warden-of-ymetrica",
+        "Lyrior Uthralle, Warden of Ymetrica",
+        "hero",
+        "regular"
+      ],
+      [
+        "myaris-purifiers",
+        "Myari's Purifiers",
+        "",
+        "legends"
+      ],
+      [
+        "scinari-calligrave",
+        "Scinari Calligrave",
+        "Hero",
+        "regular"
+      ],
+      [
+        "scinari-cathallar",
+        "Scinari Cathallar",
+        "Hero",
+        "regular"
+      ],
+      [
+        "scinari-enlightener",
+        "Scinari Enlightener",
+        "Hero",
+        "regular"
+      ],
+      [
+        "scinari-loreseeker",
+        "Scinari Loreseeker",
+        "Hero",
+        "regular"
+      ],
+      [
+        "sevireth-lord-of-the-seventh-wind",
+        "Sevireth, Lord of the Seventh Wind",
+        "hero",
+        "regular"
+      ],
+      [
+        "the-light-of-eltharion",
+        "The Light of Eltharion",
+        "Hero",
+        "regular"
+      ],
+      [
+        "vanari-auralan-sentinels",
+        "Vanari Auralan Sentinels",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "vanari-auralan-wardens",
+        "Vanari Auralan Wardens",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "vanari-bannerblade",
+        "Vanari Bannerblade",
+        "Hero",
+        "regular"
+      ],
+      [
+        "vanari-bladelords",
+        "Vanari Bladelords",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vanari-dawnriders",
+        "Vanari Dawnriders",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "vanari-lord-regent",
+        "Vanari Lord Regent",
+        "Hero",
+        "regular"
+      ],
+      [
+        "vanari-lord-regent-on-lightcourser",
+        "Vanari Lord Regent on Lightcourser",
+        "Hero",
+        "regular"
+      ],
+      [
+        "vanari-starshard-ballista",
+        "Vanari Starshard Ballista",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "ydrilan-riverblades",
+        "Ydrilan Riverblades",
+        "infantry",
+        "regular"
+      ]
+    ]
+  },
+  "maggotkin-of-nurgle": {
+    "name": "Maggotkin of Nurgle",
+    "ga": "Chaos",
+    "units": [
+      [
+        "beast-of-nurgle",
+        "Beast of Nurgle",
+        "infantry",
+        "regular"
+      ],
+      [
+        "belga-the-cystwitch",
+        "Belga the Cystwitch",
+        "hero",
+        "regular"
+      ],
+      [
+        "bloab-rotspawned",
+        "Bloab Rotspawned",
+        "Hero",
+        "regular"
+      ],
+      [
+        "cankerborn",
+        "Cankerborn",
+        "hero",
+        "regular"
+      ],
+      [
+        "doktor-festus",
+        "Doktor Festus",
+        "",
+        "legends"
+      ],
+      [
+        "epidemius-tallyman-of-nurgle",
+        "Epidemius, Tallyman of Nurgle",
+        "",
+        "legends"
+      ],
+      [
+        "festus-the-leechlord",
+        "Festus the Leechlord",
+        "hero",
+        "regular"
+      ],
+      [
+        "gelgus-pust-the-prince-of-sores",
+        "Gelgus Pust, the Prince of Sores",
+        "hero",
+        "regular"
+      ],
+      [
+        "great-unclean-one",
+        "Great Unclean One",
+        "Hero",
+        "regular"
+      ],
+      [
+        "gutrot-spume",
+        "Gutrot Spume",
+        "hero",
+        "regular"
+      ],
+      [
+        "harbinger-of-decay",
+        "Harbinger of Decay",
+        "Hero",
+        "regular"
+      ],
+      [
+        "horticulous-slimux",
+        "Horticulous Slimux",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-of-afflictions",
+        "Lord of Afflictions",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-of-blights",
+        "Lord of Blights",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-of-plagues",
+        "Lord of Plagues",
+        "Hero",
+        "regular"
+      ],
+      [
+        "morbidex-twiceborn",
+        "Morbidex Twiceborn",
+        "hero",
+        "regular"
+      ],
+      [
+        "nurglings",
+        "Nurgling",
+        "",
+        "regular"
+      ],
+      [
+        "nurglings-2",
+        "Nurglings",
+        "",
+        "regular"
+      ],
+      [
+        "orghotts-daemonspew",
+        "Orghotts Daemonspew",
+        "hero",
+        "regular"
+      ],
+      [
+        "pestigors",
+        "Pestigor",
+        "infantry",
+        "regular"
+      ],
+      [
+        "plague-drones",
+        "Plague Drones",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "plaguebearers",
+        "Plaguebearers",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "pox-wretches",
+        "Pox-Wretches",
+        "infantry",
+        "regular"
+      ],
+      [
+        "poxbringer-herald-of-nurgle",
+        "Poxbringer, Herald of Nurgle",
+        "hero",
+        "regular"
+      ],
+      [
+        "pusgoyle-blightlords",
+        "Pusgoyle Blightlord",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "maggotkin-pusgoyle-blightlords",
+        "Pusgoyle Blightlords",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "putrid-blightkings",
+        "Putrid Blightking",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "rotbringer-sorcerer",
+        "Rotbringer Sorcerer",
+        "hero",
+        "regular"
+      ],
+      [
+        "rotigus",
+        "Rotigus",
+        "Hero",
+        "regular"
+      ],
+      [
+        "rotmire-creed",
+        "Rotmire Creed",
+        "infantry",
+        "regular"
+      ],
+      [
+        "rotswords",
+        "Rotsword",
+        "infantry",
+        "regular"
+      ],
+      [
+        "shaman-foulhoof",
+        "Shaman Foulhoof",
+        "hero",
+        "regular"
+      ],
+      [
+        "maggotkin-sloppity-bilepiper-herald",
+        "Sloppity Bilepiper Herald of Nurgle",
+        "Hero",
+        "regular"
+      ],
+      [
+        "sloven-knights",
+        "Sloven Knight",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "maggotkin-spoilpox-scrivener-herald",
+        "Spoilpox Scrivener Herald of Nurgle",
+        "Hero",
+        "regular"
+      ],
+      [
+        "glottkin",
+        "The Glottkin",
+        "hero",
+        "regular"
+      ],
+      [
+        "wurmspat",
+        "The Wurmspat",
+        "",
+        "legends"
+      ]
+    ]
+  },
+  "nighthaunt": {
+    "name": "Nighthaunt",
+    "ga": "Death",
+    "units": [
+      [
+        "awlrach-the-drowner",
+        "Awlrach the Drowner",
+        "hero",
+        "regular"
+      ],
+      [
+        "black-coach",
+        "Black Coach",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "bladegheist-revenants",
+        "Bladegheist Revenant",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "cairn-wraith",
+        "Cairn Wraith",
+        "hero",
+        "regular"
+      ],
+      [
+        "chainghasts",
+        "Chainghast",
+        "infantry",
+        "regular"
+      ],
+      [
+        "chainrasps",
+        "Chainrasp",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "craventhrone-guard",
+        "Craventhrone Guard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "dreadblade-harrows",
+        "Dreadblade Harrow",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dreadscythe-harridans",
+        "Dreadscythe Harridan",
+        "infantry",
+        "regular"
+      ],
+      [
+        "glaivewraith-stalkers",
+        "Glaivewraith Stalker",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "grimghast-reapers",
+        "Grimghast Reaper",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "guardian-of-souls",
+        "Guardian of Souls",
+        "Hero",
+        "regular"
+      ],
+      [
+        "hexwraiths",
+        "Hexwraith",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "knight-of-shrouds",
+        "Knight of Shrouds",
+        "Hero",
+        "regular"
+      ],
+      [
+        "knight-of-shrouds-on-ethereal-steed",
+        "Knight of Shrouds on Ethereal Steed",
+        "hero",
+        "regular"
+      ],
+      [
+        "krulghast-cruciator",
+        "Krulghast Cruciator",
+        "Hero",
+        "regular"
+      ],
+      [
+        "kurdoss-valentian-the-craven-king",
+        "Kurdoss Valentian, the Craven King",
+        "hero",
+        "regular"
+      ],
+      [
+        "lady-olynder-mortarch-of-grief",
+        "Lady Olynder, Mortarch of Grief",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-executioner",
+        "Lord Executioner",
+        "Hero",
+        "regular"
+      ],
+      [
+        "lord-vitriolic",
+        "Lord Vitriolic",
+        "hero",
+        "regular"
+      ],
+      [
+        "mourngul",
+        "Mourngul",
+        "Behemoth",
+        "legends"
+      ],
+      [
+        "myrmourn-banshees",
+        "Myrmourn Banshee",
+        "infantry",
+        "regular"
+      ],
+      [
+        "nighthaunt-nagash-supreme-lord-of-the-undead",
+        "Nagash, Supreme Lord of the Undead",
+        "Hero",
+        "regular"
+      ],
+      [
+        "pyregheists",
+        "Pyregheist",
+        "infantry",
+        "regular"
+      ],
+      [
+        "reikenor-the-grimhailer",
+        "Reikenor the Grimhailer",
+        "hero",
+        "regular"
+      ],
+      [
+        "scriptor-mortis",
+        "Scriptor Mortis",
+        "hero",
+        "regular"
+      ],
+      [
+        "spirit-hosts",
+        "Spirit Host",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "spirit-torment",
+        "Spirit Torment",
+        "Hero",
+        "regular"
+      ],
+      [
+        "thorns-of-the-briar-queen",
+        "Thorns of the Briar Queen",
+        "",
+        "legends"
+      ],
+      [
+        "tomb-banshee",
+        "Tomb Banshee",
+        "hero",
+        "regular"
+      ]
+    ]
+  },
+  "ogor-mawtribes": {
+    "name": "Ogor Mawtribes",
+    "ga": "Destruction",
+    "units": [
+      [
+        "bloodpelt-hunter",
+        "Bloodpelt Hunter",
+        "hero",
+        "regular"
+      ],
+      [
+        "butcher",
+        "Butcher",
+        "hero",
+        "regular"
+      ],
+      [
+        "firebelly",
+        "Firebelly",
+        "hero",
+        "regular"
+      ],
+      [
+        "frost-sabres",
+        "Frost Sabre",
+        "infantry",
+        "regular"
+      ],
+      [
+        "frostlord-on-stonehorn",
+        "Frostlord on Stonehorn",
+        "hero",
+        "regular"
+      ],
+      [
+        "frostlord-on-thundertusk",
+        "Frostlord on Thundertusk",
+        "hero",
+        "regular"
+      ],
+      [
+        "gnoblars",
+        "Gnoblar",
+        "infantry",
+        "regular"
+      ],
+      [
+        "gnoblar-scraplauncher",
+        "Gnoblar Scraplauncher",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "gorger-mawpack",
+        "Gorger Mawpack",
+        "infantry",
+        "regular"
+      ],
+      [
+        "gorlok-blackpowder",
+        "Gorlok Blackpowder",
+        "",
+        "legends"
+      ],
+      [
+        "hrothgorn-mantrapper",
+        "Hrothgorn Mantrapper",
+        "",
+        "legends"
+      ],
+      [
+        "huskard-on-stonehorn",
+        "Huskard on Stonehorn",
+        "hero",
+        "regular"
+      ],
+      [
+        "huskard-on-thundertusk",
+        "Huskard on Thundertusk",
+        "hero",
+        "regular"
+      ],
+      [
+        "icebrow-hunter",
+        "Icebrow Hunter",
+        "hero",
+        "regular"
+      ],
+      [
+        "icefall-yhetees",
+        "Icefall Yhetee",
+        "infantry",
+        "regular"
+      ],
+      [
+        "ironblaster",
+        "Ironblaster",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "ironguts",
+        "Irongut",
+        "infantry",
+        "regular"
+      ],
+      [
+        "ogor-mawtribes-kragnos-the-end-of-empires",
+        "Kragnos, the End of Empires",
+        "Hero",
+        "regular"
+      ],
+      [
+        "leadbelchers",
+        "Leadbelcher",
+        "infantry",
+        "regular"
+      ],
+      [
+        "maneaters",
+        "Maneater",
+        "infantry",
+        "regular"
+      ],
+      [
+        "mantrapper",
+        "Mantrapper",
+        "hero",
+        "regular"
+      ],
+      [
+        "mournfang-pack",
+        "Mournfang Pack",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "ogor-gluttons",
+        "Ogor Gluttons",
+        "infantry",
+        "regular"
+      ],
+      [
+        "slaughtermaster",
+        "Slaughtermaster",
+        "hero",
+        "regular"
+      ],
+      [
+        "stonehorn-beastriders",
+        "Stonehorn Beastriders",
+        "monster",
+        "regular"
+      ],
+      [
+        "thundertusk-beastriders",
+        "Thundertusk Beastriders",
+        "monster",
+        "regular"
+      ],
+      [
+        "tyrant",
+        "Tyrant",
+        "hero",
+        "regular"
+      ]
+    ]
+  },
+  "orruk-warclans": {
+    "name": "Orruk Warclans",
+    "ga": "Destruction",
+    "units": [
+      [
+        "kruleboyz-gutrippaz",
+        "Kruleboyz Gutrippaz",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "orruk-ardboys",
+        "Orruk Ardboys",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "orruk-brutes",
+        "Orruk Brutes",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "orruk-gore-gruntas",
+        "Orruk Gore-gruntas",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "orruk-warchanter",
+        "Orruk Warchanter",
+        "Hero",
+        "regular"
+      ],
+      [
+        "orruk-weirdnob-shaman",
+        "Orruk Weirdnob Shaman",
+        "Hero",
+        "regular"
+      ],
+      [
+        "swampcalla-shaman-with-pot-grot",
+        "Swampcalla Shaman with Pot-grot",
+        "Hero",
+        "regular"
+      ]
+    ]
+  },
+  "ossiarch-bonereapers": {
+    "name": "Ossiarch Bonereapers",
+    "ga": "Death",
+    "units": [
+      [
+        "arch-kavalos-zandtos",
+        "Arch-Kavalos Zandtos",
+        "hero",
+        "regular"
+      ],
+      [
+        "arkhan-the-black-mortarch-of-sacrament",
+        "Arkhan the Black, Mortarch of Sacrament",
+        "hero",
+        "regular"
+      ],
+      [
+        "gothizzar-harvester",
+        "Gothizzar Harvester",
+        "Behemoth",
+        "regular"
+      ],
+      [
+        "immortis-guard",
+        "Immortis Guard",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "kainans-reapers",
+        "Kainan's Reapers",
+        "",
+        "legends"
+      ],
+      [
+        "katakros-mortarch-of-the-necropolis",
+        "Katakros, Mortarch of the Necropolis",
+        "hero",
+        "regular"
+      ],
+      [
+        "kavalos-deathriders",
+        "Kavalos Deathrider",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "kavalos-war-chariot",
+        "Kavalos War Chariot",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "liege-kavalos",
+        "Liege-Kavalos",
+        "Hero",
+        "regular"
+      ],
+      [
+        "liege-kavalos-on-war-chariot",
+        "Liege-Kavalos on War Chariot",
+        "hero",
+        "regular"
+      ],
+      [
+        "liege-mortek",
+        "Liege-Mortek",
+        "hero",
+        "regular"
+      ],
+      [
+        "obr-morghast-archai",
+        "Morghast Archai",
+        "infantry",
+        "regular"
+      ],
+      [
+        "morghast-harbingers",
+        "Morghast Harbingers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "mortek-crawler",
+        "Mortek Crawler",
+        "",
+        "regular"
+      ],
+      [
+        "mortek-guard",
+        "Mortek Guard",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "mortek-triaxes",
+        "Mortek Triaxes",
+        "infantry",
+        "regular"
+      ],
+      [
+        "mortis-reapers-2",
+        "Mortis Reapers",
+        "",
+        "regular"
+      ],
+      [
+        "mortisan-boneshaper",
+        "Mortisan Boneshaper",
+        "Hero",
+        "regular"
+      ],
+      [
+        "mortisan-ossifector",
+        "Mortisan Ossifector",
+        "hero",
+        "regular"
+      ],
+      [
+        "mortisan-soulmason",
+        "Mortisan Soulmason",
+        "Hero",
+        "regular"
+      ],
+      [
+        "mortisan-soulreaper",
+        "Mortisan Soulreaper",
+        "hero",
+        "regular"
+      ],
+      [
+        "nagash-supreme-lord-of-the-undead",
+        "Nagash, Supreme Lord of the Undead",
+        "Hero",
+        "regular"
+      ],
+      [
+        "necropolis-stalkers",
+        "Necropolis Stalker",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "teratic-cohort",
+        "Teratic Cohort",
+        "infantry",
+        "regular"
+      ],
+      [
+        "thanateks-tithe",
+        "Thanatek's Tithe",
+        "",
+        "legends"
+      ],
+      [
+        "vokmortian-master-of-the-bone-tithe",
+        "Vokmortian, Master of the Bone-tithe",
+        "hero",
+        "regular"
+      ]
+    ]
+  },
+  "seraphon": {
+    "name": "Seraphon",
+    "ga": "Order",
+    "units": [
+      [
+        "aggradon-lancers",
+        "Aggradon Lancer",
+        "",
+        "regular"
+      ],
+      [
+        "bastiladon-with-ark-of-sotek",
+        "Bastiladon with Ark of Sotek",
+        "monster",
+        "regular"
+      ],
+      [
+        "bastiladon-with-solar-engine",
+        "Bastiladon with Solar Engine",
+        "monster",
+        "regular"
+      ],
+      [
+        "engine-of-the-gods",
+        "Engine of the Gods",
+        "Hero",
+        "regular"
+      ],
+      [
+        "hunters-of-huanchi-with-dartpipes",
+        "Hunters of Huanchi with Dartpipes",
+        "infantry",
+        "regular"
+      ],
+      [
+        "hunters-of-huanchi-with-starstone-bolas",
+        "Hunters of Huanchi with Starstone Bolas",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kroxigor",
+        "Kroxigor",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kroxigor-warspawned",
+        "Kroxigor Warspawned",
+        "infantry",
+        "regular"
+      ],
+      [
+        "lord-kroak",
+        "Lord Kroak",
+        "hero",
+        "regular"
+      ],
+      [
+        "raptadon-chargers",
+        "Raptadon Charger",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "raptadon-hunters",
+        "Raptadon Hunter",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "ripperdactyl-chief",
+        "Ripperdactyl Chief",
+        "hero",
+        "regular"
+      ],
+      [
+        "ripperdactyl-riders",
+        "Ripperdactyl Rider",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "seraphon-ripperdactyl-riders",
+        "Ripperdactyl Riders",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "saurus-astrolith-bearer",
+        "Saurus Astrolith Bearer",
+        "Hero",
+        "regular"
+      ],
+      [
+        "saurus-guard",
+        "Saurus Guard",
+        "",
+        "regular"
+      ],
+      [
+        "saurus-oldblood",
+        "Saurus Oldblood",
+        "hero",
+        "regular"
+      ],
+      [
+        "saurus-oldblood-on-carnosaur",
+        "Saurus Oldblood on Carnosaur",
+        "hero",
+        "regular"
+      ],
+      [
+        "saurus-scar-veteran-on-aggradon",
+        "Saurus Scar-Veteran on Aggradon",
+        "hero",
+        "regular"
+      ],
+      [
+        "saurus-scar-veteran-on-carnosaur",
+        "Saurus Scar-Veteran on Carnosaur",
+        "Hero",
+        "regular"
+      ],
+      [
+        "saurus-warriors",
+        "Saurus Warrior",
+        "Battleline",
+        "regular"
+      ],
+      [
+        "skinks",
+        "Skink",
+        "Battleline",
+        "regular"
+      ],
+      [
+        "skink-oracle-on-troglodon",
+        "Skink Oracle on Troglodon",
+        "hero",
+        "regular"
+      ],
+      [
+        "skink-starpriest",
+        "Skink Starpriest",
+        "Hero",
+        "regular"
+      ],
+      [
+        "skink-starseer",
+        "Skink Starseer",
+        "hero",
+        "regular"
+      ],
+      [
+        "slann-starmaster",
+        "Slann Starmaster",
+        "Hero",
+        "regular"
+      ],
+      [
+        "spawn-of-chotec",
+        "Spawn of Chotec",
+        "infantry",
+        "regular"
+      ],
+      [
+        "stegadon",
+        "Stegadon",
+        "Behemoth",
+        "regular"
+      ],
+      [
+        "stegadon-chief",
+        "Stegadon Chief",
+        "hero",
+        "regular"
+      ],
+      [
+        "sunblood-pack",
+        "Sunblood Pack",
+        "",
+        "regular"
+      ],
+      [
+        "terradon-chief",
+        "Terradon Chief",
+        "hero",
+        "regular"
+      ],
+      [
+        "terradon-riders",
+        "Terradon Rider",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "seraphon-terradon-riders",
+        "Terradon Riders",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "terrawings",
+        "Terrawings",
+        "infantry",
+        "regular"
+      ],
+      [
+        "jaws-of-itzl",
+        "The Jaws of Itzl",
+        "",
+        "legends"
+      ],
+      [
+        "starblood-stalkers",
+        "The Starblood Stalkers",
+        "",
+        "legends"
+      ]
+    ]
+  },
+  "skaven": {
+    "name": "Skaven",
+    "ga": "Chaos",
+    "units": [
+      [
+        "acolyte-globadiers",
+        "Acolyte Globadier",
+        "infantry",
+        "regular"
+      ],
+      [
+        "arch-warlock",
+        "Arch-Warlock",
+        "hero",
+        "regular"
+      ],
+      [
+        "brood-terror",
+        "Brood Terror",
+        "monster",
+        "regular"
+      ],
+      [
+        "clanrats",
+        "Clanrat",
+        "Battleline",
+        "regular"
+      ],
+      [
+        "clawlord",
+        "Clawlord",
+        "Hero",
+        "regular"
+      ],
+      [
+        "clawlord-on-gnaw-beast",
+        "Clawlord on Gnaw-beast",
+        "hero",
+        "regular"
+      ],
+      [
+        "deathmaster",
+        "Deathmaster",
+        "Hero",
+        "regular"
+      ],
+      [
+        "doom-flayers",
+        "Doom-Flayer",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "doom-flayers-2",
+        "Doom-Flayers",
+        "",
+        "regular"
+      ],
+      [
+        "doomwheel",
+        "Doomwheel",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "grey-seer",
+        "Grey Seer",
+        "Hero",
+        "regular"
+      ],
+      [
+        "grey-seer-on-screaming-bell",
+        "Grey Seer on Screaming Bell",
+        "hero",
+        "regular"
+      ],
+      [
+        "gutter-runners-2",
+        "Gutter Runners",
+        "",
+        "legends"
+      ],
+      [
+        "gutter-runners",
+        "Gutter Runners",
+        "",
+        "regular"
+      ],
+      [
+        "hell-pit-abomination",
+        "Hell Pit Abomination",
+        "Behemoth",
+        "regular"
+      ],
+      [
+        "krittok-foulblade",
+        "Krittok Foulblade",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-skreech-verminking",
+        "Lord Skreech Verminking",
+        "hero",
+        "regular"
+      ],
+      [
+        "master-moulder",
+        "Master Moulder",
+        "Hero",
+        "regular"
+      ],
+      [
+        "night-runners",
+        "Night Runner",
+        "",
+        "regular"
+      ],
+      [
+        "plague-censer-bearers-2",
+        "Plague Censer Bearers",
+        "",
+        "legends"
+      ],
+      [
+        "plague-censer-bearers",
+        "Plague Censer Bearers",
+        "",
+        "regular"
+      ],
+      [
+        "plague-monks",
+        "Plague Monk",
+        "",
+        "regular"
+      ],
+      [
+        "plague-priest",
+        "Plague Priest",
+        "Hero",
+        "legends"
+      ],
+      [
+        "plague-priest-on-plague-furnace",
+        "Plague Priest on Plague Furnace",
+        "hero",
+        "regular"
+      ],
+      [
+        "plagueclaw",
+        "Plagueclaw",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "plaguepack",
+        "Plaguepack",
+        "infantry",
+        "regular"
+      ],
+      [
+        "rat-ogors",
+        "Rat Ogor",
+        "",
+        "regular"
+      ],
+      [
+        "ratling-guns",
+        "Ratling Guns",
+        "infantry",
+        "regular"
+      ],
+      [
+        "ratling-warpblaster",
+        "Ratling Warpblaster",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "skabbiks-plaguepack",
+        "Skabbik's Plaguepack",
+        "",
+        "legends"
+      ],
+      [
+        "skittershanks-clawpack",
+        "Skittershank's Clawpack",
+        "",
+        "legends"
+      ],
+      [
+        "spiteclaws-swarm",
+        "Spiteclaw's Swarm",
+        "",
+        "legends"
+      ],
+      [
+        "stormfiends",
+        "Stormfiends",
+        "",
+        "regular"
+      ],
+      [
+        "stormvermin",
+        "Stormvermin",
+        "Battleline",
+        "regular"
+      ],
+      [
+        "thanquol-on-boneripper",
+        "Thanquol on Boneripper",
+        "Hero",
+        "regular"
+      ],
+      [
+        "verminlord-corruptor",
+        "Verminlord Corruptor",
+        "Hero",
+        "regular"
+      ],
+      [
+        "verminlord-deceiver",
+        "Verminlord Deceiver",
+        "hero",
+        "regular"
+      ],
+      [
+        "verminlord-warbringer",
+        "Verminlord Warbringer",
+        "Hero",
+        "regular"
+      ],
+      [
+        "verminlord-warpseer",
+        "Verminlord Warpseer",
+        "hero",
+        "regular"
+      ],
+      [
+        "vizzik-skour-prophet-of-the-horned-rat",
+        "Vizzik Skour, Prophet of the Horned Rat",
+        "hero",
+        "regular"
+      ],
+      [
+        "warlock-bombardier",
+        "Warlock Bombardier",
+        "Hero",
+        "regular"
+      ],
+      [
+        "warlock-engineer",
+        "Warlock Engineer",
+        "hero",
+        "regular"
+      ],
+      [
+        "warlock-galvaneer",
+        "Warlock Galvaneer",
+        "hero",
+        "regular"
+      ],
+      [
+        "warp-lightning-cannon",
+        "Warp Lightning Cannon",
+        "",
+        "regular"
+      ],
+      [
+        "warp-grinder",
+        "Warp-Grinder",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "warpfire-throwers",
+        "Warpfire Throwers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "warplock-jezzails",
+        "Warplock Jezzail",
+        "",
+        "regular"
+      ],
+      [
+        "warpvolt-scourgers",
+        "Warpvolt Scourgers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "zikkits-tunnelpack",
+        "Zikkit's Tunnelpack",
+        "",
+        "legends"
+      ]
+    ]
+  },
+  "slaves-to-darkness": {
+    "name": "Slaves to Darkness",
+    "ga": "Chaos",
+    "units": [
+      [
+        "abraxia-spear-of-the-everchosen",
+        "Abraxia, Spear of the Everchosen",
+        "hero",
+        "regular"
+      ],
+      [
+        "archaon-the-everchosen",
+        "Archaon the Everchosen",
+        "Hero",
+        "regular"
+      ],
+      [
+        "slaves-archaon-the-everchosen",
+        "Archaon, the Everchosen",
+        "Hero",
+        "regular"
+      ],
+      [
+        "be-lakor-the-dark-master",
+        "Be'lakor, the Dark Master",
+        "Hero",
+        "regular"
+      ],
+      [
+        "centaurion-marshal",
+        "Centaurion Marshal",
+        "hero",
+        "regular"
+      ],
+      [
+        "chaos-chariot",
+        "Chaos Chariot",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "chaos-chosen",
+        "Chaos Chosen",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "chaos-furies",
+        "Chaos Furies",
+        "infantry",
+        "regular"
+      ],
+      [
+        "chaos-knights",
+        "Chaos Knight",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "chaos-legionnaires",
+        "Chaos Legionnaires",
+        "infantry",
+        "regular"
+      ],
+      [
+        "slaves-chaos-lord",
+        "Chaos Lord",
+        "Hero",
+        "regular"
+      ],
+      [
+        "chaos-lord-on-daemonic-mount",
+        "Chaos Lord on Daemonic Mount",
+        "hero",
+        "regular"
+      ],
+      [
+        "chaos-lord-on-karkadrak",
+        "Chaos Lord on Karkadrak",
+        "Hero",
+        "regular"
+      ],
+      [
+        "chaos-lord-on-manticore",
+        "Chaos Lord on Manticore",
+        "",
+        "legends"
+      ],
+      [
+        "chaos-sorcerer-lord",
+        "Chaos Sorcerer Lord",
+        "Hero",
+        "regular"
+      ],
+      [
+        "chaos-sorcerer-lord-on-manticore",
+        "Chaos Sorcerer Lord on Manticore",
+        "",
+        "legends"
+      ],
+      [
+        "chaos-spawn",
+        "Chaos Spawn",
+        "infantry",
+        "regular"
+      ],
+      [
+        "chaos-warriors",
+        "Chaos Warrior",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "chaos-warshrine",
+        "Chaos Warshrine",
+        "",
+        "legends"
+      ],
+      [
+        "corvus-cabal",
+        "Corvus Cabal",
+        "",
+        "legends"
+      ],
+      [
+        "cypher-lords",
+        "Cypher Lords",
+        "",
+        "legends"
+      ],
+      [
+        "daemon-prince",
+        "Daemon Prince",
+        "hero",
+        "regular"
+      ],
+      [
+        "darkoath-chieftain",
+        "Darkoath Chieftain",
+        "Hero",
+        "regular"
+      ],
+      [
+        "darkoath-chieftain-on-warsteed",
+        "Darkoath Chieftain on Warsteed",
+        "hero",
+        "regular"
+      ],
+      [
+        "darkoath-fellriders",
+        "Darkoath Fellriders",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "darkoath-marauders",
+        "Darkoath Marauders",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "darkoath-savagers",
+        "Darkoath Savagers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "darkoath-warqueen",
+        "Darkoath Warqueen",
+        "hero",
+        "regular"
+      ],
+      [
+        "darkoath-wilderfiend",
+        "Darkoath Wilderfiend",
+        "infantry",
+        "regular"
+      ],
+      [
+        "eternus-blade-of-the-first-prince",
+        "Eternus, Blade of the First Prince",
+        "hero",
+        "regular"
+      ],
+      [
+        "exalted-hero-of-chaos",
+        "Exalted Hero of Chaos",
+        "hero",
+        "regular"
+      ],
+      [
+        "fomoroid-crusher",
+        "Fomoroid Crusher",
+        "monster",
+        "regular"
+      ],
+      [
+        "slaves-gaunt-summoner",
+        "Gaunt Summoner",
+        "Hero",
+        "regular"
+      ],
+      [
+        "slaves-gaunt-summoner-on-disc",
+        "Gaunt Summoner on Disc of Tzeentch",
+        "Hero",
+        "regular"
+      ],
+      [
+        "godsworn-hunt",
+        "Godsworn Hunt",
+        "",
+        "legends"
+      ],
+      [
+        "gorebeast-chariot",
+        "Gorebeast Chariot",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "gunnar-brand",
+        "Gunnar Brand",
+        "hero",
+        "regular"
+      ],
+      [
+        "horns-of-hashut",
+        "Horns of Hashut",
+        "",
+        "legends"
+      ],
+      [
+        "iron-golem",
+        "Iron Golem",
+        "",
+        "legends"
+      ],
+      [
+        "khagras-ravagers",
+        "Khagra's Ravagers",
+        "",
+        "legends"
+      ],
+      [
+        "legion-of-the-first-prince-beasts-of-nurgle",
+        "Legion of the First Prince Beasts of Nurgle",
+        "infantry",
+        "regular"
+      ],
+      [
+        "legion-of-the-first-prince-bloodcrushers",
+        "Legion of the First Prince Bloodcrushers",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "legion-of-the-first-prince-bloodletters",
+        "Legion of the First Prince Bloodletters",
+        "infantry",
+        "regular"
+      ],
+      [
+        "legion-of-the-first-prince-fiends",
+        "Legion of the First Prince Fiends",
+        "infantry",
+        "regular"
+      ],
+      [
+        "legion-of-the-first-prince-flamers-of-tzeentch",
+        "Legion of the First Prince Flamers of Tzeentch",
+        "infantry",
+        "regular"
+      ],
+      [
+        "legion-of-the-first-prince-hellflayer",
+        "Legion of the First Prince Hellflayer",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "legion-of-the-first-prince-plaguebearers",
+        "Legion of the First Prince Plaguebearers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "legion-of-the-first-prince-screamers-of-tzeentch",
+        "Legion of the First Prince Screamers of Tzeentch",
+        "infantry",
+        "regular"
+      ],
+      [
+        "mindstealer-sphiranx",
+        "Mindstealer Sphiranx",
+        "monster",
+        "regular"
+      ],
+      [
+        "slaves-mutalith-vortex-beast",
+        "Mutalith Vortex Beast",
+        "monster",
+        "regular"
+      ],
+      [
+        "ogroid-myrmidon",
+        "Ogroid Myrmidon",
+        "hero",
+        "regular"
+      ],
+      [
+        "ogroid-theridons",
+        "Ogroid Theridons",
+        "infantry",
+        "regular"
+      ],
+      [
+        "raptoryx",
+        "Raptoryx",
+        "infantry",
+        "regular"
+      ],
+      [
+        "scions-of-the-flame",
+        "Scions of the Flame",
+        "",
+        "legends"
+      ],
+      [
+        "singri-brand",
+        "Singri Brand",
+        "hero",
+        "regular"
+      ],
+      [
+        "slaves-slaughterbrute",
+        "Slaughterbrute",
+        "monster",
+        "regular"
+      ],
+      [
+        "soul-grinder",
+        "Soul Grinder",
+        "",
+        "legends"
+      ],
+      [
+        "spire-tyrants",
+        "Spire Tyrants",
+        "",
+        "legends"
+      ],
+      [
+        "splintered-fang",
+        "Splintered Fang",
+        "",
+        "legends"
+      ],
+      [
+        "tarantulos-brood",
+        "Tarantulos Brood",
+        "",
+        "legends"
+      ],
+      [
+        "gnarlspirit-pack",
+        "The Gnarlspirit Pack",
+        "",
+        "legends"
+      ],
+      [
+        "the-oathsworn-kin",
+        "The Oathsworn Kin",
+        "",
+        "regular"
+      ],
+      [
+        "the-unmade",
+        "The Unmade",
+        "infantry",
+        "legends"
+      ],
+      [
+        "untamed-beasts",
+        "Untamed Beasts",
+        "",
+        "legends"
+      ],
+      [
+        "varanguard",
+        "Varanguard",
+        "Cavalry",
+        "regular"
+      ]
+    ]
+  },
+  "sons-of-behemat": {
+    "name": "Sons of Behemat",
+    "ga": "Destruction",
+    "units": [
+      [
+        "beast-smasher-mega-gargant",
+        "Beast-smasher Mega-Gargant",
+        "hero",
+        "regular"
+      ],
+      [
+        "gatebreaker-mega-gargant",
+        "Gatebreaker Mega-Gargant",
+        "hero",
+        "regular"
+      ],
+      [
+        "king-brodd",
+        "King Brodd",
+        "hero",
+        "regular"
+      ],
+      [
+        "sons-of-behemat-kragnos-the-end-of-empires",
+        "Kragnos, the End of Empires",
+        "Hero",
+        "regular"
+      ],
+      [
+        "kraken-eater-mega-gargant",
+        "Kraken-eater Mega-Gargant",
+        "hero",
+        "regular"
+      ],
+      [
+        "mancrusher-gargant",
+        "Mancrusher Gargant",
+        "monster",
+        "regular"
+      ],
+      [
+        "mancrusher-mob",
+        "Mancrusher Mob",
+        "monster",
+        "regular"
+      ],
+      [
+        "warstomper-mega-gargant",
+        "Warstomper Mega-Gargant",
+        "hero",
+        "regular"
+      ]
+    ]
+  },
+  "soulblight-gravelords": {
+    "name": "Soulblight Gravelords",
+    "ga": "Death",
+    "units": [
+      [
+        "askurgan-trueblades",
+        "Askurgan Trueblades",
+        "infantry",
+        "regular"
+      ],
+      [
+        "barrow-guard",
+        "Barrow Guard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "barrow-knights",
+        "Barrow Knight",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "soulblight-belladamma-volga-first-of-the-vyrkos",
+        "Belladamma Volga First of the Vyrkos",
+        "Hero",
+        "regular"
+      ],
+      [
+        "black-knights",
+        "Black Knights",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "blades-of-the-hollow-king",
+        "Blades of the Hollow King",
+        "",
+        "regular"
+      ],
+      [
+        "blood-knights",
+        "Blood Knight",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "bloodseeker-palanquin",
+        "Bloodseeker Palanquin",
+        "hero",
+        "regular"
+      ],
+      [
+        "cado-ezechiar-the-hollow-king",
+        "Cado Ezechiar, The Hollow King",
+        "hero",
+        "regular"
+      ],
+      [
+        "corpse-cart",
+        "Corpse Cart",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "coven-throne",
+        "Coven Throne",
+        "hero",
+        "regular"
+      ],
+      [
+        "soulblight-deadwalker-zombies",
+        "Deadwalker Zombies",
+        "infantry",
+        "regular"
+      ],
+      [
+        "deathrattle-skeletons",
+        "Deathrattle Skeleton",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "dire-wolves",
+        "Dire Wolves",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "soulblight-fell-bats",
+        "Fell Bats",
+        "infantry",
+        "regular"
+      ],
+      [
+        "gorslav-the-gravekeeper",
+        "Gorslav the Gravekeeper",
+        "hero",
+        "regular"
+      ],
+      [
+        "ivya-volga-the-outcast",
+        "Ivya Volga, The Outcast",
+        "hero",
+        "regular"
+      ],
+      [
+        "kosargi-nightguard",
+        "Kosargi Nightguard",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kritza-the-rat-prince",
+        "Kritza, the Rat Prince",
+        "hero",
+        "regular"
+      ],
+      [
+        "lady-annika-the-thirsting-blade",
+        "Lady Annika, the Thirsting Blade",
+        "",
+        "regular"
+      ],
+      [
+        "lauka-vai-mother-of-nightmares",
+        "Lauka Vai Mother of Nightmares",
+        "",
+        "regular"
+      ],
+      [
+        "mannfred-von-carstein-mortarch-of-night",
+        "Mannfred von Carstein, Mortarch of Night",
+        "Hero",
+        "regular"
+      ],
+      [
+        "mortis-engine",
+        "Mortis Engine",
+        "hero",
+        "regular"
+      ],
+      [
+        "necromancer",
+        "Necromancer",
+        "Hero",
+        "regular"
+      ],
+      [
+        "neferata-mortarch-of-blood",
+        "Neferata, Mortarch of Blood",
+        "hero",
+        "regular"
+      ],
+      [
+        "prince-vhordrai",
+        "Prince Vhordrai",
+        "hero",
+        "regular"
+      ],
+      [
+        "radukar-the-beast",
+        "Radukar the Beast",
+        "hero",
+        "regular"
+      ],
+      [
+        "radukar-the-wolf",
+        "Radukar the Wolf",
+        "hero",
+        "regular"
+      ],
+      [
+        "soulblight-revenant-draconith",
+        "Revenant Draconith",
+        "monster",
+        "regular"
+      ],
+      [
+        "sekhar-fang-of-nulahmia",
+        "Sekhar, Fang of Nulahmia",
+        "hero",
+        "regular"
+      ],
+      [
+        "skeleton-warriors",
+        "Skeleton Warriors",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "soulblight-gravelords-terrorgheist",
+        "Terrorgheist",
+        "monster",
+        "regular"
+      ],
+      [
+        "crimson-court",
+        "The Crimson Court",
+        "",
+        "legends"
+      ],
+      [
+        "exiled-dead",
+        "The Exiled Dead",
+        "",
+        "legends"
+      ],
+      [
+        "sepulchral-guard",
+        "The Sepulchral Guard",
+        "",
+        "legends"
+      ],
+      [
+        "sons-of-velmorn",
+        "The Sons of Velmorn",
+        "",
+        "legends"
+      ],
+      [
+        "torgillius-the-chamberlain",
+        "Torgillius the Chamberlain",
+        "hero",
+        "regular"
+      ],
+      [
+        "vampire-lord",
+        "Vampire Lord",
+        "Hero",
+        "regular"
+      ],
+      [
+        "vampire-lord-on-nightmare-steed",
+        "Vampire Lord on Nightmare Steed",
+        "hero",
+        "regular"
+      ],
+      [
+        "vampire-lord-on-zombie-dragon",
+        "Vampire Lord on Zombie Dragon",
+        "Hero",
+        "regular"
+      ],
+      [
+        "vargheists",
+        "Vargheist",
+        "",
+        "regular"
+      ],
+      [
+        "vargskyr",
+        "Vargskyr",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vengorian-lord",
+        "Vengorian Lord",
+        "hero",
+        "regular"
+      ],
+      [
+        "vyrkos-blood-born",
+        "Vyrkos Blood-born",
+        "infantry",
+        "regular"
+      ],
+      [
+        "watch-captain-halgrim",
+        "Watch Captain Halgrim",
+        "hero",
+        "regular"
+      ],
+      [
+        "wight-king",
+        "Wight King",
+        "hero",
+        "regular"
+      ],
+      [
+        "wight-king-on-skeletal-steed",
+        "Wight King on Skeletal Steed",
+        "Hero",
+        "regular"
+      ],
+      [
+        "wight-lord-on-skeletal-steed",
+        "Wight Lord on Skeletal Steed",
+        "hero",
+        "regular"
+      ],
+      [
+        "zombie-dragon",
+        "Zombie Dragon",
+        "Behemoth",
+        "regular"
+      ],
+      [
+        "zondaras-gravebreakers",
+        "Zondara's Gravebreakers",
+        "",
+        "legends"
+      ]
+    ]
+  },
+  "stormcast-eternals": {
+    "name": "Stormcast Eternals",
+    "ga": "Order",
+    "units": [
+      [
+        "aetherwings",
+        "Aetherwing",
+        "infantry",
+        "regular"
+      ],
+      [
+        "annihilators-2",
+        "Annihilators",
+        "",
+        "regular"
+      ],
+      [
+        "annihilators",
+        "Annihilators",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "annihilators-with-meteoric-grandhammers",
+        "Annihilators with Meteoric Grandhammers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "astreia-solbright",
+        "Astreia Solbright",
+        "",
+        "legends"
+      ],
+      [
+        "aventis-firestrike-magister-of-hammerhal",
+        "Aventis Firestrike Magister of Hammerhal",
+        "",
+        "legends"
+      ],
+      [
+        "castigators",
+        "Castigator",
+        "",
+        "legends"
+      ],
+      [
+        "celestant-prime-hammer-of-sigmar",
+        "Celestant-Prime, Hammer of Sigmar",
+        "hero",
+        "regular"
+      ],
+      [
+        "celestar-ballista",
+        "Celestar Ballista",
+        "War Machine",
+        "legends"
+      ],
+      [
+        "decimators",
+        "Decimators",
+        "",
+        "legends"
+      ],
+      [
+        "domitans-stormcoven",
+        "Domitan's Stormcoven",
+        "infantry",
+        "legends"
+      ],
+      [
+        "dracothian-guard-concussors",
+        "Dracothian Guard Concussors",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dracothian-guard-concussors-1-model",
+        "Dracothian Guard Concussors (1 model)",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dracothian-guard-desolators",
+        "Dracothian Guard Desolators",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dracothian-guard-desolators-1-model",
+        "Dracothian Guard Desolators (1 model)",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dracothian-guard-fulminators",
+        "Dracothian Guard Fulminators",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dracothian-guard-fulminators-1-model",
+        "Dracothian Guard Fulminators (1 model)",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dracothian-guard-tempestors",
+        "Dracothian Guard Tempestors",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "dracothian-guard-tempestors-1-model",
+        "Dracothian Guard Tempestors (1 model)",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "drakesworn-templar",
+        "Drakesworn Templar",
+        "hero",
+        "regular"
+      ],
+      [
+        "evocators",
+        "Evocator",
+        "",
+        "legends"
+      ],
+      [
+        "evocators-on-celestial-dracolines",
+        "Evocators on Celestial Dracolines",
+        "",
+        "legends"
+      ],
+      [
+        "gardus-steel-soul",
+        "Gardus Steel Soul",
+        "hero",
+        "regular"
+      ],
+      [
+        "gavriel-sureheart",
+        "Gavriel Sureheart",
+        "",
+        "legends"
+      ],
+      [
+        "gryph-hounds",
+        "Gryph-Hound",
+        "infantry",
+        "regular"
+      ],
+      [
+        "ionus-cryptborn-warden-of-lost-souls",
+        "Ionus Cryptborn Warden of Lost Souls",
+        "",
+        "regular"
+      ],
+      [
+        "iridan-the-witness",
+        "Iridan the Witness",
+        "hero",
+        "regular"
+      ],
+      [
+        "judicators-with-boltstorm-crossbows",
+        "Judicators with Boltstorm Crossbows",
+        "",
+        "legends"
+      ],
+      [
+        "judicators-with-skybolt-bows",
+        "Judicators with Skybolt Bows",
+        "",
+        "legends"
+      ],
+      [
+        "karazai-the-scarred",
+        "Karazai the Scarred",
+        "hero",
+        "regular"
+      ],
+      [
+        "knight-arcanum",
+        "Knight-Arcanum",
+        "hero",
+        "regular"
+      ],
+      [
+        "knight-azyros",
+        "Knight-Azyros",
+        "hero",
+        "regular"
+      ],
+      [
+        "knight-draconis",
+        "Knight-Draconis",
+        "hero",
+        "regular"
+      ],
+      [
+        "knight-heraldor",
+        "Knight-Heraldor",
+        "",
+        "legends"
+      ],
+      [
+        "knight-incantor",
+        "Knight-Incantor",
+        "",
+        "legends"
+      ],
+      [
+        "knight-judicator-with-gryph-hounds",
+        "Knight-Judicator with Gryph-hounds",
+        "",
+        "regular"
+      ],
+      [
+        "knight-questor",
+        "Knight-Questor",
+        "hero",
+        "regular"
+      ],
+      [
+        "knight-relictor",
+        "Knight-Relictor",
+        "hero",
+        "regular"
+      ],
+      [
+        "knight-venator",
+        "Knight-Venator",
+        "",
+        "legends"
+      ],
+      [
+        "knight-vexillor",
+        "Knight-Vexillor",
+        "hero",
+        "regular"
+      ],
+      [
+        "knight-vexillor-with-banner-of-apotheosis",
+        "Knight-Vexillor with Banner of Apotheosis",
+        "Hero",
+        "regular"
+      ],
+      [
+        "knight-zephyros",
+        "Knight-Zephyros",
+        "",
+        "legends"
+      ],
+      [
+        "krondys-son-of-dracothion",
+        "Krondys, Son of Dracothion",
+        "hero",
+        "regular"
+      ],
+      [
+        "liberators-2",
+        "Liberators",
+        "",
+        "regular"
+      ],
+      [
+        "liberators",
+        "Liberators",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "lorai-child-of-the-abyss",
+        "Lorai Child of the Abyss",
+        "",
+        "regular"
+      ],
+      [
+        "lord-aquilor",
+        "Lord-Aquilor",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-arcanum",
+        "Lord-Arcanum",
+        "",
+        "legends"
+      ],
+      [
+        "lord-arcanum-on-celestial-dracoline",
+        "Lord-Arcanum on Celestial Dracoline",
+        "",
+        "legends"
+      ],
+      [
+        "lord-arcanum-on-gryph-charger",
+        "Lord-Arcanum on Gryph-charger",
+        "",
+        "legends"
+      ],
+      [
+        "lord-arcanum-on-tauralon",
+        "Lord-Arcanum on Tauralon",
+        "",
+        "legends"
+      ],
+      [
+        "lord-castellant",
+        "Lord-Castellant",
+        "Hero",
+        "legends"
+      ],
+      [
+        "lord-celestant",
+        "Lord-Celestant",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-celestant-on-dracoth",
+        "Lord-Celestant on Dracoth",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-celestant-on-stardrake",
+        "Lord-Celestant on Stardrake",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-commander-bastian-carthalos",
+        "Lord-Commander Bastian Carthalos",
+        "",
+        "regular"
+      ],
+      [
+        "lord-exorcist",
+        "Lord-Exorcist",
+        "",
+        "legends"
+      ],
+      [
+        "lord-imperatant",
+        "Lord-Imperatant",
+        "Hero",
+        "regular"
+      ],
+      [
+        "lord-ordinator",
+        "Lord-Ordinator",
+        "",
+        "legends"
+      ],
+      [
+        "lord-relictor",
+        "Lord-Relictor",
+        "Hero",
+        "regular"
+      ],
+      [
+        "lord-terminos",
+        "Lord-Terminos",
+        "",
+        "regular"
+      ],
+      [
+        "lord-veritant",
+        "Lord-Veritant",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-vigilant-on-gryph-stalker",
+        "Lord-Vigilant on Gryph-Stalker",
+        "hero",
+        "regular"
+      ],
+      [
+        "lord-vigilant-on-morrgryph",
+        "Lord-Vigilant on Morrgryph",
+        "hero",
+        "regular"
+      ],
+      [
+        "neave-blacktalon",
+        "Neave Blacktalon",
+        "hero",
+        "regular"
+      ],
+      [
+        "neaves-companions",
+        "Neave's Companions",
+        "",
+        "regular"
+      ],
+      [
+        "praetors-2",
+        "Praetors",
+        "",
+        "regular"
+      ],
+      [
+        "praetors",
+        "Praetors",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "prosecutors",
+        "Prosecutor",
+        "infantry",
+        "regular"
+      ],
+      [
+        "protectors",
+        "Protector",
+        "",
+        "legends"
+      ],
+      [
+        "questor-soulsworn",
+        "Questor Soulsworn",
+        "infantry",
+        "regular"
+      ],
+      [
+        "reclusians",
+        "Reclusian",
+        "infantry",
+        "regular"
+      ],
+      [
+        "retributors",
+        "Retributor",
+        "",
+        "legends"
+      ],
+      [
+        "sequitors",
+        "Sequitors",
+        "infantry",
+        "legends"
+      ],
+      [
+        "steelhearts-champions",
+        "Steelheart's Champions",
+        "infantry",
+        "legends"
+      ],
+      [
+        "stormcoven",
+        "Stormcoven",
+        "infantry",
+        "regular"
+      ],
+      [
+        "stormdrake-guard",
+        "Stormdrake Guard",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "stormdrake-guard-1-model",
+        "Stormdrake Guard (1 model)",
+        "monster",
+        "regular"
+      ],
+      [
+        "stormsires-cursebreakers",
+        "Stormsire's Cursebreakers",
+        "infantry",
+        "legends"
+      ],
+      [
+        "stormstrike-chariot",
+        "Stormstrike Chariot",
+        "war_machine",
+        "regular"
+      ],
+      [
+        "stormstrike-palladors",
+        "Stormstrike Pallador",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "the-emberwatch",
+        "The Emberwatch",
+        "infantry",
+        "legends"
+      ],
+      [
+        "farstriders",
+        "The Farstriders",
+        "",
+        "legends"
+      ],
+      [
+        "tornus-the-redeemed",
+        "Tornus the Redeemed",
+        "hero",
+        "regular"
+      ],
+      [
+        "vandus-hammerhand",
+        "Vandus Hammerhand",
+        "",
+        "regular"
+      ],
+      [
+        "vanguard-hunters",
+        "Vanguard-Hunter",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vanguard-palladors-with-shock-handaxes",
+        "Vanguard-Palladors with Shock Handaxes",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "vanguard-palladors-with-starstrike-javelins",
+        "Vanguard-Palladors with Starstrike Javelins",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "vanguard-raptors-with-hurricane-crossbows",
+        "Vanguard-Raptors with Hurricane Crossbows",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vanguard-raptors-with-longstrike-crossbows",
+        "Vanguard-Raptors with Longstrike Crossbows",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "vanquishers",
+        "Vanquishers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vigilors",
+        "Vigilors",
+        "infantry",
+        "regular"
+      ],
+      [
+        "vindictors",
+        "Vindictors",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "xandires-truthseekers",
+        "Xandire's Truthseekers",
+        "infantry",
+        "legends"
+      ],
+      [
+        "yndrasta-the-celestial-spear",
+        "Yndrasta, the Celestial Spear",
+        "Hero",
+        "regular"
+      ]
+    ]
+  },
+  "sylvaneth": {
+    "name": "Sylvaneth",
+    "ga": "Order",
+    "units": [
+      [
+        "alarielle-the-everqueen",
+        "Alarielle the Everqueen",
+        "hero",
+        "regular"
+      ],
+      [
+        "arch-revenant",
+        "Arch-Revenant",
+        "Hero",
+        "regular"
+      ],
+      [
+        "belthanos-first-thorn-of-kurnoth",
+        "Belthanos, First Thorn of Kurnoth",
+        "hero",
+        "regular"
+      ],
+      [
+        "branchwych",
+        "Branchwych",
+        "Hero",
+        "regular"
+      ],
+      [
+        "dryads",
+        "Dryad",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "drycha-hamadreth",
+        "Drycha Hamadreth",
+        "Hero",
+        "regular"
+      ],
+      [
+        "gossamid-archers",
+        "Gossamid Archers",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kurnoth-hunters-with-greatbows",
+        "Kurnoth Hunters with Greatbows",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "kurnoth-hunters-with-greatswords",
+        "Kurnoth Hunters with Greatswords",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "kurnoth-hunters-with-kurnoth-greatbows",
+        "Kurnoth Hunters with Kurnoth Greatbows",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kurnoth-hunters-with-kurnoth-greatswords",
+        "Kurnoth Hunters with Kurnoth Greatswords",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kurnoth-hunters-with-kurnoth-scythes",
+        "Kurnoth Hunters with Kurnoth Scythes",
+        "infantry",
+        "regular"
+      ],
+      [
+        "kurnoths-heralds",
+        "Kurnoth's Heralds",
+        "cavalry",
+        "legends"
+      ],
+      [
+        "revenant-seekers",
+        "Revenant Seekers",
+        "Cavalry",
+        "regular"
+      ],
+      [
+        "skaeths-wild-hunt",
+        "Skaeth's Wild Hunt",
+        "infantry",
+        "legends"
+      ],
+      [
+        "spirit-of-durthu",
+        "Spirit of Durthu",
+        "Hero",
+        "regular"
+      ],
+      [
+        "spite-revenants",
+        "Spite-Revenant",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "spiterider-lancers",
+        "Spiterider Lancers",
+        "cavalry",
+        "regular"
+      ],
+      [
+        "lady-of-vines",
+        "The Lady of Vines",
+        "hero",
+        "regular"
+      ],
+      [
+        "sylvaneth-the-twistweald",
+        "The Twistweald",
+        "infantry",
+        "regular"
+      ],
+      [
+        "tree-revenants",
+        "Tree-Revenant",
+        "Infantry",
+        "regular"
+      ],
+      [
+        "treelord",
+        "Treelord",
+        "Behemoth",
+        "regular"
+      ],
+      [
+        "treelord-ancient",
+        "Treelord Ancient",
+        "Hero",
+        "regular"
+      ],
+      [
+        "warsong-revenant",
+        "Warsong Revenant",
+        "hero",
+        "regular"
+      ],
+      [
+        "yltharis-guardians",
+        "Ylthari's Guardians",
+        "infantry",
+        "legends"
+      ]
+    ]
+  },
+  "universal-manifestations": {
+    "name": "Universal Manifestations",
+    "ga": "Universal",
+    "units": [
+      [
+        "aetherwrought-machineries",
+        "Aetherwrought Machineries",
+        "manifestation",
+        "manifestation"
+      ],
+      [
+        "forbidden-power",
+        "Forbidden Power",
+        "manifestation",
+        "manifestation"
+      ],
+      [
+        "krondspine-incarnate",
+        "Krondspine Incarnate of Ghur",
+        "manifestation",
+        "manifestation"
+      ],
+      [
+        "morbid-conjuration",
+        "Morbid Conjuration",
+        "manifestation",
+        "manifestation"
+      ],
+      [
+        "primal-energy",
+        "Primal Energy",
+        "manifestation",
+        "manifestation"
+      ],
+      [
+        "twilit-sorceries",
+        "Twilit Sorceries",
+        "manifestation",
+        "manifestation"
+      ]
+    ]
+  }
+}

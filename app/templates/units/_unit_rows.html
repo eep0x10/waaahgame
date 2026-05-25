@@ -1,38 +1,41 @@
 {% if grouped %}
-  <p style="font-size:0.8rem;opacity:0.5;margin-bottom:1.25rem;">
+  <p class="units-results-count">
     {{ total_units }} unidade{{ 's' if total_units != 1 else '' }} encontrada{{ 's' if total_units != 1 else '' }}
   </p>
 
   {% for system, factions in grouped %}
-    <div class="units-system-block" style="margin-bottom:2.5rem;">
-      <h2 class="units-system-heading" style="font-family:'Cinzel',serif;font-size:1.15rem;letter-spacing:0.12em;text-transform:uppercase;border-bottom:1px solid rgba(184,147,90,0.3);padding-bottom:0.4rem;margin-bottom:1.25rem;color:#b8935a;">
-        {{ system.name }}
-        <span style="font-size:0.7rem;opacity:0.5;font-weight:400;letter-spacing:0.06em;margin-left:0.5rem;">{{ system.edition }}</span>
+    <div class="units-system-block">
+      <h2 class="units-system-heading">
+        <span>{{ system.name }}</span>
+        <span class="sys-edition">{{ system.edition }}</span>
       </h2>
 
       {% for faction, units in factions %}
-        {# Split units into regular/legends/incomplete vs manifestation #}
         {% set manifestation_units = units | selectattr('unit_category', 'equalto', 'manifestation') | list %}
-        {% set regular_units = units | rejectattr('unit_category', 'equalto', 'manifestation') | list %}
+        {% set legacy_units = units | selectattr('unit_category', 'equalto', 'legends') | list %}
+        {% set regular_units = units | rejectattr('unit_category', 'equalto', 'manifestation') | rejectattr('unit_category', 'equalto', 'legends') | list %}
+        {% set ga = (faction.grand_alliance or '') | lower %}
 
-        {% if regular_units or manifestation_units %}
-        <details class="units-faction-block" open style="margin-bottom:1.25rem;">
-          <summary class="units-faction-heading" style="cursor:pointer;font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;padding:0.35rem 0;list-style:none;display:flex;align-items:center;gap:0.5rem;">
-            <span style="opacity:0.4;font-size:0.7rem;">&#9654;</span>
-            {{ faction.name }}
-            <span style="font-size:0.7rem;opacity:0.45;font-weight:400;">({{ units|length }})</span>
+        {% if regular_units or manifestation_units or legacy_units %}
+        <details class="units-faction-block" open>
+          <summary class="units-faction-heading">
+            <span class="chev">&#9654;</span>
+            <span>{{ faction.name }}</span>
+            <span class="faction-count">({{ units|length }})</span>
+            <span class="faction-spacer"></span>
             {% if faction.grand_alliance %}
-              <span class="role-tag" style="font-size:0.65rem;opacity:0.7;">{{ faction.grand_alliance }}</span>
+              <span class="alliance-badge alliance-{{ ga }}">{{ faction.grand_alliance }}</span>
             {% endif %}
           </summary>
 
-          {# --- Regular / Incomplete / Legends units --- #}
+          <div class="units-faction-body">
+
           {% if regular_units %}
-          <div class="unit-grid unit-grid--bb" style="margin-top:0.75rem;">
+          <div class="unit-grid unit-grid--bb">
             {% for unit in regular_units %}
               <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}"
-                 class="unit-card unit-card--bb{% if unit.unit_category == 'incomplete' %} unit-card--incomplete{% endif %}{% if unit.unit_category == 'legends' %} unit-card--legends{% endif %}"
-                 style="position:relative;">
+                 class="unit-card unit-card--bb ga-{{ ga }}{% if unit.unit_category == 'incomplete' %} unit-card--incomplete{% endif %}{% if unit.unit_category == 'legends' %} unit-card--legends{% endif %}">
+
                 <div class="unit-image-frame unit-card-bb-image">
                   {% if unit.image_path %}
                     <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
@@ -42,29 +45,27 @@
                   {% else %}
                     <div class="unit-card-placeholder">
                       <svg class="shield-placeholder-svg" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M40 4 L74 18 L74 52 Q74 76 40 92 Q6 76 6 52 L6 18 Z" stroke="#b8935a" stroke-width="2" fill="rgba(184,147,90,0.06)"/>
-                        <text x="40" y="56" text-anchor="middle" font-size="28" fill="#b8935a" opacity="0.5" font-family="serif">?</text>
+                        <path d="M40 4 L74 18 L74 52 Q74 76 40 92 Q6 76 6 52 L6 18 Z" stroke="currentColor" stroke-width="2" fill="none" opacity="0.55"/>
+                        <text x="40" y="56" text-anchor="middle" font-size="28" fill="currentColor" opacity="0.5" font-family="serif">?</text>
                       </svg>
                     </div>
                   {% endif %}
                 </div>
 
-                {# Incomplete badge #}
                 {% if unit.unit_category == 'incomplete' %}
-                  <span title="Dados incompletos" style="position:absolute;top:4px;right:4px;background:#f0e6c8;color:#7a5a2a;font-size:0.6rem;font-weight:700;padding:1px 5px;border-radius:8px;border:1px solid #c9a96e;line-height:1.4;z-index:2;">?</span>
+                  <span class="incomplete-chip" title="Dados incompletos">?</span>
                 {% endif %}
-                {# Legends badge #}
                 {% if unit.unit_category == 'legends' %}
                   <span class="legacy-badge"
-                        data-tooltip="Legacy — unidade fora do range atual de Battletome. Pode ser usada em listas com restrições; consulte o pacote Legacy &amp; Forge World do GHB 2025-26.">LEG</span>
+                        data-tooltip="LEGACY — modelo descontinuado pela GW: ainda recebe pontos no pacote Legacy &amp; Forge World do GHB 2025-26, mas NÃO é legal em torneios oficiais Matched Play. Use em casual, narrativo ou listas com permissão explícita. Verifique restrições do evento antes de incluir.">LEG</span>
                 {% endif %}
 
                 <div class="unit-card-body unit-card-bb-body">
                   <div class="unit-card-name" title="{{ unit.name }}">{{ unit.name }}</div>
                   <div class="unit-card-meta">
-                    <span class="pts-badge" style="font-size:0.82rem;">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+                    <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
                     {% if unit.unit_role %}
-                      <span class="role-tag" style="font-size:0.6rem;">{{ unit.unit_role }}</span>
+                      <span class="role-tag">{{ unit.unit_role }}</span>
                     {% endif %}
                   </div>
                   {% if unit.stats_json %}
@@ -94,38 +95,104 @@
           </div>
           {% endif %}
 
-          {# --- Manifestações & Terreno subsection --- #}
-          {% if manifestation_units %}
-          <div class="manifestations-subsection" style="margin-top:1rem;padding:0.75rem 0.75rem 0.5rem;background:rgba(120,80,40,0.06);border-left:2px solid rgba(184,147,90,0.25);border-radius:3px;">
-            <div style="font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:0.6rem;">
-              Manifestações &amp; Terreno
-              <span style="opacity:0.6;font-weight:400;">({{ manifestation_units|length }})</span>
-            </div>
-            <div class="unit-grid unit-grid--manifestations" style="--card-min:120px;gap:0.5rem;">
-              {% for unit in manifestation_units %}
+          {% if legacy_units %}
+          <details class="legacy-subsection">
+            <summary class="legacy-subsection-summary">
+              <span class="chev">&#9654;</span>
+              <span>Legacy &amp; Forge World</span>
+              <span class="count">({{ legacy_units|length }})</span>
+              <span class="legacy-subsection-hint">— modelos descontinuados, não legais em Matched Play oficial</span>
+            </summary>
+            <div class="unit-grid unit-grid--bb">
+              {% for unit in legacy_units %}
                 <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}"
-                   class="unit-card unit-card--manifestation"
-                   style="position:relative;opacity:0.72;">
-                  <div class="unit-image-frame" style="aspect-ratio:4/3;max-height:80px;">
+                   class="unit-card unit-card--bb ga-{{ ga }} unit-card--legends">
+                  <div class="unit-image-frame unit-card-bb-image">
                     {% if unit.image_path %}
                       <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
                            alt="{{ unit.name }}"
                            class="unit-card-img"
                            loading="lazy">
                     {% else %}
-                      <div class="unit-card-placeholder" style="min-height:60px;">
-                        <svg viewBox="0 0 60 72" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:38px;" aria-hidden="true">
-                          <path d="M30 3 L55 13 L55 39 Q55 57 30 69 Q5 57 5 39 L5 13 Z" stroke="#b8935a" stroke-width="1.5" fill="rgba(184,147,90,0.05)"/>
-                          <text x="30" y="42" text-anchor="middle" font-size="20" fill="#b8935a" opacity="0.4" font-family="serif">✦</text>
+                      <div class="unit-card-placeholder">
+                        <svg class="shield-placeholder-svg" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <path d="M40 4 L74 18 L74 52 Q74 76 40 92 Q6 76 6 52 L6 18 Z" stroke="currentColor" stroke-width="2" fill="none" opacity="0.55"/>
+                          <text x="40" y="56" text-anchor="middle" font-size="28" fill="currentColor" opacity="0.5" font-family="serif">?</text>
                         </svg>
                       </div>
                     {% endif %}
                   </div>
-                  <div class="unit-card-body" style="padding:0.3rem 0.4rem;">
-                    <div class="unit-card-name" style="font-size:0.68rem;line-height:1.2;">{{ unit.name }}</div>
-                    <div class="unit-card-meta" style="margin-top:0.2rem;">
+                  <span class="legacy-badge"
+                        data-tooltip="LEGACY — modelo descontinuado pela GW: ainda recebe pontos no pacote Legacy &amp; Forge World do GHB 2025-26, mas NÃO é legal em torneios oficiais Matched Play. Use em casual, narrativo ou listas com permissão explícita.">LEG</span>
+                  <div class="unit-card-body unit-card-bb-body">
+                    <div class="unit-card-name" title="{{ unit.name }}">{{ unit.name }}</div>
+                    <div class="unit-card-meta">
+                      <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
                       {% if unit.unit_role %}
-                        <span class="role-tag" style="font-size:0.55rem;">{{ unit.unit_role }}</span>
+                        <span class="role-tag">{{ unit.unit_role }}</span>
+                      {% endif %}
+                    </div>
+                    {% if unit.stats_json %}
+                      {% set s = unit.stats_json %}
+                      <div class="unit-card-stats-peek">
+                        <span class="unit-stat-peek-item">
+                          <span class="unit-stat-peek-val">{{ s.get('Move', s.get('move', '—')) }}</span>
+                          <span class="unit-stat-peek-key">MOV</span>
+                        </span>
+                        <span class="unit-stat-peek-item">
+                          <span class="unit-stat-peek-val">{{ s.get('Health', s.get('health', '—')) }}</span>
+                          <span class="unit-stat-peek-key">HP</span>
+                        </span>
+                        <span class="unit-stat-peek-item">
+                          <span class="unit-stat-peek-val">{{ s.get('Save', s.get('save', '—')) }}</span>
+                          <span class="unit-stat-peek-key">SV</span>
+                        </span>
+                        <span class="unit-stat-peek-item">
+                          <span class="unit-stat-peek-val">{{ s.get('Control', s.get('control', '—')) }}</span>
+                          <span class="unit-stat-peek-key">CTL</span>
+                        </span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          </details>
+          {% endif %}
+
+          {% if manifestation_units %}
+          <div class="manifestations-subsection">
+            <div class="manifestations-subsection-title">
+              Manifestações &amp; Terreno
+              <span class="count">({{ manifestation_units|length }})</span>
+            </div>
+            <div class="unit-grid unit-grid--manifestations">
+              {% for unit in manifestation_units %}
+                <a href="{{ url_for('units.detail', unit_slug=unit.slug) }}"
+                   class="unit-card unit-card--manifestation">
+                  <div class="unit-image-frame">
+                    {% if unit.image_path %}
+                      <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
+                           alt="{{ unit.name }}"
+                           class="unit-card-img"
+                           loading="lazy">
+                    {% else %}
+                      <div class="unit-card-placeholder">
+                        <svg viewBox="0 0 60 72" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="38" aria-hidden="true">
+                          <path d="M30 3 L55 13 L55 39 Q55 57 30 69 Q5 57 5 39 L5 13 Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
+                          <text x="30" y="42" text-anchor="middle" font-size="20" fill="currentColor" opacity="0.45" font-family="serif">&#10022;</text>
+                        </svg>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="unit-card-body">
+                    <div class="unit-card-name" title="{{ unit.name }}">{{ unit.name }}</div>
+                    <div class="unit-card-meta">
+                      {% if unit.points_cost %}
+                        <span class="pts-badge">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
+                      {% endif %}
+                      {% if unit.unit_role %}
+                        <span class="role-tag">{{ unit.unit_role }}</span>
                       {% endif %}
                     </div>
                   </div>
@@ -135,6 +202,7 @@
           </div>
           {% endif %}
 
+          </div>{# /units-faction-body #}
         </details>
         {% endif %}
       {% endfor %}

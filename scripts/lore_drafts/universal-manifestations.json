@@ -1,0 +1,17 @@
+{
+  "faction_slug": "universal-manifestations",
+  "faction_name": "Universal Manifestations",
+  "lores": {
+    "aetherwrought-machineries": "As Aetherwrought Machineries são construtos de éter solidificado que qualquer Wizard invoca no campo — engrenagens de energia arcana forjadas da ressonância de Chamon. Materializam-se como terreno mágico pulsante que amplifica feitiços de Heroes próximos e processa a sobrecarga arcana do ambiente. Taticamente funcionam como zona de Control: posicione sobre objetivos centrais para negar avanço inimigo, potencializar sua magia de área e dificultar o reposicionamento adversário.",
+
+    "forbidden-power": "Forbidden Power é a materialização de magias banidas pelos Reinos — rasga o tecido do Mortal Realms como uma cicatriz luminosa. Ondas de energia caótica devoram a Save de unidades inimigas com Rend implacável, produzindo geometrias impossíveis e cores inexistentes na natureza. Um Wizard que domina este feitiço paga em estabilidade mental. Taticamente é feitiço de dano de área com Rend elevado, devastador contra Battleline empilhadas em objetivos.",
+
+    "krondspine-incarnate": "O Krondspine Incarnate of Ghur é a personificação do instinto predatório do Realm of Beasts condensado em forma física — não convocado, mas acorrentado. Um Wizard de vontade suficiente prende a criatura a si, arriscando ser devorado pela selvageria que tenta controlar. No campo é um Monster de Health massiva com ataques que ignoram Ward. Taticamente é âncora ofensiva: Charge brutal nas linhas inimigas enquanto o Wizard mantém o vínculo a distância segura.",
+
+    "morbid-conjuration": "Morbid Conjuration são invocações necromânticas universais acessíveis a qualquer Wizard que mergulhe nos segredos de Shyish. A magia manifesta terreno corrompido: ossos emergindo do solo e névoa fria que cancela Ward inimigo. Visualmente opressor — o campo de batalha apodrece ao redor do feiticeiro. Taticamente impõe penalidades de Control e Move sobre zonas específicas, forçando inimigos a desviar de rotas ideais ou sofrer penalidades crescentes a cada turno.",
+
+    "primal-energy": "Primal Energy é a magia selvagem que permeia todos os Mortal Realms antes de qualquer lore a moldar — energia sem nome, sem forma. Quando um Wizard abre mão do controle e invoca esse caos puro, resulta em redemoinho de força em ondas de dano expansivo. Cada Realm empresta sua cor: chamas de Aqshy, relâmpagos de Azyr, toxinas de Ghyran. Taticamente é feitiço de dano de área com Rend variável — devastador contra grupos de Battleline empilhados em objetivos.",
+
+    "twilit-sorceries": "Twilit Sorceries são encantamentos do crepúsculo de Ulgu — portais de sombra e distorções de percepção que qualquer Wizard invoca canalizando a névoa do Realm of Shadows. A manifestação cria arcos de escuridão cortante: um Umbral Spellportal que permite lançar feitiços de pontos distantes ou que Heroes aliados cruzam para Charge inesperado. O papel tático é de mobilidade e surpresa: reposicione seu Wizard em segurança e entregue Charge de flanco onde o inimigo menos espera."
+  }
+}

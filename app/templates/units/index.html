@@ -9,17 +9,16 @@
       <h1 class="section-title">Todas as Unidades</h1>
     </div>
 
-    <!-- Filter Form -->
     <form id="unit-filter-form"
+          class="filter-bar"
           hx-get="{{ url_for('units.index') }}"
           hx-target="#unit-results"
           hx-swap="innerHTML"
-          hx-trigger="change from:select, keyup changed delay:400ms from:input[type=text], keyup changed delay:400ms from:input[type=number]"
-          style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;align-items:flex-end;">
+          hx-trigger="change from:select, keyup changed delay:400ms from:input[type=text], keyup changed delay:400ms from:input[type=number], change from:input[type=checkbox]">
 
-      <div>
-        <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">SISTEMA</label>
-        <select name="system" class="form-select" style="min-width:130px;">
+      <div class="filter-field filter-field--system">
+        <label class="filter-field-label" for="filter-system">Sistema</label>
+        <select id="filter-system" name="system" class="form-select">
           <option value="" {% if not system_filter %}selected{% endif %}>Todos os Sistemas</option>
           {% for sys in systems %}
             <option value="{{ sys.code }}" {% if system_filter == sys.code %}selected{% endif %}>{{ sys.name }}</option>
@@ -27,9 +26,9 @@
         </select>
       </div>
 
-      <div>
-        <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">FACÇÃO</label>
-        <select name="faction" class="form-select" style="min-width:160px;">
+      <div class="filter-field filter-field--faction">
+        <label class="filter-field-label" for="filter-faction">Facção</label>
+        <select id="filter-faction" name="faction" class="form-select">
           <option value="" {% if not faction_filter %}selected{% endif %}>Todas as Facções</option>
           {% for fac in factions %}
             <option value="{{ fac.slug }}" {% if faction_filter == fac.slug %}selected{% endif %}>{{ fac.name }}</option>
@@ -37,33 +36,30 @@
         </select>
       </div>
 
-      <div>
-        <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">BUSCAR</label>
-        <input type="text" name="q" value="{{ q or '' }}" placeholder="Nome da unidade…"
-               class="form-input" style="min-width:180px;">
+      <div class="filter-field filter-field--search">
+        <label class="filter-field-label" for="filter-q">Buscar</label>
+        <input id="filter-q" type="text" name="q" value="{{ q or '' }}"
+               placeholder="Nome da unidade…" class="form-input">
       </div>
 
-      <div>
-        <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">PTS MÍN</label>
-        <input type="number" name="pts_min" value="{{ pts_min or '' }}" placeholder="0"
-               class="form-input" style="width:80px;">
+      <div class="filter-field filter-field--pts">
+        <label class="filter-field-label" for="filter-pts-min">Pts mín</label>
+        <input id="filter-pts-min" type="number" name="pts_min" value="{{ pts_min or '' }}"
+               placeholder="0" class="form-input">
       </div>
 
-      <div>
-        <label style="display:block;font-size:0.75rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:0.25rem;">PTS MÁX</label>
-        <input type="number" name="pts_max" value="{{ pts_max or '' }}" placeholder="∞"
-               class="form-input" style="width:80px;">
+      <div class="filter-field filter-field--pts">
+        <label class="filter-field-label" for="filter-pts-max">Pts máx</label>
+        <input id="filter-pts-max" type="number" name="pts_max" value="{{ pts_max or '' }}"
+               placeholder="∞" class="form-input">
       </div>
 
-      <div style="align-self:flex-end;padding-bottom:2px;">
-        <label style="display:flex;align-items:center;gap:0.35rem;cursor:pointer;font-size:0.72rem;letter-spacing:0.06em;opacity:0.75;white-space:nowrap;">
-          <input type="checkbox" name="only_incomplete" value="1"
-                 {% if only_incomplete %}checked{% endif %}
-                 style="accent-color:#b8935a;width:13px;height:13px;">
-          <span style="background:#f0e6c8;color:#7a5a2a;font-size:0.6rem;font-weight:700;padding:1px 5px;border-radius:8px;border:1px solid #c9a96e;">?</span>
-          Apenas incompletos
-        </label>
-      </div>
+      <label class="filter-toggle">
+        <input type="checkbox" name="only_incomplete" value="1"
+               {% if only_incomplete %}checked{% endif %}>
+        <span class="chip-q">?</span>
+        Apenas incompletos
+      </label>
     </form>
 
     <div id="unit-results">

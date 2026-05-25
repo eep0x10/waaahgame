@@ -3,87 +3,126 @@
 
 {% block content %}
 <section class="auth-section">
-  <div class="card-form" style="max-width:560px;">
+  <div class="army-new-form">
 
-    <div class="card-form-header">
-      <p class="eyebrow" style="justify-content:center;">Exército de Guerra</p>
+    <div class="army-new-header">
+      <p class="eyebrow">Forge de Exércitos</p>
       <h1 class="section-title">Criar Novo Exército</h1>
-      <p class="card-form-sub">Escolha o sistema, a facção e o formato.</p>
+      <p class="army-new-sub">Defina sistema, edição, facção e formato.</p>
     </div>
 
-    <form method="POST" action="{{ url_for('armies.new_post') }}">
+    <form method="POST" action="{{ url_for('armies.new_post') }}" class="army-new">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-      <div class="form-field">
-        <label>Sistema de Wargame</label>
-        <div class="system-radio-group">
+      {# ── 1. Sistema ── #}
+      <div class="army-new-step">
+        <div class="army-new-step-head">
+          <span class="army-new-step-num">1</span>
+          <label class="army-new-step-label">Sistema de Wargame</label>
+        </div>
+        <div class="radio-card-grid radio-card-grid--system">
           {% for system in systems %}
-            <label class="system-radio-card">
+            <label class="radio-card">
               <input type="radio" name="system_code" value="{{ system.code }}"
                      data-edition="{{ system.edition }}"
                      data-ruleset="{{ system.ruleset_label }}"
                      {% if loop.first %}checked{% endif %}>
-              <span class="system-radio-inner">
-                <span class="system-radio-name">{{ system.name }}</span>
-                <span class="system-radio-code">{{ system.code }}</span>
-              </span>
-            </label>
-          {% endfor %}
-        </div>
-        <p id="ruleset-hint" class="ruleset-chip" style="margin-top:0.6rem;">
-          <span class="ruleset-chip-edition" id="ruleset-hint-edition"></span>
-          <span class="ruleset-chip-sep">&middot;</span>
-          <span class="ruleset-chip-label" id="ruleset-hint-label"></span>
-        </p>
-      </div>
-
-      <div class="form-field">
-        <label>Versão das Regras</label>
-        <div id="ruleset-select-group" class="ruleset-select-group">
-          <!-- preenchido pelo JS -->
-        </div>
-      </div>
-
-      <div class="form-field">
-        <label for="name">Nome do Exército</label>
-        <input type="text" id="name" name="name" placeholder="ex: O Eterno da Gnawz" maxlength="96" required>
-      </div>
-
-      <div class="form-field">
-        <label>Facção</label>
-        <div class="faction-radio-group" id="faction-radio-group">
-          {% for faction in factions %}
-            <label class="faction-radio-card"
-                   data-system="{{ faction.game_system.code if faction.game_system else '' }}">
-              <input type="radio" name="faction_id" value="{{ faction.id }}" required>
-              <span class="faction-radio-inner">
-                <span class="faction-radio-name">{{ faction.name }}</span>
-                {% if faction.grand_alliance %}
-                  <span class="alliance-badge alliance-{{ faction.grand_alliance | lower }}">{{ faction.grand_alliance }}</span>
-                {% endif %}
+              <span class="radio-card-body">
+                <span class="radio-card-title">{{ system.name }}</span>
+                <span class="radio-card-meta">{{ system.code }}</span>
               </span>
             </label>
           {% endfor %}
         </div>
       </div>
 
-      <div class="form-field">
-        <label>Formato</label>
-        <div id="battlepack-radio-group" class="battlepack-radio-group">
-          {# Generate format cards dynamically from system_formats #}
+      {# ── 2. Versão das regras ── #}
+      <div class="army-new-step">
+        <div class="army-new-step-head">
+          <span class="army-new-step-num">2</span>
+          <label class="army-new-step-label">Versão das Regras</label>
+        </div>
+        <div id="ruleset-select-group" class="radio-card-grid radio-card-grid--ruleset">
+          {# preenchido pelo JS #}
+        </div>
+      </div>
+
+      {# ── 3. Nome ── #}
+      <div class="army-new-step">
+        <div class="army-new-step-head">
+          <span class="army-new-step-num">3</span>
+          <label class="army-new-step-label" for="name">Nome do Exército</label>
+        </div>
+        <input type="text" id="name" name="name"
+               class="army-new-text-input"
+               placeholder="ex: O Eterno da Gnawz" maxlength="96" required>
+      </div>
+
+      {# ── 4. Facção ── #}
+      <div class="army-new-step">
+        <div class="army-new-step-head">
+          <span class="army-new-step-num">4</span>
+          <label class="army-new-step-label">Facção</label>
+        </div>
+        <div class="faction-picker" id="faction-radio-group">
+          {% set ga_order = ['Order', 'Chaos', 'Death', 'Destruction', 'Universal', None] %}
+          {% for sys in systems %}
+            {% set sys_factions = factions | selectattr('game_system_id', 'equalto', sys.id) | list %}
+            {% if sys_factions %}
+              <div class="faction-picker-system" data-system="{{ sys.code }}">
+                {% for ga in ga_order %}
+                  {% set group = sys_factions | selectattr('grand_alliance', 'equalto', ga) | list %}
+                  {% if group %}
+                    {% set ga_class = (ga or 'none') | lower %}
+                    <div class="faction-picker-group">
+                      <div class="faction-picker-group-head">
+                        {% if ga %}
+                          <span class="alliance-badge alliance-{{ ga_class }}">{{ ga }}</span>
+                        {% else %}
+                          <span class="alliance-badge">Outros</span>
+                        {% endif %}
+                        <span class="faction-picker-group-count">{{ group|length }}</span>
+                      </div>
+                      <div class="faction-picker-grid">
+                        {% for faction in group %}
+                          <label class="radio-card radio-card--faction ga-{{ ga_class }}"
+                                 data-system="{{ sys.code }}">
+                            <input type="radio" name="faction_id" value="{{ faction.id }}" required>
+                            <span class="radio-card-body">
+                              <span class="radio-card-title">{{ faction.name }}</span>
+                            </span>
+                          </label>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      {# ── 5. Formato ── #}
+      <div class="army-new-step">
+        <div class="army-new-step-head">
+          <span class="army-new-step-num">5</span>
+          <label class="army-new-step-label">Formato</label>
+        </div>
+        <div id="battlepack-radio-group" class="radio-card-grid radio-card-grid--battlepack">
           {% for sys_code, fmts in system_formats.items() %}
             {% for fmt_key, fmt_pts in fmts.items() %}
-              <label class="battlepack-radio-card" data-system="{{ sys_code }}" style="display:none">
+              <label class="radio-card radio-card--battlepack" data-system="{{ sys_code }}" style="display:none">
                 <input type="radio" name="battlepack" value="{{ fmt_key }}">
-                <span class="battlepack-radio-inner">
-                  <span class="battlepack-radio-name">{{ fmt_key | replace('_',' ') | title }}</span>
-                  <span class="battlepack-radio-pts">{{ fmt_pts }} pts</span>
+                <span class="radio-card-body">
+                  <span class="radio-card-title">{{ fmt_key | replace('_',' ') | title }}</span>
+                  <span class="radio-card-meta">{{ fmt_pts }} pts</span>
                 </span>
               </label>
             {% endfor %}
           {% endfor %}
         </div>
-        <p id="pts-preview" class="battlepack-pts-hint">— pts limite</p>
+        <p id="pts-preview" class="army-new-pts-hint">— pts limite</p>
       </div>
 
       <script>
@@ -95,22 +134,22 @@
         var preview = document.getElementById('pts-preview');
         var rsGroup = document.getElementById('ruleset-select-group');
 
-        var hintEdition = document.getElementById('ruleset-hint-edition');
-        var hintLabel = document.getElementById('ruleset-hint-label');
-
         function applySystem(systemCode) {
-          var fcards = factionGroup.querySelectorAll('.faction-radio-card');
-          fcards.forEach(function(c) {
-            var match = c.dataset.system === systemCode;
-            c.style.display = match ? '' : 'none';
-            if (!match) {
+          // Faction system-blocks
+          factionGroup.querySelectorAll('.faction-picker-system').forEach(function(sb) {
+            sb.style.display = (sb.dataset.system === systemCode) ? '' : 'none';
+          });
+          // Uncheck factions of other systems
+          factionGroup.querySelectorAll('.radio-card--faction').forEach(function(c) {
+            if (c.dataset.system !== systemCode) {
               var inp = c.querySelector('input[type=radio]');
               if (inp) inp.checked = false;
             }
           });
 
+          // Battlepack cards
           var fmts = systemFormats[systemCode] || {};
-          var bcards = bpGroup.querySelectorAll('.battlepack-radio-card');
+          var bcards = bpGroup.querySelectorAll('.radio-card--battlepack');
           var firstShown = null;
           bcards.forEach(function(c) {
             var match = c.dataset.system === systemCode;
@@ -125,28 +164,24 @@
             if (fmts[val]) preview.textContent = fmts[val] + ' pts limite';
           }
 
-          // Ruleset cards
+          // Rulesets
           var rsList = rulesetsBySystem[systemCode] || [];
           rsGroup.innerHTML = '';
           rsList.forEach(function(r, i) {
             var lbl = document.createElement('label');
-            lbl.className = 'system-radio-card';
+            lbl.className = 'radio-card radio-card--ruleset';
+            var checked = r.is_current || (i === 0 && !rsList.some(function(x){ return x.is_current; }));
+            var metaParts = [r.edition];
+            if (r.release_date) metaParts.push(r.release_date);
+            if (r.is_current) metaParts.push('current');
             lbl.innerHTML =
-              '<input type="radio" name="ruleset_id" value="' + r.id + '"' +
-              (r.is_current || i === 0 ? ' checked' : '') + '>' +
-              '<span class="system-radio-inner">' +
-                '<span class="system-radio-name">' + r.name + '</span>' +
-                '<span class="system-radio-code">' + r.edition +
-                (r.release_date ? ' &middot; ' + r.release_date : '') +
-                (r.is_current ? ' &middot; current' : '') + '</span>' +
+              '<input type="radio" name="ruleset_id" value="' + r.id + '"' + (checked ? ' checked' : '') + '>' +
+              '<span class="radio-card-body">' +
+                '<span class="radio-card-title">' + r.name + '</span>' +
+                '<span class="radio-card-meta">' + metaParts.join(' &middot; ') + '</span>' +
               '</span>';
             rsGroup.appendChild(lbl);
           });
-          var sel = rsList.find(function(r) { return r.is_current; }) || rsList[0];
-          if (sel && hintEdition && hintLabel) {
-            hintEdition.textContent = sel.edition;
-            hintLabel.textContent = sel.name;
-          }
         }
 
         document.querySelectorAll('input[name=system_code]').forEach(function(r) {
@@ -170,7 +205,7 @@
       })();
       </script>
 
-      <button type="submit" class="btn-primary btn-full">Criar Exército</button>
+      <button type="submit" class="btn-primary btn-full army-new-submit">Criar Exército</button>
     </form>
 
   </div>

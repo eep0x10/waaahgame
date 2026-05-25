@@ -3,6 +3,7 @@
 
 {% block content %}
 {% set sys_code = unit.faction.game_system.code if unit.faction.game_system else '' %}
+{% set ga = (unit.faction.grand_alliance or '') | lower %}
 
 <section class="warscroll-section">
   <div class="container">
@@ -15,10 +16,19 @@
     </p>
 
     {# ── Warscroll card ── #}
-    <div class="ws-card">
+    <div class="ws-card ga-{{ ga }}">
+
+      {# ── Section nav (anchors) ── #}
+      <nav class="ws-section-nav" aria-label="Seções do warscroll">
+        <a href="#sec-overview">Visão</a>
+        {% if unit.weapons_json %}<a href="#sec-weapons">Armas</a>{% endif %}
+        {% if unit.abilities_json %}<a href="#sec-abilities">Habilidades</a>{% endif %}
+        {% if unit.keywords_json %}<a href="#sec-keywords">Palavras-chave</a>{% endif %}
+        {% if unit.lore_pt_md %}<a href="#sec-lore">Lore</a>{% endif %}
+      </nav>
 
       {# ── Header band ── #}
-      <div class="ws-header">
+      <div class="ws-header" id="sec-overview">
         <div class="ws-header-image">
           {% if unit.image_path %}
             <img src="{{ url_for('static', filename='img/' + unit.image_path) }}"
@@ -61,7 +71,7 @@
               <span class="role-tag">{{ unit.unit_role }}</span>
             {% endif %}
             {% if unit.faction.grand_alliance %}
-              <span class="alliance-badge alliance-{{ unit.faction.grand_alliance | lower }}">{{ unit.faction.grand_alliance }}</span>
+              <span class="alliance-badge alliance-{{ ga }}">{{ unit.faction.grand_alliance }}</span>
             {% endif %}
             <span class="pts-badge ws-pts">{{ unit.points_cost }}<span class="pts-label">pts</span></span>
             {% if unit.model_count > 1 %}
@@ -69,11 +79,10 @@
             {% endif %}
           </div>
 
-          {# ── Stats bar ── inline horizontal strip #}
+          {# ── Stats bar ── #}
           {% if unit.stats_json %}
             <div class="ws-stats-bar">
               {% if sys_code == 'w40k10' %}
-                {# 40K: M / T / Sv / W / Ld / OC #}
                 {% set stat_map = [
                   ('move',       'M',   'Movimento'),
                   ('toughness',  'T',   'Resistência'),
@@ -92,7 +101,6 @@
                   {% endif %}
                 {% endfor %}
               {% else %}
-                {# AoS / generic: render all keys from stats_json #}
                 {% for key, val in unit.stats_json.items() %}
                   <div class="ws-stat-cell" title="{{ key }}">
                     <span class="ws-stat-val">{{ val }}</span>
@@ -122,19 +130,19 @@
       <div class="ws-body">
 
         {# ── Weapons ── #}
-        {% if unit.weapons_json %}
-          {% set ranged = unit.weapons_json | selectattr('Type', 'defined') | selectattr('Type', 'equalto', 'RANGED WEAPONS') | list
-                          if unit.weapons_json[0] is mapping and 'Type' in unit.weapons_json[0] else [] %}
-          {% set melee  = unit.weapons_json | selectattr('Type', 'defined') | selectattr('Type', 'equalto', 'MELEE WEAPONS')  | list
-                          if unit.weapons_json[0] is mapping and 'Type' in unit.weapons_json[0] else [] %}
-          {% set has_typed = ranged or melee %}
+        <div class="ws-section" id="sec-weapons">
+          <h2 class="ws-section-title">Armas</h2>
+          {% if unit.weapons_json %}
+            {% set ranged = unit.weapons_json | selectattr('Type', 'defined') | selectattr('Type', 'equalto', 'RANGED WEAPONS') | list
+                            if unit.weapons_json[0] is mapping and 'Type' in unit.weapons_json[0] else [] %}
+            {% set melee  = unit.weapons_json | selectattr('Type', 'defined') | selectattr('Type', 'equalto', 'MELEE WEAPONS')  | list
+                            if unit.weapons_json[0] is mapping and 'Type' in unit.weapons_json[0] else [] %}
+            {% set has_typed = ranged or melee %}
 
-          {% if has_typed %}
-            {# AoS-style split sections #}
-            {% for section_label, section_weapons in [('Armas de Alcance', ranged), ('Armas de Combate', melee)] %}
-              {% if section_weapons %}
-                <div class="ws-section">
-                  <h2 class="ws-section-title">{{ section_label }}</h2>
+            {% if has_typed %}
+              {% for section_label, section_weapons in [('Armas de Alcance', ranged), ('Armas de Combate', melee)] %}
+                {% if section_weapons %}
+                  <h3 class="ws-section-subtitle" style="font-family:var(--font-display);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-muted);margin:0.75rem 0 0.4rem;">{{ section_label }}</h3>
                   {% set col_keys = [] %}
                   {% for k in section_weapons[0] %}
                     {% if k != 'Type' %}{% if col_keys.append(k) %}{% endif %}{% endif %}
@@ -155,13 +163,9 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
-              {% endif %}
-            {% endfor %}
-          {% else %}
-            {# Generic flat weapons list (40K or unknown schema) #}
-            <div class="ws-section">
-              <h2 class="ws-section-title">Armas</h2>
+                {% endif %}
+              {% endfor %}
+            {% else %}
               <div class="ws-table-wrap">
                 <table class="weapons-table ws-weapons-table">
                   <thead>
@@ -182,33 +186,39 @@
                   </tbody>
                 </table>
               </div>
+            {% endif %}
+          {% else %}
+            <div class="ws-empty">
+              Armas ainda não cadastradas.
+              <span class="ws-empty-hint">Dados do warscroll pendentes</span>
             </div>
           {% endif %}
-        {% endif %}
+        </div>
 
         {# ── Abilities ── #}
-        {% if unit.abilities_json %}
-          {% set passive_labels   = ['Passive', 'passive', 'Passiva', 'passiva'] %}
-          {% set command_labels   = ['Command', 'command', 'Comando', 'comando', 'Command Ability', 'Habilidade de Comando'] %}
-          {% set reaction_labels  = ['Reaction', 'reaction', 'Once Per Turn', 'Ação de Reação'] %}
+        <div class="ws-section" id="sec-abilities">
+          <h2 class="ws-section-title">Habilidades</h2>
+          {% if unit.abilities_json %}
+            {% set passive_labels   = ['Passive', 'passive', 'Passiva', 'passiva'] %}
+            {% set command_labels   = ['Command', 'command', 'Comando', 'comando', 'Command Ability', 'Habilidade de Comando'] %}
+            {% set reaction_labels  = ['Reaction', 'reaction', 'Once Per Turn', 'Ação de Reação'] %}
 
-          {% set ab_passive  = unit.abilities_json | selectattr('type', 'defined') | selectattr('type', 'in', passive_labels)  | list %}
-          {% set ab_command  = unit.abilities_json | selectattr('type', 'defined') | selectattr('type', 'in', command_labels)  | list %}
-          {% set ab_other    = [] %}
-          {% for ab in unit.abilities_json %}
-            {% set t = ab.get('type', '') %}
-            {% if t not in passive_labels and t not in command_labels %}
-              {% if ab_other.append(ab) %}{% endif %}
-            {% endif %}
-          {% endfor %}
+            {% set ab_passive  = unit.abilities_json | selectattr('type', 'defined') | selectattr('type', 'in', passive_labels)  | list %}
+            {% set ab_command  = unit.abilities_json | selectattr('type', 'defined') | selectattr('type', 'in', command_labels)  | list %}
+            {% set ab_other    = [] %}
+            {% for ab in unit.abilities_json %}
+              {% set t = ab.get('type', '') %}
+              {% if t not in passive_labels and t not in command_labels %}
+                {% if ab_other.append(ab) %}{% endif %}
+              {% endif %}
+            {% endfor %}
 
-          {% set has_typed_abilities = ab_passive or ab_command %}
+            {% set has_typed_abilities = ab_passive or ab_command %}
 
-          {% if has_typed_abilities %}
-            {% for section_label, section_abs in [('Habilidades de Comando', ab_command), ('Habilidades Passivas', ab_passive), ('Habilidades', ab_other)] %}
-              {% if section_abs %}
-                <div class="ws-section">
-                  <h2 class="ws-section-title">{{ section_label }}</h2>
+            {% if has_typed_abilities %}
+              {% for section_label, section_abs in [('Habilidades de Comando', ab_command), ('Habilidades Passivas', ab_passive), ('Outras Habilidades', ab_other)] %}
+                {% if section_abs %}
+                  <h3 class="ws-section-subtitle" style="font-family:var(--font-display);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-muted);margin:0.75rem 0 0.4rem;">{{ section_label }}</h3>
                   <div class="ws-abilities-grid">
                     {% for ab in section_abs %}
                       <div class="ability-card ws-ability-card">
@@ -227,13 +237,9 @@
                       </div>
                     {% endfor %}
                   </div>
-                </div>
-              {% endif %}
-            {% endfor %}
-          {% else %}
-            {# All abilities as a single grid #}
-            <div class="ws-section">
-              <h2 class="ws-section-title">Habilidades</h2>
+                {% endif %}
+              {% endfor %}
+            {% else %}
               <div class="ws-abilities-grid">
                 {% for ab in unit.abilities_json %}
                   <div class="ability-card ws-ability-card">
@@ -251,9 +257,14 @@
                   </div>
                 {% endfor %}
               </div>
+            {% endif %}
+          {% else %}
+            <div class="ws-empty">
+              Habilidades ainda não cadastradas.
+              <span class="ws-empty-hint">Dados do warscroll pendentes</span>
             </div>
           {% endif %}
-        {% endif %}
+        </div>
 
         {# ── Companions (Heroes only) ── #}
         {% if unit.can_be_general and unit.companions_json %}
@@ -268,16 +279,21 @@
         {% endif %}
 
         {# ── Keywords ── #}
-        {% if unit.keywords_json %}
-          <div class="ws-section ws-section--keywords">
-            <h2 class="ws-section-title">Palavras-chave</h2>
+        <div class="ws-section ws-section--keywords" id="sec-keywords">
+          <h2 class="ws-section-title">Palavras-chave</h2>
+          {% if unit.keywords_json %}
             <div class="warscroll-keywords">
               {% for kw in unit.keywords_json %}
                 <span class="keyword-pill">{{ kw }}</span>
               {% endfor %}
             </div>
-          </div>
-        {% endif %}
+          {% else %}
+            <div class="ws-empty">
+              Keywords ainda não cadastradas.
+              <span class="ws-empty-hint">Dados do warscroll pendentes</span>
+            </div>
+          {% endif %}
+        </div>
 
         {# ── Properties strip ── #}
         <div class="ws-section ws-props-strip">
@@ -300,13 +316,20 @@
           {% endif %}
         </div>
 
-      {# ── Unit Lore (lore_pt_md) ── #}
-      {% if unit.lore_pt_md %}
-        <div class="unit-lore-section">
-          <div class="unit-lore-title">Lore da Unidade</div>
-          {{ unit.lore_pt_md | simple_md }}
+        {# ── Unit Lore ── #}
+        <div class="ws-section" id="sec-lore">
+          <h2 class="ws-section-title">Lore da Unidade</h2>
+          {% if unit.lore_pt_md %}
+            <div class="unit-lore-section">
+              {{ unit.lore_pt_md | simple_md }}
+            </div>
+          {% else %}
+            <div class="ws-empty">
+              Lore ainda não escrita.
+              <span class="ws-empty-hint">Tradução PT-BR pendente</span>
+            </div>
+          {% endif %}
         </div>
-      {% endif %}
 
       </div>{# /ws-body #}
     </div>{# /ws-card #}
